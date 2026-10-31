@@ -1,0 +1,74 @@
+{
+  "upstream_commit": "8df5baeed0f5ecdd7f870d83bc3d79194816e2a9",
+  "analysis_commit": "e3f6c9842c101dfa5290abbd63e7145c5d05bb5e",
+  "mirror": "tools/verl-analysis-view",
+  "copied_entries": 1297,
+  "omissions": [
+    {
+      "path": ".claude/skills/issue",
+      "git_mode": "120000",
+      "git_object": "71ec9d30de7f788d81fb284e09ec863e49dbc540",
+      "reason": "Directory symlink unsupported by bounded LMA snapshot",
+      "sha256": null
+    },
+    {
+      "path": ".claude/skills/pr",
+      "git_mode": "120000",
+      "git_object": "1569aa2eafcc93078517e0db3ed397fcb74bf826",
+      "reason": "Directory symlink unsupported by bounded LMA snapshot",
+      "sha256": null
+    },
+    {
+      "path": ".codex/skills/issue",
+      "git_mode": "120000",
+      "git_object": "71ec9d30de7f788d81fb284e09ec863e49dbc540",
+      "reason": "Directory symlink unsupported by bounded LMA snapshot",
+      "sha256": null
+    },
+    {
+      "path": ".codex/skills/pr",
+      "git_mode": "120000",
+      "git_object": "1569aa2eafcc93078517e0db3ed397fcb74bf826",
+      "reason": "Directory symlink unsupported by bounded LMA snapshot",
+      "sha256": null
+    },
+    {
+      "path": "recipe",
+      "git_mode": "160000",
+      "git_object": "e7f889574b8301cc0f0fc1d57c6d67f31ffeb689",
+      "reason": "Uninitialized upstream submodule gitlink; not part of source checkout",
+      "sha256": null
+    },
+    {
+      "path": "uv.lock",
+      "git_mode": "100644",
+      "git_object": "42f04512674c707242b2d8278e3b3d8fa1dcf985",
+      "reason": "Dependency lock exceeds LMA 2 MiB per-file bound",
+      "sha256": "f9d53a73c4d89cb5dd4f2f78555b2e3c578e39ee5bc7d64c6a81086cd1e49fc2"
+    }
+  ],
+  "meaning": "Locally synthesized analysis commit, NOT an upstream commit; no source/test byte changes",
+  "upstream_commit_date": "2026-10-31T17:16:04+08:00",
+  "lma_commit": "e946bf13789f99b7648c186281226d1398912277",
+  "ua_commit": "4e6d3299017a7432da15957874992837a315c5b4",
+  "ua_full_pipeline": false,
+  "method": "UA native lightweight domain scanner + host-agent map + native LMA Graph/Tree import",
+  "original_snapshot_complete": false,
+  "original_warnings": [
+    "Skipped symbolic link into an excluded or non-file target: .claude/skills/issue",
+    "Skipped symbolic link into an excluded or non-file target: .claude/skills/pr",
+    "Skipped symbolic link into an excluded or non-file target: .codex/skills/issue",
+    "Skipped symbolic link into an excluded or non-file target: .codex/skills/pr",
+    "Skipped missing or non-regular file: recipe",
+    "Skipped oversized file: uv.lock"
+  ],
+  "source_inventory_identical": true,
+  "source_files": 558,
+  "source_lines": 145636,
+  "behavior_verified": false,
+  "checks": [],
+  "retain_percent": 100,
+  "lma_invocation": "unchanged offline core _plan_from_inventory + validate_understanding_source + write_capability_view",
+  "public_plan_cli_limitation": "mcp package unavailable; MCP-bound operation contract digest omitted; no live execution endpoint",
+  "budget_note": "100% inventory view, not an approved reduction target; recommendations live in labels/descriptions"
+}

@@ -1,0 +1,968 @@
+{
+  "schema_version": 1,
+  "reviewed": true,
+  "capabilities": [
+    {
+      "ua_id": "flow:rl-entry",
+      "paths": [
+        "verl/trainer/constants_ppo.py",
+        "verl/trainer/main_ppo.py",
+        "verl/trainer/ppo/v1/__init__.py",
+        "verl/trainer/ppo/v1/agent_loop_tq.py",
+        "verl/trainer/ppo/v1/replay_buffer.py",
+        "verl/trainer/ppo/v1/trainer_base.py",
+        "verl/trainer/ppo/v1/trainer_sync.py",
+        "verl/trainer/ppo/v1/utils.py"
+      ],
+      "required": true,
+      "depends_on": [
+        "flow:rl-algorithms",
+        "flow:reward-loop",
+        "flow:engine-common",
+        "flow:rollout-common",
+        "flow:data",
+        "flow:controller"
+      ]
+    },
+    {
+      "ua_id": "flow:rl-async-v1",
+      "paths": [
+        "verl/trainer/ppo/v1/trainer_colocate_async.py",
+        "verl/trainer/ppo/v1/trainer_separate_async.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:rl-entry",
+        "flow:checkpoint-transfer"
+      ]
+    },
+    {
+      "ua_id": "flow:legacy-rl",
+      "paths": [
+        "verl/trainer/main_ppo_v0.py",
+        "verl/trainer/ppo/ray_trainer.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:rl-algorithms",
+        "flow:reward-loop",
+        "flow:engine-common",
+        "flow:controller"
+      ]
+    },
+    {
+      "ua_id": "flow:rl-algorithms",
+      "paths": [
+        "verl/trainer/ppo/__init__.py",
+        "verl/trainer/ppo/checkpoint_callback.py",
+        "verl/trainer/ppo/core_algos.py",
+        "verl/trainer/ppo/metric_utils.py",
+        "verl/trainer/ppo/padding_utils.py",
+        "verl/trainer/ppo/utils.py"
+      ],
+      "required": true,
+      "depends_on": [
+        "flow:data"
+      ]
+    },
+    {
+      "ua_id": "flow:rl-correction",
+      "paths": [
+        "verl/trainer/ppo/prefix_grouper_utils.py",
+        "verl/trainer/ppo/rollout_corr_helper.py",
+        "verl/trainer/ppo/score_centering.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:rl-algorithms"
+      ]
+    },
+    {
+      "ua_id": "flow:sft",
+      "paths": [
+        "verl/trainer/sft_trainer.py"
+      ],
+      "required": true,
+      "depends_on": [
+        "flow:engine-common",
+        "flow:datasets",
+        "flow:checkpoint-storage",
+        "flow:data"
+      ]
+    },
+    {
+      "ua_id": "flow:sft-ray",
+      "paths": [
+        "verl/trainer/sft_trainer_ray.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:sft",
+        "flow:controller"
+      ]
+    },
+    {
+      "ua_id": "flow:reward-loop",
+      "paths": [
+        "verl/experimental/reward_loop/__init__.py",
+        "verl/experimental/reward_loop/reward_loop.py",
+        "verl/experimental/reward_loop/reward_manager/__init__.py",
+        "verl/experimental/reward_loop/reward_manager/base.py",
+        "verl/experimental/reward_loop/reward_manager/dapo.py",
+        "verl/experimental/reward_loop/reward_manager/gdpo.py",
+        "verl/experimental/reward_loop/reward_manager/limited.py",
+        "verl/experimental/reward_loop/reward_manager/naive.py",
+        "verl/experimental/reward_loop/reward_manager/registry.py",
+        "verl/experimental/reward_loop/reward_manager/remote.py",
+        "verl/trainer/ppo/reward.py",
+        "verl/workers/config/reward.py"
+      ],
+      "required": true,
+      "depends_on": [
+        "flow:data"
+      ]
+    },
+    {
+      "ua_id": "flow:reward-code",
+      "paths": [
+        "verl/utils/reward_score/prime_code/__init__.py",
+        "verl/utils/reward_score/prime_code/testing_util.py",
+        "verl/utils/reward_score/prime_code/utils.py",
+        "verl/utils/reward_score/sandbox_fusion/__init__.py",
+        "verl/utils/reward_score/sandbox_fusion/utils.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:reward-loop"
+      ]
+    },
+    {
+      "ua_id": "flow:reward-rules",
+      "paths": [
+        "verl/utils/reward_score/__init__.py",
+        "verl/utils/reward_score/geo3k.py",
+        "verl/utils/reward_score/gsm8k.py",
+        "verl/utils/reward_score/math_batch.py",
+        "verl/utils/reward_score/math_dapo.py",
+        "verl/utils/reward_score/math_reward.py",
+        "verl/utils/reward_score/math_verify.py",
+        "verl/utils/reward_score/prime_math/__init__.py",
+        "verl/utils/reward_score/prime_math/grader.py",
+        "verl/utils/reward_score/prime_math/math_normalize.py",
+        "verl/utils/reward_score/rlla.py",
+        "verl/utils/reward_score/search_r1_like_qa_em.py"
+      ],
+      "required": true,
+      "depends_on": [
+        "flow:reward-loop"
+      ]
+    },
+    {
+      "ua_id": "flow:rlhf",
+      "paths": [
+        "verl/experimental/reward_loop/reward_model.py",
+        "verl/experimental/reward_loop/router/__init__.py",
+        "verl/experimental/reward_loop/router/inner_sglang_router.py",
+        "verl/experimental/reward_loop/router/naive_router.py",
+        "verl/utils/dataset/rm_dataset.py",
+        "verl/workers/config/critic.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:reward-loop",
+        "flow:rl-algorithms",
+        "flow:engine-common"
+      ]
+    },
+    {
+      "ua_id": "flow:legacy-reward",
+      "paths": [
+        "verl/workers/reward_manager/__init__.py",
+        "verl/workers/reward_manager/abstract.py",
+        "verl/workers/reward_manager/batch.py",
+        "verl/workers/reward_manager/dapo.py",
+        "verl/workers/reward_manager/naive.py",
+        "verl/workers/reward_manager/prime.py",
+        "verl/workers/reward_manager/registry.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:reward-loop"
+      ]
+    },
+    {
+      "ua_id": "flow:engine-common",
+      "paths": [
+        "verl/workers/engine/__init__.py",
+        "verl/workers/engine/base.py",
+        "verl/workers/engine/spec.py",
+        "verl/workers/engine/utils.py",
+        "verl/workers/engine_workers.py",
+        "verl/workers/engine_workers_tinker.py",
+        "verl/workers/utils/__init__.py",
+        "verl/workers/utils/losses.py",
+        "verl/workers/utils/padding.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:data",
+        "flow:parallel",
+        "flow:checkpoint-storage"
+      ]
+    },
+    {
+      "ua_id": "flow:engine-fsdp",
+      "paths": [
+        "verl/utils/fsdp_utils.py",
+        "verl/workers/engine/fsdp/__init__.py",
+        "verl/workers/engine/fsdp/fsdp_turbo_impl.py",
+        "verl/workers/engine/fsdp/transformer_impl.py",
+        "verl/workers/engine/fsdp/utils.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:engine-common"
+      ]
+    },
+    {
+      "ua_id": "flow:engine-megatron",
+      "paths": [
+        "verl/utils/megatron/__init__.py",
+        "verl/utils/megatron/dist_checkpointing.py",
+        "verl/utils/megatron/memory.py",
+        "verl/utils/megatron/optimizer.py",
+        "verl/utils/megatron/pipeline_parallel.py",
+        "verl/utils/megatron/router_replay_patch.py",
+        "verl/utils/megatron/router_replay_utils.py",
+        "verl/utils/megatron/sequence_parallel.py",
+        "verl/utils/megatron/tensor_parallel.py",
+        "verl/utils/megatron_peft_utils.py",
+        "verl/utils/megatron_utils.py",
+        "verl/workers/engine/megatron/__init__.py",
+        "verl/workers/engine/megatron/delta_export.py",
+        "verl/workers/engine/megatron/transformer_impl.py",
+        "verl/workers/engine/megatron/utils.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:engine-common"
+      ]
+    },
+    {
+      "ua_id": "flow:engine-automodel",
+      "paths": [
+        "verl/workers/engine/automodel/__init__.py",
+        "verl/workers/engine/automodel/transformer_impl.py",
+        "verl/workers/engine/automodel/utils.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:engine-common"
+      ]
+    },
+    {
+      "ua_id": "flow:engine-veomni",
+      "paths": [
+        "verl/utils/veomni/__init__.py",
+        "verl/utils/veomni/router_replay.py",
+        "verl/workers/engine/veomni/__init__.py",
+        "verl/workers/engine/veomni/transformer_impl.py",
+        "verl/workers/engine/veomni/utils.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:engine-common"
+      ]
+    },
+    {
+      "ua_id": "flow:engine-torchtitan",
+      "paths": [
+        "verl/workers/engine/torchtitan/__init__.py",
+        "verl/workers/engine/torchtitan/transformer_impl.py",
+        "verl/workers/engine/torchtitan/utils.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:engine-common"
+      ]
+    },
+    {
+      "ua_id": "flow:engine-mindspeed",
+      "paths": [
+        "verl/workers/engine/mindspeed/__init__.py",
+        "verl/workers/engine/mindspeed/transformer_impl.py",
+        "verl/workers/engine/mindspeed/utils.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:engine-common"
+      ]
+    },
+    {
+      "ua_id": "flow:rollout-common",
+      "paths": [
+        "verl/trainer/main_generation_server.py",
+        "verl/workers/rollout/__init__.py",
+        "verl/workers/rollout/base.py",
+        "verl/workers/rollout/llm_server.py",
+        "verl/workers/rollout/replica.py",
+        "verl/workers/rollout/router.py",
+        "verl/workers/rollout/schemas.py",
+        "verl/workers/rollout/tokenizer.py",
+        "verl/workers/rollout/utils.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:data",
+        "flow:checkpoint-transfer"
+      ]
+    },
+    {
+      "ua_id": "flow:rollout-vllm",
+      "paths": [
+        "verl/utils/vllm/__init__.py",
+        "verl/utils/vllm/npu_vllm_patch.py",
+        "verl/utils/vllm/patch.py",
+        "verl/utils/vllm/rocm_vllm_moe_expert_map.py",
+        "verl/utils/vllm/utils.py",
+        "verl/utils/vllm/vllm_fp4_utils.py",
+        "verl/utils/vllm/vllm_fp8_utils.py",
+        "verl/utils/vllm/vllm_quant_utils.py",
+        "verl/utils/vllm/vllm_unquant_utils.py",
+        "verl/workers/rollout/vllm_rollout/__init__.py",
+        "verl/workers/rollout/vllm_rollout/bucketed_weight_transfer.py",
+        "verl/workers/rollout/vllm_rollout/delta_weight_transfer.py",
+        "verl/workers/rollout/vllm_rollout/utils.py",
+        "verl/workers/rollout/vllm_rollout/vllm_async_server.py",
+        "verl/workers/rollout/vllm_rollout/vllm_pd_replica.py",
+        "verl/workers/rollout/vllm_rollout/vllm_rollout.py",
+        "verl/workers/rollout/vllm_rollout/weight_update_utils.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:rollout-common"
+      ]
+    },
+    {
+      "ua_id": "flow:rollout-sglang",
+      "paths": [
+        "verl/utils/sglang/__init__.py",
+        "verl/utils/sglang/sglang_fp4_utils.py",
+        "verl/utils/sglang/sglang_fp8_utils.py",
+        "verl/utils/sglang/sglang_quant_utils.py",
+        "verl/workers/rollout/sglang_rollout/__init__.py",
+        "verl/workers/rollout/sglang_rollout/async_sglang_server.py",
+        "verl/workers/rollout/sglang_rollout/delta_loader.py",
+        "verl/workers/rollout/sglang_rollout/http_server_engine.py",
+        "verl/workers/rollout/sglang_rollout/sglang_pd_replica.py",
+        "verl/workers/rollout/sglang_rollout/sglang_rollout.py",
+        "verl/workers/rollout/sglang_rollout/utils.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:rollout-common"
+      ]
+    },
+    {
+      "ua_id": "flow:rollout-trtllm",
+      "paths": [
+        "verl/utils/trtllm/__init__.py",
+        "verl/workers/rollout/trtllm_rollout/__init__.py",
+        "verl/workers/rollout/trtllm_rollout/trtllm_async_server.py",
+        "verl/workers/rollout/trtllm_rollout/trtllm_rollout.py",
+        "verl/workers/rollout/trtllm_rollout/trtllm_worker_extension.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:rollout-common"
+      ]
+    },
+    {
+      "ua_id": "flow:rollout-hf",
+      "paths": [
+        "verl/workers/rollout/hf_rollout.py",
+        "verl/workers/rollout/naive/__init__.py",
+        "verl/workers/rollout/naive/naive_rollout.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:data"
+      ]
+    },
+    {
+      "ua_id": "flow:agent-tools",
+      "paths": [
+        "verl/experimental/agent_loop/__init__.py",
+        "verl/experimental/agent_loop/agent_loop.py",
+        "verl/experimental/agent_loop/single_turn_agent_loop.py",
+        "verl/experimental/agent_loop/tool_agent_loop.py",
+        "verl/experimental/agent_loop/tool_parser.py",
+        "verl/experimental/agent_loop/utils.py",
+        "verl/tools/__init__.py",
+        "verl/tools/base_tool.py",
+        "verl/tools/function_tool.py",
+        "verl/tools/schemas.py",
+        "verl/tools/tool_registry.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:rollout-common",
+        "flow:reward-loop",
+        "flow:data"
+      ]
+    },
+    {
+      "ua_id": "flow:distillation",
+      "paths": [
+        "verl/experimental/teacher_loop/__init__.py",
+        "verl/experimental/teacher_loop/teacher_manager.py",
+        "verl/experimental/teacher_loop/teacher_model.py",
+        "verl/trainer/distillation/__init__.py",
+        "verl/trainer/distillation/fsdp/__init__.py",
+        "verl/trainer/distillation/fsdp/losses.py",
+        "verl/trainer/distillation/losses.py",
+        "verl/trainer/distillation/megatron/__init__.py",
+        "verl/trainer/distillation/megatron/losses.py",
+        "verl/trainer/distillation/tail_kl.py",
+        "verl/workers/config/distillation.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:engine-common",
+        "flow:rollout-common"
+      ]
+    },
+    {
+      "ua_id": "flow:experimental-trainers",
+      "paths": [
+        "verl/experimental/fully_async_policy/__init__.py",
+        "verl/experimental/fully_async_policy/detach_utils.py",
+        "verl/experimental/fully_async_policy/dynamic_schedule/__init__.py",
+        "verl/experimental/fully_async_policy/dynamic_schedule/base.py",
+        "verl/experimental/fully_async_policy/dynamic_schedule/default_policy.py",
+        "verl/experimental/fully_async_policy/dynamic_schedule/dynamic_resource_controller.py",
+        "verl/experimental/fully_async_policy/dynamic_schedule/fixed_ratio_policy.py",
+        "verl/experimental/fully_async_policy/dynamic_schedule/static_fully_async_policy.py",
+        "verl/experimental/fully_async_policy/fully_async_main.py",
+        "verl/experimental/fully_async_policy/fully_async_rollouter.py",
+        "verl/experimental/fully_async_policy/fully_async_trainer.py",
+        "verl/experimental/fully_async_policy/message_queue.py",
+        "verl/experimental/fully_async_policy/shell/dapo_30b_a3b_base_math_fsdp.sh",
+        "verl/experimental/fully_async_policy/shell/dapo_30b_a3b_math_fsdp_npu.sh",
+        "verl/experimental/fully_async_policy/shell/dapo_7b_async_retool.sh",
+        "verl/experimental/fully_async_policy/shell/dapo_7b_math_fsdp2_16_16.sh",
+        "verl/experimental/fully_async_policy/shell/dapo_7b_math_fsdp2_32_32.sh",
+        "verl/experimental/fully_async_policy/shell/dapo_7b_math_fsdp2_4_12.sh",
+        "verl/experimental/fully_async_policy/shell/dapo_7b_math_fsdp2_4_4.sh",
+        "verl/experimental/fully_async_policy/shell/dapo_7b_math_fsdp2_64_64.sh",
+        "verl/experimental/fully_async_policy/shell/dapo_7b_math_fsdp2_64_64_mis.sh",
+        "verl/experimental/fully_async_policy/shell/dapo_7b_math_fsdp2_8_8.sh",
+        "verl/experimental/fully_async_policy/shell/geo3k_qwen25vl_7b_megatron_4_4.sh",
+        "verl/experimental/fully_async_policy/shell/geo3k_qwen3vl_30b_a3b_fsdp2_32_32.sh",
+        "verl/experimental/fully_async_policy/shell/geo3k_qwen3vl_30b_megatron_6_2_npu_async.sh",
+        "verl/experimental/fully_async_policy/shell/geo3k_qwen3vl_8b_fsdp2_16_16_npu.sh",
+        "verl/experimental/fully_async_policy/shell/grpo_30b_a3b_base_math_megatron_8_8_mis_trtllm.sh",
+        "verl/experimental/fully_async_policy/shell/grpo_30b_a3b_base_math_megatron_96_32.sh",
+        "verl/experimental/fully_async_policy/shell/grpo_30b_a3b_base_math_megatron_96_32_mis.sh",
+        "verl/experimental/fully_async_policy/shell/grpo_8b_base_math_megatron_4_4_trtllm.sh",
+        "verl/experimental/fully_async_policy/shell/grpo_qwen35_35b_megatron_async.sh",
+        "verl/experimental/fully_async_policy/shell/grpo_qwen3_235b_megatron_npu.sh",
+        "verl/experimental/fully_async_policy/shell/run_qwen35_35b_a3b_math_dynamic_megatron.sh",
+        "verl/experimental/fully_async_policy/unittest/__init__.py",
+        "verl/experimental/fully_async_policy/unittest/simple_streaming_demo.py",
+        "verl/experimental/one_step_off_policy/__init__.py",
+        "verl/experimental/one_step_off_policy/main_ppo.py",
+        "verl/experimental/one_step_off_policy/ray_trainer.py",
+        "verl/experimental/one_step_off_policy/shell/dapo_7b_math_fsdp2_4_12.sh",
+        "verl/experimental/one_step_off_policy/shell/dapo_7b_math_fsdp2_64_64.sh",
+        "verl/experimental/one_step_off_policy/shell/dapo_7b_math_fsdp2_64_64_ris.sh",
+        "verl/experimental/one_step_off_policy/shell/dapo_7b_math_fsdp2_colocate.sh",
+        "verl/experimental/one_step_off_policy/shell/dapo_7b_math_fsdp2_sglang_4_12.sh",
+        "verl/experimental/one_step_off_policy/shell/dapo_7b_math_fsdp2_sglang_colocate.sh",
+        "verl/experimental/one_step_off_policy/shell/dapo_7b_math_megatron_4_12.sh",
+        "verl/experimental/one_step_off_policy/shell/dapo_7b_math_megatron_colocate.sh",
+        "verl/experimental/one_step_off_policy/shell/grpo_0.6b_gsm8k_fsdp2_2_6.sh",
+        "verl/experimental/one_step_off_policy/shell/grpo_0.6b_gsm8k_fsdp2_sglang_2_6.sh",
+        "verl/experimental/one_step_off_policy/shell/grpo_0.6b_gsm8k_fsdp2_sglang_delta_sharded_2_6.sh",
+        "verl/experimental/one_step_off_policy/shell/grpo_3b_gsm8k_fsdp2_2_6.sh",
+        "verl/experimental/one_step_off_policy/shell/grpo_qwen3_8b_gsm8k_fsdp2_8_8_npu.sh",
+        "verl/experimental/separation/__init__.py",
+        "verl/experimental/separation/engine_workers.py",
+        "verl/experimental/separation/ray_trainer.py",
+        "verl/experimental/separation/utils.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:rl-algorithms",
+        "flow:engine-common",
+        "flow:reward-loop"
+      ]
+    },
+    {
+      "ua_id": "flow:datasets",
+      "paths": [
+        "verl/utils/dataset/__init__.py",
+        "verl/utils/dataset/dataset_utils.py",
+        "verl/utils/dataset/multiturn_sft_dataset.py",
+        "verl/utils/dataset/rl_dataset.py",
+        "verl/utils/dataset/vision_utils.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:data"
+      ]
+    },
+    {
+      "ua_id": "flow:data",
+      "paths": [
+        "verl/__init__.py",
+        "verl/base_config.py",
+        "verl/experimental/__init__.py",
+        "verl/protocol.py",
+        "verl/trainer/__init__.py",
+        "verl/trainer/config/__init__.py",
+        "verl/trainer/config/algorithm.py",
+        "verl/trainer/config/config.py",
+        "verl/utils/config.py",
+        "verl/utils/tensordict_utils.py",
+        "verl/utils/tokenizer/__init__.py",
+        "verl/utils/tokenizer/chat_template.py",
+        "verl/utils/tokenizer/continuous_token.py",
+        "verl/utils/tokenizer/continuous_token_wiring.py",
+        "verl/utils/tokenizer/deepseek.py",
+        "verl/utils/tokenizer/tokenizer.py",
+        "verl/workers/__init__.py",
+        "verl/workers/config/__init__.py",
+        "verl/workers/config/actor.py",
+        "verl/workers/config/disaggregation.py",
+        "verl/workers/config/engine.py",
+        "verl/workers/config/megatron_peft.py",
+        "verl/workers/config/model.py",
+        "verl/workers/config/optimizer.py",
+        "verl/workers/config/rollout.py"
+      ],
+      "required": false,
+      "depends_on": []
+    },
+    {
+      "ua_id": "flow:controller",
+      "paths": [
+        "verl/single_controller/__init__.py",
+        "verl/single_controller/base/__init__.py",
+        "verl/single_controller/base/decorator.py",
+        "verl/single_controller/base/worker.py",
+        "verl/single_controller/base/worker_group.py",
+        "verl/single_controller/ray/__init__.py",
+        "verl/single_controller/ray/base.py",
+        "verl/utils/ray_utils.py",
+        "verl/utils/rendezvous/__init__.py",
+        "verl/utils/rendezvous/ray_backend.py",
+        "verl/utils/transferqueue_utils.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:data"
+      ]
+    },
+    {
+      "ua_id": "flow:parallel",
+      "paths": [
+        "verl/utils/activation_offload.py",
+        "verl/utils/distributed.py",
+        "verl/utils/dynamic_cp_scheduler.py",
+        "verl/utils/memory_utils.py",
+        "verl/utils/seqlen_balancing.py",
+        "verl/utils/ulysses.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:data"
+      ]
+    },
+    {
+      "ua_id": "flow:checkpoint-transfer",
+      "paths": [
+        "verl/checkpoint_engine/__init__.py",
+        "verl/checkpoint_engine/base.py",
+        "verl/checkpoint_engine/delta_checkpoint_engine.py",
+        "verl/checkpoint_engine/delta_sync/__init__.py",
+        "verl/checkpoint_engine/delta_sync/encode.py",
+        "verl/checkpoint_engine/delta_sync/sparse_gather.py",
+        "verl/checkpoint_engine/hccl_checkpoint_engine.py",
+        "verl/checkpoint_engine/kimi_checkpoint_engine.py",
+        "verl/checkpoint_engine/mooncake_checkpoint_engine.py",
+        "verl/checkpoint_engine/nccl_checkpoint_engine.py",
+        "verl/checkpoint_engine/nixl_checkpoint_engine.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:data"
+      ]
+    },
+    {
+      "ua_id": "flow:checkpoint-storage",
+      "paths": [
+        "verl/model_merger/__init__.py",
+        "verl/model_merger/__main__.py",
+        "verl/model_merger/base_model_merger.py",
+        "verl/model_merger/fsdp_model_merger.py",
+        "verl/model_merger/megatron_model_merger.py",
+        "verl/model_merger/output_validation.py",
+        "verl/model_merger/veomni_model_merger.py",
+        "verl/utils/checkpoint/__init__.py",
+        "verl/utils/checkpoint/checkpoint_handler.py",
+        "verl/utils/checkpoint/checkpoint_manager.py",
+        "verl/utils/checkpoint/fsdp_checkpoint_manager.py",
+        "verl/utils/checkpoint/megatron_checkpoint_manager.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:data"
+      ]
+    },
+    {
+      "ua_id": "flow:models-hf",
+      "paths": [
+        "verl/models/__init__.py",
+        "verl/models/transformers/__init__.py",
+        "verl/models/transformers/apertus.py",
+        "verl/models/transformers/dense_common.py",
+        "verl/models/transformers/glm4v.py",
+        "verl/models/transformers/kimi_vl.py",
+        "verl/models/transformers/llama.py",
+        "verl/models/transformers/monkey_patch.py",
+        "verl/models/transformers/npu_patch.py",
+        "verl/models/transformers/qwen2.py",
+        "verl/models/transformers/qwen2_vl.py",
+        "verl/models/transformers/qwen3_5.py",
+        "verl/models/transformers/qwen3_vl.py",
+        "verl/models/transformers/tiled_mlp.py",
+        "verl/utils/attention_padding_utils.py",
+        "verl/utils/attention_utils.py",
+        "verl/utils/model.py",
+        "verl/utils/transformers_compat.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:data"
+      ]
+    },
+    {
+      "ua_id": "flow:models-mcore",
+      "paths": [
+        "verl/models/mcore/__init__.py",
+        "verl/models/mcore/bridge.py",
+        "verl/models/mcore/bridge_checkpoint.py",
+        "verl/models/mcore/model_forward.py",
+        "verl/models/mcore/model_forward_fused.py",
+        "verl/models/mcore/mtp_patch.py",
+        "verl/models/mcore/patch.py",
+        "verl/models/mcore/registry.py",
+        "verl/models/mcore/util.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:engine-megatron"
+      ]
+    },
+    {
+      "ua_id": "flow:precision",
+      "paths": [
+        "verl/utils/experimental/__init__.py",
+        "verl/utils/experimental/torch_functional.py",
+        "verl/utils/fp8_utils.py",
+        "verl/utils/kernel/__init__.py",
+        "verl/utils/kernel/fp8_kernel.py",
+        "verl/utils/kernel/kernels.py",
+        "verl/utils/kernel/linear_cross_entropy.py",
+        "verl/utils/kernel/npu/__init__.py",
+        "verl/utils/kernel/npu/cann_linear_ce.py",
+        "verl/utils/qat/__init__.py",
+        "verl/utils/qat/compressed_tensors.py",
+        "verl/utils/qat/core.py",
+        "verl/utils/qat/linear.py",
+        "verl/utils/qat/modelopt.py",
+        "verl/utils/qat/quantizer.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:data"
+      ]
+    },
+    {
+      "ua_id": "flow:platform",
+      "paths": [
+        "verl/plugin/__init__.py",
+        "verl/plugin/platform/__init__.py",
+        "verl/plugin/platform/platform_base.py",
+        "verl/plugin/platform/platform_cuda.py",
+        "verl/plugin/platform/platform_manager.py",
+        "verl/plugin/platform/platform_npu.py",
+        "verl/plugin/platform/platform_rocm.py",
+        "verl/utils/device.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:data"
+      ]
+    },
+    {
+      "ua_id": "flow:observability",
+      "paths": [
+        "verl/utils/debug/__init__.py",
+        "verl/utils/debug/metrics.py",
+        "verl/utils/debug/performance.py",
+        "verl/utils/debug/trajectory_tracker.py",
+        "verl/utils/flops_counter.py",
+        "verl/utils/logger/__init__.py",
+        "verl/utils/logger/aggregate_logger.py",
+        "verl/utils/logging_utils.py",
+        "verl/utils/metric/__init__.py",
+        "verl/utils/metric/utils.py",
+        "verl/utils/profiler/__init__.py",
+        "verl/utils/profiler/config.py",
+        "verl/utils/profiler/empty_annotations.py",
+        "verl/utils/profiler/mstx_profile.py",
+        "verl/utils/profiler/nvtx_profile.py",
+        "verl/utils/profiler/performance.py",
+        "verl/utils/profiler/precision_debugger_profile.py",
+        "verl/utils/profiler/profile.py",
+        "verl/utils/profiler/torch_memory_profile.py",
+        "verl/utils/profiler/torch_profile.py",
+        "verl/utils/rollout_trace.py",
+        "verl/utils/skip/__init__.py",
+        "verl/utils/skip/base_skip.py",
+        "verl/utils/skip/config.py",
+        "verl/utils/skip/rollout_skip.py",
+        "verl/utils/skip/skip_manager.py",
+        "verl/utils/tracking.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:data"
+      ]
+    },
+    {
+      "ua_id": "flow:utility",
+      "paths": [
+        "verl/utils/__init__.py",
+        "verl/utils/fs.py",
+        "verl/utils/groupwise.py",
+        "verl/utils/hdfs_io.py",
+        "verl/utils/import_utils.py",
+        "verl/utils/net_utils.py",
+        "verl/utils/py_functional.py",
+        "verl/utils/torch_dtypes.py",
+        "verl/utils/torch_functional.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:data"
+      ]
+    },
+    {
+      "ua_id": "flow:third-party",
+      "paths": [
+        "verl/third_party/__init__.py",
+        "verl/third_party/torch/__init__.py",
+        "verl/third_party/torch/distributed/__init__.py",
+        "verl/third_party/torch/distributed/_state_dict_utils.py",
+        "verl/third_party/torch/distributed/checkpoint/__init__.py",
+        "verl/third_party/torch/distributed/checkpoint/state_dict.py",
+        "verl/third_party/vllm/__init__.py"
+      ],
+      "required": false,
+      "depends_on": []
+    },
+    {
+      "ua_id": "flow:evaluation",
+      "paths": [
+        "verl/trainer/main_eval.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "flow:reward-rules",
+        "flow:datasets"
+      ]
+    },
+    {
+      "ua_id": "flow:examples",
+      "paths": [
+        "examples/ascend_extras/grpo_trainer/run_deepseek_v4_flash_fsdp_turbo.sh",
+        "examples/ascend_extras/grpo_trainer/run_glm5_2_megatron.sh",
+        "examples/ascend_extras/grpo_trainer/run_qwen3_235b_256k_megatron.sh",
+        "examples/ascend_extras/grpo_trainer/run_qwen3_30b_a3b_megatron.sh",
+        "examples/ascend_extras/grpo_trainer/run_qwen3_32b_fsdp.sh",
+        "examples/ascend_extras/grpo_trainer/run_qwen3_5_122b_a10b_32k_megatron.sh",
+        "examples/ascend_extras/grpo_trainer/run_qwen3_next_80b_fsdp.sh",
+        "examples/ascend_extras/gspo_trainer/run_qwen3_32b_fsdp.sh",
+        "examples/ascend_extras/ppo_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/cispo_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/data_preprocess/aime2024_multiturn_w_tool.py",
+        "examples/data_preprocess/dapo_multiturn_w_tool.py",
+        "examples/data_preprocess/full_hh_rlhf.py",
+        "examples/data_preprocess/geo3k.py",
+        "examples/data_preprocess/geo3k_multiturn_w_tool.py",
+        "examples/data_preprocess/gsm8k.py",
+        "examples/data_preprocess/gsm8k_multiturn_sft.py",
+        "examples/data_preprocess/gsm8k_multiturn_w_tool.py",
+        "examples/data_preprocess/gsm8k_tool_agent_loop.py",
+        "examples/data_preprocess/hellaswag.py",
+        "examples/data_preprocess/math_dataset.py",
+        "examples/data_preprocess/multiturn.py",
+        "examples/data_preprocess/openr1mm.py",
+        "examples/data_preprocess/pokemon.py",
+        "examples/data_preprocess/preprocess_search_r1_dataset.py",
+        "examples/data_preprocess/tinyllava_video_r1.py",
+        "examples/dppo_trainer/run_qwen3_30b_a3b_megatron.sh",
+        "examples/gdpo_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/generation/run_deepseek_llm_7b.sh",
+        "examples/gmpo_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/gpg_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/gpg_trainer/run_qwen3_8b_megatron.sh",
+        "examples/grpo_trainer/run_deepseek_v3_671b_megatron.sh",
+        "examples/grpo_trainer/run_deepseek_v4_flash_megatron.sh",
+        "examples/grpo_trainer/run_deepseek_v4_flash_megatron_rocm.sh",
+        "examples/grpo_trainer/run_deepseek_v4_megatron_lite.sh",
+        "examples/grpo_trainer/run_deepseek_v4_veomni.sh",
+        "examples/grpo_trainer/run_glm4_1v_9b_fsdp.sh",
+        "examples/grpo_trainer/run_gpt_oss_20b_fsdp.sh",
+        "examples/grpo_trainer/run_gpt_oss_20b_veomni.sh",
+        "examples/grpo_trainer/run_hy_v3_megatron.sh",
+        "examples/grpo_trainer/run_kimi_k2_6_glm5_1_megatron_lite.sh",
+        "examples/grpo_trainer/run_minicpm_o_2_6_fsdp.sh",
+        "examples/grpo_trainer/run_mistral_nemo_12b_skyworkrm_fsdp.sh",
+        "examples/grpo_trainer/run_moonlight_16b_a3b_megatron.sh",
+        "examples/grpo_trainer/run_nemotron_nano_v3_30b_a3b_megatron.sh",
+        "examples/grpo_trainer/run_qwen2-7b_math_megatron_fsdp.sh",
+        "examples/grpo_trainer/run_qwen2_5_32b_fsdp.sh",
+        "examples/grpo_trainer/run_qwen2_5_vl_7b_fsdp.sh",
+        "examples/grpo_trainer/run_qwen2_5_vl_7b_megatron.sh",
+        "examples/grpo_trainer/run_qwen3_235b_a22b_megatron.sh",
+        "examples/grpo_trainer/run_qwen3_30b_a3b_fsdp.sh",
+        "examples/grpo_trainer/run_qwen3_30b_a3b_megatron.sh",
+        "examples/grpo_trainer/run_qwen3_30b_veomni.sh",
+        "examples/grpo_trainer/run_qwen3_4b_fsdp.sh",
+        "examples/grpo_trainer/run_qwen3_5-122b-a10b_veomni.sh",
+        "examples/grpo_trainer/run_qwen3_5_122b_a10b_megatron.sh",
+        "examples/grpo_trainer/run_qwen3_5_27b_fsdp.sh",
+        "examples/grpo_trainer/run_qwen3_5_27b_fsdp_turbo.sh",
+        "examples/grpo_trainer/run_qwen3_5_2b_openr1_fsdp.sh",
+        "examples/grpo_trainer/run_qwen3_5_2b_video_fsdp.sh",
+        "examples/grpo_trainer/run_qwen3_5_35b_a3b_veomni.sh",
+        "examples/grpo_trainer/run_qwen3_5_35b_fsdp.sh",
+        "examples/grpo_trainer/run_qwen3_5_35b_fsdp_turbo.sh",
+        "examples/grpo_trainer/run_qwen3_5_35b_megatron.sh",
+        "examples/grpo_trainer/run_qwen3_5_35b_megatron_lite.sh",
+        "examples/grpo_trainer/run_qwen3_5_397b_megatron.sh",
+        "examples/grpo_trainer/run_qwen3_8_27b_megatron.sh",
+        "examples/grpo_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/grpo_trainer/run_qwen3_8b_megatron.sh",
+        "examples/grpo_trainer/run_qwen3_next_80b_a3b_fsdp.sh",
+        "examples/grpo_trainer/run_qwen3_vl_235b_a22b_megatron.sh",
+        "examples/grpo_trainer/run_qwen3_vl_30b_a3b_fsdp.sh",
+        "examples/grpo_trainer/run_qwen3_vl_30b_a3b_megatron.sh",
+        "examples/grpo_trainer/run_qwen3_vl_30b_moe_veomni.sh",
+        "examples/grpo_trainer/run_qwen3_vl_8b_fsdp.sh",
+        "examples/grpo_trainer/run_qwen3_vl_8b_megatron.sh",
+        "examples/grpo_trainer/run_seed_oss_36b_fsdp.sh",
+        "examples/gspo_trainer/run_qwen3_30b_a3b_megatron.sh",
+        "examples/gspo_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/mtp_trainer/run_mimo_7b_mtp_fully_async_megatron_multinode.sh",
+        "examples/mtp_trainer/run_mimo_7b_mtp_megatron.sh",
+        "examples/mtp_trainer/run_mimo_7b_mtp_rl_vllm_sgl_megatron.sh",
+        "examples/mxfp8/run_qwen3_30b_a3b_megatron.sh",
+        "examples/mxfp8/run_qwen3_8b_megatron.sh",
+        "examples/on_policy_distillation_trainer/run_qwen3_0.6b_opd_veomni.sh",
+        "examples/on_policy_distillation_trainer/run_qwen3_5_2b_fsdp.sh",
+        "examples/on_policy_distillation_trainer/run_qwen3_5_4b_fsdp.sh",
+        "examples/on_policy_distillation_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/on_policy_distillation_trainer/run_qwen3_8b_megatron.sh",
+        "examples/on_policy_distillation_trainer/run_qwen3_8b_mopd_fsdp.sh",
+        "examples/on_policy_distillation_trainer/run_qwen3_8b_mopd_veomni.sh",
+        "examples/on_policy_distillation_trainer/run_qwen3_vl_8b_fsdp.sh",
+        "examples/otb_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/ppo_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/ppo_trainer/run_qwen3_8b_megatron.sh",
+        "examples/prefix_grouper/run_qwen3_8b_fsdp.sh",
+        "examples/profile/run_qwen2_5_7b_torch_profile.sh",
+        "examples/profile/run_qwen2_5_vl_7b_torch_memory.sh",
+        "examples/profile/run_qwen3_8b_npu_profile_discrete.sh",
+        "examples/profile/run_qwen3_8b_npu_profile_e2e.sh",
+        "examples/reinforce_plus_plus_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/remax_trainer/run_qwen2.5_math_7b_sync_fsdp.sh",
+        "examples/remax_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/rewards/custome_reward_fn/aime_reward.py",
+        "examples/rloo_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/rollout_correction/run_qwen2_5_0_5b_score_centering_fsdp.sh",
+        "examples/rollout_correction/run_qwen2_5_7b_fsdp.sh",
+        "examples/rollout_correction/run_qwen2_5_7b_fsdp_multi_rs.sh",
+        "examples/router_replay/run_qwen3_30b_a3b_megatron.sh",
+        "examples/router_replay/run_qwen3_5_35b_a3b_veomni.sh",
+        "examples/sapo_trainer/run_qwen3_30b_a3b_fsdp.sh",
+        "examples/sapo_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/sft/gsm8k/run_deepseek_coder_6_7b_fsdp.sh",
+        "examples/sft/gsm8k/run_deepseek_v4_megatron_lite.sh",
+        "examples/sft/gsm8k/run_gemma_2b_fsdp.sh",
+        "examples/sft/gsm8k/run_gemma_7b_fsdp.sh",
+        "examples/sft/gsm8k/run_mimo_7b_mtp_megatron.sh",
+        "examples/sft/gsm8k/run_nemotron_nano_v3_megatron.sh",
+        "examples/sft/gsm8k/run_qwen2_5_0_5b_automodel.sh",
+        "examples/sft/gsm8k/run_qwen2_5_0_5b_fsdp.sh",
+        "examples/sft/gsm8k/run_qwen3_30b_automodel.sh",
+        "examples/sft/gsm8k/run_qwen3_5_397b_a17b_megatron.sh",
+        "examples/sft/gsm8k/run_qwen3_8b_fsdp.sh",
+        "examples/sft/gsm8k/run_qwen_megatron_fsdp.sh",
+        "examples/sft/gsm8k/run_seed_oss_36b_fsdp.sh",
+        "examples/sft/multiturn/run_qwen2_5_0_5b_fsdp.sh",
+        "examples/sft/vlm/run_qwen3_vl_2b_fsdp.sh",
+        "examples/tpu/grpo/run_qwen3_0_6b_torchtitan.sh",
+        "examples/tpu/grpo/run_qwen3_4b_torchtitan.sh",
+        "examples/tpu/grpo/run_qwen3_5_torchtitan.sh",
+        "examples/tpu/sft/run_qwen3_0_6b_torchtitan.sh",
+        "examples/tuning/lora/run_qwen2_5_vl_7b_fsdp.sh",
+        "examples/tuning/lora/run_qwen3_30b_a3b_megatron.sh",
+        "examples/tuning/lora/run_qwen3_8b_from_adapter_fsdp.sh",
+        "examples/tuning/lora/run_qwen3_8b_fsdp.sh",
+        "examples/tuning/lora/run_qwen3_8b_merge_fsdp.sh",
+        "examples/tuning/scaling/run_qwen2_5_32b_megatron.sh",
+        "examples/tuning/scaling/run_qwen2_5_72b_fsdp.sh",
+        "examples/tutorial/agent_loop_get_started/sandbox.py",
+        "manage_envs.py",
+        "scripts/__init__.py",
+        "scripts/chat_template_checker.py",
+        "scripts/chat_template_mock_trajectories.py",
+        "scripts/converter_hf_to_mcore.py",
+        "scripts/diagnose.py",
+        "scripts/generate_trainer_config.sh",
+        "scripts/init_random_model.py",
+        "scripts/install_sglang_mcore_npu.sh",
+        "scripts/install_vllm_mcore_npu.sh",
+        "scripts/install_vllm_sglang_mcore.sh",
+        "scripts/legacy_model_merger.py",
+        "scripts/megatron_merge_lora.py",
+        "scripts/migrate_megatron_checkpoint_layout.py",
+        "scripts/print_cfg.py",
+        "scripts/rollout_logprob_diff.py",
+        "scripts/rollout_viewer.py",
+        "scripts/veomni/moe_merge.py",
+        "scripts/veomni/moe_split.py"
+      ],
+      "required": false,
+      "depends_on": []
+    },
+    {
+      "ua_id": "flow:docs-build",
+      "paths": [
+        "docs/_static/custom.css",
+        "docs/_static/js/resizable-sidebar.js",
+        "docs/_static/js/runllm-widget.js",
+        "docs/conf.py",
+        "setup.py"
+      ],
+      "required": false,
+      "depends_on": []
+    }
+  ],
+  "checks": []
+}

@@ -1,0 +1,1327 @@
+{
+  "schema_version": 1,
+  "name": "verl 8df5baeed0f5 · 原始快照静态能力树",
+  "goal": "UA 轻量扫描 + agent 源码评审（非完整 UA 流水线）。上游 8df5baeed0f5；分析副本 e3f6c9842c10。RL/RLVR + SFT 核心，RLHF/后端待议；行为未验证。",
+  "capabilities": [
+    {
+      "id": "verl",
+      "label": "verl 8df5baeed0f5 · 原始快照静态能力树",
+      "required": true,
+      "paths": []
+    },
+    {
+      "id": "group-data",
+      "label": "数据与共享基础",
+      "parent": "verl",
+      "paths": []
+    },
+    {
+      "id": "group-engines",
+      "label": "训练后端与模型",
+      "parent": "verl",
+      "paths": []
+    },
+    {
+      "id": "group-extensions",
+      "label": "可选研究扩展",
+      "parent": "verl",
+      "paths": []
+    },
+    {
+      "id": "group-legacy",
+      "label": "有弃用依据的历史路径",
+      "parent": "verl",
+      "paths": []
+    },
+    {
+      "id": "group-parallel",
+      "label": "并行与分布式",
+      "parent": "verl",
+      "paths": []
+    },
+    {
+      "id": "group-reward",
+      "label": "RLVR / RLHF 奖励路径",
+      "parent": "verl",
+      "paths": []
+    },
+    {
+      "id": "group-rl",
+      "label": "RL 训练与评估",
+      "parent": "verl",
+      "paths": []
+    },
+    {
+      "id": "group-rollout",
+      "label": "生成后端与 Agent",
+      "parent": "verl",
+      "paths": []
+    },
+    {
+      "id": "group-sft",
+      "label": "SFT 监督微调",
+      "parent": "verl",
+      "paths": []
+    },
+    {
+      "id": "group-support",
+      "label": "示例、观测与构建",
+      "parent": "verl",
+      "paths": []
+    },
+    {
+      "id": "rl-entry",
+      "label": "RL 入口与 V1 同步训练 · 保留：采用 V1 契约并简化；不承诺全部调度模式",
+      "description": "main_ppo + V1 PPOTrainer/同步循环/TransferQueue/replay；统一 actor/ref/critic 编排。\n归属: RL, RLVR, RLHF\n新旧: 当前默认：use_v1=true、mode=sync\n建议: 保留：采用 V1 契约并简化；不承诺全部调度模式\n依据: verl/trainer/config/ppo_trainer.yaml:232 use_v1: true；verl/trainer/config/ppo_trainer.yaml:238 trainer_mode: sync；verl/trainer/ppo/v1/trainer_base.py:266 if self.use_critic:",
+      "parent": "group-rl",
+      "paths": [
+        "verl/trainer/constants_ppo.py",
+        "verl/trainer/main_ppo.py",
+        "verl/trainer/ppo/v1/__init__.py",
+        "verl/trainer/ppo/v1/agent_loop_tq.py",
+        "verl/trainer/ppo/v1/replay_buffer.py",
+        "verl/trainer/ppo/v1/trainer_base.py",
+        "verl/trainer/ppo/v1/trainer_sync.py",
+        "verl/trainer/ppo/v1/utils.py"
+      ],
+      "required": true,
+      "depends_on": [
+        "rl-algorithms",
+        "reward-loop",
+        "engine-common",
+        "rollout-common",
+        "data",
+        "controller"
+      ],
+      "evidence": [
+        "verl/trainer/config/ppo_trainer.yaml:232 use_v1: true",
+        "verl/trainer/config/ppo_trainer.yaml:238 trainer_mode: sync",
+        "verl/trainer/ppo/v1/trainer_base.py:266 if self.use_critic:"
+      ]
+    },
+    {
+      "id": "rl-async-v1",
+      "label": "V1 异步训练模式 · 待议：单一同步核心外扩展，不能因先进而全保留",
+      "description": "colocate_async / separate_async：训练与生成流水、策略版本滞后与独立资源池。\n归属: RL, RLVR, RLHF, 并行\n新旧: 当前实现；异步训练≠异步推理 API\n建议: 待议：单一同步核心外扩展，不能因先进而全保留\n依据: docs/advance/v1_async_trainer.md:8 - `separate_async` runs generation continuously on standalone rollout GPUs and trains on a hybrid GPU pool. The trainer GPUs run no inference engine by default; setting `trainer.v1.separate_async.hybrid_rollout.enable_switch=True` additionally colocates hybrid replicas on the training GPUs and lends them to generation between steps.；verl/trainer/ppo/v1/__init__.py:17 from .trainer_colocate_async import PPOTrainerColocateAsync",
+      "parent": "group-rl",
+      "paths": [
+        "verl/trainer/ppo/v1/trainer_colocate_async.py",
+        "verl/trainer/ppo/v1/trainer_separate_async.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "rl-entry",
+        "checkpoint-transfer"
+      ],
+      "evidence": [
+        "docs/advance/v1_async_trainer.md:8 - `separate_async` runs generation continuously on standalone rollout GPUs and trains on a hybrid GPU pool. The trainer GPUs run no inference engine by default; setting `trainer.v1.separate_async.hybrid_rollout.enable_switch=True` additionally colocates hybrid replicas on the training GPUs and lends them to generation between steps.",
+        "verl/trainer/ppo/v1/__init__.py:17 from .trainer_colocate_async import PPOTrainerColocateAsync"
+      ]
+    },
+    {
+      "id": "legacy-rl",
+      "label": "V0 / RayPPOTrainer · 删除候选：先确认不保留上游 full_determinism 行为",
+      "description": "旧 RL TaskRunner 与完整 RayPPOTrainer；仍承载 full_determinism 路径。\n归属: RL, RLVR, RLHF, legacy\n新旧: 明确 deprecated；计划 v0.9.0 移除\n建议: 删除候选：先确认不保留上游 full_determinism 行为\n依据: verl/trainer/main_ppo.py:193 \"Legacy trainer `main_ppo_v0.py` is deprecated, and wil be removed in v0.9.0.\"；verl/trainer/ppo/ray_trainer.py:285 @deprecated(\"Legacy trainer is deprecated, and wil be removed in v0.9.0. Please use `trainer.use_v1=True` instead.\")；docs/advance/determinism.md:104 Full determinism requires the **V0** trainer backend (`trainer.use_v1=false`, i.e. `AgentLoopManager`). The default V1 backend (`AgentLoopManagerTQ`) decouples rollout submission from collection via a fire-and-forget TransferQueue: outputs are collected **in completion order**, which depends on per-request latency and varies across runs, so the output concatenation order (and thus the training batch) differs run-to-run. V0 instead uses `asyncio.gather`, which returns outputs in **submission order** — stable across runs.",
+      "parent": "group-legacy",
+      "paths": [
+        "verl/trainer/main_ppo_v0.py",
+        "verl/trainer/ppo/ray_trainer.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "rl-algorithms",
+        "reward-loop",
+        "engine-common",
+        "controller"
+      ],
+      "evidence": [
+        "verl/trainer/main_ppo.py:193 \"Legacy trainer `main_ppo_v0.py` is deprecated, and wil be removed in v0.9.0.\"",
+        "verl/trainer/ppo/ray_trainer.py:285 @deprecated(\"Legacy trainer is deprecated, and wil be removed in v0.9.0. Please use `trainer.use_v1=True` instead.\")",
+        "docs/advance/determinism.md:104 Full determinism requires the **V0** trainer backend (`trainer.use_v1=false`, i.e. `AgentLoopManager`). The default V1 backend (`AgentLoopManagerTQ`) decouples rollout submission from collection via a fire-and-forget TransferQueue: outputs are collected **in completion order**, which depends on per-request latency and varies across runs, so the output concatenation order (and thus the training batch) differs run-to-run. V0 instead uses `asyncio.gather`, which returns outputs in **submission order** — stable across runs."
+      ]
+    },
+    {
+      "id": "rl-algorithms",
+      "label": "RL 算法、损失与优势 · 保留核心，变体待议；不能整文件当 legacy 删",
+      "description": "GRPO/GAE/PPO 等 advantage、policy/value loss、KL、mask 与指标；新旧函数共享文件。\n归属: RL, RLVR, RLHF\n新旧: 混合：算法仍维护，旧 compute_policy_loss 被 vanilla 替代\n建议: 保留核心，变体待议；不能整文件当 legacy 删\n依据: verl/trainer/ppo/core_algos.py:1209 @deprecated(\"verl.trainer.ppo.core_algos.compute_policy_loss_vanilla\")；verl/trainer/ppo/utils.py:96 def need_critic(config: DictConfig) -> bool:；verl/trainer/ppo/core_algos.py:268 def compute_grpo_outcome_advantage(",
+      "parent": "group-rl",
+      "paths": [
+        "verl/trainer/ppo/__init__.py",
+        "verl/trainer/ppo/checkpoint_callback.py",
+        "verl/trainer/ppo/core_algos.py",
+        "verl/trainer/ppo/metric_utils.py",
+        "verl/trainer/ppo/padding_utils.py",
+        "verl/trainer/ppo/utils.py"
+      ],
+      "required": true,
+      "depends_on": [
+        "data"
+      ],
+      "evidence": [
+        "verl/trainer/ppo/core_algos.py:1209 @deprecated(\"verl.trainer.ppo.core_algos.compute_policy_loss_vanilla\")",
+        "verl/trainer/ppo/utils.py:96 def need_critic(config: DictConfig) -> bool:",
+        "verl/trainer/ppo/core_algos.py:268 def compute_grpo_outcome_advantage("
+      ]
+    },
+    {
+      "id": "rl-correction",
+      "label": "采样校正与分组变体 · 待议：至少明确训练/采样 logprob 口径；只留选择配方",
+      "description": "rollout correction、off-policy importance sampling、score centering、prefix grouping。\n归属: RL, RLVR, 算法变体\n新旧: 当前；不等同于过时实现\n建议: 待议：至少明确训练/采样 logprob 口径；只留选择配方\n依据: docs/algo/rollout_corr.md:675 - v1 trainer (`trainer.use_v1: true`) with an FSDP actor only; single-turn agent loop only；verl/trainer/ppo/rollout_corr_helper.py:93 def _parse_rollout_is_threshold(threshold_spec: str | float) -> tuple[float, Optional[float]]:",
+      "parent": "group-rl",
+      "paths": [
+        "verl/trainer/ppo/prefix_grouper_utils.py",
+        "verl/trainer/ppo/rollout_corr_helper.py",
+        "verl/trainer/ppo/score_centering.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "rl-algorithms"
+      ],
+      "evidence": [
+        "docs/algo/rollout_corr.md:675 - v1 trainer (`trainer.use_v1: true`) with an FSDP actor only; single-turn agent loop only",
+        "verl/trainer/ppo/rollout_corr_helper.py:93 def _parse_rollout_is_threshold(threshold_spec: str | float) -> tuple[float, Optional[float]]:"
+      ]
+    },
+    {
+      "id": "sft",
+      "label": "SFT 引擎训练 · 保留：与 RL 共享训练引擎和 checkpoint",
+      "description": "torchrun 多控制器 supervised token loss、数据载入、优化器、恢复。\n归属: SFT\n新旧: 当前 model-engine 路径\n建议: 保留：与 RL 共享训练引擎和 checkpoint\n依据: verl/trainer/README.md:4 - sft_trainer.py: SFT trainer based on model engine, support various backends: fsdp, megatron, veomni, torchtitan. Launched by `torchrun` and run in multi-controller mode.；verl/trainer/sft_trainer.py:44 from verl.workers.engine_workers import TrainingWorker",
+      "parent": "group-sft",
+      "paths": [
+        "verl/trainer/sft_trainer.py"
+      ],
+      "required": true,
+      "depends_on": [
+        "engine-common",
+        "datasets",
+        "checkpoint-storage",
+        "data"
+      ],
+      "evidence": [
+        "verl/trainer/README.md:4 - sft_trainer.py: SFT trainer based on model engine, support various backends: fsdp, megatron, veomni, torchtitan. Launched by `torchrun` and run in multi-controller mode.",
+        "verl/trainer/sft_trainer.py:44 from verl.workers.engine_workers import TrainingWorker"
+      ]
+    },
+    {
+      "id": "sft-ray",
+      "label": "SFT Ray 单控制器 · 待议：与 torchrun 二选一，首版可不含",
+      "description": "Ray driver 协调 TrainingWorker 的另一种 SFT 编排。\n归属: SFT, 并行\n新旧: 明确 EXPERIMENTAL；未证实 deprecated\n建议: 待议：与 torchrun 二选一，首版可不含\n依据: verl/trainer/README.md:5 - **[EXPERIMENTAL]** sft_trainer_ray.py: SFT trainer based on model engine with single-controller mode. Launched by ray with a driver process coordinating multiple worker processes.",
+      "parent": "group-sft",
+      "paths": [
+        "verl/trainer/sft_trainer_ray.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "sft",
+        "controller"
+      ],
+      "evidence": [
+        "verl/trainer/README.md:5 - **[EXPERIMENTAL]** sft_trainer_ray.py: SFT trainer based on model engine with single-controller mode. Launched by ray with a driver process coordinating multiple worker processes."
+      ]
+    },
+    {
+      "id": "reward-loop",
+      "label": "当前 reward loop 与插件接口 · 保留规则奖励接口，远程/RM/限流扩展待议",
+      "description": "异步奖励分发、rule/custom/RM 路由、naive/dapo/gdpo/remote/rate-limited manager；迁移函数仍在此。\n归属: RL, RLVR, RLHF\n新旧: 当前主路径虽位于 experimental；含 legacy 配置迁移\n建议: 保留规则奖励接口，远程/RM/限流扩展待议\n依据: verl/experimental/reward_loop/reward_loop.py:39 def migrate_legacy_reward_impl(config):；verl/experimental/reward_loop/reward_loop.py:93 class RewardLoopWorker:；verl/trainer/ppo/v1/trainer_base.py:40 from verl.experimental.reward_loop import RewardLoopManager",
+      "parent": "group-reward",
+      "paths": [
+        "verl/experimental/reward_loop/__init__.py",
+        "verl/experimental/reward_loop/reward_loop.py",
+        "verl/experimental/reward_loop/reward_manager/__init__.py",
+        "verl/experimental/reward_loop/reward_manager/base.py",
+        "verl/experimental/reward_loop/reward_manager/dapo.py",
+        "verl/experimental/reward_loop/reward_manager/gdpo.py",
+        "verl/experimental/reward_loop/reward_manager/limited.py",
+        "verl/experimental/reward_loop/reward_manager/naive.py",
+        "verl/experimental/reward_loop/reward_manager/registry.py",
+        "verl/experimental/reward_loop/reward_manager/remote.py",
+        "verl/trainer/ppo/reward.py",
+        "verl/workers/config/reward.py"
+      ],
+      "required": true,
+      "depends_on": [
+        "data"
+      ],
+      "evidence": [
+        "verl/experimental/reward_loop/reward_loop.py:39 def migrate_legacy_reward_impl(config):",
+        "verl/experimental/reward_loop/reward_loop.py:93 class RewardLoopWorker:",
+        "verl/trainer/ppo/v1/trainer_base.py:40 from verl.experimental.reward_loop import RewardLoopManager"
+      ]
+    },
+    {
+      "id": "reward-code",
+      "label": "代码与沙箱可验证奖励 · 待议：首版可只留一种任务；有执行隔离与服务依赖",
+      "description": "代码测试执行/远程 SandboxFusion；能力属于 RLVR，不是 learned RM。\n归属: RLVR, 外部服务\n新旧: 当前可验证奖励实现；未见整体弃用证据\n建议: 待议：首版可只留一种任务；有执行隔离与服务依赖\n依据: verl/utils/reward_score/prime_code/testing_util.py:39 def module_from_string(name: str, code: str) -> ModuleType:；verl/utils/reward_score/sandbox_fusion/__init__.py:28 def compute_score(",
+      "parent": "group-reward",
+      "paths": [
+        "verl/utils/reward_score/prime_code/__init__.py",
+        "verl/utils/reward_score/prime_code/testing_util.py",
+        "verl/utils/reward_score/prime_code/utils.py",
+        "verl/utils/reward_score/sandbox_fusion/__init__.py",
+        "verl/utils/reward_score/sandbox_fusion/utils.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "reward-loop"
+      ],
+      "evidence": [
+        "verl/utils/reward_score/prime_code/testing_util.py:39 def module_from_string(name: str, code: str) -> ModuleType:",
+        "verl/utils/reward_score/sandbox_fusion/__init__.py:28 def compute_score("
+      ]
+    },
+    {
+      "id": "reward-rules",
+      "label": "数学/答案规则奖励 · 保留至少一个可验证任务与 callback；额外 verifier 待议",
+      "description": "GSM8K、math/prime_math、答案匹配及 score 分发；RLVR 的可核验信号。\n归属: RLVR\n新旧: 主体当前；旧 _default_compute_score API 有弃用注解\n建议: 保留至少一个可验证任务与 callback；额外 verifier 待议\n依据: verl/utils/reward_score/__init__.py:117 @deprecated(\"verl.utils.reward_score.default_compute_score\")；verl/utils/reward_score/gsm8k.py:52 def compute_score(solution_str, ground_truth, method=\"strict\", format_score=0.0, score=1.0):",
+      "parent": "group-reward",
+      "paths": [
+        "verl/utils/reward_score/__init__.py",
+        "verl/utils/reward_score/geo3k.py",
+        "verl/utils/reward_score/gsm8k.py",
+        "verl/utils/reward_score/math_batch.py",
+        "verl/utils/reward_score/math_dapo.py",
+        "verl/utils/reward_score/math_reward.py",
+        "verl/utils/reward_score/math_verify.py",
+        "verl/utils/reward_score/prime_math/__init__.py",
+        "verl/utils/reward_score/prime_math/grader.py",
+        "verl/utils/reward_score/prime_math/math_normalize.py",
+        "verl/utils/reward_score/rlla.py",
+        "verl/utils/reward_score/search_r1_like_qa_em.py"
+      ],
+      "required": true,
+      "depends_on": [
+        "reward-loop"
+      ],
+      "evidence": [
+        "verl/utils/reward_score/__init__.py:117 @deprecated(\"verl.utils.reward_score.default_compute_score\")",
+        "verl/utils/reward_score/gsm8k.py:52 def compute_score(solution_str, ground_truth, method=\"strict\", format_score=0.0, score=1.0):"
+      ]
+    },
+    {
+      "id": "rlhf",
+      "label": "奖励模型与 critic 专用接口 · 待议：RLHF 需求明确后再保留；此 LOC 不是完整 RLHF 成本",
+      "description": "RewardModelManager 的判别式/生成式 RM 推理与路由、RM dataset、critic config。critic 数值/训练/值头共享别的节点。\n归属: RLHF, RL\n新旧: 当前可选；RM enable 默认 false；critic 与奖励来源正交\n建议: 待议：RLHF 需求明确后再保留；此 LOC 不是完整 RLHF 成本\n依据: verl/trainer/config/reward/reward.yaml:29 enable: False；verl/trainer/ppo/utils.py:89 def need_reward_model(；verl/trainer/ppo/utils.py:96 def need_critic(config: DictConfig) -> bool:；verl/workers/engine/fsdp/transformer_impl.py:1616 class FSDPEngineWithValueHead(FSDPEngineWithLMHead):",
+      "parent": "group-reward",
+      "paths": [
+        "verl/experimental/reward_loop/reward_model.py",
+        "verl/experimental/reward_loop/router/__init__.py",
+        "verl/experimental/reward_loop/router/inner_sglang_router.py",
+        "verl/experimental/reward_loop/router/naive_router.py",
+        "verl/utils/dataset/rm_dataset.py",
+        "verl/workers/config/critic.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "reward-loop",
+        "rl-algorithms",
+        "engine-common"
+      ],
+      "evidence": [
+        "verl/trainer/config/reward/reward.yaml:29 enable: False",
+        "verl/trainer/ppo/utils.py:89 def need_reward_model(",
+        "verl/trainer/ppo/utils.py:96 def need_critic(config: DictConfig) -> bool:",
+        "verl/workers/engine/fsdp/transformer_impl.py:1616 class FSDPEngineWithValueHead(FSDPEngineWithLMHead):"
+      ]
+    },
+    {
+      "id": "legacy-reward",
+      "label": "旧 reward manager 接口 · 删除候选：迁移所有调用后去掉旧 API，不能仅删目录",
+      "description": "批式 workers/reward_manager API；新 reward loop 同时保留部分兼容注册。\n归属: RL, RLVR, RLHF, legacy\n新旧: 局部明确 deprecated；仍存在兼容/调用关系\n建议: 删除候选：迁移所有调用后去掉旧 API，不能仅删目录\n依据: verl/workers/reward_manager/abstract.py:52 This has been deprecated.；verl/experimental/reward_loop/reward_manager/limited.py:27 from verl.workers.reward_manager import register as register_manager_legacy",
+      "parent": "group-legacy",
+      "paths": [
+        "verl/workers/reward_manager/__init__.py",
+        "verl/workers/reward_manager/abstract.py",
+        "verl/workers/reward_manager/batch.py",
+        "verl/workers/reward_manager/dapo.py",
+        "verl/workers/reward_manager/naive.py",
+        "verl/workers/reward_manager/prime.py",
+        "verl/workers/reward_manager/registry.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "reward-loop"
+      ],
+      "evidence": [
+        "verl/workers/reward_manager/abstract.py:52 This has been deprecated.",
+        "verl/experimental/reward_loop/reward_manager/limited.py:27 from verl.workers.reward_manager import register as register_manager_legacy"
+      ]
+    },
+    {
+      "id": "engine-common",
+      "label": "统一训练引擎与 worker · 保留薄接口与一种引擎；Tinker split API 待议",
+      "description": "BaseEngine/registry/spec、TrainingWorker/ActorRolloutRefWorker、loss/padding/config；RL 与 SFT 共用。\n归属: RL, SFT, RLHF, 多后端\n新旧: 当前统一架构；旧独立 actor/critic worker 已移除\n建议: 保留薄接口与一种引擎；Tinker split API 待议\n依据: docs/workers/engine_workers.rst:208 / ``verl.workers.sharding_manager`` / ``verl.workers.legacy``) have been；verl/workers/engine_workers.py:110 class TrainingWorker(Worker, DistProfilerExtension):",
+      "parent": "group-engines",
+      "paths": [
+        "verl/workers/engine/__init__.py",
+        "verl/workers/engine/base.py",
+        "verl/workers/engine/spec.py",
+        "verl/workers/engine/utils.py",
+        "verl/workers/engine_workers.py",
+        "verl/workers/engine_workers_tinker.py",
+        "verl/workers/utils/__init__.py",
+        "verl/workers/utils/losses.py",
+        "verl/workers/utils/padding.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "data",
+        "parallel",
+        "checkpoint-storage"
+      ],
+      "evidence": [
+        "docs/workers/engine_workers.rst:208 / ``verl.workers.sharding_manager`` / ``verl.workers.legacy``) have been",
+        "verl/workers/engine_workers.py:110 class TrainingWorker(Worker, DistProfilerExtension):"
+      ]
+    },
+    {
+      "id": "engine-fsdp",
+      "label": "FSDP / FSDP2 / Turbo · 保留候选：优先评估 FSDP2；FSDP1/Turbo 按真实需求取舍",
+      "description": "训练/推理 forward、优化器、并行布局、权重导出及对应后端工具。\n归属: RL, SFT, RLHF, 多后端, 并行\n新旧: 当前受注册/导入支持；非整体 deprecated\n建议: 保留候选：优先评估 FSDP2；FSDP1/Turbo 按真实需求取舍\n依据: verl/workers/engine/fsdp/transformer_impl.py:106 class FSDPEngine(BaseEngine):",
+      "parent": "group-engines",
+      "paths": [
+        "verl/utils/fsdp_utils.py",
+        "verl/workers/engine/fsdp/__init__.py",
+        "verl/workers/engine/fsdp/fsdp_turbo_impl.py",
+        "verl/workers/engine/fsdp/transformer_impl.py",
+        "verl/workers/engine/fsdp/utils.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "engine-common"
+      ],
+      "evidence": [
+        "verl/workers/engine/fsdp/transformer_impl.py:106 class FSDPEngine(BaseEngine):"
+      ]
+    },
+    {
+      "id": "engine-megatron",
+      "label": "Megatron 训练后端 · 待议：大模型 TP/PP/EP 才保留",
+      "description": "训练/推理 forward、优化器、并行布局、权重导出及对应后端工具。\n归属: RL, SFT, RLHF, 多后端, 并行\n新旧: 当前受注册/导入支持；非整体 deprecated\n建议: 待议：大模型 TP/PP/EP 才保留\n依据: verl/workers/engine/megatron/transformer_impl.py:163 class MegatronEngine(BaseEngine):",
+      "parent": "group-engines",
+      "paths": [
+        "verl/utils/megatron/__init__.py",
+        "verl/utils/megatron/dist_checkpointing.py",
+        "verl/utils/megatron/memory.py",
+        "verl/utils/megatron/optimizer.py",
+        "verl/utils/megatron/pipeline_parallel.py",
+        "verl/utils/megatron/router_replay_patch.py",
+        "verl/utils/megatron/router_replay_utils.py",
+        "verl/utils/megatron/sequence_parallel.py",
+        "verl/utils/megatron/tensor_parallel.py",
+        "verl/utils/megatron_peft_utils.py",
+        "verl/utils/megatron_utils.py",
+        "verl/workers/engine/megatron/__init__.py",
+        "verl/workers/engine/megatron/delta_export.py",
+        "verl/workers/engine/megatron/transformer_impl.py",
+        "verl/workers/engine/megatron/utils.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "engine-common"
+      ],
+      "evidence": [
+        "verl/workers/engine/megatron/transformer_impl.py:163 class MegatronEngine(BaseEngine):"
+      ]
+    },
+    {
+      "id": "engine-automodel",
+      "label": "AutoModel 训练后端 · 待议：不要为多后端矩阵默认保留",
+      "description": "训练/推理 forward、优化器、并行布局、权重导出及对应后端工具。\n归属: RL, SFT, RLHF, 多后端, 并行\n新旧: 当前受注册/导入支持；非整体 deprecated\n建议: 待议：不要为多后端矩阵默认保留\n依据: verl/workers/engine/automodel/transformer_impl.py:70 class AutomodelEngine(BaseEngine):",
+      "parent": "group-engines",
+      "paths": [
+        "verl/workers/engine/automodel/__init__.py",
+        "verl/workers/engine/automodel/transformer_impl.py",
+        "verl/workers/engine/automodel/utils.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "engine-common"
+      ],
+      "evidence": [
+        "verl/workers/engine/automodel/transformer_impl.py:70 class AutomodelEngine(BaseEngine):"
+      ]
+    },
+    {
+      "id": "engine-veomni",
+      "label": "VeOmni 训练后端 · 待议：与主后端二选一",
+      "description": "训练/推理 forward、优化器、并行布局、权重导出及对应后端工具。\n归属: RL, SFT, RLHF, 多后端, 并行\n新旧: 当前受注册/导入支持；非整体 deprecated\n建议: 待议：与主后端二选一\n依据: verl/workers/engine/veomni/transformer_impl.py:99 class VeOmniEngine(FSDPEngine):",
+      "parent": "group-engines",
+      "paths": [
+        "verl/utils/veomni/__init__.py",
+        "verl/utils/veomni/router_replay.py",
+        "verl/workers/engine/veomni/__init__.py",
+        "verl/workers/engine/veomni/transformer_impl.py",
+        "verl/workers/engine/veomni/utils.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "engine-common"
+      ],
+      "evidence": [
+        "verl/workers/engine/veomni/transformer_impl.py:99 class VeOmniEngine(FSDPEngine):"
+      ]
+    },
+    {
+      "id": "engine-torchtitan",
+      "label": "TorchTitan 训练后端 · 待议：新后端不自动等于必需",
+      "description": "训练/推理 forward、优化器、并行布局、权重导出及对应后端工具。\n归属: RL, SFT, RLHF, 多后端, 并行\n新旧: 当前受注册/导入支持；非整体 deprecated\n建议: 待议：新后端不自动等于必需\n依据: verl/workers/engine/torchtitan/transformer_impl.py:105 class TorchTitanEngine(BaseEngine):",
+      "parent": "group-engines",
+      "paths": [
+        "verl/workers/engine/torchtitan/__init__.py",
+        "verl/workers/engine/torchtitan/transformer_impl.py",
+        "verl/workers/engine/torchtitan/utils.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "engine-common"
+      ],
+      "evidence": [
+        "verl/workers/engine/torchtitan/transformer_impl.py:105 class TorchTitanEngine(BaseEngine):"
+      ]
+    },
+    {
+      "id": "engine-mindspeed",
+      "label": "MindSpeed / NPU 后端 · 待议：只有 NPU 支持目标才保留",
+      "description": "训练/推理 forward、优化器、并行布局、权重导出及对应后端工具。\n归属: RL, SFT, RLHF, 多后端, 并行\n新旧: 当前受注册/导入支持；非整体 deprecated\n建议: 待议：只有 NPU 支持目标才保留\n依据: verl/workers/engine/mindspeed/transformer_impl.py:57 class MindspeedEngineWithLMHead(MegatronEngineWithLMHead):",
+      "parent": "group-engines",
+      "paths": [
+        "verl/workers/engine/mindspeed/__init__.py",
+        "verl/workers/engine/mindspeed/transformer_impl.py",
+        "verl/workers/engine/mindspeed/utils.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "engine-common"
+      ],
+      "evidence": [
+        "verl/workers/engine/mindspeed/transformer_impl.py:57 class MindspeedEngineWithLMHead(MegatronEngineWithLMHead):"
+      ]
+    },
+    {
+      "id": "rollout-common",
+      "label": "服务化 rollout 与路由 · 保留一种服务化生成路径并精简路由",
+      "description": "BaseRollout、LLM server、replica、router、load balance/utility；async API 可服务同步训练。\n归属: RL, RLVR, RLHF\n新旧: 当前注册只有 async server；旧 SPMD 已移除\n建议: 保留一种服务化生成路径并精简路由\n依据: verl/workers/rollout/base.py:89 _ROLLOUT_REGISTRY = {；docs/blog/v0.7.md:87 As LLM reinforcement learning evolves from single-turn, static tasks to multi-turn, dynamic, and interactive agentic tasks, the legacy SPMD rollout mode previously used by verl has become insufficient. Consequently, in verl v0.7, we have removed the SPMD rollout mode and switched to rollout server mode by default.",
+      "parent": "group-rollout",
+      "paths": [
+        "verl/trainer/main_generation_server.py",
+        "verl/workers/rollout/__init__.py",
+        "verl/workers/rollout/base.py",
+        "verl/workers/rollout/llm_server.py",
+        "verl/workers/rollout/replica.py",
+        "verl/workers/rollout/router.py",
+        "verl/workers/rollout/schemas.py",
+        "verl/workers/rollout/tokenizer.py",
+        "verl/workers/rollout/utils.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "data",
+        "checkpoint-transfer"
+      ],
+      "evidence": [
+        "verl/workers/rollout/base.py:89 _ROLLOUT_REGISTRY = {",
+        "docs/blog/v0.7.md:87 As LLM reinforcement learning evolves from single-turn, static tasks to multi-turn, dynamic, and interactive agentic tasks, the legacy SPMD rollout mode previously used by verl has become insufficient. Consequently, in verl v0.7, we have removed the SPMD rollout mode and switched to rollout server mode by default."
+      ]
+    },
+    {
+      "id": "rollout-vllm",
+      "label": "vLLM rollout · 待议：首版只选一个实测后端，其余删出范围",
+      "description": "生成服务器适配、weight refit/量化/设备兼容工具。\n归属: RL, RLVR, RLHF, 多后端\n新旧: 当前 async server 后端；非整体 legacy\n建议: 待议：首版只选一个实测后端，其余删出范围\n依据: verl/workers/rollout/base.py:90 (\"vllm\", \"async\"): \"verl.workers.rollout.vllm_rollout.ServerAdapter\",",
+      "parent": "group-rollout",
+      "paths": [
+        "verl/utils/vllm/__init__.py",
+        "verl/utils/vllm/npu_vllm_patch.py",
+        "verl/utils/vllm/patch.py",
+        "verl/utils/vllm/rocm_vllm_moe_expert_map.py",
+        "verl/utils/vllm/utils.py",
+        "verl/utils/vllm/vllm_fp4_utils.py",
+        "verl/utils/vllm/vllm_fp8_utils.py",
+        "verl/utils/vllm/vllm_quant_utils.py",
+        "verl/utils/vllm/vllm_unquant_utils.py",
+        "verl/workers/rollout/vllm_rollout/__init__.py",
+        "verl/workers/rollout/vllm_rollout/bucketed_weight_transfer.py",
+        "verl/workers/rollout/vllm_rollout/delta_weight_transfer.py",
+        "verl/workers/rollout/vllm_rollout/utils.py",
+        "verl/workers/rollout/vllm_rollout/vllm_async_server.py",
+        "verl/workers/rollout/vllm_rollout/vllm_pd_replica.py",
+        "verl/workers/rollout/vllm_rollout/vllm_rollout.py",
+        "verl/workers/rollout/vllm_rollout/weight_update_utils.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "rollout-common"
+      ],
+      "evidence": [
+        "verl/workers/rollout/base.py:90 (\"vllm\", \"async\"): \"verl.workers.rollout.vllm_rollout.ServerAdapter\","
+      ]
+    },
+    {
+      "id": "rollout-sglang",
+      "label": "SGLang rollout · 待议：首版只选一个实测后端，其余删出范围",
+      "description": "生成服务器适配、weight refit/量化/设备兼容工具。\n归属: RL, RLVR, RLHF, 多后端\n新旧: 当前 async server 后端；非整体 legacy\n建议: 待议：首版只选一个实测后端，其余删出范围\n依据: verl/workers/rollout/base.py:91 (\"sglang\", \"async\"): \"verl.workers.rollout.sglang_rollout.sglang_rollout.ServerAdapter\",",
+      "parent": "group-rollout",
+      "paths": [
+        "verl/utils/sglang/__init__.py",
+        "verl/utils/sglang/sglang_fp4_utils.py",
+        "verl/utils/sglang/sglang_fp8_utils.py",
+        "verl/utils/sglang/sglang_quant_utils.py",
+        "verl/workers/rollout/sglang_rollout/__init__.py",
+        "verl/workers/rollout/sglang_rollout/async_sglang_server.py",
+        "verl/workers/rollout/sglang_rollout/delta_loader.py",
+        "verl/workers/rollout/sglang_rollout/http_server_engine.py",
+        "verl/workers/rollout/sglang_rollout/sglang_pd_replica.py",
+        "verl/workers/rollout/sglang_rollout/sglang_rollout.py",
+        "verl/workers/rollout/sglang_rollout/utils.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "rollout-common"
+      ],
+      "evidence": [
+        "verl/workers/rollout/base.py:91 (\"sglang\", \"async\"): \"verl.workers.rollout.sglang_rollout.sglang_rollout.ServerAdapter\","
+      ]
+    },
+    {
+      "id": "rollout-trtllm",
+      "label": "TensorRT-LLM rollout · 待议：首版只选一个实测后端，其余删出范围",
+      "description": "生成服务器适配、weight refit/量化/设备兼容工具。\n归属: RL, RLVR, RLHF, 多后端\n新旧: 当前 async server 后端；非整体 legacy\n建议: 待议：首版只选一个实测后端，其余删出范围\n依据: verl/workers/rollout/base.py:92 (\"trtllm\", \"async\"): \"verl.workers.rollout.trtllm_rollout.trtllm_rollout.ServerAdapter\",",
+      "parent": "group-rollout",
+      "paths": [
+        "verl/utils/trtllm/__init__.py",
+        "verl/workers/rollout/trtllm_rollout/__init__.py",
+        "verl/workers/rollout/trtllm_rollout/trtllm_async_server.py",
+        "verl/workers/rollout/trtllm_rollout/trtllm_rollout.py",
+        "verl/workers/rollout/trtllm_rollout/trtllm_worker_extension.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "rollout-common"
+      ],
+      "evidence": [
+        "verl/workers/rollout/base.py:92 (\"trtllm\", \"async\"): \"verl.workers.rollout.trtllm_rollout.trtllm_rollout.ServerAdapter\","
+      ]
+    },
+    {
+      "id": "rollout-hf",
+      "label": "HF / naive 本地 rollout · 待议：小模型测试参考；不能称默认最新生产路径",
+      "description": "module.generate 与 naive sampling 参考实现；不在当前服务器注册表。\n归属: RL, RLVR\n新旧: 未证实整体弃用；HF 有 HybridShard hang TODO\n建议: 待议：小模型测试参考；不能称默认最新生产路径\n依据: verl/workers/rollout/hf_rollout.py:16 TODO: refactor this class. Currently, it will hang when using FSDP HybridShard. We should actually create a single；verl/workers/rollout/__init__.py:16 from .hf_rollout import HFRollout；verl/workers/rollout/base.py:89 _ROLLOUT_REGISTRY = {",
+      "parent": "group-rollout",
+      "paths": [
+        "verl/workers/rollout/hf_rollout.py",
+        "verl/workers/rollout/naive/__init__.py",
+        "verl/workers/rollout/naive/naive_rollout.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "data"
+      ],
+      "evidence": [
+        "verl/workers/rollout/hf_rollout.py:16 TODO: refactor this class. Currently, it will hang when using FSDP HybridShard. We should actually create a single",
+        "verl/workers/rollout/__init__.py:16 from .hf_rollout import HFRollout",
+        "verl/workers/rollout/base.py:89 _ROLLOUT_REGISTRY = {"
+      ]
+    },
+    {
+      "id": "agent-tools",
+      "label": "Agent loop、多轮与工具 · 保留单轮薄路径；工具、多轮、复杂 gateway 待议",
+      "description": "单轮/多轮 agent 请求、工具调用、gateway、轨迹/token stitching；单轮本身也是当前默认依赖。\n归属: RL, RLVR, 多轮\n新旧: experimental 名称下的当前调用路径，非整体遗留\n建议: 保留单轮薄路径；工具、多轮、复杂 gateway 待议\n依据: verl/trainer/ppo/v1/agent_loop_tq.py:15 # TODO: move this file to verl.experimental.agent_loop after V1 is stable；verl/experimental/agent_loop/agent_loop.py:79 class AgentLoopMetrics(BaseModel):",
+      "parent": "group-rollout",
+      "paths": [
+        "verl/experimental/agent_loop/__init__.py",
+        "verl/experimental/agent_loop/agent_loop.py",
+        "verl/experimental/agent_loop/single_turn_agent_loop.py",
+        "verl/experimental/agent_loop/tool_agent_loop.py",
+        "verl/experimental/agent_loop/tool_parser.py",
+        "verl/experimental/agent_loop/utils.py",
+        "verl/tools/__init__.py",
+        "verl/tools/base_tool.py",
+        "verl/tools/function_tool.py",
+        "verl/tools/schemas.py",
+        "verl/tools/tool_registry.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "rollout-common",
+        "reward-loop",
+        "data"
+      ],
+      "evidence": [
+        "verl/trainer/ppo/v1/agent_loop_tq.py:15 # TODO: move this file to verl.experimental.agent_loop after V1 is stable",
+        "verl/experimental/agent_loop/agent_loop.py:79 class AgentLoopMetrics(BaseModel):"
+      ]
+    },
+    {
+      "id": "distillation",
+      "label": "教师模型与在线蒸馏 · 待议：超出 RLVR+SFT 必需闭环",
+      "description": "teacher loop、OPD/distillation loss、tail KL 与 FSDP/Megatron 适配。\n归属: RL, 蒸馏\n新旧: 当前扩展；不是 RLHF reward model\n建议: 待议：超出 RLVR+SFT 必需闭环\n依据: verl/trainer/ppo/utils.py:82 def need_teacher_policy(；verl/trainer/distillation/losses.py:41 def is_distillation_enabled(config: Optional[DistillationConfig]) -> bool:",
+      "parent": "group-extensions",
+      "paths": [
+        "verl/experimental/teacher_loop/__init__.py",
+        "verl/experimental/teacher_loop/teacher_manager.py",
+        "verl/experimental/teacher_loop/teacher_model.py",
+        "verl/trainer/distillation/__init__.py",
+        "verl/trainer/distillation/fsdp/__init__.py",
+        "verl/trainer/distillation/fsdp/losses.py",
+        "verl/trainer/distillation/losses.py",
+        "verl/trainer/distillation/megatron/__init__.py",
+        "verl/trainer/distillation/megatron/losses.py",
+        "verl/trainer/distillation/tail_kl.py",
+        "verl/workers/config/distillation.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "engine-common",
+        "rollout-common"
+      ],
+      "evidence": [
+        "verl/trainer/ppo/utils.py:82 def need_teacher_policy(",
+        "verl/trainer/distillation/losses.py:41 def is_distillation_enabled(config: Optional[DistillationConfig]) -> bool:"
+      ]
+    },
+    {
+      "id": "experimental-trainers",
+      "label": "其它异步/分离实验训练器 · 删除候选（nano 范围）：优先选 V1；不声称全是上游弃用代码",
+      "description": "fully_async_policy、one_step_off_policy、separation：与 V1 存在能力重叠的独立实验线路。\n归属: RL, RLVR, 实验, 并行\n新旧: 不确定：有局部 deprecated 方法，未找到整目录退役声明\n建议: 删除候选（nano 范围）：优先选 V1；不声称全是上游弃用代码\n依据: verl/experimental/fully_async_policy/message_queue.py:229 \"\"\"Get single sample from queue (sync - deprecated, use get_sample instead)\"\"\"；verl/experimental/fully_async_policy/fully_async_main.py:28 from verl.experimental.reward_loop import migrate_legacy_reward_impl",
+      "parent": "group-extensions",
+      "paths": [
+        "verl/experimental/fully_async_policy/__init__.py",
+        "verl/experimental/fully_async_policy/detach_utils.py",
+        "verl/experimental/fully_async_policy/dynamic_schedule/__init__.py",
+        "verl/experimental/fully_async_policy/dynamic_schedule/base.py",
+        "verl/experimental/fully_async_policy/dynamic_schedule/default_policy.py",
+        "verl/experimental/fully_async_policy/dynamic_schedule/dynamic_resource_controller.py",
+        "verl/experimental/fully_async_policy/dynamic_schedule/fixed_ratio_policy.py",
+        "verl/experimental/fully_async_policy/dynamic_schedule/static_fully_async_policy.py",
+        "verl/experimental/fully_async_policy/fully_async_main.py",
+        "verl/experimental/fully_async_policy/fully_async_rollouter.py",
+        "verl/experimental/fully_async_policy/fully_async_trainer.py",
+        "verl/experimental/fully_async_policy/message_queue.py",
+        "verl/experimental/fully_async_policy/shell/dapo_30b_a3b_base_math_fsdp.sh",
+        "verl/experimental/fully_async_policy/shell/dapo_30b_a3b_math_fsdp_npu.sh",
+        "verl/experimental/fully_async_policy/shell/dapo_7b_async_retool.sh",
+        "verl/experimental/fully_async_policy/shell/dapo_7b_math_fsdp2_16_16.sh",
+        "verl/experimental/fully_async_policy/shell/dapo_7b_math_fsdp2_32_32.sh",
+        "verl/experimental/fully_async_policy/shell/dapo_7b_math_fsdp2_4_12.sh",
+        "verl/experimental/fully_async_policy/shell/dapo_7b_math_fsdp2_4_4.sh",
+        "verl/experimental/fully_async_policy/shell/dapo_7b_math_fsdp2_64_64.sh",
+        "verl/experimental/fully_async_policy/shell/dapo_7b_math_fsdp2_64_64_mis.sh",
+        "verl/experimental/fully_async_policy/shell/dapo_7b_math_fsdp2_8_8.sh",
+        "verl/experimental/fully_async_policy/shell/geo3k_qwen25vl_7b_megatron_4_4.sh",
+        "verl/experimental/fully_async_policy/shell/geo3k_qwen3vl_30b_a3b_fsdp2_32_32.sh",
+        "verl/experimental/fully_async_policy/shell/geo3k_qwen3vl_30b_megatron_6_2_npu_async.sh",
+        "verl/experimental/fully_async_policy/shell/geo3k_qwen3vl_8b_fsdp2_16_16_npu.sh",
+        "verl/experimental/fully_async_policy/shell/grpo_30b_a3b_base_math_megatron_8_8_mis_trtllm.sh",
+        "verl/experimental/fully_async_policy/shell/grpo_30b_a3b_base_math_megatron_96_32.sh",
+        "verl/experimental/fully_async_policy/shell/grpo_30b_a3b_base_math_megatron_96_32_mis.sh",
+        "verl/experimental/fully_async_policy/shell/grpo_8b_base_math_megatron_4_4_trtllm.sh",
+        "verl/experimental/fully_async_policy/shell/grpo_qwen35_35b_megatron_async.sh",
+        "verl/experimental/fully_async_policy/shell/grpo_qwen3_235b_megatron_npu.sh",
+        "verl/experimental/fully_async_policy/shell/run_qwen35_35b_a3b_math_dynamic_megatron.sh",
+        "verl/experimental/fully_async_policy/unittest/__init__.py",
+        "verl/experimental/fully_async_policy/unittest/simple_streaming_demo.py",
+        "verl/experimental/one_step_off_policy/__init__.py",
+        "verl/experimental/one_step_off_policy/main_ppo.py",
+        "verl/experimental/one_step_off_policy/ray_trainer.py",
+        "verl/experimental/one_step_off_policy/shell/dapo_7b_math_fsdp2_4_12.sh",
+        "verl/experimental/one_step_off_policy/shell/dapo_7b_math_fsdp2_64_64.sh",
+        "verl/experimental/one_step_off_policy/shell/dapo_7b_math_fsdp2_64_64_ris.sh",
+        "verl/experimental/one_step_off_policy/shell/dapo_7b_math_fsdp2_colocate.sh",
+        "verl/experimental/one_step_off_policy/shell/dapo_7b_math_fsdp2_sglang_4_12.sh",
+        "verl/experimental/one_step_off_policy/shell/dapo_7b_math_fsdp2_sglang_colocate.sh",
+        "verl/experimental/one_step_off_policy/shell/dapo_7b_math_megatron_4_12.sh",
+        "verl/experimental/one_step_off_policy/shell/dapo_7b_math_megatron_colocate.sh",
+        "verl/experimental/one_step_off_policy/shell/grpo_0.6b_gsm8k_fsdp2_2_6.sh",
+        "verl/experimental/one_step_off_policy/shell/grpo_0.6b_gsm8k_fsdp2_sglang_2_6.sh",
+        "verl/experimental/one_step_off_policy/shell/grpo_0.6b_gsm8k_fsdp2_sglang_delta_sharded_2_6.sh",
+        "verl/experimental/one_step_off_policy/shell/grpo_3b_gsm8k_fsdp2_2_6.sh",
+        "verl/experimental/one_step_off_policy/shell/grpo_qwen3_8b_gsm8k_fsdp2_8_8_npu.sh",
+        "verl/experimental/separation/__init__.py",
+        "verl/experimental/separation/engine_workers.py",
+        "verl/experimental/separation/ray_trainer.py",
+        "verl/experimental/separation/utils.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "rl-algorithms",
+        "engine-common",
+        "reward-loop"
+      ],
+      "evidence": [
+        "verl/experimental/fully_async_policy/message_queue.py:229 \"\"\"Get single sample from queue (sync - deprecated, use get_sample instead)\"\"\"",
+        "verl/experimental/fully_async_policy/fully_async_main.py:28 from verl.experimental.reward_loop import migrate_legacy_reward_impl"
+      ]
+    },
+    {
+      "id": "datasets",
+      "label": "RL/SFT 数据与多模态预处理 · 保留 RL+SFT 数据契约；视觉/音频/视频按范围取舍",
+      "description": "RL prompt、SFT 对话/监督 mask、batch collator、图像视频预处理；RM dataset 另列。\n归属: RL, RLVR, SFT\n新旧: 当前；多轮 SFT 不等于 RL 多轮 agent\n建议: 保留 RL+SFT 数据契约；视觉/音频/视频按范围取舍\n依据: verl/trainer/sft_trainer.py:37 from verl.utils.dataset.multiturn_sft_dataset import MultiTurnSFTDataset；verl/trainer/ppo/utils.py:110 def create_rl_dataset(data_paths, data_config, tokenizer, processor, is_train=True, max_samples: int = -1):",
+      "parent": "group-data",
+      "paths": [
+        "verl/utils/dataset/__init__.py",
+        "verl/utils/dataset/dataset_utils.py",
+        "verl/utils/dataset/multiturn_sft_dataset.py",
+        "verl/utils/dataset/rl_dataset.py",
+        "verl/utils/dataset/vision_utils.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "data"
+      ],
+      "evidence": [
+        "verl/trainer/sft_trainer.py:37 from verl.utils.dataset.multiturn_sft_dataset import MultiTurnSFTDataset",
+        "verl/trainer/ppo/utils.py:110 def create_rl_dataset(data_paths, data_config, tokenizer, processor, is_train=True, max_samples: int = -1):"
+      ]
+    },
+    {
+      "id": "data",
+      "label": "批协议、tokenizer 与配置 · 保留薄共享结构，旧配置迁移后删除；不要按 legacy 文件名盲删",
+      "description": "DataProto/TensorDict、tokenizer/chat template、基础/worker/trainer typed config；含兼容字段。\n归属: RL, RLVR, SFT, RLHF, 共享\n新旧: 混合：当前协议/配置 + legacy 别名；YAML 不计这里 LOC\n建议: 保留薄共享结构，旧配置迁移后删除；不要按 legacy 文件名盲删\n依据: verl/trainer/config/ppo_trainer.yaml:17 - data@data: legacy_data；verl/trainer/config/ppo_trainer.yaml:34 - legacy_reward_impl；verl/workers/config/optimizer.py:60 warnings.warn(\"`grad_clip` is deprecated, use `clip_grad` instead.\", DeprecationWarning, stacklevel=2)",
+      "parent": "group-data",
+      "paths": [
+        "verl/__init__.py",
+        "verl/base_config.py",
+        "verl/experimental/__init__.py",
+        "verl/protocol.py",
+        "verl/trainer/__init__.py",
+        "verl/trainer/config/__init__.py",
+        "verl/trainer/config/algorithm.py",
+        "verl/trainer/config/config.py",
+        "verl/utils/config.py",
+        "verl/utils/tensordict_utils.py",
+        "verl/utils/tokenizer/__init__.py",
+        "verl/utils/tokenizer/chat_template.py",
+        "verl/utils/tokenizer/continuous_token.py",
+        "verl/utils/tokenizer/continuous_token_wiring.py",
+        "verl/utils/tokenizer/deepseek.py",
+        "verl/utils/tokenizer/tokenizer.py",
+        "verl/workers/__init__.py",
+        "verl/workers/config/__init__.py",
+        "verl/workers/config/actor.py",
+        "verl/workers/config/disaggregation.py",
+        "verl/workers/config/engine.py",
+        "verl/workers/config/megatron_peft.py",
+        "verl/workers/config/model.py",
+        "verl/workers/config/optimizer.py",
+        "verl/workers/config/rollout.py"
+      ],
+      "required": false,
+      "depends_on": [],
+      "evidence": [
+        "verl/trainer/config/ppo_trainer.yaml:17 - data@data: legacy_data",
+        "verl/trainer/config/ppo_trainer.yaml:34 - legacy_reward_impl",
+        "verl/workers/config/optimizer.py:60 warnings.warn(\"`grad_clip` is deprecated, use `clip_grad` instead.\", DeprecationWarning, stacklevel=2)"
+      ]
+    },
+    {
+      "id": "controller",
+      "label": "Ray 资源与 worker 调度 · 待议：保留 V1 必须考虑依赖；可简化部署范围",
+      "description": "资源池、worker group、RPC dispatch、rendezvous、TransferQueue helper。\n归属: RL, SFT, 并行\n新旧: 当前，部分旧 worker factory 有 deprecated 注释\n建议: 待议：保留 V1 必须考虑依赖；可简化部署范围\n依据: verl/single_controller/ray/base.py:943 # deprecated, switching to FusedWorker；verl/trainer/main_ppo.py:141 import transfer_queue as tq",
+      "parent": "group-parallel",
+      "paths": [
+        "verl/single_controller/__init__.py",
+        "verl/single_controller/base/__init__.py",
+        "verl/single_controller/base/decorator.py",
+        "verl/single_controller/base/worker.py",
+        "verl/single_controller/base/worker_group.py",
+        "verl/single_controller/ray/__init__.py",
+        "verl/single_controller/ray/base.py",
+        "verl/utils/ray_utils.py",
+        "verl/utils/rendezvous/__init__.py",
+        "verl/utils/rendezvous/ray_backend.py",
+        "verl/utils/transferqueue_utils.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "data"
+      ],
+      "evidence": [
+        "verl/single_controller/ray/base.py:943 # deprecated, switching to FusedWorker",
+        "verl/trainer/main_ppo.py:141 import transfer_queue as tq"
+      ]
+    },
+    {
+      "id": "parallel",
+      "label": "分布式与序列并行 · 待议：只保留所选后端必需策略，单卡/多卡边界需另定",
+      "description": "DP/collectives、Ulysses SP、动态 CP、sequence balancing、offload/memory。TP/PP/EP 在各后端也有代码。\n归属: RL, SFT, 并行\n新旧: 当前实现；并行策略不是任务算法\n建议: 待议：只保留所选后端必需策略，单卡/多卡边界需另定\n依据: verl/utils/ulysses.py:363 class FSDPUlyssesShardingManager(BaseShardingManager):；verl/utils/dynamic_cp_scheduler.py:112 class DynamicCPScheduler:",
+      "parent": "group-parallel",
+      "paths": [
+        "verl/utils/activation_offload.py",
+        "verl/utils/distributed.py",
+        "verl/utils/dynamic_cp_scheduler.py",
+        "verl/utils/memory_utils.py",
+        "verl/utils/seqlen_balancing.py",
+        "verl/utils/ulysses.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "data"
+      ],
+      "evidence": [
+        "verl/utils/ulysses.py:363 class FSDPUlyssesShardingManager(BaseShardingManager):",
+        "verl/utils/dynamic_cp_scheduler.py:112 class DynamicCPScheduler:"
+      ]
+    },
+    {
+      "id": "checkpoint-transfer",
+      "label": "训练→推理权重同步 · 保留最小权重同步；远程/增量传输按选定拓扑待议",
+      "description": "checkpoint_engine 的 NCCL/HCCL/NIXL/Mooncake/Kimi/delta 同步；不是磁盘保存。\n归属: RL, RLHF, 并行\n新旧: 当前多传输实现，delta 是优化选择\n建议: 保留最小权重同步；远程/增量传输按选定拓扑待议\n依据: verl/checkpoint_engine/README.md:1 Checkpoint Engine；verl/checkpoint_engine/delta_checkpoint_engine.py:83 class _FlushPiece:",
+      "parent": "group-parallel",
+      "paths": [
+        "verl/checkpoint_engine/__init__.py",
+        "verl/checkpoint_engine/base.py",
+        "verl/checkpoint_engine/delta_checkpoint_engine.py",
+        "verl/checkpoint_engine/delta_sync/__init__.py",
+        "verl/checkpoint_engine/delta_sync/encode.py",
+        "verl/checkpoint_engine/delta_sync/sparse_gather.py",
+        "verl/checkpoint_engine/hccl_checkpoint_engine.py",
+        "verl/checkpoint_engine/kimi_checkpoint_engine.py",
+        "verl/checkpoint_engine/mooncake_checkpoint_engine.py",
+        "verl/checkpoint_engine/nccl_checkpoint_engine.py",
+        "verl/checkpoint_engine/nixl_checkpoint_engine.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "data"
+      ],
+      "evidence": [
+        "verl/checkpoint_engine/README.md:1 Checkpoint Engine",
+        "verl/checkpoint_engine/delta_checkpoint_engine.py:83 class _FlushPiece:"
+      ]
+    },
+    {
+      "id": "checkpoint-storage",
+      "label": "训练 checkpoint、恢复与导出 · 保留恢复/导出核心；旧格式兼容与多后端合并待议",
+      "description": "本地/远端模型+优化器/RNG/loader状态；FSDP/Megatron checkpoint、HF merger。\n归属: RL, SFT, RLHF\n新旧: 当前；Megatron v2 layout，legacy 数据迁移单列\n建议: 保留恢复/导出核心；旧格式兼容与多后端合并待议\n依据: docs/advance/checkpoint.rst:381 The merger accepts only the v2 layout. Before merging a legacy Megatron training；verl/utils/checkpoint/checkpoint_handler.py:49 class CheckpointHandler:",
+      "parent": "group-data",
+      "paths": [
+        "verl/model_merger/__init__.py",
+        "verl/model_merger/__main__.py",
+        "verl/model_merger/base_model_merger.py",
+        "verl/model_merger/fsdp_model_merger.py",
+        "verl/model_merger/megatron_model_merger.py",
+        "verl/model_merger/output_validation.py",
+        "verl/model_merger/veomni_model_merger.py",
+        "verl/utils/checkpoint/__init__.py",
+        "verl/utils/checkpoint/checkpoint_handler.py",
+        "verl/utils/checkpoint/checkpoint_manager.py",
+        "verl/utils/checkpoint/fsdp_checkpoint_manager.py",
+        "verl/utils/checkpoint/megatron_checkpoint_manager.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "data"
+      ],
+      "evidence": [
+        "docs/advance/checkpoint.rst:381 The merger accepts only the v2 layout. Before merging a legacy Megatron training",
+        "verl/utils/checkpoint/checkpoint_handler.py:49 class CheckpointHandler:"
+      ]
+    },
+    {
+      "id": "models-hf",
+      "label": "Transformers 模型与 kernel 适配 · 待议：认证少数模型，删出额外模型/VLM/版本矩阵",
+      "description": "Llama/Qwen/VLM 等 forward、padding、monkey patch；dense/MoE/多模态及版本兼容交织。\n归属: RL, SFT, 模型, 多模态\n新旧: 当前与历史版本兼容混合，不能按文件年龄删\n建议: 待议：认证少数模型，删出额外模型/VLM/版本矩阵\n依据: verl/models/transformers/monkey_patch.py:545 if hasattr(module, \"_flash_attention_forward\"):  # transformers <= 4.47.1 or legacy models",
+      "parent": "group-engines",
+      "paths": [
+        "verl/models/__init__.py",
+        "verl/models/transformers/__init__.py",
+        "verl/models/transformers/apertus.py",
+        "verl/models/transformers/dense_common.py",
+        "verl/models/transformers/glm4v.py",
+        "verl/models/transformers/kimi_vl.py",
+        "verl/models/transformers/llama.py",
+        "verl/models/transformers/monkey_patch.py",
+        "verl/models/transformers/npu_patch.py",
+        "verl/models/transformers/qwen2.py",
+        "verl/models/transformers/qwen2_vl.py",
+        "verl/models/transformers/qwen3_5.py",
+        "verl/models/transformers/qwen3_vl.py",
+        "verl/models/transformers/tiled_mlp.py",
+        "verl/utils/attention_padding_utils.py",
+        "verl/utils/attention_utils.py",
+        "verl/utils/model.py",
+        "verl/utils/transformers_compat.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "data"
+      ],
+      "evidence": [
+        "verl/models/transformers/monkey_patch.py:545 if hasattr(module, \"_flash_attention_forward\"):  # transformers <= 4.47.1 or legacy models"
+      ]
+    },
+    {
+      "id": "models-mcore",
+      "label": "Megatron 模型桥与补丁 · 待议：只随 Megatron 保留；移除旧 fallback 要缩版本契约",
+      "description": "MCore 注册、HF bridge、MoE/MTP/融合 forward 与旧后端兼容。\n归属: RL, SFT, 模型, 并行\n新旧: 混合；legacy fused-forward fallback 仍有兼容理由\n建议: 待议：只随 Megatron 保留；移除旧 fallback 要缩版本契约\n依据: verl/models/mcore/model_forward_fused.py:54 TODO: Remove this check and the legacy patch once all supported Megatron",
+      "parent": "group-engines",
+      "paths": [
+        "verl/models/mcore/__init__.py",
+        "verl/models/mcore/bridge.py",
+        "verl/models/mcore/bridge_checkpoint.py",
+        "verl/models/mcore/model_forward.py",
+        "verl/models/mcore/model_forward_fused.py",
+        "verl/models/mcore/mtp_patch.py",
+        "verl/models/mcore/patch.py",
+        "verl/models/mcore/registry.py",
+        "verl/models/mcore/util.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "engine-megatron"
+      ],
+      "evidence": [
+        "verl/models/mcore/model_forward_fused.py:54 TODO: Remove this check and the legacy patch once all supported Megatron"
+      ]
+    },
+    {
+      "id": "precision",
+      "label": "量化与融合计算 · 待议：初版只认证一种精度，按硬件保留最少优化",
+      "description": "FP8/QAT/Triton/NPU CE、量化线性层与 kernel helper。\n归属: RL, SFT, 性能\n新旧: 当前/实验并存；没有整体 deprecated 证据\n建议: 待议：初版只认证一种精度，按硬件保留最少优化\n依据: verl/utils/qat/core.py:31 class QATConfig(BaseConfig):；verl/utils/kernel/kernels.py:61 def null_decorator(*args, **kwargs):",
+      "parent": "group-engines",
+      "paths": [
+        "verl/utils/experimental/__init__.py",
+        "verl/utils/experimental/torch_functional.py",
+        "verl/utils/fp8_utils.py",
+        "verl/utils/kernel/__init__.py",
+        "verl/utils/kernel/fp8_kernel.py",
+        "verl/utils/kernel/kernels.py",
+        "verl/utils/kernel/linear_cross_entropy.py",
+        "verl/utils/kernel/npu/__init__.py",
+        "verl/utils/kernel/npu/cann_linear_ce.py",
+        "verl/utils/qat/__init__.py",
+        "verl/utils/qat/compressed_tensors.py",
+        "verl/utils/qat/core.py",
+        "verl/utils/qat/linear.py",
+        "verl/utils/qat/modelopt.py",
+        "verl/utils/qat/quantizer.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "data"
+      ],
+      "evidence": [
+        "verl/utils/qat/core.py:31 class QATConfig(BaseConfig):",
+        "verl/utils/kernel/kernels.py:61 def null_decorator(*args, **kwargs):"
+      ]
+    },
+    {
+      "id": "platform",
+      "label": "设备平台插件 · 待议：明确目标设备后裁剪插件矩阵",
+      "description": "CUDA/NPU/ROCm 与平台发现、设备 helper；跨硬件兼容。\n归属: RL, SFT, 多设备\n新旧: 当前；legacy device API 为兼容层不等于平台废弃\n建议: 待议：明确目标设备后裁剪插件矩阵\n依据: docs/hardware/multi_chip_support.rst:64 4. **Backward Compatibility**: The legacy ``verl.utils.device`` API is",
+      "parent": "group-parallel",
+      "paths": [
+        "verl/plugin/__init__.py",
+        "verl/plugin/platform/__init__.py",
+        "verl/plugin/platform/platform_base.py",
+        "verl/plugin/platform/platform_cuda.py",
+        "verl/plugin/platform/platform_manager.py",
+        "verl/plugin/platform/platform_npu.py",
+        "verl/plugin/platform/platform_rocm.py",
+        "verl/utils/device.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "data"
+      ],
+      "evidence": [
+        "docs/hardware/multi_chip_support.rst:64 4. **Backward Compatibility**: The legacy ``verl.utils.device`` API is"
+      ]
+    },
+    {
+      "id": "observability",
+      "label": "日志、指标、profiler、skip · 保留基本日志/指标；多监控集成/profiler/缓存待议",
+      "description": "tracking/logging、性能/精度调试、trajectory、skip/cache 工具。\n归属: RL, SFT, 运维\n新旧: 混合：debug/performance 明确旧；主 profiler/skip 仍当前\n建议: 保留基本日志/指标；多监控集成/profiler/缓存待议\n依据: verl/utils/debug/performance.py:16 # This file is deprecated, for new features please develop in profiler/performance.py；verl/utils/tracking.py:70 warnings.warn(\"`tracking` logger is deprecated. use `wandb` instead.\", DeprecationWarning, stacklevel=2)",
+      "parent": "group-support",
+      "paths": [
+        "verl/utils/debug/__init__.py",
+        "verl/utils/debug/metrics.py",
+        "verl/utils/debug/performance.py",
+        "verl/utils/debug/trajectory_tracker.py",
+        "verl/utils/flops_counter.py",
+        "verl/utils/logger/__init__.py",
+        "verl/utils/logger/aggregate_logger.py",
+        "verl/utils/logging_utils.py",
+        "verl/utils/metric/__init__.py",
+        "verl/utils/metric/utils.py",
+        "verl/utils/profiler/__init__.py",
+        "verl/utils/profiler/config.py",
+        "verl/utils/profiler/empty_annotations.py",
+        "verl/utils/profiler/mstx_profile.py",
+        "verl/utils/profiler/nvtx_profile.py",
+        "verl/utils/profiler/performance.py",
+        "verl/utils/profiler/precision_debugger_profile.py",
+        "verl/utils/profiler/profile.py",
+        "verl/utils/profiler/torch_memory_profile.py",
+        "verl/utils/profiler/torch_profile.py",
+        "verl/utils/rollout_trace.py",
+        "verl/utils/skip/__init__.py",
+        "verl/utils/skip/base_skip.py",
+        "verl/utils/skip/config.py",
+        "verl/utils/skip/rollout_skip.py",
+        "verl/utils/skip/skip_manager.py",
+        "verl/utils/tracking.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "data"
+      ],
+      "evidence": [
+        "verl/utils/debug/performance.py:16 # This file is deprecated, for new features please develop in profiler/performance.py",
+        "verl/utils/tracking.py:70 warnings.warn(\"`tracking` logger is deprecated. use `wandb` instead.\", DeprecationWarning, stacklevel=2)"
+      ]
+    },
+    {
+      "id": "utility",
+      "label": "通用数值、文件与导入工具 · 保留依赖闭包；HDFS/兼容分支待议",
+      "description": "torch mask/logprob/reduction 等共享数值，文件/HDFS、dtype、Python helper；不宜整包删除。\n归属: RL, RLVR, SFT, RLHF, 共享\n新旧: 当前共享实现含局部旧 API\n建议: 保留依赖闭包；HDFS/兼容分支待议\n依据: verl/utils/reward_score/__init__.py:16 from verl.utils.import_utils import deprecated；verl/utils/torch_functional.py:50 def gather_from_labels(data: torch.Tensor, label: torch.Tensor) -> torch.Tensor:",
+      "parent": "group-data",
+      "paths": [
+        "verl/utils/__init__.py",
+        "verl/utils/fs.py",
+        "verl/utils/groupwise.py",
+        "verl/utils/hdfs_io.py",
+        "verl/utils/import_utils.py",
+        "verl/utils/net_utils.py",
+        "verl/utils/py_functional.py",
+        "verl/utils/torch_dtypes.py",
+        "verl/utils/torch_functional.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "data"
+      ],
+      "evidence": [
+        "verl/utils/reward_score/__init__.py:16 from verl.utils.import_utils import deprecated",
+        "verl/utils/torch_functional.py:50 def gather_from_labels(data: torch.Tensor, label: torch.Tensor) -> torch.Tensor:"
+      ]
+    },
+    {
+      "id": "third-party",
+      "label": "Vendored 第三方兼容实现 · 待议：随依赖版本移除，不能当外部库漏计",
+      "description": "torch distributed checkpoint 与 vLLM 版本兼容拷贝；仍是仓内源码。\n归属: RL, SFT, 兼容\n新旧: 混合；注释里的 deprecated 可能属于上游第三方 API\n建议: 待议：随依赖版本移除，不能当外部库漏计\n依据: verl/third_party/torch/distributed/checkpoint/state_dict.py:198 - ``keep_submodule_prefixes`` (deprecated): when ``submodules`` is not None, this option",
+      "parent": "group-support",
+      "paths": [
+        "verl/third_party/__init__.py",
+        "verl/third_party/torch/__init__.py",
+        "verl/third_party/torch/distributed/__init__.py",
+        "verl/third_party/torch/distributed/_state_dict_utils.py",
+        "verl/third_party/torch/distributed/checkpoint/__init__.py",
+        "verl/third_party/torch/distributed/checkpoint/state_dict.py",
+        "verl/third_party/vllm/__init__.py"
+      ],
+      "required": false,
+      "depends_on": [],
+      "evidence": [
+        "verl/third_party/torch/distributed/checkpoint/state_dict.py:198 - ``keep_submodule_prefixes`` (deprecated): when ``submodules`` is not None, this option"
+      ]
+    },
+    {
+      "id": "evaluation",
+      "label": "离线评估入口 · 保留最小任务评估，统一入口待议",
+      "description": "main_eval 独立评估入口；训练内验证仍在 trainer。\n归属: RL, RLVR, 评估\n新旧: 当前入口，未见整体弃用证据\n建议: 保留最小任务评估，统一入口待议\n依据: verl/trainer/main_eval.py:34 def process_item(config, data_source, response_lst, reward_data):",
+      "parent": "group-rl",
+      "paths": [
+        "verl/trainer/main_eval.py"
+      ],
+      "required": false,
+      "depends_on": [
+        "reward-rules",
+        "datasets"
+      ],
+      "evidence": [
+        "verl/trainer/main_eval.py:34 def process_item(config, data_source, response_lst, reward_data):"
+      ]
+    },
+    {
+      "id": "examples",
+      "label": "训练示例、预处理与运维脚本 · 保留一套 RLVR+SFT 可复现实例，其余退出 nano 范围",
+      "description": "examples 各算法/后端示例，scripts 安装/转换/CI辅助，manage_envs；展示矩阵并非独立核心。\n归属: RL, RLVR, SFT, 示例\n新旧: 新旧并存；例子名不证明 deprecated\n建议: 保留一套 RLVR+SFT 可复现实例，其余退出 nano 范围\n依据: verl/trainer/README.md:3 ## SFT Trainer",
+      "parent": "group-support",
+      "paths": [
+        "examples/ascend_extras/grpo_trainer/run_deepseek_v4_flash_fsdp_turbo.sh",
+        "examples/ascend_extras/grpo_trainer/run_glm5_2_megatron.sh",
+        "examples/ascend_extras/grpo_trainer/run_qwen3_235b_256k_megatron.sh",
+        "examples/ascend_extras/grpo_trainer/run_qwen3_30b_a3b_megatron.sh",
+        "examples/ascend_extras/grpo_trainer/run_qwen3_32b_fsdp.sh",
+        "examples/ascend_extras/grpo_trainer/run_qwen3_5_122b_a10b_32k_megatron.sh",
+        "examples/ascend_extras/grpo_trainer/run_qwen3_next_80b_fsdp.sh",
+        "examples/ascend_extras/gspo_trainer/run_qwen3_32b_fsdp.sh",
+        "examples/ascend_extras/ppo_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/cispo_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/data_preprocess/aime2024_multiturn_w_tool.py",
+        "examples/data_preprocess/dapo_multiturn_w_tool.py",
+        "examples/data_preprocess/full_hh_rlhf.py",
+        "examples/data_preprocess/geo3k.py",
+        "examples/data_preprocess/geo3k_multiturn_w_tool.py",
+        "examples/data_preprocess/gsm8k.py",
+        "examples/data_preprocess/gsm8k_multiturn_sft.py",
+        "examples/data_preprocess/gsm8k_multiturn_w_tool.py",
+        "examples/data_preprocess/gsm8k_tool_agent_loop.py",
+        "examples/data_preprocess/hellaswag.py",
+        "examples/data_preprocess/math_dataset.py",
+        "examples/data_preprocess/multiturn.py",
+        "examples/data_preprocess/openr1mm.py",
+        "examples/data_preprocess/pokemon.py",
+        "examples/data_preprocess/preprocess_search_r1_dataset.py",
+        "examples/data_preprocess/tinyllava_video_r1.py",
+        "examples/dppo_trainer/run_qwen3_30b_a3b_megatron.sh",
+        "examples/gdpo_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/generation/run_deepseek_llm_7b.sh",
+        "examples/gmpo_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/gpg_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/gpg_trainer/run_qwen3_8b_megatron.sh",
+        "examples/grpo_trainer/run_deepseek_v3_671b_megatron.sh",
+        "examples/grpo_trainer/run_deepseek_v4_flash_megatron.sh",
+        "examples/grpo_trainer/run_deepseek_v4_flash_megatron_rocm.sh",
+        "examples/grpo_trainer/run_deepseek_v4_megatron_lite.sh",
+        "examples/grpo_trainer/run_deepseek_v4_veomni.sh",
+        "examples/grpo_trainer/run_glm4_1v_9b_fsdp.sh",
+        "examples/grpo_trainer/run_gpt_oss_20b_fsdp.sh",
+        "examples/grpo_trainer/run_gpt_oss_20b_veomni.sh",
+        "examples/grpo_trainer/run_hy_v3_megatron.sh",
+        "examples/grpo_trainer/run_kimi_k2_6_glm5_1_megatron_lite.sh",
+        "examples/grpo_trainer/run_minicpm_o_2_6_fsdp.sh",
+        "examples/grpo_trainer/run_mistral_nemo_12b_skyworkrm_fsdp.sh",
+        "examples/grpo_trainer/run_moonlight_16b_a3b_megatron.sh",
+        "examples/grpo_trainer/run_nemotron_nano_v3_30b_a3b_megatron.sh",
+        "examples/grpo_trainer/run_qwen2-7b_math_megatron_fsdp.sh",
+        "examples/grpo_trainer/run_qwen2_5_32b_fsdp.sh",
+        "examples/grpo_trainer/run_qwen2_5_vl_7b_fsdp.sh",
+        "examples/grpo_trainer/run_qwen2_5_vl_7b_megatron.sh",
+        "examples/grpo_trainer/run_qwen3_235b_a22b_megatron.sh",
+        "examples/grpo_trainer/run_qwen3_30b_a3b_fsdp.sh",
+        "examples/grpo_trainer/run_qwen3_30b_a3b_megatron.sh",
+        "examples/grpo_trainer/run_qwen3_30b_veomni.sh",
+        "examples/grpo_trainer/run_qwen3_4b_fsdp.sh",
+        "examples/grpo_trainer/run_qwen3_5-122b-a10b_veomni.sh",
+        "examples/grpo_trainer/run_qwen3_5_122b_a10b_megatron.sh",
+        "examples/grpo_trainer/run_qwen3_5_27b_fsdp.sh",
+        "examples/grpo_trainer/run_qwen3_5_27b_fsdp_turbo.sh",
+        "examples/grpo_trainer/run_qwen3_5_2b_openr1_fsdp.sh",
+        "examples/grpo_trainer/run_qwen3_5_2b_video_fsdp.sh",
+        "examples/grpo_trainer/run_qwen3_5_35b_a3b_veomni.sh",
+        "examples/grpo_trainer/run_qwen3_5_35b_fsdp.sh",
+        "examples/grpo_trainer/run_qwen3_5_35b_fsdp_turbo.sh",
+        "examples/grpo_trainer/run_qwen3_5_35b_megatron.sh",
+        "examples/grpo_trainer/run_qwen3_5_35b_megatron_lite.sh",
+        "examples/grpo_trainer/run_qwen3_5_397b_megatron.sh",
+        "examples/grpo_trainer/run_qwen3_8_27b_megatron.sh",
+        "examples/grpo_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/grpo_trainer/run_qwen3_8b_megatron.sh",
+        "examples/grpo_trainer/run_qwen3_next_80b_a3b_fsdp.sh",
+        "examples/grpo_trainer/run_qwen3_vl_235b_a22b_megatron.sh",
+        "examples/grpo_trainer/run_qwen3_vl_30b_a3b_fsdp.sh",
+        "examples/grpo_trainer/run_qwen3_vl_30b_a3b_megatron.sh",
+        "examples/grpo_trainer/run_qwen3_vl_30b_moe_veomni.sh",
+        "examples/grpo_trainer/run_qwen3_vl_8b_fsdp.sh",
+        "examples/grpo_trainer/run_qwen3_vl_8b_megatron.sh",
+        "examples/grpo_trainer/run_seed_oss_36b_fsdp.sh",
+        "examples/gspo_trainer/run_qwen3_30b_a3b_megatron.sh",
+        "examples/gspo_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/mtp_trainer/run_mimo_7b_mtp_fully_async_megatron_multinode.sh",
+        "examples/mtp_trainer/run_mimo_7b_mtp_megatron.sh",
+        "examples/mtp_trainer/run_mimo_7b_mtp_rl_vllm_sgl_megatron.sh",
+        "examples/mxfp8/run_qwen3_30b_a3b_megatron.sh",
+        "examples/mxfp8/run_qwen3_8b_megatron.sh",
+        "examples/on_policy_distillation_trainer/run_qwen3_0.6b_opd_veomni.sh",
+        "examples/on_policy_distillation_trainer/run_qwen3_5_2b_fsdp.sh",
+        "examples/on_policy_distillation_trainer/run_qwen3_5_4b_fsdp.sh",
+        "examples/on_policy_distillation_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/on_policy_distillation_trainer/run_qwen3_8b_megatron.sh",
+        "examples/on_policy_distillation_trainer/run_qwen3_8b_mopd_fsdp.sh",
+        "examples/on_policy_distillation_trainer/run_qwen3_8b_mopd_veomni.sh",
+        "examples/on_policy_distillation_trainer/run_qwen3_vl_8b_fsdp.sh",
+        "examples/otb_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/ppo_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/ppo_trainer/run_qwen3_8b_megatron.sh",
+        "examples/prefix_grouper/run_qwen3_8b_fsdp.sh",
+        "examples/profile/run_qwen2_5_7b_torch_profile.sh",
+        "examples/profile/run_qwen2_5_vl_7b_torch_memory.sh",
+        "examples/profile/run_qwen3_8b_npu_profile_discrete.sh",
+        "examples/profile/run_qwen3_8b_npu_profile_e2e.sh",
+        "examples/reinforce_plus_plus_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/remax_trainer/run_qwen2.5_math_7b_sync_fsdp.sh",
+        "examples/remax_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/rewards/custome_reward_fn/aime_reward.py",
+        "examples/rloo_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/rollout_correction/run_qwen2_5_0_5b_score_centering_fsdp.sh",
+        "examples/rollout_correction/run_qwen2_5_7b_fsdp.sh",
+        "examples/rollout_correction/run_qwen2_5_7b_fsdp_multi_rs.sh",
+        "examples/router_replay/run_qwen3_30b_a3b_megatron.sh",
+        "examples/router_replay/run_qwen3_5_35b_a3b_veomni.sh",
+        "examples/sapo_trainer/run_qwen3_30b_a3b_fsdp.sh",
+        "examples/sapo_trainer/run_qwen3_8b_fsdp.sh",
+        "examples/sft/gsm8k/run_deepseek_coder_6_7b_fsdp.sh",
+        "examples/sft/gsm8k/run_deepseek_v4_megatron_lite.sh",
+        "examples/sft/gsm8k/run_gemma_2b_fsdp.sh",
+        "examples/sft/gsm8k/run_gemma_7b_fsdp.sh",
+        "examples/sft/gsm8k/run_mimo_7b_mtp_megatron.sh",
+        "examples/sft/gsm8k/run_nemotron_nano_v3_megatron.sh",
+        "examples/sft/gsm8k/run_qwen2_5_0_5b_automodel.sh",
+        "examples/sft/gsm8k/run_qwen2_5_0_5b_fsdp.sh",
+        "examples/sft/gsm8k/run_qwen3_30b_automodel.sh",
+        "examples/sft/gsm8k/run_qwen3_5_397b_a17b_megatron.sh",
+        "examples/sft/gsm8k/run_qwen3_8b_fsdp.sh",
+        "examples/sft/gsm8k/run_qwen_megatron_fsdp.sh",
+        "examples/sft/gsm8k/run_seed_oss_36b_fsdp.sh",
+        "examples/sft/multiturn/run_qwen2_5_0_5b_fsdp.sh",
+        "examples/sft/vlm/run_qwen3_vl_2b_fsdp.sh",
+        "examples/tpu/grpo/run_qwen3_0_6b_torchtitan.sh",
+        "examples/tpu/grpo/run_qwen3_4b_torchtitan.sh",
+        "examples/tpu/grpo/run_qwen3_5_torchtitan.sh",
+        "examples/tpu/sft/run_qwen3_0_6b_torchtitan.sh",
+        "examples/tuning/lora/run_qwen2_5_vl_7b_fsdp.sh",
+        "examples/tuning/lora/run_qwen3_30b_a3b_megatron.sh",
+        "examples/tuning/lora/run_qwen3_8b_from_adapter_fsdp.sh",
+        "examples/tuning/lora/run_qwen3_8b_fsdp.sh",
+        "examples/tuning/lora/run_qwen3_8b_merge_fsdp.sh",
+        "examples/tuning/scaling/run_qwen2_5_32b_megatron.sh",
+        "examples/tuning/scaling/run_qwen2_5_72b_fsdp.sh",
+        "examples/tutorial/agent_loop_get_started/sandbox.py",
+        "manage_envs.py",
+        "scripts/__init__.py",
+        "scripts/chat_template_checker.py",
+        "scripts/chat_template_mock_trajectories.py",
+        "scripts/converter_hf_to_mcore.py",
+        "scripts/diagnose.py",
+        "scripts/generate_trainer_config.sh",
+        "scripts/init_random_model.py",
+        "scripts/install_sglang_mcore_npu.sh",
+        "scripts/install_vllm_mcore_npu.sh",
+        "scripts/install_vllm_sglang_mcore.sh",
+        "scripts/legacy_model_merger.py",
+        "scripts/megatron_merge_lora.py",
+        "scripts/migrate_megatron_checkpoint_layout.py",
+        "scripts/print_cfg.py",
+        "scripts/rollout_logprob_diff.py",
+        "scripts/rollout_viewer.py",
+        "scripts/veomni/moe_merge.py",
+        "scripts/veomni/moe_split.py"
+      ],
+      "required": false,
+      "depends_on": [],
+      "evidence": [
+        "verl/trainer/README.md:3 ## SFT Trainer"
+      ]
+    },
+    {
+      "id": "docs-build",
+      "label": "文档可执行资源与构建入口 · 保留最小安装/文档；不把构建源码从预算漏掉",
+      "description": "docs JS/CSS/Python/shell 与 setup.py；setup.py 被真实 LMA capability inventory 计入源码。\n归属: 文档, 构建\n新旧: 当前支持代码\n建议: 保留最小安装/文档；不把构建源码从预算漏掉\n依据: setup.py:82 setup(",
+      "parent": "group-support",
+      "paths": [
+        "docs/_static/custom.css",
+        "docs/_static/js/resizable-sidebar.js",
+        "docs/_static/js/runllm-widget.js",
+        "docs/conf.py",
+        "setup.py"
+      ],
+      "required": false,
+      "depends_on": [],
+      "evidence": [
+        "setup.py:82 setup("
+      ]
+    }
+  ],
+  "checks": []
+}

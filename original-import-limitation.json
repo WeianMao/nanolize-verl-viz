@@ -1,0 +1,12 @@
+{
+  "status": "blocked",
+  "reason": "Understanding requires a complete repository snapshot",
+  "warnings": [
+    "Skipped symbolic link into an excluded or non-file target: .claude/skills/issue",
+    "Skipped symbolic link into an excluded or non-file target: .claude/skills/pr",
+    "Skipped symbolic link into an excluded or non-file target: .codex/skills/issue",
+    "Skipped symbolic link into an excluded or non-file target: .codex/skills/pr",
+    "Skipped missing or non-regular file: recipe",
+    "Skipped oversized file: uv.lock"
+  ]
+}
