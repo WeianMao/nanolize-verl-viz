@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>verl · 数据与验证</title><link rel="icon" href="data:,"><link rel="stylesheet" href="explorer.css"></head>
+<body><header class="masthead"><a class="brand" href="index.html"><span class="brand-mark">v<span>·</span></span><span>verl <small>CODE ATLAS</small></span></a><nav><a href="index.html">← 返回代码图</a><a href="tree.html">LMA 原生 Tree</a></nav></header>
+<main class="evidence-page"><div class="eyebrow">PROVENANCE / EVIDENCE / LIMITATIONS</div><h1>完整 clone，真实静态结构，明确验收缺口。</h1>
+<p>本页是已交付代码地图的证据说明。它不能将环境阻碍改写为任务 09 全部完成。</p>
+<article><h2>你正在查看什么</h2><p>知识图谱来自 <code>targets/verl-full</code> 的完整 Git 文件清单、Python AST 声明与可静态解析的代码关系，结合 host agent 的能力和关键符号评审。没有导入或执行 verl，没有运行 GPU。图不是任务 08 的 43 项粗粒度模块表。</p>
+<table><tbody><tr><th>固定提交</th><td><code>8df5baeed0f5ecdd7f870d83bc3d79194816e2a9</code></td></tr><tr><th>代码结构</th><td>9,795 节点 · 20,264 关系 · 8,445 Python 类 / 函数 / 方法</td></tr><tr><th>生产源码分母</th><td>558 个文件 · 145,636 物理行</td></tr><tr><th>语义评审</th><td>43 个能力 · 85 个单独审阅符号；其余声明明确标注 AST / docstring 及继承的能力判断</td></tr></tbody></table>
+<p>文件 LOC 包含空行、注释；函数与类的区间互相嵌套，不能累加为仓库总代码量。能力节点只汇总所属文件。二进制、符号链接和 Git 子模块显示 N/A。精确文件行数与声明位置随节点数据保存。</p></article>
+<article><h2>如何使用</h2><p>首页默认深入当前 V1 的 <code>PPOTrainerSync</code>，可见文件、类与真实方法；下方“关联”节点展示出向代码关系。左侧选择能力会回到该能力所属文件，双击文件进入定义。单击节点查看行数、声明、取舍、依据和入向 / 出向关系。搜索覆盖完整图谱；类别、取舍、状态、类型均可筛选。</p>
+<p>Graph 每页最多 48 个当前范围节点，另附最多 12 个出向关联节点；界面显示分母和页码，完整图谱未删除。Tree 按需展开完整包含层级。缩放、拖动平移、键盘 Enter 选择 / 空格进入、URL hash 定位均不依赖服务。导出视图只下载当前节点与关系，不会修改源码。</p>
+<p>代码图中 imports / calls / inherits 是 AST 可解析的静态关系；uses / depends_on 是 host 审阅的语义关系。动态注册、反射、跨语言与外部依赖不是完整运行时调用图。Graph 布局是阅读辅助，不代表执行时序。</p></article>
+<article><h2>仍未通过的原生链路</h2><p class="status-blocked"><strong>LMA 原生 import_understanding：仍失败。</strong>完整 clone 并未改变当前 LMA 的 bounded snapshot 规则。原生检查返回 <code>complete=false</code>，随后拒绝导入。没有改 LMA、提高限制、伪造 complete、删文件或改用分析镜像。</p><ul><li><code>Skipped symbolic link into an excluded or non-file target: .claude/skills/issue</code></li><li><code>Skipped symbolic link into an excluded or non-file target: .claude/skills/pr</code></li><li><code>Skipped symbolic link into an excluded or non-file target: .codex/skills/issue</code></li><li><code>Skipped symbolic link into an excluded or non-file target: .codex/skills/pr</code></li><li><code>Skipped missing or non-regular file: recipe</code></li><li><code>Skipped oversized file: uv.lock</code></li></ul>
+<p><a href="tree.html">LMA 原生 Tree</a> 是未修改的 LMA 扫描器、规划器和渲染器产物，保留 incomplete 警告。它是静态扫描 Tree，<strong>不是成功导入后的 UA Graph/Tree</strong>。首页 Graph/Tree 是本任务提供的独立代码浏览器。</p>
+<p>完整 UA understand / understand-domain runtime 和必要 agent/core 文件在本地缺失；当前执行的是 host AST、语义分批分析和可用的 UA 图谱验证步骤，不能声称完整 UA 原生流程成功。精确缺失项和原生错误见随附证据。</p></article>
+<article><h2>验证状态</h2><p><strong>真实浏览器：</strong>未完成：当前环境找不到 Playwright / Chromium，未伪造截图或浏览器结果。</p><p>只有 <code>browser-validation.json</code> 的 status 为 passed，且有实际 PNG 截图时，才算 Playwright 实测通过。Node 语法、数据、过滤、布局及本地资源检查不能替代浏览器运行。</p><p><a href="browser-validation.json">浏览器尝试记录</a> · <a href="static-validation.json">静态与模型检查</a> · <a href="native-import.json">原生 LMA 导入 / 完整性记录</a></p></article>
+<article><h2>离线资源与可复算输入</h2><p>下载整个 <code>viz/verl-full/</code> 后打开 <code>index.html</code>。页面仅用同目录的 CSS、经典 JavaScript 和数据，不使用 fetch、CDN、字体服务或根绝对路径。静态服务或 GitHub Pages 子路径同样使用相对资源；固定提交 GitHub 源码链接是明确标注需网络的可选跳转。</p>
+<p><a href="knowledge-graph.json">代码知识图谱</a> · <a href="domain-graph.json">业务领域图谱</a> · <a href="node-metadata.json">行数 / 状态 / 审阅元数据</a> · <a href="edge-evidence.json">静态关系证据</a> · <a href="capabilities.json">任务 08 能力取舍</a> · <a href="graph-stats.json">覆盖统计</a> · <a href="LICENSE.upstream">上游源码摘录许可证</a></p>
+<pre><code>python3 -B scripts/task10_build_explorer.py
+node scripts/task10_validate_explorer.cjs
+node scripts/task10_browser_test.cjs</code></pre></article>
+</main></body></html>

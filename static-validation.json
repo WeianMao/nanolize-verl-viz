@@ -1,0 +1,63 @@
+{
+  "status": "passed",
+  "kind": "static and pure model checks; no browser execution",
+  "checkedAt": "2026-10-31T16:32:54.617Z",
+  "checks": [
+    {
+      "name": "Complete graph node and edge references",
+      "passed": true
+    },
+    {
+      "name": "Default view shows real file, class, methods and relationships",
+      "passed": true
+    },
+    {
+      "name": "Legacy classification respects negation and mixed source",
+      "passed": true
+    },
+    {
+      "name": "Old and current loss functions remain separately searchable",
+      "passed": true
+    },
+    {
+      "name": "All capability files are reachable and production LOC agrees",
+      "passed": true
+    },
+    {
+      "name": "All declarations have nonzero ranges and no fake binary LOC",
+      "passed": true
+    },
+    {
+      "name": "Capability evidence survives UI payload deduplication",
+      "passed": true
+    },
+    {
+      "name": "Real filtered graph pages stay bounded and cards never overlap",
+      "passed": true
+    },
+    {
+      "name": "Late symbols can be selected on their correct graph page",
+      "passed": true
+    },
+    {
+      "name": "Filters and complete search respect user criteria",
+      "passed": true
+    },
+    {
+      "name": "All UI JavaScript parses without external imports",
+      "passed": true
+    },
+    {
+      "name": "HTML resources are local and relative, including domain source links",
+      "passed": true
+    },
+    {
+      "name": "Generated files match maintained templates",
+      "passed": true
+    }
+  ],
+  "layoutCases": 819,
+  "nodes": 9795,
+  "edges": 20264,
+  "dataSha256": "1488b7b5990cbd9ccb4e68c130f3468732b9c48df73a9dab73ea201011e1a573"
+}
