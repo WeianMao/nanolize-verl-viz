@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light"><title>verl nano · 删减前后对照</title>
+  <link rel="icon" href="data:,"><link rel="stylesheet" href="explorer.css"><link rel="stylesheet" href="comparison.css">
+  <script defer src="comparison-data.js"></script><script defer src="comparison.js"></script>
+</head>
+<body>
+  <header class="masthead">
+    <a class="brand" href="index.html"><span class="brand-mark">v<span>·</span></span><span>verl <small>NANO EDITION</small></span></a>
+    <div class="edition"><span class="live-dot"></span>nano50 <code id="compare-commit">读取中</code></div>
+    <nav><a class="nav-current" href="index.html" aria-current="page">删减对照</a><a href="code.html">Graph / Tree</a><a href="evidence.html">数据与验证</a></nav>
+  </header>
+  <main class="comparison-page">
+    <section class="comparison-hero">
+      <div class="hero-copy"><div class="eyebrow">43 个模块 · 同一口径 · 实际代码</div><h1>留下训练主线，<br>看清每一处删减<span>。</span></h1><p>从原版到 nano：奖励训练、规则判题、文本微调继续保留。<br class="desktop-break">收起额外后端与实验路线，逐项解释删了什么、为什么。</p><a class="hero-link" href="code.html">进入 nano 函数级代码图 <span aria-hidden="true">↗</span></a></div>
+      <div class="totals-panel" aria-label="删减前后代码总量">
+        <div class="total-label"><span>非测试源码 · 物理行数</span><a href="evidence.html#counting">统计口径 ↗</a></div>
+        <div class="total-flow"><div><small>原版 <code>8df5baee</code></small><strong id="total-before">—</strong></div><span class="total-arrow" aria-hidden="true">→</span><div class="nano-total"><small>nano <code id="total-commit"></code></small><strong id="total-after">—</strong></div></div>
+        <div class="total-bar" role="img" id="total-bar"><span id="retained-bar"></span></div>
+        <div class="total-caption"><span><i class="key-dot retained"></i>留下 <b id="total-retained-percent">—</b></span><span><i class="key-dot deleted"></i>减少 <b id="total-saved">—</b> 行 · <b id="total-removed-percent">—</b></span></div>
+        <div class="total-files" id="total-files"></div>
+      </div>
+    </section>
+    <section class="status-overview" aria-label="模块保留状态统计" id="status-overview"></section>
+    <section class="comparison-workspace" aria-label="模块删减对照">
+      <div class="compare-toolbar">
+        <div><h2>43 个模块，逐项对照</h2><p>“保留”指主要职责仍在；“部分保留”指职责收窄。行数变化单独列出。</p></div>
+        <button id="compare-export" class="outline-button">导出当前对照 ↓</button>
+      </div>
+      <div class="domain-tabs" aria-label="按能力筛选">
+        <button data-domain="" class="active" aria-pressed="true">全部</button><button data-domain="RL" aria-pressed="false">RL · 奖励训练</button><button data-domain="RLVR" aria-pressed="false">RLVR · 规则判题</button><button data-domain="SFT" aria-pressed="false">SFT · 示例微调</button><button data-domain="RLHF" aria-pressed="false">RLHF · 偏好奖励</button><button data-domain="shared" aria-pressed="false">共享基础</button>
+      </div>
+      <div class="compare-controls">
+        <label class="compare-search"><span aria-hidden="true">⌕</span><input id="compare-search" type="search" autocomplete="off" placeholder="搜索模块、用途或文件路径…" aria-label="搜索模块、用途或文件路径"></label>
+        <label>保留状态 <select id="compare-status"><option value="">全部状态</option><option value="retained">保留</option><option value="partial">部分保留</option><option value="deleted">删除</option></select></label>
+        <label>排序 <select id="compare-sort"><option value="baseline">原始模块顺序</option><option value="saved">减少行数最多</option><option value="name">模块名称</option></select></label>
+        <button id="compare-reset" class="text-button">重置筛选</button>
+      </div>
+      <div class="filter-summary"><span id="filter-summary" aria-live="polite"></span><span id="filter-totals"></span></div>
+      <p class="domain-explanation" id="domain-explanation">一个模块可以服务多种训练方式；筛选结果之间有重叠，不能跨分类相加。</p>
+      <div id="module-list" class="module-list"></div>
+      <div id="compare-empty" class="compare-empty" hidden><strong>没有找到匹配模块</strong><p>可以缩短搜索词，或重置筛选。</p><button id="compare-empty-reset" class="outline-button">显示全部模块</button></div>
+    </section>
+    <footer class="comparison-footer"><span>按文件独占归属统计，包含空行与注释，不包含测试。保留状态描述功能范围，不表示全部测试通过。</span><a href="evidence.html">查看数据与验证 ↗</a></footer>
+  </main>
+  <noscript>此页面需要 JavaScript。请将整个 verl-nano 目录一起下载；所有显示资源均可离线读取。</noscript>
+</body></html>

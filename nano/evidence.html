@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>verl nano · 数据与验证</title><link rel="icon" href="data:,"><link rel="stylesheet" href="explorer.css"><link rel="stylesheet" href="comparison.css"></head>
+<body><header class="masthead"><a class="brand" href="index.html"><span class="brand-mark">v<span>·</span></span><span>verl <small>NANO EDITION</small></span></a><nav><a href="index.html">删减对照</a><a href="code.html">Graph / Tree</a><a href="evidence.html" aria-current="page">数据与验证</a></nav></header>
+<main class="evidence-page"><div class="eyebrow">S8 / SOURCE / METHOD / VERIFICATION</div><h1>每个数字，都能回到实际文件。</h1><p>新版页面以本地 <code>nano50</code> 分支的固定提交为准。对照模块沿用原版的 43 个能力分组，并重新核对文件和保留范围。</p>
+<article id="counting"><h2>145,636 → 50,509 行：同一统计口径</h2>
+<table><tbody><tr><th>删减前</th><td><code>8df5baeed0f5ecdd7f870d83bc3d79194816e2a9</code><br>558 个非测试源码文件 · 145,636 行</td></tr><tr><th>删减后</th><td><code>052fbcbd7cc1209ed16ed33e05360842e9cb2b2c</code><br>200 个非测试源码文件 · 50,509 行</td></tr><tr><th>代码结构图</th><td>6,699 个节点 · 13,358 条静态关系<br>43 个能力 + 4 个支持分组；6,014 个函数与类包含测试及支持代码</td></tr></tbody></table>
+<p>“物理行数”包含空行、注释和文档字符串。源码口径延续原计划，包含包内实现、示例脚本、安装入口和文档中的可执行资源；不把测试、Markdown、YAML、锁文件、二进制或外部子模块代码算进这个总数。</p>
+<p>每个生产源码文件只归属一个模块，新文件也分配给对应模块；43 个模块相加恰好等于总数。图中还可以浏览测试、配置、文档等支持文件，所以图的文件总数与这里的生产源码文件数不同。函数和类的行区间相互嵌套，不能把这些区间相加当作仓库总代码量。</p>
+<p>“保留”表示主要职责继续提供，源码仍可能缩短；“部分保留”表示功能范围收窄；“删除”表示该范围已经退出 nano。删减量是前后总行数之差，包含保留文件的缩减和新增代码，并非简单统计删除文件的行数。</p>
+<p>RL、RLVR、SFT、RLHF 等标签描述该模块关联的训练方式，同一个模块可以有多个标签；不能将不同筛选页的合计再次相加。PPO 的 critic 用来估计价值，保留它不等于保留已删除的内置奖励模型或完整 RLHF 管线。</p></article>
+<article><h2>如何浏览</h2><p><a href="index.html">删减对照</a>按能力、状态或关键词筛选 43 个模块；每个模块都说明用途、保留理由、前后行数以及实际文件。展开“查看实际文件与核对依据”可查看路径及与原计划的差别。保留模块可直接进入对应代码图。</p>
+<p><a href="code.html">Graph / Tree</a>默认进入同步训练文件。Graph 单击节点看详情，双击文件或类深入；支持缩放、拖动、分页和关系筛选。Tree 展开完整包含层级。搜索覆盖整张图，定位状态保存在地址中。</p>
+<p>Graph 每页最多 48 个范围节点，另显示最多 12 个出向关联节点；页面显示完整分母，数据没有为排版而删去节点。Tree 导出覆盖当前筛选的完整包含树，Graph 导出当前页及关联节点。函数详情中保存了当前提交的开头源码摘录，最长 20 行。</p></article>
+<article><h2>图能说明什么</h2><p>文件、类、函数和方法来自实际 Git 文件清单及 Python 语法树，包含嵌套声明和装饰器区间。包含、导入、调用候选及继承关系来自可静态解析的源码。动态注册、反射、外部依赖和运行时分派不一定能解析；这不是完整运行时调用图。</p>
+<p>本页交付独立的静态 Graph / Tree 浏览器，沿用上一版视觉风格。不将它称为新的 LMA 原生导入或完整 UA 执行结果。模块保留状态也不是训练正确性或行为等价认证；既有验证结论不因生成可视化而升级。</p></article>
+<article><h2>验证记录</h2><p>真实浏览器验收脚本打开离线页面和 HTTP 子路径，检查筛选、代码导航、图与树、导出和移动布局，记录浏览器控制台，并保存真实截图。最终结果以随目录保存的浏览器记录为准；数据和静态验证分别保留记录。</p>
+<div class="evidence-links"><a href="browser-validation.json">真实浏览器记录</a><a href="static-validation.json">静态页面检查</a><a href="data-validation.json">源码与数据检查</a><a href="shots/01-comparison-overview.png">桌面对照截图</a><a href="shots/03-nano-graph.png">代码图截图</a><a href="shots/04-nano-tree.png">代码树截图</a><a href="shots/06-mobile-comparison.png">移动对照截图</a></div></article>
+<article><h2>离线资源与复现</h2><p>将整个 <code>viz/verl-nano/</code> 下载后打开 <code>index.html</code>。CSS、JavaScript 和展示数据均在本目录，采用相对路径，不请求 CDN、字体服务或外部 API，也可放在 GitHub Pages 的子路径。打开 JSON 链接可下载完整证据；无需训练依赖或 GPU。</p>
+<div class="evidence-links"><a href="comparison.json">43 模块对照数据</a><a href="knowledge-graph.json">代码图谱</a><a href="node-metadata.json">节点元数据</a><a href="capabilities.json">模块定义</a><a href="source-inventory.json">文件清单</a><a href="edge-evidence.json">关系依据</a><a href="graph-stats.json">图谱统计</a><a href="LICENSE.upstream">源码摘录许可证</a></div>
+<pre><code>python3 -B scripts/task18_compare.py
+python3 -B scripts/task18_extract_graph.py
+python3 -B scripts/task18_validate_graph.py
+python3 -B scripts/task18_build_explorer.py
+node scripts/task18_browser_test.cjs
+node scripts/task18_validate_explorer.cjs</code></pre></article>
+</main></body></html>

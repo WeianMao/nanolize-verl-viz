@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "git_commit": "052fbcbd7cc1209ed16ed33e05360842e9cb2b2c",
+  "artifact_sha256": {
+    "knowledge-graph.json": "6f91f8c42a9ee664ac79a4d6d8fc93fd6cf6e70ee7a1c6da244444d0dd828ff6",
+    "node-metadata.json": "6767273329ad776d39d6a76084c925ad0199eac3a1536202716527e10ffba915",
+    "edge-evidence.json": "e3ac0baf69682a2f72f3b1505ef97f783a8a153b8e998e9b70313dd9828da41f",
+    "inventory.json": "d593479f31f6c225e9d9b0bf2cb1b9ee17bb8361a1b1ba52e629f658e8b7d247",
+    "comparison.json": "cecf3fb622c9691767bb469cf74b28d8ee7101c554392043c20a88a3db7d3e9f",
+    "source-inventory.json": "fc35759f957306cbf08a106d12a0adc993b908e671532c64d0b322ffec56dc33",
+    "capabilities.json": "bb66c555cb52f643e36233b2a0fde175e1d5d433928f1b24f434f7218a288c34",
+    "graph-stats.json": "d64767ca39fe58c60203c87b74e63b19d33aad7d9feaadfe44ec66ef3a828b92"
+  },
+  "checks": {
+    "source_commit": {
+      "passed": true,
+      "details": "052fbcbd7cc1209ed16ed33e05360842e9cb2b2c"
+    },
+    "unique_node_ids": {
+      "passed": true,
+      "details": 6699
+    },
+    "complete_metadata": {
+      "passed": true
+    },
+    "tracked_entry_coverage": {
+      "passed": true,
+      "details": 638
+    },
+    "inventory_entry_coverage": {
+      "passed": true
+    },
+    "native_node_edge_limits": {
+      "passed": true
+    },
+    "native_bounded_json_only": {
+      "passed": true,
+      "details": 5450535
+    },
+    "regular_blob_integrity": {
+      "passed": true,
+      "details": {
+        "count": 637,
+        "mismatches": []
+      }
+    },
+    "file_line_ranges": {
+      "passed": true,
+      "details": []
+    },
+    "links_not_followed_in_graph": {
+      "passed": true,
+      "details": []
+    },
+    "all_python_declarations_exact": {
+      "passed": true,
+      "details": {
+        "python_files": 525,
+        "declarations": 6014,
+        "missing": [],
+        "extra": []
+      }
+    },
+    "decorator_inclusive_symbol_loc": {
+      "passed": true,
+      "details": []
+    },
+    "edge_endpoints_unique_and_bounded": {
+      "passed": true,
+      "details": {
+        "edges": 13358,
+        "dangling": [],
+        "duplicates": [],
+        "self_edges": []
+      }
+    },
+    "one_structural_parent_per_nonmodule": {
+      "passed": true
+    },
+    "mechanical_edge_source_sites": {
+      "passed": true,
+      "details": {
+        "count": 6706,
+        "errors": []
+      }
+    },
+    "call_targets_are_real_declarations": {
+      "passed": true,
+      "details": []
+    },
+    "exact_43_original_capability_ids": {
+      "passed": true
+    },
+    "nano_production_complete_disjoint_ownership": {
+      "passed": true
+    },
+    "original_production_complete_disjoint_ownership": {
+      "passed": true
+    },
+    "added_production_files_explicit": {
+      "passed": true,
+      "details": {
+        "verl/trainer/ppo/advantages.py": "rl-algorithms",
+        "scripts/check_imports.py": "examples",
+        "scripts/check_nano.sh": "examples"
+      }
+    },
+    "original_ownership_preserved": {
+      "passed": true
+    },
+    "graph_production_ownership_matches": {
+      "passed": true
+    },
+    "complete_nano_snapshot": {
+      "passed": true
+    },
+    "source_accounting_union_exact": {
+      "passed": true
+    },
+    "all_before_after_physical_lines_and_blob_hashes": {
+      "passed": true,
+      "details": {
+        "files": 561,
+        "errors": []
+      }
+    },
+    "all_43_module_counts_statuses_paths_and_plan_differences": {
+      "passed": true,
+      "details": []
+    },
+    "current_source_anchors_and_original_deletions": {
+      "passed": true,
+      "details": {
+        "anchors": 85,
+        "errors": []
+      }
+    },
+    "comparison_totals_and_percentages": {
+      "passed": true
+    },
+    "stats_match_graph_and_inventory": {
+      "passed": true
+    },
+    "call_statistics_conserve_sites": {
+      "passed": true
+    },
+    "all_artifacts_current_commit": {
+      "passed": true
+    },
+    "target_and_original_tracked_clean": {
+      "passed": true
+    }
+  },
+  "failures": [],
+  "warnings": [],
+  "limits": [
+    "No target import, runtime behavior, training or GPU execution.",
+    "Call edges are static candidates; this audit validates declared destinations and actual source sites, not dynamic binding or complete call-graph soundness.",
+    "Current graph includes preserved historical tests; they do not restore deleted production capabilities. Module labels are scope summaries, not runtime qualification. Browser verification is separate."
+  ]
+}

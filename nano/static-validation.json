@@ -1,0 +1,76 @@
+{
+  "status": "passed",
+  "kind": "static and pure model checks; no browser execution",
+  "checkedAt": "2026-11-01T10:34:22.882Z",
+  "checks": [
+    {
+      "name": "All graph node and edge references resolve",
+      "passed": true
+    },
+    {
+      "name": "Default graph exposes current nano file, class, methods and relations",
+      "passed": true
+    },
+    {
+      "name": "Comparison totals reconcile and match graph production inventory",
+      "passed": true
+    },
+    {
+      "name": "Every module has plain-language purpose, actual reason, supported status and graph destination",
+      "passed": true
+    },
+    {
+      "name": "All current declarations have exact source ranges and offline excerpts",
+      "passed": true
+    },
+    {
+      "name": "Partial retention renders as a distinct decision class",
+      "passed": true
+    },
+    {
+      "name": "All actual filtered graph pages stay bounded with no card overlap",
+      "passed": true
+    },
+    {
+      "name": "Late symbols are reachable on correct graph pages",
+      "passed": true
+    },
+    {
+      "name": "Search and status/domain filters respect complete source graph",
+      "passed": true
+    },
+    {
+      "name": "All presentation JavaScript parses with no remote data imports",
+      "passed": true
+    },
+    {
+      "name": "Every HTML resource is relative and exists, including screenshots and evidence",
+      "passed": true
+    },
+    {
+      "name": "Generated presentation files match maintained templates",
+      "passed": true
+    },
+    {
+      "name": "No obsolete full-snapshot warnings or unpublished GitHub links leak into nano UI",
+      "passed": true
+    }
+  ],
+  "layoutCases": 660,
+  "nodes": 6699,
+  "edges": 13358,
+  "modules": 43,
+  "sourceCommit": "052fbcbd7cc1209ed16ed33e05360842e9cb2b2c",
+  "sha256": {
+    "index.html": "ebb022ad5abe167fd6d48bc69fd60d57c82016323064f17490cea2818f43f640",
+    "code.html": "32d16db58adfccdbd775d6d8cb833c76f6879aa4dae54f0c787da3f7c43e3f98",
+    "explorer.css": "b1302c295ce7b3ab02c29464a9107321b43356c657913f936aa1054f9b2a6044",
+    "model.js": "7d133a25820da605e0171b21b906aaba8c0f70012f4c7d415cc2eabe8c761d97",
+    "explorer.js": "97c7e120cff90a970c34d62f1f090740623ff9ad837659f44871d9f4f5863c11",
+    "comparison.css": "f6018b1aaf0269c37a3549b3885db00844086021a36325ea52a72875d50c5421",
+    "comparison.js": "221b0cc51b7222de17b164c122710dfeaf18342dd2ee2ccd07f6193e329da7be",
+    "data.js": "f884dcec473a3441978420df0dbbf599adc1358c872e1ebb881cb1791d17f88e",
+    "comparison-data.js": "6f38ad10e629a318e4012e6b9d56082cffb9896203466f13c4ae0d84a1c886d7",
+    "evidence.html": "52daa8fd5fa66478f3cc0c2b9240a345bd5c2a93b1e389c879ee995f3c7c8fc8"
+  }
+}

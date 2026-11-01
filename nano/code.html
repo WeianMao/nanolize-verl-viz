@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>verl nano · 代码结构地图</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="explorer.css">
+  <script defer src="data.js"></script>
+  <script defer src="model.js"></script>
+  <script defer src="explorer.js"></script>
+</head>
+<body>
+  <header class="masthead">
+    <a class="brand" href="index.html" aria-label="verl 代码地图首页"><span class="brand-mark">v<span>·</span></span><span>verl <small>CODE ATLAS</small></span></a>
+    <div class="edition"><span class="live-dot"></span>nano50 <code id="source-commit">读取中</code><span class="edition-date">2026.11.01</span></div>
+    <nav><a href="index.html">删减对照</a><a href="evidence.html">数据与验证</a><a href="knowledge-graph.json" download>下载图谱 <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <aside class="notice" role="note"><span class="notice-dot">!</span><span><strong>静态代码结构图</strong> · 对应 nano50 当前固定提交，包含文件、类和函数。关系来自源码静态解析；<a href="evidence.html">查看准确范围与证据</a>。</span></aside>
+  <main>
+    <section class="intro">
+      <div><div class="eyebrow">NANO-VERL / ARCHITECTURE EXPLORER</div><h1>从训练闭环，深入每个函数<span>。</span></h1><p>43 个原始能力 + 4 个支持分组；图中函数与类包含保留下来的测试。选择模块，深入实际代码。</p></div>
+      <div class="stats" id="stats" aria-label="图谱统计"></div>
+    </section>
+    <div class="workspace">
+      <aside class="sidebar" aria-label="能力导航">
+        <div class="sidebar-top"><h2>能力地图 <span id="capability-count"></span></h2><button class="text-button" id="reset" title="清除筛选">重置</button></div>
+        <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索文件 / 类 / 函数…" autocomplete="off" aria-label="搜索代码节点"><kbd>/</kbd></label>
+        <div class="search-results" id="search-results" hidden aria-live="polite"></div>
+        <div class="category-tabs" aria-label="任务类别"><button data-category="" class="active">全部</button><button data-category="RL">RL</button><button data-category="RLVR">RLVR</button><button data-category="SFT">SFT</button><button data-category="RLHF">RLHF</button></div>
+        <div class="filter-row"><label for="decision">模块保留</label><select id="decision"><option value="">全部结果</option value="keep">保留</option><option value="remove">已删除</option><option value="review">部分保留</option></select></div>
+        <div class="filter-row"><label for="status">代码标注</label><select id="status"><option value="">全部状态</option><option value="current">当前</option><option value="legacy">遗留 / 已弃用</option><option value="mixed">新旧混合</option><option value="unknown">未判定</option></select></div>
+        <div class="capability-list" id="capability-list"></div>
+        <div class="sidebar-foot"><span class="legend-dot keep"></span>保留 <span class="legend-dot review"></span>部分保留 <span class="legend-dot remove"></span>已删除<p>以实际 nano 代码为准；模块状态不等于测试结论。</p></div>
+      </aside>
+      <section class="canvas-panel" aria-label="代码结构视图">
+        <div class="canvas-toolbar"><div class="view-tabs" role="tablist" aria-label="视图"><button id="graph-tab" class="active" role="tab" aria-selected="true">Graph</button><button id="tree-tab" role="tab" aria-selected="false">Tree</button></div><button id="back" class="icon-button" title="回到上一级" aria-label="回到上一级">←</button><span class="scope-title" id="scope-title"></span><button id="export" class="text-button" title="导出当前可见的节点和关系">导出视图 ↓</button></div>
+        <div class="breadcrumbs" id="breadcrumbs" aria-label="路径导航"></div>
+        <div class="relation-toolbar"><span>关系</span><label><input type="checkbox" value="contains" checked><i class="relation-dot contains"></i>包含</label><label><input type="checkbox" value="imports" checked><i class="relation-dot imports"></i>导入</label><label><input type="checkbox" value="calls" checked><i class="relation-dot calls"></i>调用</label><label><input type="checkbox" value="inherits" checked><i class="relation-dot inherits"></i>继承</label><span id="visible-count" aria-live="polite"></span></div>
+        <div class="graph-wrap" id="graph-wrap"><svg id="graph" xmlns="http://www.w3.org/2000/svg" aria-label="代码节点关系图" role="img"></svg><div id="empty" class="empty" hidden><strong>没有匹配的节点</strong><p>切换能力或清除新旧、取舍筛选。</p><button id="empty-reset">清除筛选</button></div></div>
+        <div class="tree-wrap" id="tree-wrap" hidden></div>
+        <div class="canvas-bottom"><span id="view-hint">单击查看节点 · 双击文件进入定义 · 拖动画布平移</span><div class="pagination"><button id="page-prev" aria-label="上一页">‹</button><span id="page-label"></span><button id="page-next" aria-label="下一页">›</button></div><div class="zoom-controls"><button id="zoom-out" aria-label="缩小">−</button><button id="zoom-reset" title="还原缩放">100%</button><button id="zoom-in" aria-label="放大">+</button></div></div>
+      </section>
+      <aside class="detail-panel" aria-label="节点详情"><div id="details"></div></aside>
+    </div>
+    <footer><span>源文件物理行数；函数 / 类区间彼此重叠，不可相加。</span><span>静态可解析关系，不代表完整运行时调用图。</span><a href="evidence.html">方法与限制 ↗</a></footer>
+  </main>
+  <noscript>此页面需要 JavaScript。所有代码、数据与样式均在本目录，可离线打开。</noscript>
+</body>
+</html>

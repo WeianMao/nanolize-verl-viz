@@ -1,0 +1,214 @@
+{
+  "status": "passed",
+  "startedAt": "2026-11-01T10:35:10.185Z",
+  "runtime": "v20.9.0",
+  "checks": [
+    {
+      "name": "file:// comparison displays exact source totals and all 43 modules",
+      "status": "passed"
+    },
+    {
+      "name": "Chinese glyphs use an actual CJK font",
+      "status": "passed",
+      "details": {
+        "fonts": [
+          {
+            "familyName": "Noto Sans CJK SC",
+            "postScriptName": "NotoSansCJKsc-Regular",
+            "isCustomFont": false,
+            "glyphCount": 15
+          }
+        ]
+      }
+    },
+    {
+      "name": "all card line counts, descriptions, reasons, and statuses match measured data",
+      "status": "passed"
+    },
+    {
+      "name": "every domain and retention filter selects the exact expected modules",
+      "status": "passed",
+      "details": {
+        "domainCount": 6,
+        "statusCount": 4,
+        "combinations": 24
+      }
+    },
+    {
+      "name": "search, empty state, ordering, hash restoration, and reset work",
+      "status": "passed"
+    },
+    {
+      "name": "comparison download contains the current filtered view",
+      "status": "passed"
+    },
+    {
+      "name": "module evidence expands actual retained and deleted file lists",
+      "status": "passed"
+    },
+    {
+      "name": "comparison links navigate to actual nano graph modules",
+      "status": "passed"
+    },
+    {
+      "name": "file:// nano graph renders actual functions and static call edges",
+      "status": "passed",
+      "details": {
+        "counts": {
+          "module": 47,
+          "document": 20,
+          "file": 585,
+          "config": 32,
+          "resource": 1,
+          "function": 5353,
+          "class": 661
+        },
+        "defaultVisibleNodes": 9
+      }
+    },
+    {
+      "name": "graph node selection, zoom, relation visibility, and reset work",
+      "status": "passed"
+    },
+    {
+      "name": "double-click drill-down and parent navigation reach real class declarations",
+      "status": "passed"
+    },
+    {
+      "name": "Tree expands real methods and exports containment rather than graph pagination",
+      "status": "passed"
+    },
+    {
+      "name": "search locates exact retained symbols and restores graph state after reload",
+      "status": "passed"
+    },
+    {
+      "name": "graph pagination, category/type filters, and visible-view download work",
+      "status": "passed"
+    },
+    {
+      "name": "mobile comparison and graph render without page-level horizontal overflow",
+      "status": "passed",
+      "details": {
+        "comparisonSize": {
+          "width": 390,
+          "scroll": 390
+        },
+        "graphSize": {
+          "width": 390,
+          "scroll": 390
+        },
+        "panels": {
+          "sidebar": {
+            "top": 247.796875,
+            "bottom": 612.296875,
+            "height": 364.5
+          },
+          "canvas": {
+            "top": 612.296875,
+            "bottom": 1202.296875,
+            "height": 590
+          },
+          "details": {
+            "top": 1202.296875,
+            "bottom": 2162.21875,
+            "height": 959.921875
+          },
+          "capabilities": {
+            "top": 470.796875,
+            "bottom": 582.796875,
+            "height": 112
+          },
+          "sidebarFoot": {
+            "top": 582.796875,
+            "bottom": 611.296875,
+            "height": 28.5
+          }
+        }
+      }
+    },
+    {
+      "name": "all pages load beneath a GitHub Pages style nested HTTP path",
+      "status": "passed",
+      "details": {
+        "prefix": "/nanolize/viz/verl-nano/"
+      }
+    },
+    {
+      "name": "zero console errors, page exceptions, failed requests, HTTP errors, or external dependencies",
+      "status": "passed"
+    },
+    {
+      "name": "tested assets did not change during execution",
+      "status": "passed"
+    }
+  ],
+  "screenshots": [
+    "shots/01-comparison-overview.png",
+    "shots/02-rlhf-scope.png",
+    "shots/03-nano-graph.png",
+    "shots/04-nano-tree.png",
+    "shots/05-function-detail.png",
+    "shots/06-mobile-comparison.png",
+    "shots/07-mobile-graph.png",
+    "shots/08-http-subpath.png"
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "requestFailures": [],
+  "externalRequests": [],
+  "httpErrors": [],
+  "fileProtocol": true,
+  "httpSubpath": true,
+  "assets": {
+    "capabilities.json": "a9636b08de041a9c605df76b13196ad1e8221357af0650cb69edf9b7b2247b81",
+    "code.html": "32d16db58adfccdbd775d6d8cb833c76f6879aa4dae54f0c787da3f7c43e3f98",
+    "comparison-data.js": "6f38ad10e629a318e4012e6b9d56082cffb9896203466f13c4ae0d84a1c886d7",
+    "comparison.css": "f6018b1aaf0269c37a3549b3885db00844086021a36325ea52a72875d50c5421",
+    "comparison.js": "221b0cc51b7222de17b164c122710dfeaf18342dd2ee2ccd07f6193e329da7be",
+    "comparison.json": "bb12eedae4ed280ceaec04c15d4295592b2ec5aa00e8dadc800cc5cf7f26aa7e",
+    "data.js": "f884dcec473a3441978420df0dbbf599adc1358c872e1ebb881cb1791d17f88e",
+    "edge-evidence.json": "b455dbb8fbee6456c23700e64a047f93ff2a403af148cc2be5a58e54241756a6",
+    "evidence.html": "52daa8fd5fa66478f3cc0c2b9240a345bd5c2a93b1e389c879ee995f3c7c8fc8",
+    "explorer.css": "b1302c295ce7b3ab02c29464a9107321b43356c657913f936aa1054f9b2a6044",
+    "explorer.js": "97c7e120cff90a970c34d62f1f090740623ff9ad837659f44871d9f4f5863c11",
+    "graph-stats.json": "41daeabc75cc726c9ac2f78984965e0045ecd23ebbdbab4fe95e7cb95da5730f",
+    "index.html": "ebb022ad5abe167fd6d48bc69fd60d57c82016323064f17490cea2818f43f640",
+    "knowledge-graph.json": "f95dc23572a04ae1228c89950f3bb354fd71dd48a7e479bb2abf1c0a5e5fe4a4",
+    "model.js": "7d133a25820da605e0171b21b906aaba8c0f70012f4c7d415cc2eabe8c761d97",
+    "node-metadata.json": "66412d58eede8bf3d43df4ed36e6b7b0a29321c22fab387fda025d8677cb15ce",
+    "source-inventory.json": "2384a9203a7cf9d364272fed334a1bb08d92550d86b302f37a9d38bc517db6eb"
+  },
+  "screenshotHashes": {
+    "shots/01-comparison-overview.png": "abd8bf2bd5629033c7271bd15cbfcba950d1103c660e3557b42796130fc8488a",
+    "shots/02-rlhf-scope.png": "e4688d9f6a0459fd5f4a59cdced18f80f3745f7c5a1125481cd4e65530e48697",
+    "shots/03-nano-graph.png": "9ddcc4c6c8f21dae0eea227f64dbc6c03f5098a100feabf8feb110a5760c6d74",
+    "shots/04-nano-tree.png": "9810df2b0442e50cefb23fa14d683d2ed2215c4cc852a81941ea320d928508c2",
+    "shots/05-function-detail.png": "865ac3c7dd640509f2ac4ac2b5a33c68a29c397a6effc25851699f6eebce3d91",
+    "shots/06-mobile-comparison.png": "bedc720a68b42382e2ef9bd8316966af3b38e1fca5e5a9dfd7993235c0ce198b",
+    "shots/07-mobile-graph.png": "e15ff65ce08e99d2a69face4b24c3cbfbb37820f9c38cc179cc6f9718881e065",
+    "shots/08-http-subpath.png": "abd8bf2bd5629033c7271bd15cbfcba950d1103c660e3557b42796130fc8488a"
+  },
+  "environment": {
+    "TMPDIR": "/lustre/fs12/portfolios/nvr/projects/nvr_elm_llm/users/shyang/weian/project/nanolize/.tools/task18-browser-tmp",
+    "XDG_CACHE_HOME": "/lustre/fs12/portfolios/nvr/projects/nvr_elm_llm/users/shyang/weian/project/nanolize/.tools/task18-browser-tmp/cache",
+    "XDG_CONFIG_HOME": "/lustre/fs12/portfolios/nvr/projects/nvr_elm_llm/users/shyang/weian/project/nanolize/.tools/task18-browser-tmp/config",
+    "XDG_DATA_HOME": "/lustre/fs12/portfolios/nvr/projects/nvr_elm_llm/users/shyang/weian/project/nanolize/.tools/task18-browser-tmp/data",
+    "XDG_RUNTIME_DIR": "/lustre/fs12/portfolios/nvr/projects/nvr_elm_llm/users/shyang/weian/project/nanolize/.tools/task18-browser-tmp/runtime",
+    "PLAYWRIGHT_BROWSERS_PATH": "/lustre/fs12/portfolios/nvr/projects/nvr_elm_llm/users/shyang/weian/project/nanolize/tools/pw/browsers",
+    "FONTCONFIG_FILE": "/lustre/fs12/portfolios/nvr/projects/nvr_elm_llm/users/shyang/weian/environment/fonts/fonts.conf"
+  },
+  "nanoCommit": "052fbcbd7cc1209ed16ed33e05360842e9cb2b2c",
+  "playwrightVersion": "1.64.1",
+  "chromiumVersion": "156.0.8078.4",
+  "stage": "completed",
+  "chineseFonts": [
+    {
+      "familyName": "Noto Sans CJK SC",
+      "postScriptName": "NotoSansCJKsc-Regular",
+      "isCustomFont": false,
+      "glyphCount": 15
+    }
+  ],
+  "finishedAt": "2026-11-01T10:35:15.361Z"
+}
