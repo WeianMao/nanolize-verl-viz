@@ -1,0 +1,44 @@
+{
+  "nanolize_requested_branch": "claude/graph-contract",
+  "nanolize_upstream_revision": "eb54c4328809d3e37b83301d8a934e520aa84234",
+  "workaround_commits": [
+    "9e3f32153439c0d109829f06610c24f1250099c3",
+    "c80f0ed64619bf050ac44fd4c831d511afb255db",
+    "90ac959960e52ca31039f776cf275550c776157f",
+    "4b6092944030f9e11285e4afb82446c29956b0d9"
+  ],
+  "original_revision": "3c7baaa05ab4aa49cc819ce3a819d260de19c157",
+  "scope": "all",
+  "excluded": [],
+  "carry": [
+    "ext/requests-logo.ai",
+    "ext/requests-logo.svg",
+    "src/requests/py.typed"
+  ],
+  "budget_overrides": {},
+  "validation_policy_adjustments": [
+    {
+      "rule": "test-design forbidden imports",
+      "change": "Allow only project-owned module roots present in the external contract; keep third-party network imports and non-contract accesses rejected.",
+      "commit": "90ac959"
+    }
+  ],
+  "check_validation": {
+    "budget_seconds": 3600.0,
+    "coverage_exemptions": [],
+    "design": true,
+    "facts": true,
+    "knockout_scope": "all",
+    "light_seconds": 60,
+    "max_workers": 4,
+    "repetitions": 3,
+    "strict": false
+  },
+  "designer_runner": "fresh job Codex invocation (default)",
+  "original_overlap": "auto (option omitted)",
+  "custom_knowledge": false,
+  "default_job_timeout_seconds": 43200.0,
+  "default_author_timeout_seconds": 7200.0,
+  "recovery_revision": "78568bf9ada1f50d73593f9b4f8065fd7624cf52",
+  "recovery_source_changes": "Only seven independently accepted tests added; all original source and resources unchanged."
+}

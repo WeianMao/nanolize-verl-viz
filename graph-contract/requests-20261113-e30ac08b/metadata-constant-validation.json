@@ -1,0 +1,10 @@
+{
+  "candidate": "candidate-3",
+  "values": {
+    "__version__": "2.34.2",
+    "__build__": 144386
+  },
+  "source_matches_original": true,
+  "author_installed_wheel_confirmation": true,
+  "formal_installation_status": "passed"
+}
