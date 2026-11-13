@@ -1,0 +1,532 @@
+{
+  "status": "completed_with_gaps",
+  "summary": "完整作业已结束并交付 candidate-8。全部 18 个功能节点纳入范围，36 组冻结检查与 2 项安装检查通过；maintenance 缺少有效叶测试，packaging 父节点因此仅部分验证，真实任务成本评估也未验证。最终状态为 completed_with_gaps，不能据此声称全部功能等价。未关闭检查或人工放宽验收标准。",
+  "metrics": [
+    {
+      "label": "保留体积",
+      "value": "23.80%",
+      "note": "35,349 / 148,516 源码与配置 tokens"
+    },
+    {
+      "label": "与原版相同行比例",
+      "value": "27.1%",
+      "note": "同路径、去首尾空白、长度≥8 的行，按字符长度加权"
+    },
+    {
+      "label": "冻结检查",
+      "value": "36 / 36",
+      "note": "检查组，含 6 个原版检查与 30 个新增检查"
+    },
+    {
+      "label": "新增测试覆盖",
+      "value": "14 / 15",
+      "note": "外部叶节点；maintenance 未验证"
+    }
+  ],
+  "size": [
+    [
+      "源码 tokens",
+      115637,
+      32691,
+      "cl100k_base，逐文件计数"
+    ],
+    [
+      "配置 tokens",
+      32879,
+      2658,
+      "与源码一起计量"
+    ],
+    [
+      "总计 tokens",
+      148516,
+      35349,
+      "保留 23.80%，减少 76.20%；默认 50% 目标为 advisory"
+    ],
+    [
+      "去掉 Python 注释和文档字符串的保留比例",
+      "100%",
+      "33.57%",
+      "用于区分代码缩减与文档缩减"
+    ],
+    [
+      "公开定义文档覆盖率",
+      "68.6%",
+      "0.0%",
+      "候选文档字符串为 0；这部分文档损失也是压缩收益的来源"
+    ],
+    [
+      "与原版相同行比例",
+      "—",
+      "27.1%",
+      "仅同路径文件；行顺序不影响匹配；新路径不参与该比例，不等于防默写指标"
+    ],
+    [
+      "防默写规范化重合比例",
+      "—",
+      "14%",
+      "默认 auto；跨文件、去注释并规范化比较，指标口径与上一行不同"
+    ],
+    [
+      "防默写退回",
+      "—",
+      "0 个不同文件 / 0 文件次",
+      "auto 的全局 40% 触发线未达到；1 个函数为 62%，但单个函数不触发 auto。未关闭或放宽；不包含 3 个许可证草稿的所有权拒收"
+    ],
+    [
+      "原样携带数据",
+      "51,121 bytes",
+      "51,121 bytes",
+      "licenses/_spdx.py；两侧体积都排除，SHA256 完全相同"
+    ]
+  ],
+  "validation": [
+    [
+      "范围",
+      "18 / 18 节点",
+      "--scope all；未排除节点"
+    ],
+    [
+      "最终冻结检查",
+      "36 通过 / 0 失败 / 0 未运行",
+      "先完成所有修复；恢复后重新采集原版基线并复测候选"
+    ],
+    [
+      "安装验证",
+      "2 / 2 通过",
+      "全新 venv 构建安装；公开接口、py.typed 和模块来源检查"
+    ],
+    [
+      "测试设计",
+      "19 次设计调用；46 个提案，30 接受、16 拒绝；运行器失败 0",
+      "14 个外部叶节点补上有效测试，设计与作者使用独立会话"
+    ],
+    [
+      "dependency_groups",
+      "补充 2 个检查，已验证",
+      "接受的契约测试通过原版稳定性/knockout 验证，并在最终候选通过"
+    ],
+    [
+      "direct_url",
+      "补充 1 个检查，已验证",
+      "接受的契约测试通过原版稳定性/knockout 验证，并在最终候选通过"
+    ],
+    [
+      "errors",
+      "补充 1 个检查，已验证",
+      "接受的契约测试通过原版稳定性/knockout 验证，并在最终候选通过"
+    ],
+    [
+      "licenses",
+      "补充 2 个检查，已验证",
+      "接受的契约测试通过原版稳定性/knockout 验证，并在最终候选通过"
+    ],
+    [
+      "linux",
+      "补充 1 个检查，已验证",
+      "接受的契约测试通过原版稳定性/knockout 验证，并在最终候选通过"
+    ],
+    [
+      "markers",
+      "补充 2 个检查，已验证",
+      "接受的契约测试通过原版稳定性/knockout 验证，并在最终候选通过"
+    ],
+    [
+      "metadata",
+      "补充 2 个检查，已验证",
+      "接受的契约测试通过原版稳定性/knockout 验证，并在最终候选通过"
+    ],
+    [
+      "pylock",
+      "补充 3 个检查，已验证",
+      "接受的契约测试通过原版稳定性/knockout 验证，并在最终候选通过"
+    ],
+    [
+      "ranges",
+      "补充 3 个检查，已验证",
+      "接受的契约测试通过原版稳定性/knockout 验证，并在最终候选通过"
+    ],
+    [
+      "requirements",
+      "补充 3 个检查，已验证",
+      "接受的契约测试通过原版稳定性/knockout 验证，并在最终候选通过"
+    ],
+    [
+      "specifiers",
+      "补充 2 个检查，已验证",
+      "接受的契约测试通过原版稳定性/knockout 验证，并在最终候选通过"
+    ],
+    [
+      "tags",
+      "补充 3 个检查，已验证",
+      "接受的契约测试通过原版稳定性/knockout 验证，并在最终候选通过"
+    ],
+    [
+      "utils",
+      "补充 3 个检查，已验证",
+      "接受的契约测试通过原版稳定性/knockout 验证，并在最终候选通过"
+    ],
+    [
+      "version",
+      "补充 2 个检查，已验证",
+      "接受的契约测试通过原版稳定性/knockout 验证，并在最终候选通过"
+    ],
+    [
+      "maintenance",
+      "未验证",
+      "两轮设计提案在 knockout 有效性验证被拒；维护/基准脚本行为未获完整保障"
+    ],
+    [
+      "packaging",
+      "部分验证",
+      "父节点受 maintenance 缺口影响；全图义务：16 verified、1 partial、1 unknown、0 failed"
+    ],
+    [
+      "parser / range_engine",
+      "内部节点，无独立外部叶测试",
+      "新格式自动按内部契约处理；义务汇总的 verified 不能解读为独立直接测试覆盖"
+    ],
+    [
+      "原版真实任务基准",
+      "未验证：task_environment_unavailable",
+      "任务要求运行隐藏验收脚本，但求解环境中该脚本不可见且无 pytest；默认预算用完"
+    ],
+    [
+      "候选真实任务成本",
+      "未验证：behavior_acceptance_pending",
+      "完整行为覆盖尚缺 maintenance；不能声称真实任务成本改善"
+    ],
+    [
+      "源码参考",
+      "5 次修复调用获准参考 18 个文件 / 15 个能力",
+      "初次实现 source-free；失败修复按默认策略获得只读源码，不是全程不看原码"
+    ],
+    [
+      "维护范围限制",
+      "不得宣称全部保留",
+      "候选未保留原路径下的 benchmarks/*.py、tasks/paths.py、tasks/select_pypi_*.py；未验证节点的行为是否被替代实现也无充分证据"
+    ],
+    [
+      "人工放宽验收",
+      "无",
+      "未删除冻结检查、未修改断言、未把未知标成通过；以默认带缺口状态交付"
+    ]
+  ],
+  "conversion": [
+    [
+      "checks_kept",
+      6,
+      "保留原版检查；未传 --keep-checks"
+    ],
+    [
+      "checks_left_out",
+      12,
+      "按用户要求记录并继续"
+    ],
+    [
+      "checks_not_inspected",
+      0,
+      "按用户要求记录并继续"
+    ],
+    [
+      "external_capabilities_without_check",
+      9,
+      "冻结阶段由独立测试设计者补测试"
+    ],
+    [
+      "internal_capabilities_not_reached",
+      1,
+      "转换时为 packaging 根节点；记录后补充外部版本/发布接口"
+    ],
+    [
+      "unresolved_exports",
+      0,
+      "无"
+    ],
+    [
+      "carry_candidates",
+      1,
+      "--carry src/packaging/licenses/_spdx.py，原样携带"
+    ]
+  ],
+  "cost": [
+    [
+      "作业墙钟耗时",
+      "3 小时 7 分 35 秒（包含自动答复暂停与恢复重跑；不含此前安装和网站发布）"
+    ],
+    [
+      "起止时间 UTC",
+      "2026-11-13T07:07:53.508861+00:00 → 2026-11-13T10:15:28.447234+00:00"
+    ],
+    [
+      "模型调用",
+      "80 次；缺少 usage 的调用 0 次"
+    ],
+    [
+      "输入 tokens",
+      "26,246,434，其中缓存输入 22,886,272"
+    ],
+    [
+      "输出 tokens",
+      "421,120，已包含 reasoning output"
+    ],
+    [
+      "总计 tokens",
+      "26,667,554；缓存输入不重复计数；源码计量 tokens 与此无关"
+    ],
+    [
+      "实际货币费用",
+      "运行记录不含账单，无法确认实际扣费；未计根代理编排会话、机器成本与托管成本"
+    ],
+    [
+      "统一标准 API 价格情景估算",
+      "约 US$13.22；仅假设所有调用均按 GPT-6.1-Sol Standard 的 $2/$0.1/$10 每百万未缓存输入/缓存输入/输出计价。不是实际账单；Fast、长上下文及订阅计价可能不同，部分调用未记录 model/tier。"
+    ],
+    [
+      "默认任务评估预算",
+      "1,000,000 tokens；已开始的调用结束后计为 1,113,829；未追加预算，不能视为有效任务成本基线"
+    ],
+    [
+      "预算与上限设置",
+      "没有设置用户自定义预算或上限，均沿用分支默认值"
+    ]
+  ],
+  "sources": [
+    {
+      "title": "OpenAI GPT-6.1-Sol 模型价格",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol"
+    },
+    {
+      "title": "Codex 使用量价格说明",
+      "url": "https://learn.chatgpt.com/docs/pricing"
+    }
+  ],
+  "issues": [
+    {
+      "title": "8. nanolize 公共视图拒绝带 carry 的完整计量",
+      "body": "- 步骤：review 启动，生成审核页面。\n- 作业 ID：尚未提交；review 58e76f1b93664f2e883f3a937e64942e。\n- 报错原文：`OSError: Review service failed to start; inspect its private service.log`；内层 `ValueError: Complete code token measurement omits source files`。\n- 判断原因：public_view._public_measurement 要求计量源码路径与全部源码库存相等，未考虑已授权 carry、因此被排除计量的源码数据表。\n- 绕过：在本地分支 local/packaging-graph-contract-fixes 修改 src/nanolize/public_view.py，公开视图保留已公开源码映射中的 carry 哈希/字节描述，并用已计量源码与 carry 的并集校验完整性；增加 tests/test_carry.py 回归，验证公开视图往返、遗漏文件和错误哈希仍拒绝。未改任何检查或计量数值。\n- 结果：提交 8bf8144；携带相关 8 项、公共视图 12 项测试全部通过；review 44b3dfe8245b480db5ad4ccad19bd0e5 启动成功并提交作业 4327e083375146389cfcac988ca769cb。\n- 验收放宽：无。"
+    },
+    {
+      "title": "12. 行为事实首轮遗漏了部分原版测试节点",
+      "body": "- 步骤：write_test_facts 的独立复核。\n- 作业 ID：4327e083375146389cfcac988ca769cb。\n- 报错原文：pylock 复核返回 `\"missing\":[\"tests/test_pylock.py::test_pylock_mixed_path_separators\"]`；requirements 复核返回 `\"missing\":[\"tests/test_requirements.py::TestRequirementParsing::test_file_url\",\"tests/test_requirements.py::test_basic_valid_requirement_parsing\"]`，已有事实均 accept=true。\n- 判断原因：事实编写者首轮归纳遗漏了三个测试节点，并非原版行为检查失败。\n- 绕过：由 nanolize 默认流程自动启动第二轮事实编写和独立复核；未手工改事实、测试或验收标准。\n- 结果：pylock 第二轮 missing=[] 且无事实被拒；requirements 第二轮仍缺 tests/test_requirements.py::test_basic_valid_requirement_parsing，保留缺口等待汇总；原始测试未删除。\n- 验收放宽：无。"
+    },
+    {
+      "title": "14. 事实安全过滤把合法 URL/路径示例视为绝对位置",
+      "body": "- 步骤：验证写入知识包的行为事实。\n- 作业 ID：4327e083375146389cfcac988ca769cb。\n- 报错原文：`invalid_facts` / `fact contains an absolute location`，requirements 两轮 URL 示例事实和 pylock 首轮混合路径分隔符事实被过滤。\n- 判断原因：用于阻止泄露宿主机路径的静态过滤器也命中了原测试中作为数据的文件 URL、仓库 URL 和 Windows 路径示例。\n- 绕过：保留过滤器；由原有第二轮编写尝试改述。没有改动 frozen 检查、断言、外部契约或知识校验规则，允许默认非严格事实记录带缺口继续。\n- 结果：最终 158 条事实进入契约、5 条历史提案被剔除、2 个测试节点未被事实覆盖；原版对应检查仍保留并将照常验证。详见 test-facts.json。\n- 验收放宽：无（事实不完整的缺口显式保留，不作为通过证据）。"
+    },
+    {
+      "title": "18. 其他测试提案被静态过滤或语法检查拒绝",
+      "body": "- 步骤：第一轮补充测试的静态验收。\n- 作业 ID：4327e083375146389cfcac988ca769cb。\n- 报错原文：direct_url/test_record_contract.py、direct_url/test_credential_contract.py、metadata/test_validation_contract.py：`invalid_facts`, `fact contains an absolute location`；markers/test_marker_environment_contract.py：`forbidden_call`；specifiers/test_conjunction_behavior.py：`does_not_parse`，Python 解析详情 `unexpected indent (<unknown>, line 8)`。以上路径均在 tests/nanolize_contracts/ 下。\n- 判断原因：合法 URL 示例触发绝对位置过滤；markers 提案使用 platform.system，静态规则按属性名 system 命中进程调用禁用项；specifiers 提案含错误缩进。拒绝发生在运行前。\n- 绕过：沿用默认静态校验，剔除这些未满足标准的新增提案；对应节点另有有效测试，因此默认流程没有为这些文件再设计一轮。未删改原有检查、未放开过滤条件。\n- 结果：direct_url 接受 1 个、metadata 2 个、markers 2 个、specifiers 2 个新增测试；拒绝记录保留于 designed-tests.json，测试覆盖只按实际接受项报告。\n- 验收放宽：无。"
+    },
+    {
+      "title": "19. 默认真实任务评估要求求解者运行隐藏脚本，导致原版基准未验证",
+      "body": "- 步骤：task_effort_original，development/modify 第一次独立求解。\n- 作业 ID：4327e083375146389cfcac988ca769cb。\n- 报错原文：求解者结果 `status: blocked, blocker: data`，`Required verification remains blocked: the acceptance script is missing and pytest is unavailable.`；执行 `.venv/bin/python .task-effort/checks/development/accept.py` 返回 `can't open file '$TASK_WORKSPACE/.task-effort/checks/development/accept.py': [Errno 2] No such file or directory`；pytest 返回 `No module named pytest`。基准记录 `status: unverified, ready: false`；单次评估 `reason: task_environment_unavailable`。\n- 判断原因：出题者在公开任务文字里明确要求运行 .task-effort/checks/development/accept.py，但独立求解阶段按隐藏验收隔离规则没有该脚本。任务又声明无需网络和第三方依赖；求解者创建的新 .venv 没有 pytest。它完成了源码修改并自报 7 个独立检查通过，但不能满足任务里那条不可执行的必需验证指令，故返回 blocked。\n- 绕过：保留该评估的 blocked/unverified 结果，不把自报通过当作隐藏验收通过，不向求解者泄露隐藏验收脚本。按 nanolize 默认非致命路径继续完整压缩与功能验证；不修改冻结任务或增加预算。默认任务预算 1,000,000 tokens 在已开始的调用完成后记录为 1,113,829（出题 626,839，求解 486,990），未启动更多原版重复评估。\n- 结果：最终任务成本比较仍为 unverified / behavior_acceptance_pending；原版任务基准未建立这一独立缺口也保留在报告中。不能据此宣称任务成本改善。\n- 验收放宽：无人工放宽；沿用默认“评估未验证仍可继续、交付保留缺口”的行为。原版任务评估未通过是实际缺口。"
+    },
+    {
+      "title": "23. 控制器缺少启动错误摘要，无法直接定位共享失败",
+      "body": "- 步骤：candidate-2 完整比较及两个针对性复测后的控制器诊断。\n- 作业 ID：4327e083375146389cfcac988ca769cb。\n- 报错/请求原文：clarification-1：`The saved issue observations contain no failure_digest or diagnostic text. Please provide the sanitized startup/collection error for check-35 and check-7, including any missing import or candidate location...`。控制器只能看到全部 pytest exit=4，先复测两个检查，再启动一次只读 reviewer 会话。\n- 判断原因：测试尚未完成收集，没有 JUnit 用例证据；现有反馈没有把可安全提供的 ImportError 摘要交给控制器，原始 stderr 只在 owner 的 verification.json 中。\n- 绕过：核实两个检查均为同一 ImportError 后，把不含原版实现、测试正文或绝对路径的简短诊断保存到 run/clarification-1.txt，用 `nanolize job-answer ... clarification-1 --answer-file run/clarification-1.txt --expected-revision initial --json` 自动回答；不等待用户，不修改契约。\n- 结果：09:19:42 UTC 答复成功写入；控制器第10轮据此修复 markers，约09:22完成，随后第11轮代表性检查通过、完整比较31/36通过。后续 check-1 的收集错误也缺少摘要，按同样方式回答 clarification-2；candidate-5 继续缺少 _TrimmedRelease 的收集摘要和 pylock 失败摘要时，回答 clarification-3（包括接口名字与调用签名，不包含实现或测试正文）。candidate-7 的61个 specifier 用例失败仍没有摘要时，再通过 clarification-4 提供按缓存30例、bound3例、pickle14例、惰性构造14例分类的实际错误，明确与收集错误区分。未等待用户介入。\n- 验收放宽：无。"
+    },
+    {
+      "title": "24. 转换保留的旧检查仍约束多个私有接口",
+      "body": "- 步骤：candidate-3 完整比较。\n- 作业 ID：4327e083375146389cfcac988ca769cb。\n- 报错原文：test_specifiers 收集失败 `ModuleNotFoundError: No module named 'packaging._structures'`，收集依赖导入 Infinity、NegativeInfinity；test_dependency_groups 两例失败 `AttributeError: 'DependencyGroupResolver' object has no attribute '_resolve'` 和 `does not have the attribute '_validate'`；test_pylock 五例失败 `type object 'PackageVcs' has no attribute '_from_dict'`、PackageWheel/Package 同类错误。\n- 判断原因：转换器保留的测试通过跨测试模块导入、实例私有方法 mock 以及私有反序列化入口，对新实现施加了外部契约之外的兼容要求。初次冻结时这些检查已被标为私有结构耦合，但仍保留为比较标准。\n- 绕过：不删除、改写或跳过旧检查；由控制器逐能力修复候选兼容接口。缺少的 specifiers 收集诊断通过 clarification-2 自动提供，仅包含错误和需要存在的名字，不提供原版实现或测试正文。\n- 结果：candidate-3 总计31/36检查组通过；candidate-4 的依赖组原版检查及两个新增契约检查共3项针对性复测全部通过。控制器随后补齐 _structures；candidate-5 完整比较32/36通过，但收集继续暴露 `ImportError: cannot import name '_TrimmedRelease' from 'packaging.version'`。已通过 clarification-3 一次性说明相关导入名称和 pylock 缺失的 classmethod 接口。candidate-7 的 pylock 检查已通过，完整比较35/36通过；specifiers 终于完成收集，2036例通过、61例失败、2例跳过，剩余失败涉及私有 `_spec_version`、`_canonical_spec_cache`、`_canonical_spec`、`_to_ranges` 以及相关缓存/惰性构造/反序列化接口。典型错误包括 `AttributeError: 'Specifier' object has no attribute '_spec_version'`、`assert None == ('>=', '1')`；candidate-8 补齐缓存与惰性状态兼容后，36/36项冻结检查组全部通过；没有删除私有接口相关用例，也没有改动断言。\n- 验收放宽：无。"
+    }
+  ],
+  "provenance": [
+    [
+      "原版提交",
+      "284ff8900e59115dc86f85ca4e9d87d95e7dbc75"
+    ],
+    [
+      "nanolize 指定分支 / 基准提交",
+      "claude/graph-contract / eb54c4328809d3e37b83301d8a934e520aa84234"
+    ],
+    [
+      "本地修复分支 / 提交",
+      "local/packaging-graph-contract-fixes / 8bf8144（20 项相关回归通过，未推送）"
+    ],
+    [
+      "作业 ID",
+      "4327e083375146389cfcac988ca769cb"
+    ],
+    [
+      "候选提交",
+      "d2f7c84a3b60d97438dd4f02916165cca4b9d243"
+    ],
+    [
+      "候选本地分支",
+      "codex/nanolize-4327e083375146389cfcac988ca769cb"
+    ],
+    [
+      "原版工作区",
+      "未修改；压缩结果保存在独立 worktree"
+    ],
+    [
+      "本地压缩产物归档",
+      "run/packaging-compressed.tar.gz（完整候选仓库；归档字节数不用于上面的源码体积比例）"
+    ],
+    [
+      "公开内容",
+      "仅报告和 nanolize public_safe 允许的功能图资产；不发布原版/候选源码或原始会话"
+    ],
+    [
+      "carry SHA256",
+      "3535b48e8ea739daed1fed42f5a1814f5e6537516f749fb04846c75766a32c68"
+    ],
+    [
+      "交付状态",
+      "completed_with_gaps"
+    ]
+  ],
+  "raw_metrics": {
+    "wall_seconds": 11254.938373,
+    "usage": {
+      "calls": 80,
+      "input_tokens": 26246434,
+      "cached_input_tokens": 22886272,
+      "output_tokens": 421120,
+      "reasoning_output_tokens": 108063,
+      "duration_seconds": 12552.3784,
+      "usage_missing": 0,
+      "total_tokens": 26667554
+    },
+    "usage_by_role": {
+      "controller": {
+        "calls": 30,
+        "input_tokens": 2340138,
+        "cached_input_tokens": 1197056,
+        "output_tokens": 14809,
+        "reasoning_output_tokens": 4474,
+        "duration_seconds": 591.0655000000002,
+        "usage_missing": 0
+      },
+      "examiner": {
+        "calls": 1,
+        "input_tokens": 602105,
+        "cached_input_tokens": 531200,
+        "output_tokens": 24734,
+        "reasoning_output_tokens": 11688,
+        "duration_seconds": 612.9945,
+        "usage_missing": 0
+      },
+      "solver": {
+        "calls": 1,
+        "input_tokens": 474678,
+        "cached_input_tokens": 447488,
+        "output_tokens": 12312,
+        "reasoning_output_tokens": 6582,
+        "duration_seconds": 304.6863,
+        "usage_missing": 0
+      },
+      "fact_reviewer": {
+        "calls": 8,
+        "input_tokens": 1607089,
+        "cached_input_tokens": 1343872,
+        "output_tokens": 9963,
+        "reasoning_output_tokens": 2666,
+        "duration_seconds": 581.4933,
+        "usage_missing": 0
+      },
+      "fact_writer": {
+        "calls": 8,
+        "input_tokens": 3423829,
+        "cached_input_tokens": 3090176,
+        "output_tokens": 43821,
+        "reasoning_output_tokens": 5113,
+        "duration_seconds": 1739.3978000000002,
+        "usage_missing": 0
+      },
+      "test_reviewer": {
+        "calls": 1,
+        "input_tokens": 2202686,
+        "cached_input_tokens": 2038144,
+        "output_tokens": 4569,
+        "reasoning_output_tokens": 1415,
+        "duration_seconds": 206.9887,
+        "usage_missing": 0
+      },
+      "test_designer": {
+        "calls": 19,
+        "input_tokens": 5664017,
+        "cached_input_tokens": 5083904,
+        "output_tokens": 161847,
+        "reasoning_output_tokens": 9278,
+        "duration_seconds": 4478.859299999999,
+        "usage_missing": 0
+      },
+      "author": {
+        "calls": 12,
+        "input_tokens": 9931892,
+        "cached_input_tokens": 9154432,
+        "output_tokens": 149065,
+        "reasoning_output_tokens": 66847,
+        "duration_seconds": 4036.893,
+        "usage_missing": 0
+      }
+    },
+    "quality_summary": {
+      "documented_percent": {
+        "delivered": 0.0,
+        "original": 68.6
+      },
+      "total_retained_percent": 23.8,
+      "undocumented_retained_percent": 33.57
+    },
+    "unchanged_percent": 27.1,
+    "original_overlap": {
+      "compared_lines": 2194,
+      "documentation_percent": 1,
+      "function_limit_percent": 60,
+      "function_lines": 8,
+      "functions": 1,
+      "limit_percent": 40,
+      "listed_functions": [
+        {
+          "function": "Specifier.prereleases",
+          "lines": 8,
+          "path": "src/packaging/specifiers.py",
+          "percent": 62
+        }
+      ],
+      "mode": "auto",
+      "percent": 14
+    },
+    "returned_files": {},
+    "carry": {
+      "path": "src/packaging/licenses/_spdx.py",
+      "bytes": 51121,
+      "sha256": "3535b48e8ea739daed1fed42f5a1814f5e6537516f749fb04846c75766a32c68",
+      "unchanged": true
+    },
+    "obligation_summary": {
+      "verified": 16,
+      "partial": 1,
+      "retired": 0,
+      "failed": 0,
+      "unknown": 1,
+      "total": 18,
+      "retained": 18,
+      "complete": false
+    },
+    "source_reference": {
+      "capabilities": [
+        "dependency_groups",
+        "direct_url",
+        "errors",
+        "licenses",
+        "linux",
+        "markers",
+        "metadata",
+        "pylock",
+        "range_engine",
+        "ranges",
+        "requirements",
+        "specifiers",
+        "tags",
+        "utils",
+        "version"
+      ],
+      "files": 18,
+      "author_calls": 5
+    },
+    "pricing_scenario_usd": 13.2201512
+  }
+}

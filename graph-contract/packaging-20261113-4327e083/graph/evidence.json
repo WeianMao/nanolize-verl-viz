@@ -1,0 +1,1078 @@
+{
+  "limitations": [
+    "Only summary results are published; captured command output is omitted."
+  ],
+  "status": "unverified",
+  "tests": {
+    "original_total": 6,
+    "retained": 36,
+    "retired": 0,
+    "needs_adaptation": 0,
+    "adapted": 0,
+    "contract": 30,
+    "passed": 36,
+    "failed": 0,
+    "fixed_baseline_failure": 0,
+    "not_run": 0
+  },
+  "capability_results": [
+    {
+      "id": "packaging",
+      "status": "unverified",
+      "checks": [],
+      "check_status": "unverified",
+      "baseline_status": "not_run",
+      "candidate_status": "not_run"
+    },
+    {
+      "id": "version",
+      "status": "passed",
+      "checks": [
+        "public-behavior-snapshot",
+        "contract-version-4327e0-31",
+        "contract-version-4327e0-32"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "specifiers",
+      "status": "passed",
+      "checks": [
+        "test_specifiers",
+        "contract-specifiers-4327e0-22",
+        "contract-specifiers-4327e0-23"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "ranges",
+      "status": "passed",
+      "checks": [
+        "contract-ranges-4327e0-16",
+        "contract-ranges-4327e0-17",
+        "contract-ranges-4327e0-18"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "range_engine",
+      "status": "passed",
+      "checks": [],
+      "check_status": "passed",
+      "baseline_status": "not_run",
+      "candidate_status": "not_run"
+    },
+    {
+      "id": "markers",
+      "status": "passed",
+      "checks": [
+        "contract-markers-4327e0-9",
+        "contract-markers-4327e0-10"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "requirements",
+      "status": "passed",
+      "checks": [
+        "test_requirements",
+        "public-behavior-snapshot",
+        "contract-requirements-4327e0-19",
+        "contract-requirements-4327e0-20",
+        "contract-requirements-4327e0-21"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "parser",
+      "status": "passed",
+      "checks": [],
+      "check_status": "passed",
+      "baseline_status": "not_run",
+      "candidate_status": "not_run"
+    },
+    {
+      "id": "tags",
+      "status": "passed",
+      "checks": [
+        "contract-tags-4327e0-28",
+        "contract-tags-4327e0-29",
+        "contract-tags-4327e0-30"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "linux",
+      "status": "passed",
+      "checks": [
+        "contract-linux-4327e0-7"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "utils",
+      "status": "passed",
+      "checks": [
+        "test_utils",
+        "public-behavior-snapshot",
+        "contract-utils-4327e0-24",
+        "contract-utils-4327e0-25",
+        "contract-utils-4327e0-26"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "licenses",
+      "status": "passed",
+      "checks": [
+        "contract-licenses-4327e0-5",
+        "contract-licenses-4327e0-6"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "metadata",
+      "status": "passed",
+      "checks": [
+        "contract-metadata-4327e0-11",
+        "contract-metadata-4327e0-12"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "errors",
+      "status": "passed",
+      "checks": [
+        "contract-errors-4327e0-26"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "dependency_groups",
+      "status": "passed",
+      "checks": [
+        "test_dependency_groups",
+        "contract-dependency_groups-4327e0-2",
+        "contract-dependency_groups-4327e0-3"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "direct_url",
+      "status": "passed",
+      "checks": [
+        "contract-direct_url-4327e0-4"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "pylock",
+      "status": "passed",
+      "checks": [
+        "test_pylock",
+        "contract-pylock-4327e0-13",
+        "contract-pylock-4327e0-14",
+        "contract-pylock-4327e0-15"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "maintenance",
+      "status": "unverified",
+      "checks": [],
+      "check_status": "unverified",
+      "baseline_status": "not_run",
+      "candidate_status": "not_run"
+    }
+  ],
+  "checks": [
+    {
+      "name": "test_specifiers",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "specifiers"
+      ]
+    },
+    {
+      "name": "test_requirements",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "requirements"
+      ]
+    },
+    {
+      "name": "test_utils",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "utils"
+      ]
+    },
+    {
+      "name": "test_dependency_groups",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "dependency_groups"
+      ]
+    },
+    {
+      "name": "test_pylock",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "pylock"
+      ]
+    },
+    {
+      "name": "public-behavior-snapshot",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "version",
+        "requirements",
+        "utils"
+      ]
+    },
+    {
+      "name": "contract-dependency_groups-4327e0-2",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "dependency_groups"
+      ]
+    },
+    {
+      "name": "contract-dependency_groups-4327e0-3",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "dependency_groups"
+      ]
+    },
+    {
+      "name": "contract-direct_url-4327e0-4",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "direct_url"
+      ]
+    },
+    {
+      "name": "contract-licenses-4327e0-5",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "licenses"
+      ]
+    },
+    {
+      "name": "contract-licenses-4327e0-6",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "licenses"
+      ]
+    },
+    {
+      "name": "contract-linux-4327e0-7",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "linux"
+      ]
+    },
+    {
+      "name": "contract-markers-4327e0-9",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "markers"
+      ]
+    },
+    {
+      "name": "contract-markers-4327e0-10",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "markers"
+      ]
+    },
+    {
+      "name": "contract-metadata-4327e0-11",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "metadata"
+      ]
+    },
+    {
+      "name": "contract-metadata-4327e0-12",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "metadata"
+      ]
+    },
+    {
+      "name": "contract-pylock-4327e0-13",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "pylock"
+      ]
+    },
+    {
+      "name": "contract-pylock-4327e0-14",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "pylock"
+      ]
+    },
+    {
+      "name": "contract-pylock-4327e0-15",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "pylock"
+      ]
+    },
+    {
+      "name": "contract-ranges-4327e0-16",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "ranges"
+      ]
+    },
+    {
+      "name": "contract-ranges-4327e0-17",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "ranges"
+      ]
+    },
+    {
+      "name": "contract-ranges-4327e0-18",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "ranges"
+      ]
+    },
+    {
+      "name": "contract-requirements-4327e0-19",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "requirements"
+      ]
+    },
+    {
+      "name": "contract-requirements-4327e0-20",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "requirements"
+      ]
+    },
+    {
+      "name": "contract-requirements-4327e0-21",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "requirements"
+      ]
+    },
+    {
+      "name": "contract-specifiers-4327e0-22",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "specifiers"
+      ]
+    },
+    {
+      "name": "contract-specifiers-4327e0-23",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "specifiers"
+      ]
+    },
+    {
+      "name": "contract-utils-4327e0-24",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "utils"
+      ]
+    },
+    {
+      "name": "contract-utils-4327e0-25",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "utils"
+      ]
+    },
+    {
+      "name": "contract-utils-4327e0-26",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "utils"
+      ]
+    },
+    {
+      "name": "contract-errors-4327e0-26",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "errors"
+      ]
+    },
+    {
+      "name": "contract-tags-4327e0-28",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "tags"
+      ]
+    },
+    {
+      "name": "contract-tags-4327e0-29",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "tags"
+      ]
+    },
+    {
+      "name": "contract-tags-4327e0-30",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "tags"
+      ]
+    },
+    {
+      "name": "contract-version-4327e0-31",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "version"
+      ]
+    },
+    {
+      "name": "contract-version-4327e0-32",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "version"
+      ]
+    }
+  ],
+  "actual_size": {
+    "baseline_source_lines": 14592,
+    "source_lines": 4383,
+    "source_files": 24,
+    "retained_percent": 23.801475935252768,
+    "target_percent": 50.0,
+    "target_source_lines": 7296.0,
+    "estimated_source_lines": null,
+    "metric": "tokens",
+    "tokenizer": {
+      "classification": "source_and_configuration_v2",
+      "decoding": "python_encoding_cookie_else_utf8_strict",
+      "encoding": "cl100k_base",
+      "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+      "file_boundaries": "independent_sum",
+      "library": "tiktoken",
+      "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+      "special_tokens": "ordinary_text",
+      "text_policy": "raw_decoded_text_per_file",
+      "version": "0.12.0"
+    },
+    "measurement_sha256": "88515c7f3967313caeb42ae1c667ea031a7d4ae084c830eb896e7387c3f07b56",
+    "source_tokens": 32691,
+    "configuration_tokens": 2658,
+    "total_tokens": 35349,
+    "baseline_tokens": 148516,
+    "target_tokens": 74258,
+    "source_retained_percent": 30.03700657894737,
+    "complete": true,
+    "target_met": true
+  },
+  "budget_status": "met",
+  "verification_scope": "full",
+  "rewrite_progress": {
+    "priority": "functionality_first",
+    "author_attempts": 12,
+    "repair_attempts": 8,
+    "optimization_attempts": 0,
+    "restorations": 0,
+    "rejected_attempts": 1,
+    "failed_optimizations": 0,
+    "max_optimization_attempts": 3,
+    "stop_reason": null,
+    "accepted_candidate_available": false,
+    "behavior_acceptance": "not_established",
+    "size_acceptance": "met"
+  },
+  "installation_evidence": {
+    "status": "passed",
+    "checks_passed": 2,
+    "checks_total": 2,
+    "environment_metadata_complete": true
+  },
+  "obligation_ledger": {
+    "records": [
+      {
+        "capability": "packaging",
+        "status": "partial",
+        "obligations": [
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "unknown",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "unknown",
+            "kind": "coverage"
+          }
+        ]
+      },
+      {
+        "capability": "version",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "public-behavior-snapshot",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-version-4327e0-31",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-version-4327e0-32",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "specifiers",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "test_specifiers",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-specifiers-4327e0-22",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-specifiers-4327e0-23",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "ranges",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-ranges-4327e0-16",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-ranges-4327e0-17",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-ranges-4327e0-18",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "range_engine",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "kind": "external_contract"
+          }
+        ]
+      },
+      {
+        "capability": "markers",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-markers-4327e0-9",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-markers-4327e0-10",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "requirements",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "test_requirements",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "public-behavior-snapshot",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-requirements-4327e0-19",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-requirements-4327e0-20",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-requirements-4327e0-21",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "parser",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "kind": "external_contract"
+          }
+        ]
+      },
+      {
+        "capability": "tags",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-tags-4327e0-28",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-tags-4327e0-29",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-tags-4327e0-30",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "linux",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-linux-4327e0-7",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "utils",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "test_utils",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "public-behavior-snapshot",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-utils-4327e0-24",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-utils-4327e0-25",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-utils-4327e0-26",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "licenses",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-licenses-4327e0-5",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-licenses-4327e0-6",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "metadata",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-metadata-4327e0-11",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-metadata-4327e0-12",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "errors",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-errors-4327e0-26",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "dependency_groups",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "test_dependency_groups",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-dependency_groups-4327e0-2",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-dependency_groups-4327e0-3",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "direct_url",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-direct_url-4327e0-4",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "pylock",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "test_pylock",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-pylock-4327e0-13",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-pylock-4327e0-14",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-pylock-4327e0-15",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "maintenance",
+        "status": "unknown",
+        "obligations": [
+          {
+            "status": "unknown",
+            "kind": "coverage"
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "verified": 16,
+      "partial": 1,
+      "retired": 0,
+      "failed": 0,
+      "unknown": 1,
+      "total": 18,
+      "retained": 18,
+      "complete": false
+    },
+    "limitations": [
+      "Public summaries omit private evidence bindings and raw output."
+    ]
+  },
+  "leaf_coverage": {
+    "status": "ready",
+    "strict": false,
+    "valid": [
+      "dependency_groups",
+      "direct_url",
+      "errors",
+      "licenses",
+      "linux",
+      "markers",
+      "metadata",
+      "pylock",
+      "ranges",
+      "requirements",
+      "specifiers",
+      "tags",
+      "utils",
+      "version"
+    ],
+    "missing": [
+      "maintenance"
+    ],
+    "exempted": [
+      "parser",
+      "range_engine"
+    ],
+    "why_missing": {
+      "maintenance": [
+        "no_check"
+      ],
+      "parser": [
+        "no_check"
+      ],
+      "range_engine": [
+        "no_check"
+      ]
+    }
+  },
+  "task_effort": {
+    "schema_version": 1,
+    "operation": "task_effort_evaluation",
+    "status": "unverified",
+    "binding": {},
+    "policy": {
+      "comparison": "empirical_range",
+      "strict_all_tasks": true
+    },
+    "task_types": [
+      "understand",
+      "diagnose",
+      "modify",
+      "execute"
+    ],
+    "tasks": [],
+    "overhead": {
+      "examiner_tokens": null,
+      "judge_tokens": null,
+      "solver_tokens": null,
+      "total_tokens": null,
+      "usage_complete": false,
+      "observed_total_tokens": null,
+      "role_usage_complete": {
+        "examiner": false,
+        "solver": false,
+        "judge": false
+      }
+    },
+    "resources": {
+      "completed_runs": 0,
+      "cleanup_pending": false,
+      "cleanup_pending_runs": 0
+    },
+    "iterations": [],
+    "limitations": [
+      "Task effort measures these tasks under the recorded agent settings; it is not a universal measure of human cognitive burden.",
+      "Tokens count solver model inputs and outputs, including cached input. Missing usage is unavailable, never zero. Examiner and judge overhead is separate.",
+      "Empirical ranges describe repeated observations, not statistical confidence intervals. Failed or unrun tasks do not establish an improvement.",
+      "Task links identify assessed capabilities only; they do not change module behavior verification badges.",
+      "Task prompts, hidden inputs, judging rubrics, source excerpts, raw traces and local paths are omitted from this public report."
+    ],
+    "stop_reason": "behavior_acceptance_pending"
+  }
+}
