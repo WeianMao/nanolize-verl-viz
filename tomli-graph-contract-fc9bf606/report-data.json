@@ -1,0 +1,544 @@
+{
+  "job_id": "fc9bf606822f4ace8cf4c229518838d9",
+  "completed_at": "2026-11-13T08:10:52.822540+00:00",
+  "lead": "使用 WeianMao/nanolize 的 claude/graph-contract 分支完成两轮重写与验收。终态为 completed_with_gaps：已执行检查全部通过，但仍存在测试覆盖、来源证明及任务成本基线缺口，不能据此宣称完整语义等价。",
+  "badges": [
+    "completed_with_gaps",
+    "--scope all · 9/9 节点",
+    "design 与 check-validation 开启",
+    "预算及上限均用默认值",
+    "无检查关闭或断言放宽"
+  ],
+  "metrics": [
+    {
+      "label": "体积保留比例",
+      "value": "42.45%",
+      "note": "6,192 / 14,587 tokens；减少 57.55%",
+      "percent": 42.448755741413585
+    },
+    {
+      "label": "与原版相同的源码行",
+      "value": "4.92%",
+      "note": "18 / 366 个可比较代码行；内置报告取整为 5%",
+      "percent": 4.918032786885246
+    },
+    {
+      "label": "测试设计覆盖",
+      "value": "3 个节点",
+      "note": "接受 3 个测试文件；否决 2 个提案"
+    },
+    {
+      "label": "缺少行为检查",
+      "value": "1 个节点",
+      "note": "profile；另有 api、parse 两个测试来源证明缺口"
+    },
+    {
+      "label": "防默写退回",
+      "value": "0 个文件",
+      "note": "默认 auto；0 次拒绝、0 个超限函数"
+    },
+    {
+      "label": "模型用量",
+      "value": "4,841,011",
+      "note": "输入 + 输出 tokens；实际货币账单不可取得"
+    },
+    {
+      "label": "作业耗时",
+      "value": "1h 08m 32s",
+      "note": "2026-11-13 07:02:20 → 08:10:52 UTC"
+    },
+    {
+      "label": "最终检查",
+      "value": "7 / 7",
+      "note": "行为检查全通过；独立安装检查 2 / 2"
+    }
+  ],
+  "validation": [
+    "测试设计面向 benchmark、fuzz、packaging、profile 四个节点，独立设计运行器提出 5 个测试文件：接受 3 个，覆盖 benchmark、fuzz、packaging；否决 2 个。设计器、审阅者与作者使用各自独立运行会话。",
+    "最终 7 项冻结行为检查全部通过：35 个 pytest 用例、744 个 TOML 数据子测试、1 个原有条件跳过，以及独立的公开输出对比。跳过项要求 Python 3.15，本次运行 Python 3.11。安装与安装后 API 检查另外 2/2 通过。",
+    "行为义务账本：9 个保留节点，7 个已验证、1 个未知（profile）、1 个聚合节点部分验证（tomli）。profile 提案只统计名为 loads 的函数调用，无法证明调用了实际解析器，被审阅者否决后保留为缺口。",
+    "有效叶测试来源审计：3 个 valid（benchmark、fuzz、packaging）、3 个 missing（api、parse、profile），2 个内部节点按内部规则免于直接外部叶测试。api/parse 的运行检查通过，但 inputs:[\"tests\"] 纳入新增设计测试后触发 referenced_files_changed / role_not_proven；979 个原版测试及数据文件独立核对，变更数为 0。",
+    "fuzz 的 normalize 测试通过；另一回调提案因断言不足被否决，所以该节点获得部分行为证据，并不等于整个 fuzz 工作流被证明。自定义内联输出检查误标 original，仍执行输出对比，但来源记为 unknown。",
+    "默认 strict:false 未改变。未关闭 check-validation、design、task-effort 或任何冻结检查；未排除功能节点，未放宽验收断言。验收状态保持 unverified / completed_with_gaps。"
+  ],
+  "capabilities": [
+    {
+      "id": "tomli",
+      "surface": "internal",
+      "description": "TOML 1.1 parsing library and all repository development workflows.",
+      "label": "完整发行版",
+      "status": "部分验证：7 个叶节点有通过证据，1 个未验证",
+      "interface": []
+    },
+    {
+      "id": "api",
+      "surface": "external",
+      "description": "Expose text and binary file parsing and TOMLDecodeError through the tomli package with version metadata.",
+      "label": "公开包 API",
+      "status": "执行通过；有效测试来源证明不足",
+      "interface": [
+        "Public name tomli.__version__",
+        "Package distribution and import name tomli, version 2.5.0, Python >=3.8, PEP 561 py.typed marker; loads and load expose keyword-only parse_float defaulting to float and return dictionaries."
+      ]
+    },
+    {
+      "id": "parse",
+      "surface": "external",
+      "description": "Parse TOML 1.1 documents into dictionaries: keys, strings and escapes, arrays, tables, arrays of tables, inline tables, comments and whitespace; reject invalid syntax, duplicates and invalid namespace mutations; support binary UTF-8 input, custom float conversion, recursion limits and located exceptions.",
+      "label": "文档解析与错误",
+      "status": "执行通过；有效测试来源证明不足",
+      "interface": [
+        "Public callable tomli.loads(__s: str, *, parse_float: ParseFloat=float) -> dict[str, Any]",
+        "Public callable tomli.load(__fp: IO[bytes], *, parse_float: ParseFloat=float) -> dict[str, Any]",
+        "Public class tomli.TOMLDecodeError (bases: ValueError)",
+        "Public callable tomli.TOMLDecodeError.__init__(self, msg: str | type[DEPRECATED_DEFAULT]=DEPRECATED_DEFAULT, doc: str | type[DEPRECATED_DEFAULT]=DEPRECATED_DEFAULT, pos: Pos | type[DEPRECATED_DEFAULT]=DEPRECATED_DEFAULT, *args: Any)",
+        "File format TOML v1.1.0: UTF-8, binary file input, CRLF normalization, quoted and dotted keys, multiline and inline collections, escape sequences, booleans, integer bases, special floats, dates and times including optional seconds; return the corresponding native Python values.",
+        "TOMLDecodeError is a ValueError with msg, doc, pos, lineno and colno; format messages with (at line N, column M) or (at end of document); legacy free-form constructor arguments remain accepted with DeprecationWarning.",
+        "Preserve diagnostics used by callers: Invalid value; Invalid statement; parse_float must not return dicts or lists; Expected str object, not '<type>'; File must be opened in binary mode, e.g. use `open('foo.toml', 'rb')`; and recursion-limit errors identifying excessive key parts or inline array/table nesting."
+      ]
+    },
+    {
+      "id": "scalars",
+      "surface": "internal",
+      "description": "Convert integers, finite and special floats, local dates and times, local and offset datetimes, including optional seconds and microsecond truncation; preserve numeric syntax validation and timezone behavior.",
+      "label": "标量与时间值",
+      "status": "内部节点：通过外部解析检查",
+      "interface": []
+    },
+    {
+      "id": "typing",
+      "surface": "internal",
+      "description": "Supply type annotations for the public parsing API and mark the distributed package as typed.",
+      "label": "类型与类型标记",
+      "status": "内部节点：通过 API / 导入检查",
+      "interface": []
+    },
+    {
+      "id": "packaging",
+      "surface": "external",
+      "description": "Build and install the Python package using the configured backend; provide the optional setuptools and mypyc build workflow.",
+      "label": "构建与发行",
+      "status": "补测与独立安装通过",
+      "interface": [
+        "Program scripts/use_setuptools.py",
+        "Public callable scripts.use_setuptools.use_setuptools() -> None",
+        "Default build backend flit_core.buildapi with flit_core>=3.12,<5; scripts/use_setuptools.py changes build-system to setuptools.build_meta with setuptools>=77.0.3 and mypy[mypyc]>=1.15; TOMLI_USE_MYPYC defaults to disabled and exactly 1 enables compiled extensions."
+      ]
+    },
+    {
+      "id": "benchmark",
+      "surface": "external",
+      "description": "Compare parsing speed of rtoml, pytomlpp, tomli, toml and tomlkit on the benchmark TOML fixture and print execution time and relative performance.",
+      "label": "性能基准程序",
+      "status": "补测通过；首轮输出回归已修复",
+      "interface": [
+        "Program benchmark/run.py",
+        "Public callable benchmark.run.run(run_count: int) -> None",
+        "Public callable benchmark.run.benchmark(name: str, run_count: int, func: Callable, col_width: tuple, compare_to: float | None=None) -> float",
+        "Program benchmark/run.py defaults to 5000 parses using benchmark/data.toml; reports parser, exec time, performance (more is better), Running..., baseline (100%) and relative percentages, using best of five repeated timings."
+      ]
+    },
+    {
+      "id": "profile",
+      "surface": "external",
+      "description": "Run the benchmark fixture through Tomli repeatedly for profiling.",
+      "label": "性能分析程序",
+      "status": "未验证：提案被独立审阅否决",
+      "interface": [
+        "Program profiler/profiler_script.py",
+        "Reads benchmark/data.toml and parses it 1000 times to provide the profiling workload."
+      ]
+    },
+    {
+      "id": "fuzz",
+      "surface": "external",
+      "description": "Use Atheris to generate Unicode TOML input, accept syntax and recursion failures, round-trip parsed values through tomli_w, normalize NaNs and report mismatches with input diagnostics.",
+      "label": "模糊测试工具",
+      "status": "normalize 补测通过；回调主体覆盖有限",
+      "interface": [
+        "Program fuzzer/fuzz.py",
+        "Public callable fuzzer.fuzz.test_one_input(input_bytes: bytes) -> None",
+        "Public callable fuzzer.fuzz.normalize_toml_obj(toml_obj: dict) -> None",
+        "Program fuzzer/fuzz.py accepts Atheris/libFuzzer arguments, suppresses warnings, disables timezone caching for deterministic coverage and reports Input was, Codepoints, Original dict, Roundtripped dict and Dicts not equal after roundtrip on unexpected failures."
+      ]
+    }
+  ],
+  "conversion": [
+    {
+      "key": "checks_kept",
+      "count": 4,
+      "note": "3 项原版 pytest + 1 项内联输出契约"
+    },
+    {
+      "key": "checks_left_out",
+      "count": 0,
+      "note": "转换未剔除原版检查"
+    },
+    {
+      "key": "checks_not_inspected",
+      "count": 0,
+      "note": "没有未读到内容的检查"
+    },
+    {
+      "key": "external_capabilities_without_check",
+      "count": 3,
+      "note": "benchmark、fuzz、packaging；冻结时补测"
+    },
+    {
+      "key": "internal_capabilities_not_reached",
+      "count": 1,
+      "note": "profile；转换后人工补充公开程序接口，纳入设计"
+    },
+    {
+      "key": "unresolved_exports",
+      "count": 0,
+      "note": "无未解析导出"
+    },
+    {
+      "key": "carry_candidates",
+      "count": 0,
+      "note": "另显式 carry src/tomli/py.typed 与 benchmark/data.toml，共 2 文件 / 4,047 bytes"
+    },
+    {
+      "key": "modules_read / unreadable_modules",
+      "count": "9 / 0",
+      "note": "静态转换不执行项目；未使用 --keep-checks；输出路径创建时不存在"
+    }
+  ],
+  "run": [
+    "版本：nanolize 分支 claude/graph-contract，提交 eb54c4328809d3e37b83301d8a934e520aa84234；没有使用 main，也没有修改或推送 nanolize 代码。原版 Tomli 提交 43a86ade8b795c6ef9b4ec53372a607cd1ed426f；原版工作树最终干净。",
+    "全部 9 个节点保留。接口补充了版本与 Python 要求、parse_float 默认值、TOML 1.1 格式、固定错误文字、构建配置、基准表头及默认值、性能分析循环与 fuzz 输入契约。没有附带详细 knowledge 库；冻结器按默认流程生成 57 条测试事实。",
+    "第一轮独立实现后只有 benchmark 固定输出回归；第二轮修复 benchmark/run.py，重新执行完整行为与安装检查。最终 candidate-2 提交 fb2299a21e83b5df7ebfa6cc05e67b7794cafe80。",
+    "防默写使用默认 auto：整体阈值 40%，函数阈值 60%（至少 8 个可比较行），每文件最多退回 1 次。本次 18/366 = 4.918%（内置整数为 5%），未触发退回，退回文件 0、拒绝次数 0。",
+    "源码访问记录：首轮按源码不提供给作者的流程执行；修复轮默认允许读取失败节点，实际向 1 次作者调用提供 benchmark 的 1 个原版文件。此流程不是操作系统强制隔离，不能称整个作业始终未读原版源码。",
+    "作业耗时 4112.247 秒。24 条非重叠模型调用回执合计输入 4,745,166 tokens（其中缓存输入 4,026,752），输出 95,845，输入加输出 4,841,011。缓存输入已经包含在输入中，推理输出已经包含在输出中，未重复相加。包括冻结事实、设计与审阅、controller、任务设计与求解、两次作者调用；不含本次外部编排对话。",
+    "没有可取得的货币账单，因此美元花费为未知，而非 0。任务设计器和原版求解者合计 1,063,683 tokens，但原版任务要求的 accept.py 缺失，同时沙箱构建依赖下载失败，任务基线未建立；最终任务评估又因行为验收缺口返回 behavior_acceptance_pending，没有任务成本改善结论。",
+    "本地源码交付目录：tomli-nanolized-20261113-081043。完整原始证据保存在本地运行目录；公开页面只含汇总和脱敏 issues.md。验证包导出因 validity.policy.test_template.argv[0] 的绝对路径被拒绝，portable bundle unavailable。"
+  ],
+  "issues": [
+    {
+      "title": "I01 — 安装源码：HTTPS 克隆缺少认证",
+      "body": "- 步骤：安装 WeianMao/nanolize 的 claude/graph-contract 分支。\n- 作业 ID：尚未创建。\n- 报错原文：`fatal: could not read Username for 'https://github.com': No such device or address`\n- 原因判断：此环境的 HTTPS Git 没有可用凭证，仓库需要认证。\n- 绕过：改用已配置的 GitHub SSH 凭据克隆同一分支；未修改代码或验收标准。\n- 结果：成功，分支提交 eb54c4328809d3e37b83301d8a934e520aa84234。"
+    },
+    {
+      "title": "I02 — 依赖安装：附加包索引 DNS 失败",
+      "body": "- 步骤：pip 安装分支源码与 pytest。\n- 作业 ID：尚未创建。\n- 报错原文：`Failed to establish a new connection: [Errno -2] Name or service not known`，目标 `pypi.ngc.nvidia.com`。\n- 原因判断：环境默认附加 NVIDIA 包索引无法解析，每个包重复重试；PyPI 正常。\n- 绕过：终止本次 pip，使用 `PIP_CONFIG_FILE=/dev/null PIP_EXTRA_INDEX_URL=''`，仅从 https://pypi.org/simple 安装。未修改依赖要求或验收标准。\n- 结果：成功安装 nanolize 0.8.0（分支 editable 安装）及测试依赖。"
+    },
+    {
+      "title": "I03 — 旧清单：类型标记不是生产源码",
+      "body": "- 步骤：contract-propose 清单规范化。\n- 作业 ID：尚未创建。\n- 报错原文：`ValueError: Capability path matches no production source: src/tomli/py.typed`\n- 原因判断：py.typed 是空的 PEP 561 标记文件，不能放入生产源码路径映射。\n- 绕过：从 typing 节点的 paths 删除该标记，仅映射 _types.py；在对应 interface 保留包必须带 py.typed 的要求，启动时原样 carry 标记。旧清单生成脚本 run/prepare_manifest.py 已更新。\n- 结果：重新转换成功，输出文件此前未创建。未放宽功能或检查。"
+    },
+    {
+      "title": "I04 — 执行器选择：后台环境无法发现 Slurm 控制器",
+      "body": "- 步骤：作业准备阶段，默认 auto 检查执行器探测。\n- 作业 ID：fc9bf606822f4ace8cf4c229518838d9\n- 报错原文：\n```\nScheduler command failed: sinfo: sinfo: error: resolve_ctls_from_dns_srv: res_nsearch error: Unknown host\nsinfo: error: fetch_config: DNS SRV lookup failed\nsinfo: error: _establish_config_source: failed to fetch config\nsinfo: fatal: Could not establish a configuration source\n```\n- 原因判断：交互 shell 的 sinfo 正常，后台作业的环境过滤后缺少 Slurm 配置来源，DNS SRV 查询失败。\n- 绕过：使用 nanolize 默认 auto 自带的本机回退；未修改源码、检查、预算或验收要求。原版与候选都在同一本机环境运行。\n- 结果：成功进入 controller 冻结流程。"
+    },
+    {
+      "title": "I05 — 报告发布：Sites 服务未启用",
+      "body": "- 步骤：检查公开报告网站的发布通道。\n- 作业 ID：fc9bf606822f4ace8cf4c229518838d9（作业仍正常运行）。\n- 报错原文：`SitesConnectorError: Sites is not yet enabled for this workspace.`；`error_code: NOT_FOUND`, `type: sites_access_disabled`, `code: 404`。\n- 原因判断：当前账号工作区没有 Sites 服务权限。\n- 绕过：改用其他公开静态托管通道，仅发布汇总报告与经过路径脱敏的问题记录。\n- 结果：本次报告改用既有 GitHub Pages 仓库的独立路径 tomli-graph-contract-fc9bf606/ 发布；公开访问状态另由运行目录的 publish-verification.json 保存。压缩验收不受影响。"
+    },
+    {
+      "title": "I06 — 报告发布：GitHub 连接器搜索超时",
+      "body": "- 步骤：寻找可用报告托管仓库。\n- 作业 ID：fc9bf606822f4ace8cf4c229518838d9。\n- 报错原文：`ReadTimeout:`，`error_code: UNKNOWN`。\n- 原因判断：GitHub 连接器仓库搜索请求超时。\n- 绕过：直接读取 GitHub 公共仓库元数据以寻找现有报告仓库；不读取凭据或发布原版代码。\n- 结果：找到 WeianMao/nanolize-verl-viz 的既有 GitHub Pages 站点；本地 SSH 克隆和 dry-run 推送通过。"
+    },
+    {
+      "title": "I07 — 辅助监控：扫描到正在清理的临时目录",
+      "body": "- 步骤：读取测试设计器运行结果（辅助监控脚本）。\n- 作业 ID：fc9bf606822f4ace8cf4c229518838d9。\n- 报错原文：`FileNotFoundError: [Errno 2] No such file or directory: 'run/state/jobs/jobs/fc9bf606822f4ace8cf4c229518838d9/design/round-1/packaging/workspace/.git'`\n- 原因判断：递归 glob 遍历了设计器工作副本，与设计器正常清理副本发生竞争；nanolize 作业未报错。\n- 绕过：监控改用固定深度路径 `design/round-*/*/runner/run.json`，不遍历 workspace；未修改 nanolize 或验收标准。\n- 结果：可继续读取设计结果，主作业正常运行。"
+    },
+    {
+      "title": "I08 — 设计器在无 Git 元数据的工作副本中查询 Git 状态",
+      "body": "- 步骤：测试设计 round-1/packaging。\n- 作业 ID：fc9bf606822f4ace8cf4c229518838d9。\n- 报错原文：\n```text\nfatal: not a git repository (or any parent up to mount point <工作区用户目录>/weian/project/graph-contract-runs/iso)\nStopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).\n```\n- 原因判断：设计器临时源码副本不提供可用 Git 仓库，git status 属于辅助查询。\n- 绕过：设计器继续通过结构化 tests 输出提交测试，不依赖 Git 状态；无文件或参数变更。\n- 结果：设计器正常完成；打包检查通过审阅并在原版与最终候选中通过。\n\n### I08 再次发生 — 任务设计器的 Git 状态查询\n- 步骤：task-effort/examiner（2026-11-13）；作业 ID 同上。\n- 报错原文：\n```text\nfatal: not a git repository (or any parent up to mount point <工作区用户目录>/weian/project/graph-contract-runs/iso)\nStopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).\n```\n- 原因与绕过：与 I08 相同，任务设计的普通源码副本没有 Git 元数据；完成源码阅读后继续输出任务契约，无需 Git 状态，未改代码或验收。\n- 结果：任务设计器 completed，耗时 546.1 秒，已进入原版任务成本测量。\n- 同会话另一条 `rg --files -g AGENTS.md ...` 返回 1 且无输出，表示没有匹配文件，属于正常诊断查询而非项目错误。\n\n\n### I08 再次发生 — 原版任务求解者查询 Git 状态\n- 步骤：task-effort/original/development/modify/0；作业 ID 同上。\n- 报错原文：\n```text\nfatal: not a git repository (or any parent up to mount point /lustre)\nStopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).\n```\n- 原因与绕过：任务源码副本没有 Git 元数据，求解者继续用文件比较与行为检查记录修改；未改变验收。\n- 结果：完成修改及本地测试；任务最终未验证的原因见 I16。"
+    },
+    {
+      "title": "I09 — 模糊测试设计器探测错误输入类型",
+      "body": "- 步骤：测试设计 round-1/fuzz。\n- 作业 ID：fc9bf606822f4ace8cf4c229518838d9。\n- 报错原文：\n```text\nINFO: Instrumenting tomli_w\nINFO: Instrumenting tomli_w._writer\nINFO: Instrumenting __future__\nINFO: Instrumenting datetime\nINFO: Instrumenting tomli\nINFO: Instrumenting tomli._parser\nINFO: Instrumenting tomli._re\nTraceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"<工作区用户目录>/weian/project/graph-contract-runs/iso/tomli/run/state/jobs/jobs/fc9bf606822f4ace8cf4c229518838d9/design/round-1/fuzz/workspace/fuzzer/fuzz.py\", line 22, in test_one_input\n    fdp = atheris.FuzzedDataProvider(input_bytes)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: __init__(): incompatible constructor arguments. The following argument types are supported:\n    1. atheris.native.FuzzedDataProvider(arg0: bytes)\n\nInvoked with: 'x'\nNone\nNone\n```\n- 原因判断：这是刻意以 str 调用要求 bytes 的 Atheris 接口的负例探测，TypeError 是原版行为，不是作业失败。\n- 绕过：保留 bytes 输入契约及非法输入的异常行为；没有绕过、关闭或放宽断言。\n- 结果：设计器正常完成并提出两个测试文件。"
+    },
+    {
+      "title": "I10 — 基准测试设计器试探导入时未设置源码路径",
+      "body": "- 步骤：测试设计 round-1/benchmark。\n- 作业 ID：fc9bf606822f4ace8cf4c229518838d9。\n- 报错原文：\n```text\nTraceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"<工作区用户目录>/weian/project/graph-contract-runs/iso/tomli/run/state/jobs/jobs/fc9bf606822f4ace8cf4c229518838d9/design/round-1/benchmark/workspace/benchmark/run.py\", line 12, in <module>\n    import tomli\nModuleNotFoundError: No module named 'tomli'\n```\n- 原因判断：仓库使用 src 布局且未安装目标包，试探命令未传 PYTHONPATH=src。\n- 绕过：正式冻结检查沿用 run/check-validation.json 中已配置的 PYTHONPATH=src；不额外安装或影射原版包。\n- 结果：设计器正常完成；基准测试检查通过审阅，并捕获 I18 回归；修复后 9 个用例通过。"
+    },
+    {
+      "title": "I11 — 辅助源码定位：查询了不存在的模块路径",
+      "body": "- 步骤：阅读 nanolize 的服务、费用和报告实现（辅助定位）。\n- 作业 ID：创建前与 fc9bf606822f4ace8cf4c229518838d9 运行期间；均未影响主作业。\n- 报错原文：`rg: nanolize/src/nanolize/review_service.py: IO error for operation on nanolize/src/nanolize/review_service.py: No such file or directory (os error 2)`；`sed: can't read nanolize/src/nanolize/execution_service.py: No such file or directory`；`rg: nanolize/src/nanolize/*cost*: No such file or directory (os error 2)`；`rg: nanolize/src/nanolize/reporting.py: No such file or directory (os error 2)`；`rg: nanolize/src/nanolize/functional_report.py: No such file or directory (os error 2)`。\n- 原因判断：辅助查询时猜测的模块名不符合当前分支的文件布局。\n- 绕过：通过实际文件清单和符号搜索，定位 execution_server.py、execution.py、code_quality.py 与 job_tools/deliver.py。未修改任何代码、作业参数或验收标准。\n- 结果：完成所需源码阅读，主作业继续正常运行。\n\n### I11 再次发生 — 汇总阶段辅助模块定位\n- 步骤：只读定位验证包导出逻辑；作业 ID 同上。\n- 报错原文：`rg: nanolize/src/nanolize/bundle.py: No such file or directory (os error 2)`；`ImportError: cannot import name 'scoped' from 'nanolize'`；另一次辅助查询 `nanolize/src/nanolize/review_server.py` 也不存在（实际为 public_review.py）。\n- 原因与绕过：辅助分析猜测了错误文件名和内部别名；阅读 verification_bundle.py 的实际导入，改用 capability_verification 模块。未修改 nanolize 或冻结作业。\n- 结果：成功定位 I19 的绝对路径字段。"
+    },
+    {
+      "title": "I12 — 测试设计审阅否决：fuzz",
+      "body": "- 步骤：冻结阶段，对 tests/nanolize_contracts/fuzz/test_fuzz_callback.py 做独立审阅。\n- 作业 ID：fc9bf606822f4ace8cf4c229518838d9。\n- 报错/否决原文：\n```text\nreviewer_veto\nWould pass if the callback constructed FuzzedDataProvider and immediately returned, skipping parsing, serialization, normalization, and round-trip comparison entirely.\n```\n- 原因判断：回调即使只创建 FuzzedDataProvider 后直接返回，也会通过所提断言；无法保护解析与往返比较。\n- 绕过：维持 reviewer_veto，不把无效提案加入冻结检查；按默认非 strict 策略继续剩余流程，未修改任何验收断言。\n- 结果：fuzz 节点保留另一项通过审阅的 normalize 测试；回调主体没有因此获得完整验证结论。"
+    },
+    {
+      "title": "I13 — 测试设计审阅否决：profile",
+      "body": "- 步骤：冻结阶段，对 tests/nanolize_contracts/profile/test_profile_workload.py 做独立审阅。\n- 作业 ID：fc9bf606822f4ace8cf4c229518838d9。\n- 报错/否决原文：\n```text\nreviewer_veto\nCounts every profiled function named loads, regardless of its module or identity. An unrelated loads function called 1000 times could satisfy the assertion without invoking the TOML parser.\n```\n- 原因判断：仅按函数名 loads 统计调用次数，无法证明调用的是 Tomli 解析器。\n- 绕过：维持 reviewer_veto，不把无效提案加入冻结检查；按默认非 strict 策略继续剩余流程，未修改任何验收断言。\n- 结果：profile 节点保留为未验证；其功能接口和全选范围仍保留，未关闭检查或改 strict 默认值。"
+    },
+    {
+      "title": "I14 — 补测后原版检查的来源记账降级",
+      "body": "- 步骤：合并设计测试后重新捕获基线与叶节点覆盖。\n- 作业 ID：fc9bf606822f4ace8cf4c229518838d9。\n- 报错/诊断原文：`role_not_proven`；`check_role_mismatch`；`referenced_files_changed`；`The original role lacks byte-identical files at provenance_ref, or runs inline program text.`\n- 原因判断：旧清单三个 pytest 检查都声明 `inputs: [\"tests\"]`；设计器向 tests/nanolize_contracts 添加三个文件后，来源审计把这些新增输入视为 original 检查的 referenced_files_changed，同时把新测试导入的节点归到原版检查。原版测试本身未改变：独立逐文件核对 979 个原版测试/数据文件，差异 0 个。\n- 绕过：没有修改已封存契约或强制改写来源结论。继续执行全部七项冻结检查，保留默认非 strict 策略及来源警告；报告单列“检查运行通过”和“有效测试来源证明不足”。后续清单应把原版测试文件、辅助文件和 data 目录列为精确 inputs，避免纳入新增测试目录。\n- 结果：原版七项基线均通过；当前 leaf_coverage 缺口为 api、parse、profile 共三个外部叶节点；scalars、typing 为内部节点，按外部调用验证规则统计。无检查被关闭或断言放宽。"
+    },
+    {
+      "title": "I15 — 自定义内联输出检查被标为 original",
+      "body": "- 步骤：输出对比检查的来源审计。\n- 作业 ID：fc9bf606822f4ace8cf4c229518838d9。\n- 报错/诊断原文：`check_role_mismatch`；`provenance: unknown`；`provenance_reasons: [\"inline_program\", \"no_referenced_files\"]`。\n- 原因判断：本次写入旧清单的 public-output-contract 是内联 Python 输出契约，清单将其 role 标为 original，但它不是仓库原有测试文件。\n- 绕过：保留该检查及冻结输出对比，不将来源 unknown 伪报为 original 已证明；不改动已封存清单。后续清单应给自定义输出契约使用 contract 角色。\n- 结果：该输出对比基线通过并继续作为候选验收检查，但不能贡献有效叶测试来源证明。"
+    },
+    {
+      "title": "I16 — 原版任务成本基线缺少验收程序",
+      "body": "- 步骤：task-effort/original/development/modify/0。\n- 作业 ID：fc9bf606822f4ace8cf4c229518838d9。\n- 报错/诊断原文：`task_environment_unavailable`；solver `status: blocked`, `blocker: data`；`Required acceptance could not run because accept.py is absent.`\n- 原因判断：生成的修改任务要求求解者运行未交付到其工作区的 accept.py；求解者完成代码修改及本地回归，但无法完成被要求的独立验收，故原版任务基线未成立。\n- 绕过：保持任务测量结果 unverified，不伪造成功、不关闭 task-effort；默认 controller 继续独立重写与全部行为/安装验收。未修改 nanolize、冻结任务或验收标准。\n- 结果：prepare_tasks 返回 unverified、tasks=0；开始作者 run_agent。最终不宣称任务成本改善。"
+    },
+    {
+      "title": "I17 — 原版任务沙箱内安装构建依赖失败",
+      "body": "- 步骤：任务求解者运行 `.venv/bin/python -m pip install --no-cache-dir -e .`。\n- 作业 ID：fc9bf606822f4ace8cf4c229518838d9。\n- 报错原文（末段）：\n```text\nLooking in indexes: https://pypi.org/simple, https://pypi.ngc.nvidia.com\nObtaining file://<工作区用户目录>/.cache/nanolize/task-workspaces/tmp8b4t984u/workspace\n  Installing build dependencies: started\n  Installing build dependencies: finished with status 'error'\n  error: subprocess-exited-with-error\n  \n  × pip subprocess to install build dependencies did not run successfully.\n  │ exit code: 1\n  ╰─> [13 lines of output]\n      Looking in indexes: https://pypi.org/simple, https://pypi.ngc.nvidia.com, https://pypi.ngc.nvidia.com\n      WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7e09778f6870>: Failed to establish a new connection: [Errno -2] Name or service not known')': /simple/flit-core/\n      WARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7e097733fb90>: Failed to establish a new connection: [Errno -2] Name or service not known')': /simple/flit-core/\n      WARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7e097733ff20>: Failed to establish a new connection: [Errno -2] Name or service not known')': /simple/flit-core/\n      WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7e097733ff80>: Failed to establish a new connection: [Errno -2] Name or service not known')': /simple/flit-core/\n      WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7e0977364380>: Failed to establish a new connection: [Errno -2] Name or service not known')': /simple/flit-core/\n      WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7e0977364500>: Failed to establish a new connection: [Errno -2] Name or service not known')': /flit-core/\n      WARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7e0977364890>: Failed to establish a new connection: [Errno -2] Name or service not known')': /flit-core/\n      WARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7e0977364aa0>: Failed to establish a new connection: [Errno -2] Name or service not known')': /flit-core/\n      WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7e0977364cb0>: Failed to establish a new connection: [Errno -2] Name or service not known')': /flit-core/\n      WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7e0977364ec0>: Failed to establish a new connection: [Errno -2] Name or service not known')': /flit-core/\n      ERROR: Could not find a version that satisfies the requirement flit_core<5,>=3.12 (from versions: none)\n      ERROR: No matching distribution found for flit_core<5,>=3.12\n      [end of output]\n  \n  note: This error originates from a subprocess, and is likely not a problem with pip.\nerror: subprocess-exited-with-error\n\n× pip subprocess to install build dependencies did not run successfully.\n│ exit code: 1\n╰─> See above for output.\n\nnote: This error originates from a subprocess, and is likely not a problem with pip.\n```\n- 原因判断：独立任务沙箱无法从网络获取 Flit 构建依赖（包含环境附带的包索引），已有目标源码并未缺失。\n- 绕过：求解者用其工作区 `.venv` 并设置 `PYTHONPATH=src` 运行原有 unittest 和自检；未替换为系统已安装的 Tomli，未跳过行为断言。正式交付的安装检查仍保留。\n- 结果：本地回归与样例探测通过，但由于 I16，完整任务验收仍为 blocked/unverified。"
+    },
+    {
+      "title": "I18 — 首轮候选的基准测试输出回归",
+      "body": "- 步骤：candidate-1 / attempt 1 的完整行为比较，检查 contract-benchmark-fc9bf6-1。\n- 作业 ID：fc9bf606822f4ace8cf4c229518838d9。\n- 报错原文：\n```text\nE       AssertionError: assert ['Parsing ben...------------'] == ['Parsing dat...------------']\nE         \nE         At index 0 diff: 'Parsing benchmark/data.toml 1 times' != 'Parsing data.toml 1 times:'\nE         Use -v to get more diff\nFAILED tests/nanolize_contracts/benchmark/test_benchmark_public.py::test_run_reports_all_parsers_in_order\n1 failed, 8 passed in 0.57s\n```\n- 原因判断：候选 benchmark/run.py 改变了固定输出标题，把 `Parsing data.toml 1 times:` 写成 `Parsing benchmark/data.toml 1 times`，还可能有表头排版差异。其他六项检查通过，包括原版解析数据的 744 个子测试。\n- 绕过：由 controller 调用独立作者修复 benchmark 外部输出契约，然后重新跑完整检查；保留原有断言，不改测试。\n- 结果：第二轮候选 fb2299a21e83b5df7ebfa6cc05e67b7794cafe80 修复 benchmark/run.py 的固定标题及表头排版；7 项冻结行为检查全通过（35 个 pytest 用例、744 个数据子测试、1 个原有条件跳过，另加内联输出对比），2 项独立安装检查通过。体积 6192 / 14587 tokens（42.45%）。默认失败节点源码参考机制向修复作者提供了原版 benchmark/run.py；未修改测试或验收标准。"
+    },
+    {
+      "title": "I19 — 可移植验证包导出拒绝绝对路径",
+      "body": "- 步骤：冻结基线的验证包导出；交付时核查 bundle-receipt.json。\n- 作业 ID：fc9bf606822f4ace8cf4c229518838d9。\n- 报错原文：`Portable metadata contains an absolute path; use relative check inputs`；`status: unavailable`。\n- 原因判断：只读复查确认 portable manifest 正常；绝对路径出现在 `validity.policy.test_template.argv[0]`，值为本次 venv 的绝对 Python 路径。导出器转换主检查 argv，却将 validity 策略原样复制进 portable 元数据，随后被其隐私防护拒绝。\n- 绕过：保留导出器拒绝结果，不删除审计字段、不修改冻结策略、不关闭路径防护。用已生成的本地交付源码和完整本地验证记录交付；公开网站只发布脱敏汇总，明确没有可移植验证包。未修改 nanolize 代码。\n- 结果：作业正常到达 completed_with_gaps，源码导出到 tomli-nanolized-20261113-081043；7 项行为检查和 2 项安装检查通过，portable verification bundle 仍 unavailable。"
+    },
+    {
+      "title": "I20 — 收尾停止审阅服务时已不可用",
+      "body": "- 步骤：终态交付之后，调用 `nanolize review-stop 74a2b407cceb40f882a187943dc0c858 --state-root run/state --json`。\n- 作业 ID：fc9bf606822f4ace8cf4c229518838d9。\n- 报错/返回原文：`status: unavailable`，命令退出码 1。\n- 原因判断：随后直接连接原 loopback 审阅端口 41199 返回 ECONNREFUSED（111），该服务已不在监听。终态作业与交付文件仍完整。\n- 绕过：确认端口关闭后不重启服务，也不终止其他进程；未修改文件、参数、源码或验收标准。\n- 结果：没有需要继续停止的审阅监听端口；最终交付和静态报告发布不受影响。"
+    }
+  ],
+  "limits": [
+    "体积口径为 nanolize source_and_configuration_v2、tiktoken 0.12.0 / cl100k_base：逐文件累计原始文本 tokens，包括源码与计入配置；排除不变原版测试、文档、启动器配置及二进制资源。最终源码 4,661 tokens + 配置 1,531 = 6,192；基线 14,587。物理源码行数 560/1,132 = 49.47%。",
+    "源码同行比例以候选的 366 个可比较代码行为分母：去空白，排除签名、装饰器、导入、注释、文档字符串、少于 8 字符的行和单纯保存同名参数的行；比较同路径同名函数及原版全局源码行，重命名/移动不能简单逃避计量。18 行重合，4.92%；代码质量记录取整为 5%。",
+    "另一个旧口径 delivered.rewrite.unchanged_percent 为 61.5%：只比较仍在原路径的 10 个文件，包含配置与文本，按行长加权，排除新增路径的核心实现。它与上述跨路径源码行计数的分母、筛选和权重不同，不能作为同一指标混用。",
+    "去掉 Python 注释和文档字符串后的体积比例为 46.82%。候选 Python 文档字符串为 0 tokens，公开定义的文档覆盖从 17.0% 降到 0.0%；压缩包含文档减少，不应全归为逻辑简化。",
+    "通过现有检查不能证明完整语义等价。profile 没有行为检查，api/parse 有来源审计缺口，fuzz 回调主体未得到完整验证；Python 3.15 专用条件测试本次跳过。默认非严格叶测试策略允许带缺口交付，未人为放宽。"
+  ],
+  "evidence": {
+    "status": "completed_with_gaps",
+    "started_at": "2026-11-13T07:02:20.575429+00:00",
+    "completed_at": "2026-11-13T08:10:52.822540+00:00",
+    "elapsed_seconds": 4112.247111,
+    "size": {
+      "baseline_source_lines": 1132,
+      "baseline_tokens": 14587,
+      "complete": true,
+      "configuration_tokens": 1531,
+      "metric": "tokens",
+      "retained_percent": 42.448755741413585,
+      "source_files": 9,
+      "source_lines": 560,
+      "source_retained_percent": 49.46996466431096,
+      "source_tokens": 4661,
+      "target_met": true,
+      "target_percent": 50.0,
+      "target_source_lines": 566.0,
+      "target_tokens": 7293,
+      "tokenizer": {
+        "classification": "source_and_configuration_v2",
+        "decoding": "python_encoding_cookie_else_utf8_strict",
+        "encoding": "cl100k_base",
+        "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+        "file_boundaries": "independent_sum",
+        "library": "tiktoken",
+        "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+        "special_tokens": "ordinary_text",
+        "text_policy": "raw_decoded_text_per_file",
+        "version": "0.12.0"
+      },
+      "total_tokens": 6192
+    },
+    "code_quality": {
+      "delivered": {
+        "composition": {
+          "code_tokens": 6168,
+          "other_tokens": 1531,
+          "python_code_tokens": 4637,
+          "python_comment_tokens": 20,
+          "python_data_literal_tokens": 0,
+          "python_docstring_tokens": 0,
+          "python_files": 9,
+          "unparsed_python_files": 0
+        },
+        "documentation": {
+          "documented": 0,
+          "documented_percent": 0.0,
+          "public_definitions": 13
+        },
+        "rewrite": {
+          "files_at_an_original_path": 10,
+          "unchanged_percent": 61.5
+        },
+        "total_tokens": 6192
+      },
+      "original": {
+        "composition": {
+          "code_tokens": 13021,
+          "other_tokens": 5119,
+          "python_code_tokens": 7902,
+          "python_comment_tokens": 1100,
+          "python_data_literal_tokens": 0,
+          "python_docstring_tokens": 304,
+          "python_files": 9,
+          "unparsed_python_files": 0
+        },
+        "documentation": {
+          "documented": 8,
+          "documented_percent": 17.0,
+          "public_definitions": 47
+        },
+        "total_tokens": 14587
+      },
+      "original_overlap": {
+        "compared_lines": 366,
+        "documentation_percent": 0,
+        "function_limit_percent": 60,
+        "function_lines": 8,
+        "functions": 0,
+        "limit_percent": 40,
+        "mode": "auto",
+        "percent": 5
+      },
+      "schema_version": 1,
+      "status": "measured",
+      "summary": {
+        "documented_percent": {
+          "delivered": 0.0,
+          "original": 17.0
+        },
+        "total_retained_percent": 42.45,
+        "undocumented_retained_percent": 46.82
+      }
+    },
+    "overlap_summary": {
+      "share": 0.04918032786885246,
+      "compared_lines": 366,
+      "functions": [],
+      "documentation_percent": 0
+    },
+    "usage": {
+      "reported_calls": 24,
+      "totals": {
+        "input_tokens": 4745166,
+        "cached_input_tokens": 4026752,
+        "output_tokens": 95845,
+        "reasoning_output_tokens": 38637,
+        "input_plus_output_tokens": 4841011
+      },
+      "currency_cost": null
+    },
+    "test_checks": [
+      {
+        "name": "test_data",
+        "status": "passed",
+        "cases": {
+          "errors": 0,
+          "executed": 2,
+          "failed": 0,
+          "passed": 2,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "test_error",
+        "status": "passed",
+        "cases": {
+          "errors": 0,
+          "executed": 7,
+          "failed": 0,
+          "passed": 7,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "test_misc",
+        "status": "passed",
+        "cases": {
+          "errors": 0,
+          "executed": 8,
+          "failed": 0,
+          "passed": 8,
+          "skipped": 1
+        }
+      },
+      {
+        "name": "public-output-contract",
+        "status": "passed",
+        "cases": null
+      },
+      {
+        "name": "contract-benchmark-fc9bf6-1",
+        "status": "passed",
+        "cases": {
+          "errors": 0,
+          "executed": 9,
+          "failed": 0,
+          "passed": 9,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "contract-fuzz-fc9bf6-2",
+        "status": "passed",
+        "cases": {
+          "errors": 0,
+          "executed": 5,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "contract-packaging-fc9bf6-4",
+        "status": "passed",
+        "cases": {
+          "errors": 0,
+          "executed": 4,
+          "failed": 0,
+          "passed": 4,
+          "skipped": 0
+        }
+      }
+    ],
+    "source_reference": {
+      "author_calls": 1,
+      "capabilities": [
+        "benchmark"
+      ],
+      "files": 1
+    },
+    "acceptance": {
+      "details": {
+        "behavior_obligations_incomplete": {
+          "capabilities": {
+            "failed": 0,
+            "partial": 1,
+            "retained": 9,
+            "unknown": 1,
+            "verified": 7
+          },
+          "failed": false
+        },
+        "current_full_behavior_comparison_missing_or_failed": {
+          "failed": false,
+          "failed_capabilities": [],
+          "failed_checks": [],
+          "issues": [],
+          "reason": "unverified"
+        },
+        "task_effort_not_passed": {
+          "failed": false,
+          "reason": "behavior_acceptance_pending",
+          "status": "unverified",
+          "synthetic": false
+        }
+      },
+      "failed": false,
+      "gaps": [
+        "current_full_behavior_comparison_missing_or_failed",
+        "behavior_obligations_incomplete",
+        "task_effort_not_passed"
+      ],
+      "limitations": [
+        "Passing checks is not proof of semantic equivalence.",
+        "The report lists gaps; it does not choose the next action."
+      ],
+      "outcome": "incomplete",
+      "profile": "delivery"
+    },
+    "verification_bundle": {
+      "schema_version": 1,
+      "status": "unavailable"
+    }
+  }
+}
