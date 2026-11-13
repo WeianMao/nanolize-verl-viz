@@ -1,0 +1,94 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>bidict · Graph Contract 运行报告</title><style>
+:root{color-scheme:light;--ink:#182d35;--muted:#61747b;--line:#dbe4e5;--accent:#007f72}*{box-sizing:border-box}body{margin:0;background:#f5f8f7;color:var(--ink);font:16px/1.7 system-ui,-apple-system,"Noto Sans CJK SC",sans-serif}main{max-width:1140px;margin:auto;padding:55px 28px 80px}header{border-bottom:1px solid var(--line);padding-bottom:28px}.eyebrow{color:var(--accent);letter-spacing:.14em;font-size:12px;font-weight:700}h1{font-size:clamp(32px,5vw,55px);letter-spacing:-.045em;line-height:1.15;margin:18px 0}h2{font-size:24px;letter-spacing:-.02em;margin:36px 0 16px}p{max-width:80ch}.status{display:inline-block;border-radius:20px;padding:4px 15px;background:#e0eee9;color:#176550;font-size:14px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:28px 0}.metric{background:white;border:1px solid var(--line);padding:22px;border-radius:12px}.metric span,.metric small{display:block;color:var(--muted)}.metric strong{display:block;font-size:34px;line-height:1.4;letter-spacing:-.03em}.metric small{font-size:12px;margin-top:8px}section{margin:28px 0}.panel{background:white;border:1px solid var(--line);border-radius:12px;padding:24px;overflow:auto}table{border-collapse:collapse;width:100%;text-align:left;font-size:14px}th{color:var(--muted);font-weight:500}td,th{padding:12px 14px;border-bottom:1px solid var(--line)}tr:last-child td{border-bottom:0}code{font-size:12px;overflow-wrap:anywhere}small,.muted{color:var(--muted)}details{border-top:1px solid var(--line);padding:15px 0}summary{cursor:pointer;font-weight:600}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:13px/1.7 ui-monospace,monospace;background:#f5f8f7;padding:18px;border-radius:8px}.timeline{padding:0;list-style:none}.timeline li{display:flex;gap:20px;padding:9px 0;border-bottom:1px solid var(--line)}time{flex:0 0 170px;color:var(--muted);font-size:13px}a{color:var(--accent)}footer{border-top:1px solid var(--line);margin-top:45px;padding-top:18px;font-size:12px;color:var(--muted)}@media(max-width:720px){.grid{grid-template-columns:repeat(2,1fr)}main{padding:30px 16px}.metric{padding:16px}.metric strong{font-size:26px}.panel{padding:14px}time{flex-basis:110px}}@media(max-width:430px){.grid{grid-template-columns:1fr}}
+</style></head><body><main><header><div class="eyebrow">NANOLIZE / GRAPH-CONTRACT / 2026-11-13</div><h1>bidict 压缩运行报告</h1><span class="status">已完成 · 保留验证缺口</span><p>全部 13 个功能节点均保留。最终 8 组行为检查和 3 组独立安装检查通过；2 个外部节点缺少有效叶节点测试，额外修改任务成本评估未验证。正式交付状态为 completed_with_gaps。</p><small>作业 <code>363d1834a04142eb9e96dee3bb6517dc</code> · 全部 13 个节点 · 未排除任何节点</small></header><div class="grid"><article class="metric"><span>总量 / 原版</span><strong>7.24%</strong><small>136,633 → 9,893 tokens；减少 92.76%</small></article><article class="metric"><span>源码 / 原版</span><strong>33.01%</strong><small>28,293 → 9,339 tokens；配置另列</small></article><article class="metric"><span>相同行比例</span><strong>12.4%</strong><small>nanolize 同路径、按行长度加权口径</small></article><article class="metric"><span>成功补测</span><strong>4 个节点</strong><small>7 / 9 外部节点有有效叶节点测试</small></article><article class="metric"><span>防默写退回</span><strong>0 个文件</strong><small>默认 auto 未触发；正文重合约 11%</small></article><article class="metric"><span>记录的模型用量</span><strong>9.31M tokens</strong><small>精确值 9,311,748；含失败首轮</small></article><article class="metric"><span>端到端作业历时</span><strong>1时30分32秒</strong><small>首次提交至最终交付；含失败、修复间隔与重跑</small></article><article class="metric"><span>金额费用</span><strong>无可用账单</strong><small>未将 token 数冒充金额或估算价格</small></article><article class="metric"><span>最终独立验收</span><strong>8 / 8 + 3 / 3</strong><small>行为检查 + 新环境安装检查</small></article></div><section><h2>体积与代码重合</h2><div class="panel"><table><thead><tr><th>测量</th><th>原版</th><th>交付版</th><th>比例 / 变化</th></tr></thead><tbody><tr><td>源码 tokens</td><td>28,293</td><td>9,339</td><td>33.01%</td></tr><tr><td>配置 tokens</td><td>108,340</td><td>554</td><td>0.51%</td></tr><tr><td>合计 tokens</td><td>136,633</td><td>9,893</td><td>7.24%</td></tr><tr><td>源码行数（含空行）</td><td>2,744</td><td>1,045</td><td>38.08%</td></tr><tr><td>源码去 Python 注释/文档字符串后的 tokens</td><td>13,972</td><td>9,103</td><td>65.15%</td></tr></tbody></table></div></section><section><h2>相同行与防默写</h2><div class="panel"><table><thead><tr><th>指标</th><th>结果</th><th>口径</th></tr></thead><tbody><tr><td>工具相同行加权比例</td><td>12.4%</td><td>同路径文件；去首尾空白，仅比较长度至少 8 字符的行；按行字符长度加权。移动文件不会按旧路径比较。</td></tr><tr><td>补充：跨文件源码相同行</td><td>210 / 847 = 24.79%</td><td>所有计量源码合并；去首尾空白、忽略空行，按重复行次数求交集；包含注释、导入和签名。</td></tr><tr><td>防默写正文重合</td><td>约 11% / 603 行</td><td>工具忽略文档、注释、导入和签名等，跨原版源码比较；默认整体阈值 40%，函数阈值 60%。</td></tr><tr><td>防默写退回次数</td><td>0 次 / 0 文件</td><td>默认 auto 未触发；不能据此声称完全没有相同行。</td></tr><tr><td>其他集成退回</td><td>1 次 / LICENSE</td><td>受保护元数据覆盖被拒绝，与防默写退回分开统计。</td></tr></tbody></table></div></section><section><h2>验证与测试设计</h2><div class="panel"><table><thead><tr><th>项目</th><th>结果</th><th>解释</th></tr></thead><tbody><tr><td>范围</td><td>13 / 13 节点</td><td>scope all；未排除节点；carry_candidates=0，无需 --carry</td></tr><tr><td>冻结后行为对比</td><td>8 / 8 组通过</td><td>全部保留检查逐组通过；0 失败、0 未执行、0 删除</td></tr><tr><td>pytest 用例</td><td>175 个通过</td><td>原基准 140；api 4；duplicates 24；frozen 6；callgrind 1；另有 3 个命令输出探针</td></tr><tr><td>独立安装</td><td>3 / 3 通过</td><td>全新 Python 环境中安装项目、安装依赖、执行隔离业务 smoke</td></tr><tr><td>独立功能补测</td><td>6 个节点尝试，4 个成功</td><td>api、duplicates、frozen、callgrind；两轮共 11 份提案，接受 4、退回 7；设计器进程失败 0</td></tr><tr><td>外部节点有效性覆盖</td><td>7 / 9</td><td>未验证：core、comparison；禁用函数后导入失败，不能取得有效行为失败证据</td></tr><tr><td>内部叶节点</td><td>3 个免于单独外部测试</td><td>benchmarks、documentation、typing；根节点 bidict 是聚合节点；都保留在范围内</td></tr><tr><td>额外修改任务成本评估</td><td>1 个任务，未验证</td><td>原版求解器因任务要求的 accept.py 未提供而 blocked；未宣称修改成本改善</td></tr><tr><td>nanolize 本地修复</td><td>73 项回归检查通过</td><td>分类与体积 16、清单 17、改写执行 40；单独提交 d9416b1，未推送</td></tr><tr><td>作者过程</td><td>4 次调用 / 3 次修复</td><td>首次实现未看源码；默认 on_failed_check 在 1 次修复中开放了 2 个 CLI 生产参考文件</td></tr></tbody></table><ul><li>所有行为与安装检查通过只证明已观察的用例；2 个外部节点的有效性缺口和修改任务评估缺口仍保留，未声称完整语义等价。</li><li>用户要求的默认策略保持不变：design 和 check-validation 开启，独立运行器采用新会话，未添加详细 knowledge 库，未自设预算或上限。没有关闭检查或放宽验收标准。</li><li>基准测试使用 --benchmark-disable 执行函数和断言；这里报告的是功能检查，不是性能计时结果。</li><li>体积按冻结后的计划计量，排除原样保留的测试和四份新增验证器测试。初次辅助统计用错基线的问题已经纠正。</li><li>总量压缩很大一部分来自配置（含锁文件）缩减，所以源码比例单列。源码压缩也包含删除注释和文档字符串；工具测得公开定义的文档覆盖从 84.9% 降到 0.0%。</li><li>原版工作目录保持干净，HEAD 未改变；交付位于本地独立分支。nanolize 的唯一代码绕过在本地新分支单独提交，没有向 claude/graph-contract 推送。</li></ul></div></section><section><h2>花费与耗时</h2><div class="panel"><table><thead><tr><th>角色</th><th>调用</th><th>输入 tokens</th><th>其中缓存</th><th>输出 tokens</th><th>合计 tokens</th></tr></thead><tbody><tr><td>控制器</td><td>11</td><td>448,203</td><td>178,304</td><td>3,760</td><td>451,963</td></tr><tr><td>测试事实编写</td><td>2</td><td>337,178</td><td>255,232</td><td>6,257</td><td>343,435</td></tr><tr><td>测试事实审阅</td><td>2</td><td>747,813</td><td>670,976</td><td>3,091</td><td>750,904</td></tr><tr><td>功能测试审阅</td><td>2</td><td>297,661</td><td>222,336</td><td>1,677</td><td>299,338</td></tr><tr><td>功能测试设计</td><td>18</td><td>4,163,621</td><td>3,707,904</td><td>90,206</td><td>4,253,827</td></tr><tr><td>修改任务求解</td><td>1</td><td>294,192</td><td>263,552</td><td>7,108</td><td>301,300</td></tr><tr><td>修改任务设计</td><td>1</td><td>536,347</td><td>441,344</td><td>22,574</td><td>558,921</td></tr><tr><td>压缩作者与修复</td><td>4</td><td>2,294,294</td><td>2,103,296</td><td>57,766</td><td>2,352,060</td></tr><tr><td>合计</td><td>41</td><td>9,119,309</td><td>7,842,944</td><td>192,439</td><td>9,311,748</td></tr></tbody></table><ul><li>两轮作业共 41 次已记录模型调用，用量完整；输入 9,119,309（其中缓存输入 7,842,944），输出 192,439，总计 9,311,748 tokens。缓存输入已包含在输入中，不重复相加。</li><li>失败首轮：3,301,358 tokens，24分11秒；完成重跑：6,010,390 tokens，58分36秒。</li><li>作业端到端 2026-11-13 07:06:01—08:36:33 UTC，共 1时30分32秒，包含修复和重启间隔；不含此前安装/清单整理及交付后的报告制作。并行代理耗时之和不是墙钟耗时。</li><li>没有供应商金额账单，也没有所有调用的确定模型价格，美元/人民币费用不可核实。用量包括失败重跑、作者、控制器、测试设计/审阅和任务评估；不含外层协调助手及未计量的命令准备。</li></ul></div></section><section><h2>清单转换</h2><div class="panel"><table><thead><tr><th>转换报告字段</th><th>数量</th></tr></thead><tbody><tr><td><code>checks_left_out</code></td><td>1</td></tr><tr><td><code>checks_not_inspected</code></td><td>2</td></tr><tr><td><code>external_capabilities_without_check</code></td><td>2</td></tr><tr><td><code>internal_capabilities_not_reached</code></td><td>1</td></tr><tr><td><code>unresolved_exports</code></td><td>0</td></tr><tr><td><code>carry_candidates</code></td><td>0</td></tr></tbody></table><p class="muted">首次转换 checks_not_inspected=3；分类修复后为 2，其余计数不变。转换不运行项目，未使用 --keep-checks。两次都没有 carry 文件。</p></div></section><section><h2>执行时间线</h2><div class="panel"><ul class="timeline"><li><time>07:06:01 UTC</time><span>首轮作业提交</span></li><li><time>07:30:11 UTC</time><span>首轮因 microbenchmarks.py 分类冲突在封存处失败</span></li><li><time>07:37:57 UTC</time><span>本地修复通过 73 项回归后，全量重跑</span></li><li><time>07:54:01 UTC</time><span>独立功能补测接受 4 份、拒绝 7 份</span></li><li><time>07:55:35 UTC</time><span>8 组原版基线检查通过，封存成功</span></li><li><time>08:08:03 UTC</time><span>修改任务成本评估因缺失 accept.py 标记未验证</span></li><li><time>08:08:20 UTC</time><span>首次压缩作者启动</span></li><li><time>08:22:12 UTC</time><span>LICENSE 覆盖被拒绝，随后移除草稿中的替代文件</span></li><li><time>08:24:13 UTC</time><span>首次候选对比发现 CLI 文字和 unwrites 调用回归</span></li><li><time>08:25:40 UTC</time><span>记录定向行为诊断</span></li><li><time>08:32:07 UTC</time><span>两个 CLI 帮助输出针对性复验通过</span></li><li><time>08:35:33 UTC</time><span>完整 8 组行为 + 3 组安装检查全部通过</span></li><li><time>08:36:33 UTC</time><span>完成交付，保留验证缺口</span></li></ul></div></section><section><h2>问题与绕过记录</h2><div class="panel"><p>本页问题列表只保留经核对确定由 nanolize 自身引起的 10 项。</p><details><summary>I12 — 核心映射测试第一轮被验证器退回</summary><pre>
+- 步骤：冻结期第一轮测试候选验证。
+- 作业 ID：895dac12aaf54ed7acf16382254aac7d。
+- 报错原文：`tests/nanolize_contracts/core/test_mapping_contract.py: unknown_knowledge_id`；`test_inverse_views_contract.py: no_behavioral_knockout_failure`；`test_copy_policy_rollback_contract.py: no_behavioral_knockout_failure`。
+- 原因判断：一份测试引用不在供给知识列表中的 ID，另两份未证明能捕获该节点函数被禁用后的行为变化。
+- 绕过：nanolize 自动将三个原因反馈给独立设计器，开始 round-2/core；保持原先知识 ID 和验证要求。
+- 结果：第二轮的 core/test_core_observable_contract.py 仍以 no_behavioral_knockout_failure 被拒绝；核心节点未获有效补测，已有输出比较继续保留。
+- 验收标准：未放宽，没有把被退回测试计为有效覆盖。
+</pre></details><details><summary>I13 — 报告比较工具的第二轮测试未通过行为禁用验证</summary><pre>
+- 步骤：冻结期第二轮测试候选验证。
+- 作业 ID：895dac12aaf54ed7acf16382254aac7d。
+- 报错原文：`tests/nanolize_contracts/comparison/test_instruction_reports.py: no_behavioral_knockout_failure`。
+- 原因判断：提案未产生可接受的节点函数禁用后行为失败证据。
+- 绕过：按默认策略保留原 CLI 输出检查，将该补测记为拒绝和覆盖缺口，作业继续。
+- 结果：最终仅 api、duplicates、frozen 三节点的补测被接受；共 5 份测试提案拒绝，设计器进程失败 0 次。
+- 验收标准：未放宽，未计为测试通过。
+</pre></details><details><summary>I15 — 封存契约误把 pytest 基准测试当作生产源码</summary><pre>
+- 步骤：首轮 `seal_contract`，作者启动前。
+- 作业 ID：895dac12aaf54ed7acf16382254aac7d（2026-11-13 07:30:11 UTC 失败）。
+- 报错原文：`ValueError: Rewrite checks freeze production implementation as oracle input (microbenchmarks.py); separate the test contract first`。
+- 原因判断：`microbenchmarks.py` 是包含 pytest 测试函数、夹具和断言的基准测试集，但静态分类器只按常规测试名判断，将它同时列为待改写源码和自动冻结的 pytest 输入；封存保护因此正确阻止了冲突。
+- 绕过：本地新分支 `codex/bidict-graph-contract-workarounds` 修改 `nanolize/src/nanolize/repository.py`，把 `microbenchmarks.py` 识别为测试；新增体积和封存回归测试，确保文件被冻结且修改后仍计入候选源码体积。清单保留全部 13 节点，仅将 benchmarks 节点的生产 paths 置空，保留原基准测试执行和所有断言。重新转换到 `run/retry01/manifest-graph.json`，输出此前不存在，未使用 --keep-checks。
+- 结果：重新转换仍保留 4 组检查；checks_not_inspected 从 3 降到 2；其余转换计数不变。73 项回归测试全部通过（体积 16、清单 17、改写执行 40）；修复提交 `d9416b163af1f167ad79b06ffff43cc7dc1fd1a9`，未推送。新基线为 16 个生产源码文件、136,633 tokens（源码 28,293、配置 108,340）。新作业 `363d1834a04142eb9e96dee3bb6517dc` 于 07:37:57 UTC 启动，独立 state-root 避免旧进程继续使用旧分类器；新作业已成功封存 8 组通过的检查，并于 07:55:35 UTC 进入独立任务验收设计，原封存错误未再出现。
+- 验收标准：未放宽；没有取消封存冲突检查，没有改写或删除基准测试。体积分母将排除这份原版测试文件，最终使用修复后的口径，同时保留首轮记录。
+
+### 本地诊断脚本补记
+
+- 查找不存在的 `nanolize/tests/test_repository.py` 和 `nanolize/src/nanolize/author_usage.py`、`nanolize/src/nanolize/job_authorization.py` 返回 `No such file or directory`，已改为实际存在的 `test_rewrite_execution.py`。
+- 汇总转换节点时再次遇到内部节点没有 `interface` 的 `KeyError: &#x27;interface&#x27;`，改用可选字段读取；转换本身成功，清单内容不受影响。
+
+
+### I12 / I13 的后续原因核对
+
+- 核对首轮作业 `design/baseline-2.json` 引用的原始验证记录后，core 和 comparison 的禁用结果实际为 `{&quot;outcome&quot;:&quot;not_assessable&quot;,&quot;reason&quot;:&quot;knockout_breaks_import&quot;}`。
+- 因此 `no_behavioral_knockout_failure` 不能直接解释为测试断言太弱：禁用节点函数后破坏了导入，使验证器不能得到可归因的行为失败证据。仍按原规则拒绝有效覆盖，不降低标准。
+</pre></details><details><summary>I16 — 重跑第一轮测试提案的解析和禁用验证失败</summary><pre>
+- 步骤：重跑冻结期第一轮独立补测验证。
+- 作业 ID：363d1834a04142eb9e96dee3bb6517dc。
+- 报错原文：`comparison/test_instruction_reports.py: does_not_parse`；`callgrind/test_cli_arguments.py: no_behavioral_knockout_failure`；`core/test_construction_and_union.py`、`test_inverse_and_views.py`、`test_atomic_updates.py` 均为 `no_behavioral_knockout_failure`。
+- 原因判断：对提案内容做 ast.parse 核对得到 `IndentationError: unexpected indent (line 91)`；其余四份的原始禁用结果为 `not_assessable / knockout_breaks_import`，不能取得行为层面的失败证据。
+- 绕过：保留默认两轮设计策略，将原始拒绝原因自动反馈给各自独立设计器，进行第二轮；未改测试断言、生产实现或有效性标准。
+- 结果：api、duplicates、frozen 第一轮初步验证通过。第二轮 callgrind 的插件/计时器测试取得 `kill_kind=behavior / outcome=killed`，通过初步验证；comparison 的语法问题已修正，但它和 core 仍为 `not_assessable / knockout_breaks_import`。最终独立审阅接受 4 份补测，全部为不同节点；7 份提案被拒绝，设计器进程失败 0 次。
+- 验收标准：未放宽。
+</pre></details><details><summary>I17 — 重跑第二轮两个节点仍无可评估的禁用证据</summary><pre>
+- 步骤：重跑冻结期第二轮测试验证。
+- 作业 ID：363d1834a04142eb9e96dee3bb6517dc。
+- 报错原文：`contract-comparison-363d18-5`、`contract-core-363d18-6` 的禁用结果均为 `{&quot;outcome&quot;:&quot;not_assessable&quot;,&quot;reason&quot;:&quot;knockout_breaks_import&quot;}`；对应有效性拒绝原因为 `no_behavioral_knockout_failure`。
+- 原因判断：两节点函数体禁用后无法完成验证器的导入探测，不能计为测试行为失败。
+- 绕过：按默认非 strict 策略保留缺口并继续独立审阅、封存和改写；所有已保留的原版检查仍执行，两节点仍在全量功能范围内。
+- 结果：最终设计记录为接受 4 份、拒绝 7 份、runner_failures 0；保留 core/comparison 两个外部节点缺口，没有把未验证节点标记为验证通过。
+- 验收标准：未放宽，没有更改 strict、design、knockout_scope 或禁用任何检查。
+</pre></details><details><summary>I18 — 转换保留了包含私有写入钩子监视的基准检查</summary><pre>
+- 步骤：重跑原版基线的静态映射/有效性审计。
+- 作业 ID：363d1834a04142eb9e96dee3bb6517dc。
+- 报告原文：`original-benchmarks` 的 `mapping_warnings` 包含 `mapping_omits_imported_capability`、`structure_coupled_test`，`structure_symbols` 为 `[&quot;bidict.BidictBase._write&quot;]`。此时 `provenance=original_verified`、`role_mismatch=false`、`baseline_passed=true`、`stability=stable`。
+- 原因判断：microbenchmarks.py 的一项测试读取并 monkeypatch 私有写入钩子 `_write`，而 contract-propose 未将整个基准检查剔除；转换静态扫描与后续结构耦合审计存在识别差异。另有 api/callgrind 导入未包含在此检查的原始 capability 映射里。
+- 绕过：仍保留原检查及全部断言，不修改原测试、不重标有效覆盖。先让默认作者与修复流程处理，后续有实际失败再补充诊断。
+- 结果：原版基准检查通过，但不计为有效外部叶节点覆盖。候选曾出现 I22 中的关键字调用回归，修复后全部 140 个基准用例通过。
+- 验收标准：未放宽。
+</pre></details><details><summary>I19 — 修改任务要求求解器运行未提供的隐藏验收脚本</summary><pre>
+- 步骤：默认 task-effort 的原版 development 任务评估。
+- 作业 ID：363d1834a04142eb9e96dee3bb6517dc。
+- 报错原文：`python: can&#x27;t open file &#x27;&lt;task-workspace&gt;/workspace/accept.py&#x27;: [Errno 2] No such file or directory`；求解器结果为 `status=blocked, blocker=data`，任务记录为 `reason=task_environment_unavailable`，baseline 为 `status=unverified, ready=false`。
+- 原因判断：examiner 生成的任务提示写着 `Run the supplied standalone accept.py ...`，但 accept.py 是检查方持有的隐藏验收脚本，没有放入求解器工作区。任务说明将隐藏文件误述为已提供，求解器虽提交了源码补丁并通过自己的探针，仍如实标记必需命令不可执行。
+- 绕过：保留隐藏验收隔离、原任务说明和证据，由默认控制器继续压缩改写；不把求解器自测冒充独立验收，也不向求解器泄露隐藏验收脚本。未改任何文件或策略参数。
+- 结果：原版任务评估耗时约 230 秒，未验证；08:08:20 UTC 作者开始实现。最终 task_effort-18 仍为 unverified，交付状态为 completed_with_gaps；没有得到可用的修改任务成本比较。
+- 验收标准：未修改或放宽；这是默认流程保留的任务评估缺口，不是评估通过。
+</pre></details><details><summary>I20 — 作者草稿试图替换受保护的 LICENSE</summary><pre>
+- 步骤：第 1 次作者输出的 save_candidate 集成，尚未执行候选行为检查。
+- 作业 ID：363d1834a04142eb9e96dee3bb6517dc。
+- 报错原文：`Generated output was rejected. It contains verifier-owned tests or inputs; do not create or replace tests, oracle fixtures or check inputs: LICENSE.`；reason=`integration_rejected`，category=`verifier_owned`，路径 `LICENSE`。
+- 原因判断：作者在空工作区新写了 LICENSE，但原版许可证属于验证器原样保留的受保护元数据；即便意图是保留许可，也不能用作者新文件覆盖。
+- 绕过：默认控制器已发起第 2 次作者调用，要求仅删除或移走该草稿文件，保留其他独立实现；最终候选仍保留原版 LICENSE。
+- 结果：第 2 次作者调用仅移除 authoring/LICENSE，自检再次通过，候选保存成功；08:23:49 UTC 控制器进入下一轮。作者另报告自身 Python 环境没有 tiktoken，故未自行计算体积；正式体积仍由 nanolize 已安装 tiktoken 的独立 venv 测量，不影响验收。
+- 验收标准：未放宽。这是受保护文件集成退回，不是防默写退回，二者分别统计。
+</pre></details><details><summary>I22 — 保留基准测试发现 unwrites 关键字调用不兼容</summary><pre>
+- 步骤：同一候选的 `original-benchmarks` 检查。
+- 作业 ID：363d1834a04142eb9e96dee3bb6517dc。
+- 报错原文：`TypeError: test_update_workloads_take_intended_path.&lt;locals&gt;.spy() missing 1 required keyword-only argument: &#x27;unwrites&#x27;`；`12 failed, 128 passed in 1.88s`。
+- 原因判断：候选已有写入钩子，但批量更新用位置参数传递回滚记录；冻结原测试的监视器要求以 unwrites 关键字接收并转发非 None 的回滚记录。这也证实了 I18 中转换遗漏的私有结构依赖会成为实际验收约束。
+- 绕过：同一 `diagnostics-1` 中第三条只说明可观察的钩子调用约定与回滚要求；没有给作者原实现、测试源码或算法，也没有修改断言。
+- 结果：第 4 次作者调用将钩子和四处调用统一为关键字 unwrites；verification-14 中完整 8 组行为检查通过（含全部 140 个基准用例），installation-16 三组安装检查再次通过。
+- 验收标准：未放宽，不删除这 12 个用例，也不将其失败当作覆盖缺口跳过。
+</pre></details><details><summary>I25 — 控制器把不可用的任务基线描述成零任务</summary><pre>
+- 步骤：最终选择和交付理由核对。
+- 作业 ID：363d1834a04142eb9e96dee3bb6517dc。
+- 记录原文：控制器第 10 轮写道 `baseline preparation produced zero tasks`。
+- 原因判断：实际生成了 1 个修改任务，并执行了 1 次原版求解；因 I19 标记 blocked。控制器将“没有可用的任务成本基线”误述为“没有任务”。
+- 绕过：保留原始记录，最终报告依据 suite.json 和 baseline.json 说明“1 个修改任务已设计，原版评估未验证”；未改引擎状态或检查。
+- 结果：网站区分功能补测（4 个节点成功）与额外修改任务成本评估（1 个任务、未验证）。
+- 验收标准：未放宽，只纠正报告说明。
+</pre></details></div></section><section><h2>来源与口径</h2><div class="panel"><p>原版 bidict 提交：<code>299fedc89f1d70d5d41cf7922564b376d3e2d435</code><br>nanolize 分支：<code>claude/graph-contract</code><br>nanolize 基线提交：<code>eb54c4328809d3e37b83301d8a934e520aa84234</code></p><p>体积使用固定的 tiktoken 0.12.0 / cl100k_base，源码与配置逐文件计数。通过检查只证明本次检查观察到的行为；未验证项和被剔除的原版测试不计为通过。</p><p><a href="report.json">下载结果数据</a> · <a href="issues.md">下载问题记录</a></p></div></section><footer>本页无需登录。</footer></main></body></html>
