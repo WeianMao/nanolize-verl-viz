@@ -1,0 +1,523 @@
+{
+  "limitations": [
+    "Only summary results are published; captured command output is omitted."
+  ],
+  "status": "checks_passed",
+  "tests": {
+    "original_total": 9,
+    "retained": 10,
+    "retired": 0,
+    "needs_adaptation": 0,
+    "adapted": 0,
+    "contract": 1,
+    "passed": 10,
+    "failed": 0,
+    "fixed_baseline_failure": 0,
+    "not_run": 0
+  },
+  "capability_results": [
+    {
+      "id": "dotenv",
+      "status": "passed",
+      "checks": [],
+      "check_status": "passed",
+      "baseline_status": "not_run",
+      "candidate_status": "not_run"
+    },
+    {
+      "id": "environment",
+      "status": "passed",
+      "checks": [
+        "original-test_main",
+        "original-test_is_interactive",
+        "original-test_fifo_dotenv",
+        "original-test_zip_imports",
+        "public-output-snapshot"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "parsing",
+      "status": "passed",
+      "checks": [
+        "original-test_parser",
+        "public-output-snapshot"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "interpolation",
+      "status": "passed",
+      "checks": [
+        "original-test_variables",
+        "public-output-snapshot"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "api",
+      "status": "passed",
+      "checks": [
+        "original-test_utils",
+        "public-output-snapshot"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "cli",
+      "status": "passed",
+      "checks": [
+        "original-test_cli"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "ipython",
+      "status": "passed",
+      "checks": [
+        "original-test_ipython"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "distribution",
+      "status": "passed",
+      "checks": [
+        "original-test_cli",
+        "public-output-snapshot"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    }
+  ],
+  "checks": [
+    {
+      "name": "original-test_main",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "environment"
+      ]
+    },
+    {
+      "name": "original-test_parser",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "parsing"
+      ]
+    },
+    {
+      "name": "original-test_variables",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "interpolation"
+      ]
+    },
+    {
+      "name": "original-test_cli",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "cli",
+        "distribution"
+      ]
+    },
+    {
+      "name": "original-test_utils",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "api"
+      ]
+    },
+    {
+      "name": "original-test_ipython",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "ipython"
+      ]
+    },
+    {
+      "name": "original-test_is_interactive",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "environment"
+      ]
+    },
+    {
+      "name": "original-test_fifo_dotenv",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "environment"
+      ]
+    },
+    {
+      "name": "original-test_zip_imports",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "environment"
+      ]
+    },
+    {
+      "name": "public-output-snapshot",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "environment",
+        "api",
+        "distribution",
+        "parsing",
+        "interpolation"
+      ]
+    }
+  ],
+  "actual_size": {
+    "baseline_source_lines": 1181,
+    "source_lines": 556,
+    "source_files": 8,
+    "retained_percent": 49.25455044361109,
+    "target_percent": 50.0,
+    "target_source_lines": 590.5,
+    "estimated_source_lines": null,
+    "metric": "tokens",
+    "tokenizer": {
+      "classification": "source_and_configuration_v2",
+      "decoding": "python_encoding_cookie_else_utf8_strict",
+      "encoding": "cl100k_base",
+      "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+      "file_boundaries": "independent_sum",
+      "library": "tiktoken",
+      "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+      "special_tokens": "ordinary_text",
+      "text_policy": "raw_decoded_text_per_file",
+      "version": "0.12.0"
+    },
+    "measurement_sha256": "bcfcda52c07fc698b55d9805b6847481a0c2e633480e5359f7a3a36a16078a5d",
+    "source_tokens": 4799,
+    "configuration_tokens": 586,
+    "total_tokens": 5385,
+    "baseline_tokens": 10933,
+    "target_tokens": 5466,
+    "source_retained_percent": 47.07874682472481,
+    "complete": true,
+    "target_met": true
+  },
+  "budget_status": "met",
+  "verification_scope": "full",
+  "rewrite_progress": {
+    "priority": "functionality_first",
+    "author_attempts": 6,
+    "repair_attempts": 5,
+    "optimization_attempts": 0,
+    "restorations": 0,
+    "rejected_attempts": 1,
+    "failed_optimizations": 0,
+    "max_optimization_attempts": 3,
+    "stop_reason": null,
+    "accepted_candidate_available": true,
+    "behavior_acceptance": "passed",
+    "size_acceptance": "met"
+  },
+  "installation_evidence": {
+    "status": "passed",
+    "checks_passed": 3,
+    "checks_total": 3,
+    "environment_metadata_complete": true
+  },
+  "obligation_ledger": {
+    "records": [
+      {
+        "capability": "dotenv",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          }
+        ]
+      },
+      {
+        "capability": "environment",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-test_main",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "original-test_is_interactive",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "original-test_fifo_dotenv",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "original-test_zip_imports",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "public-output-snapshot",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "parsing",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-test_parser",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "public-output-snapshot",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "interpolation",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-test_variables",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "public-output-snapshot",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "api",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-test_utils",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "public-output-snapshot",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "cli",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-test_cli",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "ipython",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-test_ipython",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "distribution",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-test_cli",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "public-output-snapshot",
+            "kind": "declared_check"
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "unknown": 0,
+      "failed": 0,
+      "partial": 0,
+      "verified": 8,
+      "retired": 0,
+      "total": 8,
+      "retained": 8,
+      "complete": true
+    },
+    "limitations": [
+      "Public summaries omit private evidence bindings and raw output."
+    ]
+  },
+  "leaf_coverage": {
+    "status": "ready",
+    "strict": false,
+    "valid": [
+      "api",
+      "cli",
+      "distribution",
+      "environment",
+      "interpolation",
+      "ipython",
+      "parsing"
+    ],
+    "missing": [],
+    "exempted": [],
+    "why_missing": {}
+  },
+  "task_effort": {
+    "schema_version": 1,
+    "operation": "task_effort_evaluation",
+    "status": "unverified",
+    "binding": {
+      "plan_sha256": "a343d085f6be7110bbc1d3a3f75a65cdf404e2c69319e6aeeb48367f8d72b7bd",
+      "original_git_head": "4fbc6ff07215367ece731006855e732d1405992c",
+      "original_snapshot_sha256": "6a2875b0ee20a75ad64310d253453532a342b06eba8b88a2d166d35344b80248",
+      "candidate_git_head": "8f939f1d2958d577114ed578f1531b972f0ba4db",
+      "candidate_source_sha256": "9cec0d90aea7f1afbd62b01adde31f64f65f6ba6a21bbf86ce5af995f7d4c736",
+      "candidate_contract_sha256": "e77e59fa4410ab6e2dbdbb1f1252bd04b3aea9dec5de878d13a8504f50ac9382",
+      "suite_sha256": "004cb75437deecedb12720f1056bf2b80c798934ea65cc8c86228d153e41082b",
+      "settings_sha256": "70b32e31a1a167729af2d14b15dbd14d9213b591c2e2b833559f095f3a18575d"
+    },
+    "policy": {
+      "comparison": "empirical_range",
+      "strict_all_tasks": true,
+      "task_types": [
+        "modify"
+      ],
+      "grading": "lightweight",
+      "staged": true,
+      "heldout_deferred": true,
+      "repetitions": 3,
+      "min_improvement_percent": 5.0,
+      "regression_tolerance_percent": 5.0,
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "xhigh"
+    },
+    "task_types": [
+      "modify"
+    ],
+    "tasks": [],
+    "overhead": {
+      "examiner_tokens": 530303,
+      "judge_tokens": 0,
+      "solver_tokens": 315187,
+      "total_tokens": 845490,
+      "usage_complete": true,
+      "observed_total_tokens": 845490,
+      "role_usage_complete": {
+        "examiner": true,
+        "solver": true,
+        "judge": true
+      }
+    },
+    "resources": {
+      "completed_runs": 2,
+      "cleanup_pending": false,
+      "cleanup_pending_runs": 0,
+      "roles": {
+        "examiner": {
+          "completed": 1,
+          "failed": 0
+        },
+        "solver": {
+          "completed": 1,
+          "failed": 0
+        },
+        "judge": {
+          "completed": 0,
+          "failed": 0
+        }
+      }
+    },
+    "iterations": [],
+    "limitations": [
+      "This assessment covers one representative modification workflow, including executing the change. It does not measure understanding, diagnosis or execution as separate task types.",
+      "Task effort measures these tasks under the recorded agent settings; it is not a universal measure of human cognitive burden.",
+      "Tokens count solver model inputs and outputs, including cached input. Missing usage is unavailable, never zero. Examiner and judge overhead is separate.",
+      "Empirical ranges describe repeated observations, not statistical confidence intervals. Failed or unrun tasks do not establish an improvement.",
+      "Task links identify assessed capabilities only; they do not change module behavior verification badges.",
+      "Task prompts, hidden inputs, judging rubrics, source excerpts, raw traces and local paths are omitted from this public report."
+    ],
+    "staging": {
+      "phase": "screening",
+      "targeted_task_ids": [],
+      "screened_task_ids": [],
+      "completed_development_runs": 0,
+      "expected_development_runs": 3
+    },
+    "stop_reason": "original_baseline_unavailable"
+  }
+}

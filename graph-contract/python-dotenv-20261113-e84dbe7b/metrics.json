@@ -1,0 +1,612 @@
+{
+  "summary": "全部功能节点保留，冻结行为与独立安装检查通过，体积达到默认目标；任务成本评估仍有一项明确缺口。",
+  "status": "已交付 · completed_with_gaps（任务成本未验证）",
+  "job_id": "e84dbe7bec3e4131a98e42f15d5e13ff",
+  "timestamp": "2026-11-13T08:57:59+00:00",
+  "cards": [
+    {
+      "label": "体积剩余",
+      "value": "49.25%",
+      "detail": "5,385 / 10,933 源码 + 配置 token"
+    },
+    {
+      "label": "与原版相同的代码行",
+      "value": "15.71%",
+      "detail": "49 / 312 可比较行"
+    },
+    {
+      "label": "原版测试",
+      "value": "291 通过",
+      "detail": "0 失败 · 1 平台跳过 · 3 项安装检查通过"
+    },
+    {
+      "label": "防默写退回",
+      "value": "0 个文件",
+      "detail": "0 次退回 · original-overlap=auto"
+    },
+    {
+      "label": "累计模型用量",
+      "value": "9.994M token",
+      "detail": "包括失败作业；美元账单不可得"
+    },
+    {
+      "label": "准备至交付",
+      "value": "1 小时 58 分 45 秒",
+      "detail": "包括安装、重启、全部检查及存储等待"
+    }
+  ],
+  "sections": [
+    {
+      "title": "交付状态与验证边界",
+      "paragraphs": [
+        "原生作业状态为 completed_with_gaps。冻结的功能检查与独立安装检查均已通过，全部 8 个功能节点保留；没有手工关闭检查、声明检查不稳定、排除节点或放宽断言。",
+        "仍有一项明确缺口：修改任务的成本评估为 unverified。任务设计者要求求解者运行不可见的 accept.py，原版任务因而报告 blocked；本次不能证明后续修改任务的成本下降，也不宣称所有评估均通过。",
+        "默认策略将版本/分发节点计为有效，但该节点只有常量，无法动态敲除。另有 1 项 Windows 专用测试在 Linux 上按原测试条件跳过。有限测试通过不等于证明所有语义等价。",
+        "便携验证包未生成：绝对检查启动器和环境路径不符合便携元数据限制。本地封存证据及公开功能图报告已保留。"
+      ]
+    },
+    {
+      "title": "体积与原版相同行比例",
+      "paragraphs": [
+        "体积采用固定 tiktoken 0.12.0 / cl100k_base，按文件分别统计源码与配置 token。原版未改动的测试、文档等按工具规则排除；这不是整个仓库的磁盘占用比例。",
+        "代码行重合采用 nanolize 防默写口径：忽略空白，排除注释、文档字符串、导入、签名、装饰器和短惯用行；同时对比原路径同名函数及原版源码行池。下表给出精确匹配计数。",
+        "压缩也删除了文档字符串：工具统计的公开定义文档覆盖率由 35.7% 降为 0%。因此同时列出排除注释/文档字符串后的体积比例，避免把文档删除全算成实现简化。"
+      ],
+      "headers": [
+        "指标",
+        "原版",
+        "交付",
+        "交付 / 原版"
+      ],
+      "rows": [
+        [
+          "源码 + 配置 token",
+          "10,933",
+          "5,385",
+          "49.25%"
+        ],
+        [
+          "纯源码 token",
+          "8,215",
+          "4,799",
+          "58.42%"
+        ],
+        [
+          "配置 token",
+          "2,718",
+          "586",
+          "21.56%"
+        ],
+        [
+          "源码行数",
+          "1,181",
+          "556",
+          "47.08%"
+        ],
+        [
+          "源码字节",
+          "35,400",
+          "20,722",
+          "58.54%"
+        ],
+        [
+          "与原版相同的可比较代码行",
+          "原版源码行池",
+          "49 / 312 行",
+          "15.71%"
+        ],
+        [
+          "同路径文本的相同行相似度",
+          "按行长度加权，包含源码/配置文本",
+          "工具另一个统计口径",
+          "26.30%"
+        ],
+        [
+          "排除 Python 注释/文档字符串后的体积",
+          "同口径原版",
+          "源码 + 配置",
+          "57.05%"
+        ]
+      ]
+    },
+    {
+      "title": "graph-contract 清单转换",
+      "paragraphs": [
+        "先写旧功能图与检查，再使用 claude/graph-contract 分支的 contract-propose 转换到此前不存在的输出文件；未使用 --keep-checks。转换只静态读取源码和测试，未运行项目。两次转换报告的计数相同。",
+        "转换器识别 6 个 external、2 个 internal 节点和 36 条 interface。人工补充了配置默认值、注册名、.env 格式、固定提示文字、CLI/IPython 与打包约定；IPython 因此成为外部节点，最终为 7 个 external + 1 个 internal。没有附加详细 knowledge 库。",
+        "carry_candidates 为空，因此没有需要 --carry 的数据文件。最终以 --scope all 启动，未排除任何节点；测试设计、检查有效性验证及独立运行器均保持开启，original-overlap 使用默认 auto，预算和次数上限采用分支默认值。"
+      ],
+      "headers": [
+        "转换报告字段",
+        "数量"
+      ],
+      "rows": [
+        [
+          "checks_left_out",
+          0
+        ],
+        [
+          "checks_not_inspected",
+          0
+        ],
+        [
+          "external_capabilities_without_check",
+          0
+        ],
+        [
+          "internal_capabilities_not_reached",
+          0
+        ],
+        [
+          "unresolved_exports",
+          0
+        ],
+        [
+          "carry_candidates",
+          0
+        ],
+        [
+          "checks_kept",
+          10
+        ],
+        [
+          "unreadable_test_files",
+          0
+        ],
+        [
+          "unreadable_modules",
+          0
+        ]
+      ]
+    },
+    {
+      "title": "测试设计与功能验收",
+      "paragraphs": [
+        "最终作业：7 个外部叶节点都有工具认可的有效检查，未验证叶节点 0；因此新增补测节点 0、补测文件 0。9 组原版 pytest 检查来源均为 original_verified，另保留 1 个公开输出快照检查。自动事实整理形成 103 条事实，0 条被剔除，0 个检查文件未覆盖。",
+        "首次失败作业曾为 CLI 补测 1 个节点：设计 3 个文件，独立审阅接受 1 个、拒绝 2 个弱断言文件。该作业在作者启动前封存失败，这些补测没有进入最终交付；相关用量和时间全部计入总成本。",
+        "两个作业中的测试设计者、事实撰写/审阅者和作者均使用独立会话。最终作业 check-validation/design 没有关闭，保留默认三次基线重复运行及功能敲除。"
+      ],
+      "headers": [
+        "最终检查",
+        "状态",
+        "用例/备注"
+      ],
+      "rows": [
+        [
+          "original-test_main",
+          "passed",
+          "156 passed / 0 failed / 0 skipped"
+        ],
+        [
+          "original-test_parser",
+          "passed",
+          "58 passed / 0 failed / 0 skipped"
+        ],
+        [
+          "original-test_variables",
+          "passed",
+          "6 passed / 0 failed / 0 skipped"
+        ],
+        [
+          "original-test_cli",
+          "passed",
+          "53 passed / 0 failed / 1 skipped"
+        ],
+        [
+          "original-test_utils",
+          "passed",
+          "1 passed / 0 failed / 0 skipped"
+        ],
+        [
+          "original-test_ipython",
+          "passed",
+          "4 passed / 0 failed / 0 skipped"
+        ],
+        [
+          "original-test_is_interactive",
+          "passed",
+          "10 passed / 0 failed / 0 skipped"
+        ],
+        [
+          "original-test_fifo_dotenv",
+          "passed",
+          "1 passed / 0 failed / 0 skipped"
+        ],
+        [
+          "original-test_zip_imports",
+          "passed",
+          "2 passed / 0 failed / 0 skipped"
+        ],
+        [
+          "public-output-snapshot",
+          "passed",
+          "公开输出快照一致"
+        ],
+        [
+          "build-wheel",
+          "passed",
+          "独立安装环境，6.398 秒"
+        ],
+        [
+          "install-wheel",
+          "passed",
+          "独立安装环境，25.490 秒"
+        ],
+        [
+          "installed-public-contract",
+          "passed",
+          "独立安装环境，0.280 秒"
+        ]
+      ]
+    },
+    {
+      "title": "防默写与修复过程",
+      "paragraphs": [
+        "默认 auto 策略共退回 0 个不同文件、0 次。整体代码行重合为 15.71%；auto 是否被触发：否。默认整体阈值 40%，函数阈值 60%（至少 8 个可比较行），每文件最多退回 1 次。",
+        "首次实现来自功能图与外部契约。默认 on_failed_check 策略在后续 4 次作者调用中提供了 4 个不同原版生产文件：src/dotenv/__main__.py, src/dotenv/cli.py, src/dotenv/main.py, src/dotenv/version.py。没有把原测试源码交给作者。",
+        "另有 1 次 LICENSE 文件保护拒绝，不计入防默写退回。CLI 的同一回归重复出现后，协调器通过原生 job-diagnose 提供了 2 条绑定不同候选的简短行为诊断，并自行答复 1 次控制器澄清请求后恢复作业。没有手工修改候选源码、测试或验收状态。"
+      ],
+      "headers": [
+        "实现/修复计数",
+        "次数"
+      ],
+      "rows": [
+        [
+          "author_attempts",
+          6
+        ],
+        [
+          "repair_attempts",
+          5
+        ],
+        [
+          "optimization_attempts",
+          0
+        ],
+        [
+          "rejected_attempts",
+          1
+        ],
+        [
+          "restorations",
+          0
+        ]
+      ]
+    },
+    {
+      "title": "模型用量与花费",
+      "paragraphs": [
+        "全部作业累计 9,994,187 token，来自 67 次已记录模型调用；包括失败作业、事实整理、审阅、任务设计、作者和控制器。缓存输入已包含在输入 token 内，没有重复相加。",
+        "运行器没有返回美元账单，所用模型也没有在本次回执中提供计费单价，因此货币金额不可得，未编造价格估算。此处是作业运行器的完整用量汇总，不包含外层协调对话的未计量用量。",
+        "用量不完整的调用：0。已取消/失败但有用量回执的调用同样计入。"
+      ],
+      "headers": [
+        "角色",
+        "调用",
+        "输入 token",
+        "其中缓存输入",
+        "输出 token",
+        "总 token"
+      ],
+      "rows": [
+        [
+          "controller",
+          21,
+          "1,124,225",
+          "587,776",
+          "9,355",
+          "1,133,580"
+        ],
+        [
+          "examiner",
+          1,
+          "506,864",
+          "452,992",
+          "23,439",
+          "530,303"
+        ],
+        [
+          "fact_reviewer",
+          18,
+          "2,420,215",
+          "2,114,304",
+          "13,576",
+          "2,433,791"
+        ],
+        [
+          "fact_writer",
+          18,
+          "1,645,854",
+          "1,381,504",
+          "27,948",
+          "1,673,802"
+        ],
+        [
+          "rewrite_author",
+          6,
+          "3,422,968",
+          "3,101,568",
+          "53,535",
+          "3,476,503"
+        ],
+        [
+          "solver",
+          1,
+          "301,034",
+          "265,600",
+          "14,153",
+          "315,187"
+        ],
+        [
+          "test_designer",
+          1,
+          "270,467",
+          "241,536",
+          "9,421",
+          "279,888"
+        ],
+        [
+          "test_reviewer",
+          1,
+          "150,083",
+          "95,616",
+          "1,050",
+          "151,133"
+        ],
+        [
+          "合计",
+          67,
+          "9,841,710",
+          "8,240,896",
+          "152,477",
+          "9,994,187"
+        ]
+      ]
+    },
+    {
+      "title": "耗时与运行来源",
+      "paragraphs": [
+        "计时使用 UTC。作业墙钟包含等待、模型调用、检查与存储停顿；准备至交付还包含安装、清单准备、首次失败和修复重启。此计时止于作业交付，网页发布发生在其后。",
+        "源码为 python-dotenv 1.2.4 @ 4fbc6ff07215367ece731006855e732d1405992c。nanolize 从 claude/graph-contract @ eb54c4328809d3e37b83301d8a934e520aa84234 安装，没有使用 main。",
+        "nanolize 修复仅在本地分支 local/python-dotenv-graph-contract-fixes，独立提交 ae4e61dae3d450374911551adba94c1c616ee146。许可证别名修复通过 5 项定向及 17 项集成边界回归；未推送到 claude/graph-contract。",
+        "最终候选提交：8f939f1d2958d577114ed578f1531b972f0ba4db。详细本地运行证据保留；公开网站仅发布汇总与原生 public-safe 报告，不发布私有运行状态、提示、凭据或 nanolize 补丁源码。"
+      ],
+      "headers": [
+        "范围",
+        "开始 UTC",
+        "结束 UTC",
+        "耗时",
+        "状态/用量"
+      ],
+      "rows": [
+        [
+          "49ea4ac6871b4de082006e87ca5c580d",
+          "2026-11-13T07:04:35.181947+00:00",
+          "2026-11-13T07:35:50.364942+00:00",
+          "31 分 15 秒",
+          "failed · 3,301,785 token"
+        ],
+        [
+          "e84dbe7bec3e4131a98e42f15d5e13ff",
+          "2026-11-13T07:41:41.270217+00:00",
+          "2026-11-13T08:55:16.816399+00:00",
+          "1 小时 13 分 36 秒",
+          "completed_with_gaps · 6,692,402 token"
+        ],
+        [
+          "两次作业合计",
+          "",
+          "",
+          "1 小时 44 分 51 秒",
+          "含失败作业"
+        ],
+        [
+          "准备至最终交付",
+          "2026-11-13T06:56:32Z",
+          "2026-11-13T08:55:16.816399+00:00",
+          "1 小时 58 分 45 秒",
+          "未含网页部署时间"
+        ]
+      ]
+    }
+  ],
+  "metrics": {
+    "final_status": "completed_with_gaps",
+    "size": {
+      "baseline_tokens": 10933,
+      "total_tokens": 5385,
+      "source_tokens": 4799,
+      "configuration_tokens": 586,
+      "retained_percent": 49.25455044361109,
+      "target_met": true
+    },
+    "same_lines": 49,
+    "compared_lines": 312,
+    "same_line_percent": 15.705128205128204,
+    "cases": {
+      "passed": 291,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 1
+    },
+    "supplemented_nodes_final": 0,
+    "unverified_external_nodes": 0,
+    "constant_only_knockout_unassessable_nodes": 1,
+    "historical_supplemented_nodes": 1,
+    "anti_copy_refused_files": 0,
+    "anti_copy_refusals": 0,
+    "task_effort_status": "unverified",
+    "model_usage": {
+      "unit": "model_tokens",
+      "cached_input_is_part_of_input": true,
+      "usd": null,
+      "usd_reason": "Runtime receipts do not contain monetary billing.",
+      "jobs": {
+        "49ea4ac6871b4de082006e87ca5c580d": {
+          "roles": {
+            "controller": {
+              "calls": 1,
+              "input_tokens": 24755,
+              "cached_input_tokens": 0,
+              "output_tokens": 203,
+              "total_tokens": 24958,
+              "model_seconds_sum": 8.8993
+            },
+            "fact_reviewer": {
+              "calls": 9,
+              "input_tokens": 1774177,
+              "cached_input_tokens": 1589248,
+              "output_tokens": 8711,
+              "total_tokens": 1782888,
+              "model_seconds_sum": 938.9202
+            },
+            "fact_writer": {
+              "calls": 9,
+              "input_tokens": 1048472,
+              "cached_input_tokens": 877952,
+              "output_tokens": 14446,
+              "total_tokens": 1062918,
+              "model_seconds_sum": 801.6773999999999
+            },
+            "test_designer": {
+              "calls": 1,
+              "input_tokens": 270467,
+              "cached_input_tokens": 241536,
+              "output_tokens": 9421,
+              "total_tokens": 279888,
+              "model_seconds_sum": 239.9964
+            },
+            "test_reviewer": {
+              "calls": 1,
+              "input_tokens": 150083,
+              "cached_input_tokens": 95616,
+              "output_tokens": 1050,
+              "total_tokens": 151133,
+              "model_seconds_sum": 60.5461
+            }
+          },
+          "totals": {
+            "calls": 21,
+            "input_tokens": 3267954,
+            "cached_input_tokens": 2804352,
+            "output_tokens": 33831,
+            "total_tokens": 3301785,
+            "model_seconds_sum": 2050.0394
+          }
+        },
+        "e84dbe7bec3e4131a98e42f15d5e13ff": {
+          "roles": {
+            "examiner": {
+              "calls": 1,
+              "input_tokens": 506864,
+              "cached_input_tokens": 452992,
+              "output_tokens": 23439,
+              "total_tokens": 530303,
+              "model_seconds_sum": 564.0343
+            },
+            "solver": {
+              "calls": 1,
+              "input_tokens": 301034,
+              "cached_input_tokens": 265600,
+              "output_tokens": 14153,
+              "total_tokens": 315187,
+              "model_seconds_sum": 350.4383
+            },
+            "controller": {
+              "calls": 20,
+              "input_tokens": 1099470,
+              "cached_input_tokens": 587776,
+              "output_tokens": 9152,
+              "total_tokens": 1108622,
+              "model_seconds_sum": 715.2603
+            },
+            "fact_reviewer": {
+              "calls": 9,
+              "input_tokens": 646038,
+              "cached_input_tokens": 525056,
+              "output_tokens": 4865,
+              "total_tokens": 650903,
+              "model_seconds_sum": 321.0379
+            },
+            "fact_writer": {
+              "calls": 9,
+              "input_tokens": 597382,
+              "cached_input_tokens": 503552,
+              "output_tokens": 13502,
+              "total_tokens": 610884,
+              "model_seconds_sum": 486.8858
+            },
+            "rewrite_author": {
+              "calls": 6,
+              "model_seconds_sum": 1526.5209999999997,
+              "input_tokens": 3422968,
+              "cached_input_tokens": 3101568,
+              "output_tokens": 53535,
+              "total_tokens": 3476503
+            }
+          },
+          "totals": {
+            "calls": 46,
+            "input_tokens": 6573756,
+            "cached_input_tokens": 5436544,
+            "output_tokens": 118646,
+            "total_tokens": 6692402,
+            "model_seconds_sum": 3964.1776
+          }
+        }
+      },
+      "totals": {
+        "calls": 67,
+        "input_tokens": 9841710,
+        "cached_input_tokens": 8240896,
+        "output_tokens": 152477,
+        "total_tokens": 9994187,
+        "model_seconds_sum": 6014.217000000001
+      }
+    },
+    "jobs": [
+      {
+        "job_id": "49ea4ac6871b4de082006e87ca5c580d",
+        "status": "failed",
+        "start": "2026-11-13T07:04:35.181947+00:00",
+        "end": "2026-11-13T07:35:50.364942+00:00",
+        "wall_seconds": 1875.182995
+      },
+      {
+        "job_id": "e84dbe7bec3e4131a98e42f15d5e13ff",
+        "status": "completed_with_gaps",
+        "start": "2026-11-13T07:41:41.270217+00:00",
+        "end": "2026-11-13T08:55:16.816399+00:00",
+        "wall_seconds": 4415.546182
+      }
+    ],
+    "end_to_end_run_seconds": 7124.816399,
+    "source_reference": {
+      "capabilities": [
+        "cli",
+        "distribution",
+        "environment"
+      ],
+      "files": 4,
+      "author_calls": 4
+    },
+    "conversion": {
+      "external_capabilities": 6,
+      "internal_capabilities": 2,
+      "interface_entries": 36,
+      "checks_kept": 10,
+      "checks_left_out": {},
+      "checks_not_inspected": [],
+      "external_capabilities_without_check": [],
+      "internal_capabilities_not_reached": [],
+      "unresolved_exports": [],
+      "carry_candidates": [],
+      "unreadable_test_files": 0,
+      "unreadable_modules": []
+    },
+    "candidate_commit": "8f939f1d2958d577114ed578f1531b972f0ba4db",
+    "local_fix_commits": [
+      "ae4e61dae3d450374911551adba94c1c616ee146"
+    ]
+  }
+}

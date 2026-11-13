@@ -1,0 +1,9 @@
+capability_id,before_lines,after_lines,reduction_percent,mapping_status,validation_status,executed,evidence_category,direct_checks,related_checks,direct_checks_passed,direct_checks_failed,direct_checks_inconclusive,related_checks_passed,related_checks_failed,related_checks_inconclusive,evidence_coverage,before_source_tokens,after_source_tokens,source_token_reduction_percent
+dotenv,1181,556,52.921,mapped,unknown,False,related_passed,0,10,0,0,0,10,0,0,limited,8215,4799,41.582
+environment,532,227,57.331,mapped,verified,True,direct_passed,5,0,5,0,0,0,0,0,declared_checks_only,3829,2049,46.487
+parsing,191,85,55.497,mapped,verified,True,direct_passed,2,0,2,0,0,0,0,0,declared_checks_only,1391,765,45.004
+interpolation,86,55,36.047,mapped,verified,True,direct_passed,1,1,1,0,0,1,0,0,declared_checks_only,560,390,30.357
+api,51,28,45.098,mapped,verified,True,direct_passed,2,0,2,0,0,0,0,0,declared_checks_only,296,231,21.959
+cli,270,135,50.0,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,1822,1150,36.883
+ipython,50,25,50.0,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,306,203,33.66
+distribution,1,1,0.0,mapped,unknown,False,related_passed,0,2,0,0,0,2,0,0,limited,11,11,0.0
