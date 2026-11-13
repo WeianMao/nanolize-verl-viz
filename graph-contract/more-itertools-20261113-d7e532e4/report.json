@@ -1,0 +1,432 @@
+{
+  "job_id": "d7e532e4f38c4536bf2b9562ca04deb9",
+  "status": "completed_with_gaps",
+  "status_label": "已交付 · 任务成本评估有缺口",
+  "intro": "完整跑到正式交付：第6个候选通过全部16组冻结检查及3项安装检查，4/4功能节点义务通过。交付状态为 completed_with_gaps；唯一交付缺口是任务成本未验证。",
+  "updated_at": "2026-11-13T10:27:57.578883+00:00",
+  "elapsed_display": "3 小时 18 分 40 秒",
+  "elapsed_seconds": 11920.061,
+  "started_at": "2026-11-13T07:06:54.915168+00:00",
+  "finished_at": "2026-11-13T10:25:34.975941+00:00",
+  "elapsed_note": "从 07:06:54 到 10:25:34 UTC（2026-11-13）；包括基线、修复、暂停和排错，不含提交前安装准备。",
+  "metrics": {
+    "original_tokens": 75955,
+    "candidate_tokens": 25135,
+    "size_percent": 33.09,
+    "size_note": "25,135 / 75,955 tokens；减少66.91%",
+    "unchanged_percent": 22.1,
+    "unchanged_note": "按行长度加权；比较12个原版同路径文件",
+    "body_overlap_percent": 15,
+    "refused_files": 0,
+    "refusals": 0,
+    "undocumented_retained_percent": 68.82,
+    "size_detail": "固定 cl100k_base tokenizer；源码与配置逐文件求和。排除 Python 注释和文档字符串后，保留比例为68.82%（减少31.18%）。交付代码的函数文档字符串为0 tokens，因此总压缩幅度有相当部分来自文档删减。",
+    "literal_note": "比较了1,602条有效代码行，整体匹配15%，未触发auto的整体40%启用门槛。2个函数各有11条比较行、匹配73%；auto未启用退回，所以它们未被退回。全部6次候选保存成功，0个文件、0次防默写退回。"
+  },
+  "tests": {
+    "designed_nodes": 2,
+    "unverified_nodes": 0,
+    "note": "3个外部叶节点均有有效检查；设计者为2节点补8个文件、53个pytest用例。package无动态knockout证据。",
+    "designed_files": 8,
+    "designed_cases": 53,
+    "rejected_proposals": 3
+  },
+  "verification": [
+    [
+      "正式交付",
+      "completed_with_gaps；0项功能失败；唯一缺口task_effort_not_passed"
+    ],
+    [
+      "全量冻结检查",
+      "16/16通过，0项未运行、0项排除；verification-36"
+    ],
+    [
+      "原版功能用例",
+      "extended 626/626 + recipes 145/145 = 771项通过；重复包装不重复计数"
+    ],
+    [
+      "原30秒扩展套件",
+      "14.1501秒通过；180秒附加包装在13.5125秒通过"
+    ],
+    [
+      "设计测试",
+      "2节点、8个接受文件、53个用例全部通过；3份草案被拒绝"
+    ],
+    [
+      "叶节点验证",
+      "3/3有有效检查，0未验证；package没有可替换的自有函数体，缺少动态失效证据"
+    ],
+    [
+      "节点义务",
+      "4/4全部验证，0排除；scope all"
+    ],
+    [
+      "完整导出 / 文档配置",
+      "176个公开导出名身份检查通过；Sphinx配置和原有响应式表格样式通过"
+    ],
+    [
+      "隔离安装",
+      "3/3通过；installation-37"
+    ],
+    [
+      "任务成本评估",
+      "未验证：原版任务误要求运行隔离的隐藏验收脚本；后续合同修订又使旧任务基线过期。没有有效改善比例。"
+    ],
+    [
+      "交付副本",
+      "已生成独立Git仓库；文件树与已验证候选完全一致，原版仓库保持干净"
+    ]
+  ],
+  "conversion": {
+    "checks_left_out": 0,
+    "checks_not_inspected": 0,
+    "external_capabilities_without_check": 0,
+    "internal_capabilities_not_reached": 0,
+    "unresolved_exports": 0,
+    "carry_candidates": 0,
+    "checks_kept": 3
+  },
+  "interface_note": "原始转换截断 71 条接口；本地修复后保留全部 484 条静态接口，无截断。另以简短 interface 条目补充版本、类型、默认行为、固定错误文字和文档配置；最终 497 条。",
+  "cost": [
+    [
+      "已记录输入 tokens",
+      "25,495,929"
+    ],
+    [
+      "其中缓存输入 tokens",
+      "22,878,592"
+    ],
+    [
+      "已记录输出 tokens",
+      "325,183"
+    ],
+    [
+      "已记录合计 tokens",
+      "25,821,112"
+    ],
+    [
+      "完成的运行器记录数",
+      "52"
+    ],
+    [
+      "用量缺失或不完整记录",
+      "0"
+    ],
+    [
+      "货币账单",
+      "运行器未提供"
+    ]
+  ],
+  "cost_note": "模型用量来自nanolize的52条已完成运行器记录，包含控制器、事实生成与复核、测试设计与复核、11次作者调用及任务评估。缓存tokens已包含在输入中，未重复计数；0条用量缺失或不完整。外层协调会话不计入。运行器未提供货币账单，不能据此给出实际美元花费。",
+  "settings": [
+    [
+      "范围",
+      "all；排除 0 个节点"
+    ],
+    [
+      "目标体积",
+      "默认 50%（建议目标）"
+    ],
+    [
+      "验证策略",
+      "开启；design=true；strict=false（默认）"
+    ],
+    [
+      "独立测试运行器",
+      "作业默认 Codex；与作者隔离会话"
+    ],
+    [
+      "防默写",
+      "auto（默认）"
+    ],
+    [
+      "执行位置",
+      "local（auto 探测后选择）"
+    ],
+    [
+      "重试次数 / token 上限",
+      "默认不设"
+    ],
+    [
+      "作业 / 单次时限",
+      "默认按体积选择：12 h / 2 h"
+    ],
+    [
+      "carry",
+      "0 个候选；无 carry"
+    ],
+    [
+      "详细 knowledge 库",
+      "未附加"
+    ],
+    [
+      "任务评估默认限制",
+      "1,000,000 tokens；单次 900 s；3 次重复"
+    ],
+    [
+      "额外完整套件的执行超时",
+      "30 s → 180 s（问题 12；其余预算默认）"
+    ]
+  ],
+  "issues": [
+    {
+      "title": "6. Public interfaces truncated at 300 entries",
+      "body": "- Step: graph-contract conversion/report review.\n- Job ID: not created yet.\n- Original diagnostic: `\"truncated\": {\"extended\": 71}`.\n- Cause: `graph_contract.MAX_ENTRIES = 300` cuts off a large public module with both package-level and module-level re-exports. This would omit required public names from the author contract.\n- Workaround: on local branch `local/graph-contract-more-itertools`, increased the manifest interface representation capacity to 1000 entries and added a regression case for 180 operations with dual public exports; regenerate into a new output filename. No acceptance check or runtime budget was weakened.\n- Changed files: `nanolize/src/nanolize/graph_contract.py`, `nanolize/tests/test_graph_contract.py`.\n- Result: 11 ProposalTests passed; conversion preserved all 484 discovered entries with no truncation. Commit `ee875ec` on the local branch; no push.",
+      "summary_zh": "接口容量上限截断 71 条接口；本地单独提交提高表示容量并补回归测试，重新转换保留全部 484 条。"
+    },
+    {
+      "title": "21. Task benchmark requires a hidden acceptance script in the solver workspace",
+      "body": "- Step: default independent task-effort original baseline, modify task repeat 0.\n- Job ID: `d7e532e4f38c4536bf2b9562ca04deb9`.\n- Original diagnostic: `\"status\": \"blocked\", \"reason\": \"task_environment_unavailable\"`; solver: `Acceptance is blocked because the supplied accept.py is absent.` The generated task says `Run the supplied accept.py from the repository root`, but this script belongs to hidden evaluator checks, not visible solver fixtures.\n- Cause: generated task instructions incorrectly require the solver to run an acceptance script that the isolation design withholds. The solver reported its focused regression and self-check passed but could not complete the demanded acceptance step; no successful task result is inferred.\n- Workaround: retain the frozen hidden checks, task result and default policy, and let nanolize continue its functional rewrite workflow with task-effort marked unverified. No hidden checks were exposed or removed, no source/code/parameter changes, and no budget increase.\n- Result: task baseline `ready: false`, `status: unverified`, one blocked original run and no valid task-cost comparison. Recorded task overhead is 1,132,451 tokens (808,036 examiner + 324,415 solver), already above the default 1,000,000-token ceiling after the in-flight call completed. The full functional baseline remains ready; first compression author started at 08:34:20 UTC. Evidence: `artifacts/task_baseline-6.json` and `task-effort/original/development/modify/0/record.json`.",
+      "summary_zh": "任务说明要求解题者运行被隔离的隐藏验收脚本，导致任务成本基线未验证；保留缺口继续功能压缩，未暴露隐藏检查或增加默认预算。"
+    },
+    {
+      "title": "30. Task comparison crashes on a baseline sealed before an authorized contract revision",
+      "body": "- Step: compare_task_effort after candidate-6 passed all16 behavior groups and3 installation checks.\n- Job ID: `d7e532e4f38c4536bf2b9562ca04deb9`.\n- Original diagnostic: operation seq132, tool compare_task_effort, status error, `BenchmarkIntegrityError: Task baseline belongs to different scope or runner settings`; public error `The execution pipeline could not complete.` at2026-11-13T10:16:44.991128+00:00. Resume remains available.\n- Cause: the task baseline was sealed against contract-4. The owner-authorized documentation check produced contract-18 and a changed plan digest. Refreeze intentionally recaptures behavior facts/baseline but retains the pre-author task baseline; compare_task_effort passed the new plan to the old benchmark and raised instead of recording the legitimately stale task evidence as unavailable. Runner settings digests are identical.\n- Workaround: on the existing local nanolize workaround branch, change src/nanolize/job_tools/verify.py so a recorded change of contract with a changed plan digest and unchanged runner settings produces an explicit unverified task-effort artifact (reason original_baseline_unavailable, with old/new contract IDs). Validate the baseline artifact hash first. Unexplained same-contract plan changes, changed runner settings and tampered artifacts retain their integrity failures. Keep task_effort_not_passed as a delivery gap; do not redesign hidden tasks after authoring, expose hidden checks, reset budgets or claim a pass. Added a real controller/refreeze regression in tests/test_next_task_effort.py. No job state or frozen evidence is edited.\n- Result: local workaround commit059dd85b8c1004c3852600a7928f53cc0495a644. Tests passed:7 task-flow tests,2 refreeze tests,28 staged-task tests; the amended new integrity regression also passed separately. However the job correctly refuses a different runtime fingerprint (issue31), so this new code was NOT loaded into the running job. The fix is retained for future runs. To complete this job without bypassing version/integrity guards, use the exact original runtime and supported owner evaluate/select/deliver calls with task_effort_not_passed explicitly retained. The pre-existing original task-design failure in issue21 remains a distinct gap.",
+      "summary_zh": "任务比较因合同修订后的旧基线而崩溃；本地提交059dd85通过37项相关测试，但受版本固定保护未在本作业加载，任务评估缺口继续保留。"
+    }
+  ],
+  "issue_note": "本页问题列表只保留经核对确定由 nanolize 自身引起的 3 项，每项有步骤、作业ID、报错原文、原因、改动和结果。明确放宽：曾为附加完整套件把进程超时从30秒调至180秒；原30秒检查仍保留，并在最终候选通过。未关闭验证、设计或功能断言。任务成本缺口未改成通过。",
+  "events": [
+    {
+      "message": "Resuming a validated edited checkpoint.",
+      "phase": "resuming",
+      "time": "2026-11-13T10:04:42.620630+00:00"
+    },
+    {
+      "message": "Controller round 17: choosing the next tool calls.",
+      "phase": "controller",
+      "time": "2026-11-13T10:04:43.500559+00:00"
+    },
+    {
+      "codes": [
+        "applied"
+      ],
+      "message": "Controller round 17: run_agent, save_candidate.",
+      "phase": "controller",
+      "time": "2026-11-13T10:05:44.242477+00:00"
+    },
+    {
+      "message": "The configured agent is repairing its implementation of the selected graph.",
+      "phase": "refactoring",
+      "time": "2026-11-13T10:05:45.061427+00:00"
+    },
+    {
+      "message": "Controller round 18: choosing the next tool calls.",
+      "phase": "controller",
+      "time": "2026-11-13T10:15:17.698485+00:00"
+    },
+    {
+      "codes": [
+        "applied"
+      ],
+      "message": "Controller round 18: compare_behavior, check_installation, audit_coverage, measure_code, evaluate_acceptance.",
+      "phase": "controller",
+      "time": "2026-11-13T10:15:27.053846+00:00"
+    },
+    {
+      "message": "Comparing this candidate with the original frozen checks and source budget.",
+      "phase": "verifying",
+      "time": "2026-11-13T10:15:27.089105+00:00"
+    },
+    {
+      "message": "Building and checking this candidate in a fresh isolated Python environment.",
+      "phase": "installing",
+      "time": "2026-11-13T10:16:13.339024+00:00"
+    },
+    {
+      "message": "Controller round 19: choosing the next tool calls.",
+      "phase": "controller",
+      "time": "2026-11-13T10:16:33.429729+00:00"
+    },
+    {
+      "codes": [
+        "applied"
+      ],
+      "message": "Controller round 19: compare_task_effort, evaluate_acceptance.",
+      "phase": "controller",
+      "time": "2026-11-13T10:16:43.280468+00:00"
+    },
+    {
+      "message": "Execution stopped; private candidate and evidence are retained for owner review.",
+      "phase": "failed",
+      "time": "2026-11-13T10:16:44.991128+00:00"
+    },
+    {
+      "message": "The owner is running job tools by hand.",
+      "phase": "failed",
+      "time": "2026-11-13T10:24:52.821258+00:00"
+    },
+    {
+      "message": "Manual tool calls ended; the job keeps its earlier stop.",
+      "phase": "failed",
+      "time": "2026-11-13T10:24:55.928713+00:00"
+    },
+    {
+      "message": "The owner is running job tools by hand.",
+      "phase": "failed",
+      "time": "2026-11-13T10:25:27.989563+00:00"
+    },
+    {
+      "message": "Delivered with gaps (task effort not passed); no full preservation claim is made.",
+      "phase": "completed",
+      "time": "2026-11-13T10:25:34.975941+00:00"
+    }
+  ],
+  "versions": [
+    [
+      "原版commit",
+      "ceafee8ce96f4bc1eb74c528bc247c91d648a0bb"
+    ],
+    [
+      "nanolize指定分支",
+      "WeianMao/nanolize · claude/graph-contract"
+    ],
+    [
+      "指定分支基准",
+      "eb54c4328809d3e37b83301d8a934e520aa84234"
+    ],
+    [
+      "本地修复分支",
+      "local/graph-contract-more-itertools；未向上游推送"
+    ],
+    [
+      "执行过的容量修复",
+      "ee875ec；11项转换回归通过"
+    ],
+    [
+      "后续任务基线修复",
+      "059dd85；37项相关测试通过；因版本固定，未在本作业加载"
+    ],
+    [
+      "运行器内容指纹",
+      "280021bb03915615dcfb1273f74a7279b7057288fbfad95970a157185933084c"
+    ],
+    [
+      "任务模型 / reasoning",
+      "gpt-6.1-sol / xhigh"
+    ],
+    [
+      "候选分支",
+      "codex/nanolize-d7e532e4f38c4536bf2b9562ca04deb9"
+    ],
+    [
+      "已验证候选commit",
+      "8cfee163c8eb27ea06a193bf9a74ce4bf54e9122"
+    ],
+    [
+      "交付目录",
+      "more-itertools-nanolized-20261113-102534"
+    ],
+    [
+      "交付副本commit",
+      "60c2f99d241f02500ced444b8fe09c1b3032f37b"
+    ],
+    [
+      "交付方式",
+      "原版本官方owner job-call：选择已验证候选、评估并交付；保留任务评估缺口"
+    ]
+  ],
+  "limitations": [
+    "任务成本评估未完成，因此本次交付为completed_with_gaps，不能声称任务耗费改善，也不声称全部输入上的语义等价。",
+    "附加完整套件的单次进程超时曾从默认30秒调整到180秒，这是明确披露的放宽；原30秒检查保留并最终通过。其余作业、作者、任务预算及次数限制使用默认值。",
+    "注释与文档字符串删减显著：排除两者后体积为原版68.82%；交付Python文档字符串为0 tokens，公开定义文档覆盖从93.1%降至0%。",
+    "0个未验证节点指默认叶节点验证规则下3个叶节点均有有效检查；package无自有函数体，无法取得动态knockout证据。",
+    "默认源码参考策略允许修复阶段读取失败节点的生产源码。正式记录有4次作者调用使用了此能力，涉及3个节点、8个文件；首次实现保持源码隔离。防默写仍使用默认auto。",
+    "两次事实生成分别接受78与76条、各剔除6条，摘要未覆盖44与99项。计划最终保留243条事实合同（含89条设计测试事实）；这些摘要缺口没有删除任何原版测试。"
+  ],
+  "quality": {
+    "delivered": {
+      "composition": {
+        "code_tokens": 24987,
+        "other_tokens": 6308,
+        "python_code_tokens": 18679,
+        "python_comment_tokens": 131,
+        "python_data_literal_tokens": 0,
+        "python_docstring_tokens": 0,
+        "python_files": 4,
+        "unparsed_python_files": 0
+      },
+      "documentation": {
+        "documented": 0,
+        "documented_percent": 0.0,
+        "public_definitions": 193
+      },
+      "rewrite": {
+        "files_at_an_original_path": 12,
+        "unchanged_percent": 22.1
+      },
+      "total_tokens": 25135
+    },
+    "original": {
+      "composition": {
+        "code_tokens": 35682,
+        "other_tokens": 13793,
+        "python_code_tokens": 21889,
+        "python_comment_tokens": 4613,
+        "python_data_literal_tokens": 0,
+        "python_docstring_tokens": 35012,
+        "python_files": 4,
+        "unparsed_python_files": 0
+      },
+      "documentation": {
+        "documented": 176,
+        "documented_percent": 93.1,
+        "public_definitions": 189
+      },
+      "total_tokens": 75955
+    },
+    "original_overlap": {
+      "compared_lines": 1602,
+      "documentation_percent": 1,
+      "function_limit_percent": 60,
+      "function_lines": 8,
+      "functions": 2,
+      "limit_percent": 40,
+      "listed_functions": [
+        {
+          "function": "seekable.__next__",
+          "lines": 11,
+          "path": "more_itertools/more.py",
+          "percent": 73
+        },
+        {
+          "function": "side_effect",
+          "lines": 11,
+          "path": "more_itertools/more.py",
+          "percent": 73
+        }
+      ],
+      "mode": "auto",
+      "percent": 15
+    },
+    "schema_version": 1,
+    "status": "measured",
+    "summary": {
+      "documented_percent": {
+        "delivered": 0.0,
+        "original": 93.1
+      },
+      "total_retained_percent": 33.09,
+      "undocumented_retained_percent": 68.82
+    }
+  },
+  "delivery": {
+    "candidate": "candidate-6",
+    "candidate_commit": "8cfee163c8eb27ea06a193bf9a74ce4bf54e9122",
+    "directory_name": "more-itertools-nanolized-20261113-102534",
+    "export_commit": "60c2f99d241f02500ced444b8fe09c1b3032f37b",
+    "export_matches_verified_candidate": true,
+    "acceptance_gaps": [
+      "task_effort_not_passed"
+    ],
+    "unresolved_behavior_failures": 0
+  },
+  "proof_artifacts": {
+    "baseline": "baseline-19",
+    "verification": "verification-36",
+    "installation": "installation-37",
+    "measurement": "measurement-38",
+    "delivery": "delivery-39",
+    "contract": "contract-18"
+  }
+}
