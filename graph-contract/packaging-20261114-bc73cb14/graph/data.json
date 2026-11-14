@@ -1,0 +1,6658 @@
+{
+  "schema_version": 1,
+  "operation": "nanolize_report",
+  "binding": {
+    "original_git_head": "88bb29fcba1786edf4e842270887d8b6f5402e63",
+    "candidate_git_head": "3b792eb3d58734a4b7e84a41df4b3693cc38c7ee",
+    "candidate_source_sha256": "2f669612dd8780abb2bc2ca29ed8954b6b036e126c25ba56f2e16120fb951c0d",
+    "candidate_contract_sha256": "9f9262aaea948d7e2f5251d765ab2ee26193d72b494b03d806c2273c4535f50f",
+    "plan_sha256": "418bf4b69bf0e9bf070be5ebb92121f0ffe76c8fc43a421caef63100781afb9f",
+    "verification_sha256": "e0753da4e8e4da1702e2d0f4c4c811fbd54e4e244697e47fc337d77fd310ff86",
+    "candidate_code_size_sha256": "d494066f6784f635dc44b5556622a0a5ff7d507ea73b74c2a543635be8582ca2"
+  },
+  "summary": {
+    "before": 14592,
+    "after": 4736,
+    "reduction_percent": 67.544,
+    "capabilities": 18,
+    "count_unit": "capabilities",
+    "status_counts": {
+      "verified": 14,
+      "failed": 0,
+      "partial": 2,
+      "unknown": 2,
+      "retired": 0
+    },
+    "evidence_counts": {
+      "failed": 0,
+      "direct_passed": 14,
+      "direct_partial": 0,
+      "related_passed": 1,
+      "related_only": 0,
+      "unverified": 3,
+      "retired": 0
+    },
+    "aggregate_status_counts": {
+      "verified": 16,
+      "failed": 0,
+      "partial": 1,
+      "unknown": 1,
+      "retired": 0
+    },
+    "verification_status": "unverified",
+    "verification_tests": {
+      "original_total": 4,
+      "retained": 27,
+      "retired": 0,
+      "needs_adaptation": 0,
+      "adapted": 0,
+      "contract": 23,
+      "passed": 27,
+      "failed": 0,
+      "fixed_baseline_failure": 0,
+      "not_run": 0
+    },
+    "unattributed_checks": [],
+    "leaf_coverage": {
+      "status": "ready",
+      "strict": false,
+      "valid": [
+        "dependency_groups",
+        "direct_url",
+        "errors",
+        "licenses",
+        "linux",
+        "markers",
+        "metadata",
+        "pylock",
+        "ranges",
+        "requirements",
+        "specifiers",
+        "tags",
+        "utils"
+      ],
+      "missing": [
+        "maintenance",
+        "version"
+      ],
+      "exempted": [
+        "parser",
+        "range_engine"
+      ],
+      "why_missing": {
+        "maintenance": [
+          "no_check"
+        ],
+        "parser": [
+          "no_check"
+        ],
+        "range_engine": [
+          "no_check"
+        ],
+        "version": [
+          "role_not_proven"
+        ]
+      }
+    },
+    "facts_given_checks": 26,
+    "source_reference_capabilities": 5,
+    "unmapped_candidate_files": [
+      "src/packaging/licenses/_spdx.py"
+    ],
+    "ignored_mapping_files": [
+      "pyproject.toml",
+      "src/packaging/py.typed"
+    ],
+    "code_size": {
+      "metric": "tokens",
+      "tokenizer": {
+        "library": "tiktoken",
+        "version": "0.12.0",
+        "encoding": "cl100k_base",
+        "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+        "text_policy": "raw_decoded_text_per_file",
+        "classification": "source_and_configuration_v2",
+        "special_tokens": "ordinary_text",
+        "file_boundaries": "independent_sum",
+        "decoding": "python_encoding_cookie_else_utf8_strict",
+        "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets"
+      },
+      "before": 148516,
+      "after": 37752,
+      "reduction_percent": 74.581,
+      "source_before": 115637,
+      "source_after": 35090,
+      "configuration_before": 32879,
+      "configuration_after": 2662,
+      "observed_before": 148516,
+      "observed_after": 37752,
+      "complete": true,
+      "target_tokens": 74258,
+      "budget_status": "met",
+      "target_policy": "advisory",
+      "code_only": {
+        "before": 104803,
+        "after": 37526
+      },
+      "documented_percent": {
+        "original": 68.6,
+        "delivered": 0.0
+      }
+    },
+    "size_attribution": {
+      "metric": "tokens",
+      "tokenizer": {
+        "classification": "source_and_configuration_v2",
+        "decoding": "python_encoding_cookie_else_utf8_strict",
+        "encoding": "cl100k_base",
+        "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+        "file_boundaries": "independent_sum",
+        "library": "tiktoken",
+        "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+        "special_tokens": "ordinary_text",
+        "text_policy": "raw_decoded_text_per_file",
+        "version": "0.12.0"
+      },
+      "complete": true,
+      "original_total": 148516,
+      "selected_original_estimate": 148516,
+      "candidate_total": 37752,
+      "overall_reduction": {
+        "tokens": 110764,
+        "percent": 74.581
+      },
+      "scope_reduction_estimate": {
+        "tokens": 0,
+        "percent": 0.0
+      },
+      "rewrite_reduction_estimate": {
+        "tokens": 110764,
+        "percent": 74.581
+      },
+      "shared_scope_files": [],
+      "method": "unique_mapped_source_plus_all_original_configuration",
+      "estimate_only": false,
+      "limitations": [
+        "Scope and rewrite attribution are mapped-file estimates, not exact semantic savings. Shared files count once and retained/removed code within them cannot be separated.",
+        "All original configuration is charged to the retained footprint. Configuration changes appear in the rewrite estimate and may include scope-related savings.",
+        "Overall reduction uses the full original as denominator; rewrite reduction uses the selected original estimate. Their percentages must not be added.",
+        "Negative reductions indicate growth; incomplete measurements do not establish savings."
+      ]
+    }
+  },
+  "nodes": [
+    {
+      "id": "packaging",
+      "parent": null,
+      "name": "Python packaging utilities",
+      "kind": "capability",
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 14592,
+        "after": 3938,
+        "reduction_percent": 73.013,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "benchmarks/__init__.py",
+            "lines": 17
+          },
+          {
+            "path": "benchmarks/markers.py",
+            "lines": 70
+          },
+          {
+            "path": "benchmarks/requirement.py",
+            "lines": 22
+          },
+          {
+            "path": "benchmarks/resolver.py",
+            "lines": 48
+          },
+          {
+            "path": "benchmarks/specifiers.py",
+            "lines": 141
+          },
+          {
+            "path": "benchmarks/utils.py",
+            "lines": 33
+          },
+          {
+            "path": "benchmarks/version.py",
+            "lines": 62
+          },
+          {
+            "path": "docs/conf.py",
+            "lines": 134
+          },
+          {
+            "path": "src/packaging/__init__.py",
+            "lines": 15
+          },
+          {
+            "path": "src/packaging/_elffile.py",
+            "lines": 110
+          },
+          {
+            "path": "src/packaging/_manylinux.py",
+            "lines": 280
+          },
+          {
+            "path": "src/packaging/_musllinux.py",
+            "lines": 90
+          },
+          {
+            "path": "src/packaging/_parser.py",
+            "lines": 478
+          },
+          {
+            "path": "src/packaging/_ranges.py",
+            "lines": 940
+          },
+          {
+            "path": "src/packaging/_structures.py",
+            "lines": 33
+          },
+          {
+            "path": "src/packaging/_tokenizer.py",
+            "lines": 235
+          },
+          {
+            "path": "src/packaging/dependency_groups.py",
+            "lines": 341
+          },
+          {
+            "path": "src/packaging/direct_url.py",
+            "lines": 311
+          },
+          {
+            "path": "src/packaging/errors.py",
+            "lines": 96
+          },
+          {
+            "path": "src/packaging/licenses/__init__.py",
+            "lines": 207
+          },
+          {
+            "path": "src/packaging/licenses/_spdx.py",
+            "lines": 798
+          },
+          {
+            "path": "src/packaging/markers.py",
+            "lines": 740
+          },
+          {
+            "path": "src/packaging/metadata.py",
+            "lines": 1058
+          },
+          {
+            "path": "src/packaging/pylock.py",
+            "lines": 868
+          },
+          {
+            "path": "src/packaging/ranges.py",
+            "lines": 2342
+          },
+          {
+            "path": "src/packaging/requirements.py",
+            "lines": 292
+          },
+          {
+            "path": "src/packaging/specifiers.py",
+            "lines": 1545
+          },
+          {
+            "path": "src/packaging/tags.py",
+            "lines": 1081
+          },
+          {
+            "path": "src/packaging/utils.py",
+            "lines": 372
+          },
+          {
+            "path": "src/packaging/version.py",
+            "lines": 1258
+          },
+          {
+            "path": "tasks/__init__.py",
+            "lines": 3
+          },
+          {
+            "path": "tasks/check_frozen_revs.py",
+            "lines": 138
+          },
+          {
+            "path": "tasks/licenses.py",
+            "lines": 93
+          },
+          {
+            "path": "tasks/paths.py",
+            "lines": 9
+          },
+          {
+            "path": "tasks/pickle_compat.py",
+            "lines": 199
+          },
+          {
+            "path": "tasks/select_pypi_dist.py",
+            "lines": 34
+          },
+          {
+            "path": "tasks/select_pypi_specs.py",
+            "lines": 32
+          },
+          {
+            "path": "tasks/select_pypi_versions.py",
+            "lines": 67
+          }
+        ],
+        "after_files": [
+          {
+            "path": "benchmarks/__init__.py",
+            "lines": 0
+          },
+          {
+            "path": "benchmarks/markers.py",
+            "lines": 20
+          },
+          {
+            "path": "benchmarks/requirement.py",
+            "lines": 16
+          },
+          {
+            "path": "benchmarks/resolver.py",
+            "lines": 11
+          },
+          {
+            "path": "benchmarks/specifiers.py",
+            "lines": 17
+          },
+          {
+            "path": "benchmarks/utils.py",
+            "lines": 15
+          },
+          {
+            "path": "benchmarks/version.py",
+            "lines": 15
+          },
+          {
+            "path": "src/packaging/__init__.py",
+            "lines": 2
+          },
+          {
+            "path": "src/packaging/_intervals.py",
+            "lines": 279
+          },
+          {
+            "path": "src/packaging/_linux.py",
+            "lines": 149
+          },
+          {
+            "path": "src/packaging/_musllinux.py",
+            "lines": 18
+          },
+          {
+            "path": "src/packaging/_parser.py",
+            "lines": 313
+          },
+          {
+            "path": "src/packaging/_pickle.py",
+            "lines": 5
+          },
+          {
+            "path": "src/packaging/_validation.py",
+            "lines": 67
+          },
+          {
+            "path": "src/packaging/dependency_groups.py",
+            "lines": 147
+          },
+          {
+            "path": "src/packaging/direct_url.py",
+            "lines": 121
+          },
+          {
+            "path": "src/packaging/errors.py",
+            "lines": 14
+          },
+          {
+            "path": "src/packaging/licenses/__init__.py",
+            "lines": 77
+          },
+          {
+            "path": "src/packaging/markers.py",
+            "lines": 258
+          },
+          {
+            "path": "src/packaging/metadata.py",
+            "lines": 377
+          },
+          {
+            "path": "src/packaging/pylock.py",
+            "lines": 335
+          },
+          {
+            "path": "src/packaging/ranges.py",
+            "lines": 326
+          },
+          {
+            "path": "src/packaging/requirements.py",
+            "lines": 118
+          },
+          {
+            "path": "src/packaging/specifiers.py",
+            "lines": 303
+          },
+          {
+            "path": "src/packaging/tags.py",
+            "lines": 357
+          },
+          {
+            "path": "src/packaging/utils.py",
+            "lines": 91
+          },
+          {
+            "path": "src/packaging/version.py",
+            "lines": 282
+          },
+          {
+            "path": "tasks/_sampling.py",
+            "lines": 49
+          },
+          {
+            "path": "tasks/check_frozen_revs.py",
+            "lines": 40
+          },
+          {
+            "path": "tasks/licenses.py",
+            "lines": 42
+          },
+          {
+            "path": "tasks/pickle_compat.py",
+            "lines": 53
+          },
+          {
+            "path": "tasks/select_pypi_dist.py",
+            "lines": 7
+          },
+          {
+            "path": "tasks/select_pypi_specs.py",
+            "lines": 7
+          },
+          {
+            "path": "tasks/select_pypi_versions.py",
+            "lines": 7
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "unknown",
+            "kind": "coverage"
+          },
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "contract-direct_url-bc73cb-1",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "direct_url"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "direct_url"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 8,
+            "baseline_cases": {
+              "passed": 11,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 11
+            },
+            "candidate_cases": {
+              "passed": 11,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 11
+            }
+          },
+          {
+            "name": "contract-direct_url-bc73cb-2",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "direct_url"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "direct_url"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 11,
+            "baseline_cases": {
+              "passed": 22,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 22
+            },
+            "candidate_cases": {
+              "passed": 22,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 22
+            }
+          },
+          {
+            "name": "contract-direct_url-bc73cb-3",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "direct_url"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "direct_url"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 3,
+            "baseline_cases": {
+              "passed": 9,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 9
+            },
+            "candidate_cases": {
+              "passed": 9,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 9
+            }
+          },
+          {
+            "name": "contract-errors-bc73cb-27",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "errors"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "errors"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 5,
+            "baseline_cases": {
+              "passed": 3,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 3
+            },
+            "candidate_cases": {
+              "passed": 3,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 3
+            }
+          },
+          {
+            "name": "contract-licenses-bc73cb-5",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "licenses"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "licenses"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 12,
+            "baseline_cases": {
+              "passed": 54,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 54
+            },
+            "candidate_cases": {
+              "passed": 54,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 54
+            }
+          },
+          {
+            "name": "contract-linux-bc73cb-6",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "linux"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "linux"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 5,
+            "baseline_cases": {
+              "passed": 2,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 2
+            },
+            "candidate_cases": {
+              "passed": 2,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 2
+            }
+          },
+          {
+            "name": "contract-markers-bc73cb-10",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "markers"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "markers"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 7,
+            "baseline_cases": {
+              "passed": 11,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 11
+            },
+            "candidate_cases": {
+              "passed": 11,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 11
+            }
+          },
+          {
+            "name": "contract-markers-bc73cb-8",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "markers"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "markers"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 12,
+            "baseline_cases": {
+              "passed": 20,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 20
+            },
+            "candidate_cases": {
+              "passed": 20,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 20
+            }
+          },
+          {
+            "name": "contract-markers-bc73cb-9",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "markers"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "markers"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 12,
+            "baseline_cases": {
+              "passed": 36,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 36
+            },
+            "candidate_cases": {
+              "passed": 36,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 36
+            }
+          },
+          {
+            "name": "contract-metadata-bc73cb-11",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "metadata"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "metadata"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 10,
+            "baseline_cases": {
+              "passed": 11,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 11
+            },
+            "candidate_cases": {
+              "passed": 11,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 11
+            }
+          },
+          {
+            "name": "contract-metadata-bc73cb-12",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "metadata"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "metadata"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 12,
+            "baseline_cases": {
+              "passed": 33,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 33
+            },
+            "candidate_cases": {
+              "passed": 33,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 33
+            }
+          },
+          {
+            "name": "contract-metadata-bc73cb-13",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "metadata"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "metadata"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 7,
+            "baseline_cases": {
+              "passed": 13,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 13
+            },
+            "candidate_cases": {
+              "passed": 13,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 13
+            }
+          },
+          {
+            "name": "contract-pylock-bc73cb-14",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "pylock"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "pylock"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 11,
+            "baseline_cases": {
+              "passed": 12,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 12
+            },
+            "candidate_cases": {
+              "passed": 12,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 12
+            }
+          },
+          {
+            "name": "contract-pylock-bc73cb-15",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "pylock"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "pylock"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 12,
+            "baseline_cases": {
+              "passed": 20,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 20
+            },
+            "candidate_cases": {
+              "passed": 20,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 20
+            }
+          },
+          {
+            "name": "contract-pylock-bc73cb-16",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "pylock"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "pylock"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 11,
+            "baseline_cases": {
+              "passed": 18,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 18
+            },
+            "candidate_cases": {
+              "passed": 18,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 18
+            }
+          },
+          {
+            "name": "contract-ranges-bc73cb-17",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "ranges"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "ranges"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 12,
+            "baseline_cases": {
+              "passed": 10,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 10
+            },
+            "candidate_cases": {
+              "passed": 10,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 10
+            }
+          },
+          {
+            "name": "contract-ranges-bc73cb-18",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "ranges"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "ranges"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 12,
+            "baseline_cases": {
+              "passed": 15,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 15
+            },
+            "candidate_cases": {
+              "passed": 15,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 15
+            }
+          },
+          {
+            "name": "contract-requirements-bc73cb-20",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "requirements"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "requirements"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 22,
+            "baseline_cases": {
+              "passed": 36,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 36
+            },
+            "candidate_cases": {
+              "passed": 36,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 36
+            }
+          },
+          {
+            "name": "contract-specifiers-bc73cb-21",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "specifiers"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "specifiers"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 9,
+            "baseline_cases": {
+              "passed": 16,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 16
+            },
+            "candidate_cases": {
+              "passed": 16,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 16
+            }
+          },
+          {
+            "name": "contract-specifiers-bc73cb-22",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "specifiers"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "specifiers"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 10,
+            "baseline_cases": {
+              "passed": 14,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 14
+            },
+            "candidate_cases": {
+              "passed": 14,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 14
+            }
+          },
+          {
+            "name": "contract-specifiers-bc73cb-23",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "specifiers"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "specifiers"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 12,
+            "baseline_cases": {
+              "passed": 15,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 15
+            },
+            "candidate_cases": {
+              "passed": 15,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 15
+            }
+          },
+          {
+            "name": "contract-tags-bc73cb-25",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "tags"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "tags"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 9,
+            "baseline_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            },
+            "candidate_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            }
+          },
+          {
+            "name": "contract-tags-bc73cb-26",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "tags"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "tags"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 7,
+            "baseline_cases": {
+              "passed": 3,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 3
+            },
+            "candidate_cases": {
+              "passed": 3,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 3
+            }
+          },
+          {
+            "name": "public-behavior-snapshot",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "version",
+              "requirements",
+              "utils"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "requirements",
+              "utils",
+              "version"
+            ],
+            "attribution": "knockout_confirmed"
+          },
+          {
+            "name": "test_dependency_groups",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "dependency_groups"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "dependency_groups"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 28,
+            "baseline_cases": {
+              "passed": 45,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 45
+            },
+            "candidate_cases": {
+              "passed": 45,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 45
+            }
+          },
+          {
+            "name": "test_requirements",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "requirements"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "requirements"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 39,
+            "baseline_cases": {
+              "passed": 5405,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 1,
+              "executed": 5405
+            },
+            "candidate_cases": {
+              "passed": 5405,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 1,
+              "executed": 5405
+            }
+          },
+          {
+            "name": "test_utils",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "utils"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "utils"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 18,
+            "baseline_cases": {
+              "passed": 79,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 79
+            },
+            "candidate_cases": {
+              "passed": 79,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 79
+            }
+          }
+        ],
+        "context": {
+          "status": "partial",
+          "executed": true,
+          "baseline_status": "not_run",
+          "candidate_status": "not_run",
+          "checks": [
+            {
+              "name": "contract-direct_url-bc73cb-1",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "direct_url"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "direct_url"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 8,
+              "baseline_cases": {
+                "passed": 11,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 11
+              },
+              "candidate_cases": {
+                "passed": 11,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 11
+              }
+            },
+            {
+              "name": "contract-direct_url-bc73cb-2",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "direct_url"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "direct_url"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 11,
+              "baseline_cases": {
+                "passed": 22,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 22
+              },
+              "candidate_cases": {
+                "passed": 22,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 22
+              }
+            },
+            {
+              "name": "contract-direct_url-bc73cb-3",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "direct_url"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "direct_url"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 3,
+              "baseline_cases": {
+                "passed": 9,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 9
+              },
+              "candidate_cases": {
+                "passed": 9,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 9
+              }
+            },
+            {
+              "name": "contract-errors-bc73cb-27",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "errors"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "errors"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 5,
+              "baseline_cases": {
+                "passed": 3,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 3
+              },
+              "candidate_cases": {
+                "passed": 3,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 3
+              }
+            },
+            {
+              "name": "contract-licenses-bc73cb-5",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "licenses"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "licenses"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 12,
+              "baseline_cases": {
+                "passed": 54,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 54
+              },
+              "candidate_cases": {
+                "passed": 54,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 54
+              }
+            },
+            {
+              "name": "contract-linux-bc73cb-6",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "linux"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "linux"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 5,
+              "baseline_cases": {
+                "passed": 2,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 2
+              },
+              "candidate_cases": {
+                "passed": 2,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 2
+              }
+            },
+            {
+              "name": "contract-markers-bc73cb-10",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "markers"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "markers"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 7,
+              "baseline_cases": {
+                "passed": 11,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 11
+              },
+              "candidate_cases": {
+                "passed": 11,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 11
+              }
+            },
+            {
+              "name": "contract-markers-bc73cb-8",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "markers"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "markers"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 12,
+              "baseline_cases": {
+                "passed": 20,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 20
+              },
+              "candidate_cases": {
+                "passed": 20,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 20
+              }
+            },
+            {
+              "name": "contract-markers-bc73cb-9",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "markers"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "markers"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 12,
+              "baseline_cases": {
+                "passed": 36,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 36
+              },
+              "candidate_cases": {
+                "passed": 36,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 36
+              }
+            },
+            {
+              "name": "contract-metadata-bc73cb-11",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "metadata"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "metadata"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 10,
+              "baseline_cases": {
+                "passed": 11,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 11
+              },
+              "candidate_cases": {
+                "passed": 11,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 11
+              }
+            },
+            {
+              "name": "contract-metadata-bc73cb-12",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "metadata"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "metadata"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 12,
+              "baseline_cases": {
+                "passed": 33,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 33
+              },
+              "candidate_cases": {
+                "passed": 33,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 33
+              }
+            },
+            {
+              "name": "contract-metadata-bc73cb-13",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "metadata"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "metadata"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 7,
+              "baseline_cases": {
+                "passed": 13,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 13
+              },
+              "candidate_cases": {
+                "passed": 13,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 13
+              }
+            },
+            {
+              "name": "contract-pylock-bc73cb-14",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "pylock"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "pylock"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 11,
+              "baseline_cases": {
+                "passed": 12,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 12
+              },
+              "candidate_cases": {
+                "passed": 12,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 12
+              }
+            },
+            {
+              "name": "contract-pylock-bc73cb-15",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "pylock"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "pylock"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 12,
+              "baseline_cases": {
+                "passed": 20,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 20
+              },
+              "candidate_cases": {
+                "passed": 20,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 20
+              }
+            },
+            {
+              "name": "contract-pylock-bc73cb-16",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "pylock"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "pylock"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 11,
+              "baseline_cases": {
+                "passed": 18,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 18
+              },
+              "candidate_cases": {
+                "passed": 18,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 18
+              }
+            },
+            {
+              "name": "contract-ranges-bc73cb-17",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "ranges"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "ranges"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 12,
+              "baseline_cases": {
+                "passed": 10,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 10
+              },
+              "candidate_cases": {
+                "passed": 10,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 10
+              }
+            },
+            {
+              "name": "contract-ranges-bc73cb-18",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "ranges"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "ranges"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 12,
+              "baseline_cases": {
+                "passed": 15,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 15
+              },
+              "candidate_cases": {
+                "passed": 15,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 15
+              }
+            },
+            {
+              "name": "contract-requirements-bc73cb-20",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "requirements"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "requirements"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 22,
+              "baseline_cases": {
+                "passed": 36,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 36
+              },
+              "candidate_cases": {
+                "passed": 36,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 36
+              }
+            },
+            {
+              "name": "contract-specifiers-bc73cb-21",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "specifiers"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "specifiers"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 9,
+              "baseline_cases": {
+                "passed": 16,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 16
+              },
+              "candidate_cases": {
+                "passed": 16,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 16
+              }
+            },
+            {
+              "name": "contract-specifiers-bc73cb-22",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "specifiers"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "specifiers"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 10,
+              "baseline_cases": {
+                "passed": 14,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 14
+              },
+              "candidate_cases": {
+                "passed": 14,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 14
+              }
+            },
+            {
+              "name": "contract-specifiers-bc73cb-23",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "specifiers"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "specifiers"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 12,
+              "baseline_cases": {
+                "passed": 15,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 15
+              },
+              "candidate_cases": {
+                "passed": 15,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 15
+              }
+            },
+            {
+              "name": "contract-tags-bc73cb-25",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "tags"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "tags"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 9,
+              "baseline_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              },
+              "candidate_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              }
+            },
+            {
+              "name": "contract-tags-bc73cb-26",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "tags"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "tags"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 7,
+              "baseline_cases": {
+                "passed": 3,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 3
+              },
+              "candidate_cases": {
+                "passed": 3,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 3
+              }
+            },
+            {
+              "name": "public-behavior-snapshot",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "version",
+                "requirements",
+                "utils"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "requirements",
+                "utils",
+                "version"
+              ],
+              "attribution": "knockout_confirmed"
+            },
+            {
+              "name": "test_dependency_groups",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "dependency_groups"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "dependency_groups"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 28,
+              "baseline_cases": {
+                "passed": 45,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 45
+              },
+              "candidate_cases": {
+                "passed": 45,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 45
+              }
+            },
+            {
+              "name": "test_requirements",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "requirements"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "requirements"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 39,
+              "baseline_cases": {
+                "passed": 5405,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 1,
+                "executed": 5405
+              },
+              "candidate_cases": {
+                "passed": 5405,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 1,
+                "executed": 5405
+              }
+            },
+            {
+              "name": "test_utils",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "utils"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "utils"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 18,
+              "baseline_cases": {
+                "passed": 79,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 79
+              },
+              "candidate_cases": {
+                "passed": 79,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 79
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "unknown",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "unknown",
+              "kind": "coverage"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "related_passed",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 27,
+            "passed": 27,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": null,
+        "after": 35090,
+        "reduction_percent": null,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "benchmarks/__init__.py",
+            "tokens": 96
+          },
+          {
+            "path": "benchmarks/markers.py",
+            "tokens": 488
+          },
+          {
+            "path": "benchmarks/requirement.py",
+            "tokens": 116
+          },
+          {
+            "path": "benchmarks/resolver.py",
+            "tokens": 395
+          },
+          {
+            "path": "benchmarks/specifiers.py",
+            "tokens": 1333
+          },
+          {
+            "path": "benchmarks/utils.py",
+            "tokens": 183
+          },
+          {
+            "path": "benchmarks/version.py",
+            "tokens": 441
+          },
+          {
+            "path": "docs/conf.py",
+            "tokens": 1419
+          },
+          {
+            "path": "src/packaging/__init__.py",
+            "tokens": 142
+          },
+          {
+            "path": "src/packaging/_elffile.py",
+            "tokens": 877
+          },
+          {
+            "path": "src/packaging/_manylinux.py",
+            "tokens": 2657
+          },
+          {
+            "path": "src/packaging/_musllinux.py",
+            "tokens": 737
+          },
+          {
+            "path": "src/packaging/_parser.py",
+            "tokens": 3203
+          },
+          {
+            "path": "src/packaging/_ranges.py",
+            "tokens": 7830
+          },
+          {
+            "path": "src/packaging/_structures.py",
+            "tokens": 243
+          },
+          {
+            "path": "src/packaging/_tokenizer.py",
+            "tokens": 1748
+          },
+          {
+            "path": "src/packaging/dependency_groups.py",
+            "tokens": 2295
+          },
+          {
+            "path": "src/packaging/direct_url.py",
+            "tokens": 2418
+          },
+          {
+            "path": "src/packaging/errors.py",
+            "tokens": 575
+          },
+          {
+            "path": "src/packaging/licenses/__init__.py",
+            "tokens": 1692
+          },
+          {
+            "path": "src/packaging/licenses/_spdx.py",
+            "tokens": null
+          },
+          {
+            "path": "src/packaging/markers.py",
+            "tokens": 6208
+          },
+          {
+            "path": "src/packaging/metadata.py",
+            "tokens": 9551
+          },
+          {
+            "path": "src/packaging/pylock.py",
+            "tokens": 7128
+          },
+          {
+            "path": "src/packaging/ranges.py",
+            "tokens": 21711
+          },
+          {
+            "path": "src/packaging/requirements.py",
+            "tokens": 2496
+          },
+          {
+            "path": "src/packaging/specifiers.py",
+            "tokens": 13551
+          },
+          {
+            "path": "src/packaging/tags.py",
+            "tokens": 9372
+          },
+          {
+            "path": "src/packaging/utils.py",
+            "tokens": 2992
+          },
+          {
+            "path": "src/packaging/version.py",
+            "tokens": 9734
+          },
+          {
+            "path": "tasks/__init__.py",
+            "tokens": 43
+          },
+          {
+            "path": "tasks/check_frozen_revs.py",
+            "tokens": 831
+          },
+          {
+            "path": "tasks/licenses.py",
+            "tokens": 607
+          },
+          {
+            "path": "tasks/paths.py",
+            "tokens": 73
+          },
+          {
+            "path": "tasks/pickle_compat.py",
+            "tokens": 1497
+          },
+          {
+            "path": "tasks/select_pypi_dist.py",
+            "tokens": 230
+          },
+          {
+            "path": "tasks/select_pypi_specs.py",
+            "tokens": 195
+          },
+          {
+            "path": "tasks/select_pypi_versions.py",
+            "tokens": 530
+          }
+        ],
+        "after_files": [
+          {
+            "path": "benchmarks/__init__.py",
+            "tokens": 0
+          },
+          {
+            "path": "benchmarks/markers.py",
+            "tokens": 117
+          },
+          {
+            "path": "benchmarks/requirement.py",
+            "tokens": 92
+          },
+          {
+            "path": "benchmarks/resolver.py",
+            "tokens": 112
+          },
+          {
+            "path": "benchmarks/specifiers.py",
+            "tokens": 148
+          },
+          {
+            "path": "benchmarks/utils.py",
+            "tokens": 118
+          },
+          {
+            "path": "benchmarks/version.py",
+            "tokens": 102
+          },
+          {
+            "path": "src/packaging/__init__.py",
+            "tokens": 19
+          },
+          {
+            "path": "src/packaging/_intervals.py",
+            "tokens": 2320
+          },
+          {
+            "path": "src/packaging/_linux.py",
+            "tokens": 1546
+          },
+          {
+            "path": "src/packaging/_musllinux.py",
+            "tokens": 128
+          },
+          {
+            "path": "src/packaging/_parser.py",
+            "tokens": 2430
+          },
+          {
+            "path": "src/packaging/_pickle.py",
+            "tokens": 55
+          },
+          {
+            "path": "src/packaging/_validation.py",
+            "tokens": 586
+          },
+          {
+            "path": "src/packaging/dependency_groups.py",
+            "tokens": 1306
+          },
+          {
+            "path": "src/packaging/direct_url.py",
+            "tokens": 1159
+          },
+          {
+            "path": "src/packaging/errors.py",
+            "tokens": 108
+          },
+          {
+            "path": "src/packaging/licenses/__init__.py",
+            "tokens": 603
+          },
+          {
+            "path": "src/packaging/markers.py",
+            "tokens": 2025
+          },
+          {
+            "path": "src/packaging/metadata.py",
+            "tokens": 3510
+          },
+          {
+            "path": "src/packaging/pylock.py",
+            "tokens": 3107
+          },
+          {
+            "path": "src/packaging/ranges.py",
+            "tokens": 3016
+          },
+          {
+            "path": "src/packaging/requirements.py",
+            "tokens": 1042
+          },
+          {
+            "path": "src/packaging/specifiers.py",
+            "tokens": 2609
+          },
+          {
+            "path": "src/packaging/tags.py",
+            "tokens": 3534
+          },
+          {
+            "path": "src/packaging/utils.py",
+            "tokens": 885
+          },
+          {
+            "path": "src/packaging/version.py",
+            "tokens": 2648
+          },
+          {
+            "path": "tasks/_sampling.py",
+            "tokens": 493
+          },
+          {
+            "path": "tasks/check_frozen_revs.py",
+            "tokens": 337
+          },
+          {
+            "path": "tasks/licenses.py",
+            "tokens": 360
+          },
+          {
+            "path": "tasks/pickle_compat.py",
+            "tokens": 473
+          },
+          {
+            "path": "tasks/select_pypi_dist.py",
+            "tokens": 34
+          },
+          {
+            "path": "tasks/select_pypi_specs.py",
+            "tokens": 34
+          },
+          {
+            "path": "tasks/select_pypi_versions.py",
+            "tokens": 34
+          }
+        ]
+      }
+    },
+    {
+      "id": "version",
+      "parent": "packaging",
+      "name": "Version parsing and ordering",
+      "kind": "capability",
+      "selection_reason": "selected_dependency",
+      "loc": {
+        "before": 1291,
+        "after": 287,
+        "reduction_percent": 77.769,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/packaging/_structures.py",
+            "lines": 33
+          },
+          {
+            "path": "src/packaging/version.py",
+            "lines": 1258
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/_pickle.py",
+            "lines": 5
+          },
+          {
+            "path": "src/packaging/version.py",
+            "lines": 282
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "public-behavior-snapshot",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "version",
+              "requirements",
+              "utils"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "requirements",
+              "utils",
+              "version"
+            ],
+            "attribution": "knockout_confirmed"
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "public-behavior-snapshot",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "public-behavior-snapshot",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "version",
+                "requirements",
+                "utils"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "requirements",
+                "utils",
+                "version"
+              ],
+              "attribution": "knockout_confirmed"
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "public-behavior-snapshot",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "blockers": [
+          "No valid leaf test: role not proven"
+        ],
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 9977,
+        "after": 2703,
+        "reduction_percent": 72.908,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/packaging/_structures.py",
+            "tokens": 243
+          },
+          {
+            "path": "src/packaging/version.py",
+            "tokens": 9734
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/_pickle.py",
+            "tokens": 55
+          },
+          {
+            "path": "src/packaging/version.py",
+            "tokens": 2648
+          }
+        ]
+      }
+    },
+    {
+      "id": "specifiers",
+      "parent": "packaging",
+      "name": "Version constraints",
+      "kind": "capability",
+      "selection_reason": "selected_dependency",
+      "loc": {
+        "before": 1545,
+        "after": 587,
+        "reduction_percent": 62.006,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/packaging/specifiers.py",
+            "lines": 1545
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/_intervals.py",
+            "lines": 279
+          },
+          {
+            "path": "src/packaging/_pickle.py",
+            "lines": 5
+          },
+          {
+            "path": "src/packaging/specifiers.py",
+            "lines": 303
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "contract-specifiers-bc73cb-21",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "specifiers"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "specifiers"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 9,
+            "baseline_cases": {
+              "passed": 16,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 16
+            },
+            "candidate_cases": {
+              "passed": 16,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 16
+            }
+          },
+          {
+            "name": "contract-specifiers-bc73cb-22",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "specifiers"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "specifiers"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 10,
+            "baseline_cases": {
+              "passed": 14,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 14
+            },
+            "candidate_cases": {
+              "passed": 14,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 14
+            }
+          },
+          {
+            "name": "contract-specifiers-bc73cb-23",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "specifiers"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "specifiers"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 12,
+            "baseline_cases": {
+              "passed": 15,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 15
+            },
+            "candidate_cases": {
+              "passed": 15,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 15
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-specifiers-bc73cb-21",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-specifiers-bc73cb-22",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-specifiers-bc73cb-23",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "contract-specifiers-bc73cb-21",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "specifiers"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "specifiers"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 9,
+              "baseline_cases": {
+                "passed": 16,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 16
+              },
+              "candidate_cases": {
+                "passed": 16,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 16
+              }
+            },
+            {
+              "name": "contract-specifiers-bc73cb-22",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "specifiers"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "specifiers"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 10,
+              "baseline_cases": {
+                "passed": 14,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 14
+              },
+              "candidate_cases": {
+                "passed": 14,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 14
+              }
+            },
+            {
+              "name": "contract-specifiers-bc73cb-23",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "specifiers"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "specifiers"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 12,
+              "baseline_cases": {
+                "passed": 15,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 15
+              },
+              "candidate_cases": {
+                "passed": 15,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 15
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "contract-specifiers-bc73cb-21",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-specifiers-bc73cb-22",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-specifiers-bc73cb-23",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 3,
+            "passed": 3,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 13551,
+        "after": 4984,
+        "reduction_percent": 63.22,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/packaging/specifiers.py",
+            "tokens": 13551
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/_intervals.py",
+            "tokens": 2320
+          },
+          {
+            "path": "src/packaging/_pickle.py",
+            "tokens": 55
+          },
+          {
+            "path": "src/packaging/specifiers.py",
+            "tokens": 2609
+          }
+        ]
+      }
+    },
+    {
+      "id": "ranges",
+      "parent": "packaging",
+      "name": "Version set algebra",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 2342,
+        "after": 605,
+        "reduction_percent": 74.167,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/packaging/ranges.py",
+            "lines": 2342
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/_intervals.py",
+            "lines": 279
+          },
+          {
+            "path": "src/packaging/ranges.py",
+            "lines": 326
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "contract-ranges-bc73cb-17",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "ranges"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "ranges"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 12,
+            "baseline_cases": {
+              "passed": 10,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 10
+            },
+            "candidate_cases": {
+              "passed": 10,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 10
+            }
+          },
+          {
+            "name": "contract-ranges-bc73cb-18",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "ranges"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "ranges"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 12,
+            "baseline_cases": {
+              "passed": 15,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 15
+            },
+            "candidate_cases": {
+              "passed": 15,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 15
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-ranges-bc73cb-17",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-ranges-bc73cb-18",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "contract-ranges-bc73cb-17",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "ranges"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "ranges"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 12,
+              "baseline_cases": {
+                "passed": 10,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 10
+              },
+              "candidate_cases": {
+                "passed": 10,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 10
+              }
+            },
+            {
+              "name": "contract-ranges-bc73cb-18",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "ranges"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "ranges"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 12,
+              "baseline_cases": {
+                "passed": 15,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 15
+              },
+              "candidate_cases": {
+                "passed": 15,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 15
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "contract-ranges-bc73cb-17",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-ranges-bc73cb-18",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 2,
+            "passed": 2,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 21711,
+        "after": 5336,
+        "reduction_percent": 75.423,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/packaging/ranges.py",
+            "tokens": 21711
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/_intervals.py",
+            "tokens": 2320
+          },
+          {
+            "path": "src/packaging/ranges.py",
+            "tokens": 3016
+          }
+        ]
+      }
+    },
+    {
+      "id": "range_engine",
+      "parent": "packaging",
+      "name": "Internal interval algebra",
+      "kind": "capability",
+      "selection_reason": "selected_dependency",
+      "loc": {
+        "before": 940,
+        "after": 279,
+        "reduction_percent": 70.319,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/packaging/_ranges.py",
+            "lines": 940
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/_intervals.py",
+            "lines": 279
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "partial",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "kind": "external_contract"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": false,
+          "baseline_status": "not_run",
+          "candidate_status": "not_run",
+          "checks": [],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "kind": "external_contract"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "blockers": [
+          "Owner-exempted from needing a valid leaf test: no check"
+        ],
+        "evidence": {
+          "category": "unverified",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "not_established",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 7830,
+        "after": 2320,
+        "reduction_percent": 70.37,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/packaging/_ranges.py",
+            "tokens": 7830
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/_intervals.py",
+            "tokens": 2320
+          }
+        ]
+      }
+    },
+    {
+      "id": "markers",
+      "parent": "packaging",
+      "name": "Environment markers",
+      "kind": "capability",
+      "selection_reason": "selected_dependency",
+      "loc": {
+        "before": 740,
+        "after": 576,
+        "reduction_percent": 22.162,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/packaging/markers.py",
+            "lines": 740
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/_parser.py",
+            "lines": 313
+          },
+          {
+            "path": "src/packaging/_pickle.py",
+            "lines": 5
+          },
+          {
+            "path": "src/packaging/markers.py",
+            "lines": 258
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "contract-markers-bc73cb-8",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "markers"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "markers"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 12,
+            "baseline_cases": {
+              "passed": 20,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 20
+            },
+            "candidate_cases": {
+              "passed": 20,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 20
+            }
+          },
+          {
+            "name": "contract-markers-bc73cb-9",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "markers"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "markers"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 12,
+            "baseline_cases": {
+              "passed": 36,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 36
+            },
+            "candidate_cases": {
+              "passed": 36,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 36
+            }
+          },
+          {
+            "name": "contract-markers-bc73cb-10",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "markers"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "markers"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 7,
+            "baseline_cases": {
+              "passed": 11,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 11
+            },
+            "candidate_cases": {
+              "passed": 11,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 11
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-markers-bc73cb-8",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-markers-bc73cb-9",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-markers-bc73cb-10",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "contract-markers-bc73cb-10",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "markers"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "markers"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 7,
+              "baseline_cases": {
+                "passed": 11,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 11
+              },
+              "candidate_cases": {
+                "passed": 11,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 11
+              }
+            },
+            {
+              "name": "contract-markers-bc73cb-8",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "markers"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "markers"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 12,
+              "baseline_cases": {
+                "passed": 20,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 20
+              },
+              "candidate_cases": {
+                "passed": 20,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 20
+              }
+            },
+            {
+              "name": "contract-markers-bc73cb-9",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "markers"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "markers"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 12,
+              "baseline_cases": {
+                "passed": 36,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 36
+              },
+              "candidate_cases": {
+                "passed": 36,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 36
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "contract-markers-bc73cb-8",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-markers-bc73cb-9",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-markers-bc73cb-10",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 3,
+            "passed": 3,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 6208,
+        "after": 4510,
+        "reduction_percent": 27.352,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/packaging/markers.py",
+            "tokens": 6208
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/_parser.py",
+            "tokens": 2430
+          },
+          {
+            "path": "src/packaging/_pickle.py",
+            "tokens": 55
+          },
+          {
+            "path": "src/packaging/markers.py",
+            "tokens": 2025
+          }
+        ]
+      }
+    },
+    {
+      "id": "requirements",
+      "parent": "packaging",
+      "name": "Dependency requirements",
+      "kind": "capability",
+      "selection_reason": "selected_dependency",
+      "loc": {
+        "before": 292,
+        "after": 1279,
+        "reduction_percent": -338.014,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/packaging/requirements.py",
+            "lines": 292
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/_parser.py",
+            "lines": 313
+          },
+          {
+            "path": "src/packaging/_pickle.py",
+            "lines": 5
+          },
+          {
+            "path": "src/packaging/markers.py",
+            "lines": 258
+          },
+          {
+            "path": "src/packaging/requirements.py",
+            "lines": 118
+          },
+          {
+            "path": "src/packaging/specifiers.py",
+            "lines": 303
+          },
+          {
+            "path": "src/packaging/version.py",
+            "lines": 282
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "test_requirements",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "requirements"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "requirements"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 39,
+            "baseline_cases": {
+              "passed": 5405,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 1,
+              "executed": 5405
+            },
+            "candidate_cases": {
+              "passed": 5405,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 1,
+              "executed": 5405
+            }
+          },
+          {
+            "name": "public-behavior-snapshot",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "version",
+              "requirements",
+              "utils"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "requirements",
+              "utils",
+              "version"
+            ],
+            "attribution": "knockout_confirmed"
+          },
+          {
+            "name": "contract-requirements-bc73cb-20",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "requirements"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "requirements"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 22,
+            "baseline_cases": {
+              "passed": 36,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 36
+            },
+            "candidate_cases": {
+              "passed": 36,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 36
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "test_requirements",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "public-behavior-snapshot",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-requirements-bc73cb-20",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "contract-requirements-bc73cb-20",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "requirements"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "requirements"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 22,
+              "baseline_cases": {
+                "passed": 36,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 36
+              },
+              "candidate_cases": {
+                "passed": 36,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 36
+              }
+            },
+            {
+              "name": "public-behavior-snapshot",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "version",
+                "requirements",
+                "utils"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "requirements",
+                "utils",
+                "version"
+              ],
+              "attribution": "knockout_confirmed"
+            },
+            {
+              "name": "test_requirements",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "requirements"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "requirements"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 39,
+              "baseline_cases": {
+                "passed": 5405,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 1,
+                "executed": 5405
+              },
+              "candidate_cases": {
+                "passed": 5405,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 1,
+                "executed": 5405
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "test_requirements",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "public-behavior-snapshot",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-requirements-bc73cb-20",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 3,
+            "passed": 3,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 2496,
+        "after": 10809,
+        "reduction_percent": -333.053,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/packaging/requirements.py",
+            "tokens": 2496
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/_parser.py",
+            "tokens": 2430
+          },
+          {
+            "path": "src/packaging/_pickle.py",
+            "tokens": 55
+          },
+          {
+            "path": "src/packaging/markers.py",
+            "tokens": 2025
+          },
+          {
+            "path": "src/packaging/requirements.py",
+            "tokens": 1042
+          },
+          {
+            "path": "src/packaging/specifiers.py",
+            "tokens": 2609
+          },
+          {
+            "path": "src/packaging/version.py",
+            "tokens": 2648
+          }
+        ]
+      }
+    },
+    {
+      "id": "parser",
+      "parent": "packaging",
+      "name": "Internal syntax processing",
+      "kind": "capability",
+      "selection_reason": "selected_dependency",
+      "loc": {
+        "before": 713,
+        "after": 318,
+        "reduction_percent": 55.4,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/packaging/_parser.py",
+            "lines": 478
+          },
+          {
+            "path": "src/packaging/_tokenizer.py",
+            "lines": 235
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/_parser.py",
+            "lines": 313
+          },
+          {
+            "path": "src/packaging/_pickle.py",
+            "lines": 5
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "partial",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "kind": "external_contract"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": false,
+          "baseline_status": "not_run",
+          "candidate_status": "not_run",
+          "checks": [],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "kind": "external_contract"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "blockers": [
+          "Owner-exempted from needing a valid leaf test: no check"
+        ],
+        "evidence": {
+          "category": "unverified",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "not_established",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 4951,
+        "after": 2485,
+        "reduction_percent": 49.808,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/packaging/_parser.py",
+            "tokens": 3203
+          },
+          {
+            "path": "src/packaging/_tokenizer.py",
+            "tokens": 1748
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/_parser.py",
+            "tokens": 2430
+          },
+          {
+            "path": "src/packaging/_pickle.py",
+            "tokens": 55
+          }
+        ]
+      }
+    },
+    {
+      "id": "tags",
+      "parent": "packaging",
+      "name": "Wheel compatibility tags",
+      "kind": "capability",
+      "selection_reason": "selected_dependency",
+      "loc": {
+        "before": 1081,
+        "after": 506,
+        "reduction_percent": 53.191,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/packaging/tags.py",
+            "lines": 1081
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/_linux.py",
+            "lines": 149
+          },
+          {
+            "path": "src/packaging/tags.py",
+            "lines": 357
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "contract-tags-bc73cb-25",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "tags"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "tags"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 9,
+            "baseline_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            },
+            "candidate_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            }
+          },
+          {
+            "name": "contract-tags-bc73cb-26",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "tags"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "tags"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 7,
+            "baseline_cases": {
+              "passed": 3,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 3
+            },
+            "candidate_cases": {
+              "passed": 3,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 3
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-tags-bc73cb-25",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-tags-bc73cb-26",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "contract-tags-bc73cb-25",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "tags"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "tags"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 9,
+              "baseline_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              },
+              "candidate_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              }
+            },
+            {
+              "name": "contract-tags-bc73cb-26",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "tags"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "tags"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 7,
+              "baseline_cases": {
+                "passed": 3,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 3
+              },
+              "candidate_cases": {
+                "passed": 3,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 3
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "contract-tags-bc73cb-25",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-tags-bc73cb-26",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 2,
+            "passed": 2,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 9372,
+        "after": 5080,
+        "reduction_percent": 45.796,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/packaging/tags.py",
+            "tokens": 9372
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/_linux.py",
+            "tokens": 1546
+          },
+          {
+            "path": "src/packaging/tags.py",
+            "tokens": 3534
+          }
+        ]
+      }
+    },
+    {
+      "id": "linux",
+      "parent": "packaging",
+      "name": "Linux ABI compatibility",
+      "kind": "capability",
+      "selection_reason": "selected_dependency",
+      "loc": {
+        "before": 480,
+        "after": 167,
+        "reduction_percent": 65.208,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/packaging/_elffile.py",
+            "lines": 110
+          },
+          {
+            "path": "src/packaging/_manylinux.py",
+            "lines": 280
+          },
+          {
+            "path": "src/packaging/_musllinux.py",
+            "lines": 90
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/_linux.py",
+            "lines": 149
+          },
+          {
+            "path": "src/packaging/_musllinux.py",
+            "lines": 18
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "contract-linux-bc73cb-6",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "linux"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "linux"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 5,
+            "baseline_cases": {
+              "passed": 2,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 2
+            },
+            "candidate_cases": {
+              "passed": 2,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 2
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-linux-bc73cb-6",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "contract-linux-bc73cb-6",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "linux"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "linux"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 5,
+              "baseline_cases": {
+                "passed": 2,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 2
+              },
+              "candidate_cases": {
+                "passed": 2,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 2
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "contract-linux-bc73cb-6",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 4271,
+        "after": 1674,
+        "reduction_percent": 60.805,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/packaging/_elffile.py",
+            "tokens": 877
+          },
+          {
+            "path": "src/packaging/_manylinux.py",
+            "tokens": 2657
+          },
+          {
+            "path": "src/packaging/_musllinux.py",
+            "tokens": 737
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/_linux.py",
+            "tokens": 1546
+          },
+          {
+            "path": "src/packaging/_musllinux.py",
+            "tokens": 128
+          }
+        ]
+      }
+    },
+    {
+      "id": "utils",
+      "parent": "packaging",
+      "name": "Names and distribution filenames",
+      "kind": "capability",
+      "selection_reason": "selected_dependency",
+      "loc": {
+        "before": 372,
+        "after": 91,
+        "reduction_percent": 75.538,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/packaging/utils.py",
+            "lines": 372
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/utils.py",
+            "lines": 91
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "test_utils",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "utils"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "utils"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 18,
+            "baseline_cases": {
+              "passed": 79,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 79
+            },
+            "candidate_cases": {
+              "passed": 79,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 79
+            }
+          },
+          {
+            "name": "public-behavior-snapshot",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "version",
+              "requirements",
+              "utils"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "requirements",
+              "utils",
+              "version"
+            ],
+            "attribution": "knockout_confirmed"
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "test_utils",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "public-behavior-snapshot",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "public-behavior-snapshot",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "version",
+                "requirements",
+                "utils"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "requirements",
+                "utils",
+                "version"
+              ],
+              "attribution": "knockout_confirmed"
+            },
+            {
+              "name": "test_utils",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "utils"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "utils"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 18,
+              "baseline_cases": {
+                "passed": 79,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 79
+              },
+              "candidate_cases": {
+                "passed": 79,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 79
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "test_utils",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "public-behavior-snapshot",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 2,
+            "passed": 2,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 2992,
+        "after": 885,
+        "reduction_percent": 70.421,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/packaging/utils.py",
+            "tokens": 2992
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/utils.py",
+            "tokens": 885
+          }
+        ]
+      }
+    },
+    {
+      "id": "licenses",
+      "parent": "packaging",
+      "name": "SPDX license expressions",
+      "kind": "capability",
+      "selection_reason": "selected_dependency",
+      "loc": {
+        "before": 1005,
+        "after": 77,
+        "reduction_percent": 92.338,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/packaging/licenses/__init__.py",
+            "lines": 207
+          },
+          {
+            "path": "src/packaging/licenses/_spdx.py",
+            "lines": 798
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/licenses/__init__.py",
+            "lines": 77
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "contract-licenses-bc73cb-5",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "licenses"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "licenses"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 12,
+            "baseline_cases": {
+              "passed": 54,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 54
+            },
+            "candidate_cases": {
+              "passed": 54,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 54
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-licenses-bc73cb-5",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "contract-licenses-bc73cb-5",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "licenses"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "licenses"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 12,
+              "baseline_cases": {
+                "passed": 54,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 54
+              },
+              "candidate_cases": {
+                "passed": 54,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 54
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "contract-licenses-bc73cb-5",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": null,
+        "after": 603,
+        "reduction_percent": null,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/packaging/licenses/__init__.py",
+            "tokens": 1692
+          },
+          {
+            "path": "src/packaging/licenses/_spdx.py",
+            "tokens": null
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/licenses/__init__.py",
+            "tokens": 603
+          }
+        ]
+      }
+    },
+    {
+      "id": "metadata",
+      "parent": "packaging",
+      "name": "Core metadata",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 1058,
+        "after": 391,
+        "reduction_percent": 63.043,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/packaging/metadata.py",
+            "lines": 1058
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/errors.py",
+            "lines": 14
+          },
+          {
+            "path": "src/packaging/metadata.py",
+            "lines": 377
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "contract-metadata-bc73cb-11",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "metadata"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "metadata"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 10,
+            "baseline_cases": {
+              "passed": 11,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 11
+            },
+            "candidate_cases": {
+              "passed": 11,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 11
+            }
+          },
+          {
+            "name": "contract-metadata-bc73cb-12",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "metadata"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "metadata"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 12,
+            "baseline_cases": {
+              "passed": 33,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 33
+            },
+            "candidate_cases": {
+              "passed": 33,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 33
+            }
+          },
+          {
+            "name": "contract-metadata-bc73cb-13",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "metadata"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "metadata"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 7,
+            "baseline_cases": {
+              "passed": 13,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 13
+            },
+            "candidate_cases": {
+              "passed": 13,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 13
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-metadata-bc73cb-11",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-metadata-bc73cb-12",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-metadata-bc73cb-13",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "contract-metadata-bc73cb-11",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "metadata"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "metadata"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 10,
+              "baseline_cases": {
+                "passed": 11,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 11
+              },
+              "candidate_cases": {
+                "passed": 11,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 11
+              }
+            },
+            {
+              "name": "contract-metadata-bc73cb-12",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "metadata"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "metadata"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 12,
+              "baseline_cases": {
+                "passed": 33,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 33
+              },
+              "candidate_cases": {
+                "passed": 33,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 33
+              }
+            },
+            {
+              "name": "contract-metadata-bc73cb-13",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "metadata"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "metadata"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 7,
+              "baseline_cases": {
+                "passed": 13,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 13
+              },
+              "candidate_cases": {
+                "passed": 13,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 13
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "contract-metadata-bc73cb-11",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-metadata-bc73cb-12",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-metadata-bc73cb-13",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 3,
+            "passed": 3,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 9551,
+        "after": 3618,
+        "reduction_percent": 62.119,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/packaging/metadata.py",
+            "tokens": 9551
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/errors.py",
+            "tokens": 108
+          },
+          {
+            "path": "src/packaging/metadata.py",
+            "tokens": 3510
+          }
+        ]
+      }
+    },
+    {
+      "id": "errors",
+      "parent": "packaging",
+      "name": "Grouped validation errors",
+      "kind": "capability",
+      "selection_reason": "selected_dependency",
+      "loc": {
+        "before": 96,
+        "after": 14,
+        "reduction_percent": 85.417,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/packaging/errors.py",
+            "lines": 96
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/errors.py",
+            "lines": 14
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "contract-errors-bc73cb-27",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "errors"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "errors"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 5,
+            "baseline_cases": {
+              "passed": 3,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 3
+            },
+            "candidate_cases": {
+              "passed": 3,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 3
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-errors-bc73cb-27",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "contract-errors-bc73cb-27",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "errors"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "errors"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 5,
+              "baseline_cases": {
+                "passed": 3,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 3
+              },
+              "candidate_cases": {
+                "passed": 3,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 3
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "contract-errors-bc73cb-27",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 575,
+        "after": 108,
+        "reduction_percent": 81.217,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/packaging/errors.py",
+            "tokens": 575
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/errors.py",
+            "tokens": 108
+          }
+        ]
+      }
+    },
+    {
+      "id": "dependency_groups",
+      "parent": "packaging",
+      "name": "Dependency groups",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 341,
+        "after": 161,
+        "reduction_percent": 52.786,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/packaging/dependency_groups.py",
+            "lines": 341
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/dependency_groups.py",
+            "lines": 147
+          },
+          {
+            "path": "src/packaging/errors.py",
+            "lines": 14
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "test_dependency_groups",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "dependency_groups"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "dependency_groups"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 28,
+            "baseline_cases": {
+              "passed": 45,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 45
+            },
+            "candidate_cases": {
+              "passed": 45,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 45
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "test_dependency_groups",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "test_dependency_groups",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "dependency_groups"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "dependency_groups"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 28,
+              "baseline_cases": {
+                "passed": 45,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 45
+              },
+              "candidate_cases": {
+                "passed": 45,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 45
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "test_dependency_groups",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 2295,
+        "after": 1414,
+        "reduction_percent": 38.388,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/packaging/dependency_groups.py",
+            "tokens": 2295
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/dependency_groups.py",
+            "tokens": 1306
+          },
+          {
+            "path": "src/packaging/errors.py",
+            "tokens": 108
+          }
+        ]
+      }
+    },
+    {
+      "id": "direct_url",
+      "parent": "packaging",
+      "name": "Direct URL records",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 311,
+        "after": 188,
+        "reduction_percent": 39.55,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/packaging/direct_url.py",
+            "lines": 311
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/_validation.py",
+            "lines": 67
+          },
+          {
+            "path": "src/packaging/direct_url.py",
+            "lines": 121
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "contract-direct_url-bc73cb-1",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "direct_url"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "direct_url"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 8,
+            "baseline_cases": {
+              "passed": 11,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 11
+            },
+            "candidate_cases": {
+              "passed": 11,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 11
+            }
+          },
+          {
+            "name": "contract-direct_url-bc73cb-2",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "direct_url"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "direct_url"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 11,
+            "baseline_cases": {
+              "passed": 22,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 22
+            },
+            "candidate_cases": {
+              "passed": 22,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 22
+            }
+          },
+          {
+            "name": "contract-direct_url-bc73cb-3",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "direct_url"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "direct_url"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 3,
+            "baseline_cases": {
+              "passed": 9,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 9
+            },
+            "candidate_cases": {
+              "passed": 9,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 9
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-direct_url-bc73cb-1",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-direct_url-bc73cb-2",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-direct_url-bc73cb-3",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "contract-direct_url-bc73cb-1",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "direct_url"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "direct_url"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 8,
+              "baseline_cases": {
+                "passed": 11,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 11
+              },
+              "candidate_cases": {
+                "passed": 11,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 11
+              }
+            },
+            {
+              "name": "contract-direct_url-bc73cb-2",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "direct_url"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "direct_url"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 11,
+              "baseline_cases": {
+                "passed": 22,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 22
+              },
+              "candidate_cases": {
+                "passed": 22,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 22
+              }
+            },
+            {
+              "name": "contract-direct_url-bc73cb-3",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "direct_url"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "direct_url"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 3,
+              "baseline_cases": {
+                "passed": 9,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 9
+              },
+              "candidate_cases": {
+                "passed": 9,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 9
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "contract-direct_url-bc73cb-1",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-direct_url-bc73cb-2",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-direct_url-bc73cb-3",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 3,
+            "passed": 3,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 2418,
+        "after": 1745,
+        "reduction_percent": 27.833,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/packaging/direct_url.py",
+            "tokens": 2418
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/_validation.py",
+            "tokens": 586
+          },
+          {
+            "path": "src/packaging/direct_url.py",
+            "tokens": 1159
+          }
+        ]
+      }
+    },
+    {
+      "id": "pylock",
+      "parent": "packaging",
+      "name": "Lockfile models and selection",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 868,
+        "after": 402,
+        "reduction_percent": 53.687,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/packaging/pylock.py",
+            "lines": 868
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/_validation.py",
+            "lines": 67
+          },
+          {
+            "path": "src/packaging/pylock.py",
+            "lines": 335
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "contract-pylock-bc73cb-14",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "pylock"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "pylock"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 11,
+            "baseline_cases": {
+              "passed": 12,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 12
+            },
+            "candidate_cases": {
+              "passed": 12,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 12
+            }
+          },
+          {
+            "name": "contract-pylock-bc73cb-15",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "pylock"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "pylock"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 12,
+            "baseline_cases": {
+              "passed": 20,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 20
+            },
+            "candidate_cases": {
+              "passed": 20,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 20
+            }
+          },
+          {
+            "name": "contract-pylock-bc73cb-16",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "pylock"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "pylock"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 11,
+            "baseline_cases": {
+              "passed": 18,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 18
+            },
+            "candidate_cases": {
+              "passed": 18,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 18
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-pylock-bc73cb-14",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-pylock-bc73cb-15",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-pylock-bc73cb-16",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "contract-pylock-bc73cb-14",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "pylock"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "pylock"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 11,
+              "baseline_cases": {
+                "passed": 12,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 12
+              },
+              "candidate_cases": {
+                "passed": 12,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 12
+              }
+            },
+            {
+              "name": "contract-pylock-bc73cb-15",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "pylock"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "pylock"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 12,
+              "baseline_cases": {
+                "passed": 20,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 20
+              },
+              "candidate_cases": {
+                "passed": 20,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 20
+              }
+            },
+            {
+              "name": "contract-pylock-bc73cb-16",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "pylock"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "pylock"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 11,
+              "baseline_cases": {
+                "passed": 18,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 18
+              },
+              "candidate_cases": {
+                "passed": 18,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 18
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "contract-pylock-bc73cb-14",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-pylock-bc73cb-15",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-pylock-bc73cb-16",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 3,
+            "passed": 3,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 7128,
+        "after": 3693,
+        "reduction_percent": 48.19,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/packaging/pylock.py",
+            "tokens": 7128
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/packaging/_validation.py",
+            "tokens": 586
+          },
+          {
+            "path": "src/packaging/pylock.py",
+            "tokens": 3107
+          }
+        ]
+      }
+    },
+    {
+      "id": "maintenance",
+      "parent": "packaging",
+      "name": "Maintenance and benchmarks",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 1102,
+        "after": 299,
+        "reduction_percent": 72.868,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "benchmarks/__init__.py",
+            "lines": 17
+          },
+          {
+            "path": "benchmarks/markers.py",
+            "lines": 70
+          },
+          {
+            "path": "benchmarks/requirement.py",
+            "lines": 22
+          },
+          {
+            "path": "benchmarks/resolver.py",
+            "lines": 48
+          },
+          {
+            "path": "benchmarks/specifiers.py",
+            "lines": 141
+          },
+          {
+            "path": "benchmarks/utils.py",
+            "lines": 33
+          },
+          {
+            "path": "benchmarks/version.py",
+            "lines": 62
+          },
+          {
+            "path": "docs/conf.py",
+            "lines": 134
+          },
+          {
+            "path": "tasks/__init__.py",
+            "lines": 3
+          },
+          {
+            "path": "tasks/check_frozen_revs.py",
+            "lines": 138
+          },
+          {
+            "path": "tasks/licenses.py",
+            "lines": 93
+          },
+          {
+            "path": "tasks/paths.py",
+            "lines": 9
+          },
+          {
+            "path": "tasks/pickle_compat.py",
+            "lines": 199
+          },
+          {
+            "path": "tasks/select_pypi_dist.py",
+            "lines": 34
+          },
+          {
+            "path": "tasks/select_pypi_specs.py",
+            "lines": 32
+          },
+          {
+            "path": "tasks/select_pypi_versions.py",
+            "lines": 67
+          }
+        ],
+        "after_files": [
+          {
+            "path": "benchmarks/__init__.py",
+            "lines": 0
+          },
+          {
+            "path": "benchmarks/markers.py",
+            "lines": 20
+          },
+          {
+            "path": "benchmarks/requirement.py",
+            "lines": 16
+          },
+          {
+            "path": "benchmarks/resolver.py",
+            "lines": 11
+          },
+          {
+            "path": "benchmarks/specifiers.py",
+            "lines": 17
+          },
+          {
+            "path": "benchmarks/utils.py",
+            "lines": 15
+          },
+          {
+            "path": "benchmarks/version.py",
+            "lines": 15
+          },
+          {
+            "path": "tasks/_sampling.py",
+            "lines": 49
+          },
+          {
+            "path": "tasks/check_frozen_revs.py",
+            "lines": 40
+          },
+          {
+            "path": "tasks/licenses.py",
+            "lines": 42
+          },
+          {
+            "path": "tasks/pickle_compat.py",
+            "lines": 53
+          },
+          {
+            "path": "tasks/select_pypi_dist.py",
+            "lines": 7
+          },
+          {
+            "path": "tasks/select_pypi_specs.py",
+            "lines": 7
+          },
+          {
+            "path": "tasks/select_pypi_versions.py",
+            "lines": 7
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "unknown",
+            "kind": "coverage"
+          },
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "unknown",
+          "executed": false,
+          "baseline_status": "not_run",
+          "candidate_status": "not_run",
+          "checks": [],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "unknown",
+              "kind": "coverage"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "blockers": [
+          "No valid leaf test: no check"
+        ],
+        "evidence": {
+          "category": "unverified",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "not_established",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 8477,
+        "after": 2454,
+        "reduction_percent": 71.051,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "benchmarks/__init__.py",
+            "tokens": 96
+          },
+          {
+            "path": "benchmarks/markers.py",
+            "tokens": 488
+          },
+          {
+            "path": "benchmarks/requirement.py",
+            "tokens": 116
+          },
+          {
+            "path": "benchmarks/resolver.py",
+            "tokens": 395
+          },
+          {
+            "path": "benchmarks/specifiers.py",
+            "tokens": 1333
+          },
+          {
+            "path": "benchmarks/utils.py",
+            "tokens": 183
+          },
+          {
+            "path": "benchmarks/version.py",
+            "tokens": 441
+          },
+          {
+            "path": "docs/conf.py",
+            "tokens": 1419
+          },
+          {
+            "path": "tasks/__init__.py",
+            "tokens": 43
+          },
+          {
+            "path": "tasks/check_frozen_revs.py",
+            "tokens": 831
+          },
+          {
+            "path": "tasks/licenses.py",
+            "tokens": 607
+          },
+          {
+            "path": "tasks/paths.py",
+            "tokens": 73
+          },
+          {
+            "path": "tasks/pickle_compat.py",
+            "tokens": 1497
+          },
+          {
+            "path": "tasks/select_pypi_dist.py",
+            "tokens": 230
+          },
+          {
+            "path": "tasks/select_pypi_specs.py",
+            "tokens": 195
+          },
+          {
+            "path": "tasks/select_pypi_versions.py",
+            "tokens": 530
+          }
+        ],
+        "after_files": [
+          {
+            "path": "benchmarks/__init__.py",
+            "tokens": 0
+          },
+          {
+            "path": "benchmarks/markers.py",
+            "tokens": 117
+          },
+          {
+            "path": "benchmarks/requirement.py",
+            "tokens": 92
+          },
+          {
+            "path": "benchmarks/resolver.py",
+            "tokens": 112
+          },
+          {
+            "path": "benchmarks/specifiers.py",
+            "tokens": 148
+          },
+          {
+            "path": "benchmarks/utils.py",
+            "tokens": 118
+          },
+          {
+            "path": "benchmarks/version.py",
+            "tokens": 102
+          },
+          {
+            "path": "tasks/_sampling.py",
+            "tokens": 493
+          },
+          {
+            "path": "tasks/check_frozen_revs.py",
+            "tokens": 337
+          },
+          {
+            "path": "tasks/licenses.py",
+            "tokens": 360
+          },
+          {
+            "path": "tasks/pickle_compat.py",
+            "tokens": 473
+          },
+          {
+            "path": "tasks/select_pypi_dist.py",
+            "tokens": 34
+          },
+          {
+            "path": "tasks/select_pypi_specs.py",
+            "tokens": 34
+          },
+          {
+            "path": "tasks/select_pypi_versions.py",
+            "tokens": 34
+          }
+        ]
+      }
+    }
+  ],
+  "scope": {
+    "preset": "all",
+    "foundations": [
+      "packaging"
+    ],
+    "core": [
+      "packaging"
+    ],
+    "kept": [
+      "dependency_groups",
+      "direct_url",
+      "errors",
+      "licenses",
+      "linux",
+      "maintenance",
+      "markers",
+      "metadata",
+      "packaging",
+      "parser",
+      "pylock",
+      "range_engine",
+      "ranges",
+      "requirements",
+      "specifiers",
+      "tags",
+      "utils",
+      "version"
+    ],
+    "removed": [],
+    "reasons": {
+      "packaging": "foundation",
+      "version": "selected_dependency",
+      "specifiers": "selected_dependency",
+      "ranges": "selected",
+      "range_engine": "selected_dependency",
+      "markers": "selected_dependency",
+      "requirements": "selected_dependency",
+      "parser": "selected_dependency",
+      "tags": "selected_dependency",
+      "linux": "selected_dependency",
+      "utils": "selected_dependency",
+      "licenses": "selected_dependency",
+      "metadata": "selected",
+      "errors": "selected_dependency",
+      "dependency_groups": "selected",
+      "direct_url": "selected",
+      "pylock": "selected",
+      "maintenance": "selected"
+    }
+  },
+  "methodology": [
+    "Scope and rewrite attribution are mapped-file estimates, not exact semantic savings. Shared files count once and retained/removed code within them cannot be separated.",
+    "All original configuration is charged to the retained footprint. Configuration changes appear in the rewrite estimate and may include scope-related savings.",
+    "Overall reduction uses the full original as denominator; rewrite reduction uses the selected original estimate. Their percentages must not be added.",
+    "Negative reductions indicate growth; incomplete measurements do not establish savings.",
+    "The primary size metric counts frozen-tokenizer tokens in source and configuration, summed independently per file. These are code-size tokens, not model usage or task effort.",
+    "Module token figures cover mapped source only; global configuration cost is not assigned to modules. Informational LOC remains separate.",
+    "Incomplete token measurements show observed subtotals, never a verified reduction or successful budget.",
+    "Informational LOC counts are physical source lines from the frozen original and bound candidate inventories, excluding tests and local state.",
+    "Original capability counts include all original descendants; candidate counts include explicitly mapped own files and retained descendants. Excluded descendants do not require candidate mapping. Shared files count once within a node; node counts cannot be added together.",
+    "Candidate ownership is explicitly supplied metadata, not proof of semantic ownership. Missing mappings remain unknown, never zero or a claimed reduction.",
+    "Function steps inherit their owning capability's code scope, but validation remains unknown without direct step evidence; they are not independently measured or tested.",
+    "Local validation statuses use directly targeted checks only. Evidence badges separately describe direct checks and related context. Parent, descendant, import-related and shared evidence never implies a local pass or failure.",
+    "A check targets the leaves whose knockout broke its behavior; a leaf it survived, or whose knockout only broke importing, is context. Otherwise checks naming one capability target that capability by default. Broad or unscoped checks need explicit report check_targets; unattributed results remain in the verification summary and evidence.",
+    "Where the author was given facts a check pins (its asserted behavior and reference values), that check's pass is not independent evidence; such checks are marked.",
+    "Evidence labels distinguish directly passed check records, mixed direct evidence, related passing evidence and missing evidence. Related passes do not verify this module; check-record counts are not a functional coverage percentage.",
+    "Verification describes declared check groups and their observed configurations, not individual unit-test counts or full semantic equivalence.",
+    "Failed original baselines, unrun checks, retired scope and incomplete coverage remain distinct. Installation is reported separately.",
+    "Only public labels, relative file mappings, hashes and summary observations are included. Source contents, command argv, environment values and captured output are omitted."
+  ],
+  "installation": {
+    "status": "passed",
+    "checks_passed": 2,
+    "checks_total": 2,
+    "environment_metadata_complete": true
+  },
+  "rewrite_progress": {
+    "priority": "functionality_first",
+    "author_attempts": 7,
+    "repair_attempts": 4,
+    "optimization_attempts": 0,
+    "restorations": 0,
+    "rejected_attempts": 0,
+    "failed_optimizations": 0,
+    "max_optimization_attempts": 3,
+    "stop_reason": null,
+    "accepted_candidate_available": false,
+    "behavior_acceptance": "not_established",
+    "size_acceptance": "met"
+  },
+  "task_effort": {
+    "schema_version": 1,
+    "operation": "task_effort_evaluation",
+    "status": "unverified",
+    "binding": {},
+    "policy": {
+      "comparison": "empirical_range",
+      "strict_all_tasks": true
+    },
+    "task_types": [
+      "understand",
+      "diagnose",
+      "modify",
+      "execute"
+    ],
+    "tasks": [],
+    "overhead": {
+      "examiner_tokens": null,
+      "judge_tokens": null,
+      "solver_tokens": null,
+      "total_tokens": null,
+      "usage_complete": false,
+      "observed_total_tokens": null,
+      "role_usage_complete": {
+        "examiner": false,
+        "solver": false,
+        "judge": false
+      }
+    },
+    "resources": {
+      "completed_runs": 0,
+      "cleanup_pending": false,
+      "cleanup_pending_runs": 0
+    },
+    "iterations": [],
+    "limitations": [
+      "Task effort measures these tasks under the recorded agent settings; it is not a universal measure of human cognitive burden.",
+      "Tokens count solver model inputs and outputs, including cached input. Missing usage is unavailable, never zero. Examiner and judge overhead is separate.",
+      "Empirical ranges describe repeated observations, not statistical confidence intervals. Failed or unrun tasks do not establish an improvement.",
+      "Task links identify assessed capabilities only; they do not change module behavior verification badges.",
+      "Task prompts, hidden inputs, judging rubrics, source excerpts, raw traces and local paths are omitted from this public report."
+    ],
+    "stop_reason": "behavior_acceptance_pending"
+  },
+  "report_id": "nrs_e3ad18e09996ed699a21a6291928a32c86f6185bc2b001adf4ce1f8cf7bc46d4"
+}
