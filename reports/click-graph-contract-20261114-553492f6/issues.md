@@ -198,6 +198,7 @@ sbatch: error: Batch job submission failed: Invalid account or account/partition
 - 原因判断：任务使用独立导出工作区，不含原仓库 Git 元数据；求解器的附带检查不适用。
 - 绕过：求解器继续直接读取和编辑指定工作区文件，自行探测修改；未增加 Git 历史、未使用外部仓库、未改变验收。
 - 结果：该试次独立冻结验收通过，status=passed，blocker=none。任务要求修改前的自建探测出现预期失败，修改后通过，这属于任务正常的先失败后修复过程，未列为基线回归。
+- 最终审计：相同 Git 状态探测错误共出现 6 次，覆盖 original/development/modify/{0,1,2} 及 candidates/5/candidate/development/modify/{0,1,2}。每次均自行继续，6 次独立验收全通过。修改前自建探测的预期失败，以及 diff 因确有差异返回 1，属于任务过程，不是新增基线回归。
 
 ## CTRL-001：控制器 request_id 含空格被拒绝
 
@@ -283,3 +284,11 @@ sbatch: error: Batch job submission failed: Invalid account or account/partition
 - 原因判断：原版和候选 development 试次各 3 次，6 次独立验收全部通过，用量完整。原版 token 范围 163,942–230,285，中位数 224,164；候选范围 190,523–227,634，中位数 203,960，下降 9.013%。默认规则同时要求至少 5% 中位数改善及候选最大值小于原版最小值，范围重叠，因此不能判定改善。工具按默认分阶段策略未进入 heldout，也不对 inconclusive 发起优化；这是评估缺口，不是任务执行失败。
 - 绕过：遵守默认策略交付已通过行为与安装的候选，保留任务成本未证实的状态；没有增加重复次数、重复抽样同一候选、提高预算或放宽改善阈值，未将 inconclusive 改成 passed。
 - 结果：任务子流程累计 1,573,912 tokens，低于本分支默认 6,000,000，并非昨天的预算耗尽问题。候选任务耗时中位数 136.0564 秒，原版 140.5835 秒，时间差也仅作观测数据。最终于 03:38:40 UTC 以 completed_with_gaps 交付，唯一验收缺口为 task_effort_not_passed；本地交付目录 click-nanolized-20261114-033838。证据：task-effort/candidates/5/report.json、task-effort/usage.json、public.json。
+
+## TASK-003：任务求解器猜错测试文件路径
+
+- 步骤：原版 development/modify/2 和 candidate-5 development/modify/0 的辅助源码检索；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。
+- 原始诊断：`rg: tests/test_types/test_choice.py: No such file or directory (os error 2)`；`rg: tests/test_types.py: No such file or directory (os error 2)`；两次命令均退出 2。
+- 原因判断：求解器猜测的路径大小写、文件与目录组织不符合实际导出树；这不是任务提示强制要求却未提供的验收脚本，与昨天问题 010 不同。
+- 绕过：求解器继续读取现有生产文件和可用测试，编写自己的任务探测并完成修改；没有提供私有验收脚本，没有改动独立验收。
+- 结果：两个试次均完成并通过独立验收；同类辅助路径探测共 2 次。原始记录见各试次 solver/stdout.ndjson；简要索引 logs/task-command-diagnostics.json。
