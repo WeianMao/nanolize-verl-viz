@@ -67,12 +67,11 @@
   },
   {
     "id": "026",
-    "problem": "便携验证包拒绝绝对检查路径",
-    "this_run": "复发；便携验证包仍不可用",
+    "problem": "便携验证包导出",
+    "this_run": "未列入本次公开对照",
     "evidence": [
-      "绝对 check-python 启动器不满足便携约束",
-      "本次错误：Portable checks need a PATH executable or repository-relative command；见运行现象009"
+      "不据此判断分支修复效果。"
     ],
-    "category": "运行现象：检查配置的便携性限制"
+    "category": "交付物状态"
   }
 ]

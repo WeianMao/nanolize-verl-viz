@@ -1,6 +1,6 @@
 # nanolize 分支缺陷记录
 
-仅记录需要修改 claude/graph-contract-field-fixes @ 9413138 的代码缺陷。沿用原记录编号；其余 11 条记录移至 observations.md。两项均已通过源码和本次持久化输入复核，本次没有修改 nanolize 源码。
+本节只列经核对确定需要修改 nanolize 分支的 2 项。沿用原记录编号；两项均已通过源码和本次持久化输入复核，本次没有修改 nanolize 源码。
 
 ## 008 — 位置过滤器未识别弯引号，误拒合法 Windows 字符串值
 
