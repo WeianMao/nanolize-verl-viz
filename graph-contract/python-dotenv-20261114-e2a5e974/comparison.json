@@ -5,7 +5,8 @@
     "this_run": "未复发；实际完成封存",
     "evidence": [
       "LICENSE 与 docs/license.md 均受保护，未做本地补丁"
-    ]
+    ],
+    "category": "历史分支缺陷"
   },
   {
     "id": "011",
@@ -14,7 +15,8 @@
     "evidence": [
       "inputs=[tests] 保持不变，9 组原版 pytest 检查保留",
       "7 个外部叶节点已有效，因此没有新增补测文件；不能据此声称该场景已实测修好"
-    ]
+    ],
+    "category": "历史分支缺陷（本次未触发补测场景）"
   },
   {
     "id": "013",
@@ -22,8 +24,9 @@
     "this_run": "原问题未复发；出现不同的 fixture 缺失问题",
     "evidence": [
       "任务未要求求解者运行隐藏 accept.py",
-      "原版任务验收因设计者未提供输入而 blocked，本次问题010"
-    ]
+      "原版任务验收因设计者未提供输入而 blocked，本次分支缺陷010"
+    ],
+    "category": "历史任务契约缺陷"
   },
   {
     "id": "016",
@@ -31,16 +34,18 @@
     "this_run": "未复发",
     "evidence": [
       "3 次作者调用、2 个候选，文件保护拒绝 0 次"
-    ]
+    ],
+    "category": "运行现象：作者触碰受保护文件"
   },
   {
     "id": "018",
     "problem": "候选临时文件清理和 CLI 空格式回归",
     "this_run": "部分复发，第二版已修复",
     "evidence": [
-      "首轮临时文件清理案例失败",
+      "首轮临时文件清理案例失败，见本次运行现象011",
       "CLI test_list[None] 在两个候选中均通过"
-    ]
+    ],
+    "category": "运行现象：候选实现回归"
   },
   {
     "id": "021",
@@ -48,7 +53,8 @@
     "this_run": "未复发",
     "evidence": [
       "CLI 空格式案例自第一版通过，没有持续至第四版的回归"
-    ]
+    ],
+    "category": "运行现象：候选回归持续"
   },
   {
     "id": "024",
@@ -56,7 +62,8 @@
     "this_run": "未复发",
     "evidence": [
       "第二版已交付，没有第五版 CLI 空格式回归，也无需 job-diagnose 干预"
-    ]
+    ],
+    "category": "运行现象：候选回归持续"
   },
   {
     "id": "026",
@@ -64,7 +71,8 @@
     "this_run": "复发；便携验证包仍不可用",
     "evidence": [
       "绝对 check-python 启动器不满足便携约束",
-      "本次错误：Portable checks need a PATH executable or repository-relative command"
-    ]
+      "本次错误：Portable checks need a PATH executable or repository-relative command；见运行现象009"
+    ],
+    "category": "运行现象：检查配置的便携性限制"
   }
 ]
