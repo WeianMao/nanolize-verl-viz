@@ -152,3 +152,4 @@ FAILED tests/nanolize_contracts/benchmark/test_public_benchmark.py::test_run_pri
 - 原因判断：顶层运行目录不是 Git 仓库，真正的仓库在子目录；重算若用初始源码清单扫描导出仓库，会把后来冻结的两个设计测试也算作新增代码。
 - 绕过：状态核对改用 git -C 明确指定 tomli、nanolize-src、report-site；重合率重算改用最终 verification.json/actual_size/counted_files 的冻结计量范围，并断言分母等于作业记录。仅修改收尾核对方式，没有修改项目、nanolize、检查或验收标准。
 - 结果：原版仓库及 nanolize 均干净且提交未变；最终重合 22/357 行（6.162465%），与内置报告四舍五入的 6% 一致。979 个原版测试/数据文件、2 个设计测试和 2 个 carry 文件均逐字节未变。
+- 发布检查补记：git diff --check 报 `issues.md:122: trailing whitespace.`，来自 pytest 原始错误中的 `E` 后空格；公开副本统一去掉行尾空格后通过，运行目录原始错误仍保留。仅公开报告排版变更。

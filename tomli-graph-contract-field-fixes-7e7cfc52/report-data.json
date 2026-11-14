@@ -468,7 +468,7 @@
     },
     {
       "title": "I15 — 收尾核对脚本的目录与计量范围错误（仅报告工具）",
-      "body": "- 步骤：终态后的仓库状态与逐行重合率核对。\n- 作业 ID：7e7cfc52465a4afab149ca27aa5789c4。\n- 报错/异常原文：工作目录直接执行 git status 得到 `fatal: not a git repository (or any parent up to mount point [运行父目录])` 及 `Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).`；首次重算得到 `compared_lines: 444`，与作业 code-quality.json 的 `compared_lines: 357` 不一致。\n- 原因判断：顶层运行目录不是 Git 仓库，真正的仓库在子目录；重算若用初始源码清单扫描导出仓库，会把后来冻结的两个设计测试也算作新增代码。\n- 绕过：状态核对改用 git -C 明确指定 tomli、nanolize-src、report-site；重合率重算改用最终 verification.json/actual_size/counted_files 的冻结计量范围，并断言分母等于作业记录。仅修改收尾核对方式，没有修改项目、nanolize、检查或验收标准。\n- 结果：原版仓库及 nanolize 均干净且提交未变；最终重合 22/357 行（6.162465%），与内置报告四舍五入的 6% 一致。979 个原版测试/数据文件、2 个设计测试和 2 个 carry 文件均逐字节未变。"
+      "body": "- 步骤：终态后的仓库状态与逐行重合率核对。\n- 作业 ID：7e7cfc52465a4afab149ca27aa5789c4。\n- 报错/异常原文：工作目录直接执行 git status 得到 `fatal: not a git repository (or any parent up to mount point [运行父目录])` 及 `Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).`；首次重算得到 `compared_lines: 444`，与作业 code-quality.json 的 `compared_lines: 357` 不一致。\n- 原因判断：顶层运行目录不是 Git 仓库，真正的仓库在子目录；重算若用初始源码清单扫描导出仓库，会把后来冻结的两个设计测试也算作新增代码。\n- 绕过：状态核对改用 git -C 明确指定 tomli、nanolize-src、report-site；重合率重算改用最终 verification.json/actual_size/counted_files 的冻结计量范围，并断言分母等于作业记录。仅修改收尾核对方式，没有修改项目、nanolize、检查或验收标准。\n- 结果：原版仓库及 nanolize 均干净且提交未变；最终重合 22/357 行（6.162465%），与内置报告四舍五入的 6% 一致。979 个原版测试/数据文件、2 个设计测试和 2 个 carry 文件均逐字节未变。\n- 发布检查补记：git diff --check 报 `issues.md:122: trailing whitespace.`，来自 pytest 原始错误中的 `E` 后空格；公开副本统一去掉行尾空格后通过，运行目录原始错误仍保留。仅公开报告排版变更。"
     }
   ],
   "conversion": [
@@ -517,6 +517,7 @@
     "nanolize 分支 claude/graph-contract-field-fixes，提交 9413138036b515f119ff63fa6db082a6148103f0；未使用 main，未修改或推送 nanolize。原版 Tomli 提交 43a86ade8b795c6ef9b4ec53372a607cd1ed426f。",
     "先写旧功能图与检查，再使用 contract-propose --manifest 旧清单 --output 新清单 --json 转换；输出事先不存在，未使用 --keep-checks。随后补充公开接口、配置默认值、固定文字、文件格式与脚本行为；未附详细 knowledge 库。冻结器自动生成 54 条事实，1 条被丢弃。",
     "启动参数为 --scope all，owner_attends:false；design:true，未关闭 check-validation；相对 python 的 test_template 已提供，设计运行器继承作业 Codex 并开启独立会话。--original-overlap 未传，预算和上限未自定义；50% advisory 体积目标及时间/任务上限均为框架默认。",
+    "本次模型为 gpt-6.1-sol，reasoning effort 为 xhigh；图检查 Python 3.11.18 / pytest 9.2.0，任务基线隔离环境 Python 3.12.9。没有为了本次运行另设模型或推理强度；不将模型与环境差异归因为代码分支效果。",
     "4 次作者调用产生 3 个候选。首轮缺少 tomli._types 且 benchmark 排版错误；第二候选修复导入但排版仍错；第三候选修复 benchmark，所有执行检查通过。最终候选提交 4b5cdde55445e1cb2471354f83520a9108da0942。",
     "防默写 auto：整体阈值 40%，函数阈值 60%（至少 8 个可比较行），每文件最多退回 1 次。实际 22/357=6.162465%，0 个超限函数，退回文件 0、拒绝次数 0。",
     "首轮作者不获得原版源码；默认修复策略向 2 次作者调用提供 api/parse/benchmark 的 3 个不同原版文件，累计 4 次文件授予（benchmark 重复授予）。这是输入与会话约束，不是操作系统强制源码隔离。",
