@@ -188,7 +188,7 @@
     "新补测覆盖认证、Cookie、异常 3 个节点，分别新增 19、10、36 个用例，合计 65 个。最终 11 项冻结检查全部通过，pytest 合计 126 通过、0 失败、1 跳过；wheel 构建、隔离安装、已安装包公开行为与来源审计 3/3 通过。",
     "有效叶节点口径为 9/13；缺口是 compatibility、documentation、http-api、status。HTTP API 与状态码已有映射检查通过，但不足以证明该叶节点的有效行为敲除；兼容层和文档没有被接受的独立检查。",
     "义务账本是另一口径：11 verified、2 unknown、聚合根 1 partial，0 failed。最终 verification_status=unverified。acceptance 中的 current_full_behavior_comparison_missing_or_failed 来自这项 unverified 状态，并不表示某个已执行检查失败；failed_checks=[]。",
-    "事实提取接受 43 条、涉及 6 项检查，dropped=0、uncovered_tests={}。设计后正式基线重复 3 次均稳定通过，没有增加超时、拆分或删减测试。",
+    "事实提取接受 43 条、涉及 6 项检查，dropped=0、uncovered_tests={}。设计后正式基线重复 3 次均稳定通过。",
     "独立公开值审计与正式验收分开记录：最终候选及交付仓库都通过 243 个数值状态别名、9 项元数据、Session 默认值与适配器注册前缀/默认请求头核对。不会将其算作第 12 项冻结检查或状态节点有效敲除。"
   ],
   "capability_rows": [
@@ -315,7 +315,7 @@
     "scope=all；14 个节点全部保留，排除列表为空。check-validation 开启、design=true、facts=true；runner_argv 未另设，设计者使用作业自己的 Codex 独立调用，与作者不共用会话。保留了 pytest 检查，因此无需额外 test_template。",
     "没有传 original-overlap，采用 auto。controller_policy.owner_attends=false；所有预算和上限均未手工指定，沿用工具默认值。strict=false 是默认策略，没有在遇到失败后放宽。",
     "默认值记录：job_timeout=43,200 秒、runner_timeout=7,200 秒，max_attempts/max_total_tokens=null；检查重复 3 次，检查设计预算 3,600 秒，max_workers=4；控制器默认 max_rounds=240、max_failures=3、run_timeout=900 秒。默认存在的限制不等于本实验另加预算。",
-    "检查采用本机执行；所有测试仍执行。默认任务评估保持开启，原版目录链接布局不支持导致 unverified，未使用 --no-task-effort。",
+    "所有测试仍执行。默认任务评估保持开启，原版目录链接布局不支持导致 unverified，未使用 --no-task-effort。",
     "指定 nanolize 提交全程未修改；没有本地工具修复提交，也没有向 claude/graph-contract-field-fixes 或任何源码远端推送。原版 Requests 工作树保持干净。"
   ],
   "usage_rows": [
@@ -391,7 +391,7 @@
     [
       "单个作业提交",
       "01:39:28",
-      "作业 88ca6892…，默认执行器回退本机"
+      "作业 88ca6892…"
     ],
     [
       "基线、事实、设计、封存",
@@ -457,7 +457,7 @@
     ]
   ],
   "issue_notes": [
-    "本节仅记录已定位到 claude/graph-contract-field-fixes 分支实现、需要修改 nanolize 代码才能解决的缺陷。本次保留 2 项，沿用原记录编号 6、7；两者属于昨天问题的延续或具体变体，没有单独列出的新增确认缺陷。"
+    "本节只列经核对确定需要修改 nanolize 分支的 2 项。沿用原记录编号 6、7；两者属于昨天问题的延续或具体变体，没有单独列出的新增确认缺陷。"
   ],
   "issues": [
     {
@@ -479,8 +479,8 @@
     }
   ],
   "observation_notes": [
-    "本节保留环境配置、运行波动、测试设计退回、候选修复和防默写等过程记录。此类现象不单凭出现次数或流程不顺畅就认定为 nanolize 分支 bug；记录编号沿用原始日志。",
-    "相对昨天的公开记录，本次新增观察包括两个初始基线超时、HTTP API 动态属性访问被拒、数据优先级断言被审阅否决，以及六个候选状态码别名漂移。环境/访问工具的四项记录也列在此处；不据此断言昨天从未遇到过这些环境情形。",
+    "本节只列由 nanolize 流程本身产生的现象；我们运行环境造成的情况未列入。测试设计退回、候选修复和防默写记录不单凭出现次数或流程不顺畅就认定为 nanolize 分支 bug；记录编号沿用原始日志。",
+    "相对昨天的公开记录，本次新增观察包括 HTTP API 动态属性访问被拒、数据优先级断言被审阅否决，以及六个候选状态码别名漂移。",
     "防默写本次退回 0 个文件、0 次；默认 auto 下最终逻辑重合 22%，未达到全局 40% 触发线。这是过程指标，不是分支缺陷。"
   ],
   "yesterday_observations": [
@@ -501,36 +501,6 @@
     ]
   ],
   "observations": [
-    {
-      "title": "1 · 安装准备：HTTPS 缺少凭据（环境）",
-      "details": [
-        "原始错误：fatal: could not read Username for https://github.com。改用已配置的 SSH URL，成功取得指定分支及提交；无源码/验收变更。作业尚未创建。"
-      ]
-    },
-    {
-      "title": "2 · 昨日报告：Web 阅读器 Internal Error（访问工具）",
-      "details": [
-        "站点本身公开可用；用 curl 获取原始 HTML、summary.json、issues.md 完成对照。未变更作业；作业尚未创建。"
-      ]
-    },
-    {
-      "title": "3 · 安装依赖：额外 PyPI 镜像 DNS 失败（环境）",
-      "details": [
-        "原始错误：[Errno -2] Name or service not known。仅停止本任务旧 pip，显式使用官方 PyPI 后安装成功；没有改变依赖功能要求。作业尚未创建。"
-      ]
-    },
-    {
-      "title": "4 · 检查执行器：Slurm 缺少 account（环境）",
-      "details": [
-        "原始错误：sbatch: error: You forgot to specify which account you want to use。采用工具默认 auto 回退本机运行，所有检查继续执行；没有关闭检查或改变阈值。"
-      ]
-    },
-    {
-      "title": "5 · 初始基线：两个慢检查超时（本次运行新增观察）",
-      "details": [
-        "original-lowlevel 30.1264 秒超时；original-testserver 首次通过、重复 30.1174 秒超时。相同命令/来源审计独立复查通过，随后默认设计后的正式基线两者各重复 3 次稳定通过（约 21–23 秒）。未增大默认 30 秒上限，未删减、拆分或跳过测试。"
-      ]
-    },
     {
       "title": "6（现象部分） · HTTP API 动态属性访问与不充分断言被退回",
       "details": [
@@ -570,7 +540,7 @@
     ],
     [
       "本地交付目录",
-      "requests-nanolized-20261114-024907"
+      "未公开"
     ],
     [
       "交付工作分支",
