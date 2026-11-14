@@ -8,9 +8,9 @@
 <section><h2>与昨天的压缩、时间和 token 对比</h2><p class="muted">源码体积 tokens 与模型输入/输出 tokens 分开计量。下方图表可切换指标，详细口径与不足见报告末尾。</p><div class="box"><div id="chart-buttons"></div><div id="chart" class="chart"></div><div class="scroll"><table id="comparison"></table></div><div id="comparison-notes"></div></div></section>
 <section><h2>验证与测试设计</h2><div class="box" id="validation"></div></section>
 <section><h2>完整功能范围</h2><p class="muted">全部节点保留，点击查看公开接口与验证结果。</p><div class="graph" id="graph"></div></section>
-<section><h2>昨天的 7 项问题逐项复查</h2><div class="box scroll"><table id="yesterday-issues"></table></div></section>
-<section><h2>本次新出现的问题</h2><p class="muted">本页问题列表只保留经核对确定由 nanolize 自身引起的 2 项。以下为保留条目中，昨天公开的 7 项问题之外的新增记录。</p><div class="box scroll"><table id="new-issues"></table></div></section>
-<section><h2>全部问题与绕过记录</h2><p class="muted">本页问题列表只保留经核对确定由 nanolize 自身引起的 2 项。</p><div class="box" id="issues"></div></section>
+<section id="branch-bugs"><h2>问题记录：需要修改 nanolize 分支的 bug</h2><p class="muted" id="issue-policy"></p><div class="box"><p id="issue-summary"></p><div id="issues"></div></div></section>
+<section id="runtime-observations"><h2>运行现象与处理记录</h2><div class="box"><div id="observation-notes"></div><h3>本次新增现象</h3><p class="muted">以下为昨天公开的 7 项记录之外，本次新增的现象。</p><div class="scroll"><table id="new-observations"></table></div><h3>完整现象记录</h3><div id="observations"></div></div></section>
+<section><h2>昨天的 7 项运行记录逐项复查</h2><p class="muted">保留昨天记录的比较口径；此表中的现象不自动计入分支 bug。</p><div class="box scroll"><table id="yesterday-issues"></table></div></section>
 <section><h2>清单转换与运行记录</h2><div class="box scroll"><table id="conversion"></table><div id="run"></div></div></section>
 <section><h2>计量口径与局限</h2><div class="box" id="limits"></div></section><footer id="footer"></footer></main>
 <script>
@@ -24,10 +24,13 @@ table('comparison',['指标','昨天','本次','变化'],d.comparison.map(x=>[x.
 const draw=i=>{const c=d.charts[i],max=Math.max(c.previous,c.current);el('chart').innerHTML=`<p>${esc(c.label)} <small>${esc(c.note)}</small></p>`+[['昨天',c.previous,'old',c.previous_label],['本次',c.current,'',c.current_label]].map(([n,v,k,label])=>`<div class="barrow"><span>${n}</span><div class="track"><i class="bar ${k}" style="width:${v/max*100}%"></i></div><b>${esc(label)}</b></div>`).join('');document.querySelectorAll('#chart-buttons button').forEach((b,j)=>b.classList.toggle('active',i===j));};
 el('chart-buttons').innerHTML=d.charts.map((c,i)=>`<button data-index="${i}">${esc(c.label)}</button>`).join('');el('chart-buttons').addEventListener('click',e=>{if(e.target.dataset.index!==undefined)draw(Number(e.target.dataset.index));});if(d.charts.length)draw(0);
 paras('validation',d.validation);el('graph').innerHTML=d.capabilities.map(n=>`<details class="node"><summary>${esc(n.label)}</summary><small>${esc(n.id)} · ${esc(n.surface)} · ${esc(n.status)}</small><p>${esc(n.description)}</p>${(n.interface||[]).map(t=>`<small>${esc(t)}</small>`).join('')}</details>`).join('');
-table('yesterday-issues',['昨天问题','本次是否重现','本次证据与处理'],d.yesterday_issues.map(x=>[x.title,x.status,x.evidence]));
-table('new-issues',['问题','类别','处理与结果'],d.new_issues.map(x=>[x.title,x.category,x.summary]));
-el('issues').innerHTML=d.issues.map(x=>`<details><summary>${esc(x.title)}</summary><pre>${esc(x.body)}</pre></details>`).join('')||'<p>未记录问题。</p>';
+table('yesterday-issues',['昨天记录','本次是否重现','本次证据与处理'],d.yesterday_issues.map(x=>[x.title,x.status,x.evidence]));
+el('issue-policy').textContent=d.issue_policy;el('issue-summary').textContent=d.issue_summary;
+el('issues').innerHTML=d.issues.map(x=>`<details><summary>${esc(x.title)}</summary><pre>${esc(x.body)}</pre></details>`).join('');
+paras('observation-notes',d.observation_notes);
+table('new-observations',['运行现象','类别','处理与结果'],d.new_observations.map(x=>[x.title,x.category,x.summary]));
+el('observations').innerHTML=d.observations.map(x=>`<details><summary>${esc(x.title)}</summary><p class="muted">${esc(x.classification)}</p><pre>${esc(x.body)}</pre></details>`).join('');
 table('conversion',['转换报告字段','数量','说明'],d.conversion.map(x=>[x.key,x.count,x.note]));paras('run',d.run);paras('limits',d.limits);
-el('footer').innerHTML=`<p>作业 ${esc(d.job_id)} · ${esc(d.completed_at)}</p><p><a href="report-data.json">报告数据 JSON</a> · <a href="issues.md">完整 issues.md</a> · <a href="../tomli-graph-contract-fc9bf606/">昨天报告</a></p>`;
+el('footer').innerHTML=`<p>作业 ${esc(d.job_id)} · ${esc(d.completed_at)}</p><p><a href="report-data.json">报告数据 JSON</a> · <a href="issues.md">分支 bug 记录</a> · <a href="observations.md">运行现象记录</a> · <a href="../tomli-graph-contract-fc9bf606/">昨天报告</a></p>`;
 }).catch(e=>{el('lead').textContent='报告加载失败：'+e.message});
 </script></body></html>
