@@ -47,7 +47,7 @@
   ],
   "limitations": [
     "保留全部 14 个声明节点，未排除功能、未关闭检查、未降低验收门槛。最终并非完整验证通过：compatibility、documentation、http-api、status 共 4 个叶节点缺有效验证，默认任务成本评估也未验证。",
-    "版本与构建号保持原值。首次候选曾出现 6 个公开状态码别名漂移，已由独立作者修复；最终交付的 243 个数值状态别名、9 项元数据及 Session 默认配置均与原版一致。这项补充审计不代替缺失的有效叶节点敲除证据。",
+    "版本与构建号保持原值。最终交付的 243 个数值状态别名、9 项元数据及 Session 默认配置均与原版一致。这项补充审计不代替缺失的有效叶节点敲除证据。",
     "体积压缩包含去除注释与 docstring 的贡献：双方去除这些文本后，保留比例为 52.38%；公开定义文档覆盖率从 81.3% 降至 0%。文档节点缺少检查，不能据此声称文档功能得到完整保留。"
   ],
   "comparison_rows": [
@@ -188,7 +188,7 @@
     "新补测覆盖认证、Cookie、异常 3 个节点，分别新增 19、10、36 个用例，合计 65 个。最终 11 项冻结检查全部通过，pytest 合计 126 通过、0 失败、1 跳过；wheel 构建、隔离安装、已安装包公开行为与来源审计 3/3 通过。",
     "有效叶节点口径为 9/13；缺口是 compatibility、documentation、http-api、status。HTTP API 与状态码已有映射检查通过，但不足以证明该叶节点的有效行为敲除；兼容层和文档没有被接受的独立检查。",
     "义务账本是另一口径：11 verified、2 unknown、聚合根 1 partial，0 failed。最终 verification_status=unverified。acceptance 中的 current_full_behavior_comparison_missing_or_failed 来自这项 unverified 状态，并不表示某个已执行检查失败；failed_checks=[]。",
-    "事实提取接受 43 条、涉及 6 项检查，dropped=0、uncovered_tests={}。最初两个慢测试在 30 秒默认上限附近超时；设计后正式基线重复 3 次均稳定通过，没有增加超时、拆分或删减测试。",
+    "事实提取接受 43 条、涉及 6 项检查，dropped=0、uncovered_tests={}。设计后正式基线重复 3 次均稳定通过，没有增加超时、拆分或删减测试。",
     "独立公开值审计与正式验收分开记录：最终候选及交付仓库都通过 243 个数值状态别名、9 项元数据、Session 默认值与适配器注册前缀/默认请求头核对。不会将其算作第 12 项冻结检查或状态节点有效敲除。"
   ],
   "capability_rows": [
@@ -315,7 +315,7 @@
     "scope=all；14 个节点全部保留，排除列表为空。check-validation 开启、design=true、facts=true；runner_argv 未另设，设计者使用作业自己的 Codex 独立调用，与作者不共用会话。保留了 pytest 检查，因此无需额外 test_template。",
     "没有传 original-overlap，采用 auto。controller_policy.owner_attends=false；所有预算和上限均未手工指定，沿用工具默认值。strict=false 是默认策略，没有在遇到失败后放宽。",
     "默认值记录：job_timeout=43,200 秒、runner_timeout=7,200 秒，max_attempts/max_total_tokens=null；检查重复 3 次，检查设计预算 3,600 秒，max_workers=4；控制器默认 max_rounds=240、max_failures=3、run_timeout=900 秒。默认存在的限制不等于本实验另加预算。",
-    "默认 Slurm auto 预检因缺少 account 失败，工具自动回退本机检查；所有测试仍执行。默认任务评估保持开启，原版目录链接布局不支持导致 unverified，未使用 --no-task-effort。",
+    "检查采用本机执行；所有测试仍执行。默认任务评估保持开启，原版目录链接布局不支持导致 unverified，未使用 --no-task-effort。",
     "指定 nanolize 提交全程未修改；没有本地工具修复提交，也没有向 claude/graph-contract-field-fixes 或任何源码远端推送。原版 Requests 工作树保持干净。"
   ],
   "usage_rows": [
@@ -458,65 +458,29 @@
     [
       "昨天版本号/构建号占位值漂移",
       "该具体问题未再出现",
-      "已预先写入 interface 并由安装检查约束，保持 2.34.2 / 0x023402；本次新增状态码别名漂移，见问题 8。"
+      "已预先写入 interface 并由安装检查约束，保持 2.34.2 / 0x023402。"
     ]
   ],
   "new_issue_notes": [
-    "相对昨天公开问题列表，本次新增的产品行为问题是状态码六个别名漂移（问题 8），已修复。新增的设计反馈是 HTTP API 动态属性越界和数据优先级断言被独立审阅否决（问题 6 的新部分）。",
-    "本次另记录两个初始基线超时（问题 5），后续在原时限内恢复；安装 HTTPS 凭据、Web 阅读器、额外 PyPI 索引、Slurm account 四项环境/工具访问问题（问题 1–4）也单独保留。它们是相对昨天公开列表新增的记录，不能据此断言昨天从未遇到过这些环境问题。",
-    "目录链接任务快照限制（问题 7）及部分缺少行为敲除证据（问题 6 的其余部分）归为复现问题，不计入新增缺陷。没有关闭检查或放宽任何验收项。"
+    "经核对保留的问题 6（导入期公开数据及兼容重导出的验证支持缺口）和问题 7（带尾斜杠的仓库内目录链接不支持）均属于昨天问题的延续或具体变体；本次没有单独列出的新增确认问题。"
   ],
+  "issues_notice": "本页问题列表只保留经核对确定由 nanolize 自身引起的 2 项。",
   "issues": [
     {
-      "title": "1 · 安装准备：HTTPS 缺少凭据（环境）",
+      "title": "6 · 函数敲除不适配导入期公开数据与兼容重导出，并丢弃相关事实",
       "details": [
-        "原始错误：fatal: could not read Username for https://github.com。改用已配置的 SSH URL，成功取得指定分支及提交；无源码/验收变更。作业尚未创建。"
+        "compatibility/status 两轮共 4 份提案均因 no_behavioral_knockout_failure 被拒，runner_failures=[]。第二轮兼容测试 14/14、状态测试 54/54 在原版重复执行通过且稳定，函数敲除结果仍为 survived。",
+        "_Knockout 仅修改函数，保留模块数据、导入和导入期调用；状态表的导入初始化及兼容层的依赖重导出因而不变。虽然已有 no_function_bodies 例外，_stands 仍保留 guarded 的 survived，即使 plain 结果是 no_function_bodies。源码机制核对与保存的作业回执分开记录。",
+        "只有 accepted 测试及其 facts 被纳入计划，已断言的历史状态别名事实随拒绝一并丢弃。确认的问题是合法公共行为的验证及事实保留支持缺口；最终状态仍为 unverified，没有虚报完整等价。",
+        "沿用默认第二轮、独立审阅和完整基线重建，最终接受认证、Cookie、异常的 4 文件/65 用例，未修改 nanolize 或放宽判据。上报范围只含导入期公开数据与兼容重导出，不把其他叶节点缺少验证一概计为本问题。"
       ]
     },
     {
-      "title": "2 · 昨日报告：Web 阅读器 Internal Error（访问工具）",
+      "title": "7 · 任务评估拒绝带尾斜杠的安全仓库内目录链接（昨天 #22 复现）",
       "details": [
-        "站点本身公开可用；用 curl 获取原始 HTML、summary.json、issues.md 完成对照。未变更作业；作业尚未创建。"
-      ]
-    },
-    {
-      "title": "3 · 安装依赖：额外 PyPI 镜像 DNS 失败（环境）",
-      "details": [
-        "原始错误：[Errno -2] Name or service not known。仅停止本任务旧 pip，显式使用官方 PyPI 后安装成功；没有改变依赖功能要求。作业尚未创建。"
-      ]
-    },
-    {
-      "title": "4 · 检查执行器：Slurm 缺少 account（环境）",
-      "details": [
-        "原始错误：sbatch: error: You forgot to specify which account you want to use。采用工具默认 auto 回退本机运行，所有检查继续执行；没有关闭检查或改变阈值。"
-      ]
-    },
-    {
-      "title": "5 · 初始基线：两个慢检查超时（本次运行新增观察）",
-      "details": [
-        "original-lowlevel 30.1264 秒超时；original-testserver 首次通过、重复 30.1174 秒超时。相同命令/来源审计独立复查通过，随后默认设计后的正式基线两者各重复 3 次稳定通过（约 21–23 秒）。未增大默认 30 秒上限，未删减、拆分或跳过测试。"
-      ]
-    },
-    {
-      "title": "6 · 补测退回：证据不足部分复现，动态属性与审阅否决为新反馈",
-      "details": [
-        "共 6 份提案被退回：HTTP API 首轮 outside_external_contract（dynamic attribute）；compatibility/status 各两轮 no_behavioral_knockout_failure；HTTP API 第二轮 reviewer_veto。审阅指出只检查 method 不能证明非空 data 优先于无效 JSON。",
-        "默认第二轮与独立审阅保持开启；最终接受认证、Cookie、异常 4 文件/65 用例。文档两轮无提案。未通过放宽规则接受被退回的检查。"
-      ]
-    },
-    {
-      "title": "7 · 任务评估：带尾斜杠的目录链接仍不支持（昨天 #22 复现）",
-      "details": [
-        "Task snapshots cannot isolate a directory symlink whose text is not a plain relative path (any .. first, then names)。真实链接为 tests/certs/mtls/client/ca → ../../expired/ca/；末尾空路径分量被拒绝，已有单测也明确拒绝 v1/。",
-        "采用内建 unsupported/unverified 记录继续压缩；未改原版链接、边界规则或任务评估开关。最终仍无有效任务成本对比，不把它计为通过。"
-      ]
-    },
-    {
-      "title": "8 · 公开状态码别名漂移（本次新增，已修复）",
-      "details": [
-        "首版缺少 early-hints/EARLY-HINTS=102 与 reset/RESET=205；request_uri_too_long/REQUEST_URI_TOO_LONG 错为 414，原版为 122。冻结检查均通过，但独立公开值审计检出偏差。",
-        "通过官方 run_agent role=repair、capabilities=[status] 向独立作者提供六项公开值，未提供原版实现或隐藏测试。只修改 src/requests/status_codes.py（+5/-2），修复提交 26564c93d294。",
-        "全部 243 别名、9 元数据和 Session 默认值在候选及交付仓库核对一致，11 项冻结检查与 3 项安装检查重跑通过。控制器与排队显式保存生成内容相同的候选 2/3；实际只有两个不同实现提交。"
+        "原始错误：Task snapshots cannot isolate a directory symlink whose text is not a plain relative path (any .. first, then names)。上游 Git 跟踪的真实链接为 tests/certs/mtls/client/ca → ../../expired/ca/，目标存在且位于仓库内；末尾空路径分量被拒绝。",
+        "effort._directory_link 在目标越界检查后按链接文本筛选，现有文档与单测也明确拒绝 v1/。这是安全目录链接常见拼写的设计支持缺口；应保留越界与快照完整性检查。",
+        "未修改原版链接或任务评估开关，沿用内建不支持记录继续压缩和交付。原版任务准备为 unsupported_repository_layout / unverified，records=[]，未启动任务模型调用；最终任务比较另因 behavior_acceptance_pending 为 unverified，不能把最终全部任务缺口都归因于链接。"
       ]
     }
   ],
