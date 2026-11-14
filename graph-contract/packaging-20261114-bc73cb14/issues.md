@@ -1,5 +1,7 @@
 # 需要修改 nanolize 分支的缺陷
 
+本节只列经核对确定需要修改 nanolize 分支的 1 项。
+
 仅列 claude/graph-contract-field-fixes @ 9413138 的分支代码缺陷。运行现象另见 [observations.md](observations.md)。
 
 ## B1. 验证包对参数化测试 ID 的路径误判（已知设计限制）
