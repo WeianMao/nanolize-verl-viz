@@ -1,6 +1,6 @@
 # 需要修改 nanolize 分支的 bug
 
-问题记录只收录已有源码定位或最小复现证据、需要修正 nanolize 实现的缺陷。环境配置、生成提案或候选错误、正常校验拒绝、超时及代理调用失误归入运行现象；可以改进提示或流程不等于已确认代码 bug。
+本节只列经核对确定需要修改 nanolize 分支的 3 项。
 
 分支：claude/graph-contract-field-fixes / 9413138036b515f119ff63fa6db082a6148103f0。
 
@@ -27,11 +27,10 @@
 - 原因判断：该提案在原版上 14 个用例通过且重复稳定；测试函数内通过 runpy 执行 CLI，禁用后的行为失败堆栈含脚本入口的 `<module>` 帧，验证器却优先将其判为导入破坏，漏掉已执行用例的失败证据。此误分类导致 comparison 补测被拒；初始 CLI 帮助探针的行为禁用证据不能替代该补测的验证结论。
 - 绕过：按默认规则拒绝该提案；该节点所有设计文件都呈现导入失败，工具不再为它重复请求第二轮。保留原 comparison-help 输出检查和完整功能范围，不放宽禁用验证标准。
 - 结果：独立审阅接受其他 10 份提案，comparison 为最终冻结基线唯一缺少有效测试的外部节点；14组检查全部通过。
-- 汇报纠正：中途更新曾将 CLI 探针的行为证据误扩展到 comparison 的新提案，读取原始矩阵后立即更正；最终报告以此记录为准。
 
 ### N09 的最小复现与原因核对
-- 在运行目录 `diagnostics/runpy/` 建立最小独立复现：pytest 用例内部调用 `runpy.run_path(..., run_name='__main__')`，被调用程序 main 抛出 `RuntimeError('nanolize knockout')`。
-- pytest 输出为 `1 failed`，没有 collection/import 错误，失败发生在已执行的测试函数内；nanolize `_kill_kind` 却返回 `import`。分类记录保存在 `diagnostics/runpy/classification.json`。
+- 最小独立复现：pytest 用例内部调用 `runpy.run_path(..., run_name='__main__')`，被调用程序 main 抛出 `RuntimeError('nanolize knockout')`。
+- pytest 输出为 `1 failed`，没有 collection/import 错误，失败发生在已执行的测试函数内；nanolize `_kill_kind` 却返回 `import`。
 - 原因确认：`leaf_test_validity._module_frames` 将 pytest 短堆栈中的所有 `<module>` 帧当作导入，不区分 runpy 执行 CLI 的入口；`_kill_kind` 在读取已执行用例失败证据前就按这些帧返回 import。真实 comparison 提案同样在测试函数内调用 runpy，符合此误判路径。
 - 此复现仅用于诊断，没有修改 nanolize、原版、已冻结测试或作业状态。作业可按默认策略继续，所以保留缺口，不把复现结论当作该节点正式验收通过，也没有为此放宽标准。
 
