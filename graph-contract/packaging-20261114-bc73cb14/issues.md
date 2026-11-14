@@ -1,14 +1,16 @@
-# packaging graph-contract 第二次实验问题记录
+# 需要修改 nanolize 分支的缺陷
 
-基准：nanolize claude/graph-contract-field-fixes @ 9413138036b515f119ff63fa6db082a6148103f0。
-本页问题列表只保留经核对确定由 nanolize 自身引起的 1 项。
+仅列 claude/graph-contract-field-fixes @ 9413138 的分支代码缺陷。运行现象另见 [observations.md](observations.md)。
 
+## B1. 验证包对参数化测试 ID 的路径误判（已知设计限制）
 
-## 16. 验证包导出误把参数化测试 ID 中的产品输入当宿主绝对路径（已知设计限制）
-- 步骤：seal_contract 时导出可移植验证包；完成作业后的交付审计发现该回执。
+- 步骤：seal_contract 导出可移植验证包。
 - 作业 ID：bc73cb142f814dd8b90647ddbb10cd4a。
-- 报错原文：`Portable metadata contains an absolute path (baseline.results[0].case_status key); use relative check inputs`；bundle-receipt.json 的 status 为 `unavailable`。
-- 判断原因：verification_bundle._safe_metadata 对 case_status 的字典键使用非 prose 的绝对路径正则。首个被拒的键为 `tests.test_requirements.TestRequirementParsing::test_error_invalid_marker_malformed_quoted_string[name; os_name == "C:\\"-expected0]`，其中 Windows 风格文本是产品解析测试的输入，不是宿主工作区路径。不是检查输入路径没有写成相对路径。该误判和昨天 #14 同属产品值/宿主位置混淆，但本次发生在另一条验证包导出路径，事实提取和设计过滤未复现昨天的拒绝。这是 bundle v1 文档已说明的设计限制，不是新回归；合法的静态测试参数在普通环境中也会阻止导出。
-- 绕过：freeze.py 内置捕获 ValueError 并保留 unavailable 回执，继续以本地冻结基线完成全部验证；本次未补丁、未删除该用例、未放松导出器过滤，也没有声称存在可移植验证包。
-- 结果：作业完整交付 candidate-5，27/27 行为检查与 2/2 安装检查通过，本地记录和 public_safe 报告生成成功；可移植验证包不可用的限制仍存在。影响限于 portable bundle；整体验证仍为 unverified，不能将整体未验证全部归因于此项。
-- 验收放宽：无；本地行为验证未被替代，缺失包未计为成功。
+- 对应原记录：#16；与昨天 #14 属于相似的产品值/宿主位置混淆，本次发生在验证包导出路径。
+- 分支代码位置：src/nanolize/verification_bundle.py::_safe_metadata / _local；src/nanolize/job_tools/freeze.py 捕获导出异常。
+- 报错原文：Portable metadata contains an absolute path (baseline.results[0].case_status key); use relative check inputs。bundle-receipt.json 的 status 为 unavailable。
+- 分支问题：case_status 的键是参数化测试 ID，包含被测产品的输入值；导出器对整段键使用绝对路径正则。首个被拒用例是 test_error_invalid_marker_malformed_quoted_string，参数中的 C:\ 文本是语法解析输入，不是宿主路径。要求改相对 check inputs 无法解决这个问题。
+- 需要修改：为此类用例键生成可移植标识并保留私有证据绑定，或在结构化字段中正确区分产品输入与宿主位置；继续拒绝真实宿主路径。
+- 本次处理与结果：默认流程捕获 ValueError，保留 unavailable 回执，并以本地冻结基线完成 27/27 组行为检查和 2/2 项安装检查。public_safe 报告正常生成；可移植验证包仍不可用。
+- 性质与影响：这是 bundle v1 已说明的设计限制，不是本次新引入的回归。合法静态测试参数也会触发它；解决需要修改导出器。影响限于可移植验证包，不能将整体 unverified 全部归因于此项。
+- 修复状态：本次未修改分支；未删除用例、未放松路径过滤或行为验收。

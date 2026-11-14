@@ -350,12 +350,12 @@
       "description": "先重建旧功能图与检查，再向不存在的输出文件运行 contract-propose。接口正文补充源码无法自动推导的默认值、格式、注册名和固定提示，没有附外部详细 knowledge 库。"
     },
     {
-      "title": "昨天公开 issues 的逐项复核",
+      "title": "昨天记录的逐项对照（含运行现象）",
       "headers": [
         "昨天编号",
-        "问题",
+        "记录",
         "本次是否出现",
-        "证据"
+        "证据与分类"
       ],
       "rows": [
         [
@@ -374,7 +374,7 @@
           14,
           "合法 URL/路径事实被绝对位置过滤器误拒",
           "事实/设计层未复现；验证包层出现类似误判",
-          "事实和设计提案未出现昨日 absolute-location 拒绝；但可移植验证包把 case_status 键中的 C:\\ 产品输入误认作宿主路径，导出 unavailable（本次 #16），本地验证照常完成。"
+          "事实和设计提案未出现昨日 absolute-location 拒绝；但可移植验证包把 case_status 键中的 C:\\ 产品输入误认作宿主路径，导出 unavailable（本次 B1，原记录 #16），本地验证照常完成。 这是 bundle v1 已知设计限制，未认定为本次新引入的回归。"
         ],
         [
           18,
@@ -391,33 +391,17 @@
         [
           23,
           "控制器缺少启动/收集错误摘要",
-          "部分复现；收集/启动错误分支未触发",
-          "首候选 issues.jsonl 仍只有错误类型/数量及知识 ID，markers/requirements 的具体断言差异和 dependency_groups spy 参数缺失；完整私有验证记录有 traceback。默认修复流程继续，效果待最终核对。 默认修复最终解决全部观察到的回归，未补丁摘要；不能量化其额外轮次。"
+          "收集/启动故障分支未触发；断言摘要简略现象仍在",
+          "源码明确限制失败反馈为分类、数量、候选位置和已知名称，以隔离测试内容；省略断言差异本身不能判为分支 bug，已移到运行现象 O13。默认修复解决全部观察到的回归；本次未触发昨日收集/启动故障，不能据此确认该故障已修复或复现。"
         ],
         [
           24,
           "保留旧检查仍隐式约束私有接口",
-          "部分复现（dependency_groups）",
-          "specifiers / pylock 的旧检查已被转换剔除；但明确列名的 _resolve 仍被 spy 强制要求内部单参数调用，首候选公共结果正确而调用形状失败。保持原检查交给默认修复。 candidate-4 恢复 _resolve(group) 调用约定，45 个用例全部通过；没有改冻结测试。"
+          "兼容修复现象部分复现；未据此认定分支 bug",
+          "specifiers / pylock 的旧检查已被转换剔除；dependency_groups 保留检查仍要求 _resolve(group) 的调用约定。candidate-4 修改候选后 45 个用例全部通过，冻结测试未改；该证据不足以单独证明 nanolize 代码有错，列入运行现象 O12。"
         ]
       ],
-      "description": "只对昨天公开的 7 项记录逐条核对；没有触发某错误分支，不代表已证明该分支修复。"
-    },
-    {
-      "title": "本次新增记录",
-      "headers": [
-        "类别",
-        "问题",
-        "结果"
-      ],
-      "rows": [
-        [
-          "可移植验证包",
-          "参数化用例 ID 的 C:\\ 产品输入触发绝对路径过滤（#16）",
-          "已知 bundle v1 设计限制；保留 unavailable 回执，本地验证 / 公共报告正常"
-        ]
-      ],
-      "description": "本页问题列表只保留经核对确定由 nanolize 自身引起的 1 项。“新增”表示未在昨天公开 issues 的七条记录中列出，不断言此前从未发生。完整原文、判断、文件/参数、绕过与结果见下方 issues。"
+      "description": "保留昨天七项记录的逐条对照；是否属于需要修改 nanolize 的缺陷，按源码与运行证据另行判断。没有触发某错误分支，不代表该分支已经修复。"
     },
     {
       "title": "耗时与费用",
@@ -647,13 +631,143 @@
       "description": null
     }
   ],
-  "issues_note": "本页问题列表只保留经核对确定由 nanolize 自身引起的 1 项。",
   "issues": [
     {
-      "title": "16. 验证包导出误把参数化测试 ID 中的产品输入当宿主绝对路径（已知设计限制）",
-      "body": "- 步骤：seal_contract 时导出可移植验证包；完成作业后的交付审计发现该回执。\n- 作业 ID：bc73cb142f814dd8b90647ddbb10cd4a。\n- 报错原文：`Portable metadata contains an absolute path (baseline.results[0].case_status key); use relative check inputs`；bundle-receipt.json 的 status 为 `unavailable`。\n- 判断原因：verification_bundle._safe_metadata 对 case_status 的字典键使用非 prose 的绝对路径正则。首个被拒的键为 `tests.test_requirements.TestRequirementParsing::test_error_invalid_marker_malformed_quoted_string[name; os_name == \"C:\\\\\"-expected0]`，其中 Windows 风格文本是产品解析测试的输入，不是宿主工作区路径。不是检查输入路径没有写成相对路径。该误判和昨天 #14 同属产品值/宿主位置混淆，但本次发生在另一条验证包导出路径，事实提取和设计过滤未复现昨天的拒绝。这是 bundle v1 文档已说明的设计限制，不是新回归；合法的静态测试参数在普通环境中也会阻止导出。\n- 绕过：freeze.py 内置捕获 ValueError 并保留 unavailable 回执，继续以本地冻结基线完成全部验证；本次未补丁、未删除该用例、未放松导出器过滤，也没有声称存在可移植验证包。\n- 结果：作业完整交付 candidate-5，27/27 行为检查与 2/2 安装检查通过，本地记录和 public_safe 报告生成成功；可移植验证包不可用的限制仍存在。影响限于 portable bundle；整体验证仍为 unverified，不能将整体未验证全部归因于此项。\n- 验收放宽：无；本地行为验证未被替代，缺失包未计为成功。"
+      "id": "B1",
+      "source_records": [
+        16
+      ],
+      "title": "B1. 验证包对参数化测试 ID 的路径误判（已知设计限制）",
+      "body": "- 步骤：seal_contract 导出可移植验证包。\n- 作业 ID：bc73cb142f814dd8b90647ddbb10cd4a。\n- 对应原记录：#16；与昨天 #14 属于相似的产品值/宿主位置混淆，本次发生在验证包导出路径。\n- 分支代码位置：src/nanolize/verification_bundle.py::_safe_metadata / _local；src/nanolize/job_tools/freeze.py 捕获导出异常。\n- 报错原文：Portable metadata contains an absolute path (baseline.results[0].case_status key); use relative check inputs。bundle-receipt.json 的 status 为 unavailable。\n- 分支问题：case_status 的键是参数化测试 ID，包含被测产品的输入值；导出器对整段键使用绝对路径正则。首个被拒用例是 test_error_invalid_marker_malformed_quoted_string，参数中的 C:\\ 文本是语法解析输入，不是宿主路径。要求改相对 check inputs 无法解决这个问题。\n- 需要修改：为此类用例键生成可移植标识并保留私有证据绑定，或在结构化字段中正确区分产品输入与宿主位置；继续拒绝真实宿主路径。\n- 本次处理与结果：默认流程捕获 ValueError，保留 unavailable 回执，并以本地冻结基线完成 27/27 组行为检查和 2/2 项安装检查。public_safe 报告正常生成；可移植验证包仍不可用。\n- 性质与影响：这是 bundle v1 已说明的设计限制，不是本次新引入的回归。合法静态测试参数也会触发它；解决需要修改导出器。影响限于可移植验证包，不能将整体 unverified 全部归因于此项。\n- 修复状态：本次未修改分支；未删除用例、未放松路径过滤或行为验收。"
     }
   ],
+  "observations": [
+    {
+      "id": "O1",
+      "source_records": [
+        1
+      ],
+      "title": "1. HTTPS 拉取私有 nanolize 仓库缺少凭据（环境）",
+      "body": "- 步骤：获取指定分支。\n- 作业 ID：尚未创建。\n- 报错原文：`fatal: could not read Username for 'https://github.com': No such device or address`。\n- 判断原因：当前环境未配置 HTTPS Git 凭据，已配置 SSH 访问。\n- 绕过：将仓库 URL 改为 `git@github.com:WeianMao/nanolize.git`，未修改代码。\n- 结果：成功获取指定分支，HEAD 精确等于 9413138036b515f119ff63fa6db082a6148103f0。\n- 验收放宽：无。"
+    },
+    {
+      "id": "O2",
+      "source_records": [
+        2
+      ],
+      "title": "2. 浏览工具无法读取昨天的网站（环境）",
+      "body": "- 步骤：读取昨天公开报告。\n- 作业 ID：尚未创建。\n- 报错原文：`Internal Error`；`URL ... is not accessible via this tool.`。\n- 判断原因：浏览工具抓取失败，页面本身可访问。\n- 绕过：使用 curl 下载原页面、report.json、issues.md 到本地保存。\n- 结果：完整读取昨天报告与 7 项问题记录。\n- 验收放宽：无。"
+    },
+    {
+      "id": "O3",
+      "source_records": [
+        3
+      ],
+      "title": "3. 默认 pip 索引无法解析（环境）",
+      "body": "- 步骤：安装指定 nanolize 和测试依赖。\n- 作业 ID：尚未创建。\n- 报错原文：`Failed to establish a new connection: [Errno -2] Name or service not known`；原安装任务被终止时为 `Terminated`（exit 143）。\n- 判断原因：宿主配置的额外软件包索引无法解析；只指定 --index-url 仍保留额外索引并反复等待。\n- 绕过：终止本目录下旧安装进程；改为 `PIP_CONFIG_FILE=/dev/null PIP_INDEX_URL=https://pypi.org/simple PIP_EXTRA_INDEX_URL=`，使用独立 venv 安装。清理旧安装进程过程中首个新安装任务也退出，单独重新启动。\n- 结果：公共 PyPI 安装成功；已验证 nanolize 0.8.0 的模块来自本地指定提交，依赖锁定于 requirements.lock.txt。\n- 验收放宽：无。"
+    },
+    {
+      "id": "O4",
+      "source_records": [
+        4
+      ],
+      "title": "4. 默认检查执行器缺少 Slurm account，自动回退本机（环境）",
+      "body": "- 步骤：作业准备 / 选择检查执行器。\n- 作业 ID：bc73cb142f814dd8b90647ddbb10cd4a。\n- 报错原文：`Scheduler command failed: sbatch: sbatch: error: You forgot to specify which account you want to use.`；`sbatch: error: Batch job submission failed: Invalid account or account/partition combination specified`。\n- 判断原因：当前会话没有为 Slurm 配置默认 account；不是 packaging 或测试失败。\n- 绕过：nanolize 的默认 auto 执行器自行回退为 local，没有改动文件或参数，也未禁用检查。\n- 结果：作业继续，已创建隔离原版/候选工作树并开始提取测试行为事实。\n- 验收放宽：无。"
+    },
+    {
+      "id": "O5",
+      "source_records": [
+        5
+      ],
+      "title": "5. 编排脚本最初使用了错误的作业记录路径（编排）",
+      "body": "- 步骤：提交后的只读状态读取；前期也有 rg 探测不存在的文档/模块文件名。\n- 作业 ID：bc73cb142f814dd8b90647ddbb10cd4a。\n- 报错原文：`FileNotFoundError: [Errno 2] No such file or directory: 'run/state/jobs/bc73cb142f814dd8b90647ddbb10cd4a'`；探测命令为 `No such file or directory`。\n- 判断原因：执行状态实际在 state/jobs/jobs/JOB_ID，首次诊断脚本漏了一层 jobs；静态导航中猜测的若干文件名不存在。\n- 绕过：先用 rg --files 和目录清单确认真实路径，更新 run/monitor.py 为正确路径并读取 public.json。\n- 结果：正常读取状态，未影响正在执行的作业。\n- 验收放宽：无。"
+    },
+    {
+      "id": "O6",
+      "source_records": [
+        6
+      ],
+      "title": "6. 原版 requirements 大型检查在部分敲除运行中超时（验证缺口）",
+      "body": "- 步骤：原版叶测试有效性验证。\n- 作业 ID：bc73cb142f814dd8b90647ddbb10cd4a。\n- 报错原文：baseline-result.json 的 validity.matrix.test_requirements 对 markers、parser、range_engine、requirements、specifiers、utils 返回 `{\"outcome\":\"error\",\"reason\":\"timed_out\"}`；叶缺口原因 `no_behavioral_knockout_failure`。\n- 判断原因：正常原版运行通过（5405 passed、1 skipped，约 7 秒），但敲除后的大量失败/回溯运行触及默认时限；这是有效性验证超时，不是原版本身检查失败。耗时放大原因属于推断。\n- 绕过：保留默认时限和全部原版检查，不把超时计作有效敲除；按默认流程为 requirements 另外设计行为测试。\n- 结果：requirements 的新增 test_public_requirement_errors.py 最终被接受并通过原版有效性验证，requirements 的叶覆盖缺口已补上；原大型检查的敲除超时记录仍保留。\n- 验收放宽：无。"
+    },
+    {
+      "id": "O7",
+      "source_records": [
+        7
+      ],
+      "title": "7. 原版检查映射及内联快照来源审计警告（清单准备）",
+      "body": "- 步骤：原版检查来源与映射审计。\n- 作业 ID：bc73cb142f814dd8b90647ddbb10cd4a。\n- 报错原文：`mapping_omits_imported_capability`、`undeclared_dependency`；public-behavior-snapshot 出现 `mapping_without_static_evidence`、`check_role_mismatch`，`The original role lacks byte-identical files at provenance_ref, or runs inline program text.`。\n- 判断原因：旧检查按主要功能映射，实际还依赖邻接节点；自编内联公开快照跨三个能力且未声明 role，转换按文档保留其默认 original 角色，无法证明是上游原版测试。\n- 绕过：保留这些警告和原版检查，不伪造来源，不改已提交清单；快照继续作为冻结输出比较，不能作为有效叶覆盖证据，缺口由独立设计者补测试。\n- 结果：4/4 基线检查通过；其中仅 dependency_groups、utils 的上游检查算有效叶测试，其余 13 个外部叶节点进入测试设计。\n- 验收放宽：无。"
+    },
+    {
+      "id": "O8",
+      "source_records": [
+        8
+      ],
+      "title": "8. errors 首轮提案无法通过功能敲除有效性验证（测试设计）",
+      "body": "- 步骤：首轮新增测试有效性验证。\n- 作业 ID：bc73cb142f814dd8b90647ddbb10cd4a。\n- 报错原文：`tests/nanolize_contracts/errors/test_exception_group_contract.py` 被拒，原因为 `no_behavioral_knockout_failure`。\n- 判断原因：当前 Python 3.11 使用内置 ExceptionGroup；只断言该重导出类型的行为没有触达 packaging.errors 自身可敲除的实现。需要覆盖项目实际提供的兼容实现，或经公开校验进入其分组逻辑。\n- 绕过：没有修改敲除规则、测试断言或外部契约，沿用默认第二轮设计，向独立设计会话提供已有拒绝反馈。\n- 结果：第二轮提案通过模拟 Python 3.10 版本条件加载公开兼容类；3 个用例在原版通过并稳定，在 errors 敲除后均出现行为失败，进入独立复核。首轮另 26 个提案也进入复核；errors 第二轮最终被接受，缺口已补上。\n- 验收放宽：无。"
+    },
+    {
+      "id": "O9",
+      "source_records": [
+        9
+      ],
+      "title": "9. 四个测试提案被独立复核拒绝",
+      "body": "- 步骤：新增测试的独立复核；作业 bc73cb142f814dd8b90647ddbb10cd4a。\n- 现象：version 提案被认为固定了六元组序列化表示；requirements 提案固定内部 Specifier 对象身份；maintenance 提案不能排除计时方法退化为 no-op；tags 提案要求 Tag 的哈希恰好等于 tuple 哈希。\n- 处理与结果：保留四项拒绝，没有更改断言或强行接受提案。连同 errors 第一轮敲除拒绝，共 28 个提案、23 接受、5 拒绝。\n- 分类：提案被拒是验证过程记录，不能单独算分支 bug。复核上下文和补测机会的疑点记录如下。\n- 源码观察：复核 payload 没有 surface / interface；复核位于设计循环之后，删除唯一提案后不再回到补测。version 的六元组返回类型实际已列入 interface，因此复核是否获得充分契约上下文值得进一步检查。\n- 判断边界：这些是本次发现的流程限制和待评估改进点；是否违反分支预期、以及补齐上下文能否改变裁决，尚未另行验证。沿用线上后续复核的分类，暂不列为已确认分支 bug。"
+    },
+    {
+      "id": "O10",
+      "source_records": [
+        10
+      ],
+      "title": "10. 模型验收者在默认 120 秒超时，任务成本基线仍未验证（任务评估）",
+      "body": "- 步骤：task_effort_original / development / modify / repeat 0 的独立验收。\n- 作业 ID：bc73cb142f814dd8b90647ddbb10cd4a。\n- 报错原文：judge/run.json：`status: timeout`、`exit_code: -15`、`duration_seconds: 120.5097`；record.json：`status: unverified`、`reason: judge_execution_unavailable`；usage：`status: unavailable`、`reason: missing_usage`。\n- 判断原因：求解者已正常完成（blocker: none），验收者执行冻结 acceptance.py / accept_deep.py 命令返回 0，之后继续读源码、验证环境等，未能在默认 120 秒内返回结构化最终判定。其间还尝试在无 Git 仓库的评估导出中执行 git diff，返回 129（`warning: Not a git repository. Use --no-index to compare two paths outside a working tree`）；它随后继续直接检查源码和输入，没有最终结论。模型进程被终止，因此没有完整 turn usage。\n- 绕过：保持默认 judge_timeout 和所有验收条件，不把脚本 exit=0 擅自提升为完整验收通过；沿用默认非致命路径继续压缩实现。保留本次 unverified 基线和缺失 usage，费用汇总不把未知用量当成 0。\n- 结果：原版任务基线 ready=false，未继续更多重复评估；控制器第 2 轮开始作者实现。昨天的“求解者被缺失隐藏脚本阻塞”没有在本次首轮求解复现，但任务成本比较仍存在新的未验证原因。\n- 验收放宽：无。未增加预算、时限或修改冻结任务。"
+    },
+    {
+      "id": "O11",
+      "source_records": [
+        11
+      ],
+      "title": "11. 首个候选有 requirements / markers 行为回归（候选实现）",
+      "body": "- 步骤：candidate-1 的全量冻结检查，23/27 通过，4 组回归；安装 2/2 通过。\n- 作业 ID：bc73cb142f814dd8b90647ddbb10cd4a。\n- 报错原文：requirements 原版检查出现 `Expected version after ===`（例如 `Package [ a , b ] ( === arbitrarystring )`）；新增 requirements 检查 `AssertionError: assert 'Expected mat...      ~~~~~~^' == 'Expected mat...     ~~~~~~~^'`；markers 的固定提示在 `\"<name>\"` 两侧多输出了反斜杠，`assert str(caught.value) == message` 失败。\n- 判断原因：候选解析器没有正确处理任意版本操作符之后的空白；未闭合括号的诊断起点偏移一位；markers 固定提示字符串转义错误。具体根因以自动修复者复验为准。\n- 绕过：保留所有冻结检查，控制器第 6 轮先派发 requirements 的独立修复会话，修改候选源码，随后保存和复验；未修改 nanolize。\n- 结果：candidate-2 的新增 requirements 检查通过，原版 requirements 原先的解析/诊断失败已消除；这次完整跑到结尾后暴露 3 个旧 pickle 兼容失败（见 #14）。candidate-3 的 markers 定向修复通过，修改 src/packaging/markers.py 的集合比较、类型验证及固定提示，冻结检查达到 25/27。\n- 验收放宽：无。"
+    },
+    {
+      "id": "O12",
+      "source_records": [
+        12
+      ],
+      "title": "12. dependency_groups 的私有调用形状仍受保留检查约束（昨天 #24 部分复现）",
+      "body": "- 步骤：candidate-1 / test_dependency_groups。\n- 作业 ID：bc73cb142f814dd8b90647ddbb10cd4a。\n- 报错原文：`AssertionError: _resolve('leaf') call not found`；实际调用为 `call('leaf', 'root', [], set(), [])`，公共返回值的 4 个 attrs 已通过断言；该检查 1 failed、44 passed。\n- 判断原因：转换器已将 `_resolve` / `_validate` 私有名称列为接口，但原测试还要求 `_resolve` 内部递归调用的单参数形状。声明名称不能完全消除实现耦合。昨天的 specifiers / pylock 私有类型约束已通过剔除相应旧检查避免，本次 dependency_groups 子项仍复现。\n- 绕过：保留原检查并让默认修复流程兼容其明确要求，不删除 spy 断言或改测试。\n- 结果：candidate-4 中修改 src/packaging/dependency_groups.py，恢复单参数 `_resolve(group)` 递归分派，保留完成展开缓存、循环检测和错误收集；test_dependency_groups 全部 45 个用例通过，全图 26/27 组通过。\n- 验收放宽：无。\n- 分类说明：当前证据直接证明候选与保留测试的调用约定不兼容，且通过修改候选修复。它本身不足以证明 nanolize 分支有代码错误，列为兼容修复现象。"
+    },
+    {
+      "id": "O13",
+      "source_records": [
+        13
+      ],
+      "title": "13. 控制器只看到受限的失败分类，断言差异不可见",
+      "body": "- 步骤：candidate-1 的失败进入 controller/0006；作业 bc73cb142f814dd8b90647ddbb10cd4a。\n- 观察原文：check-11 / check-21 为 {\"cases\":1,\"origin\":\"verifier\",\"type\":\"AssertionError\"}，check-3 为 {\"cases\":1,\"origin\":\"other\",\"type\":\"AssertionError\"}。私有 verification.json 保留详细 traceback，控制器不能直接看到转义、插入符或 spy 参数差异。\n- 源码核对：failure_digest.py 明确采用封闭词汇表；rewrite.safe_feedback 只输出分类，以限制测试内容经异常通道返回作者。报告中没有名为 failure_digest 的字段，不等于摘要代码没有执行。\n- 分类：这是已明确设计的信息边界及其运行影响；本次证据不足以认定分支实现错误，移入运行现象。昨天的测试收集/启动故障分支本次没有触发，不能据此确认修复或复现。\n- 处理与结果：沿用冻结事实、本地复现与默认只读源码参考，4 次定向修复后 27/27 组通过；未改 nanolize、未向作者传递隐藏测试源码。无法量化受限摘要额外造成的轮次。"
+    },
+    {
+      "id": "O14",
+      "source_records": [
+        14
+      ],
+      "title": "14. 完整跑到 requirements 尾部后发现三个旧 pickle 兼容失败（候选实现）",
+      "body": "- 步骤：candidate-2 / test_requirements；3 failed、5402 passed、1 skipped。\n- 作业 ID：bc73cb142f814dd8b90647ddbb10cd4a。\n- 报错原文：`TypeError: can only join an iterable`（Specifier 处理 `(None, {...})`）；`TypeError: expected string or bytes-like object, got 'tuple'`（Marker 将旧状态当字符串解析）；`TypeError: invalid Version state`（Version 旧属性字典）。\n- 判断原因：候选的反序列化没有兼容 packaging 26.0 / <=26.1 保存的状态形式。首候选 requirements 在前面的 100 个失败处提前结束，所以这些尾部失败此前没有被执行观察到；不是证据表明修复引入了这三项回归。\n- 绕过：保持原有序列化兼容检查与默认测试配置，通过控制器继续修复相关候选实现，不剔除旧格式要求。\n- 结果：candidate-5 新增 src/packaging/_pickle.py，并修改 _parser.py、markers.py、specifiers.py、version.py 及报告映射，支持旧 slot 状态封装、值节点和版本组件状态恢复。原版 requirements 达到 5405 passed、1 skipped，所有 27 组冻结检查通过；1 skipped 是要求 Python 3.13 的 copy.replace 用例，原版与候选相同。\n- 验收放宽：无。"
+    },
+    {
+      "id": "O15",
+      "source_records": [
+        15
+      ],
+      "title": "15. 分阶段实现期间的全图自检返回未完成项（过程记录，非交付缺陷）",
+      "body": "- 步骤：前三个作者调用完成全图实现之前的 selfcheck。\n- 作业 ID：bc73cb142f814dd8b90647ddbb10cd4a。\n- 报错原文：5 次 selfcheck 命令 exit=1；作者调用 1 的第 1/2/3 次分别均有 11 项 `missing_imports`、157 项 missing_names（其中输出 100 项，`missing_names_not_listed: 57`）；作者调用 2 的第 4/5 次分别均有 8 项 missing_imports、96 项 missing_names。\n- 判断原因：控制器将 18 个节点拆成三个作者调用顺序实现，全图自检在前两段自然发现尚未实现的其他能力；这不是已保存候选的五次验收失败。\n- 绕过：不削减自检范围，继续原定后续作者调用，补齐其负责的模块、公共名称和 nanolize-report-mapping.json。\n- 结果：第三个初次实现调用后全图自检通过，首次 candidate-1 才进入正式冻结行为比较。另外作者日志中的若干 rg exit=1 是空工作区/未找到 AGENTS.md 或 pyc 的普通无匹配结果，无需修复；不将其误计为行为错误。\n- 验收放宽：无。"
+    }
+  ],
+  "issue_classification": {
+    "branch_bug_count": 1,
+    "observation_count": 15,
+    "rule": "问题记录只列需要修改 claude/graph-contract-field-fixes 代码的缺陷；其余环境、编排、验证现象和候选修复单列。"
+  },
   "raw_metrics": {
     "status": "completed_with_gaps",
     "candidate": "candidate-5",
@@ -729,13 +843,6 @@
         "候选验证、修复与交付",
         "25 分 2 秒",
         "五个候选，四次定向修复，无优化调用"
-      ]
-    ],
-    "new_issues_rows": [
-      [
-        "可移植验证包",
-        "参数化用例 ID 的 C:\\ 产品输入触发绝对路径过滤（#16）",
-        "已知 bundle v1 设计限制；保留 unavailable 回执，本地验证 / 公共报告正常"
       ]
     ],
     "usage": {
@@ -859,7 +966,7 @@
       "yesterday_issue": 14,
       "problem": "合法 URL/路径事实被绝对位置过滤器误拒",
       "status": "事实/设计层未复现；验证包层出现类似误判",
-      "evidence": "事实和设计提案未出现昨日 absolute-location 拒绝；但可移植验证包把 case_status 键中的 C:\\ 产品输入误认作宿主路径，导出 unavailable（本次 #16），本地验证照常完成。"
+      "evidence": "事实和设计提案未出现昨日 absolute-location 拒绝；但可移植验证包把 case_status 键中的 C:\\ 产品输入误认作宿主路径，导出 unavailable（本次 B1，原记录 #16），本地验证照常完成。 这是 bundle v1 已知设计限制，未认定为本次新引入的回归。"
     },
     {
       "yesterday_issue": 18,
@@ -876,14 +983,14 @@
     {
       "yesterday_issue": 23,
       "problem": "控制器缺少启动/收集错误摘要",
-      "status": "部分复现；收集/启动错误分支未触发",
-      "evidence": "首候选 issues.jsonl 仍只有错误类型/数量及知识 ID，markers/requirements 的具体断言差异和 dependency_groups spy 参数缺失；完整私有验证记录有 traceback。默认修复流程继续，效果待最终核对。 默认修复最终解决全部观察到的回归，未补丁摘要；不能量化其额外轮次。"
+      "status": "收集/启动故障分支未触发；断言摘要简略现象仍在",
+      "evidence": "源码明确限制失败反馈为分类、数量、候选位置和已知名称，以隔离测试内容；省略断言差异本身不能判为分支 bug，已移到运行现象 O13。默认修复解决全部观察到的回归；本次未触发昨日收集/启动故障，不能据此确认该故障已修复或复现。"
     },
     {
       "yesterday_issue": 24,
       "problem": "保留旧检查仍隐式约束私有接口",
-      "status": "部分复现（dependency_groups）",
-      "evidence": "specifiers / pylock 的旧检查已被转换剔除；但明确列名的 _resolve 仍被 spy 强制要求内部单参数调用，首候选公共结果正确而调用形状失败。保持原检查交给默认修复。 candidate-4 恢复 _resolve(group) 调用约定，45 个用例全部通过；没有改冻结测试。"
+      "status": "兼容修复现象部分复现；未据此认定分支 bug",
+      "evidence": "specifiers / pylock 的旧检查已被转换剔除；dependency_groups 保留检查仍要求 _resolve(group) 的调用约定。candidate-4 修改候选后 45 个用例全部通过，冻结测试未改；该证据不足以单独证明 nanolize 代码有错，列入运行现象 O12。"
     }
   ]
 }
