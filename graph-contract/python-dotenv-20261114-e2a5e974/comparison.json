@@ -1,0 +1,70 @@
+[
+  {
+    "id": "010",
+    "problem": "许可证内部符号链接被封存拒绝",
+    "this_run": "未复发；实际完成封存",
+    "evidence": [
+      "LICENSE 与 docs/license.md 均受保护，未做本地补丁"
+    ]
+  },
+  {
+    "id": "011",
+    "problem": "广泛 tests 输入在补测后失去 original_verified 来源",
+    "this_run": "未复发；新增补测场景未触发",
+    "evidence": [
+      "inputs=[tests] 保持不变，9 组原版 pytest 检查保留",
+      "7 个外部叶节点已有效，因此没有新增补测文件；不能据此声称该场景已实测修好"
+    ]
+  },
+  {
+    "id": "013",
+    "problem": "修改任务要求求解者运行不可见 accept.py",
+    "this_run": "原问题未复发；出现不同的 fixture 缺失问题",
+    "evidence": [
+      "任务未要求求解者运行隐藏 accept.py",
+      "原版任务验收因设计者未提供输入而 blocked，本次问题010"
+    ]
+  },
+  {
+    "id": "016",
+    "problem": "作者重新生成验证器拥有的 LICENSE",
+    "this_run": "未复发",
+    "evidence": [
+      "3 次作者调用、2 个候选，文件保护拒绝 0 次"
+    ]
+  },
+  {
+    "id": "018",
+    "problem": "候选临时文件清理和 CLI 空格式回归",
+    "this_run": "部分复发，第二版已修复",
+    "evidence": [
+      "首轮临时文件清理案例失败，见本次问题011",
+      "CLI test_list[None] 在两个候选中均通过"
+    ]
+  },
+  {
+    "id": "021",
+    "problem": "CLI 空格式回归持续至第四版",
+    "this_run": "未复发",
+    "evidence": [
+      "CLI 空格式案例自第一版通过，没有持续至第四版的回归"
+    ]
+  },
+  {
+    "id": "024",
+    "problem": "CLI 空格式回归持续至第五版，需要诊断",
+    "this_run": "未复发",
+    "evidence": [
+      "第二版已交付，没有第五版 CLI 空格式回归，也无需 job-diagnose 干预"
+    ]
+  },
+  {
+    "id": "026",
+    "problem": "便携验证包拒绝绝对检查路径",
+    "this_run": "复发；便携验证包仍不可用",
+    "evidence": [
+      "绝对 check-python 启动器不满足便携约束",
+      "本次错误：Portable checks need a PATH executable or repository-relative command；见问题009"
+    ]
+  }
+]

@@ -1,0 +1,979 @@
+{
+  "summary": "全部功能节点保留，第二版候选通过冻结功能与独立安装验收，体积剩余 47.23%；修改任务成本因设计者漏交 fixture 仍未验证。",
+  "status": "已交付 · completed_with_gaps（任务成本未验证）",
+  "job_id": "e2a5e9741aa543f984ba5f5f1380a1ab",
+  "timestamp": "2026-11-14T02:32:52.578205+00:00",
+  "metadata_line": "作业 e2a5e9741aa543f984ba5f5f1380a1ab · nanolize 9413138 · 原版 4fbc6ff · 全部 8 节点",
+  "cards": [
+    {
+      "label": "体积剩余",
+      "value": "47.23%",
+      "detail": "5,164 / 10,933 源码 + 配置 token；缩减 52.77%"
+    },
+    {
+      "label": "与原版相同的代码行",
+      "value": "17.75%",
+      "detail": "52 / 293 可比较行"
+    },
+    {
+      "label": "原版功能测试",
+      "value": "291 通过",
+      "detail": "0 失败 · 1 平台跳过 · 3 项安装检查通过"
+    },
+    {
+      "label": "防默写退回",
+      "value": "0 个文件",
+      "detail": "0 次退回 · auto 未触发"
+    },
+    {
+      "label": "累计模型用量",
+      "value": "5.335M token",
+      "detail": "5,334,912 token / 33 次调用；美元账单不可得"
+    },
+    {
+      "label": "准备至交付",
+      "value": "57 分 21 秒",
+      "detail": "作业 51 分 22 秒；不含网页部署"
+    }
+  ],
+  "sections": [
+    {
+      "title": "与昨天的量化对比",
+      "paragraphs": [
+        "本次体积更小，累计模型 token 比昨天全部作业少 46.62%，记录的准备至交付时间由 1 小时 58 分 45 秒降至 57 分 21 秒；与原版相同的可比较代码行比例则由 15.71% 升至 17.75%。",
+        "同时列出“昨天全部作业”和“昨天最终成功交付作业”，避免把昨天失败重启的成本藏起来，也避免把全部改进归因于分支修复。两次原版提交、原测试数量和计量器相同，但任务内容、模型抽样、接口补充与运行环境不完全相同；这是单次实验对比。"
+      ],
+      "bars": [
+        {
+          "label": "昨天体积",
+          "percent": 49.25455044361109,
+          "value": "49.25%"
+        },
+        {
+          "label": "本次体积",
+          "percent": 47.233147352053415,
+          "value": "47.23%"
+        }
+      ],
+      "headers": [
+        "指标",
+        "昨天 11-13",
+        "本次 11-14",
+        "变化 / 说明"
+      ],
+      "rows": [
+        [
+          "源码 + 配置 token",
+          "5,385 / 10,933",
+          "5,164 / 10,933",
+          "-4.10%"
+        ],
+        [
+          "体积剩余比例",
+          "49.25%",
+          "47.23%",
+          "-2.02 个百分点"
+        ],
+        [
+          "体积缩减比例",
+          "50.75%",
+          "52.77%",
+          "+2.02 个百分点"
+        ],
+        [
+          "相同可比较代码行",
+          "49 / 312（15.71%）",
+          "52 / 293（17.75%）",
+          "+2.04 个百分点"
+        ],
+        [
+          "源码行数",
+          "556 / 1,181",
+          "525 / 1,181",
+          "-31 行"
+        ],
+        [
+          "模型用量：全部作业",
+          "9,994,187",
+          "5,334,912",
+          "-46.62%"
+        ],
+        [
+          "模型用量：仅最终作业",
+          "6,692,402",
+          "5,334,912",
+          "-20.28%"
+        ],
+        [
+          "模型调用数：全部作业",
+          "67",
+          "33",
+          "-34"
+        ],
+        [
+          "各作业墙钟合计（不含重启间隔）",
+          "1 小时 44 分 51 秒",
+          "51 分 22 秒",
+          "-51.01%"
+        ],
+        [
+          "作业墙钟：仅最终作业",
+          "1 小时 13 分 36 秒",
+          "51 分 22 秒",
+          "-30.21%"
+        ],
+        [
+          "记录的准备至交付",
+          "1 小时 58 分 45 秒",
+          "57 分 21 秒",
+          "-51.71%"
+        ],
+        [
+          "作业数 / 失败重启",
+          "2 / 1",
+          "1 / 0",
+          "本次未重启作业"
+        ],
+        [
+          "作者调用 / 功能修复调用",
+          "6 / 5",
+          "3 / 2",
+          "少 3 次 / 少 3 次"
+        ],
+        [
+          "原版功能用例",
+          "291 通过、1 平台跳过",
+          "291 通过、1 平台跳过",
+          "相同；0 失败"
+        ],
+        [
+          "独立安装检查",
+          "3 通过",
+          "3 通过",
+          "相同"
+        ],
+        [
+          "防默写退回",
+          "0 文件 / 0 次",
+          "0 文件 / 0 次",
+          "相同"
+        ],
+        [
+          "最终新增补测 / 未验证外部节点",
+          "0 / 0",
+          "0 / 0",
+          "两次版本节点均无法动态敲除"
+        ],
+        [
+          "修改任务成本评估",
+          "unverified：要求运行不可见验收脚本",
+          "unverified：设计者遗漏必要 fixture",
+          "原因不同；两次都不能证明后续修改成本下降"
+        ]
+      ]
+    },
+    {
+      "title": "交付状态与验收边界",
+      "paragraphs": [
+        "原生状态为 completed_with_gaps。全部 8 个功能节点保留，冻结功能检查和 3 项独立安装检查全部通过，默认 50% 体积目标已达到。未关闭 check-validation、design 或任何测试，未声明检查不稳定，not_criteria=[]，未手工放宽断言。",
+        "明确缺口：修改任务设计的中间 JSON 包含正确 fixture，但最终回答改成 unused 占位项；原版独立验收因此 blocked，成本基线未建立。原生默认交付规则允许这一未验证状态继续交付；本次没有把它当作通过，也不能验证此提交的任务预算足以完成完整成本比较。",
+        "另外，1 项 Windows 专用原测试在 Linux 上按原条件跳过；distribution 节点只有常量，默认规则认可其检查，但不能动态敲除。可验证行为来自有限检查，不是全部语义等价证明。",
+        "便携验证包仍不可用：检查启动器使用绝对路径。公开报告和本地冻结证据均已生成，但不能宣称已经生成可迁移到任意主机的验证包。",
+        "压缩仓库已导出为 python-dotenv-nanolized-20261114-023251；导出版本逐文件与已验证候选相符（包括链接文本），两者工作树干净。候选提交 e07bccf67064d2cafaa5e3713ead62fc4d98c599；导出提交 38d4cb4b6223536b61cdc554f4677e163c825e31。"
+      ]
+    },
+    {
+      "title": "体积与代码行重合的口径",
+      "paragraphs": [
+        "体积按固定 tiktoken 0.12.0 / cl100k_base 对源码和配置逐文件计数，排除工具规则定义的未改测试、文档等；它不是整个仓库磁盘占用比例。",
+        "相同行使用 nanolize 原生防默写比较器，忽略空白，排除注释、文档字符串、导入、签名、装饰器及短惯用行；既比较同路径同名函数，也比较原版源码行池。原生交付页四舍五入为 18%，这里给出精确计数 52 / 293。",
+        "文档字符串覆盖率从原版的 35.7% 下降为 0%；为避免把文档删除全算作实现简化，另列排除 Python 注释与文档字符串后的比例。"
+      ],
+      "headers": [
+        "指标",
+        "原版",
+        "本次交付",
+        "交付 / 原版"
+      ],
+      "rows": [
+        [
+          "源码 + 配置 token",
+          "10,933",
+          "5,164",
+          "47.23%"
+        ],
+        [
+          "纯源码 token",
+          "8,215",
+          "4,587",
+          "55.84%"
+        ],
+        [
+          "配置 token",
+          "2,718",
+          "577",
+          "21.23%"
+        ],
+        [
+          "源码行数",
+          "1,181",
+          "525",
+          "44.45%"
+        ],
+        [
+          "源码字节",
+          "35,400",
+          "19,481",
+          "55.03%"
+        ],
+        [
+          "相同可比较代码行",
+          "原版源码行池",
+          "52 / 293",
+          "17.75%"
+        ],
+        [
+          "同路径文本的相同行相似度",
+          "包含源码/配置文本",
+          "按行长度加权",
+          "27.60%"
+        ],
+        [
+          "排除 Python 注释/文档字符串后的体积",
+          "同口径原版",
+          "源码 + 配置",
+          "54.78%"
+        ]
+      ]
+    },
+    {
+      "title": "graph-contract 转换与运行配置",
+      "paragraphs": [
+        "先编写 8 节点、10 组检查的旧清单，再用指定分支的 contract-propose 写到不存在的输出文件；未使用 --keep-checks，转换只静态读取源码，未执行项目。转换提出 6 个 external、2 个 internal、39 条 interface；补充默认值、格式、提示、IPython 注册和分发约定后为 7 个 external + 1 个 internal。",
+        "以 --scope all 启动，无排除节点、无详细 knowledge 库；carry_candidates 为空，因此无需 --carry。check-validation 和 design 开启；独立角色使用 fresh Codex 会话，未与作者共享会话。保留 9 组 pytest 检查，因此无需 test_template。original-overlap 未传参，使用 auto。",
+        "预算和次数上限均未显式设置，使用分支默认值；controller_policy.owner_attends=false。调度 auto 探测因未提供账户回退本机，原版及候选检查均使用本机环境。"
+      ],
+      "headers": [
+        "转换报告字段",
+        "数量"
+      ],
+      "rows": [
+        [
+          "checks_kept",
+          10
+        ],
+        [
+          "checks_left_out",
+          0
+        ],
+        [
+          "checks_not_inspected",
+          0
+        ],
+        [
+          "external_capabilities_without_check",
+          0
+        ],
+        [
+          "internal_capabilities_not_reached",
+          0
+        ],
+        [
+          "unresolved_exports",
+          0
+        ],
+        [
+          "carry_candidates",
+          0
+        ],
+        [
+          "unreadable_test_files",
+          0
+        ],
+        [
+          "unreadable_modules",
+          0
+        ]
+      ]
+    },
+    {
+      "title": "测试设计与功能验收",
+      "paragraphs": [
+        "最终补测节点 0、补测文件 0；7 个外部叶节点都有工具认可的有效检查，未验证外部叶节点 0。因此本次没有调用补测设计者，但设计策略和独立运行器能力保持开启。原版检查经过默认三次基线重复运行和功能敲除；版本节点无法动态敲除的例外如上。",
+        "工具整理 109 条行为事实，历史剔除 2 条并自动重写，最终 0 个测试未覆盖。原测试保持不变；首轮 4 项回归在两次作者定向修复后全部通过，未手动修改测试或候选。"
+      ],
+      "headers": [
+        "检查",
+        "结果",
+        "用例 / 时长"
+      ],
+      "rows": [
+        [
+          "original-test_main",
+          "passed",
+          "156 passed / 0 failed / 0 skipped"
+        ],
+        [
+          "original-test_parser",
+          "passed",
+          "58 passed / 0 failed / 0 skipped"
+        ],
+        [
+          "original-test_variables",
+          "passed",
+          "6 passed / 0 failed / 0 skipped"
+        ],
+        [
+          "original-test_cli",
+          "passed",
+          "53 passed / 0 failed / 1 skipped"
+        ],
+        [
+          "original-test_utils",
+          "passed",
+          "1 passed / 0 failed / 0 skipped"
+        ],
+        [
+          "original-test_ipython",
+          "passed",
+          "4 passed / 0 failed / 0 skipped"
+        ],
+        [
+          "original-test_is_interactive",
+          "passed",
+          "10 passed / 0 failed / 0 skipped"
+        ],
+        [
+          "original-test_fifo_dotenv",
+          "passed",
+          "1 passed / 0 failed / 0 skipped"
+        ],
+        [
+          "original-test_zip_imports",
+          "passed",
+          "2 passed / 0 failed / 0 skipped"
+        ],
+        [
+          "public-output-snapshot",
+          "passed",
+          "公开输出快照一致"
+        ],
+        [
+          "build-wheel",
+          "passed",
+          "独立安装环境，8.471 秒"
+        ],
+        [
+          "install-wheel",
+          "passed",
+          "独立安装环境，2.130 秒"
+        ],
+        [
+          "installed-public-contract",
+          "passed",
+          "独立安装环境，0.590 秒"
+        ]
+      ]
+    },
+    {
+      "title": "防默写与修复记录",
+      "paragraphs": [
+        "默认 auto 策略退回 0 个文件、0 次，auto 未被触发。最终相同可比较代码行为 17.75%，低于默认整体 40% 阈值；函数阈值为 60%，至少 8 个可比较行，每文件最多退回 1 次。文件保护拒绝也为 0。",
+        "首次实现没有获得原版源码或原测试。失败后，原生 source-reference 记录了一次生产源码授权，涉及 main.py、cli.py、__main__.py、version.py 共 4 个文件；原测试没有提供给作者。两次修复调用修改了对应候选，根协调器未修改候选源码，也无需 job-diagnose 或用户澄清。"
+      ],
+      "headers": [
+        "项目",
+        "次数"
+      ],
+      "rows": [
+        [
+          "author_attempts",
+          3
+        ],
+        [
+          "repair_attempts",
+          2
+        ],
+        [
+          "optimization_attempts",
+          0
+        ],
+        [
+          "rejected_attempts",
+          0
+        ],
+        [
+          "restorations",
+          0
+        ]
+      ]
+    },
+    {
+      "title": "昨天的问题逐条核对",
+      "paragraphs": [
+        "以昨天公开报告列出的 8 项为对照。未触发的场景明确标注，不把“没有发生”推断为修复已经得到验证。"
+      ],
+      "headers": [
+        "昨日编号",
+        "问题",
+        "本次结论",
+        "证据"
+      ],
+      "rows": [
+        [
+          "010",
+          "许可证内部符号链接被封存拒绝",
+          "未复发；实际完成封存",
+          "LICENSE 与 docs/license.md 均受保护，未做本地补丁"
+        ],
+        [
+          "011",
+          "广泛 tests 输入在补测后失去 original_verified 来源",
+          "未复发；新增补测场景未触发",
+          "inputs=[tests] 保持不变，9 组原版 pytest 检查保留；7 个外部叶节点已有效，因此没有新增补测文件；不能据此声称该场景已实测修好"
+        ],
+        [
+          "013",
+          "修改任务要求求解者运行不可见 accept.py",
+          "原问题未复发；出现不同的 fixture 缺失问题",
+          "任务未要求求解者运行隐藏 accept.py；原版任务验收因设计者未提供输入而 blocked，本次问题010"
+        ],
+        [
+          "016",
+          "作者重新生成验证器拥有的 LICENSE",
+          "未复发",
+          "3 次作者调用、2 个候选，文件保护拒绝 0 次"
+        ],
+        [
+          "018",
+          "候选临时文件清理和 CLI 空格式回归",
+          "部分复发，第二版已修复",
+          "首轮临时文件清理案例失败，见本次问题011；CLI test_list[None] 在两个候选中均通过"
+        ],
+        [
+          "021",
+          "CLI 空格式回归持续至第四版",
+          "未复发",
+          "CLI 空格式案例自第一版通过，没有持续至第四版的回归"
+        ],
+        [
+          "024",
+          "CLI 空格式回归持续至第五版，需要诊断",
+          "未复发",
+          "第二版已交付，没有第五版 CLI 空格式回归，也无需 job-diagnose 干预"
+        ],
+        [
+          "026",
+          "便携验证包拒绝绝对检查路径",
+          "复发；便携验证包仍不可用",
+          "绝对 check-python 启动器不满足便携约束；本次错误：Portable checks need a PATH executable or repository-relative command；见问题009"
+        ]
+      ]
+    },
+    {
+      "title": "本次新增问题及完整简表",
+      "paragraphs": [
+        "相对昨天公开的 8 项列表，新增观察为 001, 002, 003, 004, 005, 006, 007, 008, 010, 012, 013；011 中的 lstat 处理回归也属新增。009 是已知便携性限制复发，011 的临时文件问题属于昨日 018 的部分复发。",
+        "环境和清单准备错误、模型输出错误、候选回归与工具限制分别说明；不把所有问题都归因于 nanolize 源码。每条完整记录在下方及 issues.md。"
+      ],
+      "headers": [
+        "本次编号",
+        "问题",
+        "处理结果"
+      ],
+      "rows": [
+        [
+          "001",
+          "私有 nanolize 仓库的 HTTPS 克隆缺少认证",
+          "已有 SSH 凭据获取指定分支成功"
+        ],
+        [
+          "002",
+          "系统 pip 额外索引 DNS 失败导致安装持续重试",
+          "禁用不可达额外索引，安装成功"
+        ],
+        [
+          "003",
+          "旧清单误把空的类型标记列为生产源码路径",
+          "修正源码路径归属，保留类型标记契约"
+        ],
+        [
+          "004",
+          "旧清单使用了不支持的 case_report 字段",
+          "使用原生 JUnit，全部检查保留"
+        ],
+        [
+          "005",
+          "补充 interface 时重复声明版本导出",
+          "完全相同条目去重后规划成功"
+        ],
+        [
+          "006",
+          "默认 Slurm 探测缺少账户，自动回退本机",
+          "默认 auto 回退本机，原版与候选同环境"
+        ],
+        [
+          "007",
+          "独立审阅拒绝一条过度概括的文件编辑事实",
+          "原生第二轮事实改写通过"
+        ],
+        [
+          "008",
+          "Windows 路径形状的测试数据被事实位置过滤器拒绝",
+          "原生第二轮改写通过，原测试字面值保留"
+        ],
+        [
+          "009",
+          "便携验证包仍拒绝绝对检查启动器",
+          "仍不可导出；明确列为便携交付缺口"
+        ],
+        [
+          "010",
+          "任务设计者没有提供其任务和验收脚本要求的 fixture",
+          "默认流程继续；任务成本评估仍未验证"
+        ],
+        [
+          "011",
+          "首轮候选的文件编辑异常路径出现两项回归",
+          "第二版候选修复，两项原测试通过"
+        ],
+        [
+          "012",
+          "首轮候选缺少 CLI 错误提示中的固定引号",
+          "第二版候选修复，两项 CLI 原测试通过"
+        ],
+        [
+          "013",
+          "报告复核时误在非仓库目录执行 Git 状态检查",
+          "报告复核改用显式仓库目录，未影响作业"
+        ]
+      ]
+    },
+    {
+      "title": "模型用量与花费",
+      "paragraphs": [
+        "全部 33 次已记录模型调用累计 5,334,912 token，包含事实重写、失败的修改任务评估、首轮失败候选及修复。缓存输入已包含在输入 token 内，不重复相加；用量不完整的回执为 0。",
+        "运行器没有提供货币账单，因此美元金额不可得，没有按未知单价估算。这里包含 nanolize 各角色的全部回执，不包含外层协调对话未计量的用量。"
+      ],
+      "headers": [
+        "角色",
+        "调用",
+        "输入 token",
+        "其中缓存输入",
+        "输出 token",
+        "总 token"
+      ],
+      "rows": [
+        [
+          "controller",
+          7,
+          "237,033",
+          "43,008",
+          "2,436",
+          "239,469"
+        ],
+        [
+          "fact_reviewer",
+          10,
+          "1,229,966",
+          "1,053,824",
+          "7,500",
+          "1,237,466"
+        ],
+        [
+          "fact_writer",
+          10,
+          "914,108",
+          "749,312",
+          "14,905",
+          "929,013"
+        ],
+        [
+          "judge",
+          1,
+          "79,828",
+          "52,608",
+          "1,584",
+          "81,412"
+        ],
+        [
+          "solver",
+          1,
+          "266,623",
+          "233,088",
+          "9,474",
+          "276,097"
+        ],
+        [
+          "examiner",
+          1,
+          "637,408",
+          "593,536",
+          "23,317",
+          "660,725"
+        ],
+        [
+          "rewrite_author",
+          3,
+          "1,878,202",
+          "1,713,152",
+          "32,528",
+          "1,910,730"
+        ],
+        [
+          "合计",
+          33,
+          "5,243,168",
+          "4,438,528",
+          "91,744",
+          "5,334,912"
+        ]
+      ]
+    },
+    {
+      "title": "耗时与可复核来源",
+      "paragraphs": [
+        "计时使用 UTC。作业墙钟包括模型调用、验证、存储等待和交付；记录的准备至交付还包括依赖安装及清单准备。网页整理和部署发生在交付之后，不计入与昨天对比的运行时间。",
+        "原版 python-dotenv 1.2.4 @ 4fbc6ff07215367ece731006855e732d1405992c；nanolize 使用 claude/graph-contract-field-fixes @ 9413138036b515f119ff63fa6db082a6148103f0。没有使用 main，没有修改 nanolize 源码，没有本地修复提交或向指定分支推送。",
+        "检查环境 Python 3.11.18，pytest 9.2.0，Click 8.5.1，IPython 9.18.1。原版仓库和指定 nanolize checkout 均保持干净。公开页面仅包含汇总与原生 public-safe 图报告，不包含隐藏任务源码、私有运行提示或凭据。"
+      ],
+      "headers": [
+        "范围",
+        "开始 UTC",
+        "结束 UTC",
+        "耗时"
+      ],
+      "rows": [
+        [
+          "本次作业",
+          "2026-11-14T01:41:30.908106+00:00",
+          "2026-11-14T02:32:52.578205+00:00",
+          "51 分 22 秒"
+        ],
+        [
+          "记录的准备至交付",
+          "2026-11-14T01:35:32+00:00",
+          "2026-11-14T02:32:52.578205+00:00",
+          "57 分 21 秒"
+        ],
+        [
+          "昨天两次作业时长合计（不含重启间隔）",
+          "2026-11-13T07:04:35.181947+00:00",
+          "2026-11-13T08:55:16.816399+00:00",
+          "1 小时 44 分 51 秒"
+        ],
+        [
+          "昨天准备至交付",
+          "2026-11-13T06:56:32Z",
+          "2026-11-13T08:55:16.816399+00:00",
+          "1 小时 58 分 45 秒"
+        ]
+      ]
+    }
+  ],
+  "metrics": {
+    "final_status": "completed_with_gaps",
+    "size": {
+      "baseline_source_lines": 1181,
+      "baseline_tokens": 10933,
+      "complete": true,
+      "configuration_tokens": 577,
+      "metric": "tokens",
+      "retained_percent": 47.233147352053415,
+      "source_files": 8,
+      "source_lines": 525,
+      "source_retained_percent": 44.45385266723116,
+      "source_tokens": 4587,
+      "target_met": true,
+      "target_percent": 50.0,
+      "target_source_lines": 590.5,
+      "target_tokens": 5466,
+      "tokenizer": {
+        "classification": "source_and_configuration_v2",
+        "decoding": "python_encoding_cookie_else_utf8_strict",
+        "encoding": "cl100k_base",
+        "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+        "file_boundaries": "independent_sum",
+        "library": "tiktoken",
+        "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+        "special_tokens": "ordinary_text",
+        "text_policy": "raw_decoded_text_per_file",
+        "version": "0.12.0"
+      },
+      "total_tokens": 5164
+    },
+    "same_lines": 52,
+    "compared_lines": 293,
+    "same_line_percent": 17.747440273037544,
+    "source_bytes": 19481,
+    "cases": {
+      "passed": 291,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 1
+    },
+    "supplemented_nodes_final": 0,
+    "unverified_external_nodes": 0,
+    "constant_only_knockout_unassessable_nodes": 1,
+    "anti_copy_refused_files": 0,
+    "anti_copy_refusals": 0,
+    "task_effort_status": "unverified",
+    "task_effort_stop_reason": "original_baseline_unavailable",
+    "model_usage": {
+      "unit": "model_tokens",
+      "cached_input_is_part_of_input": true,
+      "usd": null,
+      "usd_reason": "Runtime receipts contain token usage but no monetary billing.",
+      "roles": {
+        "controller": {
+          "calls": 7,
+          "input_tokens": 237033,
+          "cached_input_tokens": 43008,
+          "output_tokens": 2436,
+          "total_tokens": 239469,
+          "model_seconds_sum": 108.4642,
+          "incomplete_usage_calls": 0
+        },
+        "fact_reviewer": {
+          "calls": 10,
+          "input_tokens": 1229966,
+          "cached_input_tokens": 1053824,
+          "output_tokens": 7500,
+          "total_tokens": 1237466,
+          "model_seconds_sum": 602.1633,
+          "incomplete_usage_calls": 0
+        },
+        "fact_writer": {
+          "calls": 10,
+          "input_tokens": 914108,
+          "cached_input_tokens": 749312,
+          "output_tokens": 14905,
+          "total_tokens": 929013,
+          "model_seconds_sum": 805.9508999999999,
+          "incomplete_usage_calls": 0
+        },
+        "judge": {
+          "calls": 1,
+          "input_tokens": 79828,
+          "cached_input_tokens": 52608,
+          "output_tokens": 1584,
+          "total_tokens": 81412,
+          "model_seconds_sum": 74.9994,
+          "incomplete_usage_calls": 0
+        },
+        "solver": {
+          "calls": 1,
+          "input_tokens": 266623,
+          "cached_input_tokens": 233088,
+          "output_tokens": 9474,
+          "total_tokens": 276097,
+          "model_seconds_sum": 262.7261,
+          "incomplete_usage_calls": 0
+        },
+        "examiner": {
+          "calls": 1,
+          "input_tokens": 637408,
+          "cached_input_tokens": 593536,
+          "output_tokens": 23317,
+          "total_tokens": 660725,
+          "model_seconds_sum": 548.6338,
+          "incomplete_usage_calls": 0
+        },
+        "rewrite_author": {
+          "calls": 3,
+          "input_tokens": 1878202,
+          "cached_input_tokens": 1713152,
+          "output_tokens": 32528,
+          "total_tokens": 1910730,
+          "model_seconds_sum": 915.1469999999999,
+          "incomplete_usage_calls": 0
+        }
+      },
+      "totals": {
+        "calls": 33,
+        "input_tokens": 5243168,
+        "cached_input_tokens": 4438528,
+        "output_tokens": 91744,
+        "total_tokens": 5334912,
+        "model_seconds_sum": 3318.0847,
+        "incomplete_usage_calls": 0
+      }
+    },
+    "job_wall_seconds": 3081.670099,
+    "end_to_end_run_seconds": 3440.578205,
+    "start": "2026-11-14T01:41:30.908106+00:00",
+    "end": "2026-11-14T02:32:52.578205+00:00",
+    "conversion": {
+      "external_capabilities": 6,
+      "internal_capabilities": 2,
+      "interface_entries": 39,
+      "checks_kept": 10,
+      "checks_left_out": {},
+      "checks_not_inspected": [],
+      "external_capabilities_without_check": [],
+      "internal_capabilities_not_reached": [],
+      "unresolved_exports": [],
+      "carry_candidates": []
+    },
+    "candidate_commit": "e07bccf67064d2cafaa5e3713ead62fc4d98c599",
+    "export_commit": "38d4cb4b6223536b61cdc554f4677e163c825e31",
+    "export_name": "python-dotenv-nanolized-20261114-023251",
+    "local_fix_commits": [],
+    "source_reference": {
+      "author_calls": 1,
+      "capabilities": [
+        "cli",
+        "distribution",
+        "environment"
+      ],
+      "files": 4
+    },
+    "code_quality": {
+      "delivered": {
+        "composition": {
+          "code_tokens": 5123,
+          "other_tokens": 577,
+          "python_code_tokens": 4546,
+          "python_comment_tokens": 29,
+          "python_data_literal_tokens": 0,
+          "python_docstring_tokens": 0,
+          "python_files": 8,
+          "unparsed_python_files": 0
+        },
+        "documentation": {
+          "documented": 0,
+          "documented_percent": 0.0,
+          "public_definitions": 30
+        },
+        "rewrite": {
+          "files_at_an_original_path": 11,
+          "unchanged_percent": 27.6
+        },
+        "total_tokens": 5164
+      },
+      "original": {
+        "composition": {
+          "code_tokens": 9301,
+          "other_tokens": 2718,
+          "python_code_tokens": 6583,
+          "python_comment_tokens": 330,
+          "python_data_literal_tokens": 0,
+          "python_docstring_tokens": 1229,
+          "python_files": 8,
+          "unparsed_python_files": 0
+        },
+        "documentation": {
+          "documented": 20,
+          "documented_percent": 35.7,
+          "public_definitions": 56
+        },
+        "total_tokens": 10933
+      },
+      "original_overlap": {
+        "compared_lines": 293,
+        "documentation_percent": 1,
+        "function_limit_percent": 60,
+        "function_lines": 8,
+        "functions": 0,
+        "limit_percent": 40,
+        "mode": "auto",
+        "percent": 18
+      },
+      "schema_version": 1,
+      "status": "measured",
+      "summary": {
+        "documented_percent": {
+          "delivered": 0.0,
+          "original": 35.7
+        },
+        "total_retained_percent": 47.23,
+        "undocumented_retained_percent": 54.78
+      }
+    },
+    "rewrite_progress": {
+      "accepted_candidate_available": true,
+      "author_attempts": 3,
+      "behavior_acceptance": "passed",
+      "failed_optimizations": 0,
+      "max_optimization_attempts": 3,
+      "optimization_attempts": 0,
+      "priority": "functionality_first",
+      "rejected_attempts": 0,
+      "repair_attempts": 2,
+      "restorations": 0,
+      "size_acceptance": "met",
+      "stop_reason": null
+    },
+    "yesterday_comparison": [
+      {
+        "id": "010",
+        "problem": "许可证内部符号链接被封存拒绝",
+        "this_run": "未复发；实际完成封存",
+        "evidence": [
+          "LICENSE 与 docs/license.md 均受保护，未做本地补丁"
+        ]
+      },
+      {
+        "id": "011",
+        "problem": "广泛 tests 输入在补测后失去 original_verified 来源",
+        "this_run": "未复发；新增补测场景未触发",
+        "evidence": [
+          "inputs=[tests] 保持不变，9 组原版 pytest 检查保留",
+          "7 个外部叶节点已有效，因此没有新增补测文件；不能据此声称该场景已实测修好"
+        ]
+      },
+      {
+        "id": "013",
+        "problem": "修改任务要求求解者运行不可见 accept.py",
+        "this_run": "原问题未复发；出现不同的 fixture 缺失问题",
+        "evidence": [
+          "任务未要求求解者运行隐藏 accept.py",
+          "原版任务验收因设计者未提供输入而 blocked，本次问题010"
+        ]
+      },
+      {
+        "id": "016",
+        "problem": "作者重新生成验证器拥有的 LICENSE",
+        "this_run": "未复发",
+        "evidence": [
+          "3 次作者调用、2 个候选，文件保护拒绝 0 次"
+        ]
+      },
+      {
+        "id": "018",
+        "problem": "候选临时文件清理和 CLI 空格式回归",
+        "this_run": "部分复发，第二版已修复",
+        "evidence": [
+          "首轮临时文件清理案例失败，见本次问题011",
+          "CLI test_list[None] 在两个候选中均通过"
+        ]
+      },
+      {
+        "id": "021",
+        "problem": "CLI 空格式回归持续至第四版",
+        "this_run": "未复发",
+        "evidence": [
+          "CLI 空格式案例自第一版通过，没有持续至第四版的回归"
+        ]
+      },
+      {
+        "id": "024",
+        "problem": "CLI 空格式回归持续至第五版，需要诊断",
+        "this_run": "未复发",
+        "evidence": [
+          "第二版已交付，没有第五版 CLI 空格式回归，也无需 job-diagnose 干预"
+        ]
+      },
+      {
+        "id": "026",
+        "problem": "便携验证包拒绝绝对检查路径",
+        "this_run": "复发；便携验证包仍不可用",
+        "evidence": [
+          "绝对 check-python 启动器不满足便携约束",
+          "本次错误：Portable checks need a PATH executable or repository-relative command；见问题009"
+        ]
+      }
+    ],
+    "issue_count": 13
+  }
+}

@@ -1,0 +1,9 @@
+capability_id,before_lines,after_lines,reduction_percent,mapping_status,validation_status,executed,evidence_category,direct_checks,related_checks,direct_checks_passed,direct_checks_failed,direct_checks_inconclusive,related_checks_passed,related_checks_failed,related_checks_inconclusive,evidence_coverage,before_source_tokens,after_source_tokens,source_token_reduction_percent
+app,1181,525,55.546,mapped,unknown,False,related_passed,0,10,0,0,0,10,0,0,limited,8215,4587,44.163
+environment,532,225,57.707,mapped,verified,True,direct_passed,4,1,4,0,0,1,0,0,declared_checks_only,3829,2068,45.991
+parser,191,75,60.733,mapped,verified,True,direct_passed,2,0,2,0,0,0,0,0,declared_checks_only,1391,721,48.167
+variables,86,57,33.721,mapped,verified,True,direct_passed,2,0,2,0,0,0,0,0,declared_checks_only,560,410,26.786
+public-api,51,23,54.902,mapped,verified,True,direct_passed,2,0,2,0,0,0,0,0,declared_checks_only,296,186,37.162
+cli,270,120,55.556,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,1822,1004,44.896
+ipython,50,24,52.0,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,306,187,38.889
+distribution,1,1,0.0,mapped,unknown,False,related_passed,0,2,0,0,0,2,0,0,limited,11,11,0.0
