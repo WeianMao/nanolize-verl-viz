@@ -1,0 +1,1413 @@
+{
+  "job_id": "553492f6820c472fb1724aa6f94d5f6b",
+  "status": "completed_with_gaps",
+  "started_at": "2026-11-14T01:48:12.177149+00:00",
+  "finished_at": "2026-11-14T03:38:40.080463+00:00",
+  "experiment_started_at": "2026-11-14T01:42:16.421500+00:00",
+  "generated_at": "2026-11-14T03:43:22.961480+00:00",
+  "lead": "完整作业已交付：28 组行为检查和 5 项安装检查通过，总体积保留 16.35%。任务成本中位数降低但波动范围重叠，改善结论未证实，最终状态为 completed_with_gaps。",
+  "cards": [
+    {
+      "label": "总体积保留比例",
+      "value": "16.35%",
+      "detail": "215,194 → 35,185 tokens；减少 83.65%"
+    },
+    {
+      "label": "源码 / Python 实现比例",
+      "value": "31.28% / 51.44%",
+      "detail": "另列源码与剔除注释、文档字符串及数据字面量后的实现"
+    },
+    {
+      "label": "与原版相同行",
+      "value": "21.8%",
+      "detail": "行长加权；未加权 30.83%"
+    },
+    {
+      "label": "行为 / 安装检查",
+      "value": "28/28 · 5/5",
+      "detail": "811 用例通过；1 个原有 xfail"
+    },
+    {
+      "label": "补测与验证缺口",
+      "value": "3 节点 · 7 文件",
+      "detail": "0 外部叶节点缺口；6 内部节点未独立验证"
+    },
+    {
+      "label": "防默写退回文件",
+      "value": "0",
+      "detail": "整体函数体重合约 19%；auto 未启动退回"
+    },
+    {
+      "label": "已记录总用量",
+      "value": "13.63M tokens",
+      "detail": "含取消作业；4 次取消调用用量缺失，合计为已知下界"
+    },
+    {
+      "label": "墙钟耗时（含重启）",
+      "value": "1 小时 56 分 24 秒",
+      "detail": "比昨天缩短 40.18%；不含准备及部署"
+    }
+  ],
+  "comparison": [
+    [
+      "最终状态",
+      "completed_with_gaps",
+      "completed_with_gaps",
+      "昨天：任务预算耗尽；本次：任务成本范围重叠，改善证据不足。"
+    ],
+    [
+      "总体积 tokens",
+      "215,194 → 43,144",
+      "215,194 → 35,185",
+      "交付体积比昨天减少 18.45%"
+    ],
+    [
+      "总体积保留比例",
+      "20.05%",
+      "16.35%",
+      "-3.70 个百分点"
+    ],
+    [
+      "总体积减少比例",
+      "79.95%",
+      "83.65%",
+      "减少比例 = 100% − 保留比例"
+    ],
+    [
+      "源码 tokens / 保留比例",
+      "41,878 / 38.30%",
+      "34,207 / 31.28%",
+      "-7.02 个百分点"
+    ],
+    [
+      "配置 tokens",
+      "1,266",
+      "978",
+      "共同基线 105,844；锁文件的减少对总体积影响较大。"
+    ],
+    [
+      "Python 实现 tokens / 保留比例",
+      "41,678 / 62.95%",
+      "34,060 / 51.44%",
+      "共同基线 66,211；剔除注释、文档字符串及纯数据字面量。"
+    ],
+    [
+      "源码行数 / 保留比例",
+      "4,561 / 32.60%",
+      "3,708 / 26.50%",
+      "共同基线 13,990 行。"
+    ],
+    [
+      "相同行：行长加权",
+      "22.2%",
+      "21.8%",
+      "未舍入值 22.213645% → 21.826408%"
+    ],
+    [
+      "相同行：未加权",
+      "1,086 / 3,437 = 31.60%",
+      "887 / 2,877 = 30.83%",
+      "只比较原路径下的计量文件，忽略短于 8 字符的行。"
+    ],
+    [
+      "函数体重合 / 防默写退回文件",
+      "约 20% / 0",
+      "约 19% / 0",
+      "auto 默认保持；本次一个 8 行函数约 62%，整体未达 40% 启动阈值。"
+    ],
+    [
+      "行为与安装检查",
+      "29/29；5/5",
+      "28/28；5/5",
+      "设计测试由 8 文件变为 7 文件，所以检查组数不同。"
+    ],
+    [
+      "pytest 用例",
+      "796 passed；1 xfail",
+      "811 passed；1 xfail",
+      "工具将原有 xfail 计入 skipped；本次没有新增跳过。"
+    ],
+    [
+      "补测 / 外部叶节点有效性缺口",
+      "自动补测 3 节点、8 文件；3 节点未验证",
+      "自动补测 3 节点、7 文件；0 外部叶节点未验证",
+      "两次均有 6 个内部节点豁免；本次包级检查在启动前加入。"
+    ],
+    [
+      "已记录总 tokens（含重启）",
+      "24,982,333",
+      "13,626,155",
+      "记录值减少 45.46%；本次取消调用有 4 次未回报用量，合计为已知下界。"
+    ],
+    [
+      "主作业 tokens",
+      "24,982,333",
+      "12,617,695",
+      "本次主作业 79 次调用的用量完整；重启前另外记录 1,008,460。"
+    ],
+    [
+      "输入 / 缓存输入 / 输出",
+      "24,647,363 / 22,352,768 / 334,970",
+      "13,407,243 / 11,674,624 / 218,912",
+      "缓存输入属于输入，未重复加总。"
+    ],
+    [
+      "实验墙钟（含重启）",
+      "3 小时 14 分 35 秒",
+      "1 小时 56 分 24 秒",
+      "缩短 40.18%；不含提交前准备和网页部署。"
+    ],
+    [
+      "本次主作业墙钟",
+      "同上（一个作业）",
+      "1 小时 50 分 28 秒",
+      "另计重启间隔 5 分 56 秒。"
+    ],
+    [
+      "任务评估累计 tokens / 默认上限",
+      "1,186,877 / 1,000,000",
+      "1,573,912 / 6,000,000",
+      "上限差异来自分支默认值，未手动指定或提高。"
+    ],
+    [
+      "任务评估结果",
+      "unverified；未形成可比较基线",
+      "inconclusive；development 两侧各 3/3 通过",
+      "本次中位数 tokens −9.013%，但范围重叠；heldout 未运行。"
+    ],
+    [
+      "nanolize 本地补丁",
+      "2 个修复提交",
+      "0",
+      "本次工具保持指定提交 9413138；两项语义诊断通过原生 job-diagnose 留档。"
+    ]
+  ],
+  "result_notes": [
+    "交付 candidate-5，候选提交 e5449c598419d96019f9f11bba9f4aa437426ff1；独立本地仓库 click-nanolized-20261114-033838。原版与 nanolize 源码均保持干净，工具仍为指定提交。",
+    "最终唯一验收缺口为 task_effort_not_passed（inconclusive）；没有未解决的已执行行为检查失败。不能把此结果表述为任务成本改善已获确认或完整语义等价。",
+    "共 5 次作者调用、4 轮行为修复，保留同一冻结合同。四类回归依次修复；协调者通过 job-diagnose 提供了两项绑定失败证据的简短语义诊断，未提供测试正文或原版实现。",
+    "原版 uv.lock 占 94,781 tokens，约占总基线 44%；总体压缩同时包含锁文件和文档缩减。AST 口径公开定义文档字符串覆盖率从 57.7% 降为 0.0%，与昨天相同；运行时生成的装饰器说明仍由检查保护。",
+    "作者报告精确的原版示例、文档及容器设置存在知识缺口，相应草稿为临时重建；这些内部节点没有独立验收，不能从 scope=all 推断其全部细节等价。"
+  ],
+  "validation_notes": [
+    "原始转换保留 20 组检查；启动前增加 1 项包级输出合同，冻结时独立设计者再增加 7 个文件，最终共 28 组。所有原有验收要求保留，没有删除失败检查。",
+    "设计结果：completion 3 文件、formatting 2 文件、testing 2 文件；0 个提议被拒绝、0 个设计运行器失败。10 个外部叶节点有效性全部确认，外部叶节点未验证数为 0；另有 6 个内部节点按默认规则豁免。",
+    "工具统计的 1 项 skipped 实为原版已有 pytest.mark.xfail：test_chain::test_group_chaining；原版输出为 15 passed, 1 xfailed。它不是本次新增跳过，也不能计入通过用例。",
+    "测试设计者 3 个新会话、作者 5 个新会话，共用会话数 0；独立程序验收器不调用模型。",
+    "事实提取接受 149 条事实，剔除 11 条，仍有 2 个测试没有对应有效事实；测试本身始终保留且最终通过。缺少事实不等于跳过测试。",
+    "包级内联检查在后续静态审计中仍标为 uninspected（check-21），但已实际执行并通过。初始转换报告 checks_not_inspected=0，二者是不同阶段。"
+  ],
+  "nodes": [
+    [
+      "commands",
+      "保留转换后的检查",
+      "通过有效性验证；最终相关行为检查通过"
+    ],
+    [
+      "completion",
+      "3 个测试文件",
+      "通过有效性验证；最终相关行为检查通过"
+    ],
+    [
+      "context-local",
+      "保留转换后的检查",
+      "通过有效性验证；最终相关行为检查通过"
+    ],
+    [
+      "decorators",
+      "保留转换后的检查",
+      "通过有效性验证；最终相关行为检查通过"
+    ],
+    [
+      "exceptions",
+      "保留转换后的检查",
+      "通过有效性验证；最终相关行为检查通过"
+    ],
+    [
+      "formatting",
+      "2 个测试文件",
+      "通过有效性验证；最终相关行为检查通过"
+    ],
+    [
+      "terminal",
+      "保留转换后的检查",
+      "通过有效性验证；最终相关行为检查通过"
+    ],
+    [
+      "testing",
+      "2 个测试文件",
+      "通过有效性验证；最终相关行为检查通过"
+    ],
+    [
+      "types",
+      "保留转换后的检查",
+      "通过有效性验证；最终相关行为检查通过"
+    ],
+    [
+      "utilities",
+      "保留转换后的检查",
+      "通过有效性验证；最终相关行为检查通过"
+    ],
+    [
+      "click（包级根节点）",
+      "启动前增加 1 项包级行为检查；安装含元数据检查",
+      "最终行为及安装通过，不计入 10 个外部叶节点"
+    ],
+    [
+      "compat",
+      "0；默认内部节点豁免",
+      "未进行独立节点行为验证；仍在 scope=all 中"
+    ],
+    [
+      "documentation-support",
+      "0；默认内部节点豁免",
+      "未进行独立节点行为验证；仍在 scope=all 中"
+    ],
+    [
+      "examples",
+      "0；默认内部节点豁免",
+      "未进行独立节点行为验证；仍在 scope=all 中"
+    ],
+    [
+      "parser",
+      "0；默认内部节点豁免",
+      "未进行独立节点行为验证；仍在 scope=all 中"
+    ],
+    [
+      "sentinels",
+      "0；默认内部节点豁免",
+      "未进行独立节点行为验证；仍在 scope=all 中"
+    ],
+    [
+      "terminal-backend",
+      "0；默认内部节点豁免",
+      "未进行独立节点行为验证；仍在 scope=all 中"
+    ]
+  ],
+  "conversion": [
+    [
+      "checks_left_out",
+      23,
+      "按新规则剔除；继续运行，没有使用 --keep-checks。"
+    ],
+    [
+      "checks_not_inspected",
+      0,
+      "保留原始转换诊断。"
+    ],
+    [
+      "external_capabilities_without_check",
+      3,
+      "completion、formatting、testing 在冻结时由独立设计者补测。"
+    ],
+    [
+      "internal_capabilities_not_reached",
+      3,
+      "原始报告为 click、documentation-support、examples；声明根节点外部合同后，内部节点可由根节点到达。"
+    ],
+    [
+      "unresolved_exports",
+      0,
+      "仅记录。"
+    ],
+    [
+      "carry_candidates",
+      0,
+      "不需要 --carry。"
+    ]
+  ],
+  "settings": [
+    "scope=all：17 个节点全部保留，33 个生产文件全部映射，没有排除节点；carry_candidates=0，因此未传 --carry。",
+    "check-validation 和 design 开启；设计者使用独立的新 Codex 会话，提供了 test_template；original-overlap 未传，沿用 auto；未附详细 knowledge 库。",
+    "controller_policy.owner_attends=false；预算和上限均未手动设置。体积建议目标默认 50%，主作业默认 24 小时，单次作者调用默认 3 小时。",
+    "新分支的默认任务评估上限为 6,000,000 tokens；昨天为 1,000,000。此差异来自工具默认值，影响任务评估完成度及成本比较，不能把差异全部归因于其他修复。",
+    "叶节点有效性 strict=false、内部节点豁免、源代码参考和任务优化均使用默认策略。未关闭检查、设计或防默写，未通过删除失败检查获得通过。"
+  ],
+  "cost_notes": [
+    "91 次模型调用尝试中 87 次有用量记录，合计 13,626,155 tokens：输入 13,407,243（含缓存 11,674,624），输出 218,912。缓存输入和推理输出都是对应总量的子集，不重复相加。",
+    "主作业 79/79 次用量完整，合计 12,617,695；被取消的首个作业额外记录 1,008,460，4 次取消调用无用量记录。因此含重启合计为已知下界；相对昨天的 45.46% 降幅只比较已记录值。",
+    "实验墙钟 1 小时 56 分 24 秒：2026-11-14T01:42:16.421500+00:00 → 2026-11-14T03:38:40.080463+00:00；主作业 1 小时 50 分 28 秒。包含重启、诊断、修复和检查等待，不含提交前准备、协调对话和网页部署。",
+    "运行器没有提供实际货币账单，部分辅助角色没有可确认的已解析型号，货币费用记为不可得。用量口径与昨天一致，排除外层协调对话及启动前 14,216-token smoke probe。",
+    "任务子流程共 1,573,912 tokens，其中任务设计 333,404、6 次求解 1,240,508、程序验收模型用量 0。主作业的其他角色消耗不计入任务子流程的 600 万默认上限。",
+    "任务 development 原版和候选各 3/3 通过：token 中位数 224,164 → 203,960（−9.013%），耗时中位数 140.5835 → 136.0564 秒。token 范围分别为 163,942–230,285 和 190,523–227,634，发生重叠，未满足默认经验范围判定；heldout 未运行，不能宣称稳定改善。"
+  ],
+  "usage_rows": [
+    [
+      "fact_writer",
+      "31（28 有用量）",
+      "2,592,032",
+      "2,223,744",
+      "34,029",
+      "2,626,061"
+    ],
+    [
+      "fact_reviewer",
+      "27（26 有用量）",
+      "2,491,606",
+      "2,096,128",
+      "15,634",
+      "2,507,240"
+    ],
+    [
+      "test_designer",
+      "3（3 有用量）",
+      "933,627",
+      "868,224",
+      "25,187",
+      "958,814"
+    ],
+    [
+      "test_reviewer",
+      "1（1 有用量）",
+      "221,944",
+      "169,856",
+      "1,192",
+      "223,136"
+    ],
+    [
+      "controller",
+      "17（17 有用量）",
+      "871,806",
+      "481,152",
+      "6,715",
+      "878,521"
+    ],
+    [
+      "author",
+      "5（5 有用量）",
+      "4,776,173",
+      "4,496,512",
+      "82,298",
+      "4,858,471"
+    ],
+    [
+      "examiner",
+      "1（1 有用量）",
+      "310,635",
+      "273,280",
+      "22,769",
+      "333,404"
+    ],
+    [
+      "solver",
+      "6（6 有用量）",
+      "1,209,420",
+      "1,065,728",
+      "31,088",
+      "1,240,508"
+    ]
+  ],
+  "overlap_notes": [
+    "相同行按计入体积且位于原路径的文件比较：去掉行首尾空白，忽略不足 8 字符的行，保留重复次数并按行长加权；另列未加权比例。移动或新增路径不参与这一指标。防默写另按函数体口径衡量，不能混同。",
+    "最终 21 个原路径文件参与比较：887/2,877 行相同，未加权 30.83%，行长加权精确值 21.826408%（工具显示 21.8%）。",
+    "防默写采用未显式传参的 auto 默认值：整体 40%，单函数 60%，至少 8 行，每文件最多退回 1 次。最终函数体比较 2,073 行，整体约 19%；退回文件 0、拒绝保存 0。",
+    "Command.make_context 有 8 个可比较行，重合约 62%，高于单函数阈值；auto 仅在整体重合超过 40% 后启动提示和退回，故本次没有退回该文件。这是默认机制的结果，未修改或放宽阈值。",
+    "第一版作者没有原版源码、测试或历史。修复阶段按默认 on_failed_check 策略向 4 次作者调用开放了 click、commands、formatting、types 共 5 个原版生产文件；这是获准参考的记录，不等同于每个文件都实际读取。测试及原始验收日志仍归验证端持有；该边界是运行器合同，不是操作系统沙箱。"
+  ],
+  "recurrence": [
+    [
+      "008 · 三个节点的整叶敲除破坏导入，无法判定行为覆盖",
+      "未复现",
+      "首轮矩阵 commands/types/utilities 分别有 11/18/12 个 behavior kill，导入失败为 0；声明检查覆盖均有效。"
+    ],
+    [
+      "010 · 任务提示要求运行未提供的私有验收脚本",
+      "未复现",
+      "原版和候选 development 各 3 次试次均完成且独立验收通过，没有缺失私有脚本阻塞；heldout 未触发。"
+    ],
+    [
+      "015 · 元数据注入装饰器缺少运行时文档字符串",
+      "未复现",
+      "五个候选的 test_context 均通过；运行时文档字符串及固定措辞已在启动前写入 interface，不能把差异全部归因于工具修复。"
+    ],
+    [
+      "019 · 自定义装饰器说明的固定措辞不一致",
+      "未复现",
+      "五个候选的 test_context 均通过；运行时文档字符串及固定措辞已在启动前写入 interface，不能把差异全部归因于工具修复。"
+    ],
+    [
+      "024 · 合同修订后任务成本评估仍引用旧基线，作业异常退出",
+      "对应场景未触发",
+      "本次未在作业中修订合同；不能据此宣称合同修订后的旧基线错误已得到回归验证。"
+    ],
+    [
+      "R03 · commands / 第 1 轮",
+      "对应场景未触发",
+      "该节点的原版检查已通过有效性验证，无需补测；未逐文件重跑昨天被拒绝的设计文件。"
+    ],
+    [
+      "R04 · commands / 第 1 轮",
+      "对应场景未触发",
+      "该节点的原版检查已通过有效性验证，无需补测；未逐文件重跑昨天被拒绝的设计文件。"
+    ],
+    [
+      "R05 · types / 第 1 轮",
+      "对应场景未触发",
+      "该节点的原版检查已通过有效性验证，无需补测；未逐文件重跑昨天被拒绝的设计文件。"
+    ],
+    [
+      "R06 · types / 第 1 轮",
+      "对应场景未触发",
+      "该节点的原版检查已通过有效性验证，无需补测；未逐文件重跑昨天被拒绝的设计文件。"
+    ],
+    [
+      "R07 · types / 第 1 轮",
+      "对应场景未触发",
+      "该节点的原版检查已通过有效性验证，无需补测；未逐文件重跑昨天被拒绝的设计文件。"
+    ],
+    [
+      "R08 · types / 第 1 轮",
+      "对应场景未触发",
+      "该节点的原版检查已通过有效性验证，无需补测；未逐文件重跑昨天被拒绝的设计文件。"
+    ],
+    [
+      "R09 · utilities / 第 1 轮",
+      "对应场景未触发",
+      "该节点的原版检查已通过有效性验证，无需补测；未逐文件重跑昨天被拒绝的设计文件。"
+    ],
+    [
+      "R10 · utilities / 第 1 轮",
+      "对应场景未触发",
+      "该节点的原版检查已通过有效性验证，无需补测；未逐文件重跑昨天被拒绝的设计文件。"
+    ],
+    [
+      "R11 · utilities / 第 1 轮",
+      "对应场景未触发",
+      "该节点的原版检查已通过有效性验证，无需补测；未逐文件重跑昨天被拒绝的设计文件。"
+    ],
+    [
+      "R12 · commands / 第 2 轮",
+      "对应场景未触发",
+      "该节点的原版检查已通过有效性验证，无需补测；未逐文件重跑昨天被拒绝的设计文件。"
+    ],
+    [
+      "R13 · commands / 第 2 轮",
+      "对应场景未触发",
+      "该节点的原版检查已通过有效性验证，无需补测；未逐文件重跑昨天被拒绝的设计文件。"
+    ],
+    [
+      "R14 · commands / 第 2 轮",
+      "对应场景未触发",
+      "该节点的原版检查已通过有效性验证，无需补测；未逐文件重跑昨天被拒绝的设计文件。"
+    ],
+    [
+      "R15 · types / 第 2 轮",
+      "对应场景未触发",
+      "该节点的原版检查已通过有效性验证，无需补测；未逐文件重跑昨天被拒绝的设计文件。"
+    ],
+    [
+      "R16 · types / 第 2 轮",
+      "对应场景未触发",
+      "该节点的原版检查已通过有效性验证，无需补测；未逐文件重跑昨天被拒绝的设计文件。"
+    ],
+    [
+      "R17 · types / 第 2 轮",
+      "对应场景未触发",
+      "该节点的原版检查已通过有效性验证，无需补测；未逐文件重跑昨天被拒绝的设计文件。"
+    ],
+    [
+      "R18 · types / 第 2 轮",
+      "对应场景未触发",
+      "该节点的原版检查已通过有效性验证，无需补测；未逐文件重跑昨天被拒绝的设计文件。"
+    ],
+    [
+      "R19 · utilities / 第 2 轮",
+      "对应场景未触发",
+      "该节点的原版检查已通过有效性验证，无需补测；未逐文件重跑昨天被拒绝的设计文件。"
+    ],
+    [
+      "补测提议语法错误",
+      "未复现",
+      "本次 7 个设计文件全部接纳，0 个提议被拒绝。"
+    ],
+    [
+      "补测事实包含宿主绝对路径",
+      "未复现",
+      "本次设计提议拒绝数为 0。"
+    ],
+    [
+      "027 · 运行时绑定阻止直接使用工具补丁",
+      "对应场景未触发",
+      "nanolize 全程保持干净的 9413138，未打补丁、未迁移运行时。"
+    ],
+    [
+      "029 · 默认任务 token 预算耗尽",
+      "未复现",
+      "任务子流程 1,573,912 tokens，未耗尽本分支默认 6,000,000；最终缺口是范围重叠，默认上限为昨天的 6 倍。"
+    ],
+    [
+      "包级检查遗漏导致后期追加合同",
+      "启动前处理",
+      "包级行为与安装元数据检查已在提交前加入，不需要为它们追加合同。"
+    ],
+    [
+      "包级内联检查静态审计未解析",
+      "再次出现（审计限制）",
+      "audit_coverage 将本次 check-21 列为 uninspected_checks；原版和 candidate-4 已实际执行通过。初始 contract-propose 的 checks_not_inspected 仍为 0，这是两个不同阶段。"
+    ]
+  ],
+  "issue_notes": [
+    "下表列出 issues.md 的每项问题；展开项保留步骤、作业 ID、原始诊断、原因、改动及结果。没有修改 nanolize 代码，因此没有本地工具补丁提交，也没有向指定工具分支推送。",
+    "本次新记录、昨天公开报告未列出的主要问题：安装版本规范化预期导致重启；事实名称过滤及一条过度概括事实被拒；控制器 request_id 含空格；4 类候选行为回归；任务成本范围重叠。其余 SSH/pip/报告分支、默认 Slurm 回退和监控问题属于环境或协调流程。",
+    "没有关闭 check-validation、design、任务评估或防默写，也没有增加预算、降低阈值、删除失败检查。启动前将不符合原版的安装版本预期纠正为规范化版本，是修正无效预期，不是放宽原版合同。",
+    "任务成本不确定、内部节点豁免和事实提取缺口均明示；没有把它们记为额外通过。昨天报告仅公开了部分编号问题，其余未公开编号不臆测补齐。"
+  ],
+  "issue_summary": [
+    [
+      "SETUP-001",
+      "GitHub HTTPS 与直接 SSH 探测失败",
+      "使用既有 SSH 配置取得指定提交。"
+    ],
+    [
+      "SETUP-002",
+      "报告网页工具读取失败",
+      "curl 成功取得昨天公开报告。"
+    ],
+    [
+      "SETUP-003",
+      "pip 继承的额外索引无法解析",
+      "仅本次进程使用干净的 pip 索引配置，安装通过。"
+    ],
+    [
+      "SETUP-004",
+      "报告仓库没有 gh-pages 分支",
+      "使用报告仓库现有 main 分支及独立目录。"
+    ],
+    [
+      "SETUP-005",
+      "新增包级检查使用错误的 compare 枚举",
+      "提交前将 compare 改为正确的 output。"
+    ],
+    [
+      "SETUP-006",
+      "静态规划发现遗漏开发容器脚本映射",
+      "提交前补全映射，33 个生产文件全覆盖。"
+    ],
+    [
+      "RUN-001",
+      "默认 Slurm 探测失败并自动回退本机",
+      "两次 auto 探测均原生回退本机，检查继续。"
+    ],
+    [
+      "MON-001",
+      "监控递归枚举碰到已删除的临时路径",
+      "仅修正协调者监控，不影响作业或验收。"
+    ],
+    [
+      "RUN-002",
+      "安装元数据预期未采用 PEP 440 规范化版本",
+      "取消错误预期的首个作业并重启，成本保留。"
+    ],
+    [
+      "FACT-01",
+      "test_commands 事实提议被剔除",
+      "默认第二轮仍有事实缺口；原测试保留并最终通过。"
+    ],
+    [
+      "FACT-02",
+      "test_commands 事实提议被剔除",
+      "默认第二轮仍有事实缺口；原测试保留并最终通过。"
+    ],
+    [
+      "FACT-03",
+      "test_commands 事实提议被剔除",
+      "默认第二轮仍有事实缺口；原测试保留并最终通过。"
+    ],
+    [
+      "FACT-04",
+      "test_commands 事实提议被剔除",
+      "默认第二轮仍有事实缺口；原测试保留并最终通过。"
+    ],
+    [
+      "FACT-05",
+      "test_context 事实提议被剔除",
+      "默认第二轮形成覆盖对应测试的有效事实；检查未变。"
+    ],
+    [
+      "FACT-06",
+      "test_context 事实提议被剔除",
+      "默认第二轮形成覆盖对应测试的有效事实；检查未变。"
+    ],
+    [
+      "FACT-07",
+      "test_context 事实提议被剔除",
+      "默认第二轮形成覆盖对应测试的有效事实；检查未变。"
+    ],
+    [
+      "FACT-08",
+      "test_context 事实提议被剔除",
+      "默认第二轮形成覆盖对应测试的有效事实；检查未变。"
+    ],
+    [
+      "FACT-09",
+      "test_context 事实提议被剔除",
+      "默认第二轮形成覆盖对应测试的有效事实；检查未变。"
+    ],
+    [
+      "FACT-10",
+      "test_info_dict 事实提议被剔除",
+      "默认第二轮仍有事实缺口；原测试保留并最终通过。"
+    ],
+    [
+      "FACT-11",
+      "test_info_dict 事实提议被剔除",
+      "默认第二轮仍有事实缺口；原测试保留并最终通过。"
+    ],
+    [
+      "MON-002",
+      "监控汇总误将结构化 case_status 当作字符串",
+      "仅修正协调者监控，不影响作业或验收。"
+    ],
+    [
+      "TASK-001",
+      "任务工作区没有 Git 元数据",
+      "忽略不适用的附带 Git 状态探测，任务独立验收通过。"
+    ],
+    [
+      "CTRL-001",
+      "控制器 request_id 含空格被拒绝",
+      "非法 request_id 被拒绝，原生默认步骤接续成功。"
+    ],
+    [
+      "MON-003",
+      "作者日志输出过大被工具截断",
+      "仅修正协调者监控，不影响作业或验收。"
+    ],
+    [
+      "MON-004",
+      "辅助源码定位使用了不存在的路径",
+      "仅修正协调者监控，不影响作业或验收。"
+    ],
+    [
+      "AUTHOR-001",
+      "作者的默认解释器缺少 tiktoken",
+      "两次默认解释器缺包；作者改用 venv 或等待正式计量，最终计量成功。"
+    ],
+    [
+      "VERIFY-001",
+      "弃用帮助翻译改变格式占位符导致 KeyError",
+      "candidate-3 修复，后续保持通过。"
+    ],
+    [
+      "VERIFY-002",
+      "未命名 ParamType 的信息字典名称错误",
+      "补充语义诊断后 candidate-5 修复。"
+    ],
+    [
+      "VERIFY-003",
+      "兼容性 __version__ 与运行环境安装元数据不一致",
+      "补充语义诊断后 candidate-4 修复。"
+    ],
+    [
+      "VERIFY-004",
+      "普通文本换行后的前导空格丢失",
+      "candidate-2 修复，后续保持通过。"
+    ],
+    [
+      "TASK-002",
+      "任务成本范围重叠，改善判定不确定",
+      "保留 inconclusive 与 heldout 未运行，最终带缺口交付。"
+    ]
+  ],
+  "method": [
+    "nanolize 从 WeianMao/nanolize 的 claude/graph-contract-field-fixes 分支安装，固定提交 9413138036b515f119ff63fa6db082a6148103f0；没有从 main 安装。",
+    "Click 原版提交 e38188e9e205005d5af5f9e59df51904c984586a，与昨天相同。总体基线 215,194 tokens，其中源码 109,350、配置 105,844；源码 13,990 行。",
+    "先编写旧格式功能图与 43 组检查，再 contract-propose 到此前不存在的文件，不使用 --keep-checks；转换仅静态读取。随后补充外部接口约定、包级输出检查和安装元数据检查。",
+    "体积采用工具 source_and_configuration_v2 分类与 cl100k_base/tiktoken 0.12.0，按文件独立计算；token 保留比例不等于磁盘字节比例。",
+    "原版 uv.lock 占 94,781 tokens，约为总体基线的 44%；总体压缩受锁文件缩减影响，因此同时给出源码与剔除注释、文档字符串及数据字面量后的 Python 实现比例。",
+    "公开报告不发布私有任务提示、验收测试源码、角色完整日志或凭据。通过结论只针对实际执行的检查，不能证明完整语义等价。"
+  ],
+  "duration_seconds": 6983.658963,
+  "primary_duration_seconds": 6627.903314,
+  "metrics": {
+    "size": {
+      "baseline_source_lines": 13990,
+      "baseline_tokens": 215194,
+      "complete": true,
+      "configuration_tokens": 978,
+      "metric": "tokens",
+      "retained_percent": 16.350362928334434,
+      "source_files": 18,
+      "source_lines": 3708,
+      "source_retained_percent": 26.504646175839884,
+      "source_tokens": 34207,
+      "target_met": true,
+      "target_percent": 50.0,
+      "target_source_lines": 6995.0,
+      "target_tokens": 107597,
+      "tokenizer": {
+        "classification": "source_and_configuration_v2",
+        "decoding": "python_encoding_cookie_else_utf8_strict",
+        "encoding": "cl100k_base",
+        "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+        "file_boundaries": "independent_sum",
+        "library": "tiktoken",
+        "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+        "special_tokens": "ordinary_text",
+        "text_policy": "raw_decoded_text_per_file",
+        "version": "0.12.0"
+      },
+      "total_tokens": 35185
+    },
+    "source_token_retained_percent": 31.28212162780064,
+    "python_implementation_retained_percent": 51.44160335895848,
+    "code_quality": {
+      "delivered": {
+        "composition": {
+          "code_tokens": 35068,
+          "other_tokens": 1008,
+          "python_code_tokens": 34060,
+          "python_comment_tokens": 82,
+          "python_data_literal_tokens": 0,
+          "python_docstring_tokens": 0,
+          "python_files": 17,
+          "unparsed_python_files": 0
+        },
+        "documentation": {
+          "documented": 0,
+          "documented_percent": 0.0,
+          "public_definitions": 347
+        },
+        "rewrite": {
+          "files_at_an_original_path": 21,
+          "unchanged_percent": 21.8
+        },
+        "total_tokens": 35185
+      },
+      "original": {
+        "composition": {
+          "code_tokens": 172105,
+          "other_tokens": 105894,
+          "python_code_tokens": 66211,
+          "python_comment_tokens": 10164,
+          "python_data_literal_tokens": 0,
+          "python_docstring_tokens": 31299,
+          "python_files": 32,
+          "unparsed_python_files": 0
+        },
+        "documentation": {
+          "documented": 262,
+          "documented_percent": 57.7,
+          "public_definitions": 454
+        },
+        "total_tokens": 215194
+      },
+      "original_overlap": {
+        "compared_lines": 2073,
+        "documentation_percent": 0,
+        "function_limit_percent": 60,
+        "function_lines": 8,
+        "functions": 1,
+        "limit_percent": 40,
+        "listed_functions": [
+          {
+            "function": "Command.make_context",
+            "lines": 8,
+            "path": "src/click/core.py",
+            "percent": 62
+          }
+        ],
+        "mode": "auto",
+        "percent": 19
+      },
+      "schema_version": 1,
+      "status": "measured",
+      "summary": {
+        "documented_percent": {
+          "delivered": 0.0,
+          "original": 57.7
+        },
+        "total_retained_percent": 16.35,
+        "undocumented_retained_percent": 20.21
+      }
+    },
+    "line_overlap": {
+      "files_compared_at_original_paths": 21,
+      "eligible_lines": 2877,
+      "identical_lines": 887,
+      "unweighted_percent": 30.830726451164406,
+      "line_length_weighted_percent": 21.826407985804508,
+      "method": "Counted files at matching paths; strip leading/trailing whitespace; ignore lines shorter than 8 characters; compare multisets within each file; preserve duplicate multiplicity; moved/new paths are not compared."
+    },
+    "overlap_refused_files": 0,
+    "overlap_refused_saves": 0
+  },
+  "cost": {
+    "total": {
+      "calls": 91,
+      "reported_calls": 87,
+      "input_tokens": 13407243,
+      "cached_input_tokens": 11674624,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 218912,
+      "reasoning_output_tokens": 55275,
+      "tokens": 13626155
+    },
+    "by_role": {
+      "controller": {
+        "calls": 17,
+        "reported_calls": 17,
+        "input_tokens": 871806,
+        "cached_input_tokens": 481152,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 6715,
+        "reasoning_output_tokens": 1991,
+        "tokens": 878521
+      },
+      "fact_reviewer": {
+        "calls": 27,
+        "reported_calls": 26,
+        "input_tokens": 2491606,
+        "cached_input_tokens": 2096128,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 15634,
+        "reasoning_output_tokens": 677,
+        "tokens": 2507240
+      },
+      "fact_writer": {
+        "calls": 31,
+        "reported_calls": 28,
+        "input_tokens": 2592032,
+        "cached_input_tokens": 2223744,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 34029,
+        "reasoning_output_tokens": 1224,
+        "tokens": 2626061
+      },
+      "test_reviewer": {
+        "calls": 1,
+        "reported_calls": 1,
+        "input_tokens": 221944,
+        "cached_input_tokens": 169856,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1192,
+        "reasoning_output_tokens": 187,
+        "tokens": 223136
+      },
+      "examiner": {
+        "calls": 1,
+        "reported_calls": 1,
+        "input_tokens": 310635,
+        "cached_input_tokens": 273280,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 22769,
+        "reasoning_output_tokens": 12589,
+        "tokens": 333404
+      },
+      "solver": {
+        "calls": 6,
+        "reported_calls": 6,
+        "input_tokens": 1209420,
+        "cached_input_tokens": 1065728,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 31088,
+        "reasoning_output_tokens": 10228,
+        "tokens": 1240508
+      },
+      "test_designer": {
+        "calls": 3,
+        "reported_calls": 3,
+        "input_tokens": 933627,
+        "cached_input_tokens": 868224,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 25187,
+        "reasoning_output_tokens": 1212,
+        "tokens": 958814
+      },
+      "author": {
+        "calls": 5,
+        "reported_calls": 5,
+        "input_tokens": 4776173,
+        "cached_input_tokens": 4496512,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 82298,
+        "reasoning_output_tokens": 27167,
+        "tokens": 4858471
+      }
+    },
+    "by_job": {
+      "8100f73b035a4337b39696c65e880fa0": {
+        "calls": 12,
+        "reported_calls": 8,
+        "input_tokens": 998368,
+        "cached_input_tokens": 816512,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 10092,
+        "reasoning_output_tokens": 322,
+        "tokens": 1008460
+      },
+      "553492f6820c472fb1724aa6f94d5f6b": {
+        "calls": 79,
+        "reported_calls": 79,
+        "input_tokens": 12408875,
+        "cached_input_tokens": 10858112,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 208820,
+        "reasoning_output_tokens": 54953,
+        "tokens": 12617695
+      }
+    },
+    "currency_cost": null,
+    "recorded_token_reduction_percent": 45.45683543646625,
+    "wall_time_reduction_percent": 40.18161743694392
+  },
+  "session_separation": {
+    "test_designer_sessions": 3,
+    "author_sessions": 5,
+    "shared_sessions": 0
+  },
+  "source_reference": {
+    "capabilities": [
+      "click",
+      "commands",
+      "formatting",
+      "types"
+    ],
+    "files": 5,
+    "author_calls": 4
+  },
+  "validation": {
+    "checks": {
+      "passed": 28,
+      "total": 28,
+      "cases": {
+        "executed": 811,
+        "passed": 811,
+        "skipped": 1
+      }
+    },
+    "installation": {
+      "status": "passed",
+      "passed": 5,
+      "total": 5
+    },
+    "leaf_coverage": {
+      "exempted": [
+        "compat",
+        "documentation-support",
+        "examples",
+        "parser",
+        "sentinels",
+        "terminal-backend"
+      ],
+      "issues": [],
+      "missing": [],
+      "status": "ready",
+      "strict": false,
+      "valid": [
+        "commands",
+        "completion",
+        "context-local",
+        "decorators",
+        "exceptions",
+        "formatting",
+        "terminal",
+        "testing",
+        "types",
+        "utilities"
+      ],
+      "valid_tests": {
+        "commands": [
+          "package-public-contract",
+          "test_abort_interrupt",
+          "test_chain",
+          "test_command_decorators",
+          "test_commands",
+          "test_context",
+          "test_custom_classes",
+          "test_info_dict",
+          "test_normalization"
+        ],
+        "compat": [],
+        "completion": [
+          "contract-completion-553492-1",
+          "contract-completion-553492-2",
+          "contract-completion-553492-3"
+        ],
+        "context-local": [
+          "test_context"
+        ],
+        "decorators": [
+          "test_command_decorators",
+          "test_context"
+        ],
+        "documentation-support": [],
+        "examples": [],
+        "exceptions": [
+          "test_abort_interrupt",
+          "test_exceptions-test_FileError"
+        ],
+        "formatting": [
+          "contract-formatting-553492-4",
+          "contract-formatting-553492-5"
+        ],
+        "parser": [],
+        "sentinels": [],
+        "terminal": [
+          "test_utils-test_confirm",
+          "test_utils-test_style"
+        ],
+        "terminal-backend": [],
+        "testing": [
+          "contract-testing-553492-6",
+          "contract-testing-553492-7"
+        ],
+        "types": [
+          "test_types-test_Choice",
+          "test_types-test_File",
+          "test_types-test_FloatRange",
+          "test_types-test_FuncParamType",
+          "test_types-test_IntRange",
+          "test_types-test_ParamType",
+          "test_types-test_Path",
+          "test_types-test_convert_type"
+        ],
+        "utilities": [
+          "test_utils-test_format_filename"
+        ]
+      },
+      "warnings": [
+        {
+          "capabilities": [
+            "compat",
+            "documentation-support",
+            "examples",
+            "parser",
+            "sentinels",
+            "terminal-backend"
+          ],
+          "code": "selected_leaf_checks_exempted",
+          "detail": "Owner-exempted, not covered: compat: An internal capability: it has no external contract a test could enter through.; documentation-support: An internal capability: it has no external contract a test could enter through.; examples: An internal capability: it has no external contract a test could enter through.; parser: An internal capability: it has no external contract a test could enter through.; sentinels: An internal capability: it has no external contract a test could enter through.; terminal-backend: An internal capability: it has no external contract a test could enter through."
+        }
+      ],
+      "why_missing": {
+        "compat": [
+          "no_check"
+        ],
+        "documentation-support": [
+          "no_check"
+        ],
+        "examples": [
+          "no_check"
+        ],
+        "parser": [
+          "no_check"
+        ],
+        "sentinels": [
+          "no_check"
+        ],
+        "terminal-backend": [
+          "no_check"
+        ]
+      }
+    },
+    "designed_tests": {
+      "accepted": [
+        {
+          "capability": "completion",
+          "check": "contract-completion-553492-1",
+          "path": "tests/nanolize_contracts/completion/test_completion_records.py"
+        },
+        {
+          "capability": "completion",
+          "check": "contract-completion-553492-2",
+          "path": "tests/nanolize_contracts/completion/test_completion_routing.py"
+        },
+        {
+          "capability": "completion",
+          "check": "contract-completion-553492-3",
+          "path": "tests/nanolize_contracts/completion/test_completion_shell_protocol.py"
+        },
+        {
+          "capability": "formatting",
+          "check": "contract-formatting-553492-4",
+          "path": "tests/nanolize_contracts/formatting/test_wrap_contract.py"
+        },
+        {
+          "capability": "formatting",
+          "check": "contract-formatting-553492-5",
+          "path": "tests/nanolize_contracts/formatting/test_help_formatter_contract.py"
+        },
+        {
+          "capability": "testing",
+          "check": "contract-testing-553492-6",
+          "path": "tests/nanolize_contracts/testing/test_runner_streams.py"
+        },
+        {
+          "capability": "testing",
+          "check": "contract-testing-553492-7",
+          "path": "tests/nanolize_contracts/testing/test_runner_invocation.py"
+        }
+      ],
+      "rejected": [],
+      "runner_failures": [],
+      "schema_version": 1
+    }
+  },
+  "task_effort": {
+    "binding": {
+      "candidate_contract_sha256": "a6ebebacae085dfd3e2709b7a5ce6356b257cb8ce6dcf48879f981804132a171",
+      "candidate_git_head": "e5449c598419d96019f9f11bba9f4aa437426ff1",
+      "candidate_snapshot_sha256": "c412a1f068f746eacde6f1537e5e26aaaeb6ebd7c889435f39b810e7e456a49e",
+      "candidate_source_sha256": "9fda22e695129c6ba252ca368073391726b80e28133bfb65092c232c1feda303",
+      "original_git_head": "5e4032a65fc4ab65deb37df9c3e55c6d0fd74e8a",
+      "original_snapshot_sha256": "0a0cf36abe31deadccb5c7c1748f5dc637f8016d0272d84ef6ee5cf81fca7a9a",
+      "plan_sha256": "dbee88da1bb0595ed19ec99d462f362a76dee883ffffe55bd5148ce9d4e08d8e",
+      "settings_sha256": "6deafce5bba7aed280a032be40f66a1aceb4e4ab8b266b34e19a6ab9b0ad4327",
+      "suite_sha256": "faa6437f12264dd395f3dcc545d331f7103c6cead3b468214983be62e5a82ded"
+    },
+    "iterations": [
+      {
+        "attempt": 5,
+        "changed_tasks": [],
+        "retry": false,
+        "status": "inconclusive",
+        "total_candidate_tokens": 622117
+      }
+    ],
+    "limitations": [
+      "This assessment covers one representative modification workflow, including executing the change. It does not measure understanding, diagnosis or execution as separate task types.",
+      "Task effort measures these tasks under the recorded agent settings; it is not a universal measure of human cognitive burden.",
+      "Tokens count solver model inputs and outputs, including cached input. Missing usage is unavailable, never zero. Examiner and judge overhead is separate.",
+      "Empirical ranges describe repeated observations, not statistical confidence intervals. Failed or unrun tasks do not establish an improvement.",
+      "Task links identify assessed capabilities only; they do not change module behavior verification badges.",
+      "Task prompts, hidden inputs, judging rubrics, source excerpts, raw traces and local paths are omitted from this public report."
+    ],
+    "operation": "task_effort_evaluation",
+    "overhead": {
+      "examiner_tokens": 333404,
+      "judge_tokens": 0,
+      "observed_total_tokens": 1573912,
+      "role_usage_complete": {
+        "examiner": true,
+        "judge": true,
+        "solver": true
+      },
+      "solver_tokens": 1240508,
+      "total_tokens": 1573912,
+      "usage_complete": true
+    },
+    "policy": {
+      "comparison": "empirical_range",
+      "grading": "lightweight",
+      "heldout_deferred": true,
+      "min_improvement_percent": 5.0,
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "xhigh",
+      "regression_tolerance_percent": 5.0,
+      "repetitions": 3,
+      "staged": true,
+      "strict_all_tasks": true,
+      "task_types": [
+        "modify"
+      ]
+    },
+    "resources": {
+      "cleanup_pending": false,
+      "cleanup_pending_runs": 0,
+      "completed_runs": 13,
+      "roles": {
+        "examiner": {
+          "completed": 1,
+          "failed": 0
+        },
+        "judge": {
+          "completed": 6,
+          "failed": 0
+        },
+        "solver": {
+          "completed": 6,
+          "failed": 0
+        }
+      }
+    },
+    "schema_version": 1,
+    "staging": {
+      "completed_development_runs": 3,
+      "expected_development_runs": 3,
+      "phase": "development",
+      "screened_task_ids": [
+        "modify"
+      ],
+      "targeted_task_ids": []
+    },
+    "status": "inconclusive",
+    "stop_reason": "no_actionable_regression",
+    "task_types": [
+      "modify"
+    ],
+    "tasks": [
+      {
+        "capabilities": [
+          "click",
+          "commands",
+          "types",
+          "completion",
+          "exceptions"
+        ],
+        "development": {
+          "candidate": {
+            "blocked": 0,
+            "duration_seconds": {
+              "max": 161.2395,
+              "median": 136.0564,
+              "min": 126.3921
+            },
+            "runs": 3,
+            "successes": 3,
+            "tokens": {
+              "max": 227634,
+              "median": 203960,
+              "min": 190523
+            }
+          },
+          "change_percent": -9.013,
+          "evidence_sha256": "72a472ef15d397fae84c793a67d11fd04f9d78d6c85c6dfab026131b4e074439",
+          "original": {
+            "blocked": 0,
+            "duration_seconds": {
+              "max": 169.6835,
+              "median": 140.5835,
+              "min": 139.9669
+            },
+            "runs": 3,
+            "successes": 3,
+            "tokens": {
+              "max": 230285,
+              "median": 224164,
+              "min": 163942
+            }
+          },
+          "ratio": 0.90987,
+          "status": "inconclusive"
+        },
+        "heldout": {
+          "candidate": {
+            "blocked": 0,
+            "duration_seconds": {
+              "max": null,
+              "median": null,
+              "min": null
+            },
+            "runs": 0,
+            "successes": 0,
+            "tokens": {
+              "max": null,
+              "median": null,
+              "min": null
+            }
+          },
+          "change_percent": null,
+          "original": {
+            "blocked": 0,
+            "duration_seconds": {
+              "max": null,
+              "median": null,
+              "min": null
+            },
+            "runs": 0,
+            "successes": 0,
+            "tokens": {
+              "max": null,
+              "median": null,
+              "min": null
+            }
+          },
+          "ratio": null,
+          "status": "not_run"
+        },
+        "id": "modify",
+        "status": "inconclusive",
+        "title": "Normalize Choice completion prefixes consistently",
+        "type": "modify"
+      }
+    ]
+  },
+  "task_trials": {
+    "trials": [
+      {
+        "trial": "candidates/5/candidate/development/modify/0",
+        "status": "passed",
+        "reason": "independent_checks_passed",
+        "complete": true,
+        "solver_seconds": 126.3921,
+        "solver_tokens": 190523,
+        "solver_status": "completed",
+        "blocker": "none",
+        "judge_seconds": 0.8172,
+        "judge_model_calls": 0
+      },
+      {
+        "trial": "candidates/5/candidate/development/modify/1",
+        "status": "passed",
+        "reason": "independent_checks_passed",
+        "complete": true,
+        "solver_seconds": 136.0564,
+        "solver_tokens": 203960,
+        "solver_status": "completed",
+        "blocker": "none",
+        "judge_seconds": 0.8748,
+        "judge_model_calls": 0
+      },
+      {
+        "trial": "candidates/5/candidate/development/modify/2",
+        "status": "passed",
+        "reason": "independent_checks_passed",
+        "complete": true,
+        "solver_seconds": 161.2395,
+        "solver_tokens": 227634,
+        "solver_status": "completed",
+        "blocker": "none",
+        "judge_seconds": 0.8725,
+        "judge_model_calls": 0
+      },
+      {
+        "trial": "original/development/modify/0",
+        "status": "passed",
+        "reason": "independent_checks_passed",
+        "complete": true,
+        "solver_seconds": 140.5835,
+        "solver_tokens": 163942,
+        "solver_status": "completed",
+        "blocker": "none",
+        "judge_seconds": 0.8676,
+        "judge_model_calls": 0
+      },
+      {
+        "trial": "original/development/modify/1",
+        "status": "passed",
+        "reason": "independent_checks_passed",
+        "complete": true,
+        "solver_seconds": 169.6835,
+        "solver_tokens": 224164,
+        "solver_status": "completed",
+        "blocker": "none",
+        "judge_seconds": 1.0298,
+        "judge_model_calls": 0
+      },
+      {
+        "trial": "original/development/modify/2",
+        "status": "passed",
+        "reason": "independent_checks_passed",
+        "complete": true,
+        "solver_seconds": 139.9669,
+        "solver_tokens": 230285,
+        "solver_status": "completed",
+        "blocker": "none",
+        "judge_seconds": 1.3648,
+        "judge_model_calls": 0
+      }
+    ],
+    "usage": {
+      "charged_tokens": 1573912,
+      "completed_resource_calls": 13
+    }
+  },
+  "candidate_commit": "e5449c598419d96019f9f11bba9f4aa437426ff1",
+  "export_name": "click-nanolized-20261114-033838",
+  "nanolize_commit": "9413138036b515f119ff63fa6db082a6148103f0",
+  "nanolize_branch": "claude/graph-contract-field-fixes",
+  "original_commit": "e38188e9e205005d5af5f9e59df51904c984586a",
+  "local_tool_patches": [],
+  "public_url": "https://weianmao.github.io/nanolize-verl-viz/reports/click-graph-contract-20261114-553492f6/"
+}
