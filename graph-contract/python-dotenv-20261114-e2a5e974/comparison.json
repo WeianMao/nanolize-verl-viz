@@ -38,7 +38,7 @@
     "problem": "候选临时文件清理和 CLI 空格式回归",
     "this_run": "部分复发，第二版已修复",
     "evidence": [
-      "首轮临时文件清理案例失败，见本次问题011",
+      "首轮临时文件清理案例失败",
       "CLI test_list[None] 在两个候选中均通过"
     ]
   },
@@ -64,7 +64,7 @@
     "this_run": "复发；便携验证包仍不可用",
     "evidence": [
       "绝对 check-python 启动器不满足便携约束",
-      "本次错误：Portable checks need a PATH executable or repository-relative command；见问题009"
+      "本次错误：Portable checks need a PATH executable or repository-relative command"
     ]
   }
 ]
