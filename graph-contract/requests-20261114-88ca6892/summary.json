@@ -1,6 +1,6 @@
 {
   "job_id": "88ca6892f1c0415f96920528b764771e",
-  "updated_at": "2026-11-14T02:56:43+00:00",
+  "updated_at": "2026-11-14T06:57:53+00:00",
   "status_label": "流程完成并交付 · completed_with_gaps",
   "lead": "使用 claude/graph-contract-field-fixes 的指定提交 9413138，完成 Requests 全图压缩、独立补测、作者重写、行为修复和交付。11 项冻结检查与 3 项隔离安装检查全部通过；有效叶节点验证与任务评估仍有缺口。",
   "cards": [
@@ -431,9 +431,9 @@
       "认证、Cookie、异常提案正常导入契约内 requests；4 份文件通过设计和独立审阅，无 forbidden_import 阻断。"
     ],
     [
-      "#18 事实过滤与节点敲除退回",
-      "部分再现",
-      "合法路径/IPv6 误判本次未出现，utilities 原版检查获得有效敲除证据；compatibility/status 仍 no_behavioral_knockout_failure。HTTP API 的动态属性限制及审阅否决为本次新反馈。"
+      "#18 中的分支缺陷：事实过滤与敲除机制",
+      "部分复现",
+      "合法路径/IPv6 误判本次未再出现，utilities 原版检查获得有效敲除证据；导入期公开数据、兼容重导出不受函数敲除影响的支持缺口仍存在，见问题 6。普通 HTTP API 提案退回另列运行现象。"
     ],
     [
       "#20 事实提取误拒合法路径、用例未转述",
@@ -454,17 +454,11 @@
       "昨天本地 c80f0ed / 4b60929 的敲除签名、封存和集成修复",
       "未再出现",
       "本次这些阶段使用未改动的 9413138 成功完成，无需旧本地补丁。"
-    ],
-    [
-      "昨天版本号/构建号占位值漂移",
-      "该具体问题未再出现",
-      "已预先写入 interface 并由安装检查约束，保持 2.34.2 / 0x023402。"
     ]
   ],
-  "new_issue_notes": [
-    "经核对保留的问题 6（导入期公开数据及兼容重导出的验证支持缺口）和问题 7（带尾斜杠的仓库内目录链接不支持）均属于昨天问题的延续或具体变体；本次没有单独列出的新增确认问题。"
+  "issue_notes": [
+    "本节仅记录已定位到 claude/graph-contract-field-fixes 分支实现、需要修改 nanolize 代码才能解决的缺陷。本次保留 2 项，沿用原记录编号 6、7；两者属于昨天问题的延续或具体变体，没有单独列出的新增确认缺陷。"
   ],
-  "issues_notice": "本页问题列表只保留经核对确定由 nanolize 自身引起的 2 项。",
   "issues": [
     {
       "title": "6 · 函数敲除不适配导入期公开数据与兼容重导出，并丢弃相关事实",
@@ -481,6 +475,75 @@
         "原始错误：Task snapshots cannot isolate a directory symlink whose text is not a plain relative path (any .. first, then names)。上游 Git 跟踪的真实链接为 tests/certs/mtls/client/ca → ../../expired/ca/，目标存在且位于仓库内；末尾空路径分量被拒绝。",
         "effort._directory_link 在目标越界检查后按链接文本筛选，现有文档与单测也明确拒绝 v1/。这是安全目录链接常见拼写的设计支持缺口；应保留越界与快照完整性检查。",
         "未修改原版链接或任务评估开关，沿用内建不支持记录继续压缩和交付。原版任务准备为 unsupported_repository_layout / unverified，records=[]，未启动任务模型调用；最终任务比较另因 behavior_acceptance_pending 为 unverified，不能把最终全部任务缺口都归因于链接。"
+      ]
+    }
+  ],
+  "observation_notes": [
+    "本节保留环境配置、运行波动、测试设计退回、候选修复和防默写等过程记录。此类现象不单凭出现次数或流程不顺畅就认定为 nanolize 分支 bug；记录编号沿用原始日志。",
+    "相对昨天的公开记录，本次新增观察包括两个初始基线超时、HTTP API 动态属性访问被拒、数据优先级断言被审阅否决，以及六个候选状态码别名漂移。环境/访问工具的四项记录也列在此处；不据此断言昨天从未遇到过这些环境情形。",
+    "防默写本次退回 0 个文件、0 次；默认 auto 下最终逻辑重合 22%，未达到全局 40% 触发线。这是过程指标，不是分支缺陷。"
+  ],
+  "yesterday_observations": [
+    [
+      "测试设计提案退回",
+      "本次出现 HTTP API 退回",
+      "动态属性访问无法静态确定契约目标，另一份提案的断言不足以支持宣称的行为。两项退回本身未定位为工具误判；compatibility/status 的机制性缺陷见分支问题 6。"
+    ],
+    [
+      "昨天版本号/构建号占位值漂移",
+      "该具体现象未再出现",
+      "预先写入 interface 并由安装检查约束，保持 2.34.2 / 0x023402；本次出现的是候选状态码别名漂移，已修复，见记录 8。"
+    ],
+    [
+      "防默写文件退回",
+      "两次均为 0",
+      "昨天逻辑重合 21%，本次 22%，均未达到默认 auto 的全局 40% 触发线。"
+    ]
+  ],
+  "observations": [
+    {
+      "title": "1 · 安装准备：HTTPS 缺少凭据（环境）",
+      "details": [
+        "原始错误：fatal: could not read Username for https://github.com。改用已配置的 SSH URL，成功取得指定分支及提交；无源码/验收变更。作业尚未创建。"
+      ]
+    },
+    {
+      "title": "2 · 昨日报告：Web 阅读器 Internal Error（访问工具）",
+      "details": [
+        "站点本身公开可用；用 curl 获取原始 HTML、summary.json、issues.md 完成对照。未变更作业；作业尚未创建。"
+      ]
+    },
+    {
+      "title": "3 · 安装依赖：额外 PyPI 镜像 DNS 失败（环境）",
+      "details": [
+        "原始错误：[Errno -2] Name or service not known。仅停止本任务旧 pip，显式使用官方 PyPI 后安装成功；没有改变依赖功能要求。作业尚未创建。"
+      ]
+    },
+    {
+      "title": "4 · 检查执行器：Slurm 缺少 account（环境）",
+      "details": [
+        "原始错误：sbatch: error: You forgot to specify which account you want to use。采用工具默认 auto 回退本机运行，所有检查继续执行；没有关闭检查或改变阈值。"
+      ]
+    },
+    {
+      "title": "5 · 初始基线：两个慢检查超时（本次运行新增观察）",
+      "details": [
+        "original-lowlevel 30.1264 秒超时；original-testserver 首次通过、重复 30.1174 秒超时。相同命令/来源审计独立复查通过，随后默认设计后的正式基线两者各重复 3 次稳定通过（约 21–23 秒）。未增大默认 30 秒上限，未删减、拆分或跳过测试。"
+      ]
+    },
+    {
+      "title": "6（现象部分） · HTTP API 动态属性访问与不充分断言被退回",
+      "details": [
+        "HTTP API 首轮提案因 outside_external_contract（dynamic attribute）被拒，第二轮因 reviewer_veto 被拒。审阅指出只检查 method 不能证明非空 data 优先于无效 JSON；现有证据未表明这两次拒绝属于工具误判。",
+        "默认第二轮与独立审阅保持开启；最终接受认证、Cookie、异常 4 文件/65 用例。文档两轮无提案。全部 6 次退回中的另外 4 次涉及 compatibility/status，其已定位到代码的机制性缺陷单列在分支问题 6。未通过放宽规则接受被退回的检查。"
+      ]
+    },
+    {
+      "title": "8 · 公开状态码别名漂移（本次新增，已修复）",
+      "details": [
+        "首版缺少 early-hints/EARLY-HINTS=102 与 reset/RESET=205；request_uri_too_long/REQUEST_URI_TOO_LONG 错为 414，原版为 122。冻结检查均通过，但独立公开值审计检出偏差。",
+        "通过官方 run_agent role=repair、capabilities=[status] 向独立作者提供六项公开值，未提供原版实现或隐藏测试。只修改 src/requests/status_codes.py（+5/-2），修复提交 26564c93d294。",
+        "全部 243 别名、9 元数据和 Session 默认值在候选及交付仓库核对一致，11 项冻结检查与 3 项安装检查重跑通过。控制器与排队显式保存生成内容相同的候选 2/3；实际只有两个不同实现提交。"
       ]
     }
   ],

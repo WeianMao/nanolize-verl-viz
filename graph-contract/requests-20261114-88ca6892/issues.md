@@ -1,6 +1,6 @@
 # Requests graph-contract day2 问题记录
 
-本页问题列表只保留经核对确定由 nanolize 自身引起的 2 项。
+本页仅记录需要修改 nanolize 分支代码的 2 项缺陷。环境、超时、普通提案退回和候选修复见 [运行现象记录](observations.md)。
 
 基点：WeianMao/nanolize `claude/graph-contract-field-fixes` / `9413138036b515f119ff63fa6db082a6148103f0`。
 开始：2026-11-14T01:34:00Z（协调/准备）；作业时间另记。
