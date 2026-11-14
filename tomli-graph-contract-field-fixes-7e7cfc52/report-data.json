@@ -1,0 +1,980 @@
+{
+  "job_id": "7e7cfc52465a4afab149ca27aa5789c4",
+  "completed_at": "2026-11-14T03:04:33.349569+00:00",
+  "lead": "指定分支 claude/graph-contract-field-fixes（9413138）已完整运行并导出压缩仓库。最终保留 41.17% 体积，全部已执行检查通过；fuzz 与 profile 的补测被否决，终态为 completed_with_gaps，尚未建立完整功能保持与候选任务成本结论。",
+  "badges": [
+    "completed_with_gaps",
+    "--scope all · 9/9 节点",
+    "check-validation / design 开启",
+    "owner_attends: false",
+    "未修改 nanolize",
+    "无检查关闭或断言放宽"
+  ],
+  "metrics": [
+    {
+      "label": "体积保留比例",
+      "value": "41.17%",
+      "note": "6,006 / 14,587 tokens；减少 58.83%"
+    },
+    {
+      "label": "与原版相同的源码行",
+      "value": "6.16%",
+      "note": "22 / 357 个可比较代码行"
+    },
+    {
+      "label": "测试设计接受",
+      "value": "2 个节点",
+      "note": "benchmark、packaging；2 个提案被否决"
+    },
+    {
+      "label": "未验证外部节点",
+      "value": "2 个",
+      "note": "fuzz、profile；聚合节点为部分验证"
+    },
+    {
+      "label": "防默写退回",
+      "value": "0 个文件",
+      "note": "默认 auto；0 次拒绝、0 个超限函数"
+    },
+    {
+      "label": "模型用量",
+      "value": "7,459,873",
+      "note": "输入 + 输出 tokens；金额未知"
+    },
+    {
+      "label": "作业耗时",
+      "value": "1h 23m 53s",
+      "note": "01:40:40 → 03:04:33 UTC"
+    },
+    {
+      "label": "最终检查",
+      "value": "6 / 6",
+      "note": "另有独立安装检查 2 / 2"
+    }
+  ],
+  "comparison": [
+    {
+      "label": "运行结果",
+      "previous": "completed_with_gaps",
+      "current": "completed_with_gaps",
+      "change": "两次均有明确验证缺口"
+    },
+    {
+      "label": "体积保留比例",
+      "previous": "42.45% · 6,192 / 14,587",
+      "current": "41.17% · 6,006 / 14,587",
+      "change": "下降 1.28 个百分点；比昨天少 186 tokens（3.00%）"
+    },
+    {
+      "label": "体积减少比例",
+      "previous": "57.55%",
+      "current": "58.83%",
+      "change": "提高 1.28 个百分点"
+    },
+    {
+      "label": "物理源码行数",
+      "previous": "560 / 1,132",
+      "current": "544 / 1,132",
+      "change": "少 16 行；保留 48.06%"
+    },
+    {
+      "label": "相同可比较源码行",
+      "previous": "18 / 366 = 4.92%",
+      "current": "22 / 357 = 6.16%",
+      "change": "增加 1.24 个百分点"
+    },
+    {
+      "label": "作业耗时",
+      "previous": "1h 08m 32s",
+      "current": "1h 23m 53s",
+      "change": "+920.811 秒（+22.39%）"
+    },
+    {
+      "label": "模型输入 + 输出",
+      "previous": "4,841,011",
+      "current": "7,459,873",
+      "change": "+2,618,862 tokens（+54.10%）"
+    },
+    {
+      "label": "输入 tokens",
+      "previous": "4,745,166",
+      "current": "7,319,004",
+      "change": "缓存输入已包含其中"
+    },
+    {
+      "label": "其中缓存输入",
+      "previous": "4,026,752",
+      "current": "6,230,656",
+      "change": "不再加到总量"
+    },
+    {
+      "label": "输出 tokens",
+      "previous": "95,845",
+      "current": "140,869",
+      "change": "推理输出已包含其中"
+    },
+    {
+      "label": "其中推理输出",
+      "previous": "38,637",
+      "current": "56,786",
+      "change": "不再加到总量"
+    },
+    {
+      "label": "唯一模型调用数",
+      "previous": "24",
+      "current": "34",
+      "change": "+10；按调用回执去重"
+    },
+    {
+      "label": "作者调用 / 候选",
+      "previous": "2 / 2",
+      "current": "4 / 3",
+      "change": "本次包含 1 次无改动修复"
+    },
+    {
+      "label": "设计测试接受 / 否决",
+      "previous": "3 / 2",
+      "current": "2 / 2",
+      "change": "本次 4 个提案；昨天 5 个"
+    },
+    {
+      "label": "缺少有效外部叶测试",
+      "previous": "3：api、parse、profile",
+      "current": "2：fuzz、profile",
+      "change": "来源缺口解决；fuzz 补测覆盖减少"
+    },
+    {
+      "label": "最终冻结检查 / 安装检查",
+      "previous": "7/7 · 2/2",
+      "current": "6/6 · 2/2",
+      "change": "检查集合不同，均无执行失败"
+    },
+    {
+      "label": "防默写退回文件",
+      "previous": "0",
+      "current": "0",
+      "change": "默认 auto，均未触发超限"
+    },
+    {
+      "label": "原版任务重复验收",
+      "previous": "基线未建立",
+      "current": "3/3 通过",
+      "change": "候选侧均无成本对比结论"
+    },
+    {
+      "label": "实际货币账单",
+      "previous": "未知",
+      "current": "未知",
+      "change": "回执没有账单金额，不记作 0"
+    }
+  ],
+  "comparison_notes": [
+    "昨天为 2026-11-13 的 eb54c4，本次为 2026-11-14 的 9413138；两次原版 Tomli 均为 43a86ade，体积基线均为 14,587 tokens。code_size.py、code_quality.py、original_overlap.py 的 Git blob 完全相同，tokenizer 版本与词表摘要相同。",
+    "时间与 token 是实际作业总量，但两次完成的工作不同：本次跑通了三轮原版任务基线，任务阶段消耗 2,025,776 tokens；昨天该阶段 1,063,683 tokens 且基线失败。本次还有额外作者修复及一次空跑，不能将总量变化单独归因于分支效率。设计测试集合也不同，压缩率更高不代表验证更全面。"
+  ],
+  "charts": [
+    {
+      "label": "代码体积",
+      "note": "源码与计入配置 tokens，越少越小",
+      "previous": 6192,
+      "current": 6006,
+      "previous_label": "6,192",
+      "current_label": "6,006"
+    },
+    {
+      "label": "作业时间",
+      "note": "从接受选择到终态；不含准备与报告发布",
+      "previous": 4112.247111,
+      "current": 5033.058582,
+      "previous_label": "1h 08m 32s",
+      "current_label": "1h 23m 53s"
+    },
+    {
+      "label": "模型 tokens",
+      "note": "包括缓存输入；不是货币账单",
+      "previous": 4841011,
+      "current": 7459873,
+      "previous_label": "4,841,011",
+      "current_label": "7,459,873"
+    }
+  ],
+  "validation": [
+    "测试设计覆盖 benchmark、fuzz、packaging、profile 四个待补测节点；提出 4 个文件，接受 2 个（benchmark、packaging），否决 2 个（fuzz、profile），运行器失败 0。设计器、审阅者、作者均使用独立 Codex 会话，未共用作者会话。",
+    "最终 6 项冻结检查通过：3 项原版 pytest、1 项内联公开输出契约、2 项设计测试。合计 28 个 pytest 用例通过、744 个 TOML 数据子测试通过、1 个原有 Python 3.15 条件跳过；本次图检查环境为 Python 3.11.18。独立安装及安装后 API 检查另有 2/2 通过。",
+    "9 个节点全部保留。账本显示 verified=6、unknown=2、partial=1；其中 scalars/typing 两个内部节点按规则免于直接外部叶测试，不代表它们独立补测通过。实际有效外部叶测试节点为 api、parse、benchmark、packaging 四个，未知为 fuzz、profile，聚合 tomli 为部分验证。",
+    "冻结后 3 项原版检查全部保有 original_verified 来源，内联输出被正确标成 contract。新增测试不再让 inputs:[tests] 的原版来源降级。api 只有重导出、无自身可敲除函数，仍有 valid without dynamic evidence 的局限。",
+    "979 个原版测试和数据文件、2 个获接受的设计测试以及 2 个 carry 文件，与各自冻结来源逐字节一致；原版仓库及 nanolize 工作树均干净。",
+    "原版任务基线建立成功，三个独立重复均通过。候选任务成本评估仍返回 behavior_acceptance_pending，因为 fuzz/profile 的行为义务没有完成；没有候选侧任务耗时或 token 改善结论。",
+    "默认 strict:false 保持不变，没有关闭任何冻结检查、check-validation、design 或 task-effort，没有排除节点或放宽断言。带缺口交付由默认策略完成；不能称全部功能已验证。"
+  ],
+  "capabilities": [
+    {
+      "id": "tomli",
+      "label": "完整发行版",
+      "surface": "internal",
+      "description": "TOML 1.1 parsing library and all repository development workflows.",
+      "interface": [],
+      "status": "部分验证：2 个外部叶节点缺少检查"
+    },
+    {
+      "id": "api",
+      "label": "公开包 API",
+      "surface": "external",
+      "description": "Expose text and binary file parsing and TOMLDecodeError through the tomli package with version metadata.",
+      "interface": [
+        "Public name tomli.__version__",
+        "Package distribution and import name tomli, version 2.5.0, Python >=3.8, PEP 561 py.typed marker; loads and load expose keyword-only parse_float defaulting to float and return dictionaries."
+      ],
+      "status": "执行通过；来源有效；无自身动态 knockout 证据"
+    },
+    {
+      "id": "parse",
+      "label": "文档解析与错误",
+      "surface": "external",
+      "description": "Parse TOML 1.1 documents into dictionaries: keys, strings and escapes, arrays, tables, arrays of tables, inline tables, comments and whitespace; reject invalid syntax, duplicates and invalid namespace mutations; support binary UTF-8 input, custom float conversion, recursion limits and located exceptions.",
+      "interface": [
+        "Public callable tomli.loads(__s: str, *, parse_float: ParseFloat=float) -> dict[str, Any]",
+        "Public callable tomli.load(__fp: IO[bytes], *, parse_float: ParseFloat=float) -> dict[str, Any]",
+        "Public class tomli.TOMLDecodeError (bases: ValueError)",
+        "Public callable tomli.TOMLDecodeError.__init__(self, msg: str | type[DEPRECATED_DEFAULT]=DEPRECATED_DEFAULT, doc: str | type[DEPRECATED_DEFAULT]=DEPRECATED_DEFAULT, pos: Pos | type[DEPRECATED_DEFAULT]=DEPRECATED_DEFAULT, *args: Any)",
+        "File format TOML v1.1.0: UTF-8, binary file input, CRLF normalization, quoted and dotted keys, multiline and inline collections, escape sequences, booleans, integer bases, special floats, dates and times including optional seconds; return the corresponding native Python values.",
+        "TOMLDecodeError is a ValueError with msg, doc, pos, lineno and colno; format messages with (at line N, column M) or (at end of document); legacy free-form constructor arguments remain accepted with DeprecationWarning.",
+        "Preserve diagnostics used by callers: Invalid value; Invalid statement; parse_float must not return dicts or lists; Expected str object, not '<type>'; File must be opened in binary mode, e.g. use `open('foo.toml', 'rb')`; and recursion-limit errors identifying excessive key parts or inline array/table nesting."
+      ],
+      "status": "执行通过；原版测试来源有效"
+    },
+    {
+      "id": "scalars",
+      "label": "标量与时间值",
+      "surface": "internal",
+      "description": "Convert integers, finite and special floats, local dates and times, local and offset datetimes, including optional seconds and microsecond truncation; preserve numeric syntax validation and timezone behavior.",
+      "interface": [],
+      "status": "内部节点：免于直接外部叶测试，并非独立补测通过"
+    },
+    {
+      "id": "typing",
+      "label": "类型与类型标记",
+      "surface": "internal",
+      "description": "Supply type annotations for the public parsing API and mark the distributed package as typed.",
+      "interface": [],
+      "status": "内部节点：免于直接外部叶测试；兼容导入已修复"
+    },
+    {
+      "id": "packaging",
+      "label": "构建与发行",
+      "surface": "external",
+      "description": "Build and install the Python package using the configured backend; provide the optional setuptools and mypyc build workflow.",
+      "interface": [
+        "Program scripts/use_setuptools.py",
+        "Public callable scripts.use_setuptools.use_setuptools() -> None",
+        "Default build backend flit_core.buildapi with flit_core>=3.12,<5; scripts/use_setuptools.py changes build-system to setuptools.build_meta with setuptools>=77.0.3 and mypy[mypyc]>=1.15; TOMLI_USE_MYPYC defaults to disabled and exactly 1 enables compiled extensions."
+      ],
+      "status": "独立补测通过；安装检查通过"
+    },
+    {
+      "id": "benchmark",
+      "label": "性能基准程序",
+      "surface": "external",
+      "description": "Compare parsing speed of rtoml, pytomlpp, tomli, toml and tomlkit on the benchmark TOML fixture and print execution time and relative performance.",
+      "interface": [
+        "Program benchmark/run.py",
+        "Public callable benchmark.run.run(run_count: int) -> None",
+        "Public callable benchmark.run.benchmark(name: str, run_count: int, func: Callable, col_width: tuple, compare_to: float | None=None) -> float",
+        "Program benchmark/run.py defaults to 5000 parses using benchmark/data.toml; reports parser, exec time, performance (more is better), Running..., baseline (100%) and relative percentages, using best of five repeated timings.",
+        "Fixed first output line Parsing data.toml N times: with N replaced by the parse count; retain table headers, separators and numeric formatting."
+      ],
+      "status": "独立补测通过；固定输出回归已修复"
+    },
+    {
+      "id": "profile",
+      "label": "性能分析程序",
+      "surface": "external",
+      "description": "Run the benchmark fixture through Tomli repeatedly for profiling.",
+      "interface": [
+        "Program profiler/profiler_script.py",
+        "Reads benchmark/data.toml and parses it 1000 times to provide the profiling workload."
+      ],
+      "status": "未验证：补测被否决"
+    },
+    {
+      "id": "fuzz",
+      "label": "模糊测试工具",
+      "surface": "external",
+      "description": "Use Atheris to generate Unicode TOML input, accept syntax and recursion failures, round-trip parsed values through tomli_w, normalize NaNs and report mismatches with input diagnostics.",
+      "interface": [
+        "Program fuzzer/fuzz.py",
+        "Public callable fuzzer.fuzz.test_one_input(input_bytes: bytes) -> None",
+        "Public callable fuzzer.fuzz.normalize_toml_obj(toml_obj: dict) -> None",
+        "Program fuzzer/fuzz.py accepts Atheris/libFuzzer arguments, suppresses warnings, disables timezone caching for deterministic coverage and reports Input was, Codepoints, Original dict, Roundtripped dict and Dicts not equal after roundtrip on unexpected failures."
+      ],
+      "status": "未验证：整份补测被否决"
+    }
+  ],
+  "yesterday_issues": [
+    {
+      "title": "昨天 I12：fuzz 回调补测过弱",
+      "status": "重现；覆盖比昨天少",
+      "evidence": "本次 I07：空回调仍可通过，审阅否决整份文件；昨天独立 normalize 测试获接受，本次没有独立 normalize 覆盖。"
+    },
+    {
+      "title": "昨天 I13：profile 仅按函数名计数",
+      "status": "重现",
+      "evidence": "本次 I08：无法确定 loads 就是 tomli.loads，独立审阅否决，profile 保留为未验证。"
+    },
+    {
+      "title": "昨天 I14：原版检查来源被错误降级",
+      "status": "未重现",
+      "evidence": "仍使用 inputs:[tests]；新增设计测试后 3 项原版 pytest 均为 original_verified，无 referenced_files_changed / role_not_proven。api、parse 的来源缺口消失；内联检查也被转换器正确归为 contract。"
+    },
+    {
+      "title": "昨天 I16：任务验收 accept.py 缺失",
+      "status": "未重现",
+      "evidence": "原版任务基线 ready，三个独立求解/审阅重复均 passed，冻结 acceptance.py 实际调用 accept.py。候选侧仍因行为验收缺口未启动，不能声称任务成本改善。"
+    },
+    {
+      "title": "昨天 I18：benchmark 固定输出回归",
+      "status": "同类重现，具体差异不同",
+      "evidence": "本次 I12：标题文字已正确，但多出空行、分隔线和列宽不符。第二候选仍失败，第三候选修复，5/5 补测通过。"
+    },
+    {
+      "title": "昨天 I19：验证包因绝对路径导出失败",
+      "status": "未重现；使用配置绕过",
+      "evidence": "本次 test_template.argv[0] 使用相对 python；验证包 exported。此结果证明本次配置可导出，不是对原导出器缺陷的隔离复测，也未验证跨机器重放。"
+    },
+    {
+      "title": "昨天 I20：review-stop 无服务可停止",
+      "status": "未重现",
+      "evidence": "收尾命令退出码 0，返回 status=stopped、already_stopped=true；已停止状态得到正常处理。"
+    }
+  ],
+  "new_issues": [
+    {
+      "title": "I01 — 准备阶段 HTTPS 仓库访问缺少凭据",
+      "category": "环境访问",
+      "summary": "HTTPS Git 凭据缺失；改用已有 SSH 身份，准确取得指定分支和提交。"
+    },
+    {
+      "title": "I02 — 昨天公开页面无法经浏览工具读取",
+      "category": "报告读取工具",
+      "summary": "浏览工具无法访问昨天页面；curl 成功读取公开报告。"
+    },
+    {
+      "title": "I03 — pip 的附加索引 DNS 失败",
+      "category": "依赖环境",
+      "summary": "NGC 附加索引 DNS 失败；仅安装命令绕过用户 pip 配置，使用公共 PyPI。"
+    },
+    {
+      "title": "I04 — 默认 Slurm 检查执行器缺少账户，自动回退本机",
+      "category": "检查执行环境",
+      "summary": "默认 Slurm 提交缺少 account；框架自动回退本机执行，检查保持开启。"
+    },
+    {
+      "title": "I05 — 测试事实审阅拒绝内部类型模块的 API 归属",
+      "category": "契约事实审阅",
+      "summary": "内部 _types 导入事实的 API 归属被否决；自动重试后保留 54 条事实，关联 I11。"
+    },
+    {
+      "title": "I06 — 基线映射与动态 knockout 的验证局限",
+      "category": "审计局限",
+      "summary": "静态导入映射、重导出 API 无可敲除主体及传递依赖警告；按默认规则记录，未改标准。"
+    },
+    {
+      "title": "I09 — 进程结束时监控读取 /proc 的竞态（不影响作业）",
+      "category": "外部监控",
+      "summary": "进程正常结束时 /proc 读取竞态；改用持久化回执确认完成。"
+    },
+    {
+      "title": "I10 — 原版任务求解摘要出现异常重复文本",
+      "category": "模型输出",
+      "summary": "原版任务求解摘要异常重复；独立 judge 检查实际代码与验收结果，三轮均通过。"
+    },
+    {
+      "title": "I11 — 新格式仍保留动态导入内部模块的检查，首轮候选缺少 tomli._types",
+      "category": "候选兼容性",
+      "summary": "动态导入 tomli._types 的原版检查仍保留，首轮实现缺少模块；第二候选补回兼容模块。"
+    },
+    {
+      "title": "I13 — Controller 提交了含空格的 request_id",
+      "category": "Controller 调用",
+      "summary": "request_id 含空格被拒绝；下一轮自纠正，schema 未放宽。"
+    },
+    {
+      "title": "I14 — 连续两次修复之间未保存复验，第二次调用没有改动",
+      "category": "修复调度",
+      "summary": "连续修复未在中间保存复验，第二次没有候选绑定的检查反馈且未改文件；空耗 168.099 秒、455,615 tokens。保存复验后单独修复成功。"
+    },
+    {
+      "title": "I15 — 收尾核对脚本的目录与计量范围错误（仅报告工具）",
+      "category": "报告核对工具",
+      "summary": "Git 子目录与初次重算范围选错；指定仓库和最终计量文件集后核对一致，未影响作业。"
+    }
+  ],
+  "issues": [
+    {
+      "title": "I01 — 准备阶段 HTTPS 仓库访问缺少凭据",
+      "body": "- 步骤：读取指定 nanolize 分支。\n- 作业 ID：尚未创建。\n- 报错原文：`fatal: could not read Username for 'https://github.com': No such device or address`。\n- 原因判断：当前环境未配置 HTTPS GitHub 凭据，已有 SSH 身份。\n- 绕过：将 clone/ls-remote URL 改为 `git@github.com:WeianMao/nanolize.git`；没有修改 nanolize 代码。\n- 结果：SSH 确认分支 HEAD 为 `9413138036b515f119ff63fa6db082a6148103f0`，继续安装。"
+    },
+    {
+      "title": "I02 — 昨天公开页面无法经浏览工具读取",
+      "body": "- 步骤：取得昨天报告。\n- 作业 ID：尚未创建。\n- 报错原文：`URL https://weianmao.github.io/nanolize-verl-viz/tomli-graph-contract-fc9bf606/ is not accessible via this tool.`\n- 原因判断：浏览工具访问失败；公开站点本身可经普通 HTTPS 访问。\n- 绕过：使用 curl 下载 index.html、report-data.json、issues.md，保存在 tmp/yesterday-*。\n- 结果：成功取得昨天指标及 7 项问题；没有验收标准变更。"
+    },
+    {
+      "title": "I03 — pip 的附加索引 DNS 失败",
+      "body": "- 步骤：安装指定分支与运行依赖。\n- 作业 ID：尚未创建。\n- 报错原文：`Failed to establish a new connection: [Errno -2] Name or service not known`，请求 `/mcp/`。\n- 原因判断：用户 pip 配置额外包含不可解析的 `pypi.ngc.nvidia.com`，公共 pypi.org 可访问。\n- 绕过：安装命令设置 `PIP_CONFIG_FILE=/dev/null`，使用默认公共 PyPI；仍从本地指定分支安装 nanolize。\n- 结果：公共索引成功安装 nanolize 0.8.0（editable 指向 9413138）及运行依赖；终止仍在无效索引重试的旧安装进程。没有修改检查或验收标准。"
+    },
+    {
+      "title": "I04 — 默认 Slurm 检查执行器缺少账户，自动回退本机",
+      "body": "- 步骤：作业初始化检查执行器。\n- 作业 ID：7e7cfc52465a4afab149ca27aa5789c4。\n- 报错原文：\n```text\nfell back: the batch could not be submitted: Scheduler command failed: sbatch: sbatch: error: You forgot to specify which account you want to use.\nsbatch: error: To see the list of accounts which you have access to:\nsbatch: error:     sacctmgr -nP show assoc where user=$(whoami) format=account\nsbatch: error: Batch job submission failed: Invalid account or account/partition combination specified\n```\n- 原因判断：auto 检测到 sbatch，但当前环境没有默认 Slurm account。\n- 绕过：接受 nanolize 自带的 local fallback；没有更改配置文件、代码或命令参数。\n- 结果：check-executor.json 记为 requested=auto、kind=local；冻结阶段继续执行所有检查，未放宽验收。"
+    },
+    {
+      "title": "I05 — 测试事实审阅拒绝内部类型模块的 API 归属",
+      "body": "- 步骤：write_test_facts，test_misc 第 1 轮审阅。\n- 作业 ID：7e7cfc52465a4afab149ca27aa5789c4。\n- 报错/否决原文：`Accurate import behavior, but importing an internal annotation module does not describe the listed public API capability.`；missing: `tests/test_misc.py::TestMiscellaneous::test_types_import`。\n- 原因判断：原版检查含内部 `_types` 模块导入，事实被归入外部 api 节点，独立审阅认为归属不合适。\n- 绕过：保留否决，由冻结器自动启动第 2 轮事实写入；不人工覆盖审阅或更改原版测试。\n- 结果：冻结器最终记录 54 facts、1 dropped、0 tests not covered；继续捕获原版基线。原始审阅存于 facts/test_misc/tests_test_misc_py_56f87108/1/review/runner/result.json。"
+    },
+    {
+      "title": "I06 — 基线映射与动态 knockout 的验证局限",
+      "body": "- 步骤：capture_baseline 原版检查有效性审计。\n- 作业 ID：7e7cfc52465a4afab149ca27aa5789c4。\n- 诊断原文：`mapping_without_static_evidence` / `No test source imports these leaves' modules.`（4 项检查）；`leaf_knockout_not_assessable` / `No knockout of this leaf's own source is possible; the check counts for it without dynamic evidence.`（api）；`undeclared_dependency` / `Knocking out this undeclared leaf broke the check's behavior.`。\n- 原因判断：原测试经 tests 包别名引用 tomli；api 文件只是重导出；原版检查还能触达直接声明外的 parse/scalars 依赖。\n- 绕过：这些是默认审计警告，按规则记录并继续，没有变更检查、图、基线或标准。\n- 结果：4 项检查均通过且稳定；3 项 pytest 来源为 original_verified，内联检查来源 contract；api/parse 为 valid，api 缺少自身动态 knockout 证据的局限保持可见。"
+    },
+    {
+      "title": "I07 — 补测审阅否决：fuzz（昨天同类问题重现）",
+      "body": "- 步骤：design_leaf_tests 独立审阅，`tests/nanolize_contracts/fuzz/test_fuzz_behavior.py`。\n- 作业 ID：7e7cfc52465a4afab149ca27aa5789c4。\n- 报错/否决原文：\n```text\nreviewer_veto\nThe fuzz callback tests would pass if test_one_input immediately returned None, skipping parsing, serialization, normalization, and roundtrip validation entirely.\n```\n- 原因判断：回调主体为空仍能满足测试；同文件中的 normalize 检查也随整文件否决，未获得独立接受的补测。\n- 绕过：维持 reviewer_veto，由默认 strict:false 流程继续；没有修改文件、参数、验收断言或关闭任何检查；没有把被否决的提案加入冻结契约。\n- 结果：该节点仍保留在全功能范围，补测缺口保留。设计总计接受 2 个文件/2 个节点（benchmark、packaging），否决 2 个，runner_failures=0。"
+    },
+    {
+      "title": "I08 — 补测审阅否决：profile（昨天同类问题重现）",
+      "body": "- 步骤：design_leaf_tests 独立审阅，`tests/nanolize_contracts/profile/test_profile_workload.py`。\n- 作业 ID：7e7cfc52465a4afab149ca27aa5789c4。\n- 报错/否决原文：\n```text\nreviewer_veto\nCounts every profiled function named loads without identifying tomli.loads. A script calling an unrelated loads function 1000 times could pass without invoking the intended parser.\n```\n- 原因判断：只按 loads 函数名计数，没有确定其身份是 tomli.loads。\n- 绕过：维持 reviewer_veto，由默认 strict:false 流程继续；没有修改文件、参数、验收断言或关闭任何检查；没有把被否决的提案加入冻结契约。\n- 结果：该节点仍保留在全功能范围，补测缺口保留。设计总计接受 2 个文件/2 个节点（benchmark、packaging），否决 2 个，runner_failures=0。"
+    },
+    {
+      "title": "I09 — 进程结束时监控读取 /proc 的竞态（不影响作业）",
+      "body": "- 步骤：诊断任务设计会话长时间没有落盘输出时，读取进程等待状态；两次诊断命令遇到同一竞态。\n- 作业 ID：7e7cfc52465a4afab149ca27aa5789c4。\n- 报错原文：`FileNotFoundError: [Errno 2] No such file or directory: '/proc/2385240/wchan'`。\n- 原因判断：任务设计进程恰在监控读取前正常结束；不是任务崩溃或 Codex 启动失败。\n- 绕过：改读持久化 run.json 和 public.json 确认状态；没有修改 nanolize 代码、任务参数或验收标准。\n- 结果：examiner status=completed、exit_code=0、duration_seconds=600.1677、517432 tokens；已进入 task_effort_original。早先“可能启动异常”的排查假设不成立。"
+    },
+    {
+      "title": "I10 — 原版任务求解摘要出现异常重复文本",
+      "body": "- 步骤：task-effort/original/development/modify/0 的 solver 结构化输出。\n- 作业 ID：7e7cfc52465a4afab149ca27aa5789c4。\n- 异常原文（开头，完整原文保存在 solver/result.json）：\n```text\n[任务摘要前导省略；原文重复片段] .round .round .round .round .round …\n```\n- 观测：summary 长 32000 字符，其中 `.round` 出现 4538 次；solver 自报 status=completed、blocker=none，进程 exit_code=0。\n- 原因判断：模型摘要字段出现重复生成，不能把摘要当作验收证据；没有证据表明这是 nanolize 改写了内容。\n- 绕过：不修改运行回执或伪造结果，继续默认独立 judge 审阅实际修改和验收记录；没有修改代码、参数或降低标准。\n- 结果：独立 judge 返回 passed、blocker=none；冻结 acceptance.py 实际调用 .task-effort/checks/accept.py 并通过 775 项断言，另验证 72 个跨解释器场景；异常摘要没有代替验收结论。"
+    },
+    {
+      "title": "I11 — 新格式仍保留动态导入内部模块的检查，首轮候选缺少 tomli._types",
+      "body": "- 步骤：candidate-1 / attempt 1 完整行为比较，test_misc。\n- 作业 ID：7e7cfc52465a4afab149ca27aa5789c4。\n- 报错原文：\n```text\nE   ModuleNotFoundError: No module named 'tomli._types'\nFAILED tests/test_misc.py::TestMiscellaneous::test_types_import - ModuleNotFo...\n1 failed, 7 passed, 1 skipped in 0.30s\n```\n- 原因判断：原测试用 importlib.import_module 与 f-string 动态拼出内部模块名；转换未剔除此检查、未把该名字写进 interface，事实审阅又否决了内部模块导入事实（I05）。独立作者将类型支持合并到其他模块后，该原版检查仍固定要求旧模块可导入。\n- 绕过：保留冻结的 test_misc，不删除测试、不变更清单；由 controller 调用作者修复兼容导入路径 src/tomli/_types.py，后续完整复验。没有修改 nanolize 代码。\n- 结果：candidate-2 已修复该导入，candidate-3 完整复验继续通过；原始完整 traceback 存在 attempts/1/verification.json。"
+    },
+    {
+      "title": "I12 — 首轮 benchmark 固定输出排版回归（昨天同类问题重现）",
+      "body": "- 步骤：candidate-1 / attempt 1，contract-benchmark-7e7cfc-1。\n- 作业 ID：7e7cfc52465a4afab149ca27aa5789c4。\n- 报错原文：\n```text\nE       AssertionError: assert ['Parsing dat...------------'] == ['Parsing dat...------------']\nE\nE         At index 1 diff: '' != '------------------------------------------------------'\nE         Use -v to get more diff\nFAILED tests/nanolize_contracts/benchmark/test_public_benchmark.py::test_run_prints_table_and_parser_order\n1 failed, 4 passed in 0.54s\n```\n- 原因判断：这次标题 Parsing data.toml 1 times: 已正确，但其后出现额外空行，预期分隔线的位置变了；与昨天标题文本不同属于同类固定输出兼容性回归。\n- 绕过：由独立作者修复 benchmark/run.py 的固定输出空行和表格排版；保留补测文件和断言不变，后续完整复验。没有修改 nanolize 代码。\n- 结果：candidate-2 因 I14 的空跑仍为同一失败；candidate-3 修复后该检查 5/5 通过，全部 6 项冻结检查与安装检查 2/2 均通过。没有修改冻结测试或验收标准。"
+    },
+    {
+      "title": "I13 — Controller 提交了含空格的 request_id",
+      "body": "- 步骤：controller round 4 的修复批次。\n- 作业 ID：7e7cfc52465a4afab149ca27aa5789c4。\n- 报错原文：`call 1 (run_agent): request_id is 1 to 100 letters, digits, - or _ and does not start with op-`；无效值为 `repair-api-import-first correction `；后两项收到 `An earlier call of this batch was invalid`。\n- 原因判断：模型生成的幂等请求标识包含空格及末尾空格，不符合工具约束。\n- 绕过：保留校验，框架拒绝该批次并按默认 advice 执行 compare_task_effort（返回 behavior_acceptance_pending）；下一轮 controller 自行改用有效 request_id 并发起两项修复。没有修改代码、参数或放宽 schema。\n- 结果：round 5 修复正常开始；这次是 1 条 invalid 和 2 条 skipped，未执行无效批次中的作者调用。"
+    },
+    {
+      "title": "I14 — 连续两次修复之间未保存复验，第二次调用没有改动",
+      "body": "- 步骤：controller round 5 连续调用 run_agent(api/parse)、run_agent(benchmark)，随后才 save_candidate。\n- 作业 ID：7e7cfc52465a4afab149ca27aa5789c4。\n- 异常回执原文：第二个 run_agent 返回 `\"changes\": {\"added\": 0, \"modified\": 0, \"removed\": 0}`；随后 candidate-2 仍报 `At index 1 diff: '' != '------------------------------------------------------'`。该空跑耗时 168.099 秒，输入 451706、输出 3909、合计 455615 tokens。\n- 原因判断：第一个修复改动草稿后，草稿不再等于被检查的候选。authoring.py/request_feedback 明确只在 draft_matches_candidate 时传递当前检查证据，因此第二次请求没有 failed_obligations 或 source_reference。旧问题历史仍可用，但本次作者没有据此修复。该状态绑定是有意的证据约束；连续修复的调度方式造成一次无效调用，不宜据此认定 source_reference 本身失效。\n- 绕过：controller 保存并完整复验 candidate-2 后，round 8 单独调用 benchmark 修复，获得该候选绑定的失败证据和 benchmark/run.py 原文参考；未修改 nanolize 代码、策略或测试。\n- 结果：第三次修复耗时 97.51 秒、231002 tokens，修改 1 个文件；candidate-3 的 benchmark 检查 5/5 通过，全部冻结检查通过。原始请求分别保存在 author-calls/author-request-5d962d2750e3.json（空跑）与 author-request-5159e513b613.json（成功修复）。"
+    },
+    {
+      "title": "I15 — 收尾核对脚本的目录与计量范围错误（仅报告工具）",
+      "body": "- 步骤：终态后的仓库状态与逐行重合率核对。\n- 作业 ID：7e7cfc52465a4afab149ca27aa5789c4。\n- 报错/异常原文：工作目录直接执行 git status 得到 `fatal: not a git repository (or any parent up to mount point [运行父目录])` 及 `Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).`；首次重算得到 `compared_lines: 444`，与作业 code-quality.json 的 `compared_lines: 357` 不一致。\n- 原因判断：顶层运行目录不是 Git 仓库，真正的仓库在子目录；重算若用初始源码清单扫描导出仓库，会把后来冻结的两个设计测试也算作新增代码。\n- 绕过：状态核对改用 git -C 明确指定 tomli、nanolize-src、report-site；重合率重算改用最终 verification.json/actual_size/counted_files 的冻结计量范围，并断言分母等于作业记录。仅修改收尾核对方式，没有修改项目、nanolize、检查或验收标准。\n- 结果：原版仓库及 nanolize 均干净且提交未变；最终重合 22/357 行（6.162465%），与内置报告四舍五入的 6% 一致。979 个原版测试/数据文件、2 个设计测试和 2 个 carry 文件均逐字节未变。"
+    }
+  ],
+  "conversion": [
+    {
+      "key": "checks_kept",
+      "count": 4,
+      "note": "3 项原版 pytest + 1 项内联输出契约"
+    },
+    {
+      "key": "checks_left_out",
+      "count": 0,
+      "note": "没有剔除原版检查"
+    },
+    {
+      "key": "checks_not_inspected",
+      "count": 0,
+      "note": "转换报告无未读检查；不等同于后续静态映射审计"
+    },
+    {
+      "key": "external_capabilities_without_check",
+      "count": 3,
+      "note": "benchmark、fuzz、packaging；冻结时交给测试设计者"
+    },
+    {
+      "key": "internal_capabilities_not_reached",
+      "count": 1,
+      "note": "profile；审阅后明确为外部脚本，因此冻结时也补测"
+    },
+    {
+      "key": "unresolved_exports",
+      "count": 0,
+      "note": "仅记录，无未解析导出"
+    },
+    {
+      "key": "carry_candidates",
+      "count": 0,
+      "note": "转换未提出；仍显式 carry py.typed、benchmark/data.toml 共 4,047 bytes"
+    },
+    {
+      "key": "modules_read / unreadable_modules",
+      "count": "9 / 0",
+      "note": "转换只读源码，没有执行项目"
+    }
+  ],
+  "run": [
+    "nanolize 分支 claude/graph-contract-field-fixes，提交 9413138036b515f119ff63fa6db082a6148103f0；未使用 main，未修改或推送 nanolize。原版 Tomli 提交 43a86ade8b795c6ef9b4ec53372a607cd1ed426f。",
+    "先写旧功能图与检查，再使用 contract-propose --manifest 旧清单 --output 新清单 --json 转换；输出事先不存在，未使用 --keep-checks。随后补充公开接口、配置默认值、固定文字、文件格式与脚本行为；未附详细 knowledge 库。冻结器自动生成 54 条事实，1 条被丢弃。",
+    "启动参数为 --scope all，owner_attends:false；design:true，未关闭 check-validation；相对 python 的 test_template 已提供，设计运行器继承作业 Codex 并开启独立会话。--original-overlap 未传，预算和上限未自定义；50% advisory 体积目标及时间/任务上限均为框架默认。",
+    "4 次作者调用产生 3 个候选。首轮缺少 tomli._types 且 benchmark 排版错误；第二候选修复导入但排版仍错；第三候选修复 benchmark，所有执行检查通过。最终候选提交 4b5cdde55445e1cb2471354f83520a9108da0942。",
+    "防默写 auto：整体阈值 40%，函数阈值 60%（至少 8 个可比较行），每文件最多退回 1 次。实际 22/357=6.162465%，0 个超限函数，退回文件 0、拒绝次数 0。",
+    "首轮作者不获得原版源码；默认修复策略向 2 次作者调用提供 api/parse/benchmark 的 3 个不同原版文件，累计 4 次文件授予（benchmark 重复授予）。这是输入与会话约束，不是操作系统强制源码隔离。",
+    "作业耗时 5033.058582 秒。34 条唯一模型调用回执合计输入 7,319,004（其中缓存 6,230,656）、输出 140,869（其中推理 56,786），总计 7,459,873 tokens。实际货币账单未知。",
+    "按阶段的 tokens：事实写入/审阅 1,476,704；测试设计/审阅 1,378,444；任务设计及原版求解/审阅 2,025,776；Controller 489,649；作者 2,089,300。阶段时长可能重叠，不能简单相加当作墙钟时间。",
+    "源码已导出到本地 tomli-nanolized-20261114-030425，交付提交 b60ee1c5c1e00f95fb46e3f709bc4ee6f0fd34b3。验证包 exported，SHA-256 d9cee692d07c37d75db4cbdd1024a14597f09ce229b17c49700ef02791671745；未进行跨机器重放验证。review-stop 正常返回 already_stopped:true。",
+    "全部 15 条问题见本页与 issues.md；其中昨天同类复现为 I07/I08/I12，其余为本次新记录。环境、监控和报告脚本问题单独标类，不把它们全部归为 nanolize 缺陷。没有需要本地补丁的 nanolize 错误，因此没有额外修复分支或补丁提交。"
+  ],
+  "limits": [
+    "体积为 source_and_configuration_v2、tiktoken 0.12.0 / cl100k_base 逐文件原始文本 tokens：源码 4,534 + 配置 1,472 = 6,006，基线 14,587。排除冻结测试、文档、启动器配置及二进制资源。物理源码行数为 544/1,132=48.06%。",
+    "同行比例以候选 357 个可比较代码行为分母；去空白，排除签名、装饰器、导入、注释、文档字符串、过短行和单纯保存同名参数的行。比较同路径同名函数及原版全局代码行。22 行重合为 6.16%，内置报告取整为 6%；不是全部文本行的 diff 比例。",
+    "旧口径 delivered.rewrite.unchanged_percent=37.6% 仅比较仍位于原路径的文件，按行长加权并包含配置，与跨路径源码同行比例不同，不能混用。去掉 Python 注释与文档字符串后的体积保留比例为 45.20%；公开定义文档覆盖从 17.0% 降至 0%，压缩包含文档减少。",
+    "模型总量包括作业内事实、设计、审阅、Controller、任务基线和作者调用；不含外部编排对话、安装准备、报告制作发布。缓存输入包含在输入内，推理输出包含在输出内，均不重复累加。未取得真实金额或计费费率，不虚构美元价格。",
+    "本次通过的测试不证明完整语义等价：fuzz/profile 未验证，内部节点并无独立外部叶测试，Python 3.15 条件项跳过，候选侧任务评估未开展。验收缺口原样保留；两次实验的结果均为 completed_with_gaps。",
+    "公开页面只发布汇总与脱敏问题记录；完整模型回执、任务隐含验收内容和本地执行路径保存在运行目录。"
+  ],
+  "evidence": {
+    "status": "completed_with_gaps",
+    "started_at": "2026-11-14T01:40:40.290987+00:00",
+    "completed_at": "2026-11-14T03:04:33.349569+00:00",
+    "elapsed_seconds": 5033.058582,
+    "size": {
+      "baseline_source_lines": 1132,
+      "baseline_tokens": 14587,
+      "complete": true,
+      "configuration_tokens": 1472,
+      "metric": "tokens",
+      "retained_percent": 41.17364776856105,
+      "source_files": 9,
+      "source_lines": 544,
+      "source_retained_percent": 48.0565371024735,
+      "source_tokens": 4534,
+      "target_met": true,
+      "target_percent": 50.0,
+      "target_source_lines": 566.0,
+      "target_tokens": 7293,
+      "tokenizer": {
+        "classification": "source_and_configuration_v2",
+        "decoding": "python_encoding_cookie_else_utf8_strict",
+        "encoding": "cl100k_base",
+        "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+        "file_boundaries": "independent_sum",
+        "library": "tiktoken",
+        "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+        "special_tokens": "ordinary_text",
+        "text_policy": "raw_decoded_text_per_file",
+        "version": "0.12.0"
+      },
+      "total_tokens": 6006
+    },
+    "code_quality": {
+      "delivered": {
+        "composition": {
+          "code_tokens": 5955,
+          "other_tokens": 1472,
+          "python_code_tokens": 4483,
+          "python_comment_tokens": 47,
+          "python_data_literal_tokens": 0,
+          "python_docstring_tokens": 0,
+          "python_files": 9,
+          "unparsed_python_files": 0
+        },
+        "documentation": {
+          "documented": 0,
+          "documented_percent": 0.0,
+          "public_definitions": 11
+        },
+        "rewrite": {
+          "files_at_an_original_path": 11,
+          "unchanged_percent": 37.6
+        },
+        "total_tokens": 6006
+      },
+      "original": {
+        "composition": {
+          "code_tokens": 13021,
+          "other_tokens": 5119,
+          "python_code_tokens": 7902,
+          "python_comment_tokens": 1100,
+          "python_data_literal_tokens": 0,
+          "python_docstring_tokens": 304,
+          "python_files": 9,
+          "unparsed_python_files": 0
+        },
+        "documentation": {
+          "documented": 8,
+          "documented_percent": 17.0,
+          "public_definitions": 47
+        },
+        "total_tokens": 14587
+      },
+      "original_overlap": {
+        "compared_lines": 357,
+        "documentation_percent": 1,
+        "function_limit_percent": 60,
+        "function_lines": 8,
+        "functions": 0,
+        "limit_percent": 40,
+        "mode": "auto",
+        "percent": 6
+      },
+      "schema_version": 1,
+      "status": "measured",
+      "summary": {
+        "documented_percent": {
+          "delivered": 0.0,
+          "original": 17.0
+        },
+        "total_retained_percent": 41.17,
+        "undocumented_retained_percent": 45.2
+      }
+    },
+    "overlap_summary": {
+      "share": 0.06162464985994398,
+      "compared_lines": 357,
+      "functions": [
+        [
+          "src/tomli/_parser.py",
+          "TOMLDecodeError.__init__",
+          12,
+          3
+        ],
+        [
+          "scripts/use_setuptools.py",
+          "use_setuptools",
+          7,
+          2
+        ],
+        [
+          "src/tomli/_parser.py",
+          "_Reader.atom",
+          18,
+          2
+        ],
+        [
+          "benchmark/run.py",
+          "run",
+          12,
+          1
+        ],
+        [
+          "fuzzer/fuzz.py",
+          "normalize_toml_obj",
+          9,
+          1
+        ],
+        [
+          "fuzzer/fuzz.py",
+          "test_one_input",
+          14,
+          1
+        ],
+        [
+          "benchmark/run.py",
+          "benchmark",
+          5,
+          0
+        ],
+        [
+          "src/tomli/_parser.py",
+          "_Reader.assignment_key",
+          6,
+          0
+        ],
+        [
+          "src/tomli/_parser.py",
+          "_Reader.comment",
+          6,
+          0
+        ],
+        [
+          "src/tomli/_parser.py",
+          "_Reader.document",
+          20,
+          0
+        ],
+        [
+          "src/tomli/_parser.py",
+          "_Reader.header",
+          25,
+          0
+        ],
+        [
+          "src/tomli/_parser.py",
+          "_Reader.key",
+          16,
+          0
+        ],
+        [
+          "src/tomli/_parser.py",
+          "_Reader.parent",
+          15,
+          0
+        ],
+        [
+          "src/tomli/_parser.py",
+          "_Reader.put",
+          5,
+          0
+        ],
+        [
+          "src/tomli/_parser.py",
+          "_Reader.space",
+          5,
+          0
+        ],
+        [
+          "src/tomli/_parser.py",
+          "_Reader.string",
+          51,
+          0
+        ],
+        [
+          "src/tomli/_parser.py",
+          "_Reader.value",
+          40,
+          0
+        ],
+        [
+          "src/tomli/_values.py",
+          "_zone",
+          6,
+          0
+        ],
+        [
+          "src/tomli/_values.py",
+          "scalar",
+          25,
+          0
+        ]
+      ],
+      "documentation_percent": 1,
+      "identical_lines": 22,
+      "percent": 6.162464985994398
+    },
+    "usage": {
+      "reported_calls": 34,
+      "totals": {
+        "input_tokens": 7319004,
+        "cached_input_tokens": 6230656,
+        "output_tokens": 140869,
+        "reasoning_output_tokens": 56786,
+        "input_plus_output_tokens": 7459873
+      },
+      "currency_cost": null
+    },
+    "usage_by_phase": {
+      "facts": {
+        "calls": 7,
+        "tokens": 1476704,
+        "seconds": 623.1926000000001
+      },
+      "task-effort": {
+        "calls": 7,
+        "tokens": 2025776,
+        "seconds": 1746.4816999999998
+      },
+      "test-design": {
+        "calls": 5,
+        "tokens": 1378444,
+        "seconds": 753.4381999999999
+      },
+      "controller": {
+        "calls": 11,
+        "tokens": 489649,
+        "seconds": 191.28820000000002
+      },
+      "author": {
+        "calls": 4,
+        "tokens": 2089300,
+        "seconds": 1013.838
+      }
+    },
+    "test_checks": [
+      {
+        "name": "test_data",
+        "status": "passed",
+        "role": "original",
+        "cases": {
+          "errors": 0,
+          "executed": 2,
+          "failed": 0,
+          "passed": 2,
+          "skipped": 0
+        },
+        "stdout_tail": ".. [100%]\n2 passed, 744 subtests passed in 0.74s\n"
+      },
+      {
+        "name": "test_error",
+        "status": "passed",
+        "role": "original",
+        "cases": {
+          "errors": 0,
+          "executed": 7,
+          "failed": 0,
+          "passed": 7,
+          "skipped": 0
+        },
+        "stdout_tail": ".......                                                                  [100%]\n7 passed in 0.03s\n"
+      },
+      {
+        "name": "test_misc",
+        "status": "passed",
+        "role": "original",
+        "cases": {
+          "errors": 0,
+          "executed": 8,
+          "failed": 0,
+          "passed": 8,
+          "skipped": 1
+        },
+        "stdout_tail": ".....s...                                                                [100%]\n8 passed, 1 skipped in 0.05s\n"
+      },
+      {
+        "name": "public-output-contract",
+        "status": "passed",
+        "role": "contract",
+        "cases": null,
+        "stdout_tail": "{\"f\": 1.25, \"n\": 42, \"table\": {\"ok\": true}, \"title\": \"tomli\"}\n{\"x\": [1, 2, 3]}\n1.25\n2.5.0\nTrue\n"
+      },
+      {
+        "name": "contract-benchmark-7e7cfc-1",
+        "status": "passed",
+        "role": "contract",
+        "cases": {
+          "errors": 0,
+          "executed": 5,
+          "failed": 0,
+          "passed": 5,
+          "skipped": 0
+        },
+        "stdout_tail": ".....                                                                    [100%]\n5 passed in 0.09s\n"
+      },
+      {
+        "name": "contract-packaging-7e7cfc-3",
+        "status": "passed",
+        "role": "contract",
+        "cases": {
+          "errors": 0,
+          "executed": 6,
+          "failed": 0,
+          "passed": 6,
+          "skipped": 0
+        },
+        "stdout_tail": "......                                                                   [100%]\n6 passed in 0.15s\n"
+      }
+    ],
+    "unchanged_files": {
+      "original_test_files": 979,
+      "original_test_differences": [],
+      "carry_differences": [],
+      "designed_test_files": 2,
+      "designed_test_differences": []
+    },
+    "source_reference": {
+      "author_calls": 2,
+      "capabilities": [
+        "api",
+        "benchmark",
+        "parse"
+      ],
+      "files": 3,
+      "file_grants_including_repeats": 4
+    },
+    "acceptance": {
+      "details": {
+        "behavior_obligations_incomplete": {
+          "capabilities": {
+            "failed": 0,
+            "partial": 1,
+            "retained": 9,
+            "unknown": 2,
+            "verified": 6
+          },
+          "failed": false
+        },
+        "current_full_behavior_comparison_missing_or_failed": {
+          "failed": false,
+          "failed_capabilities": [],
+          "failed_checks": [],
+          "issues": [],
+          "reason": "unverified"
+        },
+        "task_effort_not_passed": {
+          "failed": false,
+          "reason": "behavior_acceptance_pending",
+          "status": "unverified",
+          "synthetic": false
+        }
+      },
+      "failed": false,
+      "gaps": [
+        "current_full_behavior_comparison_missing_or_failed",
+        "behavior_obligations_incomplete",
+        "task_effort_not_passed"
+      ],
+      "limitations": [
+        "Passing checks is not proof of semantic equivalence.",
+        "The report lists gaps; it does not choose the next action."
+      ],
+      "outcome": "incomplete",
+      "profile": "delivery"
+    },
+    "verification_bundle": {
+      "bundle_sha256": "d9cee692d07c37d75db4cbdd1024a14597f09ce229b17c49700ef02791671745",
+      "status": "exported"
+    },
+    "design": {
+      "accepted": [
+        {
+          "capability": "benchmark",
+          "check": "contract-benchmark-7e7cfc-1",
+          "path": "tests/nanolize_contracts/benchmark/test_public_benchmark.py"
+        },
+        {
+          "capability": "packaging",
+          "check": "contract-packaging-7e7cfc-3",
+          "path": "tests/nanolize_contracts/packaging/test_backend_conversion.py"
+        }
+      ],
+      "rejected": [
+        {
+          "capability": "fuzz",
+          "path": "tests/nanolize_contracts/fuzz/test_fuzz_behavior.py",
+          "reasons": [
+            "reviewer_veto",
+            "The fuzz callback tests would pass if test_one_input immediately returned None, skipping parsing, serialization, normalization, and roundtrip validation entirely."
+          ],
+          "round": "review"
+        },
+        {
+          "capability": "profile",
+          "path": "tests/nanolize_contracts/profile/test_profile_workload.py",
+          "reasons": [
+            "reviewer_veto",
+            "Counts every profiled function named loads without identifying tomli.loads. A script calling an unrelated loads function 1000 times could pass without invoking the intended parser."
+          ],
+          "round": "review"
+        }
+      ],
+      "runner_failures": [],
+      "schema_version": 1
+    },
+    "metric_code_comparison": {
+      "src/nanolize/code_size.py": {
+        "previous": "24c1be66871e9502cb5bb0f4174637352575a21a",
+        "current": "24c1be66871e9502cb5bb0f4174637352575a21a"
+      },
+      "src/nanolize/code_quality.py": {
+        "previous": "3b7e5b25f5e14eab8c5022210276614d5c72086d",
+        "current": "3b7e5b25f5e14eab8c5022210276614d5c72086d"
+      },
+      "src/nanolize/original_overlap.py": {
+        "previous": "095a737132e99f9aff8456d8745e25f788ae45ca",
+        "current": "095a737132e99f9aff8456d8745e25f788ae45ca"
+      }
+    },
+    "candidate_commit": "4b5cdde55445e1cb2471354f83520a9108da0942",
+    "export_commit": "b60ee1c5c1e00f95fb46e3f709bc4ee6f0fd34b3"
+  }
+}
