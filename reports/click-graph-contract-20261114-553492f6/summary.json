@@ -183,9 +183,9 @@
     ]
   ],
   "result_notes": [
-    "交付 candidate-5，候选提交 e5449c598419d96019f9f11bba9f4aa437426ff1；独立本地仓库 click-nanolized-20261114-033838。原版与 nanolize 源码均保持干净，工具仍为指定提交。",
+    "交付 candidate-5，候选提交 e5449c598419d96019f9f11bba9f4aa437426ff1。原版与 nanolize 源码均保持干净，工具仍为指定提交。",
     "最终唯一验收缺口为 task_effort_not_passed（inconclusive）；没有未解决的已执行行为检查失败。不能把此结果表述为任务成本改善已获确认或完整语义等价。",
-    "共 5 次作者调用、4 轮行为修复，保留同一冻结合同。四类回归依次修复；协调者通过 job-diagnose 提供了两项绑定失败证据的简短语义诊断，未提供测试正文或原版实现。",
+    "共 5 次作者调用、4 轮行为修复，保留同一冻结合同；最终行为与安装检查通过。",
     "原版 uv.lock 占 94,781 tokens，约占总基线 44%；总体压缩同时包含锁文件和文档缩减。AST 口径公开定义文档字符串覆盖率从 57.7% 降为 0.0%，与昨天相同；运行时生成的装饰器说明仍由检查保护。",
     "作者报告精确的原版示例、文档及容器设置存在知识缺口，相应草稿为临时重建；这些内部节点没有独立验收，不能从 scope=all 推断其全部细节等价。"
   ],
@@ -547,333 +547,152 @@
     ]
   ],
   "issue_notes": [
-    "问题记录仅收录已有源码与复现证据、需要修改 claude/graph-contract-field-fixes 分支代码的缺陷；正常策略结果、模型输出失误、候选代码回归、配置及环境问题归入运行现象。是否在本次运行中打过补丁，不作为是否属于 bug 的判断条件。",
-    "本次确认 1 个需要修复 nanolize 分支代码的 bug，由 10 条事实过滤记录合并。它未在本次运行中修复；没有工具补丁提交，也没有向指定工具分支推送。候选最终通过检查不代表该工具缺陷已修复。"
+    "本节只列经核对确定需要修改 nanolize 分支的 10 项。",
+    "FACT-01～FACT-10 是同一事实过滤缺陷的 10 条记录，包含第二轮重试；合并计为 1 个根因。该缺陷位于 claude/graph-contract-field-fixes 分支，提交 9413138，本次尚未修复。",
+    "共同原因：src/nanolize/leaf_test_design.py 的 _test_terms 遍历整个 AST，将名称以 test 开头的嵌套 CLI 回调和被测辅助类型也收集为测试标识；_fact_reasons 再按词边界匹配事实全文，因而误拒合法输入、输出和对象值。FACT-01～09 命中普通值 test，FACT-10 命中被测类型名 TestType。",
+    "影响与处理：沿用默认第二轮改写，部分上下文事实补充成功；custom_parser 和 paramtype_no_name 两个测试仍有事实覆盖缺口。原版测试始终保留并在最终验收通过，事实缺口不等于跳过测试。",
+    "需要修改：修正测试入口识别和事实文本匹配边界，区分被测回调、辅助类型与真实测试标识，并覆盖这些误判场景；继续阻止真实测试名和节点 ID 泄露。证据为 test-facts.json 的 dropped[0..9]。"
   ],
   "phenomenon_notes": [
-    "本节保留另外 22 条运行现象及处理记录，并集中列出相同行和防默写记录。环境/配置失误、正常校验拒绝、候选实现回归、辅助命令失败和任务成本不确定均在此说明；它们没有被确认为需要修改 nanolize 分支代码的 bug。",
-    "4 类行为回归修复的是生成的 Click 候选代码；FACT-11 是独立复核对过度概括事实的正确拒绝；非法 request_id 被拒绝后原生回退成功；任务成本 inconclusive 和防默写 auto 的结果遵守既定规则。",
-    "没有关闭 check-validation、design、任务评估或防默写，也没有增加预算、降低阈值、删除失败检查。启动前将不符合原版的安装版本预期纠正为规范化版本，是修正无效预期，不是放宽原版合同。",
+    "本节只列由 nanolize 流程本身产生的现象；我们运行环境造成的情况未列入。",
+    "保留 TASK-002 的任务成本判定，以及相同行和防默写记录。任务成本 inconclusive 和防默写 auto 的结果遵守既定规则。",
     "任务成本不确定、内部节点豁免和事实提取缺口均明示；没有把它们记为额外通过。昨天报告仅公开了部分编号问题，其余未公开编号不臆测补齐。"
   ],
   "issue_summary": [
     [
-      "NANO-001",
-      "事实过滤器将嵌套回调和辅助类型误识别为测试入口",
+      "FACT-01",
+      "test_commands 事实提议被剔除",
+      "已确认，分支代码尚未修复"
+    ],
+    [
+      "FACT-02",
+      "test_commands 事实提议被剔除",
+      "已确认，分支代码尚未修复"
+    ],
+    [
+      "FACT-03",
+      "test_commands 事实提议被剔除",
+      "已确认，分支代码尚未修复"
+    ],
+    [
+      "FACT-04",
+      "test_commands 事实提议被剔除",
+      "已确认，分支代码尚未修复"
+    ],
+    [
+      "FACT-05",
+      "test_context 事实提议被剔除",
+      "已确认，分支代码尚未修复"
+    ],
+    [
+      "FACT-06",
+      "test_context 事实提议被剔除",
+      "已确认，分支代码尚未修复"
+    ],
+    [
+      "FACT-07",
+      "test_context 事实提议被剔除",
+      "已确认，分支代码尚未修复"
+    ],
+    [
+      "FACT-08",
+      "test_context 事实提议被剔除",
+      "已确认，分支代码尚未修复"
+    ],
+    [
+      "FACT-09",
+      "test_context 事实提议被剔除",
+      "已确认，分支代码尚未修复"
+    ],
+    [
+      "FACT-10",
+      "test_info_dict 事实提议被剔除",
       "已确认，分支代码尚未修复"
     ]
   ],
   "issues": [
     {
-      "id": "NANO-001",
-      "title": "事实过滤器将嵌套回调和辅助类型误识别为测试入口",
-      "status": "已确认，分支代码尚未修复",
-      "source_record_ids": [
-        "FACT-01",
-        "FACT-02",
-        "FACT-03",
-        "FACT-04",
-        "FACT-05",
-        "FACT-06",
-        "FACT-07",
-        "FACT-08",
-        "FACT-09",
-        "FACT-10"
-      ],
-      "details": [
-        "步骤：冻结前测试事实生成；作业 ID：553492f6820c472fb1724aa6f94d5f6b；分支 claude/graph-contract-field-fixes，提交 9413138。",
-        "原始诊断：fact_names_a_test。对应 10 条过滤记录，合并为 1 个分支缺陷。FACT-11 是独立复核正确拒绝过度概括的事实，不属于这个 bug。",
-        "源码原因：src/nanolize/leaf_test_design.py 的 _test_terms（978–994 行）遍历整个 AST，把任何以 test 开头的函数或类名收集为测试标识，没有区分真实测试入口与嵌套的被测回调、辅助类型；_fact_reasons 随后把这些名字当作全文禁词。普通行为值 test 也因此被拒绝。",
-        "复现：在测试函数内定义普通回调 def test(value)，事实 The context user object is the string 'test'. 被拒绝；在测试函数内定义辅助类 TestType，描述其可观察名称的事实同样被拒绝。两者都不是可收集的测试入口。对真正的 test_outer 测试标识的拒绝则应保留。复现仅调用静态解析和事实校验函数，没有执行 Click 或修改源码。",
-        "影响：custom_parser 和 paramtype_no_name 两个测试最终没有形成有效事实；原版测试本身始终保留。后者相关候选检查发生回归后，协调者通过原生 job-diagnose 补充语义诊断，候选最终通过。事实缺口不能被当作测试已跳过。",
-        "需要修改：修正 _test_terms 的测试入口识别及其与事实文本匹配的边界，区分被测回调/辅助类型和真实测试标识，并覆盖上述误判场景；继续阻止真实测试名和节点 ID 泄露，不能通过关闭事实过滤来处理。",
-        "本次处理及结果：运行时沿用默认第二轮改写；上下文相关事实得到补充，两个事实缺口仍保留。类型回归通过语义诊断及候选代码修复解决。nanolize 分支仍为干净的 9413138，本次没有修改该过滤器，也没有工具修复提交。",
-        "证据：test-facts.json 的 dropped[0..9]；logs/report-classification-reproduction.json；下方保留对应 10 条原始记录。"
-      ],
-      "source_records": [
-        {
-          "id": "FACT-01",
-          "title": "test_commands 事实提议被剔除",
-          "body": "- 步骤：冻结前测试事实生成；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`[\"fact_names_a_test\"]`。\n- 涉及检查：`tests/test_commands.py::test_custom_parser`。\n- 原因判断：提议包含测试侧名称或固定样例文字，被事实隔离规则拒绝；普通值 test 及 TestType 等样例名称也受到此限制。\n- 绕过：由框架默认第二轮自动改写并独立复核；未修改清单、检查、nanolize 代码或参数，没有关闭事实过滤。\n- 结果：默认第二轮仍未形成覆盖该测试的有效事实；相应原版测试继续作为完整验收约束，事实缺口保留。证据：test-facts.json dropped[0]。"
-        },
-        {
-          "id": "FACT-02",
-          "title": "test_commands 事实提议被剔除",
-          "body": "- 步骤：冻结前测试事实生成；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`[\"fact_names_a_test\"]`。\n- 涉及检查：`tests/test_commands.py::test_custom_parser`。\n- 原因判断：提议包含测试侧名称或固定样例文字，被事实隔离规则拒绝；普通值 test 及 TestType 等样例名称也受到此限制。\n- 绕过：由框架默认第二轮自动改写并独立复核；未修改清单、检查、nanolize 代码或参数，没有关闭事实过滤。\n- 结果：默认第二轮仍未形成覆盖该测试的有效事实；相应原版测试继续作为完整验收约束，事实缺口保留。证据：test-facts.json dropped[1]。"
-        },
-        {
-          "id": "FACT-03",
-          "title": "test_commands 事实提议被剔除",
-          "body": "- 步骤：冻结前测试事实生成；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`[\"fact_names_a_test\"]`。\n- 涉及检查：`tests/test_commands.py::test_custom_parser`。\n- 原因判断：提议包含测试侧名称或固定样例文字，被事实隔离规则拒绝；普通值 test 及 TestType 等样例名称也受到此限制。\n- 绕过：由框架默认第二轮自动改写并独立复核；未修改清单、检查、nanolize 代码或参数，没有关闭事实过滤。\n- 结果：默认第二轮仍未形成覆盖该测试的有效事实；相应原版测试继续作为完整验收约束，事实缺口保留。证据：test-facts.json dropped[2]。"
-        },
-        {
-          "id": "FACT-04",
-          "title": "test_commands 事实提议被剔除",
-          "body": "- 步骤：冻结前测试事实生成；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`[\"fact_names_a_test\"]`。\n- 涉及检查：`tests/test_commands.py::test_custom_parser`。\n- 原因判断：提议包含测试侧名称或固定样例文字，被事实隔离规则拒绝；普通值 test 及 TestType 等样例名称也受到此限制。\n- 绕过：由框架默认第二轮自动改写并独立复核；未修改清单、检查、nanolize 代码或参数，没有关闭事实过滤。\n- 结果：默认第二轮仍未形成覆盖该测试的有效事实；相应原版测试继续作为完整验收约束，事实缺口保留。证据：test-facts.json dropped[3]。"
-        },
-        {
-          "id": "FACT-05",
-          "title": "test_context 事实提议被剔除",
-          "body": "- 步骤：冻结前测试事实生成；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`[\"fact_names_a_test\"]`。\n- 涉及检查：`tests/test_context.py::test_get_context_objects`, `tests/test_context.py::test_get_context_objects_no_ensuring`。\n- 原因判断：提议包含测试侧名称或固定样例文字，被事实隔离规则拒绝；普通值 test 及 TestType 等样例名称也受到此限制。\n- 绕过：由框架默认第二轮自动改写并独立复核；未修改清单、检查、nanolize 代码或参数，没有关闭事实过滤。\n- 结果：默认第二轮改写后通过复核；对应检查保持不变。证据：test-facts.json dropped[4]。"
-        },
-        {
-          "id": "FACT-06",
-          "title": "test_context 事实提议被剔除",
-          "body": "- 步骤：冻结前测试事实生成；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`[\"fact_names_a_test\"]`。\n- 涉及检查：`tests/test_context.py::test_pass_obj`。\n- 原因判断：提议包含测试侧名称或固定样例文字，被事实隔离规则拒绝；普通值 test 及 TestType 等样例名称也受到此限制。\n- 绕过：由框架默认第二轮自动改写并独立复核；未修改清单、检查、nanolize 代码或参数，没有关闭事实过滤。\n- 结果：默认第二轮改写后通过复核；对应检查保持不变。证据：test-facts.json dropped[5]。"
-        },
-        {
-          "id": "FACT-07",
-          "title": "test_context 事实提议被剔除",
-          "body": "- 步骤：冻结前测试事实生成；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`[\"fact_names_a_test\"]`。\n- 涉及检查：`tests/test_context.py::test_make_pass_meta_decorator_doc`。\n- 原因判断：提议包含测试侧名称或固定样例文字，被事实隔离规则拒绝；普通值 test 及 TestType 等样例名称也受到此限制。\n- 绕过：由框架默认第二轮自动改写并独立复核；未修改清单、检查、nanolize 代码或参数，没有关闭事实过滤。\n- 结果：默认第二轮改写后通过复核；对应检查保持不变。证据：test-facts.json dropped[6]。"
-        },
-        {
-          "id": "FACT-08",
-          "title": "test_context 事实提议被剔除",
-          "body": "- 步骤：冻结前测试事实生成；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`[\"fact_names_a_test\"]`。\n- 涉及检查：`tests/test_context.py::test_close_before_pop`。\n- 原因判断：提议包含测试侧名称或固定样例文字，被事实隔离规则拒绝；普通值 test 及 TestType 等样例名称也受到此限制。\n- 绕过：由框架默认第二轮自动改写并独立复核；未修改清单、检查、nanolize 代码或参数，没有关闭事实过滤。\n- 结果：默认第二轮改写后通过复核；对应检查保持不变。证据：test-facts.json dropped[7]。"
-        },
-        {
-          "id": "FACT-09",
-          "title": "test_context 事实提议被剔除",
-          "body": "- 步骤：冻结前测试事实生成；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`[\"fact_names_a_test\"]`。\n- 涉及检查：`tests/test_context.py::test_close_before_exit`。\n- 原因判断：提议包含测试侧名称或固定样例文字，被事实隔离规则拒绝；普通值 test 及 TestType 等样例名称也受到此限制。\n- 绕过：由框架默认第二轮自动改写并独立复核；未修改清单、检查、nanolize 代码或参数，没有关闭事实过滤。\n- 结果：默认第二轮改写后通过复核；对应检查保持不变。证据：test-facts.json dropped[8]。"
-        },
-        {
-          "id": "FACT-10",
-          "title": "test_info_dict 事实提议被剔除",
-          "body": "- 步骤：冻结前测试事实生成；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`[\"fact_names_a_test\"]`。\n- 涉及检查：`tests/test_info_dict.py::test_paramtype_no_name`。\n- 原因判断：提议包含测试侧名称或固定样例文字，被事实隔离规则拒绝；普通值 test 及 TestType 等样例名称也受到此限制。\n- 绕过：由框架默认第二轮自动改写并独立复核；未修改清单、检查、nanolize 代码或参数，没有关闭事实过滤。\n- 结果：默认第二轮仍未形成覆盖该测试的有效事实；相应原版测试继续作为完整验收约束，事实缺口保留。证据：test-facts.json dropped[9]。"
-        }
-      ]
+      "id": "FACT-01",
+      "title": "test_commands 事实提议被剔除",
+      "body": "- 步骤：冻结前测试事实生成；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`[\"fact_names_a_test\"]`。\n- 涉及检查：`tests/test_commands.py::test_custom_parser`。\n- 原因判断：合法子命令名 test 被整文件 AST 收集为测试标识，精确输入输出事实因 fact_names_a_test 被误过滤。\n- 绕过：由框架默认第二轮自动改写并独立复核；未修改清单、检查、nanolize 代码或参数，没有关闭事实过滤。\n- 结果：默认第二轮仍未形成覆盖该测试的有效事实；相应原版测试继续作为完整验收约束，事实缺口保留。证据：test-facts.json dropped[0]。",
+      "status": "已确认，分支代码尚未修复"
+    },
+    {
+      "id": "FACT-02",
+      "title": "test_commands 事实提议被剔除",
+      "body": "- 步骤：冻结前测试事实生成；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`[\"fact_names_a_test\"]`。\n- 涉及检查：`tests/test_commands.py::test_custom_parser`。\n- 原因判断：帮助输出 Usage: foo test [OPTIONS] 中的合法命令名 test 被误认成测试标识。\n- 绕过：由框架默认第二轮自动改写并独立复核；未修改清单、检查、nanolize 代码或参数，没有关闭事实过滤。\n- 结果：默认第二轮仍未形成覆盖该测试的有效事实；相应原版测试继续作为完整验收约束，事实缺口保留。证据：test-facts.json dropped[1]。",
+      "status": "已确认，分支代码尚未修复"
+    },
+    {
+      "id": "FACT-03",
+      "title": "test_commands 事实提议被剔除",
+      "body": "- 步骤：冻结前测试事实生成；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`[\"fact_names_a_test\"]`。\n- 涉及检查：`tests/test_commands.py::test_custom_parser`。\n- 原因判断：第二轮已将合法命令描述为 subcommand named test，仍命中无上下文的禁词匹配。\n- 绕过：由框架默认第二轮自动改写并独立复核；未修改清单、检查、nanolize 代码或参数，没有关闭事实过滤。\n- 结果：默认第二轮仍未形成覆盖该测试的有效事实；相应原版测试继续作为完整验收约束，事实缺口保留。证据：test-facts.json dropped[2]。",
+      "status": "已确认，分支代码尚未修复"
+    },
+    {
+      "id": "FACT-04",
+      "title": "test_commands 事实提议被剔除",
+      "body": "- 步骤：冻结前测试事实生成；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`[\"fact_names_a_test\"]`。\n- 涉及检查：`tests/test_commands.py::test_custom_parser`。\n- 原因判断：第二轮精确帮助事实中的 test --help 和 Usage: foo test [OPTIONS] 再次被误过滤。\n- 绕过：由框架默认第二轮自动改写并独立复核；未修改清单、检查、nanolize 代码或参数，没有关闭事实过滤。\n- 结果：默认第二轮仍未形成覆盖该测试的有效事实；相应原版测试继续作为完整验收约束，事实缺口保留。证据：test-facts.json dropped[3]。",
+      "status": "已确认，分支代码尚未修复"
+    },
+    {
+      "id": "FACT-05",
+      "title": "test_context 事实提议被剔除",
+      "body": "- 步骤：冻结前测试事实生成；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`[\"fact_names_a_test\"]`。\n- 涉及检查：`tests/test_context.py::test_get_context_objects`, `tests/test_context.py::test_get_context_objects_no_ensuring`。\n- 原因判断：对象标题及输出值 test 与同文件嵌套回调名碰撞，正常对象传递事实被误过滤。\n- 绕过：由框架默认第二轮自动改写并独立复核；未修改清单、检查、nanolize 代码或参数，没有关闭事实过滤。\n- 结果：默认第二轮改写后通过复核；对应检查保持不变。证据：test-facts.json dropped[4]。",
+      "status": "已确认，分支代码尚未修复"
+    },
+    {
+      "id": "FACT-06",
+      "title": "test_context 事实提议被剔除",
+      "body": "- 步骤：冻结前测试事实生成；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`[\"fact_names_a_test\"]`。\n- 涉及检查：`tests/test_context.py::test_pass_obj`。\n- 原因判断：pass_obj 传入并打印的普通字符串值 test 被误认成测试标识。\n- 绕过：由框架默认第二轮自动改写并独立复核；未修改清单、检查、nanolize 代码或参数，没有关闭事实过滤。\n- 结果：默认第二轮改写后通过复核；对应检查保持不变。证据：test-facts.json dropped[5]。",
+      "status": "已确认，分支代码尚未修复"
+    },
+    {
+      "id": "FACT-07",
+      "title": "test_context 事实提议被剔除",
+      "body": "- 步骤：冻结前测试事实生成；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`[\"fact_names_a_test\"]`。\n- 涉及检查：`tests/test_context.py::test_make_pass_meta_decorator_doc`。\n- 原因判断：普通描述 the test value 命中同文件其他测试内的 CLI 回调名，属于整文件禁词污染。\n- 绕过：由框架默认第二轮自动改写并独立复核；未修改清单、检查、nanolize 代码或参数，没有关闭事实过滤。\n- 结果：默认第二轮改写后通过复核；对应检查保持不变。证据：test-facts.json dropped[6]。",
+      "status": "已确认，分支代码尚未修复"
+    },
+    {
+      "id": "FACT-08",
+      "title": "test_context 事实提议被剔除",
+      "body": "- 步骤：冻结前测试事实生成；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`[\"fact_names_a_test\"]`。\n- 涉及检查：`tests/test_context.py::test_close_before_pop`。\n- 原因判断：context 弹栈前 close 回调读取的正常对象值 test 被误过滤。\n- 绕过：由框架默认第二轮自动改写并独立复核；未修改清单、检查、nanolize 代码或参数，没有关闭事实过滤。\n- 结果：默认第二轮改写后通过复核；对应检查保持不变。证据：test-facts.json dropped[7]。",
+      "status": "已确认，分支代码尚未修复"
+    },
+    {
+      "id": "FACT-09",
+      "title": "test_context 事实提议被剔除",
+      "body": "- 步骤：冻结前测试事实生成；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`[\"fact_names_a_test\"]`。\n- 涉及检查：`tests/test_context.py::test_close_before_exit`。\n- 原因判断：显式 context exit 时 close 回调读取的正常对象值 test 被误过滤。\n- 绕过：由框架默认第二轮自动改写并独立复核；未修改清单、检查、nanolize 代码或参数，没有关闭事实过滤。\n- 结果：默认第二轮改写后通过复核；对应检查保持不变。证据：test-facts.json dropped[8]。",
+      "status": "已确认，分支代码尚未修复"
+    },
+    {
+      "id": "FACT-10",
+      "title": "test_info_dict 事实提议被剔除",
+      "body": "- 步骤：冻结前测试事实生成；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`[\"fact_names_a_test\"]`。\n- 涉及检查：`tests/test_info_dict.py::test_paramtype_no_name`。\n- 原因判断：被测辅助类 TestType 仅因名称前缀被识别成测试类，其可观察类型名称事实被误过滤。\n- 绕过：由框架默认第二轮自动改写并独立复核；未修改清单、检查、nanolize 代码或参数，没有关闭事实过滤。\n- 结果：默认第二轮仍未形成覆盖该测试的有效事实；相应原版测试继续作为完整验收约束，事实缺口保留。证据：test-facts.json dropped[9]。",
+      "status": "已确认，分支代码尚未修复"
     }
   ],
   "phenomenon_summary": [
     [
-      "SETUP-001",
-      "GitHub HTTPS 与直接 SSH 探测失败",
-      "使用既有 SSH 配置取得指定提交。"
-    ],
-    [
-      "SETUP-002",
-      "报告网页工具读取失败",
-      "curl 成功取得昨天公开报告。"
-    ],
-    [
-      "SETUP-003",
-      "pip 继承的额外索引无法解析",
-      "仅本次进程使用干净的 pip 索引配置，安装通过。"
-    ],
-    [
-      "SETUP-004",
-      "报告仓库没有 gh-pages 分支",
-      "使用报告仓库现有 main 分支及独立目录。"
-    ],
-    [
-      "SETUP-005",
-      "新增包级检查使用错误的 compare 枚举",
-      "提交前将 compare 改为正确的 output。"
-    ],
-    [
-      "SETUP-006",
-      "静态规划发现遗漏开发容器脚本映射",
-      "提交前补全映射，33 个生产文件全覆盖。"
-    ],
-    [
-      "RUN-001",
-      "默认 Slurm 探测失败并自动回退本机",
-      "两次 auto 探测均原生回退本机，检查继续。"
-    ],
-    [
-      "MON-001",
-      "监控递归枚举碰到已删除的临时路径",
-      "仅修正协调者监控，不影响作业或验收。"
-    ],
-    [
-      "RUN-002",
-      "安装元数据预期未采用 PEP 440 规范化版本",
-      "取消错误预期的首个作业并重启，成本保留。"
-    ],
-    [
-      "FACT-11",
-      "test_info_dict 事实提议被剔除",
-      "默认第二轮仍有事实缺口；原测试保留并最终通过。"
-    ],
-    [
-      "MON-002",
-      "监控汇总误将结构化 case_status 当作字符串",
-      "仅修正协调者监控，不影响作业或验收。"
-    ],
-    [
-      "TASK-001",
-      "任务工作区没有 Git 元数据",
-      "6 次试次均遇到附带 Git 状态探测错误，随后独立验收均通过。"
-    ],
-    [
-      "CTRL-001",
-      "控制器 request_id 含空格被拒绝",
-      "非法 request_id 被拒绝，原生默认步骤接续成功。"
-    ],
-    [
-      "MON-003",
-      "作者日志输出过大被工具截断",
-      "仅修正协调者监控，不影响作业或验收。"
-    ],
-    [
-      "MON-004",
-      "辅助源码定位使用了不存在的路径",
-      "仅修正协调者监控，不影响作业或验收。"
-    ],
-    [
-      "AUTHOR-001",
-      "作者的默认解释器缺少 tiktoken",
-      "两次默认解释器缺包；作者改用 venv 或等待正式计量，最终计量成功。"
-    ],
-    [
-      "VERIFY-001",
-      "弃用帮助翻译改变格式占位符导致 KeyError",
-      "candidate-3 修复，后续保持通过。"
-    ],
-    [
-      "VERIFY-002",
-      "未命名 ParamType 的信息字典名称错误",
-      "补充语义诊断后 candidate-5 修复。"
-    ],
-    [
-      "VERIFY-003",
-      "兼容性 __version__ 与运行环境安装元数据不一致",
-      "补充语义诊断后 candidate-4 修复。"
-    ],
-    [
-      "VERIFY-004",
-      "普通文本换行后的前导空格丢失",
-      "candidate-2 修复，后续保持通过。"
-    ],
-    [
       "TASK-002",
       "任务成本范围重叠，改善判定不确定",
       "保留 inconclusive 与 heldout 未运行，最终带缺口交付。"
-    ],
-    [
-      "TASK-003",
-      "任务求解器猜错测试文件路径",
-      "2 次路径猜测错误，求解器自行继续，两个试次独立验收通过。"
     ]
   ],
   "phenomenon_records": [
     {
-      "id": "SETUP-001",
-      "title": "GitHub HTTPS 与直接 SSH 探测失败",
-      "body": "- 步骤：取得指定 nanolize 分支；作业 ID：尚未创建。\n- 原始诊断：`fatal: could not read Username for 'https://github.com': No such device or address`；直接 SSH 探测 `Host key verification failed.`\n- 原因判断：本环境没有 HTTPS credential helper；直接 ssh 没有使用环境预设的 GIT_SSH_COMMAND。\n- 绕过：改用 `git@github.com:WeianMao/nanolize.git`，由 Git 使用既有 SSH 配置；不修改源码、验收或预算。\n- 结果：SSH 拉取成功，分支头为 9413138036b515f119ff63fa6db082a6148103f0。"
-    },
-    {
-      "id": "SETUP-002",
-      "title": "报告网页工具读取失败",
-      "body": "- 步骤：读取昨天公开报告；作业 ID：尚未创建。\n- 原始诊断：web 工具返回 `Internal Error`、`is not accessible via this tool`。\n- 原因判断：网页读取工具访问限制，站点本身可访问。\n- 绕过：使用 curl 下载原 URL 到 `tmp/yesterday.html`，解析为 `tmp/yesterday.txt`。\n- 结果：成功取得 32,700 字节完整报告，无验收变更。"
-    },
-    {
-      "id": "SETUP-003",
-      "title": "pip 继承的额外索引无法解析",
-      "body": "- 步骤：安装指定分支及运行依赖；作业 ID：尚未创建。\n- 原始诊断：`Failed to establish a new connection: [Errno -2] Name or service not known`，见 logs/nanolize-install.log 和 logs/nanolize-install-pypi.log。\n- 原因判断：用户级 pip.conf 的 extra-index-url 指向无法解析的 pypi.ngc.nvidia.com；仅指定 --index-url 未去掉额外索引。\n- 绕过：仅对本次安装设置 PIP_CONFIG_FILE=/dev/null，使用 https://pypi.org/simple；后续安装检查同样使用该环境，不修改全局配置。\n- 结果：依赖安装成功，完成状态见 logs/nanolize-install-clean.log；工具版本和提交已核对，验收未变。"
-    },
-    {
-      "id": "SETUP-004",
-      "title": "报告仓库没有 gh-pages 分支",
-      "body": "- 步骤：准备公开报告部署；作业 ID：尚未创建。\n- 原始诊断：`fatal: Remote branch gh-pages not found in upstream origin`。\n- 原因判断：沿用工具默认报告分支名，但此站点只有 main 分支。\n- 绕过：git ls-remote 确认后改为克隆报告仓库 main；nanolize 仍固定在 claude/graph-contract-field-fixes 的 9413138。\n- 结果：已确认并使用报告仓库的 main 分支，报告写入独立的 reports/click-graph-contract-20261114-553492f6 目录，沿用现有 Pages 发布；nanolize 的安装分支始终未变，不涉及测试标准。"
-    },
-    {
-      "id": "SETUP-005",
-      "title": "新增包级检查使用错误的 compare 枚举",
-      "body": "- 步骤：规划最终清单；作业 ID：尚未创建。\n- 原始诊断：`ValueError: compare must be 'exit' or 'output'`。\n- 原因判断：协调者将输出比较误写为 stdout；是清单配置错误。\n- 绕过：将 scripts/finalize_manifest.py 和 config/manifest-graph.json 中 package-public-contract 的 compare 改为 output，比较标准保持输出一致。\n- 结果：重新规划和启动；未修改 nanolize 代码或降低验收要求。"
-    },
-    {
-      "id": "SETUP-006",
-      "title": "静态规划发现遗漏开发容器脚本映射",
-      "body": "- 步骤：提交前完整性复核；作业 ID：尚未创建。\n- 原始诊断：plan.protected_files 包含 `.devcontainer/on-create-command.sh`；该情况提交时触发 `rewrite_source_mapping_incomplete`。\n- 原因判断：首版功能图覆盖 Python 源码但漏掉了同样计入生产源码的 shell 初始化脚本。\n- 绕过：将其加入最终清单 documentation-support.paths，并描述开发环境初始化行为；包级输出检查同时映射到它实际调用的 commands 叶节点。关闭未提交的旧 review，按新清单重新创建。\n- 结果：全部 33 个生产文件均有功能归属；无范围排除或验收放宽。"
-    },
-    {
-      "id": "RUN-001",
-      "title": "默认 Slurm 探测失败并自动回退本机",
-      "body": "- 步骤：冻结前检查执行器探测；作业 ID：`8100f73b035a4337b39696c65e880fa0`。\n- 原始诊断：\n\n```text\nfell back: the batch could not be submitted: Scheduler command failed: sbatch: sbatch: error: You forgot to specify which account you want to use.\nsbatch: error: To see the list of accounts which you have access to:\nsbatch: error:     sacctmgr -nP show assoc where user=$(whoami) format=account\nsbatch: error: Batch job submission failed: Invalid account or account/partition combination specified\n```\n\n- 原因判断：集群要求显式 account，但默认 auto 配置没有 account；探测尚未运行任何项目检查。\n- 绕过：nanolize 原生 auto 回退将执行位置记为 local；未修改配置、预算、测试或代码。\n- 结果：控制器正常启动并进入测试事实生成；后续原版和候选在同一执行环境比较。证据：check-executor.json；替代作业 553492f6820c472fb1724aa6f94d5f6b 在 01:48:13 UTC 同样探测失败并自动回退 local（第二次发生），无参数变更。"
-    },
-    {
-      "id": "MON-001",
-      "title": "监控递归枚举碰到已删除的临时路径",
-      "body": "- 步骤：检查事实生成进度；作业 ID：`8100f73b035a4337b39696c65e880fa0`。\n- 原始诊断：`FileNotFoundError: [Errno 2] No such file or directory`，路径位于 facts/test_command_decorators/.../write/workspace/.codex。\n- 原因判断：事实运行器清理临时目录时，监控的 pathlib.rglob 正在递归枚举；非作业失败。\n- 绕过：后续只读取固定证据文件或用 rg --files 枚举，不递归遍历活动工作区中的 .codex 目录。\n- 结果：作业仍在正常生成事实，无源码、配置或验收变更。"
-    },
-    {
-      "id": "RUN-002",
-      "title": "安装元数据预期未采用 PEP 440 规范化版本",
-      "body": "- 步骤：首个作业提交后的原版安装检查复核；作业 ID：`8100f73b035a4337b39696c65e880fa0`。\n- 原始诊断：Flit normalise_version 输出 `Version number normalised: '8.6.0.dev' -> '8.6.0.dev0' (see PEP 440)`；安装检查误写 `assert d.version == \"8.6.0.dev\"`，该预期原版也不满足。\n- 原因判断：协调者混淆 pyproject.toml 声明版本与安装后的规范化版本；非 nanolize 故障。\n- 绕过：通过 job-cancel 停止尚在写测试事实的首个作业，保留全部状态；修正 config/installation-checks.json 和 scripts/finalize_manifest.py 为精确断言 8.6.0.dev0，按同一来源、图、检查和默认预算重新启动 review/job；不改冻结配置、不丢弃此作业的成本记录。\n- 结果：原版五项安装预检全部通过（logs/original-install-preflight.json）；替代作业 `553492f6820c472fb1724aa6f94d5f6b` 已完成交付，28/28 行为检查及 5/5 安装检查通过；已取消作业记录到 1,008,460 tokens，另有 4 次取消调用缺少用量，均在报告披露。这是纠正不符合原版的测试预期，未撤销或放宽任何原版行为要求。"
-    },
-    {
-      "id": "FACT-11",
-      "title": "test_info_dict 事实提议被剔除",
-      "body": "- 步骤：冻结前测试事实生成；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`[\"reviewer_veto\", \"Overgeneralizes the fallback name: the source truncates the class name at the first occurrence of \\\"ParamType\\\" or \\\"ParameterType\\\". The asserted name is unchanged because it contains neither substring.\"]`。\n- 涉及检查：`tests/test_info_dict.py::test_paramtype_no_name`。\n- 原因判断：独立复核发现事实概括超出源码与断言所支持的范围。\n- 绕过：由框架默认第二轮自动改写并独立复核；未修改清单、检查、nanolize 代码或参数，没有关闭事实过滤。\n- 结果：默认第二轮仍未形成覆盖该测试的有效事实；相应原版测试继续作为完整验收约束，事实缺口保留。证据：test-facts.json dropped[10]。"
-    },
-    {
-      "id": "MON-002",
-      "title": "监控汇总误将结构化 case_status 当作字符串",
-      "body": "- 步骤：统计冻结基线；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`TypeError: unhashable type: 'dict'`。\n- 原因判断：协调者诊断脚本用 Counter 汇总字典型 case_status；不是 nanolize 作业失败。\n- 绕过：改为对每组检查的 cases 计数字段求和，不改任何证据。\n- 结果：成功得到 {\"passed\": 811, \"failed\": 0, \"errors\": 0, \"skipped\": 1, \"executed\": 811}，原作业继续运行；无验收变更。"
-    },
-    {
-      "id": "TASK-001",
-      "title": "任务工作区没有 Git 元数据",
-      "body": "- 步骤：原版任务 development/modify/0 求解中的只读状态探测；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`fatal: not a git repository (or any parent up to mount point /lustre)`；`Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).`，git status 退出码 128。\n- 原因判断：任务使用独立导出工作区，不含原仓库 Git 元数据；求解器的附带检查不适用。\n- 绕过：求解器继续直接读取和编辑指定工作区文件，自行探测修改；未增加 Git 历史、未使用外部仓库、未改变验收。\n- 结果：该试次独立冻结验收通过，status=passed，blocker=none。任务要求修改前的自建探测出现预期失败，修改后通过，这属于任务正常的先失败后修复过程，未列为基线回归。\n- 最终审计：相同 Git 状态探测错误共出现 6 次，覆盖 original/development/modify/{0,1,2} 及 candidates/5/candidate/development/modify/{0,1,2}。每次均自行继续，6 次独立验收全通过。修改前自建探测的预期失败，以及 diff 因确有差异返回 1，属于任务过程，不是新增基线回归。"
-    },
-    {
-      "id": "CTRL-001",
-      "title": "控制器 request_id 含空格被拒绝",
-      "body": "- 步骤：控制器第 2 轮启动首次实现；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`call 1 (run_agent): request_id is 1 to 100 letters, digits, - or _ and does not start with op-`；提交值为 `implement-scope-1 initial-rewrite`。\n- 原因判断：控制器生成的请求标识含空格，不符合工具调用协议；模型运行本身成功，工具校验正确拒绝。\n- 绕过：框架原生回退采用 advice 的 run_agent 步骤；未改代码、schema、参数规则或任何验收标准。\n- 结果：02:48:23 UTC 作者第 1 轮正常启动。证据：controller/0002/run/run.json、operations.jsonl 第 15 条记录。"
-    },
-    {
-      "id": "MON-003",
-      "title": "作者日志输出过大被工具截断",
-      "body": "- 步骤：首次作者运行期间的只读进度检查；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`Output exceeded available model context and truncated.`。\n- 原因判断：协调者输出作者最近消息时没有限制单条长度，包含长消息；并非作业运行失败。\n- 绕过：新增 `scripts/author_status.py`，限制消息、命令及错误尾部的输出长度，只报告统计和摘要；未改动运行中的作者会话或文件。\n- 结果：后续进度查询正常，原作业持续运行，无验收变更。"
-    },
-    {
-      "id": "MON-004",
-      "title": "辅助源码定位使用了不存在的路径",
-      "body": "- 步骤：阅读报告和用量统计实现；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`rg: nanolize/nanolize/report*: No such file or directory (os error 2)`、`rg: nanolize/nanolize/jobs/execution.py: No such file or directory (os error 2)`；稍后另一次查询为 `rg: nanolize/src/nanolize/usage.py: No such file or directory (os error 2)`。\n- 原因判断：协调者初次猜测了旧式包路径和不存在的独立 usage 模块，实际代码位于 `src/nanolize`，用量统计在 execution.py。\n- 绕过：先使用 `rg --files` 定位，再读取已存在的实际文件；没有修改 nanolize 代码或运行参数。\n- 结果：已定位报告、交付及用量统计实现，运行作业不受影响。"
-    },
-    {
-      "id": "AUTHOR-001",
-      "title": "作者的默认解释器缺少 tiktoken",
-      "body": "- 步骤：作者第 1 轮实现后的可选体积估算；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`ModuleNotFoundError No module named 'tiktoken'`。\n- 原因判断：作者使用的默认 `python` 与运行 nanolize 的 venv 解释器不同；后者已安装固定的 tiktoken 0.12.0，前者没有该包。\n- 绕过：作者先保留体积未知的状态并继续自检，随后改用本次作业 venv/bin/python，并核对 tiktoken 版本及词表哈希，完成草稿估算。正式体积仍由 nanolize 自己的固定 tokenizer 在验证及交付时计算，未修改源码、策略或验收来消除此提示。\n- 结果：作者的草稿估算恢复为 34,233 tokens；candidate-1 正式测量为 35,031 tokens（还包含验证端携入的配置）。后续以最终交付测量为准，不能把草稿估算当作正式压缩率。\n- 再次出现：作者第 4 轮的可选增量 token 估算又使用默认 python，报 `ModuleNotFoundError: No module named 'tiktoken'`，命令退出 1；该调用仍完成版本属性修复，随后 verifier 对 candidate-4 正式计量成功（35,122 tokens）。这不影响行为/安装验收，未把估算失败当成体积通过证据。"
-    },
-    {
-      "id": "VERIFY-001",
-      "title": "弃用帮助翻译改变格式占位符导致 KeyError",
-      "body": "- 步骤：candidate-1 全量冻结行为比较；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`test_deprecated_help_text_is_not_translated`；`AssertionError: assert 'sub help (DEPRECATED: REASON)' in ''`；`where '' = <Result KeyError('REASON')>.output`。\n- 原因判断：初次根据 KeyError 误判为弃用原因被翻译；作者定位并经 candidate-2 源码核对后确认，传给翻译钩子的模板包含 `{reason}`，测试的大写转换将其改为 `{REASON}`，随后 format(reason=...) 找不到大写键而抛 KeyError。修复需避免翻译改变格式占位符，同时保留应用提供的帮助及弃用原因文本。\n- 绕过：保留冻结检查并进入框架默认修复流程，让作者修改候选生产代码；不修改检查或翻译预期，不放宽验收。\n- 结果：candidate-1 该组失败，待后续候选重测。证据：attempts/1/verification.json，test_commands/current。\n- 后续记录：candidate-2 仅修复 formatting，本问题在全量重测中仍出现，继续默认修复；未改检查或预期。\n- 修复结果：作者第 3 轮修改 src/click/core.py 的弃用标签组合方式；candidate-3 中 test_commands 全部通过，先前 formatting 修复也保持通过；全量为 26/28 组，安装 5/5。证据：attempts/3/verification.json。"
-    },
-    {
-      "id": "VERIFY-002",
-      "title": "未命名 ParamType 的信息字典名称错误",
-      "body": "- 步骤：candidate-1 全量冻结行为比较；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`test_paramtype_no_name`；`AssertionError: assert 'value' == 'TestType'`。\n- 原因判断：候选自定义类型的后备 name 固定为 value，未按类名生成信息字典名称；该测试也是事实提取阶段没有得到有效事实的两个检查之一（FACT-10、FACT-11），但原版测试一直保留。\n- 绕过：进入默认修复并继续执行原冻结测试，不追加宽松名称、不删除该检查。\n- 结果：candidate-1 该组失败，待后续候选重测。证据：attempts/1/verification.json，test_info_dict/current。\n- 后续记录：candidate-2 仅修复 formatting，本问题在全量重测中仍出现，继续默认修复；未改检查或预期。\n- 追加绕过：03:19:59 UTC 协调者通过本分支原生 `job-diagnose` 提交不含测试正文或原版实现的简短语义诊断，绑定 candidate-2 / verification-11 / expected-revision=initial。输入 `logs/candidate-2-owner-diagnostics.json`，回执 `logs/candidate-2-owner-diagnostics-receipt.json`（diagnostics-1）。诊断只指导修复，不修改合同、检查、证据或问题状态；没有向作者提供私有测试。后续仍以冻结检查重测结果为准。\n- 第 3 版复测：本轮只修复弃用帮助，本问题仍失败；已记录的语义诊断供后续作者调用读取。\n- 第 4 版复测：版本属性修复未涉及该类型名称问题，该组仍失败，继续待修复。\n- 修复结果：作者第 5 轮读取 diagnostics-1，修改 src/click/types.py 的信息字典名称后备规则，并保留 VALUE 显示后备及显式名称；candidate-5 全部 28/28 组检查通过（811 passed、1 原有 xfail），安装 5/5。证据：attempts/5/verification.json、attempts/5/installation.json。"
-    },
-    {
-      "id": "VERIFY-003",
-      "title": "兼容性 __version__ 与运行环境安装元数据不一致",
-      "body": "- 步骤：candidate-1 包级外部合同检查；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`Traceback (most recent call last): File \"<string>\", line 1, in <module>; AssertionError`；检查退出码 1。\n- 原因判断：候选将兼容属性 __version__ 写成固定源码版本 8.6.0.dev，检查要求像原版一样读取 importlib.metadata.version(\"click\")。行为检查环境现有安装元数据为 8.5.1；这与全新环境安装后的规范化版本 8.6.0.dev0 是不同的观察场景。不能把兼容属性改为另一个硬编码常量来替代元数据查询。\n- 绕过：维持包级输出比较及元数据一致性断言，由默认修复流程修正候选公开属性；安装元数据检查仍为 8.6.0.dev0。\n- 结果：candidate-1 行为检查失败，而全新环境的 5 项安装检查均通过；待修复后再次全量比较。证据：attempts/1/verification.json，package-public-contract/current；attempts/1/installation.json。\n- 后续记录：candidate-2 仅修复 formatting，本问题在全量重测中仍出现，继续默认修复；未改检查或预期。\n- 追加绕过：03:19:59 UTC 协调者通过本分支原生 `job-diagnose` 提交不含测试正文或原版实现的简短语义诊断，绑定 candidate-2 / verification-11 / expected-revision=initial。输入 `logs/candidate-2-owner-diagnostics.json`，回执 `logs/candidate-2-owner-diagnostics-receipt.json`（diagnostics-1）。诊断只指导修复，不修改合同、检查、证据或问题状态；没有向作者提供私有测试。后续仍以冻结检查重测结果为准。\n- 第 3 版复测：本轮只修复弃用帮助，本问题仍失败；已记录的语义诊断供后续作者调用读取。\n- 修复结果：作者第 4 轮读取 diagnostics-1，修改 src/click/__init__.py 为运行时元数据查询；candidate-4 包级检查已通过，全量 27/28，只剩独立的类型名称问题。证据：attempts/4/verification.json。\n- 最终行为复测：candidate-5 包级合同及全部 28 组行为检查通过，5 项安装检查全部通过；运行时版本属性和安装版本两种场景均保持通过。"
-    },
-    {
-      "id": "VERIFY-004",
-      "title": "普通文本换行后的前导空格丢失",
-      "body": "- 步骤：candidate-1 设计测试的全量比较；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`AssertionError: assert 'alpha\\\\nbeta\\\\n\\\\ngamma' == 'alpha\\\\n beta\\\\n\\\\ngamma'`，位于 contract-formatting-553492-4。\n- 原因判断：wrap_text 在 preserve_paragraphs=False 的路径中移除了已有换行之后的前导空格，和原版被冻结的输出不同。\n- 绕过：保留独立设计者已接受的测试与精确输出预期，由默认修复流程修改 formatting 实现；没有改空白比较方式。\n- 结果：作者第 2 轮修改 src/click/formatting.py；candidate-2 中该组及另一组 HelpFormatter 检查均通过，完整结果为 25/28 组通过，5/5 安装通过。原始失败：attempts/1/verification.json；复测：attempts/2/verification.json。"
-    },
-    {
       "id": "TASK-002",
       "title": "任务成本范围重叠，改善判定不确定",
-      "body": "- 步骤：candidate-5 独立任务成本比较；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`status: inconclusive`；`retry: {\"allowed\": false, \"reason\": \"no_actionable_regression\", \"requested\": false}`；`heldout.status: not_run`。\n- 原因判断：原版和候选 development 试次各 3 次，6 次独立验收全部通过，用量完整。原版 token 范围 163,942–230,285，中位数 224,164；候选范围 190,523–227,634，中位数 203,960，下降 9.013%。默认规则同时要求至少 5% 中位数改善及候选最大值小于原版最小值，范围重叠，因此不能判定改善。工具按默认分阶段策略未进入 heldout，也不对 inconclusive 发起优化；这是评估缺口，不是任务执行失败。\n- 绕过：遵守默认策略交付已通过行为与安装的候选，保留任务成本未证实的状态；没有增加重复次数、重复抽样同一候选、提高预算或放宽改善阈值，未将 inconclusive 改成 passed。\n- 结果：任务子流程累计 1,573,912 tokens，低于本分支默认 6,000,000，并非昨天的预算耗尽问题。候选任务耗时中位数 136.0564 秒，原版 140.5835 秒，时间差也仅作观测数据。最终于 03:38:40 UTC 以 completed_with_gaps 交付，唯一验收缺口为 task_effort_not_passed；本地交付目录 click-nanolized-20261114-033838。证据：task-effort/candidates/5/report.json、task-effort/usage.json、public.json。"
-    },
-    {
-      "id": "TASK-003",
-      "title": "任务求解器猜错测试文件路径",
-      "body": "- 步骤：原版 development/modify/2 和 candidate-5 development/modify/0 的辅助源码检索；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`rg: tests/test_types/test_choice.py: No such file or directory (os error 2)`；`rg: tests/test_types.py: No such file or directory (os error 2)`；两次命令均退出 2。\n- 原因判断：求解器猜测的路径大小写、文件与目录组织不符合实际导出树；这不是任务提示强制要求却未提供的验收脚本，与昨天问题 010 不同。\n- 绕过：求解器继续读取现有生产文件和可用测试，编写自己的任务探测并完成修改；没有提供私有验收脚本，没有改动独立验收。\n- 结果：两个试次均完成并通过独立验收；同类辅助路径探测共 2 次。原始记录见各试次 solver/stdout.ndjson；简要索引 logs/task-command-diagnostics.json。"
+      "body": "- 步骤：candidate-5 独立任务成本比较；作业 ID：`553492f6820c472fb1724aa6f94d5f6b`。\n- 原始诊断：`status: inconclusive`；`retry: {\"allowed\": false, \"reason\": \"no_actionable_regression\", \"requested\": false}`；`heldout.status: not_run`。\n- 原因判断：原版和候选 development 试次各 3 次，6 次独立验收全部通过，用量完整。原版 token 范围 163,942–230,285，中位数 224,164；候选范围 190,523–227,634，中位数 203,960，下降 9.013%。默认规则同时要求至少 5% 中位数改善及候选最大值小于原版最小值，范围重叠，因此不能判定改善。工具按默认分阶段策略未进入 heldout，也不对 inconclusive 发起优化；这是评估缺口，不是任务执行失败。\n- 绕过：遵守默认策略交付已通过行为与安装的候选，保留任务成本未证实的状态；没有增加重复次数、重复抽样同一候选、提高预算或放宽改善阈值，未将 inconclusive 改成 passed。\n- 结果：任务子流程累计 1,573,912 tokens，低于本分支默认 6,000,000，并非昨天的预算耗尽问题。候选任务耗时中位数 136.0564 秒，原版 140.5835 秒，时间差也仅作观测数据。最终于 03:38:40 UTC 以 completed_with_gaps 交付，唯一验收缺口为 task_effort_not_passed。证据：task-effort/candidates/5/report.json、task-effort/usage.json、public.json。"
     }
   ],
   "record_classification": {
-    "criterion": "问题记录仅收录已有源码与复现证据、需要修改 claude/graph-contract-field-fixes 分支代码的缺陷；正常策略结果、模型输出失误、候选代码回归、配置及环境问题归入运行现象。是否在本次运行中打过补丁，不作为是否属于 bug 的判断条件。",
+    "criterion": "问题记录仅列经核对确定需要修改 nanolize 分支的记录；运行现象仅列 nanolize 流程本身产生的现象。",
     "bug_count": 1,
     "bug_evidence_count": 10,
-    "phenomenon_record_count": 22,
-    "original_record_count": 32
+    "issue_record_count": 10,
+    "phenomenon_record_count": 1,
+    "published_record_count": 11
   },
   "method": [
     "nanolize 从 WeianMao/nanolize 的 claude/graph-contract-field-fixes 分支安装，固定提交 9413138036b515f119ff63fa6db082a6148103f0；没有从 main 安装。",
@@ -1570,7 +1389,6 @@
     }
   },
   "candidate_commit": "e5449c598419d96019f9f11bba9f4aa437426ff1",
-  "export_name": "click-nanolized-20261114-033838",
   "nanolize_commit": "9413138036b515f119ff63fa6db082a6148103f0",
   "nanolize_branch": "claude/graph-contract-field-fixes",
   "original_commit": "e38188e9e205005d5af5f9e59df51904c984586a",
