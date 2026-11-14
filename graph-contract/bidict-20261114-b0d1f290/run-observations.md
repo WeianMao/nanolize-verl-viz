@@ -1,6 +1,6 @@
 # 运行现象与处理记录
 
-以下18条记录未认定为nanolize实现bug；防默写退回0个文件，集成拒绝0次。
+以下17条记录未认定为nanolize实现bug；防默写退回0个文件，集成拒绝0次。
 
 ## N01 — GitHub HTTPS 无凭据
 
@@ -75,15 +75,6 @@
 - 绕过：使用 rg --files、实际目录和公开的昨日 JSON/问题报告定位；不改动目标项目、工具代码或验收配置。
 - 结果：所需源码、运行证据和公开报告均已找到，任务继续；这些读取失败未影响作业检查结果。
 
-## N12 — 修改任务的两个变体提示相同，任务设计被拒
-
-- 步骤：prepare_tasks 的 examiner 结果验证；作业 ID：b0d1f290452f4fc6a05b553949a766a0。
-- 报错原文：`Held-out task must have a distinct input variant`；reason=`invalid_task_design`，status=`unverified`，ready=false。
-- 原因判断：设计器生成了1个 modify 任务“Handle zero instruction baselines in comparison reports”，development 和 heldout 的 JSON 夹具确实不同，但两个 prompt 字符串完全相同；effort_schema.validate_suite 明确拒绝相同 prompt，因此正式任务集未被接受，tasks=0、original_runs={}。
-- 绕过：默认控制器保留失败任务基线并继续作者改写；未改任务提示、夹具、隐藏验收脚本或验证规则，未把未执行求解的任务算作已评估。
-- 结果：examiner 正常退出，用时591.5668秒、674396 tokens；solver/judge均0次。02:22:15 UTC 作者启动，后续任务成本结果待交付记录。
-- 验收标准：未放宽。正式任务工具可以保存新任务集供另行试验，但不会替换本次已冻结的一次性 task-effort 基线；本次默认作业保留这一缺口并如实报告。
-
 ## N13 — 首个候选缺少 callgrind.ACTIVE，基准无法收集
 
 - 步骤：候选1的 original-benchmarks 比较（verification-5）；作业 ID：b0d1f290452f4fc6a05b553949a766a0。
@@ -120,14 +111,6 @@
 ### N14 最终复验
 - 第四次作者调用修改 compare_instructions.py，候选4的 verification-14 全部14组检查通过，包含 comparison-help；installation-15 三组安装检查也通过。N14解决。
 - N13、N15 的修复在最终全量复验中保持通过；本次共4次作者调用（1次实现、3次修复），未发生集成退回或防默写退回。
-
-### N12 默认控制器的追加设计
-- 02:44:59 UTC，控制器在最终行为和安装检查通过后主动调用 design_tasks，尝试生成可用的新任务集；本次不是外层协调器关闭任务评估或提前交付。追加结果后续记录。
-
-### N12 追加设计成功
-- 02:54:27 UTC：默认 design_tasks 成功保存 task_suite-18，任务为“Handle zero counts and empty overlap in instruction comparisons”；development/heldout 提示不同，通过原校验。
-- 02:54:40 UTC：控制器调用 run_task_trial，分别对 original 与 candidate 的 development / modify / repeat=0 做匹配试验；没有改动主候选或既有行为验收。
-- 这是默认控制器主动重设计与正式工具试验，未放宽“distinct input variant”规则；首次失败设计的费用和耗时仍计入。
 
 ## N16 — 追加任务求解器假设工作区有 Git 元数据
 
