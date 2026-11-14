@@ -1,0 +1,1254 @@
+{
+  "metadata": {
+    "project": "bidict",
+    "original_commit": "299fedc89f1d70d5d41cf7922564b376d3e2d435",
+    "nanolize_repository": "WeianMao/nanolize",
+    "nanolize_branch": "claude/graph-contract-field-fixes",
+    "nanolize_commit": "9413138036b515f119ff63fa6db082a6148103f0",
+    "job_id": "b0d1f290452f4fc6a05b553949a766a0",
+    "review_id": "2ab9784537f54d00ab24092a0f0a1350",
+    "scope": "all",
+    "excluded": [],
+    "owner_attends": false,
+    "custom_budget_or_attempt_limits": false,
+    "source_reference": "on_failed_check (default)",
+    "original_overlap": "auto (default; omitted CLI option)",
+    "design": true,
+    "check_validation_enabled": true,
+    "design_runner": "job codex in fresh ephemeral independent sessions",
+    "knowledge_library_added": false,
+    "conversion": {
+      "checks_left_out": 1,
+      "checks_not_inspected": 3,
+      "external_capabilities_without_check": 2,
+      "internal_capabilities_not_reached": 0,
+      "unresolved_exports": 0,
+      "carry_candidates": 0
+    },
+    "started_at": "2026-11-14T01:40:42.322240+00:00",
+    "same_source_as_yesterday": true,
+    "comparison_limit": "Graph and tests reconstructed from source; independent design is nondeterministic; both raw and benchmark-normalized size will be reported."
+  },
+  "job_id": "b0d1f290452f4fc6a05b553949a766a0",
+  "status": "completed_with_gaps",
+  "description": "全部13个功能节点保留，14/14行为检查与3/3安装检查通过。作业完整结束，但任务成本评估未通过；comparison仍缺有效叶节点测试，便携验证包不可用。没有关闭检查或放宽验收标准。",
+  "metrics": [
+    {
+      "label": "工具总量 / 原版",
+      "value": "10.52%",
+      "note": "144,006 → 15,145 tokens"
+    },
+    {
+      "label": "与昨天可比的总量比例",
+      "value": "5.69%",
+      "note": "扣除两边不变基准；昨天7.24%；减少94.31%"
+    },
+    {
+      "label": "可比源码 / 原版",
+      "value": "25.84%",
+      "note": "28,293 → 7,310 tokens"
+    },
+    {
+      "label": "可比相同行比例",
+      "value": "23.7%",
+      "note": "工具同路径加权口径；含不变基准为76.3%"
+    },
+    {
+      "label": "成功补测 / 未验证外部节点",
+      "value": "8 / 1",
+      "note": "10份测试接受、2份退回；未验证 comparison"
+    },
+    {
+      "label": "防默写退回文件",
+      "value": "0",
+      "note": "默认auto；正文重合10%（480行），集成退回也为0"
+    },
+    {
+      "label": "记录的模型用量",
+      "value": "≥7.82M",
+      "note": "已记录7,818,951 tokens；另1次超时评分调用缺失用量"
+    },
+    {
+      "label": "作业历时",
+      "value": "1时23分44秒",
+      "note": "首次提交至最终交付，包含设计、验证和所有修复"
+    },
+    {
+      "label": "最终独立验收",
+      "value": "14/14 + 3/3",
+      "note": "250 个pytest用例，另3组输出比较"
+    }
+  ],
+  "comparisons": [
+    [
+      "总量 / 原版（工具原始口径）",
+      "7.24%",
+      "10.52%",
+      "本次计入原样保留的7,373-token基准文件，不能直接据此判断压缩效果"
+    ],
+    [
+      "总量 / 原版（相同计量范围）",
+      "7.24%",
+      "5.69%",
+      "-1.55 个百分点"
+    ],
+    [
+      "可比交付体积（tokens）",
+      "9,893",
+      "7,772",
+      "-2,121 tokens（-21.44%）"
+    ],
+    [
+      "可比源码 / 原版",
+      "33.01%",
+      "25.84%",
+      "-7.17 个百分点"
+    ],
+    [
+      "可比相同行（同路径、长度加权）",
+      "12.4%",
+      "23.7%",
+      "+11.3 个百分点"
+    ],
+    [
+      "可比跨文件相同行",
+      "24.79%",
+      "26.31%",
+      "+1.51 个百分点"
+    ],
+    [
+      "正文重合（防默写口径）",
+      "11% / 603行",
+      "10% / 480行",
+      "本次交付后按同一工具只读复算；退回文件两次均0"
+    ],
+    [
+      "成功补测的节点",
+      "4",
+      "8",
+      "本次接受10份；比较工具仍有缺口"
+    ],
+    [
+      "外部叶节点有效性覆盖",
+      "7 / 9",
+      "8 / 9",
+      "本次 errors 没有可禁用函数体，按默认规则计有效但无动态证据"
+    ],
+    [
+      "最终行为 / 安装检查",
+      "8 / 8 + 3 / 3",
+      "14 / 14 + 3 / 3",
+      "pytest 175 → 250 用例"
+    ],
+    [
+      "修改任务成本评估",
+      "未验证：solver缺少accept.py阻塞",
+      "未验证：首次设计无效、追加原版judge超时",
+      "追加候选judge通过；未完成重复和heldout，不宣称成本改善"
+    ],
+    [
+      "防默写退回文件",
+      "0",
+      "0",
+      "auto 模式；不等于没有相同行"
+    ],
+    [
+      "记录的模型 tokens",
+      "9,311,748",
+      "7,818,951",
+      "-1,492,797 tokens（-16.03%）；仅比较已记录值，本次另有1次调用用量缺失"
+    ],
+    [
+      "模型调用（有用量 / 实际）",
+      "41 / 41",
+      "37 / 38",
+      "本次原版任务judge超时，无完整用量"
+    ],
+    [
+      "端到端作业历时",
+      "1时30分32秒",
+      "1时23分44秒",
+      "-408 秒（-7.50%）"
+    ],
+    [
+      "金额费用",
+      "无账单",
+      "无账单",
+      "没有用 token 数代替金额或套用不确定价格"
+    ]
+  ],
+  "comparison_notes": [
+    "两次 bidict 原版提交完全相同。昨天使用 eb54c43 加本地分类补丁，本次安装指定分支 9413138；本次功能图与检查从源码重建，补测由独立模型重新设计，并非严格单变量实验。",
+    "昨天的数字包含失败首轮和成功重跑；本次数字包含全部已记录作业阶段、失败设计和作者修复。比较墙钟历时，不累加并行代理时间。",
+    "可比计量范围仅从本次原版和候选同时扣除字节完全相同的 microbenchmarks.py（7,373 tokens、700行）；没有扣除任何作者改写文件。",
+    "本次37次完成调用有token记录，另1次原版任务评分器超时没有最终用量；因此已记录tokens下降16.03%不能视为实际总消耗精确下降16.03%。两次都没有可核实的金额账单。",
+    "“本次新出现”指昨天公开问题报告未列出的观察，不代表已证明由9413138引入。N06、N08、N09、N14是复现或同类问题，列在逐项对照与完整记录中。"
+  ],
+  "size_rows": [
+    [
+      "源码 tokens",
+      "35,666",
+      "14,683",
+      "41.17%"
+    ],
+    [
+      "配置 tokens",
+      "108,340",
+      "462",
+      "0.43%"
+    ],
+    [
+      "合计 tokens",
+      "144,006",
+      "15,145",
+      "10.52%"
+    ],
+    [
+      "可比合计 tokens（扣除不变基准）",
+      "136,633",
+      "7,772",
+      "5.69%"
+    ],
+    [
+      "可比源码 tokens（扣除不变基准）",
+      "28,293",
+      "7,310",
+      "25.84%"
+    ],
+    [
+      "源码行数（含不变基准）",
+      3444,
+      1556,
+      "45.18%"
+    ],
+    [
+      "相同行（工具同路径口径）",
+      "—",
+      "76.3%",
+      "保留基准占比大；仅比较原路径仍存在的文件，长度至少8字符，按长度加权"
+    ],
+    [
+      "相同行（可比同路径口径）",
+      "—",
+      "23.7%",
+      "扣除原样基准；移动路径的代码不在该比较内"
+    ],
+    [
+      "相同行（可比跨文件口径）",
+      "—",
+      "181 / 688 = 26.31%",
+      "合并所有计量源码，去空白和空行，以重复行多重集求交；含注释、导入和签名"
+    ]
+  ],
+  "size_notes": [
+    "体积为 tiktoken 0.12.0 / cl100k_base 的源码与配置 tokens，按文件独立求和；不是磁盘压缩包字节数。配置与锁文件缩减贡献很大，因此源码比例单列。",
+    "相同行比例是文字重合统计，不是默写判定；防默写使用另一套排除注释、文档、导入和签名的正文比较。"
+  ],
+  "checks": [
+    [
+      "范围",
+      "13 / 13 节点",
+      "scope all；无排除；功能账本13个保留、0个退役"
+    ],
+    [
+      "冻结行为检查",
+      "14 / 14",
+      "250个pytest用例+3组输出比较；0失败、0未执行、0删除"
+    ],
+    [
+      "独立安装",
+      "3 / 3",
+      "新环境安装项目、安装工具依赖、隔离业务smoke"
+    ],
+    [
+      "独立补测",
+      "8个节点成功",
+      "api、callgrind、core、duplicates、errors、frozen、iteration、ordered"
+    ],
+    [
+      "提案",
+      "12份：10接受、2退回",
+      "duplicates首轮语法错误修正后通过；comparison的runpy禁用分类缺陷仍阻止接受"
+    ],
+    [
+      "叶节点有效性",
+      "8 / 9",
+      "comparison未验证；errors无可禁用函数体，默认计有效但无动态证据"
+    ],
+    [
+      "内部节点",
+      "3个无需单独外部测试",
+      "benchmarks、documentation、typing；基准本身仍有140个冻结用例"
+    ],
+    [
+      "便携验证包",
+      "未生成",
+      "/dev/null参数被绝对路径校验拒绝；本地冻结验证完整执行"
+    ],
+    [
+      "作者调用",
+      "4次",
+      "3次功能修复；未退回任何防默写文件"
+    ],
+    [
+      "防默写",
+      "退回0个文件 / 0次集成拒绝",
+      "auto默认策略；交付后只读测量正文重合10%、480行、超阈值函数0，非相同行加权比例"
+    ],
+    [
+      "失败后源码参考",
+      "3次作者调用，7个不同文件",
+      "默认on_failed_check；涉及benchmarks、comparison、core、frozen、ordered，非全程禁止参考原版"
+    ],
+    [
+      "正式任务成本评估",
+      "unverified / invalid_task_design",
+      "首次development/heldout提示相同，默认控制器继续并追加设计；原冻结评估保留缺口"
+    ],
+    [
+      "追加匹配试验",
+      "原版unverified，候选passed",
+      "development各1次；两边冻结脚本均9例336断言通过，原版judge随后120秒超时，候选judge正式通过"
+    ],
+    [
+      "追加求解成本（仅观察）",
+      "原版237,748；候选178,344 tokens",
+      "原版181.6808秒、候选174.9385秒；单对、原版评分未验证，不能推断整体成本改善"
+    ]
+  ],
+  "notes": [
+    "所有检查通过只证明被观察的用例，没有声称完整语义等价。功能账本13/13与独立叶节点有效性8/9使用不同口径。",
+    "测试设计器和审阅器使用独立会话，作者初始为空仓库；这是输入隔离约定，并非共享文件系统上的操作系统强制隔离。",
+    "基准命令使用 --benchmark-disable 执行真实函数与断言；此次没有提供可比性能计时结果。",
+    "没有关闭检查或放宽验收标准；没有给清单附加详细knowledge库；没有设置自定义预算或尝试上限。",
+    "追加试验只修改各自隔离任务快照，未把新需求合并进主压缩候选。比较工具独立补测缺口（comparison）与修改任务的候选judge通过属于不同验证，后者不替代前者。",
+    "配对工件task_pair-23因控制器仍传原始未评分ID而显示两侧not_run；这里按graded_trial-21/22分别报告实际评分结果，未改写正式工件。"
+  ],
+  "usage_rows": [
+    [
+      "修改任务设计",
+      2,
+      "1,115,387",
+      "1,005,312",
+      "49,400",
+      "1,164,787"
+    ],
+    [
+      "修改任务求解",
+      2,
+      "403,757",
+      "353,792",
+      "12,335",
+      "416,092"
+    ],
+    [
+      "修改任务评分（有用量1次）",
+      1,
+      "73,995",
+      "51,840",
+      "1,515",
+      "75,510"
+    ],
+    [
+      "控制器",
+      14,
+      "573,834",
+      "256,640",
+      "5,659",
+      "579,493"
+    ],
+    [
+      "功能测试审阅",
+      2,
+      "373,738",
+      "281,088",
+      "1,566",
+      "375,304"
+    ],
+    [
+      "功能测试设计",
+      10,
+      "2,480,301",
+      "2,172,160",
+      "52,048",
+      "2,532,349"
+    ],
+    [
+      "测试事实编写",
+      1,
+      "105,854",
+      "69,120",
+      "2,867",
+      "108,721"
+    ],
+    [
+      "测试事实审阅",
+      1,
+      "279,460",
+      "231,936",
+      "1,182",
+      "280,642"
+    ],
+    [
+      "压缩作者与修复",
+      4,
+      "2,246,244",
+      "2,050,816",
+      "39,809",
+      "2,286,053"
+    ],
+    [
+      "合计",
+      37,
+      "7,652,570",
+      "6,472,704",
+      "166,381",
+      "7,818,951"
+    ]
+  ],
+  "cost_notes": [
+    "输入7,652,570（含缓存6,472,704），输出166,381，合计7,818,951 tokens；缓存输入不重复相加，推理输出已包含在输出中。",
+    "作业端到端 2026-11-14T01:40:42.322240+00:00 — 2026-11-14T03:04:26.731853+00:00，1时23分44秒；不含安装与清单准备、交付后的报告制作。",
+    "模型用量来自各独立运行器turn.completed与作者专用usage日志；包含失败设计、控制器、测试设计/审阅、作者与修复、任务评估，不含外层协调助手。",
+    "没有供应商金额账单，金额费用无法核实；不将token数量冒充金额。",
+    "用量完整性：38次实际模型调用中37次有完整记录；原版judge在120.3547秒超时，缺失输入/输出tokens，不能记为0。表中合计是可观测下界。"
+  ],
+  "conversion": {
+    "checks_left_out": 1,
+    "checks_not_inspected": 3,
+    "external_capabilities_without_check": 2,
+    "internal_capabilities_not_reached": 0,
+    "unresolved_exports": 0,
+    "carry_candidates": 0
+  },
+  "policy_notes": [
+    "13节点：9外部、4内部（含聚合根）；转换输出此前不存在，未使用 --keep-checks，转换只读源码。原检查剔除1项，保留4项；carry_candidates=0，没有 --carry 文件。",
+    "已补明重复策略默认值、公开名称、Callgrind注册名和环境变量、JSON格式、CLI固定文字；补充内容是接口约定，未加入详细knowledge库。",
+    "check-validation和design开启；显式提供独立测试模板；设计器采用作业codex的新会话；owner_attends=false。original-overlap省略，默认为auto，其余预算与上限均取默认值。"
+  ],
+  "yesterday_comparison": [
+    {
+      "id": "I12",
+      "problem": "核心映射测试：未知 knowledge 标签或禁用验证失败",
+      "status": "未重现（core）",
+      "evidence": "core 的3份补测获接受；未出现 unknown_knowledge_id 或 core 导入禁用失败。"
+    },
+    {
+      "id": "I13",
+      "problem": "比较工具测试未得到有效行为禁用证据",
+      "status": "再次出现（comparison）",
+      "evidence": "comparison 补测原版14例通过，但禁用为 knockout_breaks_import；core 的3份补测通过禁用验证（N09）。"
+    },
+    {
+      "id": "I15",
+      "problem": "microbenchmarks.py 被同时视为生产源码和测试导致封存失败",
+      "status": "未重现",
+      "evidence": "seal_contract 成功；microbenchmarks.py 明确列入 frozen_test_modules，原样保留并计入两边体积，无需本地分类修复。"
+    },
+    {
+      "id": "I16",
+      "problem": "首轮补测语法错误和导入期禁用失败",
+      "status": "部分再次出现",
+      "evidence": "duplicates 首轮提案有缩进错误（N08）；comparison 仍导入禁用失败（N09）；core 未重现。"
+    },
+    {
+      "id": "I17",
+      "problem": "core/comparison 第二轮仍 knockout_breaks_import",
+      "status": "再次出现（comparison）",
+      "evidence": "comparison 补测原版14例通过，但禁用为 knockout_breaks_import；core 的3份补测通过禁用验证（N09）。"
+    },
+    {
+      "id": "I18",
+      "problem": "转换保留了依赖私有 _write 钩子的基准检查",
+      "status": "再次出现",
+      "evidence": "原基准检查仍被转换保留且未读到测试内容；140 用例通过，私有 _write 约束仍保留（N06）。"
+    },
+    {
+      "id": "I19",
+      "problem": "修改任务误称隐藏 accept.py 已提供",
+      "status": "追加任务中未重现",
+      "evidence": "首次设计被拒后，默认控制器重新设计；原版与候选solver均完成，没有缺失accept.py阻塞。原版judge实际运行已挂载的冻结accept_development.py，9例336项断言通过；但judge随后超时，成本评分仍有缺口（N12/N18）。"
+    },
+    {
+      "id": "I20",
+      "problem": "作者 LICENSE 草稿导致整次集成被拒",
+      "status": "未触发",
+      "evidence": "全部4次作者调用均未产生LICENSE替代文件；集成退回0次，无法由此单独验证新的自动忽略机制。"
+    },
+    {
+      "id": "I22",
+      "problem": "基准监视器要求 unwrites 关键字而作者使用位置参数",
+      "status": "未重现",
+      "evidence": "候选2的140个原基准用例全部通过，包括监视 unwrites 关键字的12例；本次首个基准回归是缺少 callgrind.ACTIVE。"
+    },
+    {
+      "id": "I25",
+      "problem": "控制器把不可用任务基线误述成零任务",
+      "status": "原问题未重现；出现新的工件引用问题",
+      "evidence": "最终交付明确说明首次invalid_task_design与追加原版judge超时，未声称没有设计任务。第13轮配对引用旧未评分ID造成not_run显示（N20），最终结论仍保留成本缺口。"
+    },
+    {
+      "id": "昨日时间线：CLI",
+      "problem": "候选CLI帮助文字不兼容",
+      "status": "再次出现",
+      "evidence": "本次comparison第二位置参数current被改成revision（N14），第四次作者调用已修复；最终输出检查通过。"
+    }
+  ],
+  "new_issues": [
+    [
+      "N01",
+      "HTTPS克隆没有凭据",
+      "改SSH，安装指定9413138"
+    ],
+    [
+      "N02",
+      "pip默认索引DNS失败",
+      "绕开本机pip配置，依赖安装成功"
+    ],
+    [
+      "N03",
+      "报告仓库没有gh-pages",
+      "使用已配置的main发布目录"
+    ],
+    [
+      "N04",
+      "旧清单路径和required不符合schema",
+      "按真实库存修正，转换成功"
+    ],
+    [
+      "N05",
+      "自动Slurm执行缺少账户",
+      "默认回退本地，完整执行检查"
+    ],
+    [
+      "N07",
+      "core原基准禁用试验超时",
+      "不放宽时限，另有3份核心补测获接受"
+    ],
+    [
+      "N10",
+      "便携包拒绝/dev/null参数",
+      "本地冻结验证通过；便携包不可用"
+    ],
+    [
+      "N11",
+      "辅助脚本假设了不存在的路径",
+      "改查实际文件和昨日公开归档"
+    ],
+    [
+      "N12",
+      "首次任务设计两个prompt相同",
+      "追加设计通过；正式评估保留缺口"
+    ],
+    [
+      "N13",
+      "候选缺少callgrind.ACTIVE",
+      "作者修复，140项原基准通过"
+    ],
+    [
+      "N15",
+      "pickle逆向迭代顺序不兼容",
+      "作者修复，protocol 0/2/5全部通过"
+    ],
+    [
+      "N16",
+      "任务求解/评分器假设快照有.git",
+      "自动改为文件和运行时验证，无主候选影响"
+    ],
+    [
+      "N17",
+      "候选solver自建探针合计算错",
+      "纠正临时探针，独立隐藏评分通过"
+    ],
+    [
+      "N18",
+      "原版任务judge超时且缺用量",
+      "按unverified和缺失用量报告，没有调宽时限"
+    ],
+    [
+      "N19",
+      "judge把临时探针传给冻结验收入口",
+      "保护机制拒绝，改为直接CLI观察"
+    ],
+    [
+      "N20",
+      "控制器配对引用未评分工件ID",
+      "报告核对实际graded工件；整体仍不确定"
+    ]
+  ],
+  "timeline": [
+    [
+      "2026-11-14T01:40:42.322240+00:00",
+      "Selection accepted; waiting for an execution slot."
+    ],
+    [
+      "2026-11-14T01:40:55.982490+00:00",
+      "Writing the facts the retained tests pin for the source-free author."
+    ],
+    [
+      "2026-11-14T01:48:21.952444+00:00",
+      "Designing tests for 9 selected leaves without a valid test."
+    ],
+    [
+      "2026-11-14T02:11:56.613756+00:00",
+      "Freezing selected real tasks and independent hidden acceptance criteria."
+    ],
+    [
+      "2026-11-14T02:22:15.841013+00:00",
+      "The configured agent is independently implementing the selected graph."
+    ],
+    [
+      "2026-11-14T02:34:09.847248+00:00",
+      "The configured agent is repairing its implementation of the selected graph."
+    ],
+    [
+      "2026-11-14T02:36:52.200814+00:00",
+      "The configured agent is repairing its implementation of the selected graph."
+    ],
+    [
+      "2026-11-14T02:40:10.100385+00:00",
+      "The configured agent is repairing its implementation of the selected graph."
+    ],
+    [
+      "2026-11-14T02:44:59.008182+00:00",
+      "Controller round 11: design_tasks."
+    ],
+    [
+      "2026-11-14T02:54:40.734380+00:00",
+      "Controller round 12: run_task_trial, run_task_trial."
+    ],
+    [
+      "2026-11-14T03:00:57.713657+00:00",
+      "Controller round 13: grade_task_trial, grade_task_trial, compare_task_trials, evaluate_acceptance."
+    ],
+    [
+      "2026-11-14T03:04:26.731853+00:00",
+      "Delivered with gaps (task effort not passed); no full preservation claim is made."
+    ]
+  ],
+  "provenance": [
+    "bidict：299fedc89f1d70d5d41cf7922564b376d3e2d435；nanolize：claude/graph-contract-field-fixes / 9413138036b515f119ff63fa6db082a6148103f0。",
+    "交付分支：codex/nanolize-b0d1f290452f4fc6a05b553949a766a0；候选提交：db42e1b2a4d397f3498b2c86d8cae3407c5ed44b；状态：completed_with_gaps。",
+    "原版工作树保持干净。nanolize未修改、未向指定分支推送；报告只发布到既有公开报告仓库的新目录。"
+  ],
+  "recorded_usage": {
+    "totals": {
+      "calls": 37,
+      "input_tokens": 7652570,
+      "cached_input_tokens": 6472704,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 166381,
+      "reasoning_output_tokens": 50158,
+      "total_tokens": 7818951
+    },
+    "roles": {
+      "examiner": {
+        "calls": 2,
+        "input_tokens": 1115387,
+        "cached_input_tokens": 1005312,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 49400,
+        "reasoning_output_tokens": 17264,
+        "total_tokens": 1164787
+      },
+      "solver": {
+        "calls": 2,
+        "input_tokens": 403757,
+        "cached_input_tokens": 353792,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 12335,
+        "reasoning_output_tokens": 4326,
+        "total_tokens": 416092
+      },
+      "judge": {
+        "calls": 1,
+        "input_tokens": 73995,
+        "cached_input_tokens": 51840,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1515,
+        "reasoning_output_tokens": 613,
+        "total_tokens": 75510
+      },
+      "controller": {
+        "calls": 14,
+        "input_tokens": 573834,
+        "cached_input_tokens": 256640,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 5659,
+        "reasoning_output_tokens": 2195,
+        "total_tokens": 579493
+      },
+      "test_reviewer": {
+        "calls": 2,
+        "input_tokens": 373738,
+        "cached_input_tokens": 281088,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1566,
+        "reasoning_output_tokens": 395,
+        "total_tokens": 375304
+      },
+      "test_designer": {
+        "calls": 10,
+        "input_tokens": 2480301,
+        "cached_input_tokens": 2172160,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 52048,
+        "reasoning_output_tokens": 5661,
+        "total_tokens": 2532349
+      },
+      "fact_writer": {
+        "calls": 1,
+        "input_tokens": 105854,
+        "cached_input_tokens": 69120,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2867,
+        "reasoning_output_tokens": 158,
+        "total_tokens": 108721
+      },
+      "fact_reviewer": {
+        "calls": 1,
+        "input_tokens": 279460,
+        "cached_input_tokens": 231936,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1182,
+        "reasoning_output_tokens": 151,
+        "total_tokens": 280642
+      },
+      "author": {
+        "calls": 4,
+        "input_tokens": 2246244,
+        "cached_input_tokens": 2050816,
+        "output_tokens": 39809,
+        "reasoning_output_tokens": 19395,
+        "total_tokens": 2286053
+      }
+    },
+    "dollar_cost": null,
+    "usage_complete": false,
+    "unmetered_runs": [
+      {
+        "invocation_id": "f7c36492c302406aaf4a014a1498d8f6",
+        "role": "judge",
+        "status": "timeout",
+        "duration_seconds": 120.3547
+      }
+    ],
+    "actual_calls": 38
+  },
+  "measurements": {
+    "original": {
+      "source_tokens": 35666,
+      "configuration_tokens": 108340,
+      "total_tokens": 144006
+    },
+    "delivered": {
+      "source_tokens": 14683,
+      "configuration_tokens": 462,
+      "total_tokens": 15145
+    },
+    "retained_percent": {
+      "source_tokens": 41.1681,
+      "configuration_tokens": 0.4264,
+      "total_tokens": 10.5169
+    },
+    "quality": {
+      "schema_version": 1,
+      "status": "measured",
+      "original": {
+        "total_tokens": 144006,
+        "composition": {
+          "python_files": 16,
+          "python_code_tokens": 18892,
+          "python_comment_tokens": 9797,
+          "python_docstring_tokens": 6034,
+          "python_data_literal_tokens": 0,
+          "other_tokens": 108559,
+          "code_tokens": 127451,
+          "unparsed_python_files": 0
+        },
+        "documentation": {
+          "public_definitions": 110,
+          "documented": 99,
+          "documented_percent": 90.0
+        }
+      },
+      "delivered": {
+        "total_tokens": 15145,
+        "composition": {
+          "python_files": 10,
+          "python_code_tokens": 12928,
+          "python_comment_tokens": 1082,
+          "python_docstring_tokens": 574,
+          "python_data_literal_tokens": 0,
+          "other_tokens": 462,
+          "code_tokens": 13390,
+          "unparsed_python_files": 0
+        },
+        "documentation": {
+          "public_definitions": 86,
+          "documented": 37,
+          "documented_percent": 43.0
+        },
+        "rewrite": {
+          "files_at_an_original_path": 11,
+          "unchanged_percent": 76.3
+        }
+      },
+      "summary": {
+        "total_retained_percent": 10.52,
+        "undocumented_retained_percent": 10.52,
+        "documented_percent": {
+          "original": 90.0,
+          "delivered": 43.0
+        }
+      }
+    },
+    "source_line_match": {
+      "matching_lines": 713,
+      "delivered_nonblank_lines": 1220,
+      "percent": 58.4426,
+      "definition": "Cross-file multiset intersection, whitespace stripped, nonblank source lines, including comments/imports/signatures."
+    },
+    "complete": true,
+    "comparable_excluding_unchanged_benchmark": {
+      "excluded_tokens": 7373,
+      "original": {
+        "source_tokens": 28293,
+        "configuration_tokens": 108340,
+        "total_tokens": 136633
+      },
+      "delivered": {
+        "source_tokens": 7310,
+        "configuration_tokens": 462,
+        "total_tokens": 7772
+      },
+      "retained_percent": {
+        "source_tokens": 25.8368,
+        "configuration_tokens": 0.4264,
+        "total_tokens": 5.6882
+      },
+      "quality": {
+        "schema_version": 1,
+        "status": "measured",
+        "original": {
+          "total_tokens": 136633,
+          "composition": {
+            "python_files": 15,
+            "python_code_tokens": 13114,
+            "python_comment_tokens": 8861,
+            "python_docstring_tokens": 5460,
+            "python_data_literal_tokens": 0,
+            "other_tokens": 108559,
+            "code_tokens": 121673,
+            "unparsed_python_files": 0
+          },
+          "documentation": {
+            "public_definitions": 73,
+            "documented": 62,
+            "documented_percent": 84.9
+          }
+        },
+        "delivered": {
+          "total_tokens": 7772,
+          "composition": {
+            "python_files": 9,
+            "python_code_tokens": 7150,
+            "python_comment_tokens": 146,
+            "python_docstring_tokens": 0,
+            "python_data_literal_tokens": 0,
+            "other_tokens": 462,
+            "code_tokens": 7612,
+            "unparsed_python_files": 0
+          },
+          "documentation": {
+            "public_definitions": 49,
+            "documented": 0,
+            "documented_percent": 0.0
+          },
+          "rewrite": {
+            "files_at_an_original_path": 10,
+            "unchanged_percent": 23.7
+          }
+        },
+        "summary": {
+          "total_retained_percent": 5.69,
+          "undocumented_retained_percent": 6.23,
+          "documented_percent": {
+            "original": 84.9,
+            "delivered": 0.0
+          }
+        }
+      },
+      "source_line_match": {
+        "matching_lines": 181,
+        "delivered_nonblank_lines": 688,
+        "percent": 26.3081,
+        "definition": "Cross-file multiset intersection, whitespace stripped, nonblank source lines, including comments/imports/signatures."
+      }
+    },
+    "source_lines": {
+      "original": 3444,
+      "delivered": 1556
+    },
+    "body_overlap": {
+      "percent": 10,
+      "compared_lines": 480,
+      "documentation_percent": 2,
+      "functions": 0
+    }
+  },
+  "elapsed_seconds": 5024.409613,
+  "delivery": {
+    "acceptance": {
+      "details": {
+        "task_effort_not_passed": {
+          "failed": false,
+          "reason": "invalid_task_design",
+          "status": "unverified",
+          "synthetic": false
+        }
+      },
+      "failed": false,
+      "gaps": [
+        "task_effort_not_passed"
+      ],
+      "limitations": [
+        "Passing checks is not proof of semantic equivalence.",
+        "The report lists gaps; it does not choose the next action."
+      ],
+      "outcome": "incomplete",
+      "profile": "delivery"
+    },
+    "attempts": 4,
+    "branch": "codex/nanolize-b0d1f290452f4fc6a05b553949a766a0",
+    "budget_status": "met",
+    "candidate": "candidate-4",
+    "capability_scope": "all_declared",
+    "installation": {
+      "checks_passed": 3,
+      "checks_total": 3,
+      "environment_metadata_complete": true,
+      "status": "passed"
+    },
+    "mode": "rewrite",
+    "obligations_complete": true,
+    "publication_status": "not_requested",
+    "report_site": {
+      "publication_status": "not_requested",
+      "report_id": "nrs_16602f85f0a8a5ef53d47dc7e511a5ad5abeb633db74beda6fb4f90e053ce76c",
+      "status": "generated"
+    },
+    "rewrite_progress": {
+      "accepted_candidate_available": true,
+      "author_attempts": 4,
+      "behavior_acceptance": "passed",
+      "failed_optimizations": 0,
+      "max_optimization_attempts": 3,
+      "optimization_attempts": 0,
+      "priority": "functionality_first",
+      "rejected_attempts": 0,
+      "repair_attempts": 3,
+      "restorations": 0,
+      "size_acceptance": "met",
+      "stop_reason": null
+    },
+    "scope_policy": "explicit",
+    "size": {
+      "baseline_source_lines": 3444,
+      "baseline_tokens": 144006,
+      "complete": true,
+      "configuration_tokens": 462,
+      "metric": "tokens",
+      "retained_percent": 10.516922905990029,
+      "source_files": 10,
+      "source_lines": 1556,
+      "source_retained_percent": 45.18002322880372,
+      "source_tokens": 14683,
+      "target_met": true,
+      "target_percent": 50.0,
+      "target_source_lines": 1722.0,
+      "target_tokens": 72003,
+      "tokenizer": {
+        "classification": "source_and_configuration_v2",
+        "decoding": "python_encoding_cookie_else_utf8_strict",
+        "encoding": "cl100k_base",
+        "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+        "file_boundaries": "independent_sum",
+        "library": "tiktoken",
+        "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+        "special_tokens": "ordinary_text",
+        "text_policy": "raw_decoded_text_per_file",
+        "version": "0.12.0"
+      },
+      "total_tokens": 15145
+    },
+    "size_target_policy": "advisory",
+    "source_access_boundary": "source_free_first_implementation_repairs_read_failed_capabilities_not_os_sandbox",
+    "source_reference": {
+      "author_calls": 3,
+      "capabilities": [
+        "benchmarks",
+        "comparison",
+        "core",
+        "frozen",
+        "ordered"
+      ],
+      "files": 7
+    },
+    "strategy": {
+      "applied": 14,
+      "cached_input_tokens": 256640,
+      "calls": 41,
+      "decisions": [
+        {
+          "outcome": "applied",
+          "round": 1,
+          "tools": [
+            "create_workspace",
+            "write_test_facts",
+            "capture_baseline",
+            "design_leaf_tests",
+            "seal_contract",
+            "prepare_tasks"
+          ]
+        },
+        {
+          "outcome": "applied",
+          "round": 2,
+          "tools": [
+            "run_agent",
+            "save_candidate"
+          ]
+        },
+        {
+          "outcome": "applied",
+          "round": 3,
+          "tools": [
+            "compare_behavior",
+            "check_installation",
+            "audit_coverage",
+            "measure_code"
+          ]
+        },
+        {
+          "outcome": "applied",
+          "round": 4,
+          "tools": [
+            "run_agent",
+            "save_candidate"
+          ]
+        },
+        {
+          "outcome": "applied",
+          "round": 5,
+          "tools": [
+            "compare_behavior",
+            "get_knowledge",
+            "get_knowledge"
+          ]
+        },
+        {
+          "outcome": "applied",
+          "round": 6,
+          "tools": [
+            "get_knowledge",
+            "run_agent",
+            "save_candidate"
+          ]
+        },
+        {
+          "outcome": "applied",
+          "round": 7,
+          "tools": [
+            "compare_behavior",
+            "get_knowledge",
+            "get_feedback_history"
+          ]
+        },
+        {
+          "outcome": "applied",
+          "round": 8,
+          "tools": [
+            "run_agent",
+            "save_candidate"
+          ]
+        },
+        {
+          "outcome": "applied",
+          "round": 9,
+          "tools": [
+            "compare_behavior",
+            "check_installation",
+            "measure_code"
+          ]
+        },
+        {
+          "outcome": "applied",
+          "round": 10,
+          "tools": [
+            "compare_task_effort",
+            "audit_coverage",
+            "evaluate_acceptance"
+          ]
+        },
+        {
+          "outcome": "applied",
+          "round": 11,
+          "tools": [
+            "design_tasks"
+          ]
+        },
+        {
+          "outcome": "applied",
+          "round": 12,
+          "tools": [
+            "run_task_trial",
+            "run_task_trial"
+          ]
+        },
+        {
+          "outcome": "applied",
+          "round": 13,
+          "tools": [
+            "grade_task_trial",
+            "grade_task_trial",
+            "compare_task_trials",
+            "evaluate_acceptance"
+          ]
+        },
+        {
+          "outcome": "applied",
+          "round": 14,
+          "tools": [
+            "select_candidate",
+            "evaluate_acceptance",
+            "deliver"
+          ]
+        }
+      ],
+      "fixed_steps": 0,
+      "max_rounds": 240,
+      "name": "controller",
+      "rounds": 14,
+      "seconds": 219.228,
+      "tokens": 579493,
+      "usage_complete": true
+    },
+    "summary": "Delivered with gaps (task effort not passed); no full preservation claim is made.",
+    "task_effort": {
+      "binding": {
+        "candidate_contract_sha256": "3afb7821096bbbad03ddc7437844702312399ba0e913a9189d77235569a87da6",
+        "candidate_git_head": "db42e1b2a4d397f3498b2c86d8cae3407c5ed44b",
+        "candidate_source_sha256": "6ed6d9b5496cc5917766030d46629878ba8b6704963d9aadada3fb8cc06d2606",
+        "original_git_head": "2a21ebd4aa5dd74194accb0fbe2825d3f64295d2",
+        "original_snapshot_sha256": "8594df475bfa76e06273785289818f23aa51dc230716217f6a7d030ad7186329",
+        "plan_sha256": "c9752551e1448f8b74cba899f6dca9937b6c3f0154a76e8d9c5b57a1a2348a83",
+        "settings_sha256": "69423ec961b37aaa0b928562d8d96fa1af36f913722d447e9d0a5fef0ab5f3a7"
+      },
+      "iterations": [],
+      "limitations": [
+        "This assessment covers one representative modification workflow, including executing the change. It does not measure understanding, diagnosis or execution as separate task types.",
+        "Task effort measures these tasks under the recorded agent settings; it is not a universal measure of human cognitive burden.",
+        "Tokens count solver model inputs and outputs, including cached input. Missing usage is unavailable, never zero. Examiner and judge overhead is separate.",
+        "Empirical ranges describe repeated observations, not statistical confidence intervals. Failed or unrun tasks do not establish an improvement.",
+        "Task links identify assessed capabilities only; they do not change module behavior verification badges.",
+        "Task prompts, hidden inputs, judging rubrics, source excerpts, raw traces and local paths are omitted from this public report."
+      ],
+      "operation": "task_effort_evaluation",
+      "overhead": {
+        "examiner_tokens": 674396,
+        "judge_tokens": 0,
+        "observed_total_tokens": 674396,
+        "role_usage_complete": {
+          "examiner": true,
+          "judge": true,
+          "solver": true
+        },
+        "solver_tokens": 0,
+        "total_tokens": 674396,
+        "usage_complete": true
+      },
+      "policy": {
+        "comparison": "empirical_range",
+        "grading": "lightweight",
+        "heldout_deferred": true,
+        "min_improvement_percent": 5.0,
+        "model": "gpt-6.1-sol",
+        "reasoning_effort": "xhigh",
+        "regression_tolerance_percent": 5.0,
+        "repetitions": 3,
+        "staged": true,
+        "strict_all_tasks": true,
+        "task_types": [
+          "modify"
+        ]
+      },
+      "resources": {
+        "cleanup_pending": false,
+        "cleanup_pending_runs": 0,
+        "completed_runs": 1,
+        "roles": {
+          "examiner": {
+            "completed": 1,
+            "failed": 0
+          },
+          "judge": {
+            "completed": 0,
+            "failed": 0
+          },
+          "solver": {
+            "completed": 0,
+            "failed": 0
+          }
+        }
+      },
+      "schema_version": 1,
+      "staging": {
+        "completed_development_runs": 0,
+        "expected_development_runs": 3,
+        "phase": "screening",
+        "screened_task_ids": [],
+        "targeted_task_ids": []
+      },
+      "status": "unverified",
+      "stop_reason": "invalid_task_design",
+      "task_types": [
+        "modify"
+      ],
+      "tasks": []
+    },
+    "verification_bundle": {
+      "schema_version": 1,
+      "status": "unavailable"
+    },
+    "verification_status": "checks_passed"
+  },
+  "verification_artifact": "verification-14",
+  "task_trials": {
+    "original": {
+      "solver_tokens": 237748,
+      "solver_seconds": 181.6808,
+      "grade": "unverified",
+      "reason": "judge_execution_unavailable",
+      "frozen_cases_observed_passed": 9,
+      "assertions_observed_passed": 336
+    },
+    "candidate": {
+      "solver_tokens": 178344,
+      "solver_seconds": 174.9385,
+      "grade": "passed",
+      "reason": "independent_checks_passed",
+      "frozen_cases_observed_passed": 9,
+      "assertions_observed_passed": 336
+    },
+    "variant": "development",
+    "repetitions_per_arm": 1,
+    "heldout_runs": 0,
+    "overall_improvement_verified": false
+  },
+  "publication": {
+    "method": "separate public static report",
+    "url": "https://weianmao.github.io/nanolize-verl-viz/graph-contract/bidict-20261114-b0d1f290/",
+    "note": "作业内置report_site publication_status=not_requested保留原样；本页由外层按用户要求发布。"
+  }
+}
