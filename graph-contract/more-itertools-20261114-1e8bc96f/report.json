@@ -1,0 +1,858 @@
+{
+  "job_id": "1e8bc96fa34349989d8596ed65fce375",
+  "status_label": "已交付 · 功能通过，任务成本评估有缺口",
+  "intro": "指定提交9413138完整跑到正式交付。第11个候选通过全部7组冻结功能检查、787个pytest用例及3项隔离安装检查，4/4节点义务通过。任务成本基线的一次独立裁判超时仍保留为交付缺口。过程中由外层助手通过官方诊断接口介入两次；未修改nanolize源码、冻结检查或预算。",
+  "cards": [
+    {
+      "label": "保留体积",
+      "value": "34.95%",
+      "note": "26,545 / 75,955 tokens；减少65.05%"
+    },
+    {
+      "label": "与原版相同行",
+      "value": "21.2%",
+      "note": "同路径有效行，按行长度加权"
+    },
+    {
+      "label": "正式作业耗时",
+      "value": "3小时4分3秒",
+      "note": "比昨天少14分37秒（7.36%）"
+    },
+    {
+      "label": "已记录模型用量",
+      "value": "≥26.09M",
+      "note": "26,086,606 tokens；1条裁判用量缺失"
+    }
+  ],
+  "comparison": [
+    [
+      "正式结果",
+      "completed_with_gaps",
+      "completed_with_gaps",
+      "两次功能均通过；任务成本评估缺口原因不同"
+    ],
+    [
+      "交付源码+配置 tokens",
+      "25,135",
+      "26,545",
+      "本次多1,410（+5.61%）"
+    ],
+    [
+      "保留体积 / 减少比例",
+      "33.09% / 66.91%",
+      "34.95% / 65.05%",
+      "保留体积增加1.86个百分点；本次压缩幅度较小"
+    ],
+    [
+      "去Python注释/文档字符串后保留",
+      "68.82%",
+      "72.59%",
+      "增加3.77个百分点；总压缩并非全来自实现精简"
+    ],
+    [
+      "同路径相同行比例",
+      "22.1%",
+      "21.2%",
+      "下降0.9个百分点；行长度加权"
+    ],
+    [
+      "函数体整体重合",
+      "15%",
+      "19%",
+      "增加4个百分点；与上一行是不同指标"
+    ],
+    [
+      "防默写退回",
+      "0文件 / 0次",
+      "0文件 / 0次",
+      "两次均auto；本次11次保存均成功"
+    ],
+    [
+      "测试设计",
+      "2节点 / 8文件 / 53例",
+      "1节点 / 3文件 / 16例",
+      "均为默认设计流程；不是逐函数完备覆盖"
+    ],
+    [
+      "未验证叶节点",
+      "0",
+      "0",
+      "按默认规则；本次documentation没有动态knockout证据"
+    ],
+    [
+      "原版用例 / 新设计用例",
+      "771 / 53",
+      "771 / 16",
+      "原版用例相同；不重复计入包装检查和子测试"
+    ],
+    [
+      "冻结功能组 / 安装检查",
+      "16 / 3，均通过",
+      "7 / 3，均通过",
+      "初始清单和生成检查不同，不是严格受控A/B"
+    ],
+    [
+      "完整候选 / 作者调用",
+      "6 / 11",
+      "11 / 14",
+      "本次10个失败候选后，第11个全量通过"
+    ],
+    [
+      "正式作业耗时",
+      "3 小时 18 分 40 秒",
+      "3 小时 4 分 3 秒",
+      "减少14.62分钟（7.36%）"
+    ],
+    [
+      "模型输入 tokens",
+      "25,495,929",
+      "≥25,717,979",
+      "本次1条超时裁判用量缺失"
+    ],
+    [
+      "其中缓存输入 tokens",
+      "22,878,592",
+      "≥22,953,984",
+      "已经包含在输入中，不再累加"
+    ],
+    [
+      "模型输出 tokens",
+      "325,183",
+      "≥368,627",
+      "实际值可能更高"
+    ],
+    [
+      "模型合计 tokens",
+      "25,821,112",
+      "≥26,086,606",
+      "至少增加265,494（≥1.03%），不能声称节省tokens"
+    ],
+    [
+      "运行器记录 / 缺失计量",
+      "52 / 0",
+      "60 / 1",
+      "包含控制器、事实、设计、作者和任务角色；外层协调会话均不计入"
+    ],
+    [
+      "实际货币花费",
+      "未提供账单",
+      "未提供账单",
+      "不以tokens冒充美元费用"
+    ],
+    [
+      "默认任务预算",
+      "1,000,000 tokens",
+      "6,000,000 tokens",
+      "两次均各自分支默认值；本次未手工扩额"
+    ],
+    [
+      "最终扩展套件耗时",
+      "14.1501秒（原30秒检查）",
+      "79.5218秒（默认候选窗口92秒）",
+      "本次原版基线27.1153秒；单次观测约2.93倍，不能声称性能不变"
+    ]
+  ],
+  "verification": [
+    [
+      "正式交付",
+      "candidate-11；completed_with_gaps；唯一缺口task_effort_not_passed；delivery-39"
+    ],
+    [
+      "全量冻结检查",
+      "7/7通过，0失败、0未运行、0未验证检查；verification-35"
+    ],
+    [
+      "原版功能用例",
+      "extended 626/626 + recipes 145/145 =771全部通过"
+    ],
+    [
+      "独立测试设计",
+      "extended 1节点，接受3文件16例，全部通过；1份语法无效草案被拒绝，设计运行器失败0"
+    ],
+    [
+      "叶节点验证",
+      "documentation / extended / recipes三叶节点均有效；missing=0、exempted=0。documentation无可替换函数体，不能取得动态knockout证据"
+    ],
+    [
+      "全部节点义务",
+      "4/4 verified；failed=0、unknown=0、retired=0；scope all"
+    ],
+    [
+      "公开导出与文档",
+      "176个公开导出名身份检查、版本、Sphinx配置、README预处理、CSS检查通过"
+    ],
+    [
+      "隔离安装",
+      "3/3通过，环境元数据完整；installation-36"
+    ],
+    [
+      "任务成本评估",
+      "原版3次solver均完成；独立judge 2次通过、1次120秒超时。候选任务比较正常返回unverified/original_baseline_unavailable；没有有效改善比例；task_effort-38"
+    ],
+    [
+      "防默写过程",
+      "auto；11次保存成功，0文件/0次退回，rejection记录0；整体函数体重合19%，局部2个函数达73%和75%"
+    ],
+    [
+      "默认源码参考",
+      "10次修复作者调用获参考文件，涉及4节点8文件；首次4个实现会话保持源码隔离。允许提供不等同证明逐个文件实际读取"
+    ],
+    [
+      "外层协调介入",
+      "两条官方job-diagnose诊断：实例字段/行为定位及生命周期措辞更正。未改合同、测试、预算或判定；不是nanolize原生控制器完全独立完成"
+    ],
+    [
+      "交付副本",
+      "独立Git仓库，23个跟踪文件；Git文件树与已验证候选完全一致，交付工作树和原版工作树均干净"
+    ]
+  ],
+  "limitations": [
+    "任务成本评估未验证，不能声称任务耗费改善或全输入语义等价。一次超时judge没有token记录，因此本次总量是下界；实际货币账单不可得。",
+    "没有人为关闭检查、调整时限或放宽断言。本分支默认会按ceil(3×原版耗时+10)给候选计算窗口：extended 92秒、recipes 44秒。最终extended耗时79.5218秒，超过原声明30秒，但符合这个默认策略；不可说本次也在30秒内通过。",
+    "最终extended单次观测耗时为本次原版冻结基线27.1153秒的约2.93倍。这不是受控性能基准，但不能忽略此差异或声称性能已经保持。",
+    "Python文档字符串为0 tokens，公共定义文档覆盖93.1%→0%；去注释和文档字符串后仍保留72.59%。文档配置检查通过不等于完整文档内容保留。",
+    "两次实验同原版提交和模型设置，但初始检查、随机生成的设计测试/任务、分支默认任务预算及候选检查时限不同，且干预方式不同，不能把差异全部归因于某一代码修复。",
+    "原版extended事实摘要两轮因复核均只返回39/40判决而整轮被拒绝，617个测试ID未被摘要覆盖；完整原版测试保留并最终通过。转换器仍漏掉部分实例字段，本次通过正式诊断绕过，工具源码问题没有修复。"
+  ],
+  "conversion": {
+    "checks_left_out": 0,
+    "checks_not_inspected": 1,
+    "external_capabilities_without_check": 0,
+    "internal_capabilities_not_reached": 0,
+    "unresolved_exports": 0,
+    "carry_candidates": 0,
+    "checks_kept": 4,
+    "checks_kept_with_names_stated": 2,
+    "interface_entries_proposed": 486,
+    "interface_entries_final": 500,
+    "truncated": 0
+  },
+  "settings": [
+    [
+      "范围",
+      "all；4/4节点，排除0"
+    ],
+    [
+      "检查验证 / 测试设计",
+      "默认开启；design=true；strict=false（默认）"
+    ],
+    [
+      "测试设计者",
+      "独立的新 Codex 会话；runner_argv 省略时用作业 Codex"
+    ],
+    [
+      "无人值守",
+      "controller_policy.owner_attends=false"
+    ],
+    [
+      "防默写",
+      "auto；未传 original-overlap"
+    ],
+    [
+      "预算与次数",
+      "无显式设置；默认总12h / 作者单次2h；功能修复次数不设"
+    ],
+    [
+      "任务评估",
+      "此分支默认6,000,000 tokens、每次900s、3次重复"
+    ],
+    [
+      "执行器",
+      "auto 自动回退 local；与昨天一致"
+    ],
+    [
+      "源码参考",
+      "on_failed_check（默认）"
+    ],
+    [
+      "carry / 详细 knowledge",
+      "无 carry 候选；未附加详细 knowledge 库"
+    ],
+    [
+      "候选检查时限",
+      "分支默认自动按 ceil(3×原版耗时+10) 计算；extended 92s、recipes 44s；未手工覆盖"
+    ]
+  ],
+  "interface_note": "静态转换保留486条接口，零截断；随后补充并去重至500条，包括版本、类型标记与公共类型约定、默认值、固定文字、文档配置及表格输出。转换自动声明 bucket._cache 和 recipes.groupby，以保留原版检查所依赖的名称。文档节点由原来的内部节点明确为用户可见外部能力。",
+  "previous_issues": [
+    [
+      "#6：300条接口容量截断71项",
+      "未再出现",
+      "本次一次成功转换生成486条，truncated=0；无需本地容量补丁。"
+    ],
+    [
+      "#21：任务要求解题者运行不可见 accept.py",
+      "未再出现同一原因",
+      "原版3次 solver 均完成，前2次独立验收通过；第3次是 judge 超时，另列 T01。"
+    ],
+    [
+      "#30：修订合同后旧任务基线使比较崩溃",
+      "本次未触发同一场景；无比较崩溃",
+      "文档检查启动前冻结，合同始终initial；两次诊断不改合同。compare_task_effort正常返回未验证。代码有superseded处理，但本次没有实测旧基线修订路径。"
+    ],
+    [
+      "#31（#30中披露）：新补丁被运行时指纹拒绝",
+      "未触发",
+      "本次未修改或替换 nanolize 代码，一直使用9413138。"
+    ],
+    [
+      "#12（报告披露）：附加套件30→180s",
+      "没有手工重现；默认时限已变化",
+      "原声明30s未编辑；本次默认候选窗口92/44s，最终extended 79.5218s。冻结阶段3次knockout超时通过独立补测补齐证据。"
+    ],
+    [
+      "事实摘要错误与未覆盖项",
+      "再次出现，extended 缺漏更多",
+      "本次接受40条 recipes 事实，丢弃82条，其中80条因复核两轮均只判39/40而全部拒绝；617个 extended 测试ID未被摘要覆盖。完整测试未删除。"
+    ],
+    [
+      "默认任务100万tokens额度被在途调用超出",
+      "旧门槛不适用，本次未报告额度耗尽",
+      "指定提交默认600万，未手动扩额。已记录任务用量≥1,603,971，含1条缺失judge计量；停止原因original_baseline_unavailable。"
+    ],
+    [
+      "文档字符串删除 / 默认源码参考",
+      "再次出现",
+      "两次docstring均0；本次去注释/文档后保留72.59%。参考文件提供给10次作者调用、4节点8文件；昨天为4次、3节点8文件。"
+    ]
+  ],
+  "new_issues": [
+    [
+      "P01",
+      "私有仓库 HTTPS 克隆缺少凭据",
+      "HTTPS凭据不可用，改用现有SSH凭据克隆指定分支。"
+    ],
+    [
+      "P02",
+      "pip 附加索引 DNS 失败导致反复重试",
+      "关闭失效的pip附加索引配置，使用主PyPI成功安装。"
+    ],
+    [
+      "P03",
+      "浏览工具无法读取昨天的报告",
+      "浏览工具读不到历史报告，curl取得公开HTML/JSON/问题日志。"
+    ],
+    [
+      "P04",
+      "旧清单 paths 包含非生产源码文件",
+      "旧清单把非生产文件列入paths；改为源码映射，4节点和4检查均保留。"
+    ],
+    [
+      "P05",
+      "检查比较模式写错",
+      "把错误枚举stdout改为output，保留输出比较语义。"
+    ],
+    [
+      "P06",
+      "人工补充的版本接口重复",
+      "接口版本条目重复；去重后计划通过，无功能删除。"
+    ],
+    [
+      "N01",
+      "review 后台服务启动窗口超时",
+      "review HTTP服务30秒启动超时；用相同ExecutionController直接提交，未改源码或预算。"
+    ],
+    [
+      "E01",
+      "自动 Slurm 探测缺少账户，内置回退本地",
+      "auto Slurm探测缺账户；使用工具内置local回退。"
+    ],
+    [
+      "Q01",
+      "recipes 首轮事实摘要有两条过度概括",
+      "两条recipes事实过度概括，独立复核拒绝后补充通过；原测试不变。"
+    ],
+    [
+      "Q02",
+      "extended 首轮事实摘要有错误和缺漏",
+      "extended两轮均只复核39/40，80条整轮拒绝；最终原版事实40条接受、82条丢弃，617个extended测试ID无摘要。完整测试最终通过。"
+    ],
+    [
+      "V01",
+      "原版功能失效试验有3组超时",
+      "3组原版knockout超时；默认独立补测16例后，未验证叶节点归零。"
+    ],
+    [
+      "Q03",
+      "设计测试草案残留 diff 前缀",
+      "1份设计测试带diff前缀而语法失败；拒绝该草案，接受其余3文件16例。"
+    ],
+    [
+      "T01",
+      "第3次原版任务的独立验收超时，任务成本基线未验证",
+      "原版第3次任务judge在120秒超时，保留未验证缺口及缺失计量；正常完成交付，没有改成通过。"
+    ],
+    [
+      "A01",
+      "首个候选有42个原版用例失败及2项接口/文档失败",
+      "首候选44项失败；修复扩展工具后降至17，安装和设计测试已通过。"
+    ],
+    [
+      "A02",
+      "第二个候选仍有16个原版用例及文档输出失败",
+      "第二候选17项失败；继续修复后降至14。"
+    ],
+    [
+      "A03",
+      "第三个候选剩余13个原版用例及文档输出失败",
+      "第三候选14项失败；专门修复recipes统计行为后降至10。"
+    ],
+    [
+      "A04",
+      "第四个候选剩余9个原版用例及文档输出失败",
+      "第四候选10项失败；修复文档预处理后降至9。"
+    ],
+    [
+      "A05",
+      "第五个候选仅剩9个扩展工具用例失败",
+      "第五候选9项失败；后续callback修复未命中实际失败，数量不变。"
+    ],
+    [
+      "A06",
+      "第六个候选的9项失败没有减少",
+      "第六候选仍9项；核对原始证据，通过官方接口登记诊断。"
+    ],
+    [
+      "N02",
+      "转换漏掉保留测试依赖的实例字段，错误摘要又隐藏关键上下文",
+      "保留测试依赖的实例字段未入外部接口，反馈又缺上下文；诊断1说明既有兼容要求，第8候选修好4例。转换器未改，未来仍可能重现。"
+    ],
+    [
+      "A07",
+      "第七个候选仍有相同9项失败，诊断后下一轮才定向修复",
+      "第七候选仍9项；该会话早于诊断启动，下一轮才定向修复字段。"
+    ],
+    [
+      "A08",
+      "第八个候选修复实例字段，仍有5个行为用例失败",
+      "第八候选剩5项；修复列表、生命周期、哈希和抽样后剩1项。"
+    ],
+    [
+      "A09",
+      "第九个候选仅剩切片对象生命周期失败",
+      "第九候选剩生命周期用例；安装通过，下一轮仍有反向切片子场景失败。"
+    ],
+    [
+      "Q04",
+      "外层诊断把对象生命周期过度概括为“尽早释放”",
+      "外层助手把生命周期误概括为尽早释放；追加诊断2更正，保留原记录，第11候选全部通过。"
+    ],
+    [
+      "A10",
+      "第十个候选仍未匹配完整切片生命周期",
+      "第十候选仍1项；按更正诊断修复引用保持，第11候选0失败，未改变验收。"
+    ]
+  ],
+  "usage_by_role": [
+    [
+      "控制器",
+      "29",
+      "1,902,275",
+      "14,193",
+      "1,916,468"
+    ],
+    [
+      "任务设计",
+      "1",
+      "555,906",
+      "20,869",
+      "576,775"
+    ],
+    [
+      "任务解题",
+      "3",
+      "789,031",
+      "21,400",
+      "810,431"
+    ],
+    [
+      "任务验收",
+      "3（1条缺失）",
+      "≥209,820",
+      "≥6,945",
+      "≥216,765"
+    ],
+    [
+      "事实复核",
+      "4",
+      "3,659,518",
+      "17,678",
+      "3,677,196"
+    ],
+    [
+      "事实生成",
+      "4",
+      "2,896,858",
+      "59,282",
+      "2,956,140"
+    ],
+    [
+      "测试复核",
+      "1",
+      "181,170",
+      "1,063",
+      "182,233"
+    ],
+    [
+      "测试设计",
+      "1",
+      "586,083",
+      "17,294",
+      "603,377"
+    ],
+    [
+      "压缩作者",
+      "14",
+      "14,937,318",
+      "209,903",
+      "15,147,221"
+    ],
+    [
+      "合计",
+      "60（59条完整、1条缺失）",
+      "≥25,717,979",
+      "≥368,627",
+      "≥26,086,606"
+    ]
+  ],
+  "cost_note": "60条去重运行器记录，包含14次作者调用；1次超时judge缺计量，未当作0花费，以上为已记录下界。缓存输入22,953,984已经包含在总输入中，不能重复相加。外层协调助手会话未计入，与昨天相同；运行器未提供货币账单，实际美元等费用未知。",
+  "versions": [
+    [
+      "原版提交",
+      "ceafee8ce96f4bc1eb74c528bc247c91d648a0bb"
+    ],
+    [
+      "nanolize指定分支",
+      "claude/graph-contract-field-fixes"
+    ],
+    [
+      "nanolize提交",
+      "9413138036b515f119ff63fa6db082a6148103f0"
+    ],
+    [
+      "任务评估模型 / reasoning",
+      "gpt-6.1-sol / xhigh"
+    ],
+    [
+      "初始接口来源",
+      "4节点、4检查；静态转换，无keep-checks；原版源码未执行"
+    ],
+    [
+      "启动时间 UTC",
+      "2026-11-14T01:45:19.697246+00:00"
+    ],
+    [
+      "正式完成时间 UTC",
+      "2026-11-14T04:49:22.846711+00:00"
+    ],
+    [
+      "计时口径",
+      "正式提交至完成事件；包括事实生成、验证、任务基线、作者修复和外层诊断等待，不含提交前准备及交付后的报告发布。与昨天口径一致。"
+    ],
+    [
+      "本地nanolize补丁",
+      "0；始终9413138，工作树干净，未向指定分支推送"
+    ],
+    [
+      "已验证候选commit",
+      "89661ddb9246a4b9d2959d268dd6f6d406ee36fa"
+    ],
+    [
+      "候选分支",
+      "codex/nanolize-1e8bc96fa34349989d8596ed65fce375"
+    ],
+    [
+      "交付目录",
+      "more-itertools-nanolized-20261114-044922"
+    ],
+    [
+      "交付commit",
+      "964367cb0e0cb0c51d118315fa69f3513f3ff68b"
+    ],
+    [
+      "交付方式",
+      "原生控制器第29轮select_candidate/evaluate_acceptance/deliver；保留任务缺口"
+    ],
+    [
+      "最终合同 / owner revision",
+      "initial / initial；两次诊断没有改合同"
+    ],
+    [
+      "未改变的检查证据",
+      "baseline-2 → verification-35；冻结bundle 39dc84d55b1bdd6bccffbdeb02030932cdcfd68bd471882f3d7461f65286bd76"
+    ]
+  ],
+  "updated_at": "2026-11-14T04:53:01.622106+00:00",
+  "comparison_notes": [
+    "非严格受控A/B：同一原版提交和模型设置，但初始检查数量、生成的测试/任务及部分分支默认策略不同，不能把差异全部归因于某一修复。",
+    "本次有至少一条 judge token 记录缺失；记录总量为下界，不能据此得出精确节省量。"
+  ],
+  "status": "completed_with_gaps",
+  "started_at": "2026-11-14T01:45:19.697246+00:00",
+  "finished_at": "2026-11-14T04:49:22.846711+00:00",
+  "elapsed_seconds": 11043.149,
+  "elapsed_display": "3 小时 4 分 3 秒",
+  "elapsed_note": "正式提交至完成事件；包括事实生成、验证、任务基线、作者修复和外层诊断等待，不含提交前准备及交付后的报告发布。与昨天口径一致。",
+  "metrics": {
+    "original_tokens": 75955,
+    "candidate_tokens": 26545,
+    "size_percent": 34.95,
+    "reduced_percent": 65.05,
+    "unchanged_percent": 21.2,
+    "undocumented_retained_percent": 72.59,
+    "body_overlap_percent": 19,
+    "refused_files": 0,
+    "refusals": 0,
+    "saved_candidates": 11,
+    "line_metric_note": "按行长度加权，比较14个原版同路径文件的有效行；不是简单逐行计数。",
+    "literal_note": "比较1602条有效代码行，函数体整体重合19%，低于auto整体40%启用门槛。side_effect 11行匹配73%，time_limited.__next__ 8行匹配75%，未因局部高重合触发退回。11次保存均成功，0文件/0次退回；这不等于零代码重合。"
+  },
+  "charts": [
+    {
+      "title": "保留源码与配置体积",
+      "rows": [
+        {
+          "label": "昨天",
+          "text": "33.09%",
+          "percent": 33.09
+        },
+        {
+          "label": "本次",
+          "text": "34.95%",
+          "percent": 34.95
+        }
+      ],
+      "note": "固定cl100k_base，原版均75,955 tokens；比例越低表示保留越少。"
+    },
+    {
+      "title": "与原版相同行比例",
+      "rows": [
+        {
+          "label": "昨天",
+          "text": "22.1%",
+          "percent": 22.1
+        },
+        {
+          "label": "本次",
+          "text": "21.2%",
+          "percent": 21.2
+        }
+      ],
+      "note": "同路径有效行长度加权；不等于函数体重合或语义相似度。"
+    }
+  ],
+  "tests": {
+    "designed_nodes": 1,
+    "designed_files": 3,
+    "designed_cases": 16,
+    "rejected_proposals": 1,
+    "unverified_nodes": 0,
+    "original_cases": 771,
+    "total_pytest_cases": 787,
+    "frozen_check_groups": 7,
+    "installation_checks": 3
+  },
+  "quality": {
+    "delivered": {
+      "composition": {
+        "code_tokens": 26350,
+        "other_tokens": 7476,
+        "python_code_tokens": 18874,
+        "python_comment_tokens": 172,
+        "python_data_literal_tokens": 0,
+        "python_docstring_tokens": 0,
+        "python_files": 4,
+        "unparsed_python_files": 0
+      },
+      "documentation": {
+        "documented": 0,
+        "documented_percent": 0.0,
+        "public_definitions": 189
+      },
+      "rewrite": {
+        "files_at_an_original_path": 14,
+        "unchanged_percent": 21.2
+      },
+      "total_tokens": 26545
+    },
+    "original": {
+      "composition": {
+        "code_tokens": 35682,
+        "other_tokens": 13793,
+        "python_code_tokens": 21889,
+        "python_comment_tokens": 4613,
+        "python_data_literal_tokens": 0,
+        "python_docstring_tokens": 35012,
+        "python_files": 4,
+        "unparsed_python_files": 0
+      },
+      "documentation": {
+        "documented": 176,
+        "documented_percent": 93.1,
+        "public_definitions": 189
+      },
+      "total_tokens": 75955
+    },
+    "original_overlap": {
+      "compared_lines": 1602,
+      "documentation_percent": 1,
+      "function_limit_percent": 60,
+      "function_lines": 8,
+      "functions": 2,
+      "limit_percent": 40,
+      "listed_functions": [
+        {
+          "function": "side_effect",
+          "lines": 11,
+          "path": "more_itertools/more.py",
+          "percent": 73
+        },
+        {
+          "function": "time_limited.__next__",
+          "lines": 8,
+          "path": "more_itertools/more.py",
+          "percent": 75
+        }
+      ],
+      "mode": "auto",
+      "percent": 19
+    },
+    "schema_version": 1,
+    "status": "measured",
+    "summary": {
+      "documented_percent": {
+        "delivered": 0.0,
+        "original": 93.1
+      },
+      "total_retained_percent": 34.95,
+      "undocumented_retained_percent": 72.59
+    }
+  },
+  "delivery": {
+    "candidate": "candidate-11",
+    "candidate_commit": "89661ddb9246a4b9d2959d268dd6f6d406ee36fa",
+    "directory_name": "more-itertools-nanolized-20261114-044922",
+    "export_commit": "964367cb0e0cb0c51d118315fa69f3513f3ff68b",
+    "export_matches_verified_candidate": true,
+    "acceptance_gaps": [
+      "task_effort_not_passed"
+    ],
+    "unresolved_behavior_failures": 0
+  },
+  "proof_artifacts": {
+    "baseline": "baseline-2",
+    "verification": "verification-35",
+    "installation": "installation-36",
+    "measurement": "measurement-37",
+    "task_effort": "task_effort-38",
+    "delivery": "delivery-39",
+    "contract": "initial",
+    "diagnostics": [
+      "diagnostics-1",
+      "diagnostics-2"
+    ]
+  },
+  "cost": {
+    "input_tokens": 25717979,
+    "output_tokens": 368627,
+    "cached_input_tokens": 22953984,
+    "total_tokens": 26086606,
+    "records": 60,
+    "incomplete_records": 1,
+    "usage_is_lower_bound": true,
+    "currency_cost": null,
+    "outer_coordinator_included": false
+  },
+  "candidate_history": [
+    [
+      "candidate-1",
+      "44",
+      "3/7",
+      "verification-8",
+      "A01"
+    ],
+    [
+      "candidate-2",
+      "17",
+      "4/7",
+      "verification-12",
+      "A02"
+    ],
+    [
+      "candidate-3",
+      "14",
+      "4/7",
+      "verification-14",
+      "A03"
+    ],
+    [
+      "candidate-4",
+      "10",
+      "5/7",
+      "verification-16",
+      "A04"
+    ],
+    [
+      "candidate-5",
+      "9",
+      "6/7",
+      "verification-18",
+      "A05"
+    ],
+    [
+      "candidate-6",
+      "9",
+      "6/7",
+      "verification-20",
+      "A06"
+    ],
+    [
+      "candidate-7",
+      "9",
+      "6/7",
+      "verification-23",
+      "A07"
+    ],
+    [
+      "candidate-8",
+      "5",
+      "6/7",
+      "verification-25",
+      "A08"
+    ],
+    [
+      "candidate-9",
+      "1",
+      "6/7",
+      "verification-27",
+      "A09"
+    ],
+    [
+      "candidate-10",
+      "1",
+      "6/7",
+      "verification-31",
+      "A10"
+    ],
+    [
+      "candidate-11",
+      "0",
+      "7/7",
+      "verification-35",
+      "全量通过"
+    ]
+  ],
+  "issue_note": "完整记录25项：包括准备/环境错误、模型输出问题、10轮候选失败及2条外层诊断。昨天公开问题列表只保留3项nanolize问题；未公开的准备项不能据此认定昨天从未发生。没有人工放宽验收，分支默认候选时限的变化单独披露。",
+  "interventions": [
+    {
+      "id": "diagnostics-1",
+      "evidence": "verification-20",
+      "result": "实例字段四个相关用例在candidate-8通过"
+    },
+    {
+      "id": "diagnostics-2",
+      "evidence": "verification-27",
+      "result": "更正外层生命周期描述；candidate-11全量通过"
+    }
+  ]
+}
