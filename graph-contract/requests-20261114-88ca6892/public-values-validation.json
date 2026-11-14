@@ -1,0 +1,20 @@
+{
+  "job_id": "88ca6892f1c0415f96920528b764771e",
+  "candidate_commit": "26564c93d294dba544762efc29bf1db3c2f843f6",
+  "status": "passed",
+  "public_numeric_status_aliases": 243,
+  "metadata_fields": 9,
+  "compared_categories": [
+    "adapter_prefixes",
+    "default_headers",
+    "metadata",
+    "session",
+    "status_names"
+  ],
+  "values_equal": true,
+  "original_sha256": "6a88f7be5f3129ca446edc14e4dd31cbfb8819e574ad2dc7b370391426c91624",
+  "candidate_sha256": "6a88f7be5f3129ca446edc14e4dd31cbfb8819e574ad2dc7b370391426c91624",
+  "scope": "Independent audit of literal values stated in the interface; supplemental to frozen job checks, not a leaf knockout test.",
+  "delivery_commit": "313024bf805bb0243f51e4976a697efdedd09cce",
+  "delivery_values_equal": true
+}

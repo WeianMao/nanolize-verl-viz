@@ -1,0 +1,15 @@
+capability_id,before_lines,after_lines,reduction_percent,mapping_status,validation_status,executed,evidence_category,direct_checks,related_checks,direct_checks_passed,direct_checks_failed,direct_checks_inconclusive,related_checks_passed,related_checks_failed,related_checks_inconclusive,evidence_coverage,before_source_tokens,after_source_tokens,source_token_reduction_percent
+requests,6886,2258,67.209,mapped,unknown,False,related_passed,0,11,0,0,0,11,0,0,limited,53627,21047,60.753
+http-api,399,62,84.461,mapped,unknown,False,related_passed,0,1,0,0,0,1,0,0,limited,3234,565,82.529
+sessions,920,277,69.891,mapped,verified,True,direct_passed,1,1,1,0,0,1,0,0,declared_checks_only,7336,2988,59.269
+messages,1184,459,61.233,mapped,verified,True,direct_passed,1,1,1,0,0,1,0,0,declared_checks_only,9114,4121,54.784
+transport,766,220,71.279,mapped,verified,True,direct_passed,2,1,2,0,0,1,0,0,declared_checks_only,6048,2467,59.21
+cookies,625,262,58.08,mapped,verified,True,direct_passed,2,0,2,0,0,0,0,0,declared_checks_only,4906,2186,55.442
+authentication,354,161,54.52,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,2846,1454,48.911
+hooks,48,25,47.917,mapped,verified,True,direct_passed,2,0,2,0,0,0,0,0,declared_checks_only,278,162,41.727
+utilities,1336,486,63.623,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,10018,4164,58.435
+errors,162,67,58.642,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,937,581,37.994
+status,128,46,64.062,mapped,unknown,False,related_passed,0,2,0,0,0,2,0,0,limited,1211,906,25.186
+compatibility,349,138,60.458,mapped,unknown,False,unverified,0,0,0,0,0,0,0,0,not_established,2505,1055,57.884
+diagnostics,132,55,58.333,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,911,409,55.104
+documentation,483,34,92.961,mapped,unknown,False,unverified,0,0,0,0,0,0,0,0,not_established,4283,293,93.159

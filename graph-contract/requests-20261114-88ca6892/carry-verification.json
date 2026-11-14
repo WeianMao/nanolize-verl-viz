@@ -1,0 +1,20 @@
+[
+  {
+    "path": "ext/requests-logo.ai",
+    "bytes": 2189478,
+    "unchanged": true,
+    "sha256": "ada5899494a2fbd06b6a1a6062dc1b755eaef9dee8ae833a864712b1671fd604"
+  },
+  {
+    "path": "ext/requests-logo.svg",
+    "bytes": 883794,
+    "unchanged": true,
+    "sha256": "b1e7fd86516c1e925191a41ee1efdb2489654548c7756881c311f50b79233af0"
+  },
+  {
+    "path": "src/requests/py.typed",
+    "bytes": 0,
+    "unchanged": true,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]
