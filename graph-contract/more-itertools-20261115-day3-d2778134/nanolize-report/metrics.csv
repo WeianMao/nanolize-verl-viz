@@ -1,0 +1,7 @@
+capability_id,before_lines,after_lines,reduction_percent,mapping_status,validation_status,executed,evidence_category,direct_checks,related_checks,direct_checks_passed,direct_checks_failed,direct_checks_inconclusive,related_checks_passed,related_checks_failed,related_checks_inconclusive,evidence_coverage,before_source_tokens,after_source_tokens,source_token_reduction_percent
+library,8843,3154,64.333,mapped,unknown,False,related_passed,0,23,0,0,0,23,0,0,limited,72854,28370,61.059
+package,6,6,0.0,mapped,verified,True,direct_passed,1,4,1,0,0,4,0,0,limited,41,41,0.0
+iterables,5664,2554,54.908,mapped,verified,True,direct_passed,4,3,4,0,0,3,0,0,limited,47001,17746,62.243
+recipes,1617,2554,-57.947,mapped,verified,True,direct_passed,8,3,8,0,0,3,0,0,limited,12994,17746,-36.571
+typing,1256,2525,-101.035,mapped,verified,True,direct_passed,5,0,5,0,0,0,0,0,limited,10595,24091,-127.381
+documentation,300,45,85.0,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,limited,2223,405,81.781

@@ -1,0 +1,4172 @@
+{
+  "schema_version": 1,
+  "operation": "nanolize_report",
+  "binding": {
+    "original_git_head": "41fb2765eb742e917188e8636c53b135bfe3ed7a",
+    "candidate_git_head": "7c42d2a94c958d65ec80b5dbac26ac511f01c05e",
+    "candidate_source_sha256": "1888225fefe39470b0c714abf71cf0c18d3916e9ad2dc36fe9faff36486c363c",
+    "candidate_contract_sha256": "e8ddfe33ed9e05ef93988ed011761857262312153d733d3a183aa7876b786631",
+    "plan_sha256": "4136d9382c06d03c714336f48f4bd4f218921682a52a6dbecc6f0d429c3274f5",
+    "verification_sha256": "6e4e3ae83cb30dc033ec7180276d6a4686001f68ce5258ec917289f8ea2c4a2b",
+    "candidate_code_size_sha256": "f09295469adc88b20a8e06fa87a9fb99097ba2d4116dca2d30e832684d7bf9e1"
+  },
+  "summary": {
+    "before": 8843,
+    "after": 3154,
+    "reduction_percent": 64.333,
+    "capabilities": 6,
+    "count_unit": "capabilities",
+    "status_counts": {
+      "verified": 5,
+      "failed": 0,
+      "partial": 0,
+      "unknown": 1,
+      "retired": 0
+    },
+    "evidence_counts": {
+      "failed": 0,
+      "direct_passed": 5,
+      "direct_partial": 0,
+      "related_passed": 1,
+      "related_only": 0,
+      "unverified": 0,
+      "retired": 0
+    },
+    "aggregate_status_counts": {
+      "verified": 6,
+      "failed": 0,
+      "partial": 0,
+      "unknown": 0,
+      "retired": 0
+    },
+    "verification_status": "checks_passed",
+    "verification_tests": {
+      "original_total": 5,
+      "retained": 23,
+      "retired": 0,
+      "needs_adaptation": 0,
+      "adapted": 0,
+      "contract": 18,
+      "passed": 23,
+      "failed": 0,
+      "fixed_baseline_failure": 0,
+      "not_run": 0
+    },
+    "unattributed_checks": [
+      {
+        "name": "public-iterable-tests",
+        "status": "passed",
+        "role": "original",
+        "scope": "retained",
+        "capabilities": [
+          "iterables",
+          "package"
+        ],
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "target_capabilities": [],
+        "attribution": "unattributed",
+        "facts_given": 37,
+        "baseline_cases": {
+          "passed": 626,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "executed": 626
+        },
+        "candidate_cases": {
+          "passed": 626,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "executed": 626
+        }
+      },
+      {
+        "name": "public-recipe-tests",
+        "status": "passed",
+        "role": "original",
+        "scope": "retained",
+        "capabilities": [
+          "recipes",
+          "package"
+        ],
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "target_capabilities": [],
+        "attribution": "unattributed",
+        "facts_given": 39,
+        "baseline_cases": {
+          "passed": 145,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "executed": 145
+        },
+        "candidate_cases": {
+          "passed": 145,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "executed": 145
+        }
+      },
+      {
+        "name": "upstream-unittest-and-doctests",
+        "status": "passed",
+        "role": "original",
+        "scope": "retained",
+        "capabilities": [
+          "iterables",
+          "recipes",
+          "package"
+        ],
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "target_capabilities": [],
+        "attribution": "unattributed",
+        "facts_given": 57
+      },
+      {
+        "name": "public-output-contract",
+        "status": "passed",
+        "role": "contract",
+        "scope": "retained",
+        "capabilities": [
+          "package",
+          "iterables",
+          "recipes"
+        ],
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "target_capabilities": [],
+        "attribution": "unattributed"
+      }
+    ],
+    "leaf_coverage": {
+      "status": "ready",
+      "strict": false,
+      "valid": [],
+      "missing": [
+        "documentation",
+        "iterables",
+        "package",
+        "recipes",
+        "typing"
+      ],
+      "exempted": [],
+      "why_missing": {
+        "documentation": [
+          "no_behavioral_knockout_failure",
+          "role_not_proven"
+        ],
+        "iterables": [
+          "no_behavioral_knockout_failure"
+        ],
+        "package": [
+          "no_behavioral_knockout_failure"
+        ],
+        "recipes": [
+          "no_behavioral_knockout_failure"
+        ],
+        "typing": [
+          "no_behavioral_knockout_failure",
+          "role_not_proven"
+        ]
+      }
+    },
+    "facts_given_checks": 20,
+    "source_reference_capabilities": 4,
+    "unmapped_candidate_files": [],
+    "ignored_mapping_files": [
+      "MANIFEST.in",
+      "README.rst",
+      "docs/api-more.rst",
+      "docs/api-recipes.rst",
+      "docs/api.rst",
+      "docs/index.rst",
+      "more_itertools/py.typed",
+      "pyproject.toml"
+    ],
+    "code_size": {
+      "metric": "tokens",
+      "tokenizer": {
+        "library": "tiktoken",
+        "version": "0.12.0",
+        "encoding": "cl100k_base",
+        "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+        "text_policy": "raw_decoded_text_per_file",
+        "classification": "source_and_configuration_v2",
+        "special_tokens": "ordinary_text",
+        "file_boundaries": "independent_sum",
+        "decoding": "python_encoding_cookie_else_utf8_strict",
+        "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets"
+      },
+      "before": 75955,
+      "after": 30860,
+      "reduction_percent": 59.371,
+      "source_before": 72854,
+      "source_after": 28370,
+      "configuration_before": 3101,
+      "configuration_after": 2490,
+      "observed_before": 75955,
+      "observed_after": 30860,
+      "complete": true,
+      "target_tokens": 37977,
+      "budget_status": "met",
+      "target_policy": "advisory",
+      "code_only": {
+        "before": 36330,
+        "after": 30695
+      },
+      "documented_percent": {
+        "original": 93.1,
+        "delivered": 0.5
+      }
+    },
+    "size_attribution": {
+      "metric": "tokens",
+      "tokenizer": {
+        "classification": "source_and_configuration_v2",
+        "decoding": "python_encoding_cookie_else_utf8_strict",
+        "encoding": "cl100k_base",
+        "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+        "file_boundaries": "independent_sum",
+        "library": "tiktoken",
+        "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+        "special_tokens": "ordinary_text",
+        "text_policy": "raw_decoded_text_per_file",
+        "version": "0.12.0"
+      },
+      "complete": true,
+      "original_total": 75955,
+      "selected_original_estimate": 75955,
+      "candidate_total": 30860,
+      "overall_reduction": {
+        "tokens": 45095,
+        "percent": 59.371
+      },
+      "scope_reduction_estimate": {
+        "tokens": 0,
+        "percent": 0.0
+      },
+      "rewrite_reduction_estimate": {
+        "tokens": 45095,
+        "percent": 59.371
+      },
+      "shared_scope_files": [],
+      "method": "unique_mapped_source_plus_all_original_configuration",
+      "estimate_only": false,
+      "limitations": [
+        "Scope and rewrite attribution are mapped-file estimates, not exact semantic savings. Shared files count once and retained/removed code within them cannot be separated.",
+        "All original configuration is charged to the retained footprint. Configuration changes appear in the rewrite estimate and may include scope-related savings.",
+        "Overall reduction uses the full original as denominator; rewrite reduction uses the selected original estimate. Their percentages must not be added.",
+        "Negative reductions indicate growth; incomplete measurements do not establish savings."
+      ]
+    }
+  },
+  "nodes": [
+    {
+      "id": "library",
+      "parent": null,
+      "name": "可组合的迭代工具库",
+      "kind": "capability",
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 8843,
+        "after": 3154,
+        "reduction_percent": 64.333,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "docs/_static/theme_overrides.css",
+            "lines": 14
+          },
+          {
+            "path": "docs/conf.py",
+            "lines": 286
+          },
+          {
+            "path": "more_itertools/__init__.py",
+            "lines": 6
+          },
+          {
+            "path": "more_itertools/__init__.pyi",
+            "lines": 2
+          },
+          {
+            "path": "more_itertools/more.py",
+            "lines": 5664
+          },
+          {
+            "path": "more_itertools/more.pyi",
+            "lines": 1022
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 1617
+          },
+          {
+            "path": "more_itertools/recipes.pyi",
+            "lines": 232
+          }
+        ],
+        "after_files": [
+          {
+            "path": "docs/_static/custom.css",
+            "lines": 4
+          },
+          {
+            "path": "docs/conf.py",
+            "lines": 41
+          },
+          {
+            "path": "more_itertools/__init__.py",
+            "lines": 6
+          },
+          {
+            "path": "more_itertools/__init__.pyi",
+            "lines": 4
+          },
+          {
+            "path": "more_itertools/more.py",
+            "lines": 1976
+          },
+          {
+            "path": "more_itertools/more.pyi",
+            "lines": 435
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 578
+          },
+          {
+            "path": "more_itertools/recipes.pyi",
+            "lines": 110
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "contract-iterables-d27781-5",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "iterables"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "iterables"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 17,
+            "baseline_cases": {
+              "passed": 18,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 18
+            },
+            "candidate_cases": {
+              "passed": 18,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 18
+            }
+          },
+          {
+            "name": "contract-iterables-d27781-6",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "iterables"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "iterables"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 14,
+            "baseline_cases": {
+              "passed": 15,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 15
+            },
+            "candidate_cases": {
+              "passed": 15,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 15
+            }
+          },
+          {
+            "name": "contract-iterables-d27781-8",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "iterables"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "iterables"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 14,
+            "baseline_cases": {
+              "passed": 13,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 13
+            },
+            "candidate_cases": {
+              "passed": 13,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 13
+            }
+          },
+          {
+            "name": "contract-iterables-d27781-9",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "iterables"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "iterables"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 15,
+            "baseline_cases": {
+              "passed": 10,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 10
+            },
+            "candidate_cases": {
+              "passed": 10,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 10
+            }
+          },
+          {
+            "name": "contract-package-d27781-11",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "package"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "package"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 1,
+            "baseline_cases": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 1
+            },
+            "candidate_cases": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 1
+            }
+          },
+          {
+            "name": "contract-recipes-d27781-12",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "recipes"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "recipes"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 11,
+            "baseline_cases": {
+              "passed": 21,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 21
+            },
+            "candidate_cases": {
+              "passed": 21,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 21
+            }
+          },
+          {
+            "name": "contract-recipes-d27781-13",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "recipes"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "recipes"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 12,
+            "baseline_cases": {
+              "passed": 32,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 32
+            },
+            "candidate_cases": {
+              "passed": 32,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 32
+            }
+          },
+          {
+            "name": "contract-recipes-d27781-14",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "recipes"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "recipes"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 12,
+            "baseline_cases": {
+              "passed": 19,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 19
+            },
+            "candidate_cases": {
+              "passed": 19,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 19
+            }
+          },
+          {
+            "name": "contract-recipes-d27781-15",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "recipes"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "recipes"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 7,
+            "baseline_cases": {
+              "passed": 35,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 35
+            },
+            "candidate_cases": {
+              "passed": 35,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 35
+            }
+          },
+          {
+            "name": "contract-recipes-d27781-16",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "recipes"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "recipes"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 10,
+            "baseline_cases": {
+              "passed": 12,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 12
+            },
+            "candidate_cases": {
+              "passed": 12,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 12
+            }
+          },
+          {
+            "name": "contract-recipes-d27781-17",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "recipes"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "recipes"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 12,
+            "baseline_cases": {
+              "passed": 39,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 39
+            },
+            "candidate_cases": {
+              "passed": 39,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 39
+            }
+          },
+          {
+            "name": "contract-recipes-d27781-18",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "recipes"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "recipes"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 9,
+            "baseline_cases": {
+              "passed": 79,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 79
+            },
+            "candidate_cases": {
+              "passed": 79,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 79
+            }
+          },
+          {
+            "name": "contract-recipes-d27781-19",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "recipes"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "recipes"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 13,
+            "baseline_cases": {
+              "passed": 12,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 12
+            },
+            "candidate_cases": {
+              "passed": 12,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 12
+            }
+          },
+          {
+            "name": "contract-typing-d27781-20",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "typing"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "typing"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 9,
+            "baseline_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            },
+            "candidate_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            }
+          },
+          {
+            "name": "contract-typing-d27781-21",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "typing"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "typing"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 10,
+            "baseline_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            },
+            "candidate_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            }
+          },
+          {
+            "name": "contract-typing-d27781-22",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "typing"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "typing"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 10,
+            "baseline_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            },
+            "candidate_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            }
+          },
+          {
+            "name": "contract-typing-d27781-23",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "typing"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "typing"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 11,
+            "baseline_cases": {
+              "passed": 3,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 3
+            },
+            "candidate_cases": {
+              "passed": 3,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 3
+            }
+          },
+          {
+            "name": "public-iterable-tests",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "iterables",
+              "package"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 37,
+            "baseline_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            },
+            "candidate_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            }
+          },
+          {
+            "name": "public-output-contract",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "package",
+              "iterables",
+              "recipes"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed"
+          },
+          {
+            "name": "public-recipe-tests",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "recipes",
+              "package"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 39,
+            "baseline_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            },
+            "candidate_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            }
+          },
+          {
+            "name": "upstream-docs-build",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "documentation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "documentation"
+            ],
+            "attribution": "single_capability"
+          },
+          {
+            "name": "upstream-type-signatures",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "typing"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "typing"
+            ],
+            "attribution": "single_capability"
+          },
+          {
+            "name": "upstream-unittest-and-doctests",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "iterables",
+              "recipes",
+              "package"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 57
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "not_run",
+          "candidate_status": "not_run",
+          "checks": [
+            {
+              "name": "contract-iterables-d27781-5",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "iterables"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "iterables"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 17,
+              "baseline_cases": {
+                "passed": 18,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 18
+              },
+              "candidate_cases": {
+                "passed": 18,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 18
+              }
+            },
+            {
+              "name": "contract-iterables-d27781-6",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "iterables"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "iterables"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 14,
+              "baseline_cases": {
+                "passed": 15,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 15
+              },
+              "candidate_cases": {
+                "passed": 15,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 15
+              }
+            },
+            {
+              "name": "contract-iterables-d27781-8",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "iterables"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "iterables"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 14,
+              "baseline_cases": {
+                "passed": 13,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 13
+              },
+              "candidate_cases": {
+                "passed": 13,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 13
+              }
+            },
+            {
+              "name": "contract-iterables-d27781-9",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "iterables"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "iterables"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 15,
+              "baseline_cases": {
+                "passed": 10,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 10
+              },
+              "candidate_cases": {
+                "passed": 10,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 10
+              }
+            },
+            {
+              "name": "contract-package-d27781-11",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "package"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "package"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 1,
+              "baseline_cases": {
+                "passed": 1,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 1
+              },
+              "candidate_cases": {
+                "passed": 1,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 1
+              }
+            },
+            {
+              "name": "contract-recipes-d27781-12",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "recipes"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "recipes"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 11,
+              "baseline_cases": {
+                "passed": 21,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 21
+              },
+              "candidate_cases": {
+                "passed": 21,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 21
+              }
+            },
+            {
+              "name": "contract-recipes-d27781-13",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "recipes"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "recipes"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 12,
+              "baseline_cases": {
+                "passed": 32,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 32
+              },
+              "candidate_cases": {
+                "passed": 32,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 32
+              }
+            },
+            {
+              "name": "contract-recipes-d27781-14",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "recipes"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "recipes"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 12,
+              "baseline_cases": {
+                "passed": 19,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 19
+              },
+              "candidate_cases": {
+                "passed": 19,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 19
+              }
+            },
+            {
+              "name": "contract-recipes-d27781-15",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "recipes"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "recipes"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 7,
+              "baseline_cases": {
+                "passed": 35,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 35
+              },
+              "candidate_cases": {
+                "passed": 35,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 35
+              }
+            },
+            {
+              "name": "contract-recipes-d27781-16",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "recipes"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "recipes"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 10,
+              "baseline_cases": {
+                "passed": 12,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 12
+              },
+              "candidate_cases": {
+                "passed": 12,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 12
+              }
+            },
+            {
+              "name": "contract-recipes-d27781-17",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "recipes"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "recipes"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 12,
+              "baseline_cases": {
+                "passed": 39,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 39
+              },
+              "candidate_cases": {
+                "passed": 39,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 39
+              }
+            },
+            {
+              "name": "contract-recipes-d27781-18",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "recipes"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "recipes"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 9,
+              "baseline_cases": {
+                "passed": 79,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 79
+              },
+              "candidate_cases": {
+                "passed": 79,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 79
+              }
+            },
+            {
+              "name": "contract-recipes-d27781-19",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "recipes"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "recipes"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 13,
+              "baseline_cases": {
+                "passed": 12,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 12
+              },
+              "candidate_cases": {
+                "passed": 12,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 12
+              }
+            },
+            {
+              "name": "contract-typing-d27781-20",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "typing"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "typing"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 9,
+              "baseline_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              },
+              "candidate_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              }
+            },
+            {
+              "name": "contract-typing-d27781-21",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "typing"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "typing"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 10,
+              "baseline_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              },
+              "candidate_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              }
+            },
+            {
+              "name": "contract-typing-d27781-22",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "typing"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "typing"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 10,
+              "baseline_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              },
+              "candidate_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              }
+            },
+            {
+              "name": "contract-typing-d27781-23",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "typing"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "typing"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 11,
+              "baseline_cases": {
+                "passed": 3,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 3
+              },
+              "candidate_cases": {
+                "passed": 3,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 3
+              }
+            },
+            {
+              "name": "public-iterable-tests",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "iterables",
+                "package"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 37,
+              "baseline_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              },
+              "candidate_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              }
+            },
+            {
+              "name": "public-output-contract",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "package",
+                "iterables",
+                "recipes"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed"
+            },
+            {
+              "name": "public-recipe-tests",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "recipes",
+                "package"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 39,
+              "baseline_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              },
+              "candidate_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              }
+            },
+            {
+              "name": "upstream-docs-build",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "documentation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "documentation"
+              ],
+              "attribution": "single_capability"
+            },
+            {
+              "name": "upstream-type-signatures",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "typing"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "typing"
+              ],
+              "attribution": "single_capability"
+            },
+            {
+              "name": "upstream-unittest-and-doctests",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "iterables",
+                "recipes",
+                "package"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 57
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "related_passed",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 23,
+            "passed": 23,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 72854,
+        "after": 28370,
+        "reduction_percent": 61.059,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "docs/_static/theme_overrides.css",
+            "tokens": 97
+          },
+          {
+            "path": "docs/conf.py",
+            "tokens": 2126
+          },
+          {
+            "path": "more_itertools/__init__.py",
+            "tokens": 41
+          },
+          {
+            "path": "more_itertools/__init__.pyi",
+            "tokens": 10
+          },
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 47001
+          },
+          {
+            "path": "more_itertools/more.pyi",
+            "tokens": 8563
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 12994
+          },
+          {
+            "path": "more_itertools/recipes.pyi",
+            "tokens": 2022
+          }
+        ],
+        "after_files": [
+          {
+            "path": "docs/_static/custom.css",
+            "tokens": 47
+          },
+          {
+            "path": "docs/conf.py",
+            "tokens": 358
+          },
+          {
+            "path": "more_itertools/__init__.py",
+            "tokens": 41
+          },
+          {
+            "path": "more_itertools/__init__.pyi",
+            "tokens": 15
+          },
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 13913
+          },
+          {
+            "path": "more_itertools/more.pyi",
+            "tokens": 8211
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 3833
+          },
+          {
+            "path": "more_itertools/recipes.pyi",
+            "tokens": 1952
+          }
+        ]
+      }
+    },
+    {
+      "id": "package",
+      "parent": "library",
+      "name": "安装与统一公共接口",
+      "kind": "capability",
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 6,
+        "after": 6,
+        "reduction_percent": 0.0,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "more_itertools/__init__.py",
+            "lines": 6
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/__init__.py",
+            "lines": 6
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "contract-package-d27781-11",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "package"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "package"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 1,
+            "baseline_cases": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 1
+            },
+            "candidate_cases": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 1
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-package-d27781-11",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "public-iterable-tests",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "iterables",
+              "package"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 37,
+            "baseline_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            },
+            "candidate_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            }
+          },
+          {
+            "name": "public-output-contract",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "package",
+              "iterables",
+              "recipes"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed"
+          },
+          {
+            "name": "public-recipe-tests",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "recipes",
+              "package"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 39,
+            "baseline_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            },
+            "candidate_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            }
+          },
+          {
+            "name": "upstream-unittest-and-doctests",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "iterables",
+              "recipes",
+              "package"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 57
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "contract-package-d27781-11",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "package"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "package"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 1,
+              "baseline_cases": {
+                "passed": 1,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 1
+              },
+              "candidate_cases": {
+                "passed": 1,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 1
+              }
+            },
+            {
+              "name": "public-iterable-tests",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "iterables",
+                "package"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 37,
+              "baseline_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              },
+              "candidate_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              }
+            },
+            {
+              "name": "public-output-contract",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "package",
+                "iterables",
+                "recipes"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed"
+            },
+            {
+              "name": "public-recipe-tests",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "recipes",
+                "package"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 39,
+              "baseline_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              },
+              "candidate_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              }
+            },
+            {
+              "name": "upstream-unittest-and-doctests",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "iterables",
+                "recipes",
+                "package"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 57
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "public-iterable-tests",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "public-recipe-tests",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "upstream-unittest-and-doctests",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "public-output-contract",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-package-d27781-11",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "blockers": [
+          "No valid leaf test: no behavioral knockout failure"
+        ],
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 4,
+            "passed": 4,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 41,
+        "after": 41,
+        "reduction_percent": 0.0,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "more_itertools/__init__.py",
+            "tokens": 41
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/__init__.py",
+            "tokens": 41
+          }
+        ]
+      }
+    },
+    {
+      "id": "iterables",
+      "parent": "library",
+      "name": "分组、流式变换与迭代器控制",
+      "kind": "capability",
+      "selection_reason": "core_dependency",
+      "loc": {
+        "before": 5664,
+        "after": 2554,
+        "reduction_percent": 54.908,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 5664
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 1976
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 578
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "contract-iterables-d27781-5",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "iterables"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "iterables"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 17,
+            "baseline_cases": {
+              "passed": 18,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 18
+            },
+            "candidate_cases": {
+              "passed": 18,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 18
+            }
+          },
+          {
+            "name": "contract-iterables-d27781-6",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "iterables"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "iterables"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 14,
+            "baseline_cases": {
+              "passed": 15,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 15
+            },
+            "candidate_cases": {
+              "passed": 15,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 15
+            }
+          },
+          {
+            "name": "contract-iterables-d27781-8",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "iterables"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "iterables"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 14,
+            "baseline_cases": {
+              "passed": 13,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 13
+            },
+            "candidate_cases": {
+              "passed": 13,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 13
+            }
+          },
+          {
+            "name": "contract-iterables-d27781-9",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "iterables"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "iterables"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 15,
+            "baseline_cases": {
+              "passed": 10,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 10
+            },
+            "candidate_cases": {
+              "passed": 10,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 10
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-iterables-d27781-5",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-iterables-d27781-6",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-iterables-d27781-8",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-iterables-d27781-9",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "public-iterable-tests",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "iterables",
+              "package"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 37,
+            "baseline_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            },
+            "candidate_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            }
+          },
+          {
+            "name": "public-output-contract",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "package",
+              "iterables",
+              "recipes"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed"
+          },
+          {
+            "name": "upstream-unittest-and-doctests",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "iterables",
+              "recipes",
+              "package"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 57
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "contract-iterables-d27781-5",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "iterables"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "iterables"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 17,
+              "baseline_cases": {
+                "passed": 18,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 18
+              },
+              "candidate_cases": {
+                "passed": 18,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 18
+              }
+            },
+            {
+              "name": "contract-iterables-d27781-6",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "iterables"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "iterables"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 14,
+              "baseline_cases": {
+                "passed": 15,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 15
+              },
+              "candidate_cases": {
+                "passed": 15,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 15
+              }
+            },
+            {
+              "name": "contract-iterables-d27781-8",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "iterables"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "iterables"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 14,
+              "baseline_cases": {
+                "passed": 13,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 13
+              },
+              "candidate_cases": {
+                "passed": 13,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 13
+              }
+            },
+            {
+              "name": "contract-iterables-d27781-9",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "iterables"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "iterables"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 15,
+              "baseline_cases": {
+                "passed": 10,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 10
+              },
+              "candidate_cases": {
+                "passed": 10,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 10
+              }
+            },
+            {
+              "name": "public-iterable-tests",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "iterables",
+                "package"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 37,
+              "baseline_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              },
+              "candidate_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              }
+            },
+            {
+              "name": "public-output-contract",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "package",
+                "iterables",
+                "recipes"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed"
+            },
+            {
+              "name": "upstream-unittest-and-doctests",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "iterables",
+                "recipes",
+                "package"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 57
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "public-iterable-tests",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "upstream-unittest-and-doctests",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "public-output-contract",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-iterables-d27781-5",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-iterables-d27781-6",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-iterables-d27781-8",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-iterables-d27781-9",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "blockers": [
+          "No valid leaf test: no behavioral knockout failure"
+        ],
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 4,
+            "passed": 4,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 3,
+            "passed": 3,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 47001,
+        "after": 17746,
+        "reduction_percent": 62.243,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 47001
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 13913
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 3833
+          }
+        ]
+      }
+    },
+    {
+      "id": "recipes",
+      "parent": "library",
+      "name": "标准迭代配方与数学统计",
+      "kind": "capability",
+      "selection_reason": "core_dependency",
+      "loc": {
+        "before": 1617,
+        "after": 2554,
+        "reduction_percent": -57.947,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 1617
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 1976
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 578
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "contract-recipes-d27781-12",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "recipes"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "recipes"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 11,
+            "baseline_cases": {
+              "passed": 21,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 21
+            },
+            "candidate_cases": {
+              "passed": 21,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 21
+            }
+          },
+          {
+            "name": "contract-recipes-d27781-13",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "recipes"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "recipes"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 12,
+            "baseline_cases": {
+              "passed": 32,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 32
+            },
+            "candidate_cases": {
+              "passed": 32,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 32
+            }
+          },
+          {
+            "name": "contract-recipes-d27781-14",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "recipes"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "recipes"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 12,
+            "baseline_cases": {
+              "passed": 19,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 19
+            },
+            "candidate_cases": {
+              "passed": 19,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 19
+            }
+          },
+          {
+            "name": "contract-recipes-d27781-15",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "recipes"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "recipes"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 7,
+            "baseline_cases": {
+              "passed": 35,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 35
+            },
+            "candidate_cases": {
+              "passed": 35,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 35
+            }
+          },
+          {
+            "name": "contract-recipes-d27781-16",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "recipes"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "recipes"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 10,
+            "baseline_cases": {
+              "passed": 12,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 12
+            },
+            "candidate_cases": {
+              "passed": 12,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 12
+            }
+          },
+          {
+            "name": "contract-recipes-d27781-17",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "recipes"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "recipes"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 12,
+            "baseline_cases": {
+              "passed": 39,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 39
+            },
+            "candidate_cases": {
+              "passed": 39,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 39
+            }
+          },
+          {
+            "name": "contract-recipes-d27781-18",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "recipes"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "recipes"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 9,
+            "baseline_cases": {
+              "passed": 79,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 79
+            },
+            "candidate_cases": {
+              "passed": 79,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 79
+            }
+          },
+          {
+            "name": "contract-recipes-d27781-19",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "recipes"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "recipes"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 13,
+            "baseline_cases": {
+              "passed": 12,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 12
+            },
+            "candidate_cases": {
+              "passed": 12,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 12
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-recipes-d27781-12",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-recipes-d27781-13",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-recipes-d27781-14",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-recipes-d27781-15",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-recipes-d27781-16",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-recipes-d27781-17",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-recipes-d27781-18",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-recipes-d27781-19",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "public-output-contract",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "package",
+              "iterables",
+              "recipes"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed"
+          },
+          {
+            "name": "public-recipe-tests",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "recipes",
+              "package"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 39,
+            "baseline_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            },
+            "candidate_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            }
+          },
+          {
+            "name": "upstream-unittest-and-doctests",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "iterables",
+              "recipes",
+              "package"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 57
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "contract-recipes-d27781-12",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "recipes"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "recipes"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 11,
+              "baseline_cases": {
+                "passed": 21,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 21
+              },
+              "candidate_cases": {
+                "passed": 21,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 21
+              }
+            },
+            {
+              "name": "contract-recipes-d27781-13",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "recipes"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "recipes"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 12,
+              "baseline_cases": {
+                "passed": 32,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 32
+              },
+              "candidate_cases": {
+                "passed": 32,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 32
+              }
+            },
+            {
+              "name": "contract-recipes-d27781-14",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "recipes"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "recipes"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 12,
+              "baseline_cases": {
+                "passed": 19,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 19
+              },
+              "candidate_cases": {
+                "passed": 19,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 19
+              }
+            },
+            {
+              "name": "contract-recipes-d27781-15",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "recipes"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "recipes"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 7,
+              "baseline_cases": {
+                "passed": 35,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 35
+              },
+              "candidate_cases": {
+                "passed": 35,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 35
+              }
+            },
+            {
+              "name": "contract-recipes-d27781-16",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "recipes"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "recipes"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 10,
+              "baseline_cases": {
+                "passed": 12,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 12
+              },
+              "candidate_cases": {
+                "passed": 12,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 12
+              }
+            },
+            {
+              "name": "contract-recipes-d27781-17",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "recipes"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "recipes"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 12,
+              "baseline_cases": {
+                "passed": 39,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 39
+              },
+              "candidate_cases": {
+                "passed": 39,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 39
+              }
+            },
+            {
+              "name": "contract-recipes-d27781-18",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "recipes"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "recipes"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 9,
+              "baseline_cases": {
+                "passed": 79,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 79
+              },
+              "candidate_cases": {
+                "passed": 79,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 79
+              }
+            },
+            {
+              "name": "contract-recipes-d27781-19",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "recipes"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "recipes"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 13,
+              "baseline_cases": {
+                "passed": 12,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 12
+              },
+              "candidate_cases": {
+                "passed": 12,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 12
+              }
+            },
+            {
+              "name": "public-output-contract",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "package",
+                "iterables",
+                "recipes"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed"
+            },
+            {
+              "name": "public-recipe-tests",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "recipes",
+                "package"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 39,
+              "baseline_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              },
+              "candidate_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              }
+            },
+            {
+              "name": "upstream-unittest-and-doctests",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "iterables",
+                "recipes",
+                "package"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 57
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "public-recipe-tests",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "upstream-unittest-and-doctests",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "public-output-contract",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-recipes-d27781-12",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-recipes-d27781-13",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-recipes-d27781-14",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-recipes-d27781-15",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-recipes-d27781-16",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-recipes-d27781-17",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-recipes-d27781-18",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-recipes-d27781-19",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "blockers": [
+          "No valid leaf test: no behavioral knockout failure"
+        ],
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 8,
+            "passed": 8,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 3,
+            "passed": 3,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 12994,
+        "after": 17746,
+        "reduction_percent": -36.571,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 12994
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 13913
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 3833
+          }
+        ]
+      }
+    },
+    {
+      "id": "typing",
+      "parent": "library",
+      "name": "类型声明与静态调用兼容",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 1256,
+        "after": 2525,
+        "reduction_percent": -101.035,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "more_itertools/__init__.pyi",
+            "lines": 2
+          },
+          {
+            "path": "more_itertools/more.pyi",
+            "lines": 1022
+          },
+          {
+            "path": "more_itertools/recipes.pyi",
+            "lines": 232
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/__init__.pyi",
+            "lines": 4
+          },
+          {
+            "path": "more_itertools/more.py",
+            "lines": 1976
+          },
+          {
+            "path": "more_itertools/more.pyi",
+            "lines": 435
+          },
+          {
+            "path": "more_itertools/recipes.pyi",
+            "lines": 110
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "upstream-type-signatures",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "typing"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "typing"
+            ],
+            "attribution": "single_capability"
+          },
+          {
+            "name": "contract-typing-d27781-20",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "typing"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "typing"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 9,
+            "baseline_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            },
+            "candidate_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            }
+          },
+          {
+            "name": "contract-typing-d27781-21",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "typing"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "typing"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 10,
+            "baseline_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            },
+            "candidate_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            }
+          },
+          {
+            "name": "contract-typing-d27781-22",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "typing"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "typing"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 10,
+            "baseline_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            },
+            "candidate_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            }
+          },
+          {
+            "name": "contract-typing-d27781-23",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "typing"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "typing"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 11,
+            "baseline_cases": {
+              "passed": 3,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 3
+            },
+            "candidate_cases": {
+              "passed": 3,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 3
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "upstream-type-signatures",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-typing-d27781-20",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-typing-d27781-21",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-typing-d27781-22",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-typing-d27781-23",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "contract-typing-d27781-20",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "typing"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "typing"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 9,
+              "baseline_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              },
+              "candidate_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              }
+            },
+            {
+              "name": "contract-typing-d27781-21",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "typing"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "typing"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 10,
+              "baseline_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              },
+              "candidate_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              }
+            },
+            {
+              "name": "contract-typing-d27781-22",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "typing"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "typing"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 10,
+              "baseline_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              },
+              "candidate_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              }
+            },
+            {
+              "name": "contract-typing-d27781-23",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "typing"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "typing"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 11,
+              "baseline_cases": {
+                "passed": 3,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 3
+              },
+              "candidate_cases": {
+                "passed": 3,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 3
+              }
+            },
+            {
+              "name": "upstream-type-signatures",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "typing"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "typing"
+              ],
+              "attribution": "single_capability"
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "upstream-type-signatures",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-typing-d27781-20",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-typing-d27781-21",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-typing-d27781-22",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-typing-d27781-23",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "blockers": [
+          "No valid leaf test: no behavioral knockout failure, role not proven"
+        ],
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 5,
+            "passed": 5,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 10595,
+        "after": 24091,
+        "reduction_percent": -127.381,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "more_itertools/__init__.pyi",
+            "tokens": 10
+          },
+          {
+            "path": "more_itertools/more.pyi",
+            "tokens": 8563
+          },
+          {
+            "path": "more_itertools/recipes.pyi",
+            "tokens": 2022
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/__init__.pyi",
+            "tokens": 15
+          },
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 13913
+          },
+          {
+            "path": "more_itertools/more.pyi",
+            "tokens": 8211
+          },
+          {
+            "path": "more_itertools/recipes.pyi",
+            "tokens": 1952
+          }
+        ]
+      }
+    },
+    {
+      "id": "documentation",
+      "parent": "library",
+      "name": "API 文档构建与浏览样式",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 300,
+        "after": 45,
+        "reduction_percent": 85.0,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "docs/_static/theme_overrides.css",
+            "lines": 14
+          },
+          {
+            "path": "docs/conf.py",
+            "lines": 286
+          }
+        ],
+        "after_files": [
+          {
+            "path": "docs/_static/custom.css",
+            "lines": 4
+          },
+          {
+            "path": "docs/conf.py",
+            "lines": 41
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "upstream-docs-build",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "documentation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "documentation"
+            ],
+            "attribution": "single_capability"
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "upstream-docs-build",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "upstream-docs-build",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "documentation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "documentation"
+              ],
+              "attribution": "single_capability"
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "upstream-docs-build",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "blockers": [
+          "No valid leaf test: no behavioral knockout failure, role not proven"
+        ],
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 2223,
+        "after": 405,
+        "reduction_percent": 81.781,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "docs/_static/theme_overrides.css",
+            "tokens": 97
+          },
+          {
+            "path": "docs/conf.py",
+            "tokens": 2126
+          }
+        ],
+        "after_files": [
+          {
+            "path": "docs/_static/custom.css",
+            "tokens": 47
+          },
+          {
+            "path": "docs/conf.py",
+            "tokens": 358
+          }
+        ]
+      }
+    }
+  ],
+  "scope": {
+    "preset": "all",
+    "foundations": [
+      "library",
+      "package"
+    ],
+    "core": [
+      "iterables",
+      "library",
+      "package",
+      "recipes"
+    ],
+    "kept": [
+      "documentation",
+      "iterables",
+      "library",
+      "package",
+      "recipes",
+      "typing"
+    ],
+    "removed": [],
+    "reasons": {
+      "library": "foundation",
+      "package": "foundation",
+      "iterables": "core_dependency",
+      "recipes": "core_dependency",
+      "typing": "selected",
+      "documentation": "selected"
+    }
+  },
+  "methodology": [
+    "Scope and rewrite attribution are mapped-file estimates, not exact semantic savings. Shared files count once and retained/removed code within them cannot be separated.",
+    "All original configuration is charged to the retained footprint. Configuration changes appear in the rewrite estimate and may include scope-related savings.",
+    "Overall reduction uses the full original as denominator; rewrite reduction uses the selected original estimate. Their percentages must not be added.",
+    "Negative reductions indicate growth; incomplete measurements do not establish savings.",
+    "The primary size metric counts frozen-tokenizer tokens in source and configuration, summed independently per file. These are code-size tokens, not model usage or task effort.",
+    "Module token figures cover mapped source only; global configuration cost is not assigned to modules. Informational LOC remains separate.",
+    "Incomplete token measurements show observed subtotals, never a verified reduction or successful budget.",
+    "Informational LOC counts are physical source lines from the frozen original and bound candidate inventories, excluding tests and local state.",
+    "Original capability counts include all original descendants; candidate counts include explicitly mapped own files and retained descendants. Excluded descendants do not require candidate mapping. Shared files count once within a node; node counts cannot be added together.",
+    "Candidate ownership is explicitly supplied metadata, not proof of semantic ownership. Missing mappings remain unknown, never zero or a claimed reduction.",
+    "Function steps inherit their owning capability's code scope, but validation remains unknown without direct step evidence; they are not independently measured or tested.",
+    "Local validation statuses use directly targeted checks only. Evidence badges separately describe direct checks and related context. Parent, descendant, import-related and shared evidence never implies a local pass or failure.",
+    "A check targets the leaves whose knockout broke its behavior; a leaf it survived, or whose knockout only broke importing, is context. Otherwise checks naming one capability target that capability by default. Broad or unscoped checks need explicit report check_targets; unattributed results remain in the verification summary and evidence.",
+    "Where the author was given facts a check pins (its asserted behavior and reference values), that check's pass is not independent evidence; such checks are marked.",
+    "Evidence labels distinguish directly passed check records, mixed direct evidence, related passing evidence and missing evidence. Related passes do not verify this module; check-record counts are not a functional coverage percentage.",
+    "Verification describes declared check groups and their observed configurations, not individual unit-test counts or full semantic equivalence.",
+    "Failed original baselines, unrun checks, retired scope and incomplete coverage remain distinct. Installation is reported separately.",
+    "Only public labels, relative file mappings, hashes and summary observations are included. Source contents, command argv, environment values and captured output are omitted."
+  ],
+  "installation": {
+    "status": "passed",
+    "checks_passed": 2,
+    "checks_total": 2,
+    "environment_metadata_complete": true
+  },
+  "rewrite_progress": {
+    "priority": "functionality_first",
+    "author_attempts": 11,
+    "repair_attempts": 8,
+    "optimization_attempts": 0,
+    "restorations": 0,
+    "rejected_attempts": 0,
+    "failed_optimizations": 0,
+    "max_optimization_attempts": 3,
+    "stop_reason": null,
+    "accepted_candidate_available": true,
+    "behavior_acceptance": "passed",
+    "size_acceptance": "met"
+  },
+  "task_effort": {
+    "schema_version": 1,
+    "operation": "task_effort_evaluation",
+    "status": "disabled",
+    "binding": {},
+    "policy": {
+      "comparison": "empirical_range",
+      "strict_all_tasks": true
+    },
+    "task_types": [
+      "understand",
+      "diagnose",
+      "modify",
+      "execute"
+    ],
+    "tasks": [],
+    "overhead": {
+      "examiner_tokens": null,
+      "judge_tokens": null,
+      "solver_tokens": null,
+      "total_tokens": null,
+      "usage_complete": false,
+      "observed_total_tokens": null,
+      "role_usage_complete": {
+        "examiner": false,
+        "solver": false,
+        "judge": false
+      }
+    },
+    "resources": {
+      "completed_runs": 0,
+      "cleanup_pending": false,
+      "cleanup_pending_runs": 0
+    },
+    "iterations": [],
+    "limitations": [
+      "Task effort measures these tasks under the recorded agent settings; it is not a universal measure of human cognitive burden.",
+      "Tokens count solver model inputs and outputs, including cached input. Missing usage is unavailable, never zero. Examiner and judge overhead is separate.",
+      "Empirical ranges describe repeated observations, not statistical confidence intervals. Failed or unrun tasks do not establish an improvement.",
+      "Task links identify assessed capabilities only; they do not change module behavior verification badges.",
+      "Task prompts, hidden inputs, judging rubrics, source excerpts, raw traces and local paths are omitted from this public report."
+    ],
+    "stop_reason": "owner_disabled"
+  },
+  "report_id": "nrs_4b5d41a25000e6b6b8b158d640802176997c9aa5c19135273bc41197e0b7d628"
+}
