@@ -1,0 +1,13 @@
+capability_id,before_lines,after_lines,reduction_percent,mapping_status,validation_status,executed,evidence_category,direct_checks,related_checks,direct_checks_passed,direct_checks_failed,direct_checks_inconclusive,related_checks_passed,related_checks_failed,related_checks_inconclusive,evidence_coverage,before_source_tokens,after_source_tokens,source_token_reduction_percent
+bidict,3444,1305,62.108,mapped,unknown,False,related_passed,0,10,0,0,0,8,2,0,limited,35666,11057,68.998
+mapping,1002,571,43.014,mapped,failed,True,failed,3,0,1,2,0,0,0,0,limited,11036,4522,59.025
+mutation,234,571,-144.017,mapped,failed,True,failed,2,1,1,1,0,0,1,0,limited,2091,4522,-116.26
+policies,100,571,-471.0,mapped,verified,True,direct_passed,3,2,3,0,0,0,2,0,declared_checks_only,848,4522,-433.255
+immutable,55,571,-938.182,mapped,failed,True,failed,1,2,0,1,0,1,1,0,limited,394,4522,-1047.716
+ordered,544,571,-4.963,mapped,failed,True,failed,2,1,1,1,0,0,1,0,limited,5865,4522,22.899
+inversion,55,571,-938.182,mapped,failed,True,failed,3,0,1,2,0,0,0,0,limited,484,4522,-834.298
+typing,49,571,-1065.306,mapped,unknown,False,related_only,0,2,0,0,0,0,2,0,limited,411,4522,-1000.243
+benchmarks,700,433,38.143,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,7373,3541,51.973
+profiling,323,154,52.322,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,3444,1392,59.582
+comparison,110,92,16.364,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,1263,1022,19.082
+documentation,272,55,79.779,mapped,verified,True,direct_passed,1,1,1,0,0,0,1,0,declared_checks_only,2457,580,76.394

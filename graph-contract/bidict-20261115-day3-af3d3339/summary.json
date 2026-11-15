@@ -1,0 +1,584 @@
+{
+  "status": "delivered_with_failures",
+  "original_commit": "299fedc89f1d70d5d41cf7922564b376d3e2d435",
+  "candidate_commit": "b9021d2ea6a7cbcc0399e3c26481e20b055b13d6",
+  "candidate_source_sha256": "6a38eaf15a555686737f638e66e1c720e18110b5474462efb38bca9c9bc332e9",
+  "export_commit": "cdd1a1ee352b24592d867aaefcf74c5b8a373187",
+  "branch": "codex/nanolize-af3d3339f3eb498cbf0af3e2f4875df0",
+  "conversion": {
+    "schema_version": 1,
+    "operation": "graph_contract_proposal",
+    "external_capabilities": 9,
+    "internal_capabilities": 3,
+    "interface_entries": 75,
+    "knowledge_library_removed": false,
+    "checks_kept": 6,
+    "checks_left_out": {
+      "upstream-unit-suite": [
+        "bidict._orderedbase.Node",
+        "bidict._orderedbase.Node.prv",
+        "bidict._orderedbase.WeakAttr",
+        "bidict._typing.MapOrItems",
+        "bidict._typing.Maplike",
+        "bidict._typing.override"
+      ],
+      "upstream-microbenchmarks": [
+        "bidict.BidictBase._write"
+      ]
+    },
+    "checks_kept_with_names_stated": {},
+    "checks_not_inspected": [
+      "upstream-module-doctests"
+    ],
+    "checks_recorded_as_contracts": [],
+    "unreadable_test_files": 0,
+    "external_capabilities_without_check": [],
+    "internal_capabilities_not_reached": [
+      "benchmarks"
+    ],
+    "modules_read": 16,
+    "unreadable_modules": [],
+    "unresolved_exports": [],
+    "dropped_entries": 0,
+    "truncated": {},
+    "carried": {
+      "files": [],
+      "tokens": 0,
+      "share_percent": 0
+    },
+    "carry_candidates": [],
+    "carry_candidate_shares": {},
+    "status": "written"
+  },
+  "reviewed_contract": {
+    "nodes": 12,
+    "leaves": 11,
+    "external": 10,
+    "internal": 2,
+    "interface_entries": 96
+  },
+  "size": {
+    "metric": "tokens",
+    "tokenizer": {
+      "library": "tiktoken",
+      "version": "0.12.0",
+      "encoding": "cl100k_base",
+      "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+      "text_policy": "raw_decoded_text_per_file",
+      "classification": "source_and_configuration_v2",
+      "special_tokens": "ordinary_text",
+      "file_boundaries": "independent_sum",
+      "decoding": "python_encoding_cookie_else_utf8_strict",
+      "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets"
+    },
+    "before": 144006,
+    "after": 11458,
+    "reduction_percent": 92.043,
+    "source_before": 35666,
+    "source_after": 11057,
+    "configuration_before": 108340,
+    "configuration_after": 401,
+    "observed_before": 144006,
+    "observed_after": 11458,
+    "complete": true,
+    "target_tokens": 72003,
+    "budget_status": "met",
+    "target_policy": "advisory",
+    "code_only": {
+      "before": 128175,
+      "after": 11351
+    },
+    "documented_percent": {
+      "original": 90.0,
+      "delivered": 0.0
+    }
+  },
+  "size_attribution": {
+    "metric": "tokens",
+    "tokenizer": {
+      "classification": "source_and_configuration_v2",
+      "decoding": "python_encoding_cookie_else_utf8_strict",
+      "encoding": "cl100k_base",
+      "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+      "file_boundaries": "independent_sum",
+      "library": "tiktoken",
+      "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+      "special_tokens": "ordinary_text",
+      "text_policy": "raw_decoded_text_per_file",
+      "version": "0.12.0"
+    },
+    "complete": true,
+    "original_total": 144006,
+    "selected_original_estimate": 144006,
+    "candidate_total": 11458,
+    "overall_reduction": {
+      "tokens": 132548,
+      "percent": 92.043
+    },
+    "scope_reduction_estimate": {
+      "tokens": 0,
+      "percent": 0.0
+    },
+    "rewrite_reduction_estimate": {
+      "tokens": 132548,
+      "percent": 92.043
+    },
+    "shared_scope_files": [],
+    "method": "unique_mapped_source_plus_all_original_configuration",
+    "estimate_only": false,
+    "limitations": [
+      "Scope and rewrite attribution are mapped-file estimates, not exact semantic savings. Shared files count once and retained/removed code within them cannot be separated.",
+      "All original configuration is charged to the retained footprint. Configuration changes appear in the rewrite estimate and may include scope-related savings.",
+      "Overall reduction uses the full original as denominator; rewrite reduction uses the selected original estimate. Their percentages must not be added.",
+      "Negative reductions indicate growth; incomplete measurements do not establish savings."
+    ]
+  },
+  "source_retained_percent": 31.00151404699153,
+  "configuration_retained_percent": 0.37013106885730107,
+  "physical_source_lines": {
+    "before": 3444,
+    "after": 1305,
+    "retained_percent": 37.89198606271777
+  },
+  "overlap": {
+    "candidate_git_head": "b9021d2ea6a7cbcc0399e3c26481e20b055b13d6",
+    "compared_lines": 695,
+    "matched_lines": 60,
+    "matched_percent": 8.633093525179856,
+    "native": {
+      "mode": "auto",
+      "limit_percent": 40,
+      "function_limit_percent": 60,
+      "function_lines": 8,
+      "percent": 9,
+      "compared_lines": 695,
+      "documentation_percent": 1,
+      "functions": 0
+    }
+  },
+  "legacy_same_path_line_weighted_percent": 6.8,
+  "anti_copy": {
+    "mode": "auto",
+    "refused_files": 0,
+    "file_refusal_count": 0,
+    "save_rejections": 0,
+    "source_reference": {
+      "author_calls": 3,
+      "capabilities": [
+        "benchmarks",
+        "comparison",
+        "documentation",
+        "immutable",
+        "inversion",
+        "mapping",
+        "mutation",
+        "ordered",
+        "policies",
+        "typing"
+      ],
+      "files": 16
+    }
+  },
+  "test_design": {
+    "initial_valid_leaves": 8,
+    "added_test_leaves": 2,
+    "accepted_files": 4,
+    "accepted_cases": 56,
+    "rejected_proposals": 2,
+    "final_baseline_valid_leaves": 10,
+    "exempted_leaves": [
+      "typing"
+    ],
+    "missing_external_leaves": 0,
+    "documentation_knockout_assessable": false
+  },
+  "final_verification": {
+    "groups_passed": 8,
+    "groups_failed": 2,
+    "executed_cases_passed": 56,
+    "missing_original_cases_counted_failed": 8,
+    "fully_passed_leaf_nodes": 3,
+    "not_fully_passed_leaf_nodes": 8,
+    "installation_passed": 2,
+    "checks": [
+      {
+        "name": "upstream-module-doctests",
+        "status": "regressed",
+        "baseline_cases": {
+          "errors": 0,
+          "executed": 1,
+          "failed": 0,
+          "passed": 1,
+          "skipped": 0
+        },
+        "candidate_cases": {
+          "errors": 0,
+          "executed": 0,
+          "failed": 0,
+          "passed": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "upstream-documentation-doctests",
+        "status": "regressed",
+        "baseline_cases": {
+          "errors": 0,
+          "executed": 7,
+          "failed": 0,
+          "passed": 7,
+          "skipped": 0
+        },
+        "candidate_cases": {
+          "errors": 0,
+          "executed": 0,
+          "failed": 0,
+          "passed": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "public-mapping-output",
+        "status": "passed",
+        "baseline_cases": null,
+        "candidate_cases": null
+      },
+      {
+        "name": "instruction-comparison-output",
+        "status": "passed",
+        "baseline_cases": null,
+        "candidate_cases": null
+      },
+      {
+        "name": "callgrind-count-output",
+        "status": "passed",
+        "baseline_cases": null,
+        "candidate_cases": null
+      },
+      {
+        "name": "documentation-config-output",
+        "status": "passed",
+        "baseline_cases": null,
+        "candidate_cases": null
+      },
+      {
+        "name": "contract-policies-af3d33-2",
+        "status": "passed",
+        "baseline_cases": {
+          "errors": 0,
+          "executed": 13,
+          "failed": 0,
+          "passed": 13,
+          "skipped": 0
+        },
+        "candidate_cases": {
+          "errors": 0,
+          "executed": 13,
+          "failed": 0,
+          "passed": 13,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "contract-policies-af3d33-3",
+        "status": "passed",
+        "baseline_cases": {
+          "errors": 0,
+          "executed": 38,
+          "failed": 0,
+          "passed": 38,
+          "skipped": 0
+        },
+        "candidate_cases": {
+          "errors": 0,
+          "executed": 38,
+          "failed": 0,
+          "passed": 38,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "contract-policies-af3d33-4",
+        "status": "passed",
+        "baseline_cases": {
+          "errors": 0,
+          "executed": 4,
+          "failed": 0,
+          "passed": 4,
+          "skipped": 0
+        },
+        "candidate_cases": {
+          "errors": 0,
+          "executed": 4,
+          "failed": 0,
+          "passed": 4,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "contract-benchmarks-af3d33-5",
+        "status": "passed",
+        "baseline_cases": {
+          "errors": 0,
+          "executed": 1,
+          "failed": 0,
+          "passed": 1,
+          "skipped": 0
+        },
+        "candidate_cases": {
+          "errors": 0,
+          "executed": 1,
+          "failed": 0,
+          "passed": 1,
+          "skipped": 0
+        }
+      }
+    ]
+  },
+  "cost": {
+    "effective_job": {
+      "input_tokens": 5829983,
+      "cached_input_tokens": 4935424,
+      "output_tokens": 105869,
+      "total_tokens": 5935852,
+      "seconds": 2710.5532000000003,
+      "calls": 25,
+      "complete_usage_calls": 25,
+      "missing_or_partial_usage_calls": 0
+    },
+    "all_observed_including_diagnostics": {
+      "input_tokens": 5872349,
+      "cached_input_tokens": 4971136,
+      "output_tokens": 105974,
+      "total_tokens": 5978323,
+      "seconds": 2898.7545000000005,
+      "calls": 40,
+      "complete_usage_calls": 28,
+      "missing_or_partial_usage_calls": 12
+    },
+    "groups": {
+      "1b5fa3bef2f54fd19edafdea4bf080d4/test_designer": {
+        "calls": 4,
+        "complete_usage_calls": 0,
+        "missing_or_partial_usage_calls": 4,
+        "seconds": 56.7832,
+        "input_tokens": 0,
+        "cached_input_tokens": 0,
+        "output_tokens": 0,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 0
+      },
+      "1b5fa3bef2f54fd19edafdea4bf080d4/controller": {
+        "calls": 3,
+        "complete_usage_calls": 0,
+        "missing_or_partial_usage_calls": 3,
+        "seconds": 43.8821,
+        "input_tokens": 0,
+        "cached_input_tokens": 0,
+        "output_tokens": 0,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 0
+      },
+      "1b5fa3bef2f54fd19edafdea4bf080d4/author": {
+        "calls": 1,
+        "complete_usage_calls": 0,
+        "missing_or_partial_usage_calls": 1,
+        "seconds": 14.574,
+        "input_tokens": 0,
+        "cached_input_tokens": 0,
+        "output_tokens": 0,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 0
+      },
+      "af3d3339f3eb498cbf0af3e2f4875df0/test_designer": {
+        "calls": 3,
+        "complete_usage_calls": 3,
+        "missing_or_partial_usage_calls": 0,
+        "seconds": 1008.6453000000001,
+        "input_tokens": 2018382,
+        "cached_input_tokens": 1820416,
+        "output_tokens": 42508,
+        "reasoning_output_tokens": 20563,
+        "total_tokens": 2060890
+      },
+      "af3d3339f3eb498cbf0af3e2f4875df0/test_reviewer": {
+        "calls": 2,
+        "complete_usage_calls": 2,
+        "missing_or_partial_usage_calls": 0,
+        "seconds": 191.03730000000002,
+        "input_tokens": 451610,
+        "cached_input_tokens": 332800,
+        "output_tokens": 6134,
+        "reasoning_output_tokens": 3863,
+        "total_tokens": 457744
+      },
+      "af3d3339f3eb498cbf0af3e2f4875df0/controller": {
+        "calls": 14,
+        "complete_usage_calls": 14,
+        "missing_or_partial_usage_calls": 0,
+        "seconds": 400.42960000000005,
+        "input_tokens": 1037695,
+        "cached_input_tokens": 708864,
+        "output_tokens": 12576,
+        "reasoning_output_tokens": 6708,
+        "total_tokens": 1050271
+      },
+      "af3d3339f3eb498cbf0af3e2f4875df0/author": {
+        "calls": 4,
+        "complete_usage_calls": 4,
+        "missing_or_partial_usage_calls": 0,
+        "seconds": 1100.498,
+        "input_tokens": 2294041,
+        "cached_input_tokens": 2049408,
+        "output_tokens": 44564,
+        "reasoning_output_tokens": 19081,
+        "total_tokens": 2338605
+      },
+      "af3d3339f3eb498cbf0af3e2f4875df0/trial_controller": {
+        "calls": 1,
+        "complete_usage_calls": 1,
+        "missing_or_partial_usage_calls": 0,
+        "seconds": 5.398,
+        "input_tokens": 14007,
+        "cached_input_tokens": 12032,
+        "output_tokens": 72,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 14079
+      },
+      "af3d3339f3eb498cbf0af3e2f4875df0/trial_check_validation": {
+        "calls": 1,
+        "complete_usage_calls": 1,
+        "missing_or_partial_usage_calls": 0,
+        "seconds": 4.545,
+        "input_tokens": 14248,
+        "cached_input_tokens": 11904,
+        "output_tokens": 15,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 14263
+      },
+      "preflight/trial_controller": {
+        "calls": 3,
+        "complete_usage_calls": 1,
+        "missing_or_partial_usage_calls": 2,
+        "seconds": 37.232,
+        "input_tokens": 14005,
+        "cached_input_tokens": 12032,
+        "output_tokens": 85,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 14090
+      },
+      "preflight/trial_check_validation": {
+        "calls": 3,
+        "complete_usage_calls": 1,
+        "missing_or_partial_usage_calls": 2,
+        "seconds": 35.73,
+        "input_tokens": 14240,
+        "cached_input_tokens": 11904,
+        "output_tokens": 15,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 14255
+      },
+      "preflight/recorded_call": {
+        "calls": 1,
+        "complete_usage_calls": 1,
+        "missing_or_partial_usage_calls": 0,
+        "seconds": 0.0,
+        "input_tokens": 14121,
+        "cached_input_tokens": 11776,
+        "output_tokens": 5,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 14126
+      }
+    },
+    "billed_usd": null,
+    "note": "不含本对话主持代理；12次调用缺少完整用量，不视为零费用。5,978,323 是全程观测下界，不是总消耗；缓存是输入的子集，推理是输出的子集。",
+    "scope": "effective_job 为有效后台任务（含启动试跑）；all_observed_including_diagnostics 为全部已记录调用（含独立试跑）。"
+  },
+  "time": {
+    "start_utc": "2026-11-15T10:10:33.110560+00:00",
+    "end_utc": "2026-11-15T11:01:29.461653+00:00",
+    "effective_job_seconds": 3056.351093,
+    "dashboard_to_delivery_seconds": 3713.461653,
+    "first_job_seconds": 161.979
+  },
+  "report_generated_at_utc": "2026-11-15T11:08:10.166745+00:00",
+  "browser_verification": [
+    {
+      "viewport": "desktop",
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "visible_nodes": 6,
+      "inspected": "不可变且可哈希的双向映射",
+      "zoom_before": "65%",
+      "zoom_after": "70%",
+      "pan_before": [
+        1364,
+        691
+      ],
+      "pan_after": [
+        1577,
+        798
+      ],
+      "javascript_errors": [],
+      "audit_body_no_overflow": true,
+      "static_submit_hidden": true
+    },
+    {
+      "viewport": "mobile",
+      "dimensions": [
+        390,
+        844
+      ],
+      "visible_nodes": 2,
+      "inspected": "反转映射或键值迭代器",
+      "zoom_before": "65%",
+      "zoom_after": "70%",
+      "pan_before": [
+        1566,
+        495
+      ],
+      "pan_after": [
+        1668,
+        573
+      ],
+      "javascript_errors": [],
+      "audit_body_no_overflow": true,
+      "static_submit_hidden": true
+    }
+  ],
+  "task_effort": "disabled",
+  "issues": [
+    {
+      "id": "I16",
+      "classification": "需要对 nanolize 改动的 bugs",
+      "summary": "已接受的目录型 doctest 未将实际断言固定为验证器输入：自动收集只接纳普通文件，生产模块 docstring 与文档测试未被分离、冻结（verification.py:295–310；rewrite.py:418–446）。本轮原 8 个 doctest 未收集并按失败保留，未误报全部通过；实际交付结果见 I15。"
+    },
+    {
+      "id": "现象-1",
+      "classification": "需要对 nanolize 改动的 bugs",
+      "summary": "省略 model 且使用内建 controller／leaf runner 时，默认 argv 包含 --ignore-user-config，却没有读取并传递用户配置中的默认模型，与技能的默认模型继承承诺不一致（skills/nanolize/SKILL.md:46–48；effort_runner.py:55–64）。需要修正默认模型传播或文档承诺；现有记录不足以确定实际选中了哪个模型。"
+    },
+    {
+      "id": "I08",
+      "classification": "遇到的现象",
+      "summary": "规划 HTML 拒绝覆盖已有文件，保留旧文件并输出新版本后成功。这是避免覆盖已有证据的正常保护（viewer.py:133–150）。"
+    },
+    {
+      "id": "I11",
+      "classification": "遇到的现象",
+      "summary": "契约转换按既定规则剔除依赖私有实现的 2 组检查，保留 6 组，模块 doctest 另有“静态未检查”标记，随后按公开接口补测。原版 1236／140 通过数不能计入候选；“静态未检查”不等于检查被删除。"
+    },
+    {
+      "id": "I13",
+      "classification": "遇到的现象",
+      "summary": "两份微基准测试提案分别因漏检反向迭代行为、强加精确 list/dict 类型而被审阅否决，流程自动重设计并复审。最终接受 4 文件、覆盖 policies 和 benchmarks 两个节点；拒绝的 2 份测试提案不是防默写退回源码。"
+    },
+    {
+      "id": "I15",
+      "classification": "遇到的现象",
+      "summary": "五轮检查通过／失败依次为 6/4、7/3、8/2、8/2、8/2，比较输出在第二轮修好、微基准在第三轮修好。最终 56 个新增用例通过，原 8 个 doctest 未收集并按失败计、带失败交付，公开定义文档率 90%→0%；doctest 内容保护缺口见 I16。"
+    }
+  ]
+}
