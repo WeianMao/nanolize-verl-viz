@@ -1,0 +1,82 @@
+{
+  "delivered": {
+    "composition": {
+      "code_tokens": 32273,
+      "other_tokens": 6636,
+      "python_code_tokens": 25637,
+      "python_comment_tokens": 96,
+      "python_data_literal_tokens": 0,
+      "python_docstring_tokens": 0,
+      "python_files": 45,
+      "unparsed_python_files": 0
+    },
+    "documentation": {
+      "documented": 0,
+      "documented_percent": 0.0,
+      "public_definitions": 193
+    },
+    "rewrite": {
+      "files_at_an_original_path": 47,
+      "unchanged_percent": 38.5
+    },
+    "total_tokens": 32400
+  },
+  "original": {
+    "composition": {
+      "code_tokens": 56276,
+      "other_tokens": 24880,
+      "python_code_tokens": 31396,
+      "python_comment_tokens": 3579,
+      "python_data_literal_tokens": 0,
+      "python_docstring_tokens": 9872,
+      "python_files": 47,
+      "unparsed_python_files": 0
+    },
+    "documentation": {
+      "documented": 105,
+      "documented_percent": 63.3,
+      "public_definitions": 166
+    },
+    "total_tokens": 70579
+  },
+  "original_overlap": {
+    "compared_lines": 1691,
+    "documentation_percent": 0,
+    "function_limit_percent": 60,
+    "function_lines": 8,
+    "functions": 3,
+    "limit_percent": 40,
+    "listed_functions": [
+      {
+        "function": "tqdm.update",
+        "lines": 20,
+        "path": "tqdm/std.py",
+        "percent": 65
+      },
+      {
+        "function": "tqdm.clear",
+        "lines": 12,
+        "path": "tqdm/std.py",
+        "percent": 75
+      },
+      {
+        "function": "tqdm.refresh",
+        "lines": 11,
+        "path": "tqdm/std.py",
+        "percent": 64
+      }
+    ],
+    "mode": "auto",
+    "percent": 21
+  },
+  "schema_version": 1,
+  "status": "measured",
+  "summary": {
+    "documented_percent": {
+      "delivered": 0.0,
+      "original": 63.3
+    },
+    "total_retained_percent": 45.91,
+    "undocumented_retained_percent": 56.55
+  }
+}

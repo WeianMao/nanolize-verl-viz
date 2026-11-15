@@ -1,0 +1,687 @@
+{
+  "status": "completed_with_gaps",
+  "verification_status": "unverified",
+  "original_commit": "9cf5a12b1f955468a17f0ba3c59092b23e4258ac",
+  "candidate_commit": "25ea3502160b804eb5444b9f525066b1550c73be",
+  "branch": "codex/nanolize-18013deb8781485d82b64d2dff0d0feb",
+  "size": {
+    "baseline_source_lines": 5608,
+    "baseline_tokens": 70579,
+    "complete": true,
+    "configuration_tokens": 6356,
+    "metric": "tokens",
+    "retained_percent": 45.90600603578968,
+    "source_files": 46,
+    "source_lines": 2967,
+    "source_retained_percent": 52.90656205420827,
+    "source_tokens": 26044,
+    "target_met": true,
+    "target_percent": 50.0,
+    "target_source_lines": 2804.0,
+    "target_tokens": 35289,
+    "tokenizer": {
+      "classification": "source_and_configuration_v2",
+      "decoding": "python_encoding_cookie_else_utf8_strict",
+      "encoding": "cl100k_base",
+      "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+      "file_boundaries": "independent_sum",
+      "library": "tiktoken",
+      "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+      "special_tokens": "ordinary_text",
+      "text_policy": "raw_decoded_text_per_file",
+      "version": "0.12.0"
+    },
+    "total_tokens": 32400
+  },
+  "quality": {
+    "delivered": {
+      "composition": {
+        "code_tokens": 32273,
+        "other_tokens": 6636,
+        "python_code_tokens": 25637,
+        "python_comment_tokens": 96,
+        "python_data_literal_tokens": 0,
+        "python_docstring_tokens": 0,
+        "python_files": 45,
+        "unparsed_python_files": 0
+      },
+      "documentation": {
+        "documented": 0,
+        "documented_percent": 0.0,
+        "public_definitions": 193
+      },
+      "rewrite": {
+        "files_at_an_original_path": 47,
+        "unchanged_percent": 38.5
+      },
+      "total_tokens": 32400
+    },
+    "original": {
+      "composition": {
+        "code_tokens": 56276,
+        "other_tokens": 24880,
+        "python_code_tokens": 31396,
+        "python_comment_tokens": 3579,
+        "python_data_literal_tokens": 0,
+        "python_docstring_tokens": 9872,
+        "python_files": 47,
+        "unparsed_python_files": 0
+      },
+      "documentation": {
+        "documented": 105,
+        "documented_percent": 63.3,
+        "public_definitions": 166
+      },
+      "total_tokens": 70579
+    },
+    "original_overlap": {
+      "compared_lines": 1691,
+      "documentation_percent": 0,
+      "function_limit_percent": 60,
+      "function_lines": 8,
+      "functions": 3,
+      "limit_percent": 40,
+      "listed_functions": [
+        {
+          "function": "tqdm.update",
+          "lines": 20,
+          "path": "tqdm/std.py",
+          "percent": 65
+        },
+        {
+          "function": "tqdm.clear",
+          "lines": 12,
+          "path": "tqdm/std.py",
+          "percent": 75
+        },
+        {
+          "function": "tqdm.refresh",
+          "lines": 11,
+          "path": "tqdm/std.py",
+          "percent": 64
+        }
+      ],
+      "mode": "auto",
+      "percent": 21
+    },
+    "schema_version": 1,
+    "status": "measured",
+    "summary": {
+      "documented_percent": {
+        "delivered": 0.0,
+        "original": 63.3
+      },
+      "total_retained_percent": 45.91,
+      "undocumented_retained_percent": 56.55
+    }
+  },
+  "overlap": {
+    "implementation_overlap": {
+      "same_lines": 358,
+      "compared_lines": 1691,
+      "percent": 21.17090479006505,
+      "report_rounded_percent": 21,
+      "excluded_files": 0
+    },
+    "report_weighted_same_lines": {
+      "same_character_weight": 34628,
+      "total_character_weight": 90004,
+      "same_path_files": 47,
+      "percent": 38.473845606861914,
+      "report_rounded_percent": 38.5
+    },
+    "corrected_notebook_exclusion_reference": {
+      "official_baseline_tokens": 70579,
+      "incorrectly_counted_notebook_tokens": 4189,
+      "adjusted_baseline_tokens": 66390,
+      "candidate_tokens": 32400,
+      "reference_retained_percent": 48.802530501581565
+    },
+    "method_note": "The reference ratio does not replace this run's frozen metric."
+  },
+  "test_cases": {
+    "errors": 0,
+    "executed": 713,
+    "failed": 0,
+    "passed": 713,
+    "skipped": 1
+  },
+  "check_groups_passed": 62,
+  "check_groups_total": 62,
+  "leaf_coverage": {
+    "exempted": [],
+    "issues": [],
+    "missing": [
+      "benchmarks",
+      "core",
+      "keras"
+    ],
+    "status": "ready",
+    "strict": false,
+    "valid": [
+      "async",
+      "auto",
+      "bells",
+      "cli",
+      "compat",
+      "concurrent",
+      "dask",
+      "discord",
+      "examples",
+      "gui",
+      "iterables",
+      "logging",
+      "monitor",
+      "notebook",
+      "package",
+      "pandas",
+      "release",
+      "rich",
+      "slack",
+      "telegram",
+      "tk",
+      "utilities",
+      "worker"
+    ],
+    "valid_tests": {
+      "async": [
+        "upstream-asyncio"
+      ],
+      "auto": [
+        "contract-auto-18013d-1",
+        "contract-auto-18013d-2"
+      ],
+      "bells": [
+        "contract-bells-18013d-3",
+        "contract-bells-18013d-4",
+        "contract-bells-18013d-5",
+        "contract-bells-18013d-6",
+        "contract-bells-18013d-7",
+        "contract-bells-18013d-8"
+      ],
+      "benchmarks": [],
+      "cli": [
+        "cli-byte-preserving-output"
+      ],
+      "compat": [
+        "contract-compat-18013d-11",
+        "contract-compat-18013d-12",
+        "contract-compat-18013d-13"
+      ],
+      "concurrent": [
+        "contract-concurrent-18013d-14",
+        "contract-concurrent-18013d-15",
+        "contract-concurrent-18013d-17",
+        "contract-concurrent-18013d-18",
+        "contract-concurrent-18013d-19"
+      ],
+      "core": [],
+      "dask": [
+        "upstream-dask"
+      ],
+      "discord": [
+        "contract-discord-18013d-28",
+        "contract-discord-18013d-29",
+        "contract-discord-18013d-30"
+      ],
+      "examples": [
+        "contract-examples-18013d-50"
+      ],
+      "gui": [
+        "contract-gui-18013d-34",
+        "contract-gui-18013d-35",
+        "contract-gui-18013d-36"
+      ],
+      "iterables": [
+        "upstream-contrib",
+        "upstream-itertools"
+      ],
+      "keras": [],
+      "logging": [
+        "contract-logging-18013d-37",
+        "contract-logging-18013d-38",
+        "contract-logging-18013d-39"
+      ],
+      "monitor": [
+        "contract-monitor-18013d-40",
+        "contract-monitor-18013d-41",
+        "contract-monitor-18013d-42"
+      ],
+      "notebook": [
+        "upstream-notebook"
+      ],
+      "package": [
+        "upstream-version"
+      ],
+      "pandas": [
+        "upstream-pandas"
+      ],
+      "release": [
+        "contract-release-18013d-43",
+        "contract-release-18013d-44"
+      ],
+      "rich": [
+        "upstream-rich"
+      ],
+      "slack": [
+        "contract-slack-18013d-45"
+      ],
+      "telegram": [
+        "contract-telegram-18013d-46",
+        "contract-telegram-18013d-47"
+      ],
+      "tk": [
+        "contract-tk-18013d-48",
+        "contract-tk-18013d-49",
+        "contract-tk-18013d-50"
+      ],
+      "utilities": [
+        "contract-utilities-18013d-51",
+        "contract-utilities-18013d-52",
+        "contract-utilities-18013d-53",
+        "contract-utilities-18013d-54",
+        "contract-utilities-18013d-55"
+      ],
+      "worker": [
+        "contract-worker-18013d-55",
+        "contract-worker-18013d-56"
+      ]
+    },
+    "warnings": [
+      {
+        "capabilities": [
+          "benchmarks",
+          "core",
+          "keras"
+        ],
+        "code": "selected_leaf_valid_checks_missing",
+        "detail": "These selected leaves have no valid test."
+      },
+      {
+        "capabilities": [
+          "bells",
+          "compat",
+          "package"
+        ],
+        "code": "selected_leaf_knockout_not_assessable",
+        "detail": "Valid without dynamic evidence: no knockout of these leaves' own source is possible."
+      }
+    ],
+    "why_missing": {
+      "benchmarks": [
+        "no_check"
+      ],
+      "core": [
+        "no_behavioral_knockout_failure",
+        "pinned_without_knockout_evidence"
+      ],
+      "keras": [
+        "no_behavioral_knockout_failure",
+        "no_passing_cases"
+      ]
+    }
+  },
+  "test_design": {
+    "accepted_files": 44,
+    "accepted_nodes": 15,
+    "pinned_files": 3,
+    "pinned_nodes": 1,
+    "rejection_records": 29,
+    "rejected_unique_paths": 24,
+    "runner_failures": [],
+    "accepted_by_leaf": {
+      "auto": 2,
+      "bells": 6,
+      "compat": 3,
+      "concurrent": 5,
+      "discord": 3,
+      "gui": 3,
+      "logging": 3,
+      "monitor": 3,
+      "release": 2,
+      "slack": 1,
+      "telegram": 2,
+      "tk": 3,
+      "worker": 2,
+      "examples": 1,
+      "utilities": 5
+    },
+    "baseline_case_counts": {
+      "retained": {
+        "errors": 0,
+        "executed": 49,
+        "failed": 0,
+        "passed": 49,
+        "skipped": 1,
+        "check_groups": 15
+      },
+      "designed": {
+        "errors": 0,
+        "executed": 664,
+        "failed": 0,
+        "passed": 664,
+        "skipped": 0,
+        "check_groups": 47
+      }
+    }
+  },
+  "candidate_history": [
+    {
+      "candidate": 1,
+      "passed_groups": 58,
+      "groups": 62,
+      "errors": 0,
+      "executed": 713,
+      "failed": 28,
+      "passed": 685,
+      "skipped": 1
+    },
+    {
+      "candidate": 2,
+      "passed_groups": 58,
+      "groups": 62,
+      "errors": 0,
+      "executed": 713,
+      "failed": 20,
+      "passed": 693,
+      "skipped": 1
+    },
+    {
+      "candidate": 3,
+      "passed_groups": 59,
+      "groups": 62,
+      "errors": 0,
+      "executed": 713,
+      "failed": 13,
+      "passed": 700,
+      "skipped": 1
+    },
+    {
+      "candidate": 4,
+      "passed_groups": 60,
+      "groups": 62,
+      "errors": 0,
+      "executed": 713,
+      "failed": 5,
+      "passed": 708,
+      "skipped": 1
+    },
+    {
+      "candidate": 5,
+      "passed_groups": 60,
+      "groups": 62,
+      "errors": 0,
+      "executed": 713,
+      "failed": 2,
+      "passed": 711,
+      "skipped": 1
+    },
+    {
+      "candidate": 6,
+      "passed_groups": 62,
+      "groups": 62,
+      "errors": 0,
+      "executed": 713,
+      "failed": 0,
+      "passed": 713,
+      "skipped": 1
+    }
+  ],
+  "conversion": {
+    "schema_version": 1,
+    "operation": "graph_contract_proposal",
+    "external_capabilities": 22,
+    "internal_capabilities": 8,
+    "interface_entries": 232,
+    "knowledge_library_removed": false,
+    "checks_kept": 15,
+    "checks_left_out": {
+      "upstream-tqdm": [
+        "tqdm.contrib.DummyTqdmFile",
+        "tqdm.std.Bar",
+        "tqdm.std.EMA",
+        "tqdm.tqdm._instances",
+        "tqdm.tqdm._lock"
+      ],
+      "upstream-synchronisation": [
+        "tqdm.TMonitor._test"
+      ],
+      "upstream-main": [
+        "tqdm.__main__",
+        "tqdm.cli.TqdmKeyError",
+        "tqdm.cli.TqdmTypeError"
+      ],
+      "upstream-concurrent": [
+        "tqdm.contrib.concurrent._min_map_len"
+      ],
+      "upstream-contrib_logging": [
+        "tqdm.contrib.logging._TqdmLoggingHandler",
+        "tqdm.contrib.logging._get_first_found_console_logging_handler"
+      ]
+    },
+    "checks_kept_with_names_stated": {},
+    "checks_not_inspected": [
+      "cli-byte-preserving-output"
+    ],
+    "checks_recorded_as_contracts": [],
+    "unreadable_test_files": 0,
+    "external_capabilities_without_check": [
+      "auto",
+      "concurrent",
+      "discord",
+      "examples",
+      "logging",
+      "monitor",
+      "slack",
+      "telegram",
+      "worker"
+    ],
+    "internal_capabilities_not_reached": [
+      "bells",
+      "benchmarks",
+      "compat",
+      "release"
+    ],
+    "modules_read": 43,
+    "unreadable_modules": [],
+    "unresolved_exports": [],
+    "dropped_entries": 0,
+    "truncated": {},
+    "carried": {
+      "files": [],
+      "tokens": 0,
+      "share_percent": 0
+    },
+    "carry_candidates": [],
+    "carry_candidate_shares": {},
+    "limitations": [
+      "Static and Python only: nothing of the project ran. Review each capability's entries.",
+      "Settings, registered names, file formats and messages users rely on are not found by reading names: add them to the capability's interface in plain words.",
+      "A capability left without a check gets behavior tests from the test design when a job freezes.",
+      "A check listed under checks_not_inspected, and a kept check that reaches internal names through an object a fixture hands it or through a helper outside the test files, still holds the rewrite to those names: review them. Private names are looked for in a check's own test files, the conftest.py above them and the test modules they import, by file: a check is left out whole for one test that certainly uses a private name.",
+      "A name stated for a kept check (checks_kept_with_names_stated) tells the author to keep the name, not what the check does with it: review those entries.",
+      "Python files that are data and nothing else (literals assigned to names: no import, function, class or call) and at least 90% literal data are in the manifest's carry list (carried) unless --no-carry was given: the verifier puts them into every candidate unchanged, no author writes them and they count on neither side of the size comparison. A data table below that share, or with code beside its data, is only listed (carry_candidates, with its share under carry_candidate_shares): carry it when its data is a table users rely on, knowing that its code is then carried as it stands too and that no author sees or replaces it."
+    ],
+    "status": "written"
+  },
+  "cost_and_time": {
+    "generated_at": "2026-11-15T12:41:48.081801+00:00",
+    "job_id": "18013deb8781485d82b64d2dff0d0feb",
+    "job_status": "completed_with_gaps",
+    "usage_groups": {
+      "main.facts": {
+        "metered_records": 32,
+        "input_tokens": 2232452,
+        "cached_input_tokens": 1855104,
+        "output_tokens": 55855,
+        "total_tokens": 2288307
+      },
+      "main.design": {
+        "metered_records": 30,
+        "input_tokens": 11815737,
+        "cached_input_tokens": 10447104,
+        "output_tokens": 385494,
+        "total_tokens": 12201231
+      },
+      "main.controller": {
+        "metered_records": 19,
+        "input_tokens": 1519625,
+        "cached_input_tokens": 1009152,
+        "output_tokens": 17495,
+        "total_tokens": 1537120
+      },
+      "main.author": {
+        "metered_records": 7,
+        "input_tokens": 6787268,
+        "cached_input_tokens": 6281728,
+        "output_tokens": 95709,
+        "total_tokens": 6882977,
+        "recorded_seconds": 2370.1899999999996
+      },
+      "main.runner_trial": {
+        "metered_records": 3,
+        "input_tokens": 56619,
+        "cached_input_tokens": 37760,
+        "output_tokens": 128,
+        "total_tokens": 56747,
+        "recorded_seconds": 21.307000000000002
+      },
+      "manual_runner_trial": {
+        "metered_records": 3,
+        "input_tokens": 56621,
+        "cached_input_tokens": 49664,
+        "output_tokens": 175,
+        "total_tokens": 56796,
+        "recorded_seconds": 26.522
+      },
+      "parent_orchestration_cumulative": {
+        "metered_records": 1,
+        "input_tokens": 47245393,
+        "cached_input_tokens": 46610688,
+        "output_tokens": 167608,
+        "total_tokens": 47413001
+      }
+    },
+    "main_job_usage": {
+      "input_tokens": 22411701,
+      "cached_input_tokens": 19630848,
+      "output_tokens": 554681,
+      "total_tokens": 22966382
+    },
+    "background_and_preflight_usage": {
+      "input_tokens": 22468322,
+      "cached_input_tokens": 19680512,
+      "output_tokens": 554856,
+      "total_tokens": 23023178
+    },
+    "including_recorded_parent_usage": {
+      "input_tokens": 69713715,
+      "cached_input_tokens": 66291200,
+      "output_tokens": 722464,
+      "total_tokens": 70436179
+    },
+    "currency_cost": null,
+    "usage_limitations": [
+      "Cached input is a subset of input tokens and is not added again.",
+      "Author usage comes only from author-usage.jsonl; runner.log is not counted again.",
+      "Parent usage is cumulative through parent_usage_cutoff; later reporting and final-response tokens are excluded.",
+      "Logs provide no billed monetary cost; missing usage on failed calls is not assumed to be zero cost."
+    ],
+    "parent_usage_cutoff": "2026-11-15T12:41:22.873Z",
+    "time": {
+      "workflow_started": "2026-11-15T09:57:21.097Z",
+      "main_job_started": "2026-11-15T10:09:19.109538+00:00",
+      "last_job_event": "2026-11-15T12:27:16.568868+00:00",
+      "job_budget_consumed_seconds": 8277.04,
+      "completed_operation_seconds": {
+        "create_workspace": 3.631,
+        "write_test_facts": 378.798,
+        "capture_baseline": 415.269,
+        "design_leaf_tests": 3838.832,
+        "seal_contract": 4.119,
+        "run_agent": 2397.6240000000003,
+        "save_candidate": 27.038000000000004,
+        "compare_behavior": 460.322,
+        "check_installation": 152.42700000000002,
+        "audit_coverage": 0.025,
+        "measure_code": 2.395,
+        "evaluate_acceptance": 0.8099999999999999,
+        "get_knowledge": 1.446,
+        "select_candidate": 2.03,
+        "deliver": 7.989
+      },
+      "last_event_since_workflow_start_seconds": 8995.471868,
+      "last_event_since_main_job_start_seconds": 8277.45933
+    },
+    "original_overlap_guard": {
+      "mode": "auto",
+      "global_activation_percent": 40,
+      "function_limit_once_active_percent": 60,
+      "minimum_function_lines": 8,
+      "maximum_returns_per_file": 1,
+      "active": false,
+      "refused_files": {},
+      "unique_refused_files": 0,
+      "refusal_events": []
+    },
+    "source_reference": {
+      "policy": "on_failed_check",
+      "author_calls_provided_reference": 5,
+      "unique_files_provided": 10,
+      "paths": [
+        ".meta/mkcompletion.py",
+        ".meta/mkdocs.py",
+        ".meta/mksnap.py",
+        "tqdm/__init__.py",
+        "tqdm/__main__.py",
+        "tqdm/cli.py",
+        "tqdm/completion.sh",
+        "tqdm/contrib/slack.py",
+        "tqdm/gui.py",
+        "tqdm/std.py"
+      ],
+      "capabilities": [
+        "cli",
+        "core",
+        "gui",
+        "release",
+        "slack"
+      ],
+      "note": "Provision receipts establish which files were made available, not which lines were actually read."
+    },
+    "author_calls": {
+      "author_attempts": 7,
+      "repair_attempts": 5,
+      "optimization_attempts": 0,
+      "rejected_attempts": 0,
+      "restorations": 0
+    }
+  },
+  "issues": [
+    {
+      "id": "I10",
+      "classification": "nanolize bug",
+      "summary": "Notebook 测试 tests_notebook.ipynb 被误计为配置（4,189 tokens），自动测试保护也遗漏该文件，本轮候选中丢失；显式检查输入可以额外保护文件，因此不代表所有 Notebook 都会丢失。需修复测试分类与自动保护逻辑，代码位置：src/nanolize/repository.py:225、src/nanolize/code_size.py:96、src/nanolize/rewrite.py:388。"
+    },
+    {
+      "id": "I13",
+      "classification": "nanolize bug",
+      "summary": "补测事实漏传 .meta/.readme.rst、.meta/.tqdm.1.md 模板路径及 prv 精确输出约束，独立复核仍接受测试，作者初始冻结契约缺少满足断言所需的信息。需加强契约事实传递与完整性复核，代码位置：src/nanolize/prompts/prompts.json:689、:701，src/nanolize/leaf_test_design.py:479、:517、:963。"
+    },
+    {
+      "id": "I08",
+      "classification": "正常质量控制",
+      "summary": "1 条错误 Pandas 事实被独立复核拒收，第二轮已纠正；错误事实未作为已接受语义交给作者。最终保留 82 条事实，留存 1 条拒收记录。"
+    },
+    {
+      "id": "I12",
+      "classification": "候选修复现象",
+      "summary": "候选实现经验证与五次修复，失败用例依次为 28→20→13→5→2→0，最终 62/62 组检查通过、713 个用例通过、1 个跳过，安装 2/2 通过。共 7 次作者调用（2 次实现、5 次修复、0 次优化），修复中 5 次提供过 10 个不同原版生产文件；最终检查通过不代表完整语义等价。"
+    },
+    {
+      "id": "I14",
+      "classification": "原生图页展示范围及补充审计指标",
+      "summary": "原生图页未展示后端质量记录中的相同行比例与防默写重合率，本页已补充 38.5% 和 358/1,691=21.17%，并分别注明口径。这是可补强的展示范围，不是已确认的计算错误或数据丢失。"
+    }
+  ]
+}

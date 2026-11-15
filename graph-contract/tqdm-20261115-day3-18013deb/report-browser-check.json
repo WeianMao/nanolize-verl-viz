@@ -1,0 +1,33 @@
+{
+  "status": "passed_with_report_field_gap",
+  "viewports": [
+    {
+      "viewport": "desktop",
+      "width": 1365,
+      "body_width": 1365,
+      "page_width": 1365,
+      "javascript_errors": [],
+      "branch_expansion_added_buttons": 5,
+      "measurement_section_open": true,
+      "total_tokens_rendered": true,
+      "leaf_coverage_rendered": true,
+      "native_gap_status_rendered": true,
+      "same_line_metrics_exported": false
+    },
+    {
+      "viewport": "mobile",
+      "width": 390,
+      "body_width": 390,
+      "page_width": 390,
+      "javascript_errors": [],
+      "measurement_section_open": true,
+      "total_tokens_rendered": true,
+      "leaf_coverage_rendered": true,
+      "native_gap_status_rendered": true,
+      "same_line_metrics_exported": false
+    }
+  ],
+  "limitations": [
+    "Native report exports omit unchanged_percent and original_overlap; the supplemental audit page includes them."
+  ]
+}

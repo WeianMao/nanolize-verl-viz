@@ -1,0 +1,153 @@
+{
+  "generated_at": "2026-11-15T12:41:48.081801+00:00",
+  "job_id": "18013deb8781485d82b64d2dff0d0feb",
+  "job_status": "completed_with_gaps",
+  "usage_groups": {
+    "main.facts": {
+      "metered_records": 32,
+      "input_tokens": 2232452,
+      "cached_input_tokens": 1855104,
+      "output_tokens": 55855,
+      "total_tokens": 2288307
+    },
+    "main.design": {
+      "metered_records": 30,
+      "input_tokens": 11815737,
+      "cached_input_tokens": 10447104,
+      "output_tokens": 385494,
+      "total_tokens": 12201231
+    },
+    "main.controller": {
+      "metered_records": 19,
+      "input_tokens": 1519625,
+      "cached_input_tokens": 1009152,
+      "output_tokens": 17495,
+      "total_tokens": 1537120
+    },
+    "main.author": {
+      "metered_records": 7,
+      "input_tokens": 6787268,
+      "cached_input_tokens": 6281728,
+      "output_tokens": 95709,
+      "total_tokens": 6882977,
+      "recorded_seconds": 2370.1899999999996
+    },
+    "main.runner_trial": {
+      "metered_records": 3,
+      "input_tokens": 56619,
+      "cached_input_tokens": 37760,
+      "output_tokens": 128,
+      "total_tokens": 56747,
+      "recorded_seconds": 21.307000000000002
+    },
+    "manual_runner_trial": {
+      "metered_records": 3,
+      "input_tokens": 56621,
+      "cached_input_tokens": 49664,
+      "output_tokens": 175,
+      "total_tokens": 56796,
+      "recorded_seconds": 26.522
+    },
+    "parent_orchestration_cumulative": {
+      "metered_records": 1,
+      "input_tokens": 47245393,
+      "cached_input_tokens": 46610688,
+      "output_tokens": 167608,
+      "total_tokens": 47413001
+    }
+  },
+  "main_job_usage": {
+    "input_tokens": 22411701,
+    "cached_input_tokens": 19630848,
+    "output_tokens": 554681,
+    "total_tokens": 22966382
+  },
+  "background_and_preflight_usage": {
+    "input_tokens": 22468322,
+    "cached_input_tokens": 19680512,
+    "output_tokens": 554856,
+    "total_tokens": 23023178
+  },
+  "including_recorded_parent_usage": {
+    "input_tokens": 69713715,
+    "cached_input_tokens": 66291200,
+    "output_tokens": 722464,
+    "total_tokens": 70436179
+  },
+  "currency_cost": null,
+  "usage_limitations": [
+    "Cached input is a subset of input tokens and is not added again.",
+    "Author usage comes only from author-usage.jsonl; runner.log is not counted again.",
+    "Parent usage is cumulative through parent_usage_cutoff; later reporting and final-response tokens are excluded.",
+    "Logs provide no billed monetary cost; missing usage on failed calls is not assumed to be zero cost."
+  ],
+  "parent_usage_cutoff": "2026-11-15T12:41:22.873Z",
+  "time": {
+    "workflow_started": "2026-11-15T09:57:21.097Z",
+    "main_job_started": "2026-11-15T10:09:19.109538+00:00",
+    "last_job_event": "2026-11-15T12:27:16.568868+00:00",
+    "job_budget_consumed_seconds": 8277.04,
+    "completed_operation_seconds": {
+      "create_workspace": 3.631,
+      "write_test_facts": 378.798,
+      "capture_baseline": 415.269,
+      "design_leaf_tests": 3838.832,
+      "seal_contract": 4.119,
+      "run_agent": 2397.6240000000003,
+      "save_candidate": 27.038000000000004,
+      "compare_behavior": 460.322,
+      "check_installation": 152.42700000000002,
+      "audit_coverage": 0.025,
+      "measure_code": 2.395,
+      "evaluate_acceptance": 0.8099999999999999,
+      "get_knowledge": 1.446,
+      "select_candidate": 2.03,
+      "deliver": 7.989
+    },
+    "last_event_since_workflow_start_seconds": 8995.471868,
+    "last_event_since_main_job_start_seconds": 8277.45933
+  },
+  "original_overlap_guard": {
+    "mode": "auto",
+    "global_activation_percent": 40,
+    "function_limit_once_active_percent": 60,
+    "minimum_function_lines": 8,
+    "maximum_returns_per_file": 1,
+    "active": false,
+    "refused_files": {},
+    "unique_refused_files": 0,
+    "refusal_events": []
+  },
+  "source_reference": {
+    "policy": "on_failed_check",
+    "author_calls_provided_reference": 5,
+    "unique_files_provided": 10,
+    "paths": [
+      ".meta/mkcompletion.py",
+      ".meta/mkdocs.py",
+      ".meta/mksnap.py",
+      "tqdm/__init__.py",
+      "tqdm/__main__.py",
+      "tqdm/cli.py",
+      "tqdm/completion.sh",
+      "tqdm/contrib/slack.py",
+      "tqdm/gui.py",
+      "tqdm/std.py"
+    ],
+    "capabilities": [
+      "cli",
+      "core",
+      "gui",
+      "release",
+      "slack"
+    ],
+    "note": "Provision receipts establish which files were made available, not which lines were actually read."
+  },
+  "author_calls": {
+    "author_attempts": 7,
+    "repair_attempts": 5,
+    "optimization_attempts": 0,
+    "rejected_attempts": 0,
+    "restorations": 0
+  }
+}

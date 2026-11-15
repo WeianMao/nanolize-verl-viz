@@ -1,0 +1,27 @@
+[
+  {
+    "id": "I10",
+    "classification": "nanolize bug",
+    "summary": "Notebook 测试 tests_notebook.ipynb 被误计为配置（4,189 tokens），自动测试保护也遗漏该文件，本轮候选中丢失；显式检查输入可以额外保护文件，因此不代表所有 Notebook 都会丢失。需修复测试分类与自动保护逻辑，代码位置：src/nanolize/repository.py:225、src/nanolize/code_size.py:96、src/nanolize/rewrite.py:388。"
+  },
+  {
+    "id": "I13",
+    "classification": "nanolize bug",
+    "summary": "补测事实漏传 .meta/.readme.rst、.meta/.tqdm.1.md 模板路径及 prv 精确输出约束，独立复核仍接受测试，作者初始冻结契约缺少满足断言所需的信息。需加强契约事实传递与完整性复核，代码位置：src/nanolize/prompts/prompts.json:689、:701，src/nanolize/leaf_test_design.py:479、:517、:963。"
+  },
+  {
+    "id": "I08",
+    "classification": "正常质量控制",
+    "summary": "1 条错误 Pandas 事实被独立复核拒收，第二轮已纠正；错误事实未作为已接受语义交给作者。最终保留 82 条事实，留存 1 条拒收记录。"
+  },
+  {
+    "id": "I12",
+    "classification": "候选修复现象",
+    "summary": "候选实现经验证与五次修复，失败用例依次为 28→20→13→5→2→0，最终 62/62 组检查通过、713 个用例通过、1 个跳过，安装 2/2 通过。共 7 次作者调用（2 次实现、5 次修复、0 次优化），修复中 5 次提供过 10 个不同原版生产文件；最终检查通过不代表完整语义等价。"
+  },
+  {
+    "id": "I14",
+    "classification": "原生图页展示范围及补充审计指标",
+    "summary": "原生图页未展示后端质量记录中的相同行比例与防默写重合率，本页已补充 38.5% 和 358/1,691=21.17%，并分别注明口径。这是可补强的展示范围，不是已确认的计算错误或数据丢失。"
+  }
+]

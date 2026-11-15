@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "viewports": [
+    {
+      "viewport": "desktop",
+      "width": 1365,
+      "page_width": 1365,
+      "metrics_and_issues_rendered": true,
+      "native_graph_link_passed": true,
+      "javascript_errors": []
+    },
+    {
+      "viewport": "mobile",
+      "width": 390,
+      "page_width": 390,
+      "metrics_and_issues_rendered": true,
+      "native_graph_link_passed": true,
+      "javascript_errors": []
+    }
+  ]
+}

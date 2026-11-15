@@ -1,0 +1,24 @@
+{
+  "implementation_overlap": {
+    "same_lines": 358,
+    "compared_lines": 1691,
+    "percent": 21.17090479006505,
+    "report_rounded_percent": 21,
+    "excluded_files": 0
+  },
+  "report_weighted_same_lines": {
+    "same_character_weight": 34628,
+    "total_character_weight": 90004,
+    "same_path_files": 47,
+    "percent": 38.473845606861914,
+    "report_rounded_percent": 38.5
+  },
+  "corrected_notebook_exclusion_reference": {
+    "official_baseline_tokens": 70579,
+    "incorrectly_counted_notebook_tokens": 4189,
+    "adjusted_baseline_tokens": 66390,
+    "candidate_tokens": 32400,
+    "reference_retained_percent": 48.802530501581565
+  },
+  "method_note": "The reference ratio does not replace this run's frozen metric."
+}
