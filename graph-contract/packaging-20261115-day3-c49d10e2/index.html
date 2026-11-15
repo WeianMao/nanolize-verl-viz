@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>packaging · nanolize 运行报告 · 2026-11-15</title>
+  <style>
+    :root { color-scheme: light; --ink: #192b3b; --muted: #526475; --line: #dce4e9; --accent: #176e75; --soft: #edf6f5; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #f3f6f8; color: var(--ink); font: 16px/1.75 system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
+    main { max-width: 1120px; margin: 0 auto; padding: 24px 32px 60px; }
+    .settings { margin: 0 0 30px; color: var(--muted); font-size: 12px; line-height: 1.9; overflow-wrap: anywhere; }
+    .eyebrow { color: var(--accent); font-size: 12px; font-weight: 750; letter-spacing: .12em; margin: 0 0 8px; }
+    h1 { font-size: clamp(28px, 4vw, 44px); line-height: 1.3; margin: 0 0 14px; letter-spacing: -.02em; }
+    h2 { font-size: 23px; line-height: 1.4; margin: 0 0 18px; }
+    h3 { font-size: 17px; margin: 0 0 8px; }
+    p { margin: 0 0 15px; }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    a:hover { text-decoration-thickness: 2px; }
+    a:focus-visible { outline: 3px solid #68b6b0; outline-offset: 4px; }
+    code { font: .88em ui-monospace, SFMono-Regular, Consolas, monospace; background: #edf1f4; padding: .1em .3em; border-radius: 4px; overflow-wrap: anywhere; }
+    strong { font-weight: 750; }
+    .lead { max-width: 900px; font-size: 18px; }
+    .status { border-left: 4px solid #b08027; background: #fff8e9; padding: 16px 20px; margin: 22px 0; border-radius: 0 8px 8px 0; }
+    .status p:last-child, .issue p:last-child, section > p:last-child { margin-bottom: 0; }
+    nav { display: flex; flex-wrap: wrap; gap: 8px 19px; margin: 24px 0 32px; font-size: 14px; }
+    section { background: white; border: 1px solid var(--line); border-radius: 12px; padding: 28px; margin: 22px 0; scroll-margin-top: 20px; }
+    .table-wrap { overflow-x: auto; margin: 16px 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.65; }
+    th, td { text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); padding: 12px 13px; }
+    th { color: #3a5567; background: #f3f7f8; font-weight: 700; }
+    th:first-child, td:first-child { padding-left: 10px; }
+    tbody tr:last-child td { border-bottom: 0; }
+    .number { font-variant-numeric: tabular-nums; }
+    .note, .source { color: var(--muted); font-size: 13px; }
+    .source { margin-top: 18px; }
+    .highlight { font-size: 20px; background: var(--soft); border-radius: 8px; padding: 16px 20px; }
+    .issue { border-top: 1px solid var(--line); padding-top: 20px; margin-top: 20px; }
+    .issue-id { display: inline-block; color: var(--accent); font: 700 13px ui-monospace, SFMono-Regular, Consolas, monospace; margin-right: 9px; }
+    .chips { line-height: 2.1; }
+    footer { color: var(--muted); font-size: 13px; padding: 8px 2px; }
+    @media (max-width: 640px) { main { padding: 18px 15px 36px; } section { padding: 20px 16px; } table { min-width: 570px; } h2 { font-size: 21px; } .lead { font-size: 16px; } }
+    @media print { body { background: white; font-size: 11pt; } main { max-width: none; padding: 0; } section { break-inside: avoid; border-radius: 0; padding: 16px 0; } nav { display: none; } .table-wrap { overflow: visible; } table { min-width: 0; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+<main>
+  <p class="settings">设置：nanolize main <code>a6fc619</code>（插件 0.8.0）；仓库原版 <code>pypa/packaging@284ff8900e59115dc86f85ca4e9d87d95e7dbc75</code>；<code>$nanolize packaging unattended=on scope=all --cn</code>；会话 Codex <code>gpt-6-astra xhigh</code>。</p>
+  <header>
+    <p class="eyebrow">NANOLIZE · PACKAGING · 2026-11-15</p>
+    <h1>packaging 全功能运行报告</h1>
+    <p class="lead">主比较体积保留 <strong>25.62%</strong>；<strong>41/41</strong> 组检查通过，仍有 <strong>3</strong> 个外部节点未验证。</p>
+    <div class="status">
+      <p><strong>最终状态：<code>completed_with_gaps</code>（有验证缺口的交付）。</strong>已执行检查全部通过，但验证义务未齐，不能宣称与原版完全等价。</p>
+      <p class="note">作业 <code>c49d10e2be9245b789431ff6b457d3fa</code>；<code>phase=completed</code>、<code>verification_status=unverified</code>、<code>obligations_complete=false</code>。</p>
+    </div>
+    <p><a href="nanolize-report/index.html">查看 nanolize 原生交互报告</a> · <a href="nanolize-report/data.json">报告数据 JSON</a> · <a href="nanolize-report/evidence.json">验证证据 JSON</a> · <a href="nanolize-report/metrics.csv">节点指标 CSV</a></p>
+  </header>
+  <nav aria-label="报告目录">
+    <a href="#conversion">转换数字</a><a href="#size">体积比例</a><a href="#unchanged">相同行比例</a><a href="#tests">测试设计</a><a href="#anti-copy">防默写</a><a href="#usage">花费和耗时</a><a href="#bugs">bugs</a><a href="#phenomena">遇到的现象</a>
+  </nav>
+
+  <section id="conversion">
+    <h2>转换报告里的数字</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th scope="col">项目</th><th scope="col">数字</th><th scope="col">口径</th></tr></thead>
+      <tbody>
+        <tr><td>功能节点</td><td class="number"><strong>24 个：1 根、23 叶</strong></td><td>全部保留，没有排除功能。</td></tr>
+        <tr><td>外部 / 内部节点</td><td class="number">17/7 → 21/3</td><td>原始转换 → 审阅后的提交范围。</td></tr>
+        <tr><td>接口条目</td><td class="number">252 → 266</td><td>原始转换 → 最终契约。</td></tr>
+        <tr><td>原始源码</td><td class="number">38 个文件、14,592 行</td><td>发现阶段的源码统计。</td></tr>
+        <tr><td>原有检查转换</td><td class="number">19 组；保留 5，移出 14；4 组补列兼容名称</td><td>按转换报告的检查组分类。</td></tr>
+        <tr><td>转换阶段缺口</td><td class="number">外部节点缺检查 11；内部节点不可达 3</td><td>转换阶段记录，不是最终缺口数量。</td></tr>
+        <tr><td>转换阶段读取完整性</td><td class="number">未检查的检查 0；不可读测试 0；不可读源码模块 0；未解析导出 0；丢弃接口 0</td><td>转换报告各项列表的记录。</td></tr>
+        <tr><td>原样保留</td><td class="number">自动保留 0；审阅后保留 1 个 SPDX 数据表</td><td><code>src/packaging/licenses/_spdx.py</code>。</td></tr>
+        <tr><td>保留表测量</td><td class="number">18,919 token、51,121 字节、798 行；字面数据占 99.7%</td><td>该表从主比较两侧排除。</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">14 组原始检查因触及未列入外部契约的内部名称而移出；这不代表对应功能被排除。</p>
+    <p class="source">依据：转换报告 <code>conversion-report.json</code>、最终契约 <code>capabilities-contract.json</code>、发现记录 <code>discovery.json</code> 及数据表测量 <code>carry-measurement.json</code> 的原数值。</p>
+  </section>
+
+  <section id="size">
+    <h2>体积比例</h2>
+    <p>主口径是源码和配置的 tokenizer token 数，使用 <code>tiktoken 0.12.0 / cl100k_base</code> 逐文件计量；原样保留的 SPDX 表从主比较两侧排除。此处 token 是文件体积计量，不是模型用量或磁盘字节。</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th scope="col">口径</th><th scope="col">原版 → 交付</th><th scope="col">保留比例</th></tr></thead>
+      <tbody>
+        <tr><td>源码 token，不含原样保留表</td><td class="number">115,637 → 35,364</td><td class="number">30.58%</td></tr>
+        <tr><td>配置 token</td><td class="number">32,879 → 2,688</td><td class="number">8.18%</td></tr>
+        <tr><td><strong>主比较：源码 + 配置，不含保留表</strong></td><td class="number"><strong>148,516 → 38,052</strong></td><td class="number"><strong>25.62%</strong></td></tr>
+        <tr><td>两侧加回 SPDX 表</td><td class="number">167,435 → 56,971</td><td class="number">34.03%</td></tr>
+        <tr><td>主比较两侧再剔除 Python 注释/docstring</td><td class="number">104,803 → 37,727</td><td class="number">36.00%</td></tr>
+        <tr><td>源码文件 / 物理行数</td><td class="number">38/14,592 → 34/4,679</td><td class="number">行数保留 32.07%</td></tr>
+      </tbody>
+    </table></div>
+    <p>主比较体积减少 <strong>74.38%</strong>（站点精度 <strong>74.379%</strong>）；体积建议目标为 <strong>50% / 74,258 token</strong>，<code>budget_status=met</code>、<code>target_policy=advisory</code>。</p>
+    <p class="note">全局源码行数缩减为 <strong>67.934%</strong>。原生报告根节点的映射行数为 <strong>14,592 → 3,881</strong>、缩减 <strong>73.403%</strong>：候选映射未包含保留表的 <strong>798</strong> 行，因此该节点口径不能替代全局行数或 token 口径。</p>
+    <p class="source">依据：报告数据 <code>summary.code_size</code>、<code>summary.before/after/reduction_percent</code>；保留比例及加回保留表口径沿用最终指标和报告原值。</p>
+  </section>
+
+  <section id="unchanged">
+    <h2>与原版相同的行比例</h2>
+    <p class="highlight"><strong>24.7%</strong>，按同路径文件的行长度加权。</p>
+    <p>仅比较仍在原路径的 <strong>32</strong> 个文件，不是全仓库相同行数除以原版总行数，也不是下述防默写正文重合率。</p>
+    <p class="source">依据：<code>code-quality.json.delivered.rewrite.unchanged_percent</code>、<code>files_at_an_original_path</code>。</p>
+  </section>
+
+  <section id="tests">
+    <h2>测试设计的结果</h2>
+    <p class="highlight"><strong>12 个节点补入 36 个测试文件/检查组；3 个外部节点未验证，另有 2 个内部节点豁免。</strong></p>
+    <p class="chips">补测节点：<code>direct_url</code>、<code>licenses</code>、<code>maintenance_pickle</code>、<code>maintenance_pins</code>、<code>maintenance_samples</code>、<code>markers</code>、<code>metadata</code>、<code>ranges</code>、<code>specifiers</code>、<code>tags</code>、<code>docs</code>、<code>errors</code>。</p>
+    <p>未验证外部节点：<code>benchmarks</code>、<code>maintenance_common</code>、<code>maintenance_licenses</code>。内部豁免：<code>grammar</code>、<code>range_engine</code>；豁免不算独立覆盖。</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th scope="col">项目</th><th scope="col">结果</th><th scope="col">口径</th></tr></thead>
+      <tbody>
+        <tr><td>测试设计</td><td class="number">初始 15 个待补测叶子；21 次设计调用、5 次测试审查</td><td>最终接受 12 个节点、36 个文件/检查组。</td></tr>
+        <tr><td>测试事实</td><td class="number">4 组、107 条接受事实；累计退回/丢弃 1 条；未覆盖测试描述 0</td><td>事实复审记录。</td></tr>
+        <tr><td>原版常规 pytest</td><td class="number">63,735 passed、3 skipped、444 deselected，24.48 秒</td><td>原版常规测试结果，和最终验证套件不同。</td></tr>
+        <tr><td>最终检查组</td><td class="number"><strong>41/41 通过、0 失败、0 未运行</strong></td><td>站点字段：<code>original_total=4</code>、<code>retained=41</code>、<code>contract=37</code>、<code>passed=41</code>、<code>failed=0</code>、<code>not_run=0</code>。</td></tr>
+        <tr><td>最终 pytest 用例</td><td class="number">6,550 通过、0 失败、0 错误、1 跳过</td><td>公开输出比较另算一组，不是 pytest 用例。</td></tr>
+        <tr><td>隔离安装</td><td class="number">2/2 通过</td><td><code>status=passed</code>、<code>environment_metadata_complete=true</code>。</td></tr>
+        <tr><td>节点直接状态</td><td class="number">17 verified / 2 partial / 5 unknown；failed、retired 均 0</td><td>节点直接证据。</td></tr>
+        <tr><td>节点聚合状态</td><td class="number">20 verified / 1 partial / 3 unknown；failed、retired 均 0</td><td>不能将聚合 verified 当成独立验证节点数。</td></tr>
+        <tr><td>最终叶子覆盖</td><td class="number">18 valid、3 missing、2 exempted，共 23 叶子</td><td><code>leaf_coverage.strict=false</code>；豁免与有效覆盖分列。</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">分类口径：转换汇报的“5 组保留 + 36 组新设计”与站点的“4 original + 37 contract”总数一致；保留的 <code>public-output</code> 在站点中标为 <code>role=contract</code>，其余 4 组保留 pytest 标为 <code>original</code>。</p>
+    <p><code>identity</code>、<code>docs</code> 无可敲除函数体，只据静态/执行证据判有效，不能称有动态 knockout 证明。站点记录 <code>facts_given_checks=40</code>：作者已得到检查所固定的事实后，该检查通过不算独立证据。</p>
+    <p class="note">原生报告绑定的冻结原版快照为 <code>a040d1f090fa1b1bd7ed7a7b9bf753a5b504276f</code>，在指定原版提交上新增了 <strong>36 个测试文件、4,271 行</strong>，生产源码未变；它与开头的仓库原版提交口径不同。</p>
+    <p class="source">依据：报告数据 <code>summary.verification_tests</code>、<code>summary.status_counts</code>、<code>summary.aggregate_status_counts</code>、<code>summary.leaf_coverage</code> 及 <code>installation</code>；补测数沿用 <code>test-design-summary.json</code>，pytest 用例沿用最终验证记录。</p>
+  </section>
+
+  <section id="anti-copy">
+    <h2>防默写的记录</h2>
+    <p class="highlight"><strong>退回 0 个文件、0 次事件。</strong></p>
+    <p>模式 <code>auto</code>、<code>active=false</code>；正文重合率 <strong>10%</strong>，比较 <strong>2,371 行</strong>，自动阈值 <strong>40%</strong>。至少 8 行且超过 60% 函数重合阈值的函数为 <strong>0 个</strong>。</p>
+    <p>测试设计的 <strong>3 次</strong>拒绝、事实的 <strong>1 次</strong>退回、行为修复的 <strong>6 次</strong>调用均不计入防默写退回。</p>
+    <p>首次实现不提供原始源码；修复阶段按默认 <code>source_reference=on_failed_check</code>，在 <strong>6 次作者调用</strong>中开放 <strong>11 个能力、19 个原版生产文件</strong>，因此本次不能称为全程未看原版。</p>
+    <p class="source">依据：最终指标 <code>anti_copy</code>、<code>code-quality.json.original_overlap</code> 及作业结果 <code>source_reference</code>。</p>
+  </section>
+
+  <section id="usage">
+    <h2>花费和耗时</h2>
+    <p><strong>全部已知记录：70 次调用、22,403,199 token，是可观测下界；金额未找到可核验值。</strong></p>
+    <div class="table-wrap"><table>
+      <thead><tr><th scope="col">范围</th><th scope="col">调用数</th><th scope="col">输入 + 输出 token</th></tr></thead>
+      <tbody>
+        <tr><td>正式作业</td><td class="number">67</td><td class="number">22,359,684</td></tr>
+        <tr><td>其他已知调用</td><td class="number">3</td><td class="number">43,515</td></tr>
+        <tr><td><strong>全部已知</strong></td><td class="number"><strong>70</strong></td><td class="number"><strong>22,403,199</strong></td></tr>
+      </tbody>
+    </table></div>
+    <p>正式作业输入 <strong>22,029,334</strong>、输出 <strong>330,350</strong>；输入中已含缓存输入 <strong>19,387,776</strong>，输出中已含推理输出 <strong>93,417</strong>，不能重复相加。</p>
+    <p class="note">另有 <strong>7 次</strong>调用用量为 <code>unavailable/null</code>；外层编排会话用量不可观测，未包括在总数中。实际账单金额未找到，不能记为零，也没有可核验的金额下界。</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th scope="col">时间口径</th><th scope="col">耗时</th><th scope="col">起止 / 范围</th></tr></thead>
+      <tbody>
+        <tr><td>正式作业墙钟</td><td class="number">7,913.184041 秒<br>约 2 小时 11 分 53 秒</td><td>2026-11-15 10:08:43.856564 UTC 入队 → 12:20:37.040605 UTC 后台交付；含排队和全部阶段。</td></tr>
+        <tr><td>克隆 / 指定 SHA 检出到后台交付</td><td class="number">8,465.040605 秒<br>约 2 小时 21 分 5 秒</td><td>2026-11-15 09:59:32 UTC → 12:20:37.040605 UTC。</td></tr>
+        <tr><td>67 次正式模型调用累计时长</td><td class="number">8,385.0943 秒<br>约 2 小时 19 分 45 秒</td><td>逐次调用时长累计，不是墙钟耗时。</td></tr>
+      </tbody>
+    </table></div>
+    <p class="source">依据：最终指标 <code>usage.total</code>、<code>usage.known_total_with_probes</code>、<code>timing.job_wall_seconds</code>、<code>timing.clone_to_delivery_seconds</code>；数值沿用会话记录。</p>
+  </section>
+
+  <section id="bugs">
+    <h2>需要对 nanolize 改动的 bugs</h2>
+    <p>本页问题列表只保留经核对确定由 nanolize 自身引起的 2 项。</p>
+    <article class="issue" id="I11">
+      <h3><span class="issue-id">I11</span>辅助 runner 跳过默认模型与推理配置</h3>
+      <p>默认辅助 runner 无条件使用 <code>--ignore-user-config</code>，未显式提供模型、推理级别时也不补全默认配置，与技能中省略 <code>model=</code> 时继承默认设置的承诺冲突（<code>skills/nanolize/SKILL.md:46–52</code>；<code>src/nanolize/effort_runner.py:55–90</code>）。应修正配置继承行为或相应承诺；本次辅助调用的模型与推理设置未解析，不能据此断言其实际用了哪一个模型。</p>
+    </article>
+    <article class="issue" id="I12">
+      <h3><span class="issue-id">I12</span>普通配置字符串被误判为契约外符号访问</h3>
+      <p>外部契约扫描将 Sphinx 配置输出中的普通 <code>ast.Constant</code> 字符串当成符号访问，使 <code>nitpick_ignore</code> 数据断言被 <code>outside_external_contract</code> 拒绝，应区分普通数据与实际符号解析（<code>src/nanolize/graph_contract.py:511–517</code>；<code>src/nanolize/leaf_test_design.py:1085–1091</code>）。第二轮设计接受了 docs 测试，但已删去被误拒的断言，不能把该断言视为已经覆盖。</p>
+    </article>
+  </section>
+
+  <section id="phenomena">
+    <h2>遇到的现象</h2>
+    <p>本节只列由 nanolize 流程本身产生的现象；我们运行环境造成的情况未列入。</p>
+    <article class="issue" id="I08">
+      <h3><span class="issue-id">I08</span>事实复审退回并修正错误概括</h3>
+      <p>requirements 的首轮事实把不同 specifier 后缀概括成互相等价，独立 reviewer 退回并补报未描述测试，第二轮修订后接受。最终为 <strong>4 组、107 条接受事实、累计退回 1 条、未覆盖测试描述 0</strong>；这是事实纠错流程，不计为防默写退回。</p>
+    </article>
+    <article class="issue" id="I10">
+      <h3><span class="issue-id">I10</span>有效性审计保留验证证据边界</h3>
+      <p>审计显示检查的直接映射、静态导入和动态依赖范围并不相同，inline 检查也可能没有可扫描的独立测试文件。<code>docs</code>、<code>identity</code> 无可敲除函数体，按静态/执行证据计有效并保留 <code>selected_leaf_knockout_not_assessable</code> 提示；间接依赖、内部豁免和这些有效状态均不能当作独立动态 knockout 证明。</p>
+    </article>
+    <article class="issue" id="I14">
+      <h3><span class="issue-id">I14</span>候选行为差异经验证和自动修复收敛</h3>
+      <p>同一冻结基线的 <strong>41 组</strong>检查下，<strong>7 个候选、6 次修复</strong>的失败用例依次为 <strong>54 → 53 → 52 → 16 → 15 → 9 → 0</strong>，最终 <strong>6,550 个通过、1 个跳过</strong>，未移除或放宽冻结检查。已执行检查全部通过，最终仍是 <code>completed_with_gaps</code>，不能宣称完整等价；行为修复次数不计为防默写退回。</p>
+    </article>
+  </section>
+  <footer>数值沿用本次会话与 nanolize 报告，并在相关位置注明口径。<a href="nanolize-report/index.html">查看原生报告</a>。</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "operation": "report_site",
+  "public_safe": true,
+  "report_id": "nrs_583fcf00a40d49d4302c9bf2e4f11c4b1f67a7725cd8aa4fc2948d9452e9869d",
+  "files": [
+    {
+      "path": "data.json",
+      "sha256": "60362193ce1729050e2c19a8dd859c31abf40d9bbac759c2dcf926a6740ed34f"
+    },
+    {
+      "path": "evidence.json",
+      "sha256": "493d405536be6ebec9561af408750936da32e3b551deec041d289d9c62a70ec0"
+    },
+    {
+      "path": "index.html",
+      "sha256": "adb90e2be320566a563c6b5b0a2b17cd1f9c957abeaaf42b4fcb091a96134b87"
+    },
+    {
+      "path": "metrics.csv",
+      "sha256": "179df0f8f9f342d3d81eba2f9fa72a4dcc95c288cf0d3295f3bb1dc08f45cd12"
+    }
+  ]
+}
