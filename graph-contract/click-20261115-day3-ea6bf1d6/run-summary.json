@@ -1,0 +1,401 @@
+{
+  "repository": "https://github.com/pallets/click",
+  "commit": "e38188e9e205005d5af5f9e59df51904c984586a",
+  "job_id": "ea6bf1d62d3642e9912287ff5bc72292",
+  "conversion": {
+    "external": 10,
+    "internal": 17,
+    "interface_entries": 370,
+    "checks_kept": 30,
+    "checks_left_out": 23,
+    "checks_not_inspected": 9,
+    "carried_files": 0,
+    "carried_tokens": 0,
+    "carried_percent": 0,
+    "modules_read": 32,
+    "unreadable_modules": 0,
+    "unresolved_exports": 0
+  },
+  "reviewed_contract": {
+    "external": 23,
+    "internal": 4,
+    "interface_entries": 387
+  },
+  "original_size": {
+    "source_tokens": 109350,
+    "configuration_tokens": 105844,
+    "total_tokens": 215194
+  },
+  "original_full_suite": {
+    "passed": 2626,
+    "skipped": 24,
+    "xfailed": 1,
+    "deselected_by_original_default": 31000
+  },
+  "frozen_baseline": {
+    "check_groups": 52,
+    "exit_zero": 52,
+    "passed": 1149,
+    "skipped": 1,
+    "valid_leaves": [
+      "completion",
+      "decorators",
+      "errors",
+      "example-aliases",
+      "example-colors",
+      "example-complex",
+      "example-imagepipe",
+      "example-inout",
+      "example-naval",
+      "example-repo",
+      "example-termui",
+      "example-validation",
+      "help",
+      "platform",
+      "terminal",
+      "testing",
+      "types"
+    ],
+    "missing_leaves": [
+      "api",
+      "commands",
+      "dev",
+      "docs",
+      "example-completion",
+      "streams"
+    ],
+    "exemptions": []
+  },
+  "test_design": {
+    "targeted_leaves": 10,
+    "accepted_test_files": 22,
+    "accepted_leaves": [
+      "completion",
+      "help",
+      "platform",
+      "testing"
+    ],
+    "rejected_proposals": 26,
+    "runner_failures": 0
+  },
+  "facts": {
+    "reused_accepted": 167,
+    "dropped_in_previous_attempt": 2,
+    "uncovered_in_previous_attempt": 1
+  },
+  "candidate_status": "delivered_with_failures",
+  "candidate": "candidate-23",
+  "candidate_commit": "012be652dd697421eae2e593bc988f210193aef9",
+  "branch": "codex/nanolize-ea6bf1d62d3642e9912287ff5bc72292",
+  "acceptance": "incomplete",
+  "final_tests": {
+    "adapted": 0,
+    "contract": 32,
+    "count_unit": "check_groups",
+    "failed": 3,
+    "fixed_baseline_failure": 0,
+    "needs_adaptation": 0,
+    "not_run": 0,
+    "original_total": 20,
+    "passed": 49,
+    "retained": 52,
+    "retired": 0
+  },
+  "final_cases": {
+    "passed": 1136,
+    "failed": 13,
+    "errors": 0,
+    "skipped": 1
+  },
+  "final_size": {
+    "baseline_source_lines": 13990,
+    "baseline_tokens": 215194,
+    "complete": true,
+    "configuration_tokens": 10244,
+    "metric": "tokens",
+    "retained_percent": 24.560629013820087,
+    "source_files": 31,
+    "source_lines": 4707,
+    "source_retained_percent": 33.64546104360257,
+    "source_tokens": 42609,
+    "target_met": true,
+    "target_percent": 50.0,
+    "target_source_lines": 6995.0,
+    "target_tokens": 107597,
+    "tokenizer": {
+      "classification": "source_and_configuration_v2",
+      "decoding": "python_encoding_cookie_else_utf8_strict",
+      "encoding": "cl100k_base",
+      "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+      "file_boundaries": "independent_sum",
+      "library": "tiktoken",
+      "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+      "special_tokens": "ordinary_text",
+      "text_policy": "raw_decoded_text_per_file",
+      "version": "0.12.0"
+    },
+    "total_tokens": 52853
+  },
+  "source_token_retained_percent": 38.96570644718793,
+  "quality": {
+    "delivered": {
+      "composition": {
+        "code_tokens": 52544,
+        "other_tokens": 10292,
+        "python_code_tokens": 42252,
+        "python_comment_tokens": 244,
+        "python_data_literal_tokens": 0,
+        "python_docstring_tokens": 0,
+        "python_files": 30,
+        "unparsed_python_files": 0
+      },
+      "documentation": {
+        "documented": 0,
+        "documented_percent": 0.0,
+        "public_definitions": 399
+      },
+      "rewrite": {
+        "files_at_an_original_path": 43,
+        "unchanged_percent": 21.9
+      },
+      "total_tokens": 52853
+    },
+    "original": {
+      "composition": {
+        "code_tokens": 172105,
+        "other_tokens": 105894,
+        "python_code_tokens": 66211,
+        "python_comment_tokens": 10164,
+        "python_data_literal_tokens": 0,
+        "python_docstring_tokens": 31299,
+        "python_files": 32,
+        "unparsed_python_files": 0
+      },
+      "documentation": {
+        "documented": 262,
+        "documented_percent": 57.7,
+        "public_definitions": 454
+      },
+      "total_tokens": 215194
+    },
+    "original_overlap": {
+      "compared_lines": 2585,
+      "documentation_percent": 1,
+      "function_limit_percent": 60,
+      "function_lines": 8,
+      "functions": 1,
+      "limit_percent": 40,
+      "listed_functions": [
+        {
+          "function": "Parameter.handle_parse_result",
+          "lines": 13,
+          "path": "src/click/core.py",
+          "percent": 62
+        }
+      ],
+      "mode": "auto",
+      "percent": 18
+    },
+    "schema_version": 1,
+    "status": "measured",
+    "summary": {
+      "documented_percent": {
+        "delivered": 0.0,
+        "original": 57.7
+      },
+      "total_retained_percent": 24.56,
+      "undocumented_retained_percent": 30.28
+    }
+  },
+  "source_reference": {
+    "author_calls": 21,
+    "capabilities": [
+      "commands",
+      "completion",
+      "example-aliases",
+      "example-colors",
+      "example-completion",
+      "example-complex",
+      "example-imagepipe",
+      "example-inout",
+      "example-naval",
+      "example-repo",
+      "example-termui",
+      "example-validation",
+      "platform",
+      "testing",
+      "types"
+    ],
+    "files": 23
+  },
+  "anti_copy": {
+    "mode": "auto",
+    "active": false,
+    "refused_files": 0,
+    "body_overlap_percent": 18
+  },
+  "installation": {
+    "checks_passed": 2,
+    "checks_total": 2,
+    "environment_metadata_complete": true,
+    "status": "passed"
+  },
+  "timing": {
+    "started": "2026-11-15T09:57:41.435Z",
+    "job_submitted": "2026-11-15T10:34:23.836918+00:00",
+    "job_finished": "2026-11-15T14:26:21.358204+00:00",
+    "job_seconds": 13917.511,
+    "whole_run_seconds": 16119.923204
+  },
+  "author_calls": 24,
+  "repair_calls": 21,
+  "controller_rounds": 70,
+  "candidates": 23,
+  "restorations": 1,
+  "stop_reason": "repair_stalled / controller_stopped",
+  "issues": [
+    {
+      "id": 9,
+      "classification": "需要对 nanolize 改动的 bugs",
+      "summary": "capture_baseline 的来源审计用 getattr 查询缺失的 __path__，触发被 knockout 的模块 __getattr__，使测试有效性测量失效（src/nanolize/runtime_guard.py:358–360）；应安全读取模块元数据，避免执行目标动态回调，同时保留真实路径校验。commands、streams 各有 52 对、合计 104 对 runtime_audit_failed 记录，但不能逐对认定同一根因或认定它们本应是有效行为击杀，修复此处也不保证全部提案通过；本次未修复。"
+    },
+    {
+      "id": 1,
+      "classification": "遇到的现象",
+      "summary": "nanolize 默认从待测 checkout 导入源码、不安装目标发行版，依赖 importlib.metadata.version(\"click\") 的检查需要另备发行版元数据。补齐必要元数据后原版测试通过；可在默认准备流程中补充诊断与适配指引，ready 本身不表示原版检查已通过。"
+    },
+    {
+      "id": 8,
+      "classification": "遇到的现象",
+      "summary": "write_test_facts 对同一上下文用例两轮都返回到 1500 字符边界的不完整事实，review 拒绝后仍有 1 个用例缺有效事实；共接受 167 条、拒绝 2 条，最终复用已审查事实。可将反复失败的事实拆为更小任务或补强恢复策略，保留拒绝和原检查。"
+    },
+    {
+      "id": 11,
+      "classification": "遇到的现象",
+      "summary": "未知属性行为的自然语言契约没有形成严格具名门禁可识别的测试入口，api 的 leaf_external_names 为空，负向属性补测被拒，最终仍缺有效测试证明。可补强受限的负向契约表达与诊断；knowledge_ids 只关联报告，不构成名字授权，不应放开任意动态或私有访问。"
+    },
+    {
+      "id": 12,
+      "classification": "遇到的现象",
+      "summary": "24 次作者调用（3 次初版、21 次修复）后，控制器因修复停滞恢复 candidate-19 为 candidate-23 并完整重验，最终 49/52 组通过、1,136 用例通过、13 失败、1 跳过，安装 2/2 通过。剩余为上下文回调 1 例、PowerShell 补全 1 例、标准流 seek 11 例，交付状态为 delivered_with_failures，行为验收未建立，尚不能作为行为等价实现使用。"
+    },
+    {
+      "id": 13,
+      "classification": "遇到的现象",
+      "summary": "首版 3 次调用不提供原版源码；默认 on_failed_check 策略在后续 21 次修复调用中授予 15 个能力、23 个不同原版生产文件的只读参考。授权记录不等于所有文件实际被阅读，本次流程并非全过程无源码。"
+    },
+    {
+      "id": 14,
+      "classification": "遇到的现象",
+      "summary": "体积缩减包含配置与文档减少：uv.lock 的 94,781 token 被移除，静态公开定义 docstring 覆盖由 262/454（57.7%）降至 0/399（0%）；源码＋配置保留 24.56%，不能称为纯逻辑压缩，静态 0% 也不表示所有文档行为消失。防默写整体函数体重合 18%／2585 可比行，未达到 auto 的 40% 启用阈值，退回 0 文件；列出函数的 62%／13 行不表示门禁失效，0 退回也不表示所有函数都低相似。"
+    },
+    {
+      "id": "现象-3",
+      "classification": "遇到的现象",
+      "summary": "默认 tasks=off，本次未做原版／改写版开发任务成本对照，没有任务成本改善的实测结论。可在摘要中更明确标示这一默认评测边界，本次压缩运行的消耗不能直接推导改写后开发任务的成本收益。"
+    }
+  ],
+  "unresolved": {
+    "attempt": 23,
+    "failures": [
+      {
+        "capabilities": [
+          "commands"
+        ],
+        "check": "tests-test_context",
+        "count": 1,
+        "problem": null,
+        "tests": [
+          {
+            "id": "tests.test_context::test_hiding_of_unset_sentinel_in_callbacks",
+            "problem": "failed"
+          }
+        ]
+      },
+      {
+        "capabilities": [
+          "completion"
+        ],
+        "check": "contract-completion-ea6bf1-10",
+        "count": 1,
+        "problem": null,
+        "tests": [
+          {
+            "id": "tests.nanolize_contracts.completion.test_completion_dispatch_and_extensions::test_powershell_source_uses_native_completer_and_restores_environment",
+            "problem": "failed"
+          }
+        ]
+      },
+      {
+        "capabilities": [
+          "platform"
+        ],
+        "check": "contract-platform-ea6bf1-20",
+        "count": 11,
+        "problem": null,
+        "tests": [
+          {
+            "id": "tests.nanolize_contracts.platform.test_standard_streams_public::test_binary_stdin_recognizes_dash_and_ignores_text_codec_options[bytes]",
+            "problem": "failed"
+          },
+          {
+            "id": "tests.nanolize_contracts.platform.test_standard_streams_public::test_binary_stdin_recognizes_dash_and_ignores_text_codec_options[path]",
+            "problem": "failed"
+          },
+          {
+            "id": "tests.nanolize_contracts.platform.test_standard_streams_public::test_binary_stdin_recognizes_dash_and_ignores_text_codec_options[string]",
+            "problem": "failed"
+          },
+          {
+            "id": "tests.nanolize_contracts.platform.test_standard_streams_public::test_compatible_stdin_keeps_strict_errors_and_can_be_reopened_after_failure[None]",
+            "problem": "failed"
+          },
+          {
+            "id": "tests.nanolize_contracts.platform.test_standard_streams_public::test_compatible_stdin_keeps_strict_errors_and_can_be_reopened_after_failure[strict]",
+            "problem": "failed"
+          },
+          {
+            "id": "tests.nanolize_contracts.platform.test_standard_streams_public::test_text_stdin_normalizes_newlines_and_survives_context_exit[False--]",
+            "problem": "failed"
+          },
+          {
+            "id": "tests.nanolize_contracts.platform.test_standard_streams_public::test_text_stdin_normalizes_newlines_and_survives_context_exit[False-A-A]",
+            "problem": "failed"
+          },
+          {
+            "id": "tests.nanolize_contracts.platform.test_standard_streams_public::test_text_stdin_normalizes_newlines_and_survives_context_exit[False-\\xc3\\xa9\\r\\n\\xf4\\x8f\\xbf\\xbf\\rend-\\xe9\\n\\U0010ffff\\nend]",
+            "problem": "failed"
+          },
+          {
+            "id": "tests.nanolize_contracts.platform.test_standard_streams_public::test_text_stdin_normalizes_newlines_and_survives_context_exit[True--]",
+            "problem": "failed"
+          },
+          {
+            "id": "tests.nanolize_contracts.platform.test_standard_streams_public::test_text_stdin_normalizes_newlines_and_survives_context_exit[True-A-A]",
+            "problem": "failed"
+          },
+          {
+            "id": "tests.nanolize_contracts.platform.test_standard_streams_public::test_text_stdin_normalizes_newlines_and_survives_context_exit[True-\\xc3\\xa9\\r\\n\\xf4\\x8f\\xbf\\xbf\\rend-\\xe9\\n\\U0010ffff\\nend]",
+            "problem": "failed"
+          }
+        ]
+      }
+    ],
+    "schema_version": 1,
+    "stop_reason": null,
+    "total": 13,
+    "truncated": false
+  },
+  "issue_scope": {
+    "bugs": "本页问题列表只保留经核对确定由 nanolize 自身引起的 1 项。",
+    "phenomena": "本节只列由 nanolize 流程本身产生的现象；我们运行环境造成的情况未列入。"
+  },
+  "settings": {
+    "nanolize_branch": "main",
+    "nanolize_commit": "a6fc61953d754317504547cc8f7966c7669affef",
+    "plugin_version": "0.8.0",
+    "command": "$nanolize click unattended=on scope=all --cn",
+    "model": "gpt-6-astra",
+    "reasoning_effort": "xhigh"
+  }
+}

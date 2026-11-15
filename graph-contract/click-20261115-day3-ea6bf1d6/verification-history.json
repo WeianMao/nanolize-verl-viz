@@ -1,0 +1,1802 @@
+{
+  "job_id": "ea6bf1d62d3642e9912287ff5bc72292",
+  "verification_history": [
+    {
+      "status": "regressed",
+      "candidate_commit": "3b3403809da1e194a8c55556ae23c76674f8f52a",
+      "groups": {
+        "adapted": 0,
+        "contract": 32,
+        "count_unit": "check_groups",
+        "failed": 17,
+        "fixed_baseline_failure": 0,
+        "needs_adaptation": 0,
+        "not_run": 0,
+        "original_total": 20,
+        "passed": 35,
+        "retained": 52,
+        "retired": 0
+      },
+      "cases": {
+        "passed": 1126,
+        "failed": 23,
+        "errors": 0,
+        "skipped": 1
+      },
+      "regressed": [
+        "tests-test_commands",
+        "tests-test_context",
+        "example-aliases-help",
+        "example-colors-help",
+        "example-completion-help",
+        "example-complex-help",
+        "example-imagepipe-help",
+        "example-inout-help",
+        "example-naval-help",
+        "example-repo-help",
+        "example-termui-help",
+        "example-validation-help",
+        "contract-completion-ea6bf1-10",
+        "contract-completion-ea6bf1-11",
+        "contract-completion-ea6bf1-12",
+        "contract-platform-ea6bf1-20",
+        "contract-testing-ea6bf1-35"
+      ],
+      "leaf_coverage": {
+        "valid": [
+          "completion",
+          "decorators",
+          "errors",
+          "example-aliases",
+          "example-colors",
+          "example-complex",
+          "example-imagepipe",
+          "example-inout",
+          "example-naval",
+          "example-repo",
+          "example-termui",
+          "example-validation",
+          "help",
+          "platform",
+          "terminal",
+          "testing",
+          "types"
+        ],
+        "missing": [
+          "api",
+          "commands",
+          "dev",
+          "docs",
+          "example-completion",
+          "streams"
+        ],
+        "exempted": []
+      },
+      "size": {
+        "source_tokens": 39012,
+        "configuration_tokens": 3682,
+        "total_tokens": 42694,
+        "comparison_tokens": 42637,
+        "retained_percent": 19.839772484362946,
+        "source_lines": 4394,
+        "source_retained_percent": 31.408148677626876,
+        "target_met": true
+      },
+      "source_token_retained_percent": 35.67626886145405
+    },
+    {
+      "status": "regressed",
+      "candidate_commit": "139471e5d30a4a49558100e6306761a69b3fab73",
+      "groups": {
+        "adapted": 0,
+        "contract": 32,
+        "count_unit": "check_groups",
+        "failed": 16,
+        "fixed_baseline_failure": 0,
+        "needs_adaptation": 0,
+        "not_run": 0,
+        "original_total": 20,
+        "passed": 36,
+        "retained": 52,
+        "retired": 0
+      },
+      "cases": {
+        "passed": 1127,
+        "failed": 22,
+        "errors": 0,
+        "skipped": 1
+      },
+      "regressed": [
+        "tests-test_context",
+        "example-aliases-help",
+        "example-colors-help",
+        "example-completion-help",
+        "example-complex-help",
+        "example-imagepipe-help",
+        "example-inout-help",
+        "example-naval-help",
+        "example-repo-help",
+        "example-termui-help",
+        "example-validation-help",
+        "contract-completion-ea6bf1-10",
+        "contract-completion-ea6bf1-11",
+        "contract-completion-ea6bf1-12",
+        "contract-platform-ea6bf1-20",
+        "contract-testing-ea6bf1-35"
+      ],
+      "leaf_coverage": {
+        "valid": [
+          "completion",
+          "decorators",
+          "errors",
+          "example-aliases",
+          "example-colors",
+          "example-complex",
+          "example-imagepipe",
+          "example-inout",
+          "example-naval",
+          "example-repo",
+          "example-termui",
+          "example-validation",
+          "help",
+          "platform",
+          "terminal",
+          "testing",
+          "types"
+        ],
+        "missing": [
+          "api",
+          "commands",
+          "dev",
+          "docs",
+          "example-completion",
+          "streams"
+        ],
+        "exempted": []
+      },
+      "size": {
+        "source_tokens": 39023,
+        "configuration_tokens": 3682,
+        "total_tokens": 42705,
+        "comparison_tokens": 42640,
+        "retained_percent": 19.844884151045104,
+        "source_lines": 4396,
+        "source_retained_percent": 31.422444603288064,
+        "target_met": true
+      },
+      "source_token_retained_percent": 35.68632830361226
+    },
+    {
+      "status": "regressed",
+      "candidate_commit": "1d9724006fd25f79b978685fb2977ec1cf353cb6",
+      "groups": {
+        "adapted": 0,
+        "contract": 32,
+        "count_unit": "check_groups",
+        "failed": 15,
+        "fixed_baseline_failure": 0,
+        "needs_adaptation": 0,
+        "not_run": 0,
+        "original_total": 20,
+        "passed": 37,
+        "retained": 52,
+        "retired": 0
+      },
+      "cases": {
+        "passed": 1128,
+        "failed": 21,
+        "errors": 0,
+        "skipped": 1
+      },
+      "regressed": [
+        "tests-test_context",
+        "example-aliases-help",
+        "example-colors-help",
+        "example-completion-help",
+        "example-complex-help",
+        "example-imagepipe-help",
+        "example-inout-help",
+        "example-naval-help",
+        "example-repo-help",
+        "example-termui-help",
+        "example-validation-help",
+        "contract-completion-ea6bf1-10",
+        "contract-completion-ea6bf1-12",
+        "contract-platform-ea6bf1-20",
+        "contract-testing-ea6bf1-35"
+      ],
+      "leaf_coverage": {
+        "valid": [
+          "completion",
+          "decorators",
+          "errors",
+          "example-aliases",
+          "example-colors",
+          "example-complex",
+          "example-imagepipe",
+          "example-inout",
+          "example-naval",
+          "example-repo",
+          "example-termui",
+          "example-validation",
+          "help",
+          "platform",
+          "terminal",
+          "testing",
+          "types"
+        ],
+        "missing": [
+          "api",
+          "commands",
+          "dev",
+          "docs",
+          "example-completion",
+          "streams"
+        ],
+        "exempted": []
+      },
+      "size": {
+        "source_tokens": 39035,
+        "configuration_tokens": 3682,
+        "total_tokens": 42717,
+        "comparison_tokens": 42638,
+        "retained_percent": 19.850460514698366,
+        "source_lines": 4395,
+        "source_retained_percent": 31.41529664045747,
+        "target_met": true
+      },
+      "source_token_retained_percent": 35.697302240512116
+    },
+    {
+      "status": "regressed",
+      "candidate_commit": "b27bc1d33648c70c4807f873425d14efd3360190",
+      "groups": {
+        "adapted": 0,
+        "contract": 32,
+        "count_unit": "check_groups",
+        "failed": 15,
+        "fixed_baseline_failure": 0,
+        "needs_adaptation": 0,
+        "not_run": 0,
+        "original_total": 20,
+        "passed": 37,
+        "retained": 52,
+        "retired": 0
+      },
+      "cases": {
+        "passed": 1131,
+        "failed": 18,
+        "errors": 0,
+        "skipped": 1
+      },
+      "regressed": [
+        "tests-test_context",
+        "example-aliases-help",
+        "example-colors-help",
+        "example-completion-help",
+        "example-complex-help",
+        "example-imagepipe-help",
+        "example-inout-help",
+        "example-naval-help",
+        "example-repo-help",
+        "example-termui-help",
+        "example-validation-help",
+        "contract-completion-ea6bf1-10",
+        "contract-completion-ea6bf1-12",
+        "contract-platform-ea6bf1-20",
+        "contract-testing-ea6bf1-35"
+      ],
+      "leaf_coverage": {
+        "valid": [
+          "completion",
+          "decorators",
+          "errors",
+          "example-aliases",
+          "example-colors",
+          "example-complex",
+          "example-imagepipe",
+          "example-inout",
+          "example-naval",
+          "example-repo",
+          "example-termui",
+          "example-validation",
+          "help",
+          "platform",
+          "terminal",
+          "testing",
+          "types"
+        ],
+        "missing": [
+          "api",
+          "commands",
+          "dev",
+          "docs",
+          "example-completion",
+          "streams"
+        ],
+        "exempted": []
+      },
+      "size": {
+        "source_tokens": 39270,
+        "configuration_tokens": 3682,
+        "total_tokens": 42952,
+        "comparison_tokens": 42858,
+        "retained_percent": 19.959664302908074,
+        "source_lines": 4436,
+        "source_retained_percent": 31.708363116511794,
+        "target_met": true
+      },
+      "source_token_retained_percent": 35.9122085048011
+    },
+    {
+      "status": "regressed",
+      "candidate_commit": "6511d88fc27b401d00040f1a407cbbc09f2d4e87",
+      "groups": {
+        "adapted": 0,
+        "contract": 32,
+        "count_unit": "check_groups",
+        "failed": 15,
+        "fixed_baseline_failure": 0,
+        "needs_adaptation": 0,
+        "not_run": 0,
+        "original_total": 20,
+        "passed": 37,
+        "retained": 52,
+        "retired": 0
+      },
+      "cases": {
+        "passed": 1131,
+        "failed": 18,
+        "errors": 0,
+        "skipped": 1
+      },
+      "regressed": [
+        "tests-test_context",
+        "example-aliases-help",
+        "example-colors-help",
+        "example-completion-help",
+        "example-complex-help",
+        "example-imagepipe-help",
+        "example-inout-help",
+        "example-naval-help",
+        "example-repo-help",
+        "example-termui-help",
+        "example-validation-help",
+        "contract-completion-ea6bf1-10",
+        "contract-completion-ea6bf1-12",
+        "contract-platform-ea6bf1-20",
+        "contract-testing-ea6bf1-35"
+      ],
+      "leaf_coverage": {
+        "valid": [
+          "completion",
+          "decorators",
+          "errors",
+          "example-aliases",
+          "example-colors",
+          "example-complex",
+          "example-imagepipe",
+          "example-inout",
+          "example-naval",
+          "example-repo",
+          "example-termui",
+          "example-validation",
+          "help",
+          "platform",
+          "terminal",
+          "testing",
+          "types"
+        ],
+        "missing": [
+          "api",
+          "commands",
+          "dev",
+          "docs",
+          "example-completion",
+          "streams"
+        ],
+        "exempted": []
+      },
+      "size": {
+        "source_tokens": 39582,
+        "configuration_tokens": 4420,
+        "total_tokens": 44002,
+        "comparison_tokens": 43891,
+        "retained_percent": 20.447596122568473,
+        "source_lines": 4473,
+        "source_retained_percent": 31.972837741243744,
+        "target_met": true
+      },
+      "source_token_retained_percent": 36.19753086419753
+    },
+    {
+      "status": "regressed",
+      "candidate_commit": "6d6bb0cf6e7906985920011c23bd856b7d47d0fc",
+      "groups": {
+        "adapted": 0,
+        "contract": 32,
+        "count_unit": "check_groups",
+        "failed": 14,
+        "fixed_baseline_failure": 0,
+        "needs_adaptation": 0,
+        "not_run": 0,
+        "original_total": 20,
+        "passed": 38,
+        "retained": 52,
+        "retired": 0
+      },
+      "cases": {
+        "passed": 1135,
+        "failed": 14,
+        "errors": 0,
+        "skipped": 1
+      },
+      "regressed": [
+        "tests-test_context",
+        "example-aliases-help",
+        "example-colors-help",
+        "example-completion-help",
+        "example-complex-help",
+        "example-imagepipe-help",
+        "example-inout-help",
+        "example-naval-help",
+        "example-repo-help",
+        "example-termui-help",
+        "example-validation-help",
+        "contract-completion-ea6bf1-10",
+        "contract-completion-ea6bf1-12",
+        "contract-platform-ea6bf1-20"
+      ],
+      "leaf_coverage": {
+        "valid": [
+          "completion",
+          "decorators",
+          "errors",
+          "example-aliases",
+          "example-colors",
+          "example-complex",
+          "example-imagepipe",
+          "example-inout",
+          "example-naval",
+          "example-repo",
+          "example-termui",
+          "example-validation",
+          "help",
+          "platform",
+          "terminal",
+          "testing",
+          "types"
+        ],
+        "missing": [
+          "api",
+          "commands",
+          "dev",
+          "docs",
+          "example-completion",
+          "streams"
+        ],
+        "exempted": []
+      },
+      "size": {
+        "source_tokens": 39471,
+        "configuration_tokens": 4323,
+        "total_tokens": 43794,
+        "comparison_tokens": 43670,
+        "retained_percent": 20.350939152578604,
+        "source_lines": 4453,
+        "source_retained_percent": 31.82987848463188,
+        "target_met": true
+      },
+      "source_token_retained_percent": 36.0960219478738
+    },
+    {
+      "status": "regressed",
+      "candidate_commit": "c8425d5d1f94aef825b55e45de9c49fd2ae779cf",
+      "groups": {
+        "adapted": 0,
+        "contract": 32,
+        "count_unit": "check_groups",
+        "failed": 13,
+        "fixed_baseline_failure": 0,
+        "needs_adaptation": 0,
+        "not_run": 0,
+        "original_total": 20,
+        "passed": 39,
+        "retained": 52,
+        "retired": 0
+      },
+      "cases": {
+        "passed": 1135,
+        "failed": 14,
+        "errors": 0,
+        "skipped": 1
+      },
+      "regressed": [
+        "tests-test_context",
+        "example-colors-help",
+        "example-completion-help",
+        "example-complex-help",
+        "example-imagepipe-help",
+        "example-inout-help",
+        "example-naval-help",
+        "example-repo-help",
+        "example-termui-help",
+        "example-validation-help",
+        "contract-completion-ea6bf1-10",
+        "contract-completion-ea6bf1-12",
+        "contract-platform-ea6bf1-20"
+      ],
+      "leaf_coverage": {
+        "valid": [
+          "completion",
+          "decorators",
+          "errors",
+          "example-aliases",
+          "example-colors",
+          "example-complex",
+          "example-imagepipe",
+          "example-inout",
+          "example-naval",
+          "example-repo",
+          "example-termui",
+          "example-validation",
+          "help",
+          "platform",
+          "terminal",
+          "testing",
+          "types"
+        ],
+        "missing": [
+          "api",
+          "commands",
+          "dev",
+          "docs",
+          "example-completion",
+          "streams"
+        ],
+        "exempted": []
+      },
+      "size": {
+        "source_tokens": 39697,
+        "configuration_tokens": 4323,
+        "total_tokens": 44020,
+        "comparison_tokens": 43879,
+        "retained_percent": 20.455960668048366,
+        "source_lines": 4469,
+        "source_retained_percent": 31.944245889921373,
+        "target_met": true
+      },
+      "source_token_retained_percent": 36.302697759487884
+    },
+    {
+      "status": "regressed",
+      "candidate_commit": "2dad7e6d5684b7cb78c682a769b4c95d8e33e299",
+      "groups": {
+        "adapted": 0,
+        "contract": 32,
+        "count_unit": "check_groups",
+        "failed": 12,
+        "fixed_baseline_failure": 0,
+        "needs_adaptation": 0,
+        "not_run": 0,
+        "original_total": 20,
+        "passed": 40,
+        "retained": 52,
+        "retired": 0
+      },
+      "cases": {
+        "passed": 1135,
+        "failed": 14,
+        "errors": 0,
+        "skipped": 1
+      },
+      "regressed": [
+        "tests-test_context",
+        "example-completion-help",
+        "example-complex-help",
+        "example-imagepipe-help",
+        "example-inout-help",
+        "example-naval-help",
+        "example-repo-help",
+        "example-termui-help",
+        "example-validation-help",
+        "contract-completion-ea6bf1-10",
+        "contract-completion-ea6bf1-12",
+        "contract-platform-ea6bf1-20"
+      ],
+      "leaf_coverage": {
+        "valid": [
+          "completion",
+          "decorators",
+          "errors",
+          "example-aliases",
+          "example-colors",
+          "example-complex",
+          "example-imagepipe",
+          "example-inout",
+          "example-naval",
+          "example-repo",
+          "example-termui",
+          "example-validation",
+          "help",
+          "platform",
+          "terminal",
+          "testing",
+          "types"
+        ],
+        "missing": [
+          "api",
+          "commands",
+          "dev",
+          "docs",
+          "example-completion",
+          "streams"
+        ],
+        "exempted": []
+      },
+      "size": {
+        "source_tokens": 39784,
+        "configuration_tokens": 4744,
+        "total_tokens": 44528,
+        "comparison_tokens": 44387,
+        "retained_percent": 20.69202672936978,
+        "source_lines": 4476,
+        "source_retained_percent": 31.994281629735525,
+        "target_met": true
+      },
+      "source_token_retained_percent": 36.38225880201189
+    },
+    {
+      "status": "regressed",
+      "candidate_commit": "dadc5253173e333e5cb32e219a8f42bc7bbe4b79",
+      "groups": {
+        "adapted": 0,
+        "contract": 32,
+        "count_unit": "check_groups",
+        "failed": 12,
+        "fixed_baseline_failure": 0,
+        "needs_adaptation": 0,
+        "not_run": 0,
+        "original_total": 20,
+        "passed": 40,
+        "retained": 52,
+        "retired": 0
+      },
+      "cases": {
+        "passed": 1135,
+        "failed": 14,
+        "errors": 0,
+        "skipped": 1
+      },
+      "regressed": [
+        "tests-test_context",
+        "example-completion-help",
+        "example-complex-help",
+        "example-imagepipe-help",
+        "example-inout-help",
+        "example-naval-help",
+        "example-repo-help",
+        "example-termui-help",
+        "example-validation-help",
+        "contract-completion-ea6bf1-10",
+        "contract-completion-ea6bf1-12",
+        "contract-platform-ea6bf1-20"
+      ],
+      "leaf_coverage": {
+        "valid": [
+          "completion",
+          "decorators",
+          "errors",
+          "example-aliases",
+          "example-colors",
+          "example-complex",
+          "example-imagepipe",
+          "example-inout",
+          "example-naval",
+          "example-repo",
+          "example-termui",
+          "example-validation",
+          "help",
+          "platform",
+          "terminal",
+          "testing",
+          "types"
+        ],
+        "missing": [
+          "api",
+          "commands",
+          "dev",
+          "docs",
+          "example-completion",
+          "streams"
+        ],
+        "exempted": []
+      },
+      "size": {
+        "source_tokens": 39799,
+        "configuration_tokens": 5233,
+        "total_tokens": 45032,
+        "comparison_tokens": 44876,
+        "retained_percent": 20.92623400280677,
+        "source_lines": 4478,
+        "source_retained_percent": 32.00857755539671,
+        "target_met": true
+      },
+      "source_token_retained_percent": 36.395976223136714
+    },
+    {
+      "status": "regressed",
+      "candidate_commit": "ac60e04eaf57ceb604f986050d1cfb828bcddd85",
+      "groups": {
+        "adapted": 0,
+        "contract": 32,
+        "count_unit": "check_groups",
+        "failed": 11,
+        "fixed_baseline_failure": 0,
+        "needs_adaptation": 0,
+        "not_run": 0,
+        "original_total": 20,
+        "passed": 41,
+        "retained": 52,
+        "retired": 0
+      },
+      "cases": {
+        "passed": 1135,
+        "failed": 14,
+        "errors": 0,
+        "skipped": 1
+      },
+      "regressed": [
+        "tests-test_context",
+        "example-complex-help",
+        "example-imagepipe-help",
+        "example-inout-help",
+        "example-naval-help",
+        "example-repo-help",
+        "example-termui-help",
+        "example-validation-help",
+        "contract-completion-ea6bf1-10",
+        "contract-completion-ea6bf1-12",
+        "contract-platform-ea6bf1-20"
+      ],
+      "leaf_coverage": {
+        "valid": [
+          "completion",
+          "decorators",
+          "errors",
+          "example-aliases",
+          "example-colors",
+          "example-complex",
+          "example-imagepipe",
+          "example-inout",
+          "example-naval",
+          "example-repo",
+          "example-termui",
+          "example-validation",
+          "help",
+          "platform",
+          "terminal",
+          "testing",
+          "types"
+        ],
+        "missing": [
+          "api",
+          "commands",
+          "dev",
+          "docs",
+          "example-completion",
+          "streams"
+        ],
+        "exempted": []
+      },
+      "size": {
+        "source_tokens": 39844,
+        "configuration_tokens": 5233,
+        "total_tokens": 45077,
+        "comparison_tokens": 44921,
+        "retained_percent": 20.9471453665065,
+        "source_lines": 4474,
+        "source_retained_percent": 31.979985704074338,
+        "target_met": true
+      },
+      "source_token_retained_percent": 36.437128486511206
+    },
+    {
+      "status": "regressed",
+      "candidate_commit": "553bcc3ae2c5ea8613657aeb8be6300b274bb0fe",
+      "groups": {
+        "adapted": 0,
+        "contract": 32,
+        "count_unit": "check_groups",
+        "failed": 10,
+        "fixed_baseline_failure": 0,
+        "needs_adaptation": 0,
+        "not_run": 0,
+        "original_total": 20,
+        "passed": 42,
+        "retained": 52,
+        "retired": 0
+      },
+      "cases": {
+        "passed": 1135,
+        "failed": 14,
+        "errors": 0,
+        "skipped": 1
+      },
+      "regressed": [
+        "tests-test_context",
+        "example-imagepipe-help",
+        "example-inout-help",
+        "example-naval-help",
+        "example-repo-help",
+        "example-termui-help",
+        "example-validation-help",
+        "contract-completion-ea6bf1-10",
+        "contract-completion-ea6bf1-12",
+        "contract-platform-ea6bf1-20"
+      ],
+      "leaf_coverage": {
+        "valid": [
+          "completion",
+          "decorators",
+          "errors",
+          "example-aliases",
+          "example-colors",
+          "example-complex",
+          "example-imagepipe",
+          "example-inout",
+          "example-naval",
+          "example-repo",
+          "example-termui",
+          "example-validation",
+          "help",
+          "platform",
+          "terminal",
+          "testing",
+          "types"
+        ],
+        "missing": [
+          "api",
+          "commands",
+          "dev",
+          "docs",
+          "example-completion",
+          "streams"
+        ],
+        "exempted": []
+      },
+      "size": {
+        "source_tokens": 40032,
+        "configuration_tokens": 5813,
+        "total_tokens": 45845,
+        "comparison_tokens": 45689,
+        "retained_percent": 21.30403264031525,
+        "source_lines": 4497,
+        "source_retained_percent": 32.144388849177986,
+        "target_met": true
+      },
+      "source_token_retained_percent": 36.609053497942384
+    },
+    {
+      "status": "regressed",
+      "candidate_commit": "18015cb2542cb296efd77734bd4c67cd4bee271a",
+      "groups": {
+        "adapted": 0,
+        "contract": 32,
+        "count_unit": "check_groups",
+        "failed": 9,
+        "fixed_baseline_failure": 0,
+        "needs_adaptation": 0,
+        "not_run": 0,
+        "original_total": 20,
+        "passed": 43,
+        "retained": 52,
+        "retired": 0
+      },
+      "cases": {
+        "passed": 1135,
+        "failed": 14,
+        "errors": 0,
+        "skipped": 1
+      },
+      "regressed": [
+        "tests-test_context",
+        "example-inout-help",
+        "example-naval-help",
+        "example-repo-help",
+        "example-termui-help",
+        "example-validation-help",
+        "contract-completion-ea6bf1-10",
+        "contract-completion-ea6bf1-12",
+        "contract-platform-ea6bf1-20"
+      ],
+      "leaf_coverage": {
+        "valid": [
+          "completion",
+          "decorators",
+          "errors",
+          "example-aliases",
+          "example-colors",
+          "example-complex",
+          "example-imagepipe",
+          "example-inout",
+          "example-naval",
+          "example-repo",
+          "example-termui",
+          "example-validation",
+          "help",
+          "platform",
+          "terminal",
+          "testing",
+          "types"
+        ],
+        "missing": [
+          "api",
+          "commands",
+          "dev",
+          "docs",
+          "example-completion",
+          "streams"
+        ],
+        "exempted": []
+      },
+      "size": {
+        "source_tokens": 41105,
+        "configuration_tokens": 6253,
+        "total_tokens": 47358,
+        "comparison_tokens": 47144,
+        "retained_percent": 22.00711915759733,
+        "source_lines": 4585,
+        "source_retained_percent": 32.77340957827019,
+        "target_met": true
+      },
+      "source_token_retained_percent": 37.590306355738456
+    },
+    {
+      "status": "regressed",
+      "candidate_commit": "f901a287a1eb6b411481b0d5945edfe8b94b06f6",
+      "groups": {
+        "adapted": 0,
+        "contract": 32,
+        "count_unit": "check_groups",
+        "failed": 8,
+        "fixed_baseline_failure": 0,
+        "needs_adaptation": 0,
+        "not_run": 0,
+        "original_total": 20,
+        "passed": 44,
+        "retained": 52,
+        "retired": 0
+      },
+      "cases": {
+        "passed": 1135,
+        "failed": 14,
+        "errors": 0,
+        "skipped": 1
+      },
+      "regressed": [
+        "tests-test_context",
+        "example-naval-help",
+        "example-repo-help",
+        "example-termui-help",
+        "example-validation-help",
+        "contract-completion-ea6bf1-10",
+        "contract-completion-ea6bf1-12",
+        "contract-platform-ea6bf1-20"
+      ],
+      "leaf_coverage": {
+        "valid": [
+          "completion",
+          "decorators",
+          "errors",
+          "example-aliases",
+          "example-colors",
+          "example-complex",
+          "example-imagepipe",
+          "example-inout",
+          "example-naval",
+          "example-repo",
+          "example-termui",
+          "example-validation",
+          "help",
+          "platform",
+          "terminal",
+          "testing",
+          "types"
+        ],
+        "missing": [
+          "api",
+          "commands",
+          "dev",
+          "docs",
+          "example-completion",
+          "streams"
+        ],
+        "exempted": []
+      },
+      "size": {
+        "source_tokens": 41199,
+        "configuration_tokens": 6753,
+        "total_tokens": 47952,
+        "comparison_tokens": 47738,
+        "retained_percent": 22.283149158433787,
+        "source_lines": 4592,
+        "source_retained_percent": 32.823445318084346,
+        "target_met": true
+      },
+      "source_token_retained_percent": 37.67626886145405
+    },
+    {
+      "status": "regressed",
+      "candidate_commit": "53a77b63eb46a275971e8f3a704dd606a4a90420",
+      "groups": {
+        "adapted": 0,
+        "contract": 32,
+        "count_unit": "check_groups",
+        "failed": 7,
+        "fixed_baseline_failure": 0,
+        "needs_adaptation": 0,
+        "not_run": 0,
+        "original_total": 20,
+        "passed": 45,
+        "retained": 52,
+        "retired": 0
+      },
+      "cases": {
+        "passed": 1135,
+        "failed": 14,
+        "errors": 0,
+        "skipped": 1
+      },
+      "regressed": [
+        "tests-test_context",
+        "example-repo-help",
+        "example-termui-help",
+        "example-validation-help",
+        "contract-completion-ea6bf1-10",
+        "contract-completion-ea6bf1-12",
+        "contract-platform-ea6bf1-20"
+      ],
+      "leaf_coverage": {
+        "valid": [
+          "completion",
+          "decorators",
+          "errors",
+          "example-aliases",
+          "example-colors",
+          "example-complex",
+          "example-imagepipe",
+          "example-inout",
+          "example-naval",
+          "example-repo",
+          "example-termui",
+          "example-validation",
+          "help",
+          "platform",
+          "terminal",
+          "testing",
+          "types"
+        ],
+        "missing": [
+          "api",
+          "commands",
+          "dev",
+          "docs",
+          "example-completion",
+          "streams"
+        ],
+        "exempted": []
+      },
+      "size": {
+        "source_tokens": 41328,
+        "configuration_tokens": 7260,
+        "total_tokens": 48588,
+        "comparison_tokens": 48374,
+        "retained_percent": 22.578696432056656,
+        "source_lines": 4599,
+        "source_retained_percent": 32.8734810578985,
+        "target_met": true
+      },
+      "source_token_retained_percent": 37.794238683127574
+    },
+    {
+      "status": "regressed",
+      "candidate_commit": "9b69172e9c5e8eddede689eb7b96cdb268ed5f15",
+      "groups": {
+        "adapted": 0,
+        "contract": 32,
+        "count_unit": "check_groups",
+        "failed": 6,
+        "fixed_baseline_failure": 0,
+        "needs_adaptation": 0,
+        "not_run": 0,
+        "original_total": 20,
+        "passed": 46,
+        "retained": 52,
+        "retired": 0
+      },
+      "cases": {
+        "passed": 1135,
+        "failed": 14,
+        "errors": 0,
+        "skipped": 1
+      },
+      "regressed": [
+        "tests-test_context",
+        "example-termui-help",
+        "example-validation-help",
+        "contract-completion-ea6bf1-10",
+        "contract-completion-ea6bf1-12",
+        "contract-platform-ea6bf1-20"
+      ],
+      "leaf_coverage": {
+        "valid": [
+          "completion",
+          "decorators",
+          "errors",
+          "example-aliases",
+          "example-colors",
+          "example-complex",
+          "example-imagepipe",
+          "example-inout",
+          "example-naval",
+          "example-repo",
+          "example-termui",
+          "example-validation",
+          "help",
+          "platform",
+          "terminal",
+          "testing",
+          "types"
+        ],
+        "missing": [
+          "api",
+          "commands",
+          "dev",
+          "docs",
+          "example-completion",
+          "streams"
+        ],
+        "exempted": []
+      },
+      "size": {
+        "source_tokens": 41914,
+        "configuration_tokens": 7822,
+        "total_tokens": 49736,
+        "comparison_tokens": 49522,
+        "retained_percent": 23.112168554885358,
+        "source_lines": 4646,
+        "source_retained_percent": 33.209435310936385,
+        "target_met": true
+      },
+      "source_token_retained_percent": 38.33013260173754
+    },
+    {
+      "status": "regressed",
+      "candidate_commit": "d500e6403281d23fd73e21cd55f3acc383824d4e",
+      "groups": {
+        "adapted": 0,
+        "contract": 32,
+        "count_unit": "check_groups",
+        "failed": 5,
+        "fixed_baseline_failure": 0,
+        "needs_adaptation": 0,
+        "not_run": 0,
+        "original_total": 20,
+        "passed": 47,
+        "retained": 52,
+        "retired": 0
+      },
+      "cases": {
+        "passed": 1135,
+        "failed": 14,
+        "errors": 0,
+        "skipped": 1
+      },
+      "regressed": [
+        "tests-test_context",
+        "example-validation-help",
+        "contract-completion-ea6bf1-10",
+        "contract-completion-ea6bf1-12",
+        "contract-platform-ea6bf1-20"
+      ],
+      "leaf_coverage": {
+        "valid": [
+          "completion",
+          "decorators",
+          "errors",
+          "example-aliases",
+          "example-colors",
+          "example-complex",
+          "example-imagepipe",
+          "example-inout",
+          "example-naval",
+          "example-repo",
+          "example-termui",
+          "example-validation",
+          "help",
+          "platform",
+          "terminal",
+          "testing",
+          "types"
+        ],
+        "missing": [
+          "api",
+          "commands",
+          "dev",
+          "docs",
+          "example-completion",
+          "streams"
+        ],
+        "exempted": []
+      },
+      "size": {
+        "source_tokens": 42360,
+        "configuration_tokens": 8480,
+        "total_tokens": 50840,
+        "comparison_tokens": 50626,
+        "retained_percent": 23.625194010985435,
+        "source_lines": 4683,
+        "source_retained_percent": 33.47390993566833,
+        "target_met": true
+      },
+      "source_token_retained_percent": 38.737997256515776
+    },
+    {
+      "status": "regressed",
+      "candidate_commit": "d1d65c81a72b1d9a14a23180286495eed5c5c475",
+      "groups": {
+        "adapted": 0,
+        "contract": 32,
+        "count_unit": "check_groups",
+        "failed": 4,
+        "fixed_baseline_failure": 0,
+        "needs_adaptation": 0,
+        "not_run": 0,
+        "original_total": 20,
+        "passed": 48,
+        "retained": 52,
+        "retired": 0
+      },
+      "cases": {
+        "passed": 1135,
+        "failed": 14,
+        "errors": 0,
+        "skipped": 1
+      },
+      "regressed": [
+        "tests-test_context",
+        "contract-completion-ea6bf1-10",
+        "contract-completion-ea6bf1-12",
+        "contract-platform-ea6bf1-20"
+      ],
+      "leaf_coverage": {
+        "valid": [
+          "completion",
+          "decorators",
+          "errors",
+          "example-aliases",
+          "example-colors",
+          "example-complex",
+          "example-imagepipe",
+          "example-inout",
+          "example-naval",
+          "example-repo",
+          "example-termui",
+          "example-validation",
+          "help",
+          "platform",
+          "terminal",
+          "testing",
+          "types"
+        ],
+        "missing": [
+          "api",
+          "commands",
+          "dev",
+          "docs",
+          "example-completion",
+          "streams"
+        ],
+        "exempted": []
+      },
+      "size": {
+        "source_tokens": 42516,
+        "configuration_tokens": 9063,
+        "total_tokens": 51579,
+        "comparison_tokens": 51365,
+        "retained_percent": 23.968605072632137,
+        "source_lines": 4700,
+        "source_retained_percent": 33.59542530378842,
+        "target_met": true
+      },
+      "source_token_retained_percent": 38.88065843621399
+    },
+    {
+      "status": "regressed",
+      "candidate_commit": "03e4030fbfd5796bde37a056b0651e8856c50966",
+      "groups": {
+        "adapted": 0,
+        "contract": 32,
+        "count_unit": "check_groups",
+        "failed": 4,
+        "fixed_baseline_failure": 0,
+        "needs_adaptation": 0,
+        "not_run": 0,
+        "original_total": 20,
+        "passed": 48,
+        "retained": 52,
+        "retired": 0
+      },
+      "cases": {
+        "passed": 1135,
+        "failed": 14,
+        "errors": 0,
+        "skipped": 1
+      },
+      "regressed": [
+        "tests-test_context",
+        "contract-completion-ea6bf1-10",
+        "contract-completion-ea6bf1-12",
+        "contract-platform-ea6bf1-20"
+      ],
+      "leaf_coverage": {
+        "valid": [
+          "completion",
+          "decorators",
+          "errors",
+          "example-aliases",
+          "example-colors",
+          "example-complex",
+          "example-imagepipe",
+          "example-inout",
+          "example-naval",
+          "example-repo",
+          "example-termui",
+          "example-validation",
+          "help",
+          "platform",
+          "terminal",
+          "testing",
+          "types"
+        ],
+        "missing": [
+          "api",
+          "commands",
+          "dev",
+          "docs",
+          "example-completion",
+          "streams"
+        ],
+        "exempted": []
+      },
+      "size": {
+        "source_tokens": 42513,
+        "configuration_tokens": 9579,
+        "total_tokens": 52092,
+        "comparison_tokens": 51878,
+        "retained_percent": 24.206994618809073,
+        "source_lines": 4700,
+        "source_retained_percent": 33.59542530378842,
+        "target_met": true
+      },
+      "source_token_retained_percent": 38.87791495198903
+    },
+    {
+      "status": "regressed",
+      "candidate_commit": "9c27845e512ab20582a6ec1bb1966f7d09cb5871",
+      "groups": {
+        "adapted": 0,
+        "contract": 32,
+        "count_unit": "check_groups",
+        "failed": 3,
+        "fixed_baseline_failure": 0,
+        "needs_adaptation": 0,
+        "not_run": 0,
+        "original_total": 20,
+        "passed": 49,
+        "retained": 52,
+        "retired": 0
+      },
+      "cases": {
+        "passed": 1136,
+        "failed": 13,
+        "errors": 0,
+        "skipped": 1
+      },
+      "regressed": [
+        "tests-test_context",
+        "contract-completion-ea6bf1-10",
+        "contract-platform-ea6bf1-20"
+      ],
+      "leaf_coverage": {
+        "valid": [
+          "completion",
+          "decorators",
+          "errors",
+          "example-aliases",
+          "example-colors",
+          "example-complex",
+          "example-imagepipe",
+          "example-inout",
+          "example-naval",
+          "example-repo",
+          "example-termui",
+          "example-validation",
+          "help",
+          "platform",
+          "terminal",
+          "testing",
+          "types"
+        ],
+        "missing": [
+          "api",
+          "commands",
+          "dev",
+          "docs",
+          "example-completion",
+          "streams"
+        ],
+        "exempted": []
+      },
+      "size": {
+        "source_tokens": 42609,
+        "configuration_tokens": 10244,
+        "total_tokens": 52853,
+        "comparison_tokens": 52609,
+        "retained_percent": 24.560629013820087,
+        "source_lines": 4707,
+        "source_retained_percent": 33.64546104360257,
+        "target_met": true
+      },
+      "source_token_retained_percent": 38.96570644718793
+    },
+    {
+      "status": "regressed",
+      "candidate_commit": "b790981b24bb3a089f9a9f50372ec35b9a755438",
+      "groups": {
+        "adapted": 0,
+        "contract": 32,
+        "count_unit": "check_groups",
+        "failed": 3,
+        "fixed_baseline_failure": 0,
+        "needs_adaptation": 0,
+        "not_run": 0,
+        "original_total": 20,
+        "passed": 49,
+        "retained": 52,
+        "retired": 0
+      },
+      "cases": {
+        "passed": 1136,
+        "failed": 13,
+        "errors": 0,
+        "skipped": 1
+      },
+      "regressed": [
+        "tests-test_context",
+        "contract-completion-ea6bf1-10",
+        "contract-platform-ea6bf1-20"
+      ],
+      "leaf_coverage": {
+        "valid": [
+          "completion",
+          "decorators",
+          "errors",
+          "example-aliases",
+          "example-colors",
+          "example-complex",
+          "example-imagepipe",
+          "example-inout",
+          "example-naval",
+          "example-repo",
+          "example-termui",
+          "example-validation",
+          "help",
+          "platform",
+          "terminal",
+          "testing",
+          "types"
+        ],
+        "missing": [
+          "api",
+          "commands",
+          "dev",
+          "docs",
+          "example-completion",
+          "streams"
+        ],
+        "exempted": []
+      },
+      "size": {
+        "source_tokens": 42631,
+        "configuration_tokens": 10667,
+        "total_tokens": 53298,
+        "comparison_tokens": 53054,
+        "retained_percent": 24.767419165961876,
+        "source_lines": 4711,
+        "source_retained_percent": 33.67405289492495,
+        "target_met": true
+      },
+      "source_token_retained_percent": 38.985825331504344
+    },
+    {
+      "status": "regressed",
+      "candidate_commit": "b288965bd0d2cd97c1b3822470b4fdcef383a326",
+      "groups": {
+        "adapted": 0,
+        "contract": 32,
+        "count_unit": "check_groups",
+        "failed": 3,
+        "fixed_baseline_failure": 0,
+        "needs_adaptation": 0,
+        "not_run": 0,
+        "original_total": 20,
+        "passed": 49,
+        "retained": 52,
+        "retired": 0
+      },
+      "cases": {
+        "passed": 1136,
+        "failed": 13,
+        "errors": 0,
+        "skipped": 1
+      },
+      "regressed": [
+        "tests-test_context",
+        "contract-completion-ea6bf1-10",
+        "contract-platform-ea6bf1-20"
+      ],
+      "leaf_coverage": {
+        "valid": [
+          "completion",
+          "decorators",
+          "errors",
+          "example-aliases",
+          "example-colors",
+          "example-complex",
+          "example-imagepipe",
+          "example-inout",
+          "example-naval",
+          "example-repo",
+          "example-termui",
+          "example-validation",
+          "help",
+          "platform",
+          "terminal",
+          "testing",
+          "types"
+        ],
+        "missing": [
+          "api",
+          "commands",
+          "dev",
+          "docs",
+          "example-completion",
+          "streams"
+        ],
+        "exempted": []
+      },
+      "size": {
+        "source_tokens": 42686,
+        "configuration_tokens": 12117,
+        "total_tokens": 54803,
+        "comparison_tokens": 54547,
+        "retained_percent": 25.466788107475114,
+        "source_lines": 4720,
+        "source_retained_percent": 33.738384560400284,
+        "target_met": true
+      },
+      "source_token_retained_percent": 39.03612254229538
+    },
+    {
+      "status": "regressed",
+      "candidate_commit": "2142ba77abc6b2696683881a2be34a36ed83853d",
+      "groups": {
+        "adapted": 0,
+        "contract": 32,
+        "count_unit": "check_groups",
+        "failed": 3,
+        "fixed_baseline_failure": 0,
+        "needs_adaptation": 0,
+        "not_run": 0,
+        "original_total": 20,
+        "passed": 49,
+        "retained": 52,
+        "retired": 0
+      },
+      "cases": {
+        "passed": 1136,
+        "failed": 13,
+        "errors": 0,
+        "skipped": 1
+      },
+      "regressed": [
+        "tests-test_context",
+        "contract-completion-ea6bf1-10",
+        "contract-platform-ea6bf1-20"
+      ],
+      "leaf_coverage": {
+        "valid": [
+          "completion",
+          "decorators",
+          "errors",
+          "example-aliases",
+          "example-colors",
+          "example-complex",
+          "example-imagepipe",
+          "example-inout",
+          "example-naval",
+          "example-repo",
+          "example-termui",
+          "example-validation",
+          "help",
+          "platform",
+          "terminal",
+          "testing",
+          "types"
+        ],
+        "missing": [
+          "api",
+          "commands",
+          "dev",
+          "docs",
+          "example-completion",
+          "streams"
+        ],
+        "exempted": []
+      },
+      "size": {
+        "source_tokens": 42686,
+        "configuration_tokens": 13225,
+        "total_tokens": 55911,
+        "comparison_tokens": 55655,
+        "retained_percent": 25.981672351459615,
+        "source_lines": 4720,
+        "source_retained_percent": 33.738384560400284,
+        "target_met": true
+      },
+      "source_token_retained_percent": 39.03612254229538
+    },
+    {
+      "status": "regressed",
+      "candidate_commit": "012be652dd697421eae2e593bc988f210193aef9",
+      "groups": {
+        "adapted": 0,
+        "contract": 32,
+        "count_unit": "check_groups",
+        "failed": 3,
+        "fixed_baseline_failure": 0,
+        "needs_adaptation": 0,
+        "not_run": 0,
+        "original_total": 20,
+        "passed": 49,
+        "retained": 52,
+        "retired": 0
+      },
+      "cases": {
+        "passed": 1136,
+        "failed": 13,
+        "errors": 0,
+        "skipped": 1
+      },
+      "regressed": [
+        "tests-test_context",
+        "contract-completion-ea6bf1-10",
+        "contract-platform-ea6bf1-20"
+      ],
+      "leaf_coverage": {
+        "valid": [
+          "completion",
+          "decorators",
+          "errors",
+          "example-aliases",
+          "example-colors",
+          "example-complex",
+          "example-imagepipe",
+          "example-inout",
+          "example-naval",
+          "example-repo",
+          "example-termui",
+          "example-validation",
+          "help",
+          "platform",
+          "terminal",
+          "testing",
+          "types"
+        ],
+        "missing": [
+          "api",
+          "commands",
+          "dev",
+          "docs",
+          "example-completion",
+          "streams"
+        ],
+        "exempted": []
+      },
+      "size": {
+        "source_tokens": 42609,
+        "configuration_tokens": 10244,
+        "total_tokens": 52853,
+        "comparison_tokens": 52609,
+        "retained_percent": 24.560629013820087,
+        "source_lines": 4707,
+        "source_retained_percent": 33.64546104360257,
+        "target_met": true
+      },
+      "source_token_retained_percent": 38.96570644718793
+    }
+  ],
+  "installations": [
+    {
+      "status": "passed"
+    },
+    {
+      "status": "passed"
+    },
+    {
+      "status": "passed"
+    },
+    {
+      "status": "passed"
+    },
+    {
+      "status": "passed"
+    },
+    {
+      "status": "passed"
+    },
+    {
+      "status": "passed"
+    },
+    {
+      "status": "passed"
+    },
+    {
+      "status": "passed"
+    },
+    {
+      "status": "passed"
+    },
+    {
+      "status": "passed"
+    },
+    {
+      "status": "passed"
+    },
+    {
+      "status": "passed"
+    },
+    {
+      "status": "passed"
+    },
+    {
+      "status": "passed"
+    },
+    {
+      "status": "passed"
+    },
+    {
+      "status": "passed"
+    },
+    {
+      "status": "passed"
+    },
+    {
+      "status": "passed"
+    },
+    {
+      "status": "passed"
+    },
+    {
+      "status": "passed"
+    },
+    {
+      "status": "passed"
+    },
+    {
+      "status": "passed"
+    }
+  ]
+}

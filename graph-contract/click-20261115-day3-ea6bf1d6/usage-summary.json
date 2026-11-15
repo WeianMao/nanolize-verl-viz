@@ -1,0 +1,58 @@
+{
+  "as_of": "2026-11-15T14:36:35.942620+00:00",
+  "attempts": {
+    "4a35e5e83f614d2687a1dd2d3d10e3fd": {
+      "reported_tokens": {
+        "input_tokens": 4515682,
+        "cached_input_tokens": 3732480,
+        "output_tokens": 93796,
+        "total_tokens": 4609478
+      }
+    },
+    "ea6bf1d62d3642e9912287ff5bc72292": {
+      "reported_tokens": {
+        "input_tokens": 39076562,
+        "cached_input_tokens": 33804672,
+        "output_tokens": 588260,
+        "total_tokens": 39664822
+      },
+      "job_status": "delivered_with_failures"
+    }
+  },
+  "preflight": {
+    "reported_tokens": {
+      "input_tokens": 130979,
+      "cached_input_tokens": 112128,
+      "output_tokens": 318,
+      "total_tokens": 131297
+    }
+  },
+  "all_runner_calls": {
+    "reported_tokens": {
+      "input_tokens": 43723223,
+      "cached_input_tokens": 37649280,
+      "output_tokens": 682374,
+      "total_tokens": 44405597
+    }
+  },
+  "observer_snapshot": {
+    "first_timestamp": "2026-11-15T09:57:41.435Z",
+    "last_timestamp": "2026-11-15T14:36:32.143Z",
+    "usage": {
+      "input_tokens": 75380562,
+      "cached_input_tokens": 74785280,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 190766,
+      "reasoning_output_tokens": 96351,
+      "total_tokens": 75571328
+    }
+  },
+  "combined_reported_tokens": 119976925,
+  "monetary_cost": null,
+  "notes": [
+    "缓存输入是输入token的子集，未重复相加。",
+    "金额账单未提供，不能从这些记录确定美元或人民币花费。",
+    "观察对话截至快照时间；最终消息自身的用量不在快照内。",
+    "合计为截至快照的已记录下界，不是完整账单。"
+  ]
+}
