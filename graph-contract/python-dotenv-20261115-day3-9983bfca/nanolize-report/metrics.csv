@@ -1,0 +1,10 @@
+capability_id,before_lines,after_lines,reduction_percent,mapping_status,validation_status,executed,evidence_category,direct_checks,related_checks,direct_checks_passed,direct_checks_failed,direct_checks_inconclusive,related_checks_passed,related_checks_failed,related_checks_inconclusive,evidence_coverage,before_source_tokens,after_source_tokens,source_token_reduction_percent
+dotenv,1181,527,55.377,mapped,unknown,False,related_passed,0,10,0,0,0,10,0,0,limited,8215,4460,45.709
+configuration,532,229,56.955,mapped,verified,True,direct_passed,4,1,4,0,0,1,0,0,declared_checks_only,3829,1993,47.95
+syntax,191,76,60.209,mapped,verified,True,direct_passed,2,0,2,0,0,0,0,0,declared_checks_only,1391,723,48.023
+interpolation,86,279,-224.419,mapped,verified,True,direct_passed,2,0,2,0,0,0,0,0,declared_checks_only,560,2342,-318.214
+cli_manage,270,121,55.185,mapped,unknown,False,related_passed,0,1,0,0,0,1,0,0,limited,1822,970,46.762
+cli_run,270,117,56.667,mapped,unknown,False,related_passed,0,1,0,0,0,1,0,0,limited,1822,953,47.695
+ipython,50,50,0.0,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,306,414,-35.294
+shell_string,51,25,50.98,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,296,190,35.811
+metadata,1,5,-400.0,mapped,unknown,False,related_passed,0,1,0,0,0,1,0,0,limited,11,28,-154.545

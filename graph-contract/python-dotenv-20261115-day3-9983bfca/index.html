@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>python-dotenv 全功能 nanolize 报告 · 2026-11-15</title>
+  <style>
+    :root { color-scheme: light; --ink:#17263b; --muted:#536176; --line:#dce3ed; --blue:#1855a2; --paper:#fff; --wash:#f3f6fa; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--wash); color:var(--ink); font-family:system-ui,-apple-system,"Segoe UI","Noto Sans SC",sans-serif; line-height:1.7; }
+    main { max-width:1100px; margin:0 auto; padding:32px 24px 64px; }
+    header { padding:12px 0 28px; }
+    h1 { font-size:clamp(1.8rem,4vw,2.6rem); line-height:1.25; margin:16px 0; }
+    h2 { font-size:1.35rem; line-height:1.4; margin:0 0 18px; }
+    h3 { font-size:1.05rem; margin:0 0 8px; }
+    p { margin:10px 0; }
+    .settings { font-size:.88rem; color:var(--muted); overflow-wrap:anywhere; }
+    .meta, .note { font-size:.92rem; color:var(--muted); }
+    a { color:var(--blue); text-underline-offset:3px; }
+    nav { display:flex; flex-wrap:wrap; gap:8px 20px; margin:20px 0 0; font-size:.93rem; }
+    section { background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:26px; margin:0 0 20px; scroll-margin-top:20px; }
+    .table-wrap { width:100%; overflow-x:auto; }
+    table { width:100%; border-collapse:collapse; font-size:.95rem; }
+    th, td { padding:11px 14px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top; }
+    th { background:#edf2f8; font-weight:650; }
+    tr:last-child td { border-bottom:0; }
+    td:first-child { width:36%; }
+    code { font-family:ui-monospace,SFMono-Regular,Consolas,monospace; font-size:.9em; overflow-wrap:anywhere; }
+    strong { font-weight:680; }
+    .result { border-left:4px solid #287957; padding:10px 16px; background:#edf7f1; }
+    .issue { padding:18px 0; border-top:1px solid var(--line); }
+    .issue:last-child { padding-bottom:0; }
+    .issue p { margin-bottom:0; }
+    footer { padding:4px 4px 0; color:var(--muted); font-size:.88rem; }
+    @media(max-width:600px) { main { padding:18px 12px 40px; } section { padding:19px 14px; } th,td { padding:9px 10px; } table { font-size:.88rem; } td:first-child { width:39%; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="settings">设置：nanolize main a6fc619（插件 0.8.0），仓库原版提交 <code>4fbc6ff07215367ece731006855e732d1405992c</code>，<code>$nanolize python-dotenv unattended=on scope=all --cn</code>，Codex gpt-6-astra xhigh。</p>
+    <h1>python-dotenv 全功能 nanolize 报告</h1>
+    <p class="meta">2026-11-15 · 作业 <code>9983bfca5a55478d81ef4bebe2b9b232</code> · 结果提交 <code>953592706ed8ac8627d8e708ea22ebac00fd4ce9</code></p>
+    <p class="result">转换任务成功：<code>succeeded / completed</code>，验证 <code>checks_passed</code>，验收 <code>passed</code>。9 个功能节点全部保留，最终 10/10 检查组及 2/2 安装检查通过。</p>
+    <p><a href="nanolize-report/index.html">打开 nanolize 原生交互报告</a> · <a href="nanolize-report/data.json">报告数据 JSON</a> · <a href="nanolize-report/evidence.json">报告证据 JSON</a></p>
+    <nav aria-label="报告目录">
+      <a href="#conversion">转换报告</a><a href="#size">体积比例</a><a href="#same-lines">相同行比例</a><a href="#tests">测试设计</a><a href="#anti-overlap">防默写</a><a href="#cost">花费与耗时</a><a href="#bugs">bugs</a><a href="#phenomena">现象</a>
+    </nav>
+  </header>
+
+  <section id="conversion">
+    <h2>转换报告里的数字</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th scope="col">项目</th><th scope="col">数字</th></tr></thead>
+      <tbody>
+        <tr><td>功能节点</td><td><strong>9（1 容器、8 叶子），全部保留</strong></td></tr>
+        <tr><td>自动转换外部 / 内部节点；接口条目</td><td><strong>6 / 3；39</strong></td></tr>
+        <tr><td>审阅补全后外部 / 内部节点；接口条目</td><td><strong>8 / 1；49</strong></td></tr>
+        <tr><td>读取源码模块 / 不可读模块</td><td><strong>8 / 0</strong></td></tr>
+        <tr><td>保留 / 排除 / 未检查的检查组</td><td><strong>10 / 0 / 0</strong></td></tr>
+        <tr><td>检查要求显式保留的名字</td><td><strong>3（1 个检查组）</strong>：<code>dotenv.main.open</code>、<code>dotenv.main.os.lstat</code>、<code>dotenv.main.os.replace</code></td></tr>
+        <tr><td>无检查外部节点 / 未触及内部节点 / 未解析导出</td><td><strong>0 / 0 / 0</strong></td></tr>
+        <tr><td>丢弃接口条目 / 不可读测试文件</td><td><strong>0 / 0</strong></td></tr>
+        <tr><td>自动携带文件 / tokens / 比例；部分携带候选</td><td><strong>0 / 0 / 0%；0</strong></td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">口径：自动转换记录与审阅补全后的契约分别列出；检查组数与 pytest 用例数分列，不能互换。</p>
+  </section>
+
+  <section id="size">
+    <h2>体积比例</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th scope="col">项目</th><th scope="col">数字及口径</th></tr></thead>
+      <tbody>
+        <tr><td>源码＋配置</td><td><strong>10,933→5,037 tokens，保留 46.07%，减少 53.93%</strong>；站点原值 <code>reduction_percent=53.928</code>，百分比展示按各自精度舍入。</td></tr>
+        <tr><td>源码 / 配置分别计算</td><td>源码 <strong>8,215→4,460，保留 54.29%</strong>；配置 <strong>2,718→577，保留 21.23%</strong></td></tr>
+        <tr><td>源码物理行比例</td><td><strong>1,181→527，保留 44.62%</strong>；站点原值减少 <strong>55.377%</strong></td></tr>
+        <tr><td>去掉 Python 注释、文档字符串后的体积比例</td><td><strong>9,374→5,011 tokens，保留 53.46%</strong></td></tr>
+        <tr><td>体积目标</td><td><strong>50% 建议目标，5,466 tokens，已达到</strong>；<code>target_policy=advisory</code></td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">冻结分词器 <strong>tiktoken 0.12.0 / cl100k_base</strong>，逐文件独立求和；按冻结规则排除未改的原版测试、文档、启动器配置、二进制资产等。这里的 tokens 是代码体积，不是模型用量。</p>
+  </section>
+
+  <section id="same-lines">
+    <h2>与原版相同的行比例</h2>
+    <p><strong>24.8%</strong>；同路径文本比较，按有效行长度加权，原路径文件数 <strong>11</strong>。</p>
+    <p class="note">这是报告的文本相同行口径；防默写采用过滤后的代码行口径，见下文，两者不能互相替代。</p>
+  </section>
+
+  <section id="tests">
+    <h2>测试设计的结果</h2>
+    <p><strong>补测 0 个节点。</strong>默认策略判定 <strong>8/8 叶节点已有有效测试，missing=0、exempted=0、strict=false</strong>；测试设计操作为 <code>not_run</code>、<code>plan_changed=false</code>。</p>
+    <p><strong>5 个叶节点有直接验证；3 个叶节点 <code>cli_manage</code>、<code>cli_run</code>、<code>metadata</code> 缺直接/独占源码动态禁用证据</strong>，只有相关检查，报告本节点状态为 <code>unknown</code>。相关检查通过不等于本节点有直接验证，也不表示这 3 个节点完全没运行测试。</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th scope="col">项目</th><th scope="col">结果及口径</th></tr></thead>
+      <tbody>
+        <tr><td>最终检查组</td><td><strong>10/10 通过，失败 0、未运行 0</strong>；9 原版组＋1 输出契约；排除、待适配、已适配均 0</td></tr>
+        <tr><td>安装检查</td><td><strong>2/2，通过</strong></td></tr>
+        <tr><td>pytest 用例</td><td>原版和最终候选均 <strong>291 passed、1 skipped</strong>；原版另记 <strong>33 warnings</strong></td></tr>
+        <tr><td>报告本节点直接验证状态</td><td><strong>verified=5、unknown=4，failed=0、partial=0、retired=0</strong>；unknown 包括根容器和 3 个叶节点。</td></tr>
+        <tr><td>报告聚合状态及证据分类</td><td><strong>aggregate verified=9、unknown=0</strong>；<strong>direct_passed=5、related_passed=4、unverified=0</strong></td></tr>
+        <tr><td>测试事实</td><td><strong>9 组、136 条有效、2 条丢弃、1 个测试函数事实未覆盖</strong>；缺口是 <code>original-cli</code> 中 <code>tests/test_cli.py::test_list</code> 的输入细节完整性，原始检查仍保留并执行。</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">本次修复沿用同一冻结基线、验证输入和计划，并重新全量验证。聚合状态包含相关检查证据；根容器两侧汇总文字存在下文 <a href="#issue-13">#13</a> 所述展示问题。</p>
+  </section>
+
+  <section id="anti-overlap">
+    <h2>防默写的记录</h2>
+    <p><strong>退回 0 个文件、0 次候选。</strong>过滤后的重合比例 <strong>12%</strong>，可比较代码行 <strong>289</strong>，策略 <code>auto</code>，整体阈值 <strong>40%</strong>、函数阈值 <strong>60%</strong>、函数最少 <strong>8</strong> 个可比较行。</p>
+    <p class="note">该口径忽略注释、文档字符串、导入、签名和短惯用行，并检查改名/移动后的相同行，因此不与前述 24.8% 互相替代。</p>
+    <p><strong>重写轮次：2 次作者调用、1 次行为修复、0 次优化、0 次恢复。</strong>首次实现不提供原版源码；修复按默认规则参考 <strong>1 个原版文件、1 个节点 <code>configuration</code>、1 次作者调用</strong>。源码访问边界是首次实现不读源码、修复可读失败节点，不是操作系统级沙箱。</p>
+  </section>
+
+  <section id="cost">
+    <h2>花费和耗时</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th scope="col">项目</th><th scope="col">数字及口径</th></tr></thead>
+      <tbody>
+        <tr><td>已记录模型用量</td><td><strong>3,293,008 tokens、36 次模型调用，是全程用量的下界</strong>；成功作业含内部试调用为 <strong>3,236,257 tokens</strong>。</td></tr>
+        <tr><td>输入 / 缓存输入 / 输出</td><td>输入 <strong>3,215,991</strong>，缓存输入 <strong>2,578,816</strong>（已包含在输入中，不能再相加），输出 <strong>77,017</strong></td></tr>
+        <tr><td>金额</td><td><strong>未找到；实际美元账单未返回。</strong>已记录 tokens 不能作为完整账单或实付金额。</td></tr>
+        <tr><td>开发任务成本对照</td><td><code>tasks=off</code>，没有原版/候选开发任务成本对照。</td></tr>
+        <tr><td>成功作业耗时</td><td><strong>1,353.337373 秒，约 22 分 33 秒</strong>；<code>2026-11-15T10:07:11.447511+00:00</code> → <code>2026-11-15T10:29:44.784884+00:00</code></td></tr>
+        <tr><td>会话另报时长</td><td><strong>30 分 48 秒</strong>；口径为从克隆完成 <code>09:58:57 UTC</code> 到转换结束，报告整理和校验另计。</td></tr>
+        <tr><td>模型调用耗时累加</td><td><strong>2002.0304 秒</strong>；不能当作业墙钟时长。</td></tr>
+        <tr><td>完整“提交到最终报告交付”的耗时</td><td><strong>未找到。</strong></td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="bugs">
+    <h2>需要对 nanolize 改动的 bugs</h2>
+    <p>本页问题列表只保留经核对确定由 nanolize 自身引起的 1 项。</p>
+    <article class="issue" id="issue-13">
+      <h3>#13 报告容器节点的后代汇总误用本节点执行状态</h3>
+      <p>根容器 <code>dotenv</code> 的 <code>validation.context</code> 同时给出后代检查 <code>verified / executed=true</code> 和两侧汇总 <code>not_run</code>，但其 10 个检查的原版、候选状态实际均为 <code>passed</code>，展示结果自相矛盾。<code>src/nanolize/report_site.py:239–272</code> 应按后代检查集合汇总两侧状态并补容器回归覆盖，同时保留本节点 <code>unknown</code> 的语义；本次尚未修复，此展示问题不否定最终行为检查通过。</p>
+    </article>
+  </section>
+
+  <section id="phenomena">
+    <h2>遇到的现象</h2>
+    <p>本节只列由 nanolize 流程本身产生的现象；我们运行环境造成的情况未列入。</p>
+    <article class="issue" id="issue-9">
+      <h3>#9 事实复核拒绝与残余事实完整性缺口</h3>
+      <p>两条不准确的测试事实被复核拒绝，自动补写后形成 9 组、136 条有效事实，并保留 2 条拒绝记录和 1 个测试的事实完整性缺口。<code>test_list</code> 第二轮的 7 条事实全部被接受，但仍缺 <code>--file</code> 接收 <code>pathlib.Path</code> 的输入细节；该事实缺口不代表原始测试未运行，原始检查仍保留并通过。</p>
+    </article>
+    <article class="issue" id="issue-10">
+      <h3>#10 共享源码／常量节点的直接验证局限（可补强）</h3>
+      <p><code>cli_manage</code>、<code>cli_run</code> 共享源码，<code>metadata</code> 为常量节点，三者缺独占源码动态禁用证据，默认策略计为有有效测试并保留警告，报告本节点为 <code>unknown</code>、仅相关检查通过；ZIP 检查对 <code>configuration</code> 不具区分性，未计入该节点的有效区分性证据。可补强共享文件内函数／符号归属、常量及元数据的区分性检查与补测建议；这些证据局限不是已确认的错误放行。</p>
+    </article>
+    <article class="issue" id="issue-11">
+      <h3>#11 候选行为回归被验证发现并自动修复</h3>
+      <p>首轮候选在 <code>test_rewrite_reports_original_error_when_cleanup_fails</code> 上不符合冻结行为，验证为 9/10 检查组通过；后台作者将清理操作改为 <code>Path(temporary).unlink(missing_ok=True)</code> 后，沿用同一冻结基线、验证输入和计划全量复验，第二轮 10/10 检查组及 2/2 安装检查通过。失败候选未被作为最终通过结果，这是生成、验证和自动修复过程中的现象。</p>
+    </article>
+  </section>
+  <footer>数字采用会话汇报及报告站点既有口径；<a href="nanolize-report/index.html">nanolize 原生交互报告</a>保留各节点及检查证据。</footer>
+</main>
+</body>
+</html>
