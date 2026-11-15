@@ -1,0 +1,649 @@
+{
+  "verdict": "全量范围已运行并交付候选：7/7 行为检查组通过，体积保留 37.17%；正式验收仍不完整，fuzz 未验证。正式安装检查 0/2 通过；独立补充安装检查 2/2 通过。",
+  "finished_at": "2026-11-15 10:51:20 UTC（后台交付）",
+  "report_generated_at": "2026-11-15T10:55:47.483909+00:00",
+  "sections": [
+    {
+      "id": "outcome",
+      "title": "运行状态",
+      "headers": [
+        "项目",
+        "结果",
+        "说明"
+      ],
+      "rows": [
+        [
+          "目标版本",
+          "43a86ade8b795c6ef9b4ec53372a607cd1ed426f",
+          "原始 checkout 仍干净且固定在该提交"
+        ],
+        [
+          "参数",
+          "unattended=on · scope=all · --cn",
+          "nanolize 0.8.0；全量 7 节点 / 6 叶节点，无功能主动排除"
+        ],
+        [
+          "正式状态",
+          "delivered_with_failures / incomplete",
+          "7 组行为检查通过；fuzz 缺口、聚合节点部分验证；正式安装检查为 0/2 通过"
+        ],
+        [
+          "最终候选",
+          "candidate-2 · 5f76129568a77f205c4393f08afa14494df5785d",
+          "2 轮作者调用：1 次初写 + 1 次修复；没有纯体积优化重试"
+        ],
+        [
+          "本地分支",
+          "codex/nanolize-76f1be1264b74c3f8dc33c50a7a1829b",
+          "原版 checkout 未切换；未推送、未合并"
+        ],
+        [
+          "补充安装",
+          "2/2 通过",
+          "同一最终提交的独立补充结果，不覆盖正式安装检查记录"
+        ],
+        [
+          "原生能力状态",
+          "5 verified / 1 partial / 1 unknown",
+          "聚合口径：根节点 partial，fuzz unknown；5/6 叶节点有有效检查"
+        ],
+        [
+          "验收标准",
+          "没有放宽",
+          "正式验收记录保留；不声称完整功能等价"
+        ],
+        [
+          "nanolize 源码修改",
+          "0",
+          "没有修改 nanolize 源码"
+        ]
+      ],
+      "notes": [],
+      "intro": null
+    },
+    {
+      "id": "conversion",
+      "title": "原始转换报告数字",
+      "headers": [
+        "指标",
+        "数量 / 比例",
+        "说明"
+      ],
+      "rows": [
+        [
+          "能力 external / internal",
+          "4 / 3",
+          "审阅补充后为 5 / 2；原始数字与审阅后的数字分列"
+        ],
+        [
+          "原始 interface entries",
+          "7",
+          "随后补充元数据、兼容名称与脚本行为契约"
+        ],
+        [
+          "保留检查 / 排除检查",
+          "4 / 0",
+          "3 个原测试组 + 1 个公开输出检查；最终新增 3 组，共 7 组"
+        ],
+        [
+          "未检查检查 / 不可读测试文件",
+          "0 / 0",
+          "checks_not_inspected=[]；unreadable_test_files=0"
+        ],
+        [
+          "保留且声明名称 / 转为契约的检查",
+          "0 / 0",
+          "原报告 checks_kept_with_names_stated={}，checks_recorded_as_contracts=[]"
+        ],
+        [
+          "缺少检查的外部能力",
+          "3",
+          "benchmark、build、fuzz"
+        ],
+        [
+          "未触达内部能力",
+          "1",
+          "profile"
+        ],
+        [
+          "读取模块 / 不可读模块",
+          "9 / 0",
+          "原始生产源码 9 文件"
+        ],
+        [
+          "未解析导出 / 丢弃条目",
+          "0 / 0",
+          "静态报告数字不保证已发现所有目标别名；参见 I04"
+        ],
+        [
+          "原样搬运 carry",
+          "0 文件 / 0 tokens / 0%",
+          "候选 carry 表也为空"
+        ]
+      ],
+      "notes": [],
+      "intro": null
+    },
+    {
+      "id": "size",
+      "title": "代码体积与比例",
+      "headers": [
+        "指标",
+        "原版 → 最终候选",
+        "保留比例"
+      ],
+      "rows": [
+        [
+          "源码 tokens",
+          "9,468 → 4,277",
+          "45.17%（减少 54.83%）"
+        ],
+        [
+          "配置 tokens",
+          "6,633 → 1,708",
+          "25.75%（减少 74.25%）"
+        ],
+        [
+          "源码 + 配置 tokens",
+          "16,101 → 5,985",
+          "37.17%（减少 62.83%，净减 10,116 tokens）"
+        ],
+        [
+          "生产源码物理行",
+          "1,132 → 486",
+          "42.93%（减少 57.07%）"
+        ],
+        [
+          "源码文件",
+          "9 → 8",
+          "原 _re.py 的行为整合到新实现；文件减少不表示范围排除"
+        ],
+        [
+          "建议目标",
+          "≤ 8,050 tokens",
+          "已达到默认 50% 建议目标"
+        ]
+      ],
+      "notes": [
+        "tiktoken 0.12.0 / cl100k_base；按文件独立计数。包含被测源码和配置，不是整个 Git 仓库磁盘体积。",
+        "未更改的原测试、文档、启动检查的配置、二进制资源等按工具规则排除。全量范围没有因删功能而节省体积。",
+        "原生首页的 1,132 → 486 是源码行数；5,985 / 16,101 才是源码加配置的 tokens 比例。"
+      ],
+      "intro": null
+    },
+    {
+      "id": "overlap",
+      "title": "相同行与防默写记录",
+      "headers": [
+        "指标",
+        "结果",
+        "口径"
+      ],
+      "rows": [
+        [
+          "原生质量报告 unchanged_percent",
+          "31.6%",
+          "同路径文件；去两端空白、至少 8 字符的行；按行字符长度加权，含配置。不是按物理行数直接相除。"
+        ],
+        [
+          "防默写算法独立复核",
+          "25 / 326 = 7.67%",
+          "只比较有效代码语句，去空白并排除导入、签名、注释、docstring 等；使用同名函数及原始源码池。"
+        ],
+        [
+          "防默写退回",
+          "0 个文件 / 0 次 save 拒绝",
+          "任务日志没有 reproduces_original 拒绝；不是通过其他检查反推的数字"
+        ],
+        [
+          "默认保护设置",
+          "auto；总量 40%；函数 60%",
+          "函数至少 8 个可比行；每文件最多退回 1 次；本次未激活退回状态"
+        ],
+        [
+          "函数超限",
+          "0",
+          "交付后独立只读复核，没有 ≥8 行且相同率超过 60% 的函数"
+        ],
+        [
+          "源码访问边界",
+          "首写隔离；修复 1 次开放原源码",
+          "默认 on_failed_check 策略记录 build、decode 共 5 个原始文件。不能宣称全程盲写。"
+        ]
+      ],
+      "notes": [
+        "独立复核在任务完成后进行，使用 nanolize 自带算法；没有改动任务状态或验收结果。",
+        "0 个文件被退回，不等于证明模型从未记忆项目。"
+      ],
+      "intro": null
+    },
+    {
+      "id": "tests",
+      "title": "测试设计与验证缺口",
+      "headers": [
+        "指标",
+        "结果",
+        "说明"
+      ],
+      "rows": [
+        [
+          "原测试事实",
+          "57 条 / 3 个检查组",
+          "0 条事实被丢弃；0 个保留测试未被事实覆盖"
+        ],
+        [
+          "开始时缺有效测试的叶节点",
+          "4",
+          "benchmark、build、profile、fuzz"
+        ],
+        [
+          "成功补测",
+          "3 个节点 / 3 份测试文件",
+          "benchmark 7 案例、build 9 案例、profile 7 案例，共 23 案例"
+        ],
+        [
+          "测试草稿审阅退回",
+          "1 份",
+          "profile 初稿因实现耦合被拒绝；后续修订接受"
+        ],
+        [
+          "设计后仍未验证",
+          "1 个叶节点：fuzz",
+          "非豁免、非通过、未删除该功能"
+        ],
+        [
+          "最终有效叶节点",
+          "5 / 6 = 83.33%",
+          "其中 profile 的函数 knockout 不适用；有执行证据但缺该类动态证据"
+        ],
+        [
+          "最终行为组",
+          "7 / 7 通过",
+          "3 原测试组 + 1 输出比较 + 3 设计组；无行为回归、无退役组"
+        ],
+        [
+          "pytest 案例合计",
+          "40 passed / 1 skipped",
+          "17 个原案例 + 23 个新增案例；另有独立输出比较"
+        ],
+        [
+          "语料 subtests",
+          "744 passed",
+          "228 valid + 516 invalid；其中 11 个非 UTF-8 在原测试内被跳过，733 份进入解析器"
+        ],
+        [
+          "正式安装",
+          "0/2 通过",
+          "正式作业记录：第 1 步失败，第 2 步未运行；不计为完整验收通过"
+        ],
+        [
+          "补充安装",
+          "2/2 通过",
+          "同一最终提交的独立补充检查；元数据版本 2.5.0"
+        ]
+      ],
+      "notes": [
+        "7/7 是检查组，不是能力节点全部验证；完整功能等价未被建立。",
+        "任务修改成本评估 tasks 按此次命令的默认值关闭，没有修改任务的原版/候选成本比较。"
+      ],
+      "intro": null
+    },
+    {
+      "id": "cost",
+      "title": "模型用量与费用",
+      "headers": [
+        "角色",
+        "调用数",
+        "输入 tokens",
+        "其中缓存输入",
+        "输出 tokens",
+        "总 tokens"
+      ],
+      "rows": [
+        [
+          "控制器",
+          "6",
+          "302,377",
+          "143,488",
+          "2,591",
+          "304,968"
+        ],
+        [
+          "设计测试审阅",
+          "2",
+          "143,819",
+          "90,240",
+          "1,252",
+          "145,071"
+        ],
+        [
+          "叶节点测试设计",
+          "6",
+          "1,412,185",
+          "1,245,440",
+          "28,881",
+          "1,441,066"
+        ],
+        [
+          "测试事实审阅",
+          "3",
+          "1,038,868",
+          "878,720",
+          "4,423",
+          "1,043,291"
+        ],
+        [
+          "测试事实提取",
+          "3",
+          "695,915",
+          "515,328",
+          "8,265",
+          "704,180"
+        ],
+        [
+          "实现 + 修复",
+          "2",
+          "1,197,946",
+          "1,086,080",
+          "24,401",
+          "1,222,347"
+        ],
+        [
+          "本轮后台合计",
+          "22",
+          "4,791,110",
+          "3,959,296",
+          "69,813",
+          "4,860,923"
+        ],
+        [
+          "主对话宿主，截至记录时间",
+          "—",
+          "25,309,939",
+          "24,950,400",
+          "82,497",
+          "25,392,436"
+        ],
+        [
+          "最小试跑",
+          "1",
+          "29,390",
+          "26,240",
+          "82",
+          "29,472"
+        ]
+      ],
+      "notes": [
+        "后台总量 4,860,923 tokens：输入 4,791,110（其中缓存 3,959,296）+ 输出 69,813。缓存包含在输入内，不能重复相加。",
+        "每份 runner receipt 只计一次；作者用 author-usage.jsonl 计数。另有 6 次调用没有可用用量，不能算作零成本。",
+        "主对话用量快照：2026-11-15T10:55:24.889Z。为整个主会话的记录；不含此快照之后的回答。",
+        "已记录总量（后台 + 主对话快照 + 最小试跑）：30,282,831 tokens；另有缺失用量，不是完整账单。",
+        "美元费用：未提供账单金额，无法可靠核算。角色回执未固定解析出全部模型，不能臆套单价；未将未知写成 $0。",
+        "主作者沿用 owner 默认 gpt-6-astra / xhigh；部分角色回执模型为 unresolved。代码体积 tokens 与模型调用 tokens 不同。"
+      ],
+      "intro": null
+    },
+    {
+      "id": "time",
+      "title": "耗时",
+      "headers": [
+        "阶段",
+        "耗时 / 时间",
+        "口径"
+      ],
+      "rows": [
+        [
+          "本轮后台总墙钟时间",
+          "42 分 46.5 秒",
+          "10:08:34.280 → 10:51:20.808 UTC"
+        ],
+        [
+          "会话开始至后台交付",
+          "51 分 39.8 秒",
+          "09:59:41 → 10:51:20.808 UTC；会话整体墙钟口径"
+        ],
+        [
+          "事实提取阶段",
+          "4 分 11.7 秒",
+          "10:09:12.915 → 10:13:24.640"
+        ],
+        [
+          "测试设计阶段",
+          "14 分 51.2 秒",
+          "10:16:21.593 → 10:31:12.759；另有前后 baseline 重复和 knockout 验证"
+        ],
+        [
+          "首次实现",
+          "7 分 7.8 秒",
+          "作者 usage 回执 duration_seconds"
+        ],
+        [
+          "定向修复",
+          "2 分 52.2 秒",
+          "作者 usage 回执 duration_seconds"
+        ],
+        [
+          "前序已取消作业",
+          "约 1 分 25.6 秒",
+          "之后取消；未开始重写"
+        ],
+        [
+          "最小 runner 试跑",
+          "7.539 秒",
+          "独立试跑口径"
+        ]
+      ],
+      "notes": [
+        "duration_seconds 相加不能当总墙钟耗时。报告整理时间另外体现在生成时间。"
+      ],
+      "intro": null
+    }
+  ],
+  "issues": [
+    {
+      "id": "I04",
+      "section": "bugs",
+      "title": "转换漏识别测试包相对重导出的目标别名",
+      "category": "nanolize 静态转换 bug",
+      "observation": "contract-propose 的私有结构检查漏识别测试包相对重导出的目标别名，未识别 tomllib._parser.__file__ 这一私有访问而静默保留 misc 检查（src/nanolize/graph_contract.py:641、1524–1529）。",
+      "resolution": "审阅时补入兼容约束并保留原测试；需补强可追踪别名解析，或对未解析依赖明确提示复核。"
+    },
+    {
+      "id": "I05",
+      "section": "phenomena",
+      "title": "顶层 profiler 入口未被推断为外部能力",
+      "category": "静态推断边界",
+      "observation": "原始转换把没有 __main__ guard 的顶层脚本标为 internal，且没有检查触达它（src/nanolize/graph_contract.py:970–971、1093）。",
+      "resolution": "按规定审阅补入脚本入口和 1000 次解析行为，改为 external；最终通过 7 个新增案例。"
+    },
+    {
+      "id": "I10",
+      "section": "phenomena",
+      "title": "Profiler 不能做函数 knockout",
+      "category": "验证方法边界",
+      "observation": "profile 全部是顶层代码，没有函数体可做 knockout，结果为 not_assessable / no_function_bodies（src/nanolize/leaf_test_validity.py:582–583）。",
+      "resolution": "最终 7 个执行案例通过，但缺少该节点自身的函数 knockout 证据。"
+    },
+    {
+      "id": "I12",
+      "section": "phenomena",
+      "title": "Profiler 测试草稿耦合内部实现",
+      "category": "独立审阅正常拦截",
+      "observation": "首稿按 Python CodeType 的 loads 名称计调用次数，可能误计或拒绝行为等价实现，被独立审阅退回 1 份。",
+      "resolution": "第三轮修订获接受，最终 7 个案例通过；此退回不是防默写退回。"
+    },
+    {
+      "id": "I13",
+      "section": "phenomena",
+      "title": "语料 subtests 与实际解析输入的覆盖口径",
+      "category": "原测试覆盖口径说明",
+      "observation": "744 个语料 subtests 中，11 个非 UTF-8 输入在原测试解码阶段提前 continue，实际进入解析器的是 733 份。",
+      "resolution": "报告保留 744 passed 的框架结果并区分实际解析数量；这是原测试的覆盖边界，不是 nanolize 新增跳过或候选回归。"
+    },
+    {
+      "id": "I14",
+      "section": "phenomena",
+      "title": "首轮构建脚本的异常类型回归被发现并修复",
+      "category": "验证与修复流程",
+      "observation": "错误配置输入上，原版抛 stdlib tomllib.TOMLDecodeError，首轮候选抛 tomli.TOMLDecodeError；新增构建测试发现 1 个失败。",
+      "resolution": "第二轮候选修复后，构建 9 个案例和全部 7 组行为检查通过；这是候选回归的修复记录，不代表完整验收通过。"
+    }
+  ],
+  "size_bars": [
+    {
+      "label": "原版",
+      "source": 9468,
+      "configuration": 6633
+    },
+    {
+      "label": "候选",
+      "source": 4277,
+      "configuration": 1708
+    }
+  ],
+  "audit": {
+    "job_id": "76f1be1264b74c3f8dc33c50a7a1829b",
+    "candidate_commit": "5f76129568a77f205c4393f08afa14494df5785d",
+    "original_commit": "43a86ade8b795c6ef9b4ec53372a607cd1ed426f",
+    "installation_supplement_same_commit": true,
+    "native_report_id": "nrs_36387b91984735ee7421c7fd4aa105fc3c3a722b9211109ed2e5a1dfa3773262",
+    "nanolize_source_patches": 0,
+    "anti_copy_refused_files": 0,
+    "anti_copy_refused_saves": 0,
+    "source_reference": {
+      "author_calls": 1,
+      "capabilities": [
+        "build",
+        "decode"
+      ],
+      "files": 5
+    },
+    "usage": {
+      "captured_at": "2026-11-15T10:55:47.371101+00:00",
+      "groups": {
+        "completed_job/controller": {
+          "calls": 6,
+          "usage_complete_calls": 6,
+          "duration_seconds": 91.453,
+          "input_tokens": 302377,
+          "cached_input_tokens": 143488,
+          "output_tokens": 2591,
+          "reasoning_output_tokens": 801,
+          "total_tokens": 304968
+        },
+        "completed_job/test_reviewer": {
+          "calls": 2,
+          "usage_complete_calls": 2,
+          "duration_seconds": 48.0065,
+          "input_tokens": 143819,
+          "cached_input_tokens": 90240,
+          "output_tokens": 1252,
+          "reasoning_output_tokens": 615,
+          "total_tokens": 145071
+        },
+        "completed_job/test_designer": {
+          "calls": 6,
+          "usage_complete_calls": 6,
+          "duration_seconds": 779.5566999999999,
+          "input_tokens": 1412185,
+          "cached_input_tokens": 1245440,
+          "output_tokens": 28881,
+          "reasoning_output_tokens": 14704,
+          "total_tokens": 1441066
+        },
+        "completed_job/fact_reviewer": {
+          "calls": 3,
+          "usage_complete_calls": 3,
+          "duration_seconds": 138.6227,
+          "input_tokens": 1038868,
+          "cached_input_tokens": 878720,
+          "output_tokens": 4423,
+          "reasoning_output_tokens": 1151,
+          "total_tokens": 1043291
+        },
+        "completed_job/fact_writer": {
+          "calls": 3,
+          "usage_complete_calls": 3,
+          "duration_seconds": 224.6947,
+          "input_tokens": 695915,
+          "cached_input_tokens": 515328,
+          "output_tokens": 8265,
+          "reasoning_output_tokens": 247,
+          "total_tokens": 704180
+        },
+        "completed_job/author": {
+          "calls": 2,
+          "usage_complete_calls": 2,
+          "duration_seconds": 600.027,
+          "input_tokens": 1197946,
+          "cached_input_tokens": 1086080,
+          "output_tokens": 24401,
+          "reasoning_output_tokens": 12951,
+          "total_tokens": 1222347
+        },
+        "unrecorded_job/controller": {
+          "calls": 3,
+          "usage_complete_calls": 0,
+          "duration_seconds": 42.8969,
+          "input_tokens": null,
+          "cached_input_tokens": null,
+          "output_tokens": null,
+          "reasoning_output_tokens": null,
+          "total_tokens": null
+        },
+        "unrecorded_job/fact_writer": {
+          "calls": 3,
+          "usage_complete_calls": 0,
+          "duration_seconds": 43.5943,
+          "input_tokens": null,
+          "cached_input_tokens": null,
+          "output_tokens": null,
+          "reasoning_output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "completed_job": {
+        "input_tokens": 4791110,
+        "cached_input_tokens": 3959296,
+        "output_tokens": 69813,
+        "reasoning_output_tokens": 30469,
+        "total_tokens": 4860923
+      },
+      "host_session": {
+        "recorded_at": "2026-11-15T10:55:24.889Z",
+        "usage": {
+          "input_tokens": 25309939,
+          "cached_input_tokens": 24950400,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 82497,
+          "reasoning_output_tokens": 27904,
+          "total_tokens": 25392436
+        }
+      },
+      "billing_usd": null
+    }
+  },
+  "issue_sections": [
+    {
+      "id": "bugs",
+      "title": "需要对 nanolize 改动的 bugs",
+      "intro": "本页问题列表只保留经核对确定由 nanolize 自身引起的 1 项。",
+      "issue_ids": [
+        "I04"
+      ]
+    },
+    {
+      "id": "phenomena",
+      "title": "遇到的现象",
+      "intro": "本节只列由 nanolize 流程本身产生的现象；我们运行环境造成的情况未列入。",
+      "issue_ids": [
+        "I05",
+        "I10",
+        "I12",
+        "I13",
+        "I14"
+      ]
+    }
+  ],
+  "settings": "设置：nanolize main a6fc619（插件 0.8.0），仓库原版提交 43a86ade8b795c6ef9b4ec53372a607cd1ed426f，$nanolize tomli unattended=on scope=all --cn，Codex gpt-6-astra xhigh。"
+}

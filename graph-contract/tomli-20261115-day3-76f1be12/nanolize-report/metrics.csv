@@ -1,0 +1,8 @@
+capability_id,before_lines,after_lines,reduction_percent,mapping_status,validation_status,executed,evidence_category,direct_checks,related_checks,direct_checks_passed,direct_checks_failed,direct_checks_inconclusive,related_checks_passed,related_checks_failed,related_checks_inconclusive,evidence_coverage,before_source_tokens,after_source_tokens,source_token_reduction_percent
+tomli,1132,486,57.067,mapped,unknown,False,related_passed,0,7,0,0,0,7,0,0,limited,9468,4277,54.827
+decode,819,350,57.265,mapped,verified,True,direct_passed,4,0,4,0,0,0,0,0,declared_checks_only,6910,3306,52.156
+scalars,119,342,-187.395,mapped,verified,True,direct_passed,3,0,3,0,0,0,0,0,declared_checks_only,1039,3245,-212.32
+benchmark,59,34,42.373,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,617,327,47.002
+fuzz,79,63,20.253,mapped,unknown,False,unverified,0,0,0,0,0,0,0,0,not_established,544,356,34.559
+profile,18,7,61.111,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,106,52,50.943
+build,38,32,15.789,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,252,236,6.349

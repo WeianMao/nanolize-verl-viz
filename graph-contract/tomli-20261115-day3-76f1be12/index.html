@@ -1,0 +1,105 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tomli 全量转换 · 中文核对报告</title><style>
+:root{color-scheme:light;--paper:#f7f9fc;--ink:#10283f;--blue:#355da4;--line:#e3eaf2;--muted:#52677d;--gap:#8a5300}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans CJK SC","Microsoft Yahei",system-ui,sans-serif}
+main{max-width:1120px;margin:0 auto;padding:44px 32px 80px}header{border-top:5px solid var(--blue);padding:26px 0 30px;border-bottom:1px solid var(--line)}
+h1{font:600 clamp(28px,4vw,46px)/1.3 "Noto Serif CJK SC",Georgia,serif;margin:10px 0 18px}h2{font-size:23px;line-height:1.4;margin:0 0 18px}h3{font-size:18px;margin:0 0 10px}
+p{margin:10px 0}a{color:var(--blue);text-underline-offset:4px}a:focus-visible{outline:3px solid #829ed0;outline-offset:5px}nav{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:22px}
+.eyebrow,.meta{font-size:13px;color:var(--muted)}.eyebrow{letter-spacing:.1em}.verdict{font-size:19px;max-width:900px}.notice{padding:14px 18px;border-left:3px solid var(--gap);background:#fff;color:#6f4400;margin:24px 0}
+section{padding:36px 0;border-bottom:1px solid var(--line);scroll-margin-top:20px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;background:#fff;margin:18px 0;font-size:14px}th,td{text-align:left;vertical-align:top;padding:13px 15px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600;background:#edf2f8}td:nth-child(2){font-variant-numeric:tabular-nums;font-weight:550;white-space:normal}.notes{color:var(--muted);font-size:14px}.notes p{margin:8px 0}code{font:13px/1.5 ui-monospace,monospace;word-break:break-all}.issue{margin:26px 0;background:white;padding:22px;border-left:3px solid var(--line)}.tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;background:#edf2f8;color:var(--blue);margin-bottom:10px}.issue p{font-size:14px}.issue b{font-weight:600}.size-row{display:grid;grid-template-columns:70px 1fr 90px;gap:12px;align-items:center;margin:12px 0;font-size:13px}.bar{height:22px;background:var(--line);display:flex}.source{background:var(--blue)}.config{background:#8ca8ce}.legend{font-size:13px;color:var(--muted)}footer{padding-top:30px;color:var(--muted);font-size:13px}li{margin:6px 0}
+@media(max-width:650px){main{padding:22px 16px 48px}th,td{padding:10px;min-width:95px}nav{gap:10px 16px}.size-row{grid-template-columns:45px 1fr 60px;gap:8px}.issue{padding:16px}header{padding-top:20px}}
+@media print{body{background:white}main{max-width:none;padding:0}nav{display:none}.table-wrap{overflow:visible}.issue{break-inside:avoid}a{color:inherit}}
+</style></head><body><main><p class="meta">设置：nanolize main a6fc619（插件 0.8.0），仓库原版提交 43a86ade8b795c6ef9b4ec53372a607cd1ed426f，$nanolize tomli unattended=on scope=all --cn，Codex gpt-6-astra xhigh。</p><header><div class="eyebrow">TOMLI / NANOLIZE / 证据核对</div><h1>全量转换结果</h1><p class="verdict">全量范围已运行并交付候选：7/7 行为检查组通过，体积保留 37.17%；正式验收仍不完整，fuzz 未验证。正式安装检查 0/2 通过；独立补充安装检查 2/2 通过。</p><p class="meta">原版 <code>43a86ade8b795c6ef9b4ec53372a607cd1ed426f</code> · 2026-11-15 10:51:20 UTC（后台交付）</p><nav><a href="nanolize-report/index.html">原生能力图</a><a href="summary.json">统计 JSON</a><a href="nanolize-report/metrics.csv">节点指标 CSV</a><a href="nanolize-report/evidence.json">验证摘要</a></nav></header>
+<nav aria-label="报告目录"><a href="#outcome">运行状态</a><a href="#conversion">原始转换报告数字</a><a href="#size">代码体积与比例</a><a href="#overlap">相同行与防默写记录</a><a href="#tests">测试设计与验证缺口</a><a href="#cost">模型用量与费用</a><a href="#time">耗时</a><a href="#bugs">需要对 nanolize 改动的 bugs</a><a href="#phenomena">遇到的现象</a></nav>
+<section id="outcome"><h2>运行状态</h2>
+<div class="table-wrap"><table><thead><tr><th scope="col">项目</th><th scope="col">结果</th><th scope="col">说明</th></tr></thead><tbody>
+<tr><td>目标版本</td><td>43a86ade8b795c6ef9b4ec53372a607cd1ed426f</td><td>原始 checkout 仍干净且固定在该提交</td></tr>
+<tr><td>参数</td><td>unattended=on · scope=all · --cn</td><td>nanolize 0.8.0；全量 7 节点 / 6 叶节点，无功能主动排除</td></tr>
+<tr><td>正式状态</td><td>delivered_with_failures / incomplete</td><td>7 组行为检查通过；fuzz 缺口、聚合节点部分验证；正式安装检查为 0/2 通过</td></tr>
+<tr><td>最终候选</td><td>candidate-2 · 5f76129568a77f205c4393f08afa14494df5785d</td><td>2 轮作者调用：1 次初写 + 1 次修复；没有纯体积优化重试</td></tr>
+<tr><td>本地分支</td><td>codex/nanolize-76f1be1264b74c3f8dc33c50a7a1829b</td><td>原版 checkout 未切换；未推送、未合并</td></tr>
+<tr><td>补充安装</td><td>2/2 通过</td><td>同一最终提交的独立补充结果，不覆盖正式安装检查记录</td></tr>
+<tr><td>原生能力状态</td><td>5 verified / 1 partial / 1 unknown</td><td>聚合口径：根节点 partial，fuzz unknown；5/6 叶节点有有效检查</td></tr>
+<tr><td>验收标准</td><td>没有放宽</td><td>正式验收记录保留；不声称完整功能等价</td></tr>
+<tr><td>nanolize 源码修改</td><td>0</td><td>没有修改 nanolize 源码</td></tr>
+</tbody></table></div><div class="notes"></div></section>
+<section id="conversion"><h2>原始转换报告数字</h2>
+<div class="table-wrap"><table><thead><tr><th scope="col">指标</th><th scope="col">数量 / 比例</th><th scope="col">说明</th></tr></thead><tbody>
+<tr><td>能力 external / internal</td><td>4 / 3</td><td>审阅补充后为 5 / 2；原始数字与审阅后的数字分列</td></tr>
+<tr><td>原始 interface entries</td><td>7</td><td>随后补充元数据、兼容名称与脚本行为契约</td></tr>
+<tr><td>保留检查 / 排除检查</td><td>4 / 0</td><td>3 个原测试组 + 1 个公开输出检查；最终新增 3 组，共 7 组</td></tr>
+<tr><td>未检查检查 / 不可读测试文件</td><td>0 / 0</td><td>checks_not_inspected=[]；unreadable_test_files=0</td></tr>
+<tr><td>保留且声明名称 / 转为契约的检查</td><td>0 / 0</td><td>原报告 checks_kept_with_names_stated={}，checks_recorded_as_contracts=[]</td></tr>
+<tr><td>缺少检查的外部能力</td><td>3</td><td>benchmark、build、fuzz</td></tr>
+<tr><td>未触达内部能力</td><td>1</td><td>profile</td></tr>
+<tr><td>读取模块 / 不可读模块</td><td>9 / 0</td><td>原始生产源码 9 文件</td></tr>
+<tr><td>未解析导出 / 丢弃条目</td><td>0 / 0</td><td>静态报告数字不保证已发现所有目标别名；参见 <a href="#I04">I04</a></td></tr>
+<tr><td>原样搬运 carry</td><td>0 文件 / 0 tokens / 0%</td><td>候选 carry 表也为空</td></tr>
+</tbody></table></div><div class="notes"></div></section>
+<section id="size"><h2>代码体积与比例</h2>
+<div class="size-row"><span>原版</span><div class="bar" aria-hidden="true"><span class="source" style="width:58.8038%"></span><span class="config" style="width:41.1962%"></span></div><span>16,101</span></div>
+<div class="size-row"><span>候选</span><div class="bar" aria-hidden="true"><span class="source" style="width:26.5636%"></span><span class="config" style="width:10.6080%"></span></div><span>5,985</span></div>
+<p class="legend">深蓝：源码 tokens；浅蓝：配置 tokens。两行采用同一比例尺。</p>
+<div class="table-wrap"><table><thead><tr><th scope="col">指标</th><th scope="col">原版 → 最终候选</th><th scope="col">保留比例</th></tr></thead><tbody>
+<tr><td>源码 tokens</td><td>9,468 → 4,277</td><td>45.17%（减少 54.83%）</td></tr>
+<tr><td>配置 tokens</td><td>6,633 → 1,708</td><td>25.75%（减少 74.25%）</td></tr>
+<tr><td>源码 + 配置 tokens</td><td>16,101 → 5,985</td><td>37.17%（减少 62.83%，净减 10,116 tokens）</td></tr>
+<tr><td>生产源码物理行</td><td>1,132 → 486</td><td>42.93%（减少 57.07%）</td></tr>
+<tr><td>源码文件</td><td>9 → 8</td><td>原 _re.py 的行为整合到新实现；文件减少不表示范围排除</td></tr>
+<tr><td>建议目标</td><td>≤ 8,050 tokens</td><td>已达到默认 50% 建议目标</td></tr>
+</tbody></table></div><div class="notes"><p>tiktoken 0.12.0 / cl100k_base；按文件独立计数。包含被测源码和配置，不是整个 Git 仓库磁盘体积。</p><p>未更改的原测试、文档、启动检查的配置、二进制资源等按工具规则排除。全量范围没有因删功能而节省体积。</p><p>原生首页的 1,132 → 486 是源码行数；5,985 / 16,101 才是源码加配置的 tokens 比例。</p></div></section>
+<section id="overlap"><h2>相同行与防默写记录</h2>
+<div class="table-wrap"><table><thead><tr><th scope="col">指标</th><th scope="col">结果</th><th scope="col">口径</th></tr></thead><tbody>
+<tr><td>原生质量报告 unchanged_percent</td><td>31.6%</td><td>同路径文件；去两端空白、至少 8 字符的行；按行字符长度加权，含配置。不是按物理行数直接相除。</td></tr>
+<tr><td>防默写算法独立复核</td><td>25 / 326 = 7.67%</td><td>只比较有效代码语句，去空白并排除导入、签名、注释、docstring 等；使用同名函数及原始源码池。</td></tr>
+<tr><td>防默写退回</td><td>0 个文件 / 0 次 save 拒绝</td><td>任务日志没有 reproduces_original 拒绝；不是通过其他检查反推的数字</td></tr>
+<tr><td>默认保护设置</td><td>auto；总量 40%；函数 60%</td><td>函数至少 8 个可比行；每文件最多退回 1 次；本次未激活退回状态</td></tr>
+<tr><td>函数超限</td><td>0</td><td>交付后独立只读复核，没有 ≥8 行且相同率超过 60% 的函数</td></tr>
+<tr><td>源码访问边界</td><td>首写隔离；修复 1 次开放原源码</td><td>默认 on_failed_check 策略记录 build、decode 共 5 个原始文件。不能宣称全程盲写。</td></tr>
+</tbody></table></div><div class="notes"><p>独立复核在任务完成后进行，使用 nanolize 自带算法；没有改动任务状态或验收结果。</p><p>0 个文件被退回，不等于证明模型从未记忆项目。</p></div></section>
+<section id="tests"><h2>测试设计与验证缺口</h2>
+<div class="table-wrap"><table><thead><tr><th scope="col">指标</th><th scope="col">结果</th><th scope="col">说明</th></tr></thead><tbody>
+<tr><td>原测试事实</td><td>57 条 / 3 个检查组</td><td>0 条事实被丢弃；0 个保留测试未被事实覆盖</td></tr>
+<tr><td>开始时缺有效测试的叶节点</td><td>4</td><td>benchmark、build、profile、fuzz</td></tr>
+<tr><td>成功补测</td><td>3 个节点 / 3 份测试文件</td><td>benchmark 7 案例、build 9 案例、profile 7 案例，共 23 案例</td></tr>
+<tr><td>测试草稿审阅退回</td><td>1 份</td><td>profile 初稿因实现耦合被拒绝；后续修订接受</td></tr>
+<tr><td>设计后仍未验证</td><td>1 个叶节点：fuzz</td><td>非豁免、非通过、未删除该功能</td></tr>
+<tr><td>最终有效叶节点</td><td>5 / 6 = 83.33%</td><td>其中 profile 的函数 knockout 不适用；有执行证据但缺该类动态证据</td></tr>
+<tr><td>最终行为组</td><td>7 / 7 通过</td><td>3 原测试组 + 1 输出比较 + 3 设计组；无行为回归、无退役组</td></tr>
+<tr><td>pytest 案例合计</td><td>40 passed / 1 skipped</td><td>17 个原案例 + 23 个新增案例；另有独立输出比较</td></tr>
+<tr><td>语料 subtests</td><td>744 passed</td><td>228 valid + 516 invalid；其中 11 个非 UTF-8 在原测试内被跳过，733 份进入解析器</td></tr>
+<tr><td>正式安装</td><td>0/2 通过</td><td>正式作业记录：第 1 步失败，第 2 步未运行；不计为完整验收通过</td></tr>
+<tr><td>补充安装</td><td>2/2 通过</td><td>同一最终提交的独立补充检查；元数据版本 2.5.0</td></tr>
+</tbody></table></div><div class="notes"><p>7/7 是检查组，不是能力节点全部验证；完整功能等价未被建立。</p><p>任务修改成本评估 tasks 按此次命令的默认值关闭，没有修改任务的原版/候选成本比较。</p></div></section>
+<section id="cost"><h2>模型用量与费用</h2>
+<div class="table-wrap"><table><thead><tr><th scope="col">角色</th><th scope="col">调用数</th><th scope="col">输入 tokens</th><th scope="col">其中缓存输入</th><th scope="col">输出 tokens</th><th scope="col">总 tokens</th></tr></thead><tbody>
+<tr><td>控制器</td><td>6</td><td>302,377</td><td>143,488</td><td>2,591</td><td>304,968</td></tr>
+<tr><td>设计测试审阅</td><td>2</td><td>143,819</td><td>90,240</td><td>1,252</td><td>145,071</td></tr>
+<tr><td>叶节点测试设计</td><td>6</td><td>1,412,185</td><td>1,245,440</td><td>28,881</td><td>1,441,066</td></tr>
+<tr><td>测试事实审阅</td><td>3</td><td>1,038,868</td><td>878,720</td><td>4,423</td><td>1,043,291</td></tr>
+<tr><td>测试事实提取</td><td>3</td><td>695,915</td><td>515,328</td><td>8,265</td><td>704,180</td></tr>
+<tr><td>实现 + 修复</td><td>2</td><td>1,197,946</td><td>1,086,080</td><td>24,401</td><td>1,222,347</td></tr>
+<tr><td>本轮后台合计</td><td>22</td><td>4,791,110</td><td>3,959,296</td><td>69,813</td><td>4,860,923</td></tr>
+<tr><td>主对话宿主，截至记录时间</td><td>—</td><td>25,309,939</td><td>24,950,400</td><td>82,497</td><td>25,392,436</td></tr>
+<tr><td>最小试跑</td><td>1</td><td>29,390</td><td>26,240</td><td>82</td><td>29,472</td></tr>
+</tbody></table></div><div class="notes"><p>后台总量 4,860,923 tokens：输入 4,791,110（其中缓存 3,959,296）+ 输出 69,813。缓存包含在输入内，不能重复相加。</p><p>每份 runner receipt 只计一次；作者用 author-usage.jsonl 计数。另有 6 次调用没有可用用量，不能算作零成本。</p><p>主对话用量快照：2026-11-15T10:55:24.889Z。为整个主会话的记录；不含此快照之后的回答。</p><p>已记录总量（后台 + 主对话快照 + 最小试跑）：30,282,831 tokens；另有缺失用量，不是完整账单。</p><p>美元费用：未提供账单金额，无法可靠核算。角色回执未固定解析出全部模型，不能臆套单价；未将未知写成 $0。</p><p>主作者沿用 owner 默认 gpt-6-astra / xhigh；部分角色回执模型为 unresolved。代码体积 tokens 与模型调用 tokens 不同。</p></div></section>
+<section id="time"><h2>耗时</h2>
+<div class="table-wrap"><table><thead><tr><th scope="col">阶段</th><th scope="col">耗时 / 时间</th><th scope="col">口径</th></tr></thead><tbody>
+<tr><td>本轮后台总墙钟时间</td><td>42 分 46.5 秒</td><td>10:08:34.280 → 10:51:20.808 UTC</td></tr>
+<tr><td>会话开始至后台交付</td><td>51 分 39.8 秒</td><td>09:59:41 → 10:51:20.808 UTC；会话整体墙钟口径</td></tr>
+<tr><td>事实提取阶段</td><td>4 分 11.7 秒</td><td>10:09:12.915 → 10:13:24.640</td></tr>
+<tr><td>测试设计阶段</td><td>14 分 51.2 秒</td><td>10:16:21.593 → 10:31:12.759；另有前后 baseline 重复和 knockout 验证</td></tr>
+<tr><td>首次实现</td><td>7 分 7.8 秒</td><td>作者 usage 回执 duration_seconds</td></tr>
+<tr><td>定向修复</td><td>2 分 52.2 秒</td><td>作者 usage 回执 duration_seconds</td></tr>
+<tr><td>前序已取消作业</td><td>约 1 分 25.6 秒</td><td>之后取消；未开始重写</td></tr>
+<tr><td>最小 runner 试跑</td><td>7.539 秒</td><td>独立试跑口径</td></tr>
+</tbody></table></div><div class="notes"><p>duration_seconds 相加不能当总墙钟耗时。报告整理时间另外体现在生成时间。</p></div></section>
+<section id="bugs"><h2>需要对 nanolize 改动的 bugs</h2><p>本页问题列表只保留经核对确定由 nanolize 自身引起的 1 项。</p>
+<article class="issue" id="I04"><div class="tag">nanolize 静态转换 bug</div><h3>I04 · 转换漏识别测试包相对重导出的目标别名</h3><p>contract-propose 的私有结构检查漏识别测试包相对重导出的目标别名，未识别 tomllib._parser.__file__ 这一私有访问而静默保留 misc 检查（src/nanolize/graph_contract.py:641、1524–1529）。</p><p>审阅时补入兼容约束并保留原测试；需补强可追踪别名解析，或对未解析依赖明确提示复核。</p></article>
+</section>
+<section id="phenomena"><h2>遇到的现象</h2><p>本节只列由 nanolize 流程本身产生的现象；我们运行环境造成的情况未列入。</p>
+<article class="issue" id="I05"><div class="tag">静态推断边界</div><h3>I05 · 顶层 profiler 入口未被推断为外部能力</h3><p>原始转换把没有 __main__ guard 的顶层脚本标为 internal，且没有检查触达它（src/nanolize/graph_contract.py:970–971、1093）。</p><p>按规定审阅补入脚本入口和 1000 次解析行为，改为 external；最终通过 7 个新增案例。</p></article>
+<article class="issue" id="I10"><div class="tag">验证方法边界</div><h3>I10 · Profiler 不能做函数 knockout</h3><p>profile 全部是顶层代码，没有函数体可做 knockout，结果为 not_assessable / no_function_bodies（src/nanolize/leaf_test_validity.py:582–583）。</p><p>最终 7 个执行案例通过，但缺少该节点自身的函数 knockout 证据。</p></article>
+<article class="issue" id="I12"><div class="tag">独立审阅正常拦截</div><h3>I12 · Profiler 测试草稿耦合内部实现</h3><p>首稿按 Python CodeType 的 loads 名称计调用次数，可能误计或拒绝行为等价实现，被独立审阅退回 1 份。</p><p>第三轮修订获接受，最终 7 个案例通过；此退回不是防默写退回。</p></article>
+<article class="issue" id="I13"><div class="tag">原测试覆盖口径说明</div><h3>I13 · 语料 subtests 与实际解析输入的覆盖口径</h3><p>744 个语料 subtests 中，11 个非 UTF-8 输入在原测试解码阶段提前 continue，实际进入解析器的是 733 份。</p><p>报告保留 744 passed 的框架结果并区分实际解析数量；这是原测试的覆盖边界，不是 nanolize 新增跳过或候选回归。</p></article>
+<article class="issue" id="I14"><div class="tag">验证与修复流程</div><h3>I14 · 首轮构建脚本的异常类型回归被发现并修复</h3><p>错误配置输入上，原版抛 stdlib tomllib.TOMLDecodeError，首轮候选抛 tomli.TOMLDecodeError；新增构建测试发现 1 个失败。</p><p>第二轮候选修复后，构建 9 个案例和全部 7 组行为检查通过；这是候选回归的修复记录，不代表完整验收通过。</p></article>
+</section><footer><p>通过记录中的检查是有限范围的行为证据，不代表完整功能等价。代码体积 tokens 与模型用量 tokens 是两种独立计量。</p></footer></main></body></html>
