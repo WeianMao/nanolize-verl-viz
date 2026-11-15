@@ -1,0 +1,45 @@
+{
+  "description": "Requests public report; Chinese summary and nanolize report with the public issue list and file checksums.",
+  "files": [
+    {
+      "path": "audit-metrics.json",
+      "sha256": "de5e12f6452e8ef90450ff00a3106aede9890df9920e46a0f9f1e77ee6550db8"
+    },
+    {
+      "path": "conversion-report.json",
+      "sha256": "fd6a53c06289d074f71cf5a5fa857a7c90ee4eb1362a4568c7264bd2a23c5779"
+    },
+    {
+      "path": "index.html",
+      "sha256": "4e25e4ab266fbb3fbf8195647e0dac4a3db7c2029e70f60e7716abf5baccb583"
+    },
+    {
+      "path": "issues.md",
+      "sha256": "17eb970dc45acfb9c8ba71e63e7323ae66954dddbe402a597a96c67d43c737ea"
+    },
+    {
+      "path": "nanolize-report/data.json",
+      "sha256": "c6eb0b1cba8971ad9379149075775ebfdb38d2dacad4841de71a7a6d090c860e"
+    },
+    {
+      "path": "nanolize-report/evidence.json",
+      "sha256": "fd14d5a7052e945ae88b469ad6f7be51ac1aa3ab0f0e72856bbbacaa56b50914"
+    },
+    {
+      "path": "nanolize-report/index.html",
+      "sha256": "9efa0931bd67db0a2afe629f40b0b900ab0e433e43b90560c809317d11dff1dc"
+    },
+    {
+      "path": "nanolize-report/metrics.csv",
+      "sha256": "81c93b6ba2b6c1b525e4546af7a016827309dd6df663536b7d67a8b75113d0cc"
+    },
+    {
+      "path": "nanolize-report/nanolize-report-site.json",
+      "sha256": "61df5de09fa622cefab5914fd4fb4719965735c2a42274d24410efdb45f80796"
+    },
+    {
+      "path": "run-summary.md",
+      "sha256": "5db092a9ec802caadec5d77dedfc416d8795ccba43dfad516fc6d3e46c58b2f4"
+    }
+  ]
+}

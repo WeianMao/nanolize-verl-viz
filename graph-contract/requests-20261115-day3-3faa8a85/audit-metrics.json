@@ -1,0 +1,197 @@
+{
+  "candidate_commit": "41fc271692d2f16722ac9101ac5ff83418397f30",
+  "status": "succeeded",
+  "size": {
+    "baseline_source_lines": 6886,
+    "baseline_tokens": 621471,
+    "complete": true,
+    "configuration_tokens": 562139,
+    "metric": "tokens",
+    "retained_percent": 93.94098839688417,
+    "source_files": 21,
+    "source_lines": 2319,
+    "source_retained_percent": 33.677025849549814,
+    "source_tokens": 21677,
+    "target_met": false,
+    "target_percent": 50.0,
+    "target_source_lines": 3443.0,
+    "target_tokens": 310735,
+    "tokenizer": {
+      "classification": "source_and_configuration_v2",
+      "decoding": "python_encoding_cookie_else_utf8_strict",
+      "encoding": "cl100k_base",
+      "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+      "file_boundaries": "independent_sum",
+      "library": "tiktoken",
+      "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+      "special_tokens": "ordinary_text",
+      "text_policy": "raw_decoded_text_per_file",
+      "version": "0.12.0"
+    },
+    "total_tokens": 583816
+  },
+  "supplemental_ratios": {
+    "source_token_retained_percent": 40.42180245025826,
+    "without_logo_svg_retained_percent": 38.980716253443525,
+    "python_code_token_retained_percent": 67.67086046658659
+  },
+  "quality": {
+    "delivered": {
+      "composition": {
+        "code_tokens": 583645,
+        "other_tokens": 562238,
+        "python_code_tokens": 21407,
+        "python_comment_tokens": 146,
+        "python_data_literal_tokens": 0,
+        "python_files": 20,
+        "unparsed_python_files": 0
+      },
+      "rewrite": {
+        "files_at_an_original_path": 27,
+        "unchanged_percent": 93.6
+      },
+      "total_tokens": 583816
+    },
+    "original": {
+      "composition": {
+        "code_tokens": 599561,
+        "other_tokens": 567927,
+        "python_code_tokens": 31634,
+        "python_comment_tokens": 8497,
+        "python_data_literal_tokens": 0,
+        "python_files": 22,
+        "unparsed_python_files": 0
+      },
+      "total_tokens": 621471
+    },
+    "original_overlap": {
+      "compared_lines": 1381,
+      "documentation_percent": 1,
+      "function_limit_percent": 60,
+      "function_lines": 8,
+      "functions": 2,
+      "limit_percent": 40,
+      "listed_functions": [
+        {
+          "function": "Response.iter_lines",
+          "lines": 11,
+          "path": "src/requests/models.py",
+          "percent": 64
+        },
+        {
+          "function": "Response.__init__",
+          "lines": 8,
+          "path": "src/requests/models.py",
+          "percent": 75
+        }
+      ],
+      "mode": "auto",
+      "percent": 20
+    },
+    "schema_version": 1,
+    "status": "measured",
+    "summary": {
+      "total_retained_percent": 93.94
+    }
+  },
+  "time": {
+    "started_at": "2026-11-15T09:58:00.836Z",
+    "job_queued_at": "2026-11-15T10:16:44.888267Z",
+    "completed_at": "2026-11-15T12:35:35.112187+00:00",
+    "total_pipeline_seconds": 9454.276187,
+    "current_job_seconds": 8330.22392
+  },
+  "usage": {
+    "collected_at": "2026-11-15T12:42:10.485058+00:00",
+    "main_usage_cutoff": "2026-11-15T12:42:08.563Z",
+    "groups": {
+      "3d6d3fb0717a443aa9dd72e29407e26f": {
+        "records": 34,
+        "missing_usage_records": 34,
+        "input_tokens": 0,
+        "cached_input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+      },
+      "all_recorded": {
+        "records": 103,
+        "missing_usage_records": 35,
+        "input_tokens": 68358496,
+        "cached_input_tokens": 66482560,
+        "output_tokens": 367883,
+        "total_tokens": 68726379
+      },
+      "592d72764bf1428284890c063208e46c": {
+        "records": 20,
+        "missing_usage_records": 1,
+        "input_tokens": 1164442,
+        "cached_input_tokens": 970368,
+        "output_tokens": 23113,
+        "total_tokens": 1187555
+      },
+      "3faa8a85c63847739163856df30243e6": {
+        "records": 43,
+        "missing_usage_records": 0,
+        "input_tokens": 9141114,
+        "cached_input_tokens": 7975424,
+        "output_tokens": 207911,
+        "total_tokens": 9349025
+      },
+      "diagnostics": {
+        "records": 5,
+        "missing_usage_records": 0,
+        "input_tokens": 86483,
+        "cached_input_tokens": 59392,
+        "output_tokens": 140,
+        "total_tokens": 86623
+      },
+      "main_conversation": {
+        "records": 1,
+        "missing_usage_records": 0,
+        "input_tokens": 57966457,
+        "cached_input_tokens": 57477376,
+        "output_tokens": 136719,
+        "total_tokens": 58103176
+      }
+    },
+    "usd": null
+  },
+  "issues": [
+    {
+      "number": 3,
+      "classification": "需要对 nanolize 改动的 bugs",
+      "title": "证据发现被仓库内测试符号链接阻断",
+      "summary": "discover_evidence 遇到快照已接受的仓库内测试目录符号链接 tests/certs/mtls/client/ca 时，整个证据发现失败，scope=src/requests 也无法避开。evidence_store.py:223–225 在范围过滤前构造引用，触发 capabilities.py:255–259 的链接拒绝；需协调快照与证据引用规则，并提前过滤范围外路径。"
+    },
+    {
+      "number": 4,
+      "classification": "遇到的现象",
+      "title": "静态文本素材主导合计体积及分项解释",
+      "summary": "静态 SVG 按冻结的文本计量规则计入 configuration：883,794 字节、559,761 tokens，主导合计体积；官方仍为 621,471 → 583,816 tokens、保留 93.94%，未达到 50% 建议目标。仅源码保留 40.42%、两侧剔除同一 SVG 后保留 38.98% 为补充口径，可增强大文件占比提示和素材分项解释。"
+    },
+    {
+      "number": 5,
+      "classification": "遇到的现象",
+      "title": "静态导出局限与人工补全",
+      "summary": "静态转换无法解析 requests.packages.idna、requests.packages.urllib3 的动态依赖转发，报告列出未解析项并移出 test_packages。人工补全导出并恢复该检查后，检查组从 8 到 9，最终该组通过。"
+    },
+    {
+      "number": 8,
+      "classification": "遇到的现象",
+      "title": "二进制资产需显式 carry",
+      "summary": "Submit 在花费前拒绝不可按文本计量的 ext/requests-logo.ai，提示显式 carry；补充后提交成功。最终逐字保留 1 文件、2,189,478 字节，这是计量完整性关卡的正常流程。"
+    },
+    {
+      "number": 13,
+      "classification": "遇到的现象",
+      "title": "独立审阅拒绝一个弱测试提案",
+      "summary": "补测提案 test_stream_contract.py 以 requests.compat.is_urllib3_1 计算预期值，与被测 super_len 使用同一实现标志，独立审阅将其拒绝。最终接受 10 文件、拒绝 1 文件、运行器失败 0；此处的测试提案拒绝不计作防默写源码退回。"
+    },
+    {
+      "number": 14,
+      "classification": "遇到的现象",
+      "title": "初版行为回归被验证捕获并修复",
+      "summary": "初版候选缺 TEAPOT 别名、flasky 主题模块加载失败、编码探测结果重复，冻结行为比较捕获了这三组回归。经 4 次行为修复交付 candidate-5，最终 19/19 组通过、539 passed / 1 skipped、安装 2/2 通过。"
+    }
+  ]
+}

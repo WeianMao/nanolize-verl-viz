@@ -1,0 +1,767 @@
+{
+  "limitations": [
+    "Only summary results are published; captured command output is omitted."
+  ],
+  "status": "checks_passed",
+  "tests": {
+    "original_total": 7,
+    "retained": 19,
+    "retired": 0,
+    "needs_adaptation": 0,
+    "adapted": 0,
+    "contract": 12,
+    "passed": 19,
+    "failed": 0,
+    "fixed_baseline_failure": 0,
+    "not_run": 0
+  },
+  "capability_results": [
+    {
+      "id": "requests",
+      "status": "passed",
+      "checks": [],
+      "check_status": "passed",
+      "baseline_status": "not_run",
+      "candidate_status": "not_run"
+    },
+    {
+      "id": "api",
+      "status": "passed",
+      "checks": [
+        "public_output_contract",
+        "contract-api-3faa8a-1",
+        "contract-api-3faa8a-2",
+        "contract-api-3faa8a-3"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "sessions",
+      "status": "passed",
+      "checks": [
+        "test_lowlevel",
+        "public_output_contract"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "messages",
+      "status": "passed",
+      "checks": [
+        "test_lowlevel",
+        "public_output_contract"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "transport",
+      "status": "passed",
+      "checks": [
+        "test_lowlevel",
+        "test_adapters",
+        "test_testserver"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "auth",
+      "status": "passed",
+      "checks": [
+        "test_lowlevel"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "cookies",
+      "status": "passed",
+      "checks": [
+        "public_output_contract"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "errors",
+      "status": "passed",
+      "checks": [
+        "public_output_contract",
+        "contract-errors-3faa8a-4",
+        "contract-errors-3faa8a-5"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "headers",
+      "status": "passed",
+      "checks": [
+        "test_structures",
+        "public_output_contract"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "utils",
+      "status": "passed",
+      "checks": [
+        "contract-utils-3faa8a-6",
+        "contract-utils-3faa8a-7",
+        "contract-utils-3faa8a-8",
+        "contract-utils-3faa8a-9",
+        "contract-utils-3faa8a-11"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "hooks",
+      "status": "passed",
+      "checks": [
+        "test_hooks"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "diagnostics",
+      "status": "passed",
+      "checks": [
+        "test_help",
+        "test_packages"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "packaging",
+      "status": "passed",
+      "checks": [
+        "public_output_contract"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "docs",
+      "status": "passed",
+      "checks": [
+        "documentation_build"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    }
+  ],
+  "checks": [
+    {
+      "name": "test_lowlevel",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "transport",
+        "auth",
+        "messages",
+        "sessions"
+      ]
+    },
+    {
+      "name": "test_structures",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "headers"
+      ]
+    },
+    {
+      "name": "test_hooks",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "hooks"
+      ]
+    },
+    {
+      "name": "test_help",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "diagnostics"
+      ]
+    },
+    {
+      "name": "test_adapters",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "transport"
+      ]
+    },
+    {
+      "name": "test_testserver",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "transport"
+      ]
+    },
+    {
+      "name": "public_output_contract",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "api",
+        "sessions",
+        "messages",
+        "cookies",
+        "headers",
+        "errors",
+        "packaging"
+      ]
+    },
+    {
+      "name": "documentation_build",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "docs"
+      ]
+    },
+    {
+      "name": "test_packages",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "diagnostics"
+      ]
+    },
+    {
+      "name": "contract-api-3faa8a-1",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "api"
+      ]
+    },
+    {
+      "name": "contract-api-3faa8a-2",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "api"
+      ]
+    },
+    {
+      "name": "contract-api-3faa8a-3",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "api"
+      ]
+    },
+    {
+      "name": "contract-errors-3faa8a-4",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "errors"
+      ]
+    },
+    {
+      "name": "contract-errors-3faa8a-5",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "errors"
+      ]
+    },
+    {
+      "name": "contract-utils-3faa8a-6",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "utils"
+      ]
+    },
+    {
+      "name": "contract-utils-3faa8a-7",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "utils"
+      ]
+    },
+    {
+      "name": "contract-utils-3faa8a-8",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "utils"
+      ]
+    },
+    {
+      "name": "contract-utils-3faa8a-9",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "utils"
+      ]
+    },
+    {
+      "name": "contract-utils-3faa8a-11",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "utils"
+      ]
+    }
+  ],
+  "actual_size": {
+    "baseline_source_lines": 6886,
+    "source_lines": 2319,
+    "source_files": 21,
+    "retained_percent": 93.94098839688417,
+    "target_percent": 50.0,
+    "target_source_lines": 3443.0,
+    "estimated_source_lines": null,
+    "metric": "tokens",
+    "tokenizer": {
+      "classification": "source_and_configuration_v2",
+      "decoding": "python_encoding_cookie_else_utf8_strict",
+      "encoding": "cl100k_base",
+      "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+      "file_boundaries": "independent_sum",
+      "library": "tiktoken",
+      "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+      "special_tokens": "ordinary_text",
+      "text_policy": "raw_decoded_text_per_file",
+      "version": "0.12.0"
+    },
+    "measurement_sha256": "aefd36269dd75ef147555df9bbbf7d422d616e3acaf2c650a0174cc13fbb190f",
+    "source_tokens": 21677,
+    "configuration_tokens": 562139,
+    "total_tokens": 583816,
+    "baseline_tokens": 621471,
+    "target_tokens": 310735,
+    "source_retained_percent": 33.677025849549814,
+    "complete": true,
+    "target_met": false
+  },
+  "budget_status": "unmet",
+  "verification_scope": "full",
+  "rewrite_progress": {
+    "priority": "functionality_first",
+    "author_attempts": 6,
+    "repair_attempts": 4,
+    "optimization_attempts": 0,
+    "restorations": 0,
+    "rejected_attempts": 0,
+    "failed_optimizations": 0,
+    "max_optimization_attempts": 3,
+    "stop_reason": null,
+    "accepted_candidate_available": true,
+    "behavior_acceptance": "passed",
+    "size_acceptance": "unmet"
+  },
+  "installation_evidence": {
+    "status": "passed",
+    "checks_passed": 2,
+    "checks_total": 2,
+    "environment_metadata_complete": true
+  },
+  "obligation_ledger": {
+    "records": [
+      {
+        "capability": "requests",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          }
+        ]
+      },
+      {
+        "capability": "api",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "public_output_contract",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-api-3faa8a-1",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-api-3faa8a-2",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-api-3faa8a-3",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "sessions",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "test_lowlevel",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "public_output_contract",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "messages",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "test_lowlevel",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "public_output_contract",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "transport",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "test_lowlevel",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test_adapters",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test_testserver",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "auth",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "test_lowlevel",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "cookies",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "public_output_contract",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "errors",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "public_output_contract",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-errors-3faa8a-4",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-errors-3faa8a-5",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "headers",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "test_structures",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "public_output_contract",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "utils",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-utils-3faa8a-6",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-utils-3faa8a-7",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-utils-3faa8a-8",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-utils-3faa8a-9",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-utils-3faa8a-11",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "hooks",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "test_hooks",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "diagnostics",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "test_help",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test_packages",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "packaging",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "public_output_contract",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "docs",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "documentation_build",
+            "kind": "declared_check"
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "failed": 0,
+      "retired": 0,
+      "verified": 14,
+      "partial": 0,
+      "unknown": 0,
+      "total": 14,
+      "retained": 14,
+      "complete": true
+    },
+    "limitations": [
+      "Public summaries omit private evidence bindings and raw output."
+    ]
+  },
+  "leaf_coverage": {
+    "status": "ready",
+    "strict": false,
+    "valid": [
+      "api",
+      "auth",
+      "cookies",
+      "diagnostics",
+      "docs",
+      "errors",
+      "headers",
+      "hooks",
+      "messages",
+      "packaging",
+      "sessions",
+      "transport",
+      "utils"
+    ],
+    "missing": [],
+    "exempted": [],
+    "why_missing": {}
+  },
+  "task_effort": {
+    "schema_version": 1,
+    "operation": "task_effort_evaluation",
+    "status": "disabled",
+    "binding": {},
+    "policy": {
+      "comparison": "empirical_range",
+      "strict_all_tasks": true
+    },
+    "task_types": [
+      "understand",
+      "diagnose",
+      "modify",
+      "execute"
+    ],
+    "tasks": [],
+    "overhead": {
+      "examiner_tokens": null,
+      "judge_tokens": null,
+      "solver_tokens": null,
+      "total_tokens": null,
+      "usage_complete": false,
+      "observed_total_tokens": null,
+      "role_usage_complete": {
+        "examiner": false,
+        "solver": false,
+        "judge": false
+      }
+    },
+    "resources": {
+      "completed_runs": 0,
+      "cleanup_pending": false,
+      "cleanup_pending_runs": 0
+    },
+    "iterations": [],
+    "limitations": [
+      "Task effort measures these tasks under the recorded agent settings; it is not a universal measure of human cognitive burden.",
+      "Tokens count solver model inputs and outputs, including cached input. Missing usage is unavailable, never zero. Examiner and judge overhead is separate.",
+      "Empirical ranges describe repeated observations, not statistical confidence intervals. Failed or unrun tasks do not establish an improvement.",
+      "Task links identify assessed capabilities only; they do not change module behavior verification badges.",
+      "Task prompts, hidden inputs, judging rubrics, source excerpts, raw traces and local paths are omitted from this public report."
+    ],
+    "stop_reason": "owner_disabled"
+  }
+}
