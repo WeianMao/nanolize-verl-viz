@@ -1,0 +1,722 @@
+{
+  "status": "delivered_with_failures",
+  "source": {
+    "repository": "https://github.com/pypa/packaging",
+    "commit": "284ff8900e59115dc86f85ca4e9d87d95e7dbc75",
+    "recovered_tests_commit": "2b5b0799dcf0df766135749e2649a931e301602b"
+  },
+  "run": {
+    "job_id": "3047f1c8e36d45b5ad117e2f796c4a79",
+    "started_at": "2026-11-16T05:12:59.983092+00:00",
+    "scope": "all",
+    "unattended": true,
+    "model": "gpt-6-astra",
+    "reasoning_effort": "xhigh"
+  },
+  "conversion": {
+    "nodes": 21,
+    "external_before_review": 15,
+    "internal_before_review": 6,
+    "interface_entries_before_review": 251,
+    "external_after_review": 19,
+    "internal_after_review": 2,
+    "interface_entries_after_review": 258,
+    "original_check_groups_left_out": 14,
+    "test_functions_classified": 1003,
+    "function_dispositions": {
+      "recovered": 517,
+      "migrate": 398,
+      "internal": 88,
+      "not_behavior": 0
+    },
+    "recovered_files": 10,
+    "retained_check_groups_before_design": 15,
+    "carried_files": [
+      "src/packaging/licenses/_spdx.py"
+    ],
+    "modules_read": 38,
+    "unreadable_modules": 0,
+    "unresolved_exports": 0,
+    "unreadable_test_files": 0,
+    "dropped_entries": 0,
+    "checks_not_inspected": [
+      "pickle-cli-help"
+    ],
+    "checks_kept_with_names_stated": 4,
+    "checks_recorded_as_contracts": 0,
+    "automatic_carried_files": 0,
+    "carry_candidates": 1,
+    "carry_candidate_data_share_percent": {
+      "src/packaging/licenses/_spdx.py": 99.7
+    },
+    "initial_external_without_check": [
+      "maintenance",
+      "platform"
+    ],
+    "initial_internal_not_reached": [
+      "benchmarks",
+      "docs",
+      "sampling"
+    ],
+    "split_by_original_check": {
+      "pytest-version": {
+        "kept": 0,
+        "recovered": 77,
+        "migrate": 7,
+        "internal": 1,
+        "not_behavior": 0,
+        "checks": [
+          "recovered-test_version"
+        ]
+      },
+      "pytest-specifiers": {
+        "kept": 0,
+        "recovered": 115,
+        "migrate": 18,
+        "internal": 0,
+        "not_behavior": 0,
+        "checks": [
+          "recovered-test_specifiers"
+        ]
+      },
+      "pytest-ranges": {
+        "kept": 0,
+        "recovered": 0,
+        "migrate": 337,
+        "internal": 4,
+        "not_behavior": 0,
+        "checks": []
+      },
+      "pytest-tokenizer": {
+        "kept": 0,
+        "recovered": 0,
+        "migrate": 0,
+        "internal": 5,
+        "not_behavior": 0,
+        "checks": []
+      },
+      "pytest-markers": {
+        "kept": 0,
+        "recovered": 90,
+        "migrate": 1,
+        "internal": 12,
+        "not_behavior": 0,
+        "checks": [
+          "recovered-test_markers-1",
+          "recovered-test_markers-2"
+        ]
+      },
+      "pytest-elffile": {
+        "kept": 0,
+        "recovered": 0,
+        "migrate": 0,
+        "internal": 6,
+        "not_behavior": 0,
+        "checks": []
+      },
+      "pytest-manylinux": {
+        "kept": 0,
+        "recovered": 0,
+        "migrate": 0,
+        "internal": 15,
+        "not_behavior": 0,
+        "checks": []
+      },
+      "pytest-musllinux": {
+        "kept": 0,
+        "recovered": 0,
+        "migrate": 0,
+        "internal": 2,
+        "not_behavior": 0,
+        "checks": []
+      },
+      "pytest-tags": {
+        "kept": 0,
+        "recovered": 84,
+        "migrate": 23,
+        "internal": 37,
+        "not_behavior": 0,
+        "checks": [
+          "recovered-test_tags"
+        ]
+      },
+      "pytest-licenses": {
+        "kept": 0,
+        "recovered": 5,
+        "migrate": 0,
+        "internal": 2,
+        "not_behavior": 0,
+        "checks": [
+          "recovered-test_licenses"
+        ]
+      },
+      "pytest-errors": {
+        "kept": 0,
+        "recovered": 0,
+        "migrate": 4,
+        "internal": 3,
+        "not_behavior": 0,
+        "checks": []
+      },
+      "pytest-metadata": {
+        "kept": 0,
+        "recovered": 86,
+        "migrate": 5,
+        "internal": 0,
+        "not_behavior": 0,
+        "checks": [
+          "recovered-test_metadata-1",
+          "recovered-test_metadata-2"
+        ]
+      },
+      "pytest-direct_url": {
+        "kept": 0,
+        "recovered": 22,
+        "migrate": 0,
+        "internal": 1,
+        "not_behavior": 0,
+        "checks": [
+          "recovered-test_direct_url"
+        ]
+      },
+      "pytest-pylock": {
+        "kept": 0,
+        "recovered": 38,
+        "migrate": 3,
+        "internal": 0,
+        "not_behavior": 0,
+        "checks": [
+          "recovered-test_pylock"
+        ]
+      }
+    },
+    "recovered_file_names": [
+      "tests/test_nanolize_recovered_test_direct_url.py",
+      "tests/test_nanolize_recovered_test_licenses.py",
+      "tests/test_nanolize_recovered_test_markers_1.py",
+      "tests/test_nanolize_recovered_test_markers_2.py",
+      "tests/test_nanolize_recovered_test_metadata_1.py",
+      "tests/test_nanolize_recovered_test_metadata_2.py",
+      "tests/test_nanolize_recovered_test_pylock.py",
+      "tests/test_nanolize_recovered_test_specifiers.py",
+      "tests/test_nanolize_recovered_test_tags.py",
+      "tests/test_nanolize_recovered_test_version.py"
+    ]
+  },
+  "original_default_pytest": {
+    "passed": 63735,
+    "skipped": 3,
+    "deselected": 444,
+    "seconds": 23.97
+  },
+  "size_baseline": {
+    "complete": true,
+    "configuration_tokens": 32879,
+    "metric": "tokens",
+    "source_files": 38,
+    "source_lines": 14592,
+    "source_tokens": 115637,
+    "tokenizer": {
+      "classification": "source_and_configuration_v2",
+      "decoding": "python_encoding_cookie_else_utf8_strict",
+      "encoding": "cl100k_base",
+      "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+      "file_boundaries": "independent_sum",
+      "library": "tiktoken",
+      "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+      "special_tokens": "ordinary_text",
+      "text_policy": "raw_decoded_text_per_file",
+      "version": "0.12.0"
+    },
+    "total_tokens": 148516
+  },
+  "design": {
+    "accepted_test_files": 31,
+    "test_leaves": 11,
+    "accepted_scenario_files": 4,
+    "scenario_cases": 41,
+    "scenario_leaves": 3,
+    "newly_covered_leaves": [
+      "maintenance",
+      "pickle",
+      "platform",
+      "sampling"
+    ],
+    "accepted_test_leaves": [
+      "errors",
+      "maintenance",
+      "markers",
+      "metadata",
+      "pickle",
+      "platform",
+      "pylock",
+      "sampling",
+      "selection",
+      "tags",
+      "versions"
+    ],
+    "rejected_test_proposals": 10,
+    "rejected_scenario_proposals": 9,
+    "runner_failures": 0,
+    "migration_total": 398,
+    "excluded": 42,
+    "given": 89,
+    "migrated": 39,
+    "unverified": 317,
+    "unassigned_by_cap": 309,
+    "offered_unresolved": 8,
+    "awaiting_enriched_baseline": false
+  },
+  "enriched_baseline": {
+    "status": "baseline_captured",
+    "verification_status": "ready",
+    "checkgroups": 50,
+    "passed_checkgroups": 50,
+    "valid_leaves": [
+      "direct_url",
+      "errors",
+      "groups",
+      "licenses",
+      "maintenance",
+      "markers",
+      "metadata",
+      "pickle",
+      "platform",
+      "pylock",
+      "requirements",
+      "sampling",
+      "selection",
+      "tags",
+      "utils",
+      "versions"
+    ],
+    "missing_leaves": [
+      "benchmarks",
+      "docs",
+      "identity"
+    ],
+    "exempted_leaves": [
+      "syntax"
+    ]
+  },
+  "timings_seconds_so_far": {
+    "workspace": 34.389,
+    "facts": 1616.692,
+    "initial_baseline": 2591.318,
+    "design_and_enriched_baseline": 5356.37,
+    "seal": 5.712
+  },
+  "original_check_dispositions": {
+    "checks": 14,
+    "excluded": 130,
+    "kept": 517,
+    "migrated": 39,
+    "public": 517,
+    "public_unverified": 0,
+    "tests": 1003,
+    "unverified": 317
+  },
+  "metric_notes": {
+    "code_size": "Frozen tiktoken cl100k_base source plus configuration tokens; not model usage; carried SPDX table excluded from both sides.",
+    "comparison_tokens": "Candidate total excluding Python comment and docstring tokens; not the selected-footprint denominator.",
+    "same_lines": "Native unchanged_percent is weighted by line length over stripped lines at least 8 characters, only at original paths; original_overlap is a separate function/body line metric.",
+    "leaf_coverage": "Valid leaf tests on the frozen original; this does not claim those capabilities pass on the candidate.",
+    "test_counts": "Check groups, test functions, and parameterized cases are separate units.",
+    "model_usage": "Recorded background calls for the main job; not the complete outer-conversation cost."
+  },
+  "delivery": {
+    "candidate": "candidate-6",
+    "branch": "codex/nanolize-3047f1c8e36d45b5ad117e2f796c4a79",
+    "binding": {
+      "original_git_head": "8d136a256677941ca773371e3346d10378fbddb8",
+      "candidate_git_head": "4a70d293bab8555b117a4f49aac7fb1fdf4aad04",
+      "candidate_source_sha256": "e0aa2b511283e26be501c244b21774590126c3bd5562719d4cfb1ae619ee2c46",
+      "candidate_contract_sha256": "3219709c6404ae1c07a895b0f28ab4334ecaa22c4286207deb22c6de06da39e5",
+      "plan_sha256": "3da12c2b0ded5090ee3594a9af8c007bf4c8cf666eec0b56a6e74b7b202e5360",
+      "verification_sha256": "ead8da84ed7fd85885ca6a1483deaa06fc8cd353a944c6fd5d48079deeef5f02",
+      "candidate_code_size_sha256": "4dd0fcefff500943c0f76e08b9e2994cfe83247fef25a0e196d3c4ec637faa30"
+    },
+    "finished_at": "2026-11-16T09:31:34.389703+00:00",
+    "wall_seconds": 15514.406611,
+    "stop_reason": "repair_stalled",
+    "tests": {
+      "adapted": 0,
+      "contract": 45,
+      "count_unit": "check_groups",
+      "failed": 47,
+      "fixed_baseline_failure": 0,
+      "needs_adaptation": 0,
+      "not_run": 0,
+      "original_total": 5,
+      "passed": 3,
+      "retained": 50,
+      "retired": 0
+    },
+    "installation": {
+      "checks_passed": 2,
+      "checks_total": 2,
+      "environment_metadata_complete": true,
+      "status": "passed"
+    },
+    "progress": {
+      "accepted_candidate_available": false,
+      "author_attempts": 9,
+      "behavior_acceptance": "not_established",
+      "failed_optimizations": 0,
+      "max_optimization_attempts": 3,
+      "optimization_attempts": 0,
+      "priority": "functionality_first",
+      "rejected_attempts": 0,
+      "repair_attempts": 4,
+      "restorations": 1,
+      "size_acceptance": "met",
+      "stop_reason": "repair_stalled"
+    },
+    "size": {
+      "baseline_source_lines": 14592,
+      "baseline_tokens": 148516,
+      "complete": true,
+      "configuration_tokens": 2671,
+      "metric": "tokens",
+      "retained_percent": 25.189878531606023,
+      "source_files": 36,
+      "source_lines": 4666,
+      "source_retained_percent": 31.97642543859649,
+      "source_tokens": 34740,
+      "target_met": true,
+      "target_percent": 50.0,
+      "target_source_lines": 7296.0,
+      "target_tokens": 74258,
+      "tokenizer": {
+        "classification": "source_and_configuration_v2",
+        "decoding": "python_encoding_cookie_else_utf8_strict",
+        "encoding": "cl100k_base",
+        "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+        "file_boundaries": "independent_sum",
+        "library": "tiktoken",
+        "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+        "special_tokens": "ordinary_text",
+        "text_policy": "raw_decoded_text_per_file",
+        "version": "0.12.0"
+      },
+      "total_tokens": 37411
+    },
+    "size_attribution": {
+      "metric": "tokens",
+      "tokenizer": {
+        "classification": "source_and_configuration_v2",
+        "decoding": "python_encoding_cookie_else_utf8_strict",
+        "encoding": "cl100k_base",
+        "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+        "file_boundaries": "independent_sum",
+        "library": "tiktoken",
+        "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+        "special_tokens": "ordinary_text",
+        "text_policy": "raw_decoded_text_per_file",
+        "version": "0.12.0"
+      },
+      "complete": true,
+      "original_total": 148516,
+      "selected_original_estimate": 148516,
+      "candidate_total": 37411,
+      "overall_reduction": {
+        "tokens": 111105,
+        "percent": 74.81
+      },
+      "scope_reduction_estimate": {
+        "tokens": 0,
+        "percent": 0.0
+      },
+      "rewrite_reduction_estimate": {
+        "tokens": 111105,
+        "percent": 74.81
+      },
+      "shared_scope_files": [],
+      "method": "unique_mapped_source_plus_all_original_configuration",
+      "estimate_only": false,
+      "limitations": [
+        "Scope and rewrite attribution are mapped-file estimates, not exact semantic savings. Shared files count once and retained/removed code within them cannot be separated.",
+        "All original configuration is charged to the retained footprint. Configuration changes appear in the rewrite estimate and may include scope-related savings.",
+        "Overall reduction uses the full original as denominator; rewrite reduction uses the selected original estimate. Their percentages must not be added.",
+        "Negative reductions indicate growth; incomplete measurements do not establish savings."
+      ]
+    },
+    "code_only": {
+      "before": 104803,
+      "after": 37192
+    },
+    "source_reference": {
+      "author_calls": 4,
+      "capabilities": [
+        "direct_url",
+        "errors",
+        "groups",
+        "licenses",
+        "maintenance",
+        "markers",
+        "metadata",
+        "pickle",
+        "platform",
+        "pylock",
+        "requirements",
+        "sampling",
+        "selection",
+        "tags",
+        "utils",
+        "versions"
+      ],
+      "files": 27
+    },
+    "assertion_values": {
+      "author_calls": 3,
+      "cases": 15,
+      "facts_not_enough": 5
+    },
+    "quality": {
+      "delivered": {
+        "composition": {
+          "code_tokens": 37150,
+          "other_tokens": 2671,
+          "python_code_tokens": 34479,
+          "python_comment_tokens": 219,
+          "python_data_literal_tokens": 0,
+          "python_docstring_tokens": 0,
+          "python_files": 35,
+          "unparsed_python_files": 0
+        },
+        "documentation": {
+          "documented": 0,
+          "documented_percent": 0.0,
+          "public_definitions": 238
+        },
+        "rewrite": {
+          "files_at_an_original_path": 37,
+          "unchanged_percent": 23.4
+        },
+        "total_tokens": 37411
+      },
+      "original": {
+        "composition": {
+          "code_tokens": 102843,
+          "other_tokens": 32879,
+          "python_code_tokens": 69964,
+          "python_comment_tokens": 15799,
+          "python_data_literal_tokens": 0,
+          "python_docstring_tokens": 27914,
+          "python_files": 37,
+          "unparsed_python_files": 0
+        },
+        "documentation": {
+          "documented": 179,
+          "documented_percent": 68.6,
+          "public_definitions": 261
+        },
+        "total_tokens": 148516
+      },
+      "original_overlap": {
+        "compared_lines": 2329,
+        "documentation_percent": 1,
+        "function_limit_percent": 60,
+        "function_lines": 8,
+        "functions": 1,
+        "limit_percent": 40,
+        "listed_functions": [
+          {
+            "function": "Specifier.prereleases",
+            "lines": 8,
+            "path": "src/packaging/specifiers.py",
+            "percent": 62
+          }
+        ],
+        "mode": "auto",
+        "percent": 11
+      },
+      "schema_version": 1,
+      "status": "measured",
+      "summary": {
+        "documented_percent": {
+          "delivered": 0.0,
+          "original": 68.6
+        },
+        "total_retained_percent": 25.19,
+        "undocumented_retained_percent": 35.49
+      }
+    },
+    "overlap_refused_files": 0,
+    "overlap_refusal_events": 0
+  },
+  "usage": {
+    "roles": {
+      "controller": {
+        "calls": 20,
+        "input_tokens": 3251263,
+        "cached_input_tokens": 2201472,
+        "output_tokens": 26173,
+        "reasoning_output_tokens": 14150,
+        "total_tokens": 3277436
+      },
+      "fact_reviewer": {
+        "calls": 40,
+        "input_tokens": 7309590,
+        "cached_input_tokens": 6016128,
+        "output_tokens": 85123,
+        "reasoning_output_tokens": 33426,
+        "total_tokens": 7394713
+      },
+      "fact_writer": {
+        "calls": 40,
+        "input_tokens": 6897170,
+        "cached_input_tokens": 5744384,
+        "output_tokens": 244179,
+        "reasoning_output_tokens": 93757,
+        "total_tokens": 7141349
+      },
+      "test_reviewer": {
+        "calls": 7,
+        "input_tokens": 3642162,
+        "cached_input_tokens": 3063040,
+        "output_tokens": 36617,
+        "reasoning_output_tokens": 22927,
+        "total_tokens": 3678779
+      },
+      "test_designer": {
+        "calls": 18,
+        "input_tokens": 12358626,
+        "cached_input_tokens": 11399936,
+        "output_tokens": 315813,
+        "reasoning_output_tokens": 115066,
+        "total_tokens": 12674439
+      },
+      "author": {
+        "calls": 9,
+        "input_tokens": 11326892,
+        "cached_input_tokens": 10479104,
+        "output_tokens": 117526,
+        "reasoning_output_tokens": 40329,
+        "total_tokens": 11444418
+      }
+    },
+    "total_tokens": 45611134,
+    "receipts": 134,
+    "totals": {
+      "input_tokens": 44785703,
+      "cached_input_tokens": 38904064,
+      "output_tokens": 825431,
+      "reasoning_output_tokens": 319655,
+      "total_tokens": 45611134
+    },
+    "usd": null,
+    "usd_reason": "Recorded receipts do not include a currency billing amount",
+    "probe_tokens_outside_job": 14043,
+    "main_conversation_usage": "unavailable"
+  },
+  "original_replay": {
+    "status": "completed",
+    "summary": {
+      "cases": {
+        "candidate": 1561,
+        "original": 4004
+      },
+      "coupled": {
+        "candidate_passed": 0,
+        "original_passed": 356,
+        "regressed": 356,
+        "tests": 356
+      },
+      "files": 5,
+      "files_not_replayed": 9,
+      "files_without_result": 0,
+      "kept": {
+        "candidate_passed": 0,
+        "original_passed": 321,
+        "regressed": 321,
+        "tests": 517
+      },
+      "public": {
+        "candidate_passed": 0,
+        "original_passed": 0,
+        "regressed": 0,
+        "tests": 0
+      },
+      "set_aside": 130
+    },
+    "duration_seconds": 27.243
+  },
+  "issues": [
+    {
+      "id": 10,
+      "category": "nanolize bug",
+      "summary": "合法的公开 file URL 测试值被误判为宿主绝对路径；需要区分产品输入与主机位置。"
+    },
+    {
+      "id": 12,
+      "category": "nanolize bug",
+      "summary": "技能允许的自然语言接口说明未被设计器名称白名单识别；identity、benchmarks、docs 留下测试缺口。文档、契约校验与设计器的接口名称提取规则需要衔接。"
+    },
+    {
+      "id": 13,
+      "category": "nanolize bug",
+      "summary": "每叶只提供前 40 个迁移目标，后续轮次仅重试已截断的集合，309 个目标始终未分配；完整迁移需要改为分批处理。"
+    },
+    {
+      "id": 14,
+      "category": "nanolize bug",
+      "summary": "JUnit 解析器超过 20,000 用例即整体返回 unavailable；版本检查有 51,511 用例，缺少完整逐例证据，需要支持大型报告或拆分检查。"
+    },
+    {
+      "id": 16,
+      "category": "nanolize bug",
+      "summary": "迁移事件以 89 为分母，却列出总计 398 的状态；应分开总量、已分配和未分配。"
+    },
+    {
+      "id": 23,
+      "category": "nanolize bug",
+      "summary": "修复反馈无法识别普通 pytest setup/teardown 异常的包装消息，逐例解析和输出兜底均可能遗漏异常类型及阶段信息。需要保留最小结构化诊断，供修复控制器正确归因。"
+    },
+    {
+      "id": 24,
+      "category": "nanolize bug",
+      "summary": "定向复验的检查范围较小，较低的失败计数会重置停滞轮数；应改为同范围比较实际失败消除。该问题影响停滞判断，不等于将未运行检查判为通过。"
+    },
+    {
+      "id": 25,
+      "category": "nanolize bug",
+      "summary": "只读 reviewer 完成审查并写出文字结论，但 run_agent 回执只返回状态和文件变化，没有把结论或报告引用传给控制器。需要交付经过边界校验的 findings 或可读取的审查 artifact。"
+    },
+    {
+      "id": 9,
+      "category": "nanolize 流程现象",
+      "summary": "14 组检查产生 754 条事实，8 条被审核丢弃，1 个测试缺对应事实；事实缺口不等于该测试未执行。"
+    },
+    {
+      "id": 11,
+      "category": "nanolize 流程现象",
+      "summary": "stdout 的 verifier_case_b 是验证器故意植入的失败探针，已从产品统计扣除。direct_url 原始输出为 1 failed／36 passed，扣除两个探针后的产品统计为 35 passed。"
+    },
+    {
+      "id": 17,
+      "category": "nanolize 流程现象",
+      "summary": "退回 19 份测试/场景提案；最终接受 31 份测试和 4 份场景。这不属于防默写退回；加强后基线 50/50 通过，叶级覆盖仍为 16 有效、3 缺测、1 豁免。"
+    },
+    {
+      "id": 18,
+      "category": "nanolize 流程现象",
+      "summary": "加强后 validity 给出 139 条依赖、映射和证据告警，其中 95 条来自 nanolize 新设计的检查，其余 44 条涉及原有或恢复检查。这些告警是审计结果与证据边界，不能按产品测试失败数量解读。"
+    },
+    {
+      "id": 21,
+      "category": "nanolize 流程现象",
+      "summary": "pickle CLI 帮助的 stdout 与原版不同，metadata 场景的结构化观察值中错误消息标点不同，即使进程退出 0，比较仍不通过。最终 candidate-6 为 3/50 检查组通过、47 回归，安装检查 2/2 通过，带失败交付。"
+    },
+    {
+      "id": 22,
+      "category": "nanolize 流程现象",
+      "summary": "体积缩减包含基准样本、配置、注释和文档删除，三个基准样本减少 22,696 token；剔除 Python 注释/docstring 后保留比例为 35.49%。这些减少不能全算算法压缩，候选未通过行为等价验收。"
+    },
+    {
+      "id": "现象-1",
+      "category": "nanolize 流程现象",
+      "summary": "Specifier.prereleases 的 8 行比较范围重复度为 62%，超过函数阈值 60%，但防默写退回为 0。auto 模式首先由全局阈值 40% 激活拒绝机制，本次全局重复度为 11%，单个短函数超线不单独激活。"
+    }
+  ]
+}

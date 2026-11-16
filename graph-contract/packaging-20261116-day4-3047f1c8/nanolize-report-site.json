@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "operation": "report_site",
+  "public_safe": true,
+  "report_id": "nrs_795ac5d3f34e0ed5dd5f39155177ed7c37cd507e59d81c99b1aa990e5f256a58",
+  "files": [
+    {
+      "path": "data.json",
+      "sha256": "6429967a13803e4a2a139584d8cae8d3b76927e2ec3ae02d6ee57421857a91ca"
+    },
+    {
+      "path": "evidence.json",
+      "sha256": "281a9df4dcc0c1cee5c6c34b2907bdb3c8597e5f63790b80ae52c63de072fe4e"
+    },
+    {
+      "path": "index.html",
+      "sha256": "8d98ddd6a5ab003275f1316e28381d8f706b34489fffeca158b9219ddf5b1f00"
+    },
+    {
+      "path": "issues-summary.json",
+      "sha256": "e927aeabc928d4b8c56250a019dd4ab8f45fe8b3e9055c3aa0e253384a0b36c3"
+    },
+    {
+      "path": "metrics.csv",
+      "sha256": "532289eb876d315a2ec5067c618d1d1c114a1024b09763648cb51a2e72319a42"
+    },
+    {
+      "path": "report.zh-CN.md",
+      "sha256": "9ca2b3d067c4b436299424982c324d2a2851b8a2a8b3e09a3951607e8e124821"
+    },
+    {
+      "path": "summary.json",
+      "sha256": "06aa5b9499836213f5a73386696576cfc6bf0ad594b49dfbfa6422ef49bcecef"
+    }
+  ],
+  "presentation": "Native graph with a filtered Chinese report and public evidence summary",
+  "native_manifest_sha256": "5466aaf0c451b3547e707100ac71fecd72aa0b63798c22d54d4b897fb0b6f42b"
+}
