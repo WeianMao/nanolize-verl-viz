@@ -1,0 +1,3403 @@
+{
+  "schema_version": 1,
+  "operation": "nanolize_report",
+  "binding": {
+    "original_git_head": "4fbc6ff07215367ece731006855e732d1405992c",
+    "candidate_git_head": "74424332e6612b1d0d9deee68b09959961f0f15a",
+    "candidate_source_sha256": "701e0f131c651cfb474a37e9963e1cab8a623c4566fda999964fc7a646c5387a",
+    "candidate_contract_sha256": "266eed01375f4626e31fc9d2504c68cfbcaf1c06ab714a58a99978a17fd81db5",
+    "plan_sha256": "0e96f92af8e3614387becfe06ed9b33d41f10a883040d44f1a1a6a958a2f5644",
+    "verification_sha256": "5dd02bf617c6e4990baac21a11471c4db234d8eadf92bca26ab7031e0c951915",
+    "candidate_code_size_sha256": "f1e1b51072fd1ca07ceadc5bc843c7ad8432563b953e717702967da95e31d942"
+  },
+  "summary": {
+    "before": 1181,
+    "after": 524,
+    "reduction_percent": 55.631,
+    "capabilities": 8,
+    "count_unit": "capabilities",
+    "status_counts": {
+      "verified": 6,
+      "failed": 0,
+      "partial": 0,
+      "unknown": 2,
+      "retired": 0
+    },
+    "evidence_counts": {
+      "failed": 0,
+      "direct_passed": 6,
+      "direct_partial": 0,
+      "related_passed": 2,
+      "related_only": 0,
+      "unverified": 0,
+      "retired": 0
+    },
+    "aggregate_status_counts": {
+      "verified": 8,
+      "failed": 0,
+      "partial": 0,
+      "unknown": 0,
+      "retired": 0
+    },
+    "verification_status": "checks_passed",
+    "verification_tests": {
+      "original_total": 9,
+      "retained": 10,
+      "retired": 0,
+      "needs_adaptation": 0,
+      "adapted": 0,
+      "contract": 1,
+      "passed": 10,
+      "failed": 0,
+      "fixed_baseline_failure": 0,
+      "not_run": 0
+    },
+    "unattributed_checks": [
+      {
+        "name": "zip_imports",
+        "status": "passed",
+        "role": "original",
+        "scope": "retained",
+        "capabilities": [
+          "config",
+          "api"
+        ],
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "target_capabilities": [],
+        "attribution": "unattributed",
+        "facts_given": 2,
+        "baseline_cases": {
+          "passed": 2,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "executed": 2
+        },
+        "candidate_cases": {
+          "passed": 2,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "executed": 2
+        }
+      }
+    ],
+    "leaf_coverage": {
+      "status": "ready",
+      "strict": false,
+      "valid": [
+        "api",
+        "cli",
+        "config",
+        "interpolation",
+        "ipython",
+        "metadata",
+        "syntax"
+      ],
+      "missing": [],
+      "exempted": [],
+      "why_missing": {}
+    },
+    "facts_given_checks": 9,
+    "source_reference_capabilities": 6,
+    "assertion_values": {
+      "author_calls": 1,
+      "cases": 3
+    },
+    "unmapped_candidate_files": [],
+    "ignored_mapping_files": [
+      "pyproject.toml",
+      "src/dotenv/py.typed"
+    ],
+    "code_size": {
+      "metric": "tokens",
+      "tokenizer": {
+        "library": "tiktoken",
+        "version": "0.12.0",
+        "encoding": "cl100k_base",
+        "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+        "text_policy": "raw_decoded_text_per_file",
+        "classification": "source_and_configuration_v2",
+        "special_tokens": "ordinary_text",
+        "file_boundaries": "independent_sum",
+        "decoding": "python_encoding_cookie_else_utf8_strict",
+        "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets"
+      },
+      "before": 10933,
+      "after": 5069,
+      "reduction_percent": 53.636,
+      "source_before": 8215,
+      "source_after": 4491,
+      "configuration_before": 2718,
+      "configuration_after": 578,
+      "observed_before": 10933,
+      "observed_after": 5069,
+      "complete": true,
+      "target_tokens": 5466,
+      "budget_status": "met",
+      "target_policy": "advisory",
+      "code_only": {
+        "before": 9374,
+        "after": 5044
+      },
+      "documented_percent": {
+        "original": 35.7,
+        "delivered": 0.0
+      }
+    },
+    "size_attribution": {
+      "metric": "tokens",
+      "tokenizer": {
+        "classification": "source_and_configuration_v2",
+        "decoding": "python_encoding_cookie_else_utf8_strict",
+        "encoding": "cl100k_base",
+        "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+        "file_boundaries": "independent_sum",
+        "library": "tiktoken",
+        "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+        "special_tokens": "ordinary_text",
+        "text_policy": "raw_decoded_text_per_file",
+        "version": "0.12.0"
+      },
+      "complete": true,
+      "original_total": 10933,
+      "selected_original_estimate": 10933,
+      "candidate_total": 5069,
+      "overall_reduction": {
+        "tokens": 5864,
+        "percent": 53.636
+      },
+      "scope_reduction_estimate": {
+        "tokens": 0,
+        "percent": 0.0
+      },
+      "rewrite_reduction_estimate": {
+        "tokens": 5864,
+        "percent": 53.636
+      },
+      "shared_scope_files": [],
+      "method": "unique_mapped_source_plus_all_original_configuration",
+      "estimate_only": false,
+      "limitations": [
+        "Scope and rewrite attribution are mapped-file estimates, not exact semantic savings. Shared files count once and retained/removed code within them cannot be separated.",
+        "All original configuration is charged to the retained footprint. Configuration changes appear in the rewrite estimate and may include scope-related savings.",
+        "Overall reduction uses the full original as denominator; rewrite reduction uses the selected original estimate. Their percentages must not be added.",
+        "Negative reductions indicate growth; incomplete measurements do not establish savings."
+      ]
+    }
+  },
+  "nodes": [
+    {
+      "id": "dotenv",
+      "parent": null,
+      "name": "环境配置工具",
+      "kind": "capability",
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 1181,
+        "after": 524,
+        "reduction_percent": 55.631,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/dotenv/__init__.py",
+            "lines": 51
+          },
+          {
+            "path": "src/dotenv/__main__.py",
+            "lines": 6
+          },
+          {
+            "path": "src/dotenv/cli.py",
+            "lines": 264
+          },
+          {
+            "path": "src/dotenv/ipython.py",
+            "lines": 50
+          },
+          {
+            "path": "src/dotenv/main.py",
+            "lines": 532
+          },
+          {
+            "path": "src/dotenv/parser.py",
+            "lines": 191
+          },
+          {
+            "path": "src/dotenv/variables.py",
+            "lines": 86
+          },
+          {
+            "path": "src/dotenv/version.py",
+            "lines": 1
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/__init__.py",
+            "lines": 28
+          },
+          {
+            "path": "src/dotenv/__main__.py",
+            "lines": 4
+          },
+          {
+            "path": "src/dotenv/cli.py",
+            "lines": 118
+          },
+          {
+            "path": "src/dotenv/ipython.py",
+            "lines": 25
+          },
+          {
+            "path": "src/dotenv/main.py",
+            "lines": 222
+          },
+          {
+            "path": "src/dotenv/parser.py",
+            "lines": 70
+          },
+          {
+            "path": "src/dotenv/variables.py",
+            "lines": 56
+          },
+          {
+            "path": "src/dotenv/version.py",
+            "lines": 1
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "cli",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "cli",
+              "config",
+              "api",
+              "metadata"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "cli",
+              "config"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 41,
+            "baseline_cases": {
+              "passed": 53,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 1,
+              "executed": 53
+            },
+            "candidate_cases": {
+              "passed": 53,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 1,
+              "executed": 53
+            }
+          },
+          {
+            "name": "fifo_dotenv",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "config"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "config"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 1,
+            "baseline_cases": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 1
+            },
+            "candidate_cases": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 1
+            }
+          },
+          {
+            "name": "ipython",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "ipython",
+              "api",
+              "config"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "api",
+              "config",
+              "ipython"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 4,
+            "baseline_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            },
+            "candidate_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            }
+          },
+          {
+            "name": "is_interactive",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "config"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "config"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 7,
+            "baseline_cases": {
+              "passed": 10,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 10
+            },
+            "candidate_cases": {
+              "passed": 10,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 10
+            }
+          },
+          {
+            "name": "main",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "config",
+              "api",
+              "syntax",
+              "interpolation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "config",
+              "interpolation",
+              "syntax"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 68,
+            "baseline_cases": {
+              "passed": 156,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 156
+            },
+            "candidate_cases": {
+              "passed": 156,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 156
+            }
+          },
+          {
+            "name": "parser",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "syntax"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "syntax"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 28,
+            "baseline_cases": {
+              "passed": 58,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 58
+            },
+            "candidate_cases": {
+              "passed": 58,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 58
+            }
+          },
+          {
+            "name": "public-values-output",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "api",
+              "config",
+              "syntax",
+              "interpolation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "config",
+              "interpolation",
+              "syntax"
+            ],
+            "attribution": "knockout_confirmed"
+          },
+          {
+            "name": "utils",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "api"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "api"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 5,
+            "baseline_cases": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 1
+            },
+            "candidate_cases": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 1
+            }
+          },
+          {
+            "name": "variables",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "interpolation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "interpolation"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 4,
+            "baseline_cases": {
+              "passed": 6,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 6
+            },
+            "candidate_cases": {
+              "passed": 6,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 6
+            }
+          },
+          {
+            "name": "zip_imports",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "config",
+              "api"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 2,
+            "baseline_cases": {
+              "passed": 2,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 2
+            },
+            "candidate_cases": {
+              "passed": 2,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 2
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "cli",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "cli",
+                "config",
+                "api",
+                "metadata"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "cli",
+                "config"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 41,
+              "baseline_cases": {
+                "passed": 53,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 1,
+                "executed": 53
+              },
+              "candidate_cases": {
+                "passed": 53,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 1,
+                "executed": 53
+              }
+            },
+            {
+              "name": "fifo_dotenv",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "config"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "config"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 1,
+              "baseline_cases": {
+                "passed": 1,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 1
+              },
+              "candidate_cases": {
+                "passed": 1,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 1
+              }
+            },
+            {
+              "name": "ipython",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "ipython",
+                "api",
+                "config"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "api",
+                "config",
+                "ipython"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 4,
+              "baseline_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              },
+              "candidate_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              }
+            },
+            {
+              "name": "is_interactive",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "config"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "config"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 7,
+              "baseline_cases": {
+                "passed": 10,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 10
+              },
+              "candidate_cases": {
+                "passed": 10,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 10
+              }
+            },
+            {
+              "name": "main",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "config",
+                "api",
+                "syntax",
+                "interpolation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "config",
+                "interpolation",
+                "syntax"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 68,
+              "baseline_cases": {
+                "passed": 156,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 156
+              },
+              "candidate_cases": {
+                "passed": 156,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 156
+              }
+            },
+            {
+              "name": "parser",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "syntax"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "syntax"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 28,
+              "baseline_cases": {
+                "passed": 58,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 58
+              },
+              "candidate_cases": {
+                "passed": 58,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 58
+              }
+            },
+            {
+              "name": "public-values-output",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "api",
+                "config",
+                "syntax",
+                "interpolation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "config",
+                "interpolation",
+                "syntax"
+              ],
+              "attribution": "knockout_confirmed"
+            },
+            {
+              "name": "utils",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "api"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "api"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 5,
+              "baseline_cases": {
+                "passed": 1,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 1
+              },
+              "candidate_cases": {
+                "passed": 1,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 1
+              }
+            },
+            {
+              "name": "variables",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "interpolation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "interpolation"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 4,
+              "baseline_cases": {
+                "passed": 6,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 6
+              },
+              "candidate_cases": {
+                "passed": 6,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 6
+              }
+            },
+            {
+              "name": "zip_imports",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "config",
+                "api"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 2,
+              "baseline_cases": {
+                "passed": 2,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 2
+              },
+              "candidate_cases": {
+                "passed": 2,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 2
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "related_passed",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 10,
+            "passed": 10,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 8215,
+        "after": 4491,
+        "reduction_percent": 45.332,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/dotenv/__init__.py",
+            "tokens": 296
+          },
+          {
+            "path": "src/dotenv/__main__.py",
+            "tokens": 33
+          },
+          {
+            "path": "src/dotenv/cli.py",
+            "tokens": 1789
+          },
+          {
+            "path": "src/dotenv/ipython.py",
+            "tokens": 306
+          },
+          {
+            "path": "src/dotenv/main.py",
+            "tokens": 3829
+          },
+          {
+            "path": "src/dotenv/parser.py",
+            "tokens": 1391
+          },
+          {
+            "path": "src/dotenv/variables.py",
+            "tokens": 560
+          },
+          {
+            "path": "src/dotenv/version.py",
+            "tokens": 11
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/__init__.py",
+            "tokens": 233
+          },
+          {
+            "path": "src/dotenv/__main__.py",
+            "tokens": 17
+          },
+          {
+            "path": "src/dotenv/cli.py",
+            "tokens": 1065
+          },
+          {
+            "path": "src/dotenv/ipython.py",
+            "tokens": 224
+          },
+          {
+            "path": "src/dotenv/main.py",
+            "tokens": 1931
+          },
+          {
+            "path": "src/dotenv/parser.py",
+            "tokens": 621
+          },
+          {
+            "path": "src/dotenv/variables.py",
+            "tokens": 389
+          },
+          {
+            "path": "src/dotenv/version.py",
+            "tokens": 11
+          }
+        ]
+      }
+    },
+    {
+      "id": "config",
+      "parent": "dotenv",
+      "name": "读取、查找与编辑配置",
+      "kind": "capability",
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 532,
+        "after": 348,
+        "reduction_percent": 34.586,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/dotenv/main.py",
+            "lines": 532
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/main.py",
+            "lines": 222
+          },
+          {
+            "path": "src/dotenv/parser.py",
+            "lines": 70
+          },
+          {
+            "path": "src/dotenv/variables.py",
+            "lines": 56
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "main",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "config",
+              "api",
+              "syntax",
+              "interpolation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "config",
+              "interpolation",
+              "syntax"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 68,
+            "baseline_cases": {
+              "passed": 156,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 156
+            },
+            "candidate_cases": {
+              "passed": 156,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 156
+            }
+          },
+          {
+            "name": "cli",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "cli",
+              "config",
+              "api",
+              "metadata"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "cli",
+              "config"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 41,
+            "baseline_cases": {
+              "passed": 53,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 1,
+              "executed": 53
+            },
+            "candidate_cases": {
+              "passed": 53,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 1,
+              "executed": 53
+            }
+          },
+          {
+            "name": "ipython",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "ipython",
+              "api",
+              "config"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "api",
+              "config",
+              "ipython"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 4,
+            "baseline_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            },
+            "candidate_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            }
+          },
+          {
+            "name": "is_interactive",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "config"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "config"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 7,
+            "baseline_cases": {
+              "passed": 10,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 10
+            },
+            "candidate_cases": {
+              "passed": 10,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 10
+            }
+          },
+          {
+            "name": "fifo_dotenv",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "config"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "config"
+            ],
+            "attribution": "single_capability",
+            "facts_given": 1,
+            "baseline_cases": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 1
+            },
+            "candidate_cases": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 1
+            }
+          },
+          {
+            "name": "public-values-output",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "api",
+              "config",
+              "syntax",
+              "interpolation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "config",
+              "interpolation",
+              "syntax"
+            ],
+            "attribution": "knockout_confirmed"
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "main",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "cli",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "ipython",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "is_interactive",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "fifo_dotenv",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "public-values-output",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "zip_imports",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "config",
+              "api"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 2,
+            "baseline_cases": {
+              "passed": 2,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 2
+            },
+            "candidate_cases": {
+              "passed": 2,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 2
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "cli",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "cli",
+                "config",
+                "api",
+                "metadata"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "cli",
+                "config"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 41,
+              "baseline_cases": {
+                "passed": 53,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 1,
+                "executed": 53
+              },
+              "candidate_cases": {
+                "passed": 53,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 1,
+                "executed": 53
+              }
+            },
+            {
+              "name": "fifo_dotenv",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "config"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "config"
+              ],
+              "attribution": "single_capability",
+              "facts_given": 1,
+              "baseline_cases": {
+                "passed": 1,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 1
+              },
+              "candidate_cases": {
+                "passed": 1,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 1
+              }
+            },
+            {
+              "name": "ipython",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "ipython",
+                "api",
+                "config"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "api",
+                "config",
+                "ipython"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 4,
+              "baseline_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              },
+              "candidate_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              }
+            },
+            {
+              "name": "is_interactive",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "config"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "config"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 7,
+              "baseline_cases": {
+                "passed": 10,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 10
+              },
+              "candidate_cases": {
+                "passed": 10,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 10
+              }
+            },
+            {
+              "name": "main",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "config",
+                "api",
+                "syntax",
+                "interpolation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "config",
+                "interpolation",
+                "syntax"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 68,
+              "baseline_cases": {
+                "passed": 156,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 156
+              },
+              "candidate_cases": {
+                "passed": 156,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 156
+              }
+            },
+            {
+              "name": "public-values-output",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "api",
+                "config",
+                "syntax",
+                "interpolation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "config",
+                "interpolation",
+                "syntax"
+              ],
+              "attribution": "knockout_confirmed"
+            },
+            {
+              "name": "zip_imports",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "config",
+                "api"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 2,
+              "baseline_cases": {
+                "passed": 2,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 2
+              },
+              "candidate_cases": {
+                "passed": 2,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 2
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "main",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "cli",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "ipython",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "is_interactive",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "fifo_dotenv",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "zip_imports",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "public-values-output",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 6,
+            "passed": 6,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 3829,
+        "after": 2941,
+        "reduction_percent": 23.191,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/dotenv/main.py",
+            "tokens": 3829
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/main.py",
+            "tokens": 1931
+          },
+          {
+            "path": "src/dotenv/parser.py",
+            "tokens": 621
+          },
+          {
+            "path": "src/dotenv/variables.py",
+            "tokens": 389
+          }
+        ]
+      }
+    },
+    {
+      "id": "syntax",
+      "parent": "dotenv",
+      "name": ".env 文本语法",
+      "kind": "capability",
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 191,
+        "after": 70,
+        "reduction_percent": 63.351,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/dotenv/parser.py",
+            "lines": 191
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/parser.py",
+            "lines": 70
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "main",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "config",
+              "api",
+              "syntax",
+              "interpolation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "config",
+              "interpolation",
+              "syntax"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 68,
+            "baseline_cases": {
+              "passed": 156,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 156
+            },
+            "candidate_cases": {
+              "passed": 156,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 156
+            }
+          },
+          {
+            "name": "parser",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "syntax"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "syntax"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 28,
+            "baseline_cases": {
+              "passed": 58,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 58
+            },
+            "candidate_cases": {
+              "passed": 58,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 58
+            }
+          },
+          {
+            "name": "public-values-output",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "api",
+              "config",
+              "syntax",
+              "interpolation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "config",
+              "interpolation",
+              "syntax"
+            ],
+            "attribution": "knockout_confirmed"
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "main",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "parser",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "public-values-output",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "main",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "config",
+                "api",
+                "syntax",
+                "interpolation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "config",
+                "interpolation",
+                "syntax"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 68,
+              "baseline_cases": {
+                "passed": 156,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 156
+              },
+              "candidate_cases": {
+                "passed": 156,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 156
+              }
+            },
+            {
+              "name": "parser",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "syntax"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "syntax"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 28,
+              "baseline_cases": {
+                "passed": 58,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 58
+              },
+              "candidate_cases": {
+                "passed": 58,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 58
+              }
+            },
+            {
+              "name": "public-values-output",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "api",
+                "config",
+                "syntax",
+                "interpolation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "config",
+                "interpolation",
+                "syntax"
+              ],
+              "attribution": "knockout_confirmed"
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "main",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "parser",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "public-values-output",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 3,
+            "passed": 3,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 1391,
+        "after": 621,
+        "reduction_percent": 55.356,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/dotenv/parser.py",
+            "tokens": 1391
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/parser.py",
+            "tokens": 621
+          }
+        ]
+      }
+    },
+    {
+      "id": "interpolation",
+      "parent": "dotenv",
+      "name": "变量展开与优先级",
+      "kind": "capability",
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 86,
+        "after": 278,
+        "reduction_percent": -223.256,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/dotenv/variables.py",
+            "lines": 86
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/main.py",
+            "lines": 222
+          },
+          {
+            "path": "src/dotenv/variables.py",
+            "lines": 56
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "main",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "config",
+              "api",
+              "syntax",
+              "interpolation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "config",
+              "interpolation",
+              "syntax"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 68,
+            "baseline_cases": {
+              "passed": 156,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 156
+            },
+            "candidate_cases": {
+              "passed": 156,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 156
+            }
+          },
+          {
+            "name": "variables",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "interpolation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "interpolation"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 4,
+            "baseline_cases": {
+              "passed": 6,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 6
+            },
+            "candidate_cases": {
+              "passed": 6,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 6
+            }
+          },
+          {
+            "name": "public-values-output",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "api",
+              "config",
+              "syntax",
+              "interpolation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "config",
+              "interpolation",
+              "syntax"
+            ],
+            "attribution": "knockout_confirmed"
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "main",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "variables",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "public-values-output",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "main",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "config",
+                "api",
+                "syntax",
+                "interpolation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "config",
+                "interpolation",
+                "syntax"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 68,
+              "baseline_cases": {
+                "passed": 156,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 156
+              },
+              "candidate_cases": {
+                "passed": 156,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 156
+              }
+            },
+            {
+              "name": "public-values-output",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "api",
+                "config",
+                "syntax",
+                "interpolation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "config",
+                "interpolation",
+                "syntax"
+              ],
+              "attribution": "knockout_confirmed"
+            },
+            {
+              "name": "variables",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "interpolation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "interpolation"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 4,
+              "baseline_cases": {
+                "passed": 6,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 6
+              },
+              "candidate_cases": {
+                "passed": 6,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 6
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "main",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "variables",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "public-values-output",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 3,
+            "passed": 3,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 560,
+        "after": 2320,
+        "reduction_percent": -314.286,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/dotenv/variables.py",
+            "tokens": 560
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/main.py",
+            "tokens": 1931
+          },
+          {
+            "path": "src/dotenv/variables.py",
+            "tokens": 389
+          }
+        ]
+      }
+    },
+    {
+      "id": "api",
+      "parent": "dotenv",
+      "name": "Python 入口与 shell 命令构造",
+      "kind": "capability",
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 51,
+        "after": 250,
+        "reduction_percent": -390.196,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/dotenv/__init__.py",
+            "lines": 51
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/__init__.py",
+            "lines": 28
+          },
+          {
+            "path": "src/dotenv/main.py",
+            "lines": 222
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "utils",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "api"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "api"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 5,
+            "baseline_cases": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 1
+            },
+            "candidate_cases": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 1
+            }
+          },
+          {
+            "name": "ipython",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "ipython",
+              "api",
+              "config"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "api",
+              "config",
+              "ipython"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 4,
+            "baseline_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            },
+            "candidate_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "utils",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "ipython",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "cli",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "cli",
+              "config",
+              "api",
+              "metadata"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "cli",
+              "config"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 41,
+            "baseline_cases": {
+              "passed": 53,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 1,
+              "executed": 53
+            },
+            "candidate_cases": {
+              "passed": 53,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 1,
+              "executed": 53
+            }
+          },
+          {
+            "name": "main",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "config",
+              "api",
+              "syntax",
+              "interpolation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "config",
+              "interpolation",
+              "syntax"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 68,
+            "baseline_cases": {
+              "passed": 156,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 156
+            },
+            "candidate_cases": {
+              "passed": 156,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 156
+            }
+          },
+          {
+            "name": "public-values-output",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "api",
+              "config",
+              "syntax",
+              "interpolation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "config",
+              "interpolation",
+              "syntax"
+            ],
+            "attribution": "knockout_confirmed"
+          },
+          {
+            "name": "zip_imports",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "config",
+              "api"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 2,
+            "baseline_cases": {
+              "passed": 2,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 2
+            },
+            "candidate_cases": {
+              "passed": 2,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 2
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "cli",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "cli",
+                "config",
+                "api",
+                "metadata"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "cli",
+                "config"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 41,
+              "baseline_cases": {
+                "passed": 53,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 1,
+                "executed": 53
+              },
+              "candidate_cases": {
+                "passed": 53,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 1,
+                "executed": 53
+              }
+            },
+            {
+              "name": "ipython",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "ipython",
+                "api",
+                "config"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "api",
+                "config",
+                "ipython"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 4,
+              "baseline_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              },
+              "candidate_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              }
+            },
+            {
+              "name": "main",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "config",
+                "api",
+                "syntax",
+                "interpolation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "config",
+                "interpolation",
+                "syntax"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 68,
+              "baseline_cases": {
+                "passed": 156,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 156
+              },
+              "candidate_cases": {
+                "passed": 156,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 156
+              }
+            },
+            {
+              "name": "public-values-output",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "api",
+                "config",
+                "syntax",
+                "interpolation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "config",
+                "interpolation",
+                "syntax"
+              ],
+              "attribution": "knockout_confirmed"
+            },
+            {
+              "name": "utils",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "api"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "api"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 5,
+              "baseline_cases": {
+                "passed": 1,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 1
+              },
+              "candidate_cases": {
+                "passed": 1,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 1
+              }
+            },
+            {
+              "name": "zip_imports",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "config",
+                "api"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 2,
+              "baseline_cases": {
+                "passed": 2,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 2
+              },
+              "candidate_cases": {
+                "passed": 2,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 2
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "main",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "utils",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "cli",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "ipython",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "zip_imports",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "public-values-output",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 2,
+            "passed": 2,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 4,
+            "passed": 4,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 296,
+        "after": 2164,
+        "reduction_percent": -631.081,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/dotenv/__init__.py",
+            "tokens": 296
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/__init__.py",
+            "tokens": 233
+          },
+          {
+            "path": "src/dotenv/main.py",
+            "tokens": 1931
+          }
+        ]
+      }
+    },
+    {
+      "id": "cli",
+      "parent": "dotenv",
+      "name": "命令行管理与子进程环境",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 270,
+        "after": 122,
+        "reduction_percent": 54.815,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/dotenv/__main__.py",
+            "lines": 6
+          },
+          {
+            "path": "src/dotenv/cli.py",
+            "lines": 264
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/__main__.py",
+            "lines": 4
+          },
+          {
+            "path": "src/dotenv/cli.py",
+            "lines": 118
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "cli",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "cli",
+              "config",
+              "api",
+              "metadata"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "cli",
+              "config"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 41,
+            "baseline_cases": {
+              "passed": 53,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 1,
+              "executed": 53
+            },
+            "candidate_cases": {
+              "passed": 53,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 1,
+              "executed": 53
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "cli",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "cli",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "cli",
+                "config",
+                "api",
+                "metadata"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "cli",
+                "config"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 41,
+              "baseline_cases": {
+                "passed": 53,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 1,
+                "executed": 53
+              },
+              "candidate_cases": {
+                "passed": 53,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 1,
+                "executed": 53
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "cli",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 1822,
+        "after": 1082,
+        "reduction_percent": 40.615,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/dotenv/__main__.py",
+            "tokens": 33
+          },
+          {
+            "path": "src/dotenv/cli.py",
+            "tokens": 1789
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/__main__.py",
+            "tokens": 17
+          },
+          {
+            "path": "src/dotenv/cli.py",
+            "tokens": 1065
+          }
+        ]
+      }
+    },
+    {
+      "id": "ipython",
+      "parent": "dotenv",
+      "name": "IPython 扩展",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 50,
+        "after": 53,
+        "reduction_percent": -6.0,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/dotenv/ipython.py",
+            "lines": 50
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/__init__.py",
+            "lines": 28
+          },
+          {
+            "path": "src/dotenv/ipython.py",
+            "lines": 25
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "ipython",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "ipython",
+              "api",
+              "config"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "api",
+              "config",
+              "ipython"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 4,
+            "baseline_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            },
+            "candidate_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "ipython",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "ipython",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "ipython",
+                "api",
+                "config"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "api",
+                "config",
+                "ipython"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 4,
+              "baseline_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              },
+              "candidate_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "ipython",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 306,
+        "after": 457,
+        "reduction_percent": -49.346,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/dotenv/ipython.py",
+            "tokens": 306
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/__init__.py",
+            "tokens": 233
+          },
+          {
+            "path": "src/dotenv/ipython.py",
+            "tokens": 224
+          }
+        ]
+      }
+    },
+    {
+      "id": "metadata",
+      "parent": "dotenv",
+      "name": "版本与安装接口",
+      "kind": "capability",
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 1,
+        "after": 1,
+        "reduction_percent": 0.0,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/dotenv/version.py",
+            "lines": 1
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/version.py",
+            "lines": 1
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "cli",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "cli",
+              "config",
+              "api",
+              "metadata"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "cli",
+              "config"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 41,
+            "baseline_cases": {
+              "passed": 53,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 1,
+              "executed": 53
+            },
+            "candidate_cases": {
+              "passed": 53,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 1,
+              "executed": 53
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "cli",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "cli",
+                "config",
+                "api",
+                "metadata"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "cli",
+                "config"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 41,
+              "baseline_cases": {
+                "passed": 53,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 1,
+                "executed": 53
+              },
+              "candidate_cases": {
+                "passed": 53,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 1,
+                "executed": 53
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "cli",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "related_passed",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 11,
+        "after": 11,
+        "reduction_percent": 0.0,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/dotenv/version.py",
+            "tokens": 11
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/version.py",
+            "tokens": 11
+          }
+        ]
+      }
+    }
+  ],
+  "scope": {
+    "preset": "all",
+    "foundations": [
+      "api",
+      "config",
+      "dotenv",
+      "interpolation",
+      "metadata",
+      "syntax"
+    ],
+    "core": [
+      "api",
+      "config",
+      "dotenv",
+      "interpolation",
+      "metadata",
+      "syntax"
+    ],
+    "kept": [
+      "api",
+      "cli",
+      "config",
+      "dotenv",
+      "interpolation",
+      "ipython",
+      "metadata",
+      "syntax"
+    ],
+    "removed": [],
+    "reasons": {
+      "dotenv": "foundation",
+      "config": "foundation",
+      "syntax": "foundation",
+      "interpolation": "foundation",
+      "api": "foundation",
+      "cli": "selected",
+      "ipython": "selected",
+      "metadata": "foundation"
+    }
+  },
+  "methodology": [
+    "Scope and rewrite attribution are mapped-file estimates, not exact semantic savings. Shared files count once and retained/removed code within them cannot be separated.",
+    "All original configuration is charged to the retained footprint. Configuration changes appear in the rewrite estimate and may include scope-related savings.",
+    "Overall reduction uses the full original as denominator; rewrite reduction uses the selected original estimate. Their percentages must not be added.",
+    "Negative reductions indicate growth; incomplete measurements do not establish savings.",
+    "The primary size metric counts frozen-tokenizer tokens in source and configuration, summed independently per file. These are code-size tokens, not model usage or task effort.",
+    "Module token figures cover mapped source only; global configuration cost is not assigned to modules. Informational LOC remains separate.",
+    "Incomplete token measurements show observed subtotals, never a verified reduction or successful budget.",
+    "Informational LOC counts are physical source lines from the frozen original and bound candidate inventories, excluding tests and local state.",
+    "Original capability counts include all original descendants; candidate counts include explicitly mapped own files and retained descendants. Excluded descendants do not require candidate mapping. Shared files count once within a node; node counts cannot be added together.",
+    "Candidate ownership is explicitly supplied metadata, not proof of semantic ownership. Missing mappings remain unknown, never zero or a claimed reduction.",
+    "Function steps inherit their owning capability's code scope, but validation remains unknown without direct step evidence; they are not independently measured or tested.",
+    "Local validation statuses use directly targeted checks only. Evidence badges separately describe direct checks and related context. Parent, descendant, import-related and shared evidence never implies a local pass or failure.",
+    "A check targets the leaves whose knockout broke its behavior; a leaf it survived, or whose knockout only broke importing, is context. Otherwise checks naming one capability target that capability by default. Broad or unscoped checks need explicit report check_targets; unattributed results remain in the verification summary and evidence.",
+    "Where the author was given facts a check pins (its asserted behavior and reference values), that check's pass is not independent evidence; such checks are marked.",
+    "Evidence labels distinguish directly passed check records, mixed direct evidence, related passing evidence and missing evidence. Related passes do not verify this module; check-record counts are not a functional coverage percentage.",
+    "Verification describes declared check groups and their observed configurations, not individual unit-test counts or full semantic equivalence.",
+    "Failed original baselines, unrun checks, retired scope and incomplete coverage remain distinct. Installation is reported separately.",
+    "Only public labels, relative file mappings, hashes and summary observations are included. Source contents, command argv, environment values and captured output are omitted."
+  ],
+  "installation": {
+    "status": "passed",
+    "checks_passed": 3,
+    "checks_total": 3,
+    "environment_metadata_complete": true
+  },
+  "rewrite_progress": {
+    "priority": "functionality_first",
+    "author_attempts": 2,
+    "repair_attempts": 1,
+    "optimization_attempts": 0,
+    "restorations": 0,
+    "rejected_attempts": 0,
+    "failed_optimizations": 0,
+    "max_optimization_attempts": 3,
+    "stop_reason": null,
+    "accepted_candidate_available": true,
+    "behavior_acceptance": "passed",
+    "size_acceptance": "met"
+  },
+  "task_effort": {
+    "schema_version": 1,
+    "operation": "task_effort_evaluation",
+    "status": "disabled",
+    "binding": {},
+    "policy": {
+      "comparison": "empirical_range",
+      "strict_all_tasks": true
+    },
+    "task_types": [
+      "understand",
+      "diagnose",
+      "modify",
+      "execute"
+    ],
+    "tasks": [],
+    "overhead": {
+      "examiner_tokens": null,
+      "judge_tokens": null,
+      "solver_tokens": null,
+      "total_tokens": null,
+      "usage_complete": false,
+      "observed_total_tokens": null,
+      "role_usage_complete": {
+        "examiner": false,
+        "solver": false,
+        "judge": false
+      }
+    },
+    "resources": {
+      "completed_runs": 0,
+      "cleanup_pending": false,
+      "cleanup_pending_runs": 0
+    },
+    "iterations": [],
+    "limitations": [
+      "Task effort measures these tasks under the recorded agent settings; it is not a universal measure of human cognitive burden.",
+      "Tokens count solver model inputs and outputs, including cached input. Missing usage is unavailable, never zero. Examiner and judge overhead is separate.",
+      "Empirical ranges describe repeated observations, not statistical confidence intervals. Failed or unrun tasks do not establish an improvement.",
+      "Task links identify assessed capabilities only; they do not change module behavior verification badges.",
+      "Task prompts, hidden inputs, judging rubrics, source excerpts, raw traces and local paths are omitted from this public report."
+    ],
+    "stop_reason": "owner_disabled"
+  },
+  "report_id": "nrs_9f4556f3de8bf22e408cbbb55b12fdf7523be07559fbba186e8b85172783e67b"
+}

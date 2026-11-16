@@ -1,0 +1,533 @@
+{
+  "limitations": [
+    "Only summary results are published; captured command output is omitted."
+  ],
+  "status": "checks_passed",
+  "tests": {
+    "original_total": 9,
+    "retained": 10,
+    "retired": 0,
+    "needs_adaptation": 0,
+    "adapted": 0,
+    "contract": 1,
+    "passed": 10,
+    "failed": 0,
+    "fixed_baseline_failure": 0,
+    "not_run": 0
+  },
+  "capability_results": [
+    {
+      "id": "dotenv",
+      "status": "passed",
+      "checks": [],
+      "check_status": "passed",
+      "baseline_status": "not_run",
+      "candidate_status": "not_run"
+    },
+    {
+      "id": "config",
+      "status": "passed",
+      "checks": [
+        "main",
+        "cli",
+        "ipython",
+        "is_interactive",
+        "fifo_dotenv",
+        "zip_imports",
+        "public-values-output"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "syntax",
+      "status": "passed",
+      "checks": [
+        "main",
+        "parser",
+        "public-values-output"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "interpolation",
+      "status": "passed",
+      "checks": [
+        "main",
+        "variables",
+        "public-values-output"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "api",
+      "status": "passed",
+      "checks": [
+        "main",
+        "utils",
+        "cli",
+        "ipython",
+        "zip_imports",
+        "public-values-output"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "cli",
+      "status": "passed",
+      "checks": [
+        "cli"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "ipython",
+      "status": "passed",
+      "checks": [
+        "ipython"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "metadata",
+      "status": "passed",
+      "checks": [
+        "cli"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    }
+  ],
+  "checks": [
+    {
+      "name": "main",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "config",
+        "api",
+        "syntax",
+        "interpolation"
+      ]
+    },
+    {
+      "name": "parser",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "syntax"
+      ]
+    },
+    {
+      "name": "variables",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "interpolation"
+      ]
+    },
+    {
+      "name": "utils",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "api"
+      ]
+    },
+    {
+      "name": "cli",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "cli",
+        "config",
+        "api",
+        "metadata"
+      ]
+    },
+    {
+      "name": "ipython",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "ipython",
+        "api",
+        "config"
+      ]
+    },
+    {
+      "name": "is_interactive",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "config"
+      ]
+    },
+    {
+      "name": "fifo_dotenv",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "config"
+      ]
+    },
+    {
+      "name": "zip_imports",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "config",
+        "api"
+      ]
+    },
+    {
+      "name": "public-values-output",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "api",
+        "config",
+        "syntax",
+        "interpolation"
+      ]
+    }
+  ],
+  "actual_size": {
+    "baseline_source_lines": 1181,
+    "source_lines": 524,
+    "source_files": 8,
+    "retained_percent": 46.36421842129333,
+    "target_percent": 50.0,
+    "target_source_lines": 590.5,
+    "estimated_source_lines": null,
+    "metric": "tokens",
+    "tokenizer": {
+      "classification": "source_and_configuration_v2",
+      "decoding": "python_encoding_cookie_else_utf8_strict",
+      "encoding": "cl100k_base",
+      "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+      "file_boundaries": "independent_sum",
+      "library": "tiktoken",
+      "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+      "special_tokens": "ordinary_text",
+      "text_policy": "raw_decoded_text_per_file",
+      "version": "0.12.0"
+    },
+    "measurement_sha256": "f1e1b51072fd1ca07ceadc5bc843c7ad8432563b953e717702967da95e31d942",
+    "source_tokens": 4491,
+    "configuration_tokens": 578,
+    "total_tokens": 5069,
+    "baseline_tokens": 10933,
+    "target_tokens": 5466,
+    "source_retained_percent": 44.369178662150716,
+    "complete": true,
+    "target_met": true
+  },
+  "budget_status": "met",
+  "verification_scope": "full",
+  "rewrite_progress": {
+    "priority": "functionality_first",
+    "author_attempts": 2,
+    "repair_attempts": 1,
+    "optimization_attempts": 0,
+    "restorations": 0,
+    "rejected_attempts": 0,
+    "failed_optimizations": 0,
+    "max_optimization_attempts": 3,
+    "stop_reason": null,
+    "accepted_candidate_available": true,
+    "behavior_acceptance": "passed",
+    "size_acceptance": "met"
+  },
+  "installation_evidence": {
+    "status": "passed",
+    "checks_passed": 3,
+    "checks_total": 3,
+    "environment_metadata_complete": true
+  },
+  "obligation_ledger": {
+    "records": [
+      {
+        "capability": "dotenv",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          }
+        ]
+      },
+      {
+        "capability": "config",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "main",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "cli",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "ipython",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "is_interactive",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "fifo_dotenv",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "zip_imports",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "public-values-output",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "syntax",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "main",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "parser",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "public-values-output",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "interpolation",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "main",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "variables",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "public-values-output",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "api",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "main",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "utils",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "cli",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "ipython",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "zip_imports",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "public-values-output",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "cli",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "cli",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "ipython",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "ipython",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "metadata",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "cli",
+            "kind": "declared_check"
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "retired": 0,
+      "unknown": 0,
+      "verified": 8,
+      "failed": 0,
+      "partial": 0,
+      "total": 8,
+      "retained": 8,
+      "complete": true
+    },
+    "limitations": [
+      "Public summaries omit private evidence bindings and raw output."
+    ]
+  },
+  "leaf_coverage": {
+    "status": "ready",
+    "strict": false,
+    "valid": [
+      "api",
+      "cli",
+      "config",
+      "interpolation",
+      "ipython",
+      "metadata",
+      "syntax"
+    ],
+    "missing": [],
+    "exempted": [],
+    "why_missing": {}
+  },
+  "task_effort": {
+    "schema_version": 1,
+    "operation": "task_effort_evaluation",
+    "status": "disabled",
+    "binding": {},
+    "policy": {
+      "comparison": "empirical_range",
+      "strict_all_tasks": true
+    },
+    "task_types": [
+      "understand",
+      "diagnose",
+      "modify",
+      "execute"
+    ],
+    "tasks": [],
+    "overhead": {
+      "examiner_tokens": null,
+      "judge_tokens": null,
+      "solver_tokens": null,
+      "total_tokens": null,
+      "usage_complete": false,
+      "observed_total_tokens": null,
+      "role_usage_complete": {
+        "examiner": false,
+        "solver": false,
+        "judge": false
+      }
+    },
+    "resources": {
+      "completed_runs": 0,
+      "cleanup_pending": false,
+      "cleanup_pending_runs": 0
+    },
+    "iterations": [],
+    "limitations": [
+      "Task effort measures these tasks under the recorded agent settings; it is not a universal measure of human cognitive burden.",
+      "Tokens count solver model inputs and outputs, including cached input. Missing usage is unavailable, never zero. Examiner and judge overhead is separate.",
+      "Empirical ranges describe repeated observations, not statistical confidence intervals. Failed or unrun tasks do not establish an improvement.",
+      "Task links identify assessed capabilities only; they do not change module behavior verification badges.",
+      "Task prompts, hidden inputs, judging rubrics, source excerpts, raw traces and local paths are omitted from this public report."
+    ],
+    "stop_reason": "owner_disabled"
+  }
+}
