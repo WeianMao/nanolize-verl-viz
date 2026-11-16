@@ -1,0 +1,903 @@
+{
+  "checks": [
+    {
+      "alias": "original-check-1",
+      "capabilities": [
+        "mapping",
+        "duplicates",
+        "mutation",
+        "immutable",
+        "ordered",
+        "inversion"
+      ],
+      "files": [
+        {
+          "candidate": {
+            "cases": {
+              "errors": 1,
+              "executed": 1,
+              "failed": 0,
+              "passed": 0,
+              "skipped": 0
+            },
+            "status": "failed"
+          },
+          "duration_seconds": 8.565100000000001,
+          "file": "tests/test_bidict.py",
+          "original": {
+            "cases": {
+              "errors": 0,
+              "executed": 1228,
+              "failed": 0,
+              "passed": 1228,
+              "skipped": 0
+            },
+            "status": "passed"
+          }
+        }
+      ],
+      "name": "original-unit-tests",
+      "not_replayed": [],
+      "replayed_before": [],
+      "tests": {
+        "tests/test_bidict.py::test_abc_slots": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_abstract_bimap_init_fails": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_bidicts_freed_on_zero_refcount": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_bimap_bad_inverse": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_bulk_update_fails_clean_when_a_backing_mapping_refuses": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_class_keywords_reach_later_base": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_dict_subclass_backing_gets_native_views": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_duplicating_write_does_not_reorder": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_duplicating_write_keeps_the_contained_object": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_eq_and_or_with_non_mapping": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_eq_defers_to_other_eq": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_equals_order_sensitive": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_fill_from_bidict_checks_dups_by_own_backing_mappings": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_frozenbidicts_hashable": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_get_type_hints": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_init_and_update_accept_keys_via_getattr": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_init_and_update_accept_legacy_sequence": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_init_and_update_with_bad_args": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_inv_aliases_inverse": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_inv_attrs_readonly": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_inverted": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_items_view_membership_matches_dict_items": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_iteration_allows_bulk_update_changing_no_keys": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_move_to_end_missing_key": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_non_dict_backing_falls_back_to_generic_views": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_one_object_per_item_in_both_directions": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_ordered_bidict_reverses_its_own_order_whatever_precedes_it": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_ordered_remove_fails_clean_when_hashing_the_value_keeps_failing": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_ordered_write_and_remove_fail_clean_when_hashing_fails": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_orderedbidict_acts_on_the_item_its_backing_mapping_resolves_to": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_orderedbidict_cross_view_set_operations": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_orderedbidict_iteration_allows_value_only_update": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_orderedbidict_iteration_unaffected_by_unrelated_bidict": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_orderedbidict_iterator_created_before_mutation_raises": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_orderedbidict_mutation_during_iteration_raises": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_orderedbidict_mutation_on_final_item_raises": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_orderedbidict_no_op_does_not_invalidate_iterators": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_orderedbidict_nodes_freed_on_zero_refcount": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_orderedbidict_reversed_opt_out_after_class_creation_is_honored_by_its_views": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_orderedbidict_reversed_opt_out_is_honored_by_its_views": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_orderedbidict_weakattr_class_access": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "excluded",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_orderedbidictbase_nodes_consistent": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_orderedbidictbase_order_diverges_from_backing_mappings": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_pickle_dynamically_generated_inverse_bidict": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_pickle_orderedbi_whose_order_disagrees_with_fwdm": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_pickle_preserves_order_of_generated_inverse_class": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_pickling_costs_no_extra_space": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_pop_missing_key": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_putall_matches_bulk_put": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_putall_own_inverse": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_remove_fails_clean_when_a_backing_mapping_refuses": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_remove_fails_clean_when_the_value_stops_hashing": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_replacing_with_asymmetric_equal_object": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_repr_with_indirect_self_reference": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_reversed_opt_out_is_honored_and_inherited": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_reversed_opt_out_is_honored_wherever_it_is_declared": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_reversed_values_with_reversible_userdict": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_rolling_back_write_that_keeps_asymmetric_equal_object": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_roundtrip_preserves_iteration_order": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_set_reversed_is_idempotent": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_setitem_existing_is_noop_with_asymmetric_eq": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_setitem_existing_is_noop_with_nonreflexive_eq": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_static_types": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_subclass_can_regain_reversibility": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_update_with_bad_last_item_fails_clean": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_user_provided_reversed_is_honored_and_inherited": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_values_view_repr_shows_its_bidict": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_view_iterator_detects_mutation_before_first_next": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_views_agree_with_iteration_order": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_views_have_no_instance_dict": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_views_of_bidict_declaring_reversed_are_reversible": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_views_read_backing_mappings_not_subclass_overrides": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "excluded",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_views_reversibility_matches_bidict": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_views_set_ops_match_dict_views_when_backing_has_own_views": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "tests/test_bidict.py::test_write_fails_clean_when_a_backing_mapping_refuses": {
+          "candidate": "not_run",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        }
+      }
+    },
+    {
+      "alias": "original-check-2",
+      "capabilities": [
+        "benchmarks",
+        "mapping",
+        "duplicates",
+        "mutation",
+        "immutable",
+        "ordered",
+        "inversion"
+      ],
+      "files": [
+        {
+          "candidate": {
+            "cases": {
+              "errors": 0,
+              "executed": 140,
+              "failed": 12,
+              "passed": 128,
+              "skipped": 0
+            },
+            "status": "failed"
+          },
+          "duration_seconds": 3.3777,
+          "file": "microbenchmarks.py",
+          "original": {
+            "cases": {
+              "errors": 0,
+              "executed": 140,
+              "failed": 0,
+              "passed": 140,
+              "skipped": 0
+            },
+            "status": "passed"
+          }
+        }
+      ],
+      "name": "original-benchmark-workloads",
+      "not_replayed": [],
+      "replayed_before": [],
+      "tests": {
+        "microbenchmarks.py::test_bi_del_existing_key": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_bi_equals_with_equal_dict": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_bi_forceput_existing_value": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_bi_getitem_present": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_bi_init_fail_early_dupval": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_bi_init_fail_late_dupval": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_bi_init_from_bi": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_bi_init_from_dict": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_bi_inverse_getitem_present": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_bi_inverse_pop_existing_key": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_bi_inverse_popitem": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_bi_iter": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_bi_pop_existing_key": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_bi_popitem": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_bi_setitem_new_item": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_bi_setitem_replace_existing_key": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_bi_update_fail_early_dupval": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_bi_update_fail_late_dupval": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_bi_update_larger": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_bi_update_partial_overlap": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_copy": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_orderedbi_items_equals_with_equal_dict_items": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_orderedbi_iter": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_orderedbi_move_to_end": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_orderedbi_pop_existing_key": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_orderedbi_popitem": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_orderedbi_setitem_replace_existing_key": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_pickle": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_repr": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_reversed_view": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_unpickle": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_update_workloads_take_intended_path": {
+          "candidate": "failed",
+          "original": "passed",
+          "public": false,
+          "state": "unverified",
+          "verdict": "regressed"
+        },
+        "microbenchmarks.py::test_view": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_view_contains": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        },
+        "microbenchmarks.py::test_view_len": {
+          "candidate": "passed",
+          "original": "passed",
+          "public": true,
+          "state": "kept",
+          "verdict": "same"
+        }
+      }
+    },
+    {
+      "alias": "original-check-3",
+      "capabilities": [
+        "documentation"
+      ],
+      "files": [],
+      "name": "documentation-settings",
+      "not_replayed": [],
+      "replayed_before": [],
+      "tests": {}
+    }
+  ],
+  "differences": [],
+  "duration_seconds": 17.148,
+  "schema_version": 1,
+  "seconds": 600,
+  "status": "completed",
+  "summary": {
+    "cases": {
+      "candidate": 141,
+      "original": 1368
+    },
+    "coupled": {
+      "candidate_passed": 0,
+      "original_passed": 61,
+      "regressed": 61,
+      "tests": 61
+    },
+    "files": 2,
+    "files_not_replayed": 0,
+    "files_without_result": 0,
+    "kept": {
+      "candidate_passed": 34,
+      "original_passed": 47,
+      "regressed": 13,
+      "tests": 47
+    },
+    "public": {
+      "candidate_passed": 0,
+      "original_passed": 0,
+      "regressed": 0,
+      "tests": 0
+    },
+    "set_aside": 2
+  }
+}

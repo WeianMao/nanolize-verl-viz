@@ -1,0 +1,12 @@
+capability_id,before_lines,after_lines,reduction_percent,mapping_status,validation_status,executed,evidence_category,direct_checks,related_checks,direct_checks_passed,direct_checks_failed,direct_checks_inconclusive,related_checks_passed,related_checks_failed,related_checks_inconclusive,evidence_coverage,before_source_tokens,after_source_tokens,source_token_reduction_percent
+bidict-project,3444,1369,60.25,mapped,unknown,False,related_passed,0,22,0,0,0,22,0,0,limited,35666,11422,67.975
+mapping,1051,685,34.824,mapped,verified,True,direct_passed,4,1,4,0,0,1,0,0,declared_checks_only,11447,5699,50.214
+duplicates,100,85,15.0,mapped,verified,True,direct_passed,3,1,3,0,0,1,0,0,declared_checks_only,848,636,25.0
+mutation,234,646,-176.068,mapped,verified,True,direct_passed,2,1,2,0,0,1,0,0,declared_checks_only,2091,5280,-152.511
+immutable,55,646,-1074.545,mapped,verified,True,direct_passed,2,1,2,0,0,1,0,0,declared_checks_only,394,5280,-1240.102
+ordered,544,646,-18.75,mapped,verified,True,direct_passed,5,0,5,0,0,0,0,0,declared_checks_only,5865,5280,9.974
+inversion,55,646,-1074.545,mapped,verified,True,direct_passed,4,0,4,0,0,0,0,0,declared_checks_only,484,5280,-990.909
+benchmarks,700,286,59.143,mapped,verified,True,direct_passed,2,1,2,0,0,1,0,0,declared_checks_only,7373,2216,69.944
+callgrind,323,201,37.771,mapped,verified,True,direct_passed,1,1,1,0,0,1,0,0,declared_checks_only,3444,1886,45.238
+comparison,110,97,11.818,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,1263,975,22.803
+documentation,272,93,65.809,mapped,unknown,False,related_passed,0,1,0,0,0,1,0,0,limited,2457,848,65.486

@@ -1,0 +1,166 @@
+{
+  "status": "completed_with_gaps",
+  "size": {
+    "baseline_source_lines": 3444,
+    "baseline_tokens": 144006,
+    "complete": true,
+    "configuration_tokens": 527,
+    "metric": "tokens",
+    "retained_percent": 8.297570934544394,
+    "source_files": 9,
+    "source_lines": 1369,
+    "source_retained_percent": 39.750290360046456,
+    "source_tokens": 11422,
+    "target_met": true,
+    "target_percent": 50.0,
+    "target_source_lines": 1722.0,
+    "target_tokens": 72003,
+    "tokenizer": {
+      "classification": "source_and_configuration_v2",
+      "decoding": "python_encoding_cookie_else_utf8_strict",
+      "encoding": "cl100k_base",
+      "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+      "file_boundaries": "independent_sum",
+      "library": "tiktoken",
+      "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+      "special_tokens": "ordinary_text",
+      "text_policy": "raw_decoded_text_per_file",
+      "version": "0.12.0"
+    },
+    "total_tokens": 11949
+  },
+  "same_lines": {
+    "all": {
+      "files": 9,
+      "weight": 20355,
+      "unchanged": 3756,
+      "percent": 18.452468680913782
+    },
+    "configuration": {
+      "files": 3,
+      "weight": 1324,
+      "unchanged": 971,
+      "percent": 73.33836858006042
+    },
+    "source": {
+      "files": 6,
+      "weight": 19031,
+      "unchanged": 2785,
+      "percent": 14.634018180862803
+    }
+  },
+  "export_verified_count": 13,
+  "export_commit": "04bec277ee00d1ee28d6374202f359b5e3102f15",
+  "export_directory": "restart-input-nanolized-20261116-074648",
+  "checks": [
+    {
+      "name": "original-documentation-examples",
+      "status": "passed"
+    },
+    {
+      "name": "callgrind-command-help",
+      "status": "passed"
+    },
+    {
+      "name": "comparison-command-help",
+      "status": "passed"
+    },
+    {
+      "name": "recovered-test_bidict-1",
+      "status": "passed"
+    },
+    {
+      "name": "recovered-test_bidict-2",
+      "status": "passed"
+    },
+    {
+      "name": "recovered-test_bidict-3",
+      "status": "passed"
+    },
+    {
+      "name": "recovered-test_bidict-4",
+      "status": "passed"
+    },
+    {
+      "name": "recovered-microbenchmarks",
+      "status": "passed"
+    },
+    {
+      "name": "contract-duplicates-e0eee6-4",
+      "status": "passed"
+    },
+    {
+      "name": "contract-duplicates-e0eee6-5",
+      "status": "passed"
+    },
+    {
+      "name": "scenario-duplicates-e0eee6-6",
+      "status": "passed"
+    },
+    {
+      "name": "scenario-immutable-e0eee6-12",
+      "status": "passed"
+    },
+    {
+      "name": "contract-inversion-e0eee6-14",
+      "status": "passed"
+    },
+    {
+      "name": "contract-inversion-e0eee6-15",
+      "status": "passed"
+    },
+    {
+      "name": "scenario-inversion-e0eee6-16",
+      "status": "passed"
+    },
+    {
+      "name": "contract-mapping-e0eee6-17",
+      "status": "passed"
+    },
+    {
+      "name": "contract-mapping-e0eee6-18",
+      "status": "passed"
+    },
+    {
+      "name": "contract-mapping-e0eee6-19",
+      "status": "passed"
+    },
+    {
+      "name": "contract-mutation-e0eee6-23",
+      "status": "passed"
+    },
+    {
+      "name": "contract-ordered-e0eee6-30",
+      "status": "passed"
+    },
+    {
+      "name": "contract-benchmarks-e0eee6-13",
+      "status": "passed"
+    },
+    {
+      "name": "contract-benchmarks-e0eee6-14",
+      "status": "passed"
+    }
+  ],
+  "check_count": 22,
+  "checks_passed": 22,
+  "accepted_test_files": 14,
+  "accepted_nodes": [
+    "benchmarks",
+    "duplicates",
+    "immutable",
+    "inversion",
+    "mapping",
+    "mutation",
+    "ordered"
+  ],
+  "migration": {
+    "excluded": 37,
+    "given": 61,
+    "migrated": 1,
+    "unverified": 23
+  },
+  "wall_seconds_to_delivery": 9861.929446,
+  "final_job_wall_seconds": 3198.800266,
+  "generated_at": "2026-11-16T08:00:21.863975+00:00"
+}

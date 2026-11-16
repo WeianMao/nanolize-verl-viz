@@ -1,0 +1,118 @@
+{
+  "native": {
+    "calls": 84,
+    "missing_usage": 22,
+    "input_tokens": 28072936,
+    "cached_input_tokens": 25478656,
+    "output_tokens": 391499,
+    "reasoning_output_tokens": 178033,
+    "total_tokens": 28464435
+  },
+  "by_role": {
+    "author": {
+      "calls": 6,
+      "missing_usage": 0,
+      "input_tokens": 4579755,
+      "cached_input_tokens": 4144000,
+      "output_tokens": 68718,
+      "reasoning_output_tokens": 31456,
+      "total_tokens": 4648473
+    },
+    "controller": {
+      "calls": 19,
+      "missing_usage": 3,
+      "input_tokens": 1287206,
+      "cached_input_tokens": 854016,
+      "output_tokens": 14469,
+      "reasoning_output_tokens": 7331,
+      "total_tokens": 1301675
+    },
+    "fact_reviewer": {
+      "calls": 7,
+      "missing_usage": 0,
+      "input_tokens": 896566,
+      "cached_input_tokens": 705920,
+      "output_tokens": 7988,
+      "reasoning_output_tokens": 2687,
+      "total_tokens": 904554
+    },
+    "fact_writer": {
+      "calls": 37,
+      "missing_usage": 18,
+      "input_tokens": 1522203,
+      "cached_input_tokens": 1224064,
+      "output_tokens": 23710,
+      "reasoning_output_tokens": 9658,
+      "total_tokens": 1545913
+    },
+    "test_designer": {
+      "calls": 10,
+      "missing_usage": 1,
+      "input_tokens": 17316944,
+      "cached_input_tokens": 16494080,
+      "output_tokens": 251218,
+      "reasoning_output_tokens": 110227,
+      "total_tokens": 17568162
+    },
+    "test_reviewer": {
+      "calls": 5,
+      "missing_usage": 0,
+      "input_tokens": 2470262,
+      "cached_input_tokens": 2056576,
+      "output_tokens": 25396,
+      "reasoning_output_tokens": 16674,
+      "total_tokens": 2495658
+    }
+  },
+  "by_job": {
+    "119e7c0fb4d34a2d8e851f14450ee6ae": {
+      "calls": 21,
+      "missing_usage": 21,
+      "input_tokens": 0,
+      "cached_input_tokens": 0,
+      "output_tokens": 0,
+      "reasoning_output_tokens": 0,
+      "total_tokens": 0
+    },
+    "e0eee6f1282144ff8879311888255e3e": {
+      "calls": 42,
+      "missing_usage": 1,
+      "input_tokens": 22233473,
+      "cached_input_tokens": 20492928,
+      "output_tokens": 308630,
+      "reasoning_output_tokens": 139383,
+      "total_tokens": 22542103
+    },
+    "79b8a7975dd54630b8db410a6f473953": {
+      "calls": 21,
+      "missing_usage": 0,
+      "input_tokens": 5839463,
+      "cached_input_tokens": 4985728,
+      "output_tokens": 82869,
+      "reasoning_output_tokens": 38650,
+      "total_tokens": 5922332
+    }
+  },
+  "orchestrator": {
+    "timestamp": "2026-11-16T07:59:57.815Z",
+    "input_tokens": 58137757,
+    "cached_input_tokens": 57529472,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 182051,
+    "reasoning_output_tokens": 87762,
+    "total_tokens": 58319808
+  },
+  "combined_observed": {
+    "input_tokens": 86210693,
+    "cached_input_tokens": 83008128,
+    "output_tokens": 573550,
+    "reasoning_output_tokens": 265795,
+    "total_tokens": 86784243
+  },
+  "monetary_cost": null,
+  "limitations": [
+    "Cached input is a subset of input; reasoning output is a subset of output.",
+    "Missing usage is unknown, not zero. The orchestrator snapshot excludes later reporting turns.",
+    "No billable monetary amount or applicable contract tariff was recorded."
+  ]
+}

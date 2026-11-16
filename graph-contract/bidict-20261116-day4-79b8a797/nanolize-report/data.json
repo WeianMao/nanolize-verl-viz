@@ -1,0 +1,5470 @@
+{
+  "schema_version": 1,
+  "operation": "nanolize_report",
+  "binding": {
+    "original_git_head": "773513e1cbcc2c7c53a44cfa5d9f0a4ca952146d",
+    "candidate_git_head": "aebd2abd46d95aa9c1b6c6dfbfca6004bee0823a",
+    "candidate_source_sha256": "41352515d1c4dd0516219453cce6d4c30b4907bd49d35a1ddefc3e19a7fc3b81",
+    "candidate_contract_sha256": "da55be66e38feab61bd6a3c52b68779bcc72a1112875f89c904c528f48e69b24",
+    "plan_sha256": "82de63c2bc4e89adaed069618279748946dc62e92850eba98f251a78b2bef133",
+    "verification_sha256": "3ad50c44eb3346b208409b341281aae1bac27b5d2f4c63ac842cbdca93412a18",
+    "candidate_code_size_sha256": "b18041926f018e30696fb16226a495b0bc6e2b3eb8fdf67a4276c6b869f9310c"
+  },
+  "summary": {
+    "before": 3444,
+    "after": 1369,
+    "reduction_percent": 60.25,
+    "capabilities": 11,
+    "count_unit": "capabilities",
+    "status_counts": {
+      "verified": 9,
+      "failed": 0,
+      "partial": 0,
+      "unknown": 2,
+      "retired": 0
+    },
+    "evidence_counts": {
+      "failed": 0,
+      "direct_passed": 9,
+      "direct_partial": 0,
+      "related_passed": 2,
+      "related_only": 0,
+      "unverified": 0,
+      "retired": 0
+    },
+    "aggregate_status_counts": {
+      "verified": 11,
+      "failed": 0,
+      "partial": 0,
+      "unknown": 0,
+      "retired": 0
+    },
+    "verification_status": "checks_passed",
+    "verification_tests": {
+      "original_total": 1,
+      "retained": 22,
+      "retired": 0,
+      "needs_adaptation": 0,
+      "adapted": 0,
+      "contract": 21,
+      "passed": 22,
+      "failed": 0,
+      "fixed_baseline_failure": 0,
+      "not_run": 0
+    },
+    "unattributed_checks": [
+      {
+        "name": "recovered-test_bidict-2",
+        "status": "passed",
+        "role": "contract",
+        "scope": "retained",
+        "capabilities": [
+          "mapping"
+        ],
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "target_capabilities": [],
+        "attribution": "unattributed",
+        "facts_given": 2,
+        "baseline_cases": {
+          "passed": 2,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "executed": 2
+        },
+        "candidate_cases": {
+          "passed": 2,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "executed": 2
+        }
+      },
+      {
+        "name": "recovered-test_bidict-3",
+        "status": "passed",
+        "role": "contract",
+        "scope": "retained",
+        "capabilities": [
+          "mutation"
+        ],
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "target_capabilities": [],
+        "attribution": "unattributed",
+        "baseline_cases": {
+          "passed": 4,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "executed": 4
+        },
+        "candidate_cases": {
+          "passed": 4,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "executed": 4
+        }
+      }
+    ],
+    "leaf_coverage": {
+      "status": "ready",
+      "strict": false,
+      "valid": [
+        "benchmarks",
+        "callgrind",
+        "comparison",
+        "documentation",
+        "duplicates",
+        "immutable",
+        "inversion",
+        "mapping",
+        "mutation",
+        "ordered"
+      ],
+      "missing": [],
+      "exempted": [],
+      "why_missing": {}
+    },
+    "facts_given_checks": 19,
+    "original_checks": {
+      "checks": 3,
+      "excluded": 2,
+      "kept": 47,
+      "migrated": 0,
+      "public": 47,
+      "public_unverified": 0,
+      "tests": 110,
+      "unverified": 61
+    },
+    "original_replay": {
+      "status": "completed",
+      "summary": {
+        "cases": {
+          "candidate": 141,
+          "original": 1368
+        },
+        "coupled": {
+          "candidate_passed": 0,
+          "original_passed": 61,
+          "regressed": 61,
+          "tests": 61
+        },
+        "files": 2,
+        "files_not_replayed": 0,
+        "files_without_result": 0,
+        "kept": {
+          "candidate_passed": 34,
+          "original_passed": 47,
+          "regressed": 13,
+          "tests": 47
+        },
+        "public": {
+          "candidate_passed": 0,
+          "original_passed": 0,
+          "regressed": 0,
+          "tests": 0
+        },
+        "set_aside": 2
+      },
+      "capabilities": {
+        "benchmarks": {
+          "tests": 0,
+          "original_passed": 0,
+          "candidate_passed": 0,
+          "regressed": 0
+        },
+        "documentation": {
+          "tests": 0,
+          "original_passed": 0,
+          "candidate_passed": 0,
+          "regressed": 0
+        },
+        "duplicates": {
+          "tests": 0,
+          "original_passed": 0,
+          "candidate_passed": 0,
+          "regressed": 0
+        },
+        "immutable": {
+          "tests": 0,
+          "original_passed": 0,
+          "candidate_passed": 0,
+          "regressed": 0
+        },
+        "inversion": {
+          "tests": 0,
+          "original_passed": 0,
+          "candidate_passed": 0,
+          "regressed": 0
+        },
+        "mapping": {
+          "tests": 0,
+          "original_passed": 0,
+          "candidate_passed": 0,
+          "regressed": 0
+        },
+        "mutation": {
+          "tests": 0,
+          "original_passed": 0,
+          "candidate_passed": 0,
+          "regressed": 0
+        },
+        "ordered": {
+          "tests": 0,
+          "original_passed": 0,
+          "candidate_passed": 0,
+          "regressed": 0
+        }
+      }
+    },
+    "source_reference_capabilities": 9,
+    "assertion_values": {
+      "author_calls": 4,
+      "cases": 10
+    },
+    "unmapped_candidate_files": [],
+    "ignored_mapping_files": [
+      "docs/_static/favicon.svg"
+    ],
+    "code_size": {
+      "metric": "tokens",
+      "tokenizer": {
+        "library": "tiktoken",
+        "version": "0.12.0",
+        "encoding": "cl100k_base",
+        "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+        "text_policy": "raw_decoded_text_per_file",
+        "classification": "source_and_configuration_v2",
+        "special_tokens": "ordinary_text",
+        "file_boundaries": "independent_sum",
+        "decoding": "python_encoding_cookie_else_utf8_strict",
+        "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets"
+      },
+      "before": 144006,
+      "after": 11949,
+      "reduction_percent": 91.702,
+      "source_before": 35666,
+      "source_after": 11422,
+      "configuration_before": 108340,
+      "configuration_after": 527,
+      "observed_before": 144006,
+      "observed_after": 11949,
+      "complete": true,
+      "target_tokens": 72003,
+      "budget_status": "met",
+      "target_policy": "advisory",
+      "code_only": {
+        "before": 128175,
+        "after": 11652
+      },
+      "documented_percent": {
+        "original": 90.0,
+        "delivered": 0.0
+      }
+    },
+    "size_attribution": {
+      "metric": "tokens",
+      "tokenizer": {
+        "classification": "source_and_configuration_v2",
+        "decoding": "python_encoding_cookie_else_utf8_strict",
+        "encoding": "cl100k_base",
+        "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+        "file_boundaries": "independent_sum",
+        "library": "tiktoken",
+        "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+        "special_tokens": "ordinary_text",
+        "text_policy": "raw_decoded_text_per_file",
+        "version": "0.12.0"
+      },
+      "complete": true,
+      "original_total": 144006,
+      "selected_original_estimate": 144006,
+      "candidate_total": 11949,
+      "overall_reduction": {
+        "tokens": 132057,
+        "percent": 91.702
+      },
+      "scope_reduction_estimate": {
+        "tokens": 0,
+        "percent": 0.0
+      },
+      "rewrite_reduction_estimate": {
+        "tokens": 132057,
+        "percent": 91.702
+      },
+      "shared_scope_files": [],
+      "method": "unique_mapped_source_plus_all_original_configuration",
+      "estimate_only": false,
+      "limitations": [
+        "Scope and rewrite attribution are mapped-file estimates, not exact semantic savings. Shared files count once and retained/removed code within them cannot be separated.",
+        "All original configuration is charged to the retained footprint. Configuration changes appear in the rewrite estimate and may include scope-related savings.",
+        "Overall reduction uses the full original as denominator; rewrite reduction uses the selected original estimate. Their percentages must not be added.",
+        "Negative reductions indicate growth; incomplete measurements do not establish savings."
+      ]
+    }
+  },
+  "nodes": [
+    {
+      "id": "bidict-project",
+      "parent": null,
+      "name": "双向映射及配套工具",
+      "kind": "capability",
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 3444,
+        "after": 1369,
+        "reduction_percent": 60.25,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "bidict/__init__.py",
+            "lines": 104
+          },
+          {
+            "path": "bidict/_abc.py",
+            "lines": 81
+          },
+          {
+            "path": "bidict/_base.py",
+            "lines": 817
+          },
+          {
+            "path": "bidict/_bidict.py",
+            "lines": 234
+          },
+          {
+            "path": "bidict/_dup.py",
+            "lines": 64
+          },
+          {
+            "path": "bidict/_exc.py",
+            "lines": 36
+          },
+          {
+            "path": "bidict/_frozen.py",
+            "lines": 55
+          },
+          {
+            "path": "bidict/_iter.py",
+            "lines": 55
+          },
+          {
+            "path": "bidict/_orderedbase.py",
+            "lines": 424
+          },
+          {
+            "path": "bidict/_orderedbidict.py",
+            "lines": 120
+          },
+          {
+            "path": "bidict/_typing.py",
+            "lines": 49
+          },
+          {
+            "path": "callgrind.py",
+            "lines": 323
+          },
+          {
+            "path": "compare_instructions.py",
+            "lines": 110
+          },
+          {
+            "path": "docs/__init__.py",
+            "lines": 0
+          },
+          {
+            "path": "docs/_static/custom.js",
+            "lines": 16
+          },
+          {
+            "path": "docs/conf.py",
+            "lines": 256
+          },
+          {
+            "path": "microbenchmarks.py",
+            "lines": 700
+          }
+        ],
+        "after_files": [
+          {
+            "path": "bidict/__init__.py",
+            "lines": 39
+          },
+          {
+            "path": "bidict/_callgrind.c",
+            "lines": 29
+          },
+          {
+            "path": "bidict/_core.py",
+            "lines": 646
+          },
+          {
+            "path": "bidict/_policy.py",
+            "lines": 46
+          },
+          {
+            "path": "callgrind.py",
+            "lines": 172
+          },
+          {
+            "path": "compare_instructions.py",
+            "lines": 97
+          },
+          {
+            "path": "docs/_static/custom.js",
+            "lines": 17
+          },
+          {
+            "path": "docs/conf.py",
+            "lines": 37
+          },
+          {
+            "path": "microbenchmarks.py",
+            "lines": 286
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "callgrind-command-help",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "callgrind"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "callgrind"
+            ],
+            "attribution": "knockout_confirmed"
+          },
+          {
+            "name": "comparison-command-help",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "comparison"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "comparison"
+            ],
+            "attribution": "knockout_confirmed"
+          },
+          {
+            "name": "contract-benchmarks-e0eee6-13",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "benchmarks"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "benchmarks"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 14,
+            "baseline_cases": {
+              "passed": 6,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 6
+            },
+            "candidate_cases": {
+              "passed": 6,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 6
+            }
+          },
+          {
+            "name": "contract-benchmarks-e0eee6-14",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "benchmarks"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "benchmarks"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 24,
+            "baseline_cases": {
+              "passed": 7,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 7
+            },
+            "candidate_cases": {
+              "passed": 7,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 7
+            }
+          },
+          {
+            "name": "contract-duplicates-e0eee6-4",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "duplicates"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "duplicates"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 6,
+            "baseline_cases": {
+              "passed": 22,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 22
+            },
+            "candidate_cases": {
+              "passed": 22,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 22
+            }
+          },
+          {
+            "name": "contract-duplicates-e0eee6-5",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "duplicates"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "duplicates"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 10,
+            "baseline_cases": {
+              "passed": 104,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 104
+            },
+            "candidate_cases": {
+              "passed": 104,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 104
+            }
+          },
+          {
+            "name": "contract-inversion-e0eee6-14",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "inversion"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "inversion"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 9,
+            "baseline_cases": {
+              "passed": 44,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 44
+            },
+            "candidate_cases": {
+              "passed": 44,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 44
+            }
+          },
+          {
+            "name": "contract-inversion-e0eee6-15",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "inversion"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "inversion"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 6,
+            "baseline_cases": {
+              "passed": 20,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 20
+            },
+            "candidate_cases": {
+              "passed": 20,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 20
+            }
+          },
+          {
+            "name": "contract-mapping-e0eee6-17",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "mapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "mapping"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 10,
+            "baseline_cases": {
+              "passed": 28,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 28
+            },
+            "candidate_cases": {
+              "passed": 28,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 28
+            }
+          },
+          {
+            "name": "contract-mapping-e0eee6-18",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "mapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "mapping"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 9,
+            "baseline_cases": {
+              "passed": 21,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 21
+            },
+            "candidate_cases": {
+              "passed": 21,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 21
+            }
+          },
+          {
+            "name": "contract-mapping-e0eee6-19",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "mapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "mapping"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 9,
+            "baseline_cases": {
+              "passed": 61,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 61
+            },
+            "candidate_cases": {
+              "passed": 61,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 61
+            }
+          },
+          {
+            "name": "contract-mutation-e0eee6-23",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "mutation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "mutation"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 8,
+            "baseline_cases": {
+              "passed": 18,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 18
+            },
+            "candidate_cases": {
+              "passed": 18,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 18
+            }
+          },
+          {
+            "name": "contract-ordered-e0eee6-30",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "ordered"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "ordered"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 13,
+            "baseline_cases": {
+              "passed": 19,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 19
+            },
+            "candidate_cases": {
+              "passed": 19,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 19
+            }
+          },
+          {
+            "name": "original-documentation-examples",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "mapping",
+              "duplicates",
+              "mutation",
+              "immutable",
+              "ordered",
+              "inversion",
+              "documentation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "immutable",
+              "inversion",
+              "mapping",
+              "mutation",
+              "ordered"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 1,
+            "baseline_cases": {
+              "passed": 8,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 8
+            },
+            "candidate_cases": {
+              "passed": 8,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 8
+            }
+          },
+          {
+            "name": "recovered-microbenchmarks",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "benchmarks",
+              "callgrind",
+              "ordered"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "ordered"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 21,
+            "baseline_cases": {
+              "passed": 128,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 128
+            },
+            "candidate_cases": {
+              "passed": 128,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 128
+            }
+          },
+          {
+            "name": "recovered-test_bidict-1",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "immutable",
+              "ordered"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "ordered"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 3,
+            "baseline_cases": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 1
+            },
+            "candidate_cases": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 1
+            }
+          },
+          {
+            "name": "recovered-test_bidict-2",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "mapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 2,
+            "baseline_cases": {
+              "passed": 2,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 2
+            },
+            "candidate_cases": {
+              "passed": 2,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 2
+            }
+          },
+          {
+            "name": "recovered-test_bidict-3",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "mutation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "baseline_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            },
+            "candidate_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            }
+          },
+          {
+            "name": "recovered-test_bidict-4",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "ordered"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "ordered"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 12,
+            "baseline_cases": {
+              "passed": 21,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 21
+            },
+            "candidate_cases": {
+              "passed": 21,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 21
+            }
+          },
+          {
+            "name": "scenario-duplicates-e0eee6-6",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "duplicates"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "duplicates"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 6,
+            "baseline_cases": {
+              "passed": 6,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 6
+            },
+            "candidate_cases": {
+              "passed": 6,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 6
+            }
+          },
+          {
+            "name": "scenario-immutable-e0eee6-12",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "immutable"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "immutable"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 5,
+            "baseline_cases": {
+              "passed": 5,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 5
+            },
+            "candidate_cases": {
+              "passed": 5,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 5
+            }
+          },
+          {
+            "name": "scenario-inversion-e0eee6-16",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "inversion"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "inversion"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 9,
+            "baseline_cases": {
+              "passed": 9,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 9
+            },
+            "candidate_cases": {
+              "passed": 9,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 9
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "callgrind-command-help",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "callgrind"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "callgrind"
+              ],
+              "attribution": "knockout_confirmed"
+            },
+            {
+              "name": "comparison-command-help",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "comparison"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "comparison"
+              ],
+              "attribution": "knockout_confirmed"
+            },
+            {
+              "name": "contract-benchmarks-e0eee6-13",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "benchmarks"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "benchmarks"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 14,
+              "baseline_cases": {
+                "passed": 6,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 6
+              },
+              "candidate_cases": {
+                "passed": 6,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 6
+              }
+            },
+            {
+              "name": "contract-benchmarks-e0eee6-14",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "benchmarks"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "benchmarks"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 24,
+              "baseline_cases": {
+                "passed": 7,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 7
+              },
+              "candidate_cases": {
+                "passed": 7,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 7
+              }
+            },
+            {
+              "name": "contract-duplicates-e0eee6-4",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "duplicates"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "duplicates"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 6,
+              "baseline_cases": {
+                "passed": 22,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 22
+              },
+              "candidate_cases": {
+                "passed": 22,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 22
+              }
+            },
+            {
+              "name": "contract-duplicates-e0eee6-5",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "duplicates"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "duplicates"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 10,
+              "baseline_cases": {
+                "passed": 104,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 104
+              },
+              "candidate_cases": {
+                "passed": 104,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 104
+              }
+            },
+            {
+              "name": "contract-inversion-e0eee6-14",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "inversion"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "inversion"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 9,
+              "baseline_cases": {
+                "passed": 44,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 44
+              },
+              "candidate_cases": {
+                "passed": 44,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 44
+              }
+            },
+            {
+              "name": "contract-inversion-e0eee6-15",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "inversion"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "inversion"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 6,
+              "baseline_cases": {
+                "passed": 20,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 20
+              },
+              "candidate_cases": {
+                "passed": 20,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 20
+              }
+            },
+            {
+              "name": "contract-mapping-e0eee6-17",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "mapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "mapping"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 10,
+              "baseline_cases": {
+                "passed": 28,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 28
+              },
+              "candidate_cases": {
+                "passed": 28,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 28
+              }
+            },
+            {
+              "name": "contract-mapping-e0eee6-18",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "mapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "mapping"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 9,
+              "baseline_cases": {
+                "passed": 21,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 21
+              },
+              "candidate_cases": {
+                "passed": 21,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 21
+              }
+            },
+            {
+              "name": "contract-mapping-e0eee6-19",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "mapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "mapping"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 9,
+              "baseline_cases": {
+                "passed": 61,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 61
+              },
+              "candidate_cases": {
+                "passed": 61,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 61
+              }
+            },
+            {
+              "name": "contract-mutation-e0eee6-23",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "mutation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "mutation"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 8,
+              "baseline_cases": {
+                "passed": 18,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 18
+              },
+              "candidate_cases": {
+                "passed": 18,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 18
+              }
+            },
+            {
+              "name": "contract-ordered-e0eee6-30",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "ordered"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "ordered"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 13,
+              "baseline_cases": {
+                "passed": 19,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 19
+              },
+              "candidate_cases": {
+                "passed": 19,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 19
+              }
+            },
+            {
+              "name": "original-documentation-examples",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "mapping",
+                "duplicates",
+                "mutation",
+                "immutable",
+                "ordered",
+                "inversion",
+                "documentation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "immutable",
+                "inversion",
+                "mapping",
+                "mutation",
+                "ordered"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 1,
+              "baseline_cases": {
+                "passed": 8,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 8
+              },
+              "candidate_cases": {
+                "passed": 8,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 8
+              }
+            },
+            {
+              "name": "recovered-microbenchmarks",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "benchmarks",
+                "callgrind",
+                "ordered"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "ordered"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 21,
+              "baseline_cases": {
+                "passed": 128,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 128
+              },
+              "candidate_cases": {
+                "passed": 128,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 128
+              }
+            },
+            {
+              "name": "recovered-test_bidict-1",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "immutable",
+                "ordered"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "ordered"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 3,
+              "baseline_cases": {
+                "passed": 1,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 1
+              },
+              "candidate_cases": {
+                "passed": 1,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 1
+              }
+            },
+            {
+              "name": "recovered-test_bidict-2",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "mapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 2,
+              "baseline_cases": {
+                "passed": 2,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 2
+              },
+              "candidate_cases": {
+                "passed": 2,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 2
+              }
+            },
+            {
+              "name": "recovered-test_bidict-3",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "mutation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "baseline_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              },
+              "candidate_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              }
+            },
+            {
+              "name": "recovered-test_bidict-4",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "ordered"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "ordered"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 12,
+              "baseline_cases": {
+                "passed": 21,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 21
+              },
+              "candidate_cases": {
+                "passed": 21,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 21
+              }
+            },
+            {
+              "name": "scenario-duplicates-e0eee6-6",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "duplicates"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "duplicates"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 6,
+              "baseline_cases": {
+                "passed": 6,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 6
+              },
+              "candidate_cases": {
+                "passed": 6,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 6
+              }
+            },
+            {
+              "name": "scenario-immutable-e0eee6-12",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "immutable"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "immutable"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 5,
+              "baseline_cases": {
+                "passed": 5,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 5
+              },
+              "candidate_cases": {
+                "passed": 5,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 5
+              }
+            },
+            {
+              "name": "scenario-inversion-e0eee6-16",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "inversion"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "inversion"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 9,
+              "baseline_cases": {
+                "passed": 9,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 9
+              },
+              "candidate_cases": {
+                "passed": 9,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 9
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "related_passed",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 22,
+            "passed": 22,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 35666,
+        "after": 11422,
+        "reduction_percent": 67.975,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "bidict/__init__.py",
+            "tokens": 1044
+          },
+          {
+            "path": "bidict/_abc.py",
+            "tokens": 630
+          },
+          {
+            "path": "bidict/_base.py",
+            "tokens": 9362
+          },
+          {
+            "path": "bidict/_bidict.py",
+            "tokens": 2091
+          },
+          {
+            "path": "bidict/_dup.py",
+            "tokens": 597
+          },
+          {
+            "path": "bidict/_exc.py",
+            "tokens": 251
+          },
+          {
+            "path": "bidict/_frozen.py",
+            "tokens": 394
+          },
+          {
+            "path": "bidict/_iter.py",
+            "tokens": 484
+          },
+          {
+            "path": "bidict/_orderedbase.py",
+            "tokens": 4797
+          },
+          {
+            "path": "bidict/_orderedbidict.py",
+            "tokens": 1068
+          },
+          {
+            "path": "bidict/_typing.py",
+            "tokens": 411
+          },
+          {
+            "path": "callgrind.py",
+            "tokens": 3444
+          },
+          {
+            "path": "compare_instructions.py",
+            "tokens": 1263
+          },
+          {
+            "path": "docs/__init__.py",
+            "tokens": 0
+          },
+          {
+            "path": "docs/_static/custom.js",
+            "tokens": 219
+          },
+          {
+            "path": "docs/conf.py",
+            "tokens": 2238
+          },
+          {
+            "path": "microbenchmarks.py",
+            "tokens": 7373
+          }
+        ],
+        "after_files": [
+          {
+            "path": "bidict/__init__.py",
+            "tokens": 419
+          },
+          {
+            "path": "bidict/_callgrind.c",
+            "tokens": 294
+          },
+          {
+            "path": "bidict/_core.py",
+            "tokens": 5280
+          },
+          {
+            "path": "bidict/_policy.py",
+            "tokens": 217
+          },
+          {
+            "path": "callgrind.py",
+            "tokens": 1592
+          },
+          {
+            "path": "compare_instructions.py",
+            "tokens": 975
+          },
+          {
+            "path": "docs/_static/custom.js",
+            "tokens": 138
+          },
+          {
+            "path": "docs/conf.py",
+            "tokens": 291
+          },
+          {
+            "path": "microbenchmarks.py",
+            "tokens": 2216
+          }
+        ]
+      }
+    },
+    {
+      "id": "mapping",
+      "parent": "bidict-project",
+      "name": "双向查询与映射协议",
+      "kind": "capability",
+      "original_checks": {
+        "tests": 110,
+        "public": 47,
+        "kept": 47,
+        "migrated": 0,
+        "excluded": 2,
+        "unverified": 61,
+        "public_unverified": 0,
+        "retained_checks": 1,
+        "retained_cases": 8,
+        "replay": {
+          "tests": 0,
+          "original_passed": 0,
+          "candidate_passed": 0,
+          "regressed": 0
+        }
+      },
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 1051,
+        "after": 685,
+        "reduction_percent": 34.824,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "bidict/__init__.py",
+            "lines": 104
+          },
+          {
+            "path": "bidict/_abc.py",
+            "lines": 81
+          },
+          {
+            "path": "bidict/_base.py",
+            "lines": 817
+          },
+          {
+            "path": "bidict/_typing.py",
+            "lines": 49
+          }
+        ],
+        "after_files": [
+          {
+            "path": "bidict/__init__.py",
+            "lines": 39
+          },
+          {
+            "path": "bidict/_core.py",
+            "lines": 646
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "original-documentation-examples",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "mapping",
+              "duplicates",
+              "mutation",
+              "immutable",
+              "ordered",
+              "inversion",
+              "documentation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "immutable",
+              "inversion",
+              "mapping",
+              "mutation",
+              "ordered"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 1,
+            "baseline_cases": {
+              "passed": 8,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 8
+            },
+            "candidate_cases": {
+              "passed": 8,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 8
+            }
+          },
+          {
+            "name": "contract-mapping-e0eee6-17",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "mapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "mapping"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 10,
+            "baseline_cases": {
+              "passed": 28,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 28
+            },
+            "candidate_cases": {
+              "passed": 28,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 28
+            }
+          },
+          {
+            "name": "contract-mapping-e0eee6-18",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "mapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "mapping"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 9,
+            "baseline_cases": {
+              "passed": 21,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 21
+            },
+            "candidate_cases": {
+              "passed": 21,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 21
+            }
+          },
+          {
+            "name": "contract-mapping-e0eee6-19",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "mapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "mapping"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 9,
+            "baseline_cases": {
+              "passed": 61,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 61
+            },
+            "candidate_cases": {
+              "passed": 61,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 61
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-documentation-examples",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-mapping-e0eee6-17",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-mapping-e0eee6-18",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-mapping-e0eee6-19",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "recovered-test_bidict-2",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "mapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 2,
+            "baseline_cases": {
+              "passed": 2,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 2
+            },
+            "candidate_cases": {
+              "passed": 2,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 2
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "contract-mapping-e0eee6-17",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "mapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "mapping"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 10,
+              "baseline_cases": {
+                "passed": 28,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 28
+              },
+              "candidate_cases": {
+                "passed": 28,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 28
+              }
+            },
+            {
+              "name": "contract-mapping-e0eee6-18",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "mapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "mapping"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 9,
+              "baseline_cases": {
+                "passed": 21,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 21
+              },
+              "candidate_cases": {
+                "passed": 21,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 21
+              }
+            },
+            {
+              "name": "contract-mapping-e0eee6-19",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "mapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "mapping"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 9,
+              "baseline_cases": {
+                "passed": 61,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 61
+              },
+              "candidate_cases": {
+                "passed": 61,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 61
+              }
+            },
+            {
+              "name": "original-documentation-examples",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "mapping",
+                "duplicates",
+                "mutation",
+                "immutable",
+                "ordered",
+                "inversion",
+                "documentation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "immutable",
+                "inversion",
+                "mapping",
+                "mutation",
+                "ordered"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 1,
+              "baseline_cases": {
+                "passed": 8,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 8
+              },
+              "candidate_cases": {
+                "passed": 8,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 8
+              }
+            },
+            {
+              "name": "recovered-test_bidict-2",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "mapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 2,
+              "baseline_cases": {
+                "passed": 2,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 2
+              },
+              "candidate_cases": {
+                "passed": 2,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 2
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "original-documentation-examples",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "recovered-test_bidict-2",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-mapping-e0eee6-17",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-mapping-e0eee6-18",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-mapping-e0eee6-19",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 4,
+            "passed": 4,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        },
+        "blockers": [
+          "61 test functions of original checks left acceptance at conversion and nothing verified them (0 use only the public interface)"
+        ]
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 11447,
+        "after": 5699,
+        "reduction_percent": 50.214,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "bidict/__init__.py",
+            "tokens": 1044
+          },
+          {
+            "path": "bidict/_abc.py",
+            "tokens": 630
+          },
+          {
+            "path": "bidict/_base.py",
+            "tokens": 9362
+          },
+          {
+            "path": "bidict/_typing.py",
+            "tokens": 411
+          }
+        ],
+        "after_files": [
+          {
+            "path": "bidict/__init__.py",
+            "tokens": 419
+          },
+          {
+            "path": "bidict/_core.py",
+            "tokens": 5280
+          }
+        ]
+      }
+    },
+    {
+      "id": "duplicates",
+      "parent": "bidict-project",
+      "name": "重复策略与异常",
+      "kind": "capability",
+      "original_checks": {
+        "tests": 110,
+        "public": 47,
+        "kept": 47,
+        "migrated": 0,
+        "excluded": 2,
+        "unverified": 61,
+        "public_unverified": 0,
+        "retained_checks": 0,
+        "retained_cases": null,
+        "replay": {
+          "tests": 0,
+          "original_passed": 0,
+          "candidate_passed": 0,
+          "regressed": 0
+        }
+      },
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 100,
+        "after": 85,
+        "reduction_percent": 15.0,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "bidict/_dup.py",
+            "lines": 64
+          },
+          {
+            "path": "bidict/_exc.py",
+            "lines": 36
+          }
+        ],
+        "after_files": [
+          {
+            "path": "bidict/__init__.py",
+            "lines": 39
+          },
+          {
+            "path": "bidict/_policy.py",
+            "lines": 46
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "contract-duplicates-e0eee6-4",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "duplicates"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "duplicates"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 6,
+            "baseline_cases": {
+              "passed": 22,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 22
+            },
+            "candidate_cases": {
+              "passed": 22,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 22
+            }
+          },
+          {
+            "name": "contract-duplicates-e0eee6-5",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "duplicates"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "duplicates"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 10,
+            "baseline_cases": {
+              "passed": 104,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 104
+            },
+            "candidate_cases": {
+              "passed": 104,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 104
+            }
+          },
+          {
+            "name": "scenario-duplicates-e0eee6-6",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "duplicates"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "duplicates"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 6,
+            "baseline_cases": {
+              "passed": 6,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 6
+            },
+            "candidate_cases": {
+              "passed": 6,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 6
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-duplicates-e0eee6-4",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-duplicates-e0eee6-5",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-duplicates-e0eee6-6",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "original-documentation-examples",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "mapping",
+              "duplicates",
+              "mutation",
+              "immutable",
+              "ordered",
+              "inversion",
+              "documentation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "immutable",
+              "inversion",
+              "mapping",
+              "mutation",
+              "ordered"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 1,
+            "baseline_cases": {
+              "passed": 8,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 8
+            },
+            "candidate_cases": {
+              "passed": 8,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 8
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "contract-duplicates-e0eee6-4",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "duplicates"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "duplicates"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 6,
+              "baseline_cases": {
+                "passed": 22,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 22
+              },
+              "candidate_cases": {
+                "passed": 22,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 22
+              }
+            },
+            {
+              "name": "contract-duplicates-e0eee6-5",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "duplicates"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "duplicates"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 10,
+              "baseline_cases": {
+                "passed": 104,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 104
+              },
+              "candidate_cases": {
+                "passed": 104,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 104
+              }
+            },
+            {
+              "name": "original-documentation-examples",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "mapping",
+                "duplicates",
+                "mutation",
+                "immutable",
+                "ordered",
+                "inversion",
+                "documentation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "immutable",
+                "inversion",
+                "mapping",
+                "mutation",
+                "ordered"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 1,
+              "baseline_cases": {
+                "passed": 8,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 8
+              },
+              "candidate_cases": {
+                "passed": 8,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 8
+              }
+            },
+            {
+              "name": "scenario-duplicates-e0eee6-6",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "duplicates"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "duplicates"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 6,
+              "baseline_cases": {
+                "passed": 6,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 6
+              },
+              "candidate_cases": {
+                "passed": 6,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 6
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "original-documentation-examples",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-duplicates-e0eee6-4",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-duplicates-e0eee6-5",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "scenario-duplicates-e0eee6-6",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 3,
+            "passed": 3,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        },
+        "blockers": [
+          "61 test functions of original checks left acceptance at conversion and nothing verified them (0 use only the public interface)"
+        ]
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 848,
+        "after": 636,
+        "reduction_percent": 25.0,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "bidict/_dup.py",
+            "tokens": 597
+          },
+          {
+            "path": "bidict/_exc.py",
+            "tokens": 251
+          }
+        ],
+        "after_files": [
+          {
+            "path": "bidict/__init__.py",
+            "tokens": 419
+          },
+          {
+            "path": "bidict/_policy.py",
+            "tokens": 217
+          }
+        ]
+      }
+    },
+    {
+      "id": "mutation",
+      "parent": "bidict-project",
+      "name": "可变映射与原子更新",
+      "kind": "capability",
+      "original_checks": {
+        "tests": 110,
+        "public": 47,
+        "kept": 47,
+        "migrated": 0,
+        "excluded": 2,
+        "unverified": 61,
+        "public_unverified": 0,
+        "retained_checks": 1,
+        "retained_cases": 8,
+        "replay": {
+          "tests": 0,
+          "original_passed": 0,
+          "candidate_passed": 0,
+          "regressed": 0
+        }
+      },
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 234,
+        "after": 646,
+        "reduction_percent": -176.068,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "bidict/_bidict.py",
+            "lines": 234
+          }
+        ],
+        "after_files": [
+          {
+            "path": "bidict/_core.py",
+            "lines": 646
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "original-documentation-examples",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "mapping",
+              "duplicates",
+              "mutation",
+              "immutable",
+              "ordered",
+              "inversion",
+              "documentation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "immutable",
+              "inversion",
+              "mapping",
+              "mutation",
+              "ordered"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 1,
+            "baseline_cases": {
+              "passed": 8,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 8
+            },
+            "candidate_cases": {
+              "passed": 8,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 8
+            }
+          },
+          {
+            "name": "contract-mutation-e0eee6-23",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "mutation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "mutation"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 8,
+            "baseline_cases": {
+              "passed": 18,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 18
+            },
+            "candidate_cases": {
+              "passed": 18,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 18
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-documentation-examples",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-mutation-e0eee6-23",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "recovered-test_bidict-3",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "mutation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "baseline_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            },
+            "candidate_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "contract-mutation-e0eee6-23",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "mutation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "mutation"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 8,
+              "baseline_cases": {
+                "passed": 18,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 18
+              },
+              "candidate_cases": {
+                "passed": 18,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 18
+              }
+            },
+            {
+              "name": "original-documentation-examples",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "mapping",
+                "duplicates",
+                "mutation",
+                "immutable",
+                "ordered",
+                "inversion",
+                "documentation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "immutable",
+                "inversion",
+                "mapping",
+                "mutation",
+                "ordered"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 1,
+              "baseline_cases": {
+                "passed": 8,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 8
+              },
+              "candidate_cases": {
+                "passed": 8,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 8
+              }
+            },
+            {
+              "name": "recovered-test_bidict-3",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "mutation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "baseline_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              },
+              "candidate_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "original-documentation-examples",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "recovered-test_bidict-3",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-mutation-e0eee6-23",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 2,
+            "passed": 2,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        },
+        "blockers": [
+          "61 test functions of original checks left acceptance at conversion and nothing verified them (0 use only the public interface)"
+        ]
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 2091,
+        "after": 5280,
+        "reduction_percent": -152.511,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "bidict/_bidict.py",
+            "tokens": 2091
+          }
+        ],
+        "after_files": [
+          {
+            "path": "bidict/_core.py",
+            "tokens": 5280
+          }
+        ]
+      }
+    },
+    {
+      "id": "immutable",
+      "parent": "bidict-project",
+      "name": "不可变可哈希映射",
+      "kind": "capability",
+      "original_checks": {
+        "tests": 110,
+        "public": 47,
+        "kept": 47,
+        "migrated": 0,
+        "excluded": 2,
+        "unverified": 61,
+        "public_unverified": 0,
+        "retained_checks": 1,
+        "retained_cases": 8,
+        "replay": {
+          "tests": 0,
+          "original_passed": 0,
+          "candidate_passed": 0,
+          "regressed": 0
+        }
+      },
+      "selection_reason": "selected_dependency",
+      "loc": {
+        "before": 55,
+        "after": 646,
+        "reduction_percent": -1074.545,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "bidict/_frozen.py",
+            "lines": 55
+          }
+        ],
+        "after_files": [
+          {
+            "path": "bidict/_core.py",
+            "lines": 646
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "original-documentation-examples",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "mapping",
+              "duplicates",
+              "mutation",
+              "immutable",
+              "ordered",
+              "inversion",
+              "documentation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "immutable",
+              "inversion",
+              "mapping",
+              "mutation",
+              "ordered"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 1,
+            "baseline_cases": {
+              "passed": 8,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 8
+            },
+            "candidate_cases": {
+              "passed": 8,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 8
+            }
+          },
+          {
+            "name": "scenario-immutable-e0eee6-12",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "immutable"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "immutable"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 5,
+            "baseline_cases": {
+              "passed": 5,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 5
+            },
+            "candidate_cases": {
+              "passed": 5,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 5
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-documentation-examples",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-immutable-e0eee6-12",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "recovered-test_bidict-1",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "immutable",
+              "ordered"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "ordered"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 3,
+            "baseline_cases": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 1
+            },
+            "candidate_cases": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 1
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "original-documentation-examples",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "mapping",
+                "duplicates",
+                "mutation",
+                "immutable",
+                "ordered",
+                "inversion",
+                "documentation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "immutable",
+                "inversion",
+                "mapping",
+                "mutation",
+                "ordered"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 1,
+              "baseline_cases": {
+                "passed": 8,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 8
+              },
+              "candidate_cases": {
+                "passed": 8,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 8
+              }
+            },
+            {
+              "name": "recovered-test_bidict-1",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "immutable",
+                "ordered"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "ordered"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 3,
+              "baseline_cases": {
+                "passed": 1,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 1
+              },
+              "candidate_cases": {
+                "passed": 1,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 1
+              }
+            },
+            {
+              "name": "scenario-immutable-e0eee6-12",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "immutable"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "immutable"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 5,
+              "baseline_cases": {
+                "passed": 5,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 5
+              },
+              "candidate_cases": {
+                "passed": 5,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 5
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "original-documentation-examples",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "recovered-test_bidict-1",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "scenario-immutable-e0eee6-12",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 2,
+            "passed": 2,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        },
+        "blockers": [
+          "61 test functions of original checks left acceptance at conversion and nothing verified them (0 use only the public interface)"
+        ]
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 394,
+        "after": 5280,
+        "reduction_percent": -1240.102,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "bidict/_frozen.py",
+            "tokens": 394
+          }
+        ],
+        "after_files": [
+          {
+            "path": "bidict/_core.py",
+            "tokens": 5280
+          }
+        ]
+      }
+    },
+    {
+      "id": "ordered",
+      "parent": "bidict-project",
+      "name": "顺序映射与重排",
+      "kind": "capability",
+      "original_checks": {
+        "tests": 110,
+        "public": 47,
+        "kept": 47,
+        "migrated": 0,
+        "excluded": 2,
+        "unverified": 61,
+        "public_unverified": 0,
+        "retained_checks": 1,
+        "retained_cases": 8,
+        "replay": {
+          "tests": 0,
+          "original_passed": 0,
+          "candidate_passed": 0,
+          "regressed": 0
+        }
+      },
+      "selection_reason": "selected_dependency",
+      "loc": {
+        "before": 544,
+        "after": 646,
+        "reduction_percent": -18.75,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "bidict/_orderedbase.py",
+            "lines": 424
+          },
+          {
+            "path": "bidict/_orderedbidict.py",
+            "lines": 120
+          }
+        ],
+        "after_files": [
+          {
+            "path": "bidict/_core.py",
+            "lines": 646
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "original-documentation-examples",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "mapping",
+              "duplicates",
+              "mutation",
+              "immutable",
+              "ordered",
+              "inversion",
+              "documentation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "immutable",
+              "inversion",
+              "mapping",
+              "mutation",
+              "ordered"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 1,
+            "baseline_cases": {
+              "passed": 8,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 8
+            },
+            "candidate_cases": {
+              "passed": 8,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 8
+            }
+          },
+          {
+            "name": "recovered-test_bidict-1",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "immutable",
+              "ordered"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "ordered"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 3,
+            "baseline_cases": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 1
+            },
+            "candidate_cases": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 1
+            }
+          },
+          {
+            "name": "recovered-test_bidict-4",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "ordered"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "ordered"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 12,
+            "baseline_cases": {
+              "passed": 21,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 21
+            },
+            "candidate_cases": {
+              "passed": 21,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 21
+            }
+          },
+          {
+            "name": "recovered-microbenchmarks",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "benchmarks",
+              "callgrind",
+              "ordered"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "ordered"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 21,
+            "baseline_cases": {
+              "passed": 128,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 128
+            },
+            "candidate_cases": {
+              "passed": 128,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 128
+            }
+          },
+          {
+            "name": "contract-ordered-e0eee6-30",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "ordered"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "ordered"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 13,
+            "baseline_cases": {
+              "passed": 19,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 19
+            },
+            "candidate_cases": {
+              "passed": 19,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 19
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-documentation-examples",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-test_bidict-1",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-test_bidict-4",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-microbenchmarks",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-ordered-e0eee6-30",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "contract-ordered-e0eee6-30",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "ordered"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "ordered"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 13,
+              "baseline_cases": {
+                "passed": 19,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 19
+              },
+              "candidate_cases": {
+                "passed": 19,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 19
+              }
+            },
+            {
+              "name": "original-documentation-examples",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "mapping",
+                "duplicates",
+                "mutation",
+                "immutable",
+                "ordered",
+                "inversion",
+                "documentation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "immutable",
+                "inversion",
+                "mapping",
+                "mutation",
+                "ordered"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 1,
+              "baseline_cases": {
+                "passed": 8,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 8
+              },
+              "candidate_cases": {
+                "passed": 8,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 8
+              }
+            },
+            {
+              "name": "recovered-microbenchmarks",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "benchmarks",
+                "callgrind",
+                "ordered"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "ordered"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 21,
+              "baseline_cases": {
+                "passed": 128,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 128
+              },
+              "candidate_cases": {
+                "passed": 128,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 128
+              }
+            },
+            {
+              "name": "recovered-test_bidict-1",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "immutable",
+                "ordered"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "ordered"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 3,
+              "baseline_cases": {
+                "passed": 1,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 1
+              },
+              "candidate_cases": {
+                "passed": 1,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 1
+              }
+            },
+            {
+              "name": "recovered-test_bidict-4",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "ordered"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "ordered"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 12,
+              "baseline_cases": {
+                "passed": 21,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 21
+              },
+              "candidate_cases": {
+                "passed": 21,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 21
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "original-documentation-examples",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "recovered-test_bidict-1",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "recovered-test_bidict-4",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "recovered-microbenchmarks",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-ordered-e0eee6-30",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 5,
+            "passed": 5,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        },
+        "blockers": [
+          "61 test functions of original checks left acceptance at conversion and nothing verified them (0 use only the public interface)"
+        ]
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 5865,
+        "after": 5280,
+        "reduction_percent": 9.974,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "bidict/_orderedbase.py",
+            "tokens": 4797
+          },
+          {
+            "path": "bidict/_orderedbidict.py",
+            "tokens": 1068
+          }
+        ],
+        "after_files": [
+          {
+            "path": "bidict/_core.py",
+            "tokens": 5280
+          }
+        ]
+      }
+    },
+    {
+      "id": "inversion",
+      "parent": "bidict-project",
+      "name": "通用反转迭代",
+      "kind": "capability",
+      "original_checks": {
+        "tests": 110,
+        "public": 47,
+        "kept": 47,
+        "migrated": 0,
+        "excluded": 2,
+        "unverified": 61,
+        "public_unverified": 0,
+        "retained_checks": 1,
+        "retained_cases": 8,
+        "replay": {
+          "tests": 0,
+          "original_passed": 0,
+          "candidate_passed": 0,
+          "regressed": 0
+        }
+      },
+      "selection_reason": "selected_dependency",
+      "loc": {
+        "before": 55,
+        "after": 646,
+        "reduction_percent": -1074.545,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "bidict/_iter.py",
+            "lines": 55
+          }
+        ],
+        "after_files": [
+          {
+            "path": "bidict/_core.py",
+            "lines": 646
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "original-documentation-examples",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "mapping",
+              "duplicates",
+              "mutation",
+              "immutable",
+              "ordered",
+              "inversion",
+              "documentation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "immutable",
+              "inversion",
+              "mapping",
+              "mutation",
+              "ordered"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 1,
+            "baseline_cases": {
+              "passed": 8,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 8
+            },
+            "candidate_cases": {
+              "passed": 8,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 8
+            }
+          },
+          {
+            "name": "contract-inversion-e0eee6-14",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "inversion"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "inversion"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 9,
+            "baseline_cases": {
+              "passed": 44,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 44
+            },
+            "candidate_cases": {
+              "passed": 44,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 44
+            }
+          },
+          {
+            "name": "contract-inversion-e0eee6-15",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "inversion"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "inversion"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 6,
+            "baseline_cases": {
+              "passed": 20,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 20
+            },
+            "candidate_cases": {
+              "passed": 20,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 20
+            }
+          },
+          {
+            "name": "scenario-inversion-e0eee6-16",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "inversion"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "inversion"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 9,
+            "baseline_cases": {
+              "passed": 9,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 9
+            },
+            "candidate_cases": {
+              "passed": 9,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 9
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-documentation-examples",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-inversion-e0eee6-14",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-inversion-e0eee6-15",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-inversion-e0eee6-16",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "contract-inversion-e0eee6-14",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "inversion"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "inversion"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 9,
+              "baseline_cases": {
+                "passed": 44,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 44
+              },
+              "candidate_cases": {
+                "passed": 44,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 44
+              }
+            },
+            {
+              "name": "contract-inversion-e0eee6-15",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "inversion"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "inversion"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 6,
+              "baseline_cases": {
+                "passed": 20,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 20
+              },
+              "candidate_cases": {
+                "passed": 20,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 20
+              }
+            },
+            {
+              "name": "original-documentation-examples",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "mapping",
+                "duplicates",
+                "mutation",
+                "immutable",
+                "ordered",
+                "inversion",
+                "documentation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "immutable",
+                "inversion",
+                "mapping",
+                "mutation",
+                "ordered"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 1,
+              "baseline_cases": {
+                "passed": 8,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 8
+              },
+              "candidate_cases": {
+                "passed": 8,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 8
+              }
+            },
+            {
+              "name": "scenario-inversion-e0eee6-16",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "inversion"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "inversion"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 9,
+              "baseline_cases": {
+                "passed": 9,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 9
+              },
+              "candidate_cases": {
+                "passed": 9,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 9
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "original-documentation-examples",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-inversion-e0eee6-14",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-inversion-e0eee6-15",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "scenario-inversion-e0eee6-16",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 4,
+            "passed": 4,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        },
+        "blockers": [
+          "61 test functions of original checks left acceptance at conversion and nothing verified them (0 use only the public interface)"
+        ]
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 484,
+        "after": 5280,
+        "reduction_percent": -990.909,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "bidict/_iter.py",
+            "tokens": 484
+          }
+        ],
+        "after_files": [
+          {
+            "path": "bidict/_core.py",
+            "tokens": 5280
+          }
+        ]
+      }
+    },
+    {
+      "id": "benchmarks",
+      "parent": "bidict-project",
+      "name": "性能工作负载",
+      "kind": "capability",
+      "original_checks": {
+        "tests": 35,
+        "public": 34,
+        "kept": 34,
+        "migrated": 0,
+        "excluded": 0,
+        "unverified": 1,
+        "public_unverified": 0,
+        "retained_checks": 0,
+        "retained_cases": null,
+        "replay": {
+          "tests": 0,
+          "original_passed": 0,
+          "candidate_passed": 0,
+          "regressed": 0
+        }
+      },
+      "selection_reason": "selected",
+      "loc": {
+        "before": 700,
+        "after": 286,
+        "reduction_percent": 59.143,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "microbenchmarks.py",
+            "lines": 700
+          }
+        ],
+        "after_files": [
+          {
+            "path": "microbenchmarks.py",
+            "lines": 286
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "contract-benchmarks-e0eee6-13",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "benchmarks"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "benchmarks"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 14,
+            "baseline_cases": {
+              "passed": 6,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 6
+            },
+            "candidate_cases": {
+              "passed": 6,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 6
+            }
+          },
+          {
+            "name": "contract-benchmarks-e0eee6-14",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "benchmarks"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "benchmarks"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 24,
+            "baseline_cases": {
+              "passed": 7,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 7
+            },
+            "candidate_cases": {
+              "passed": 7,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 7
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-benchmarks-e0eee6-13",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-benchmarks-e0eee6-14",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "recovered-microbenchmarks",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "benchmarks",
+              "callgrind",
+              "ordered"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "ordered"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 21,
+            "baseline_cases": {
+              "passed": 128,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 128
+            },
+            "candidate_cases": {
+              "passed": 128,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 128
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "contract-benchmarks-e0eee6-13",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "benchmarks"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "benchmarks"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 14,
+              "baseline_cases": {
+                "passed": 6,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 6
+              },
+              "candidate_cases": {
+                "passed": 6,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 6
+              }
+            },
+            {
+              "name": "contract-benchmarks-e0eee6-14",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "benchmarks"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "benchmarks"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 24,
+              "baseline_cases": {
+                "passed": 7,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 7
+              },
+              "candidate_cases": {
+                "passed": 7,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 7
+              }
+            },
+            {
+              "name": "recovered-microbenchmarks",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "benchmarks",
+                "callgrind",
+                "ordered"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "ordered"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 21,
+              "baseline_cases": {
+                "passed": 128,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 128
+              },
+              "candidate_cases": {
+                "passed": 128,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 128
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "recovered-microbenchmarks",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-benchmarks-e0eee6-13",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "contract-benchmarks-e0eee6-14",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 2,
+            "passed": 2,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        },
+        "blockers": [
+          "1 test functions of original checks left acceptance at conversion and nothing verified them (0 use only the public interface)"
+        ]
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 7373,
+        "after": 2216,
+        "reduction_percent": 69.944,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "microbenchmarks.py",
+            "tokens": 7373
+          }
+        ],
+        "after_files": [
+          {
+            "path": "microbenchmarks.py",
+            "tokens": 2216
+          }
+        ]
+      }
+    },
+    {
+      "id": "callgrind",
+      "parent": "bidict-project",
+      "name": "指令计数与成本估算",
+      "kind": "capability",
+      "selection_reason": "selected_dependency",
+      "loc": {
+        "before": 323,
+        "after": 201,
+        "reduction_percent": 37.771,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "callgrind.py",
+            "lines": 323
+          }
+        ],
+        "after_files": [
+          {
+            "path": "bidict/_callgrind.c",
+            "lines": 29
+          },
+          {
+            "path": "callgrind.py",
+            "lines": 172
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "callgrind-command-help",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "callgrind"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "callgrind"
+            ],
+            "attribution": "knockout_confirmed"
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "callgrind-command-help",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "recovered-microbenchmarks",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "benchmarks",
+              "callgrind",
+              "ordered"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "ordered"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 21,
+            "baseline_cases": {
+              "passed": 128,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 128
+            },
+            "candidate_cases": {
+              "passed": 128,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 128
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "callgrind-command-help",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "callgrind"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "callgrind"
+              ],
+              "attribution": "knockout_confirmed"
+            },
+            {
+              "name": "recovered-microbenchmarks",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "benchmarks",
+                "callgrind",
+                "ordered"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "ordered"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 21,
+              "baseline_cases": {
+                "passed": 128,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 128
+              },
+              "candidate_cases": {
+                "passed": 128,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 128
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "callgrind-command-help",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "recovered-microbenchmarks",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 3444,
+        "after": 1886,
+        "reduction_percent": 45.238,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "callgrind.py",
+            "tokens": 3444
+          }
+        ],
+        "after_files": [
+          {
+            "path": "bidict/_callgrind.c",
+            "tokens": 294
+          },
+          {
+            "path": "callgrind.py",
+            "tokens": 1592
+          }
+        ]
+      }
+    },
+    {
+      "id": "comparison",
+      "parent": "bidict-project",
+      "name": "基准差异报告",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 110,
+        "after": 97,
+        "reduction_percent": 11.818,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "compare_instructions.py",
+            "lines": 110
+          }
+        ],
+        "after_files": [
+          {
+            "path": "compare_instructions.py",
+            "lines": 97
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "comparison-command-help",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "comparison"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "comparison"
+            ],
+            "attribution": "knockout_confirmed"
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "comparison-command-help",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "comparison-command-help",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "comparison"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "comparison"
+              ],
+              "attribution": "knockout_confirmed"
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "comparison-command-help",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 1263,
+        "after": 975,
+        "reduction_percent": 22.803,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "compare_instructions.py",
+            "tokens": 1263
+          }
+        ],
+        "after_files": [
+          {
+            "path": "compare_instructions.py",
+            "tokens": 975
+          }
+        ]
+      }
+    },
+    {
+      "id": "documentation",
+      "parent": "bidict-project",
+      "name": "文档配置与导航",
+      "kind": "capability",
+      "original_checks": {
+        "tests": 0,
+        "public": 0,
+        "kept": 0,
+        "migrated": 0,
+        "excluded": 0,
+        "unverified": 0,
+        "public_unverified": 0,
+        "retained_checks": 0,
+        "retained_cases": null,
+        "replay": {
+          "tests": 0,
+          "original_passed": 0,
+          "candidate_passed": 0,
+          "regressed": 0
+        }
+      },
+      "selection_reason": "selected",
+      "loc": {
+        "before": 272,
+        "after": 93,
+        "reduction_percent": 65.809,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "docs/__init__.py",
+            "lines": 0
+          },
+          {
+            "path": "docs/_static/custom.js",
+            "lines": 16
+          },
+          {
+            "path": "docs/conf.py",
+            "lines": 256
+          }
+        ],
+        "after_files": [
+          {
+            "path": "bidict/__init__.py",
+            "lines": 39
+          },
+          {
+            "path": "docs/_static/custom.js",
+            "lines": 17
+          },
+          {
+            "path": "docs/conf.py",
+            "lines": 37
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "original-documentation-examples",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "mapping",
+              "duplicates",
+              "mutation",
+              "immutable",
+              "ordered",
+              "inversion",
+              "documentation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "immutable",
+              "inversion",
+              "mapping",
+              "mutation",
+              "ordered"
+            ],
+            "attribution": "knockout_confirmed",
+            "facts_given": 1,
+            "baseline_cases": {
+              "passed": 8,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 8
+            },
+            "candidate_cases": {
+              "passed": 8,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 8
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "original-documentation-examples",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "mapping",
+                "duplicates",
+                "mutation",
+                "immutable",
+                "ordered",
+                "inversion",
+                "documentation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "immutable",
+                "inversion",
+                "mapping",
+                "mutation",
+                "ordered"
+              ],
+              "attribution": "knockout_confirmed",
+              "facts_given": 1,
+              "baseline_cases": {
+                "passed": 8,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 8
+              },
+              "candidate_cases": {
+                "passed": 8,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 8
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "original-documentation-examples",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "related_passed",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 2457,
+        "after": 848,
+        "reduction_percent": 65.486,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "docs/__init__.py",
+            "tokens": 0
+          },
+          {
+            "path": "docs/_static/custom.js",
+            "tokens": 219
+          },
+          {
+            "path": "docs/conf.py",
+            "tokens": 2238
+          }
+        ],
+        "after_files": [
+          {
+            "path": "bidict/__init__.py",
+            "tokens": 419
+          },
+          {
+            "path": "docs/_static/custom.js",
+            "tokens": 138
+          },
+          {
+            "path": "docs/conf.py",
+            "tokens": 291
+          }
+        ]
+      }
+    }
+  ],
+  "scope": {
+    "preset": "all",
+    "foundations": [
+      "bidict-project",
+      "duplicates",
+      "mapping",
+      "mutation"
+    ],
+    "core": [
+      "bidict-project",
+      "duplicates",
+      "mapping",
+      "mutation"
+    ],
+    "kept": [
+      "benchmarks",
+      "bidict-project",
+      "callgrind",
+      "comparison",
+      "documentation",
+      "duplicates",
+      "immutable",
+      "inversion",
+      "mapping",
+      "mutation",
+      "ordered"
+    ],
+    "removed": [],
+    "reasons": {
+      "bidict-project": "foundation",
+      "mapping": "foundation",
+      "duplicates": "foundation",
+      "mutation": "foundation",
+      "immutable": "selected_dependency",
+      "ordered": "selected_dependency",
+      "inversion": "selected_dependency",
+      "benchmarks": "selected",
+      "callgrind": "selected_dependency",
+      "comparison": "selected",
+      "documentation": "selected"
+    }
+  },
+  "methodology": [
+    "Scope and rewrite attribution are mapped-file estimates, not exact semantic savings. Shared files count once and retained/removed code within them cannot be separated.",
+    "All original configuration is charged to the retained footprint. Configuration changes appear in the rewrite estimate and may include scope-related savings.",
+    "Overall reduction uses the full original as denominator; rewrite reduction uses the selected original estimate. Their percentages must not be added.",
+    "Negative reductions indicate growth; incomplete measurements do not establish savings.",
+    "The primary size metric counts frozen-tokenizer tokens in source and configuration, summed independently per file. These are code-size tokens, not model usage or task effort.",
+    "Module token figures cover mapped source only; global configuration cost is not assigned to modules. Informational LOC remains separate.",
+    "Incomplete token measurements show observed subtotals, never a verified reduction or successful budget.",
+    "Informational LOC counts are physical source lines from the frozen original and bound candidate inventories, excluding tests and local state.",
+    "Original capability counts include all original descendants; candidate counts include explicitly mapped own files and retained descendants. Excluded descendants do not require candidate mapping. Shared files count once within a node; node counts cannot be added together.",
+    "Candidate ownership is explicitly supplied metadata, not proof of semantic ownership. Missing mappings remain unknown, never zero or a claimed reduction.",
+    "Function steps inherit their owning capability's code scope, but validation remains unknown without direct step evidence; they are not independently measured or tested.",
+    "Local validation statuses use directly targeted checks only. Evidence badges separately describe direct checks and related context. Parent, descendant, import-related and shared evidence never implies a local pass or failure.",
+    "A check targets the leaves whose knockout broke its behavior; a leaf it survived, or whose knockout only broke importing, is context. Otherwise checks naming one capability target that capability by default. Broad or unscoped checks need explicit report check_targets; unattributed results remain in the verification summary and evidence.",
+    "Where the author was given facts a check pins (its asserted behavior and reference values), that check's pass is not independent evidence; such checks are marked.",
+    "Evidence labels distinguish directly passed check records, mixed direct evidence, related passing evidence and missing evidence. Related passes do not verify this module; check-record counts are not a functional coverage percentage.",
+    "Verification describes declared check groups and their observed configurations, not individual unit-test counts or full semantic equivalence.",
+    "Failed original baselines, unrun checks, retired scope and incomplete coverage remain distinct. Installation is reported separately.",
+    "Only public labels, relative file mappings, hashes and summary observations are included. Source contents, command argv, environment values and captured output are omitted."
+  ],
+  "installation": {
+    "status": "passed",
+    "checks_passed": 2,
+    "checks_total": 2,
+    "environment_metadata_complete": true
+  },
+  "rewrite_progress": {
+    "priority": "functionality_first",
+    "author_attempts": 6,
+    "repair_attempts": 5,
+    "optimization_attempts": 0,
+    "restorations": 0,
+    "rejected_attempts": 0,
+    "failed_optimizations": 0,
+    "max_optimization_attempts": 3,
+    "stop_reason": null,
+    "accepted_candidate_available": true,
+    "behavior_acceptance": "passed",
+    "size_acceptance": "met"
+  },
+  "task_effort": {
+    "schema_version": 1,
+    "operation": "task_effort_evaluation",
+    "status": "disabled",
+    "binding": {},
+    "policy": {
+      "comparison": "empirical_range",
+      "strict_all_tasks": true
+    },
+    "task_types": [
+      "understand",
+      "diagnose",
+      "modify",
+      "execute"
+    ],
+    "tasks": [],
+    "overhead": {
+      "examiner_tokens": null,
+      "judge_tokens": null,
+      "solver_tokens": null,
+      "total_tokens": null,
+      "usage_complete": false,
+      "observed_total_tokens": null,
+      "role_usage_complete": {
+        "examiner": false,
+        "solver": false,
+        "judge": false
+      }
+    },
+    "resources": {
+      "completed_runs": 0,
+      "cleanup_pending": false,
+      "cleanup_pending_runs": 0
+    },
+    "iterations": [],
+    "limitations": [
+      "Task effort measures these tasks under the recorded agent settings; it is not a universal measure of human cognitive burden.",
+      "Tokens count solver model inputs and outputs, including cached input. Missing usage is unavailable, never zero. Examiner and judge overhead is separate.",
+      "Empirical ranges describe repeated observations, not statistical confidence intervals. Failed or unrun tasks do not establish an improvement.",
+      "Task links identify assessed capabilities only; they do not change module behavior verification badges.",
+      "Task prompts, hidden inputs, judging rubrics, source excerpts, raw traces and local paths are omitted from this public report."
+    ],
+    "stop_reason": "owner_disabled"
+  },
+  "report_id": "nrs_26e4376e37f69317221d6e7c93c7a599e067a3236c8df9c16ed25e2d99160b5c"
+}

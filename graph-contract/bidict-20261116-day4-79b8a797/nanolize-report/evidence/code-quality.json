@@ -1,0 +1,62 @@
+{
+  "delivered": {
+    "composition": {
+      "code_tokens": 11631,
+      "other_tokens": 959,
+      "python_code_tokens": 10672,
+      "python_comment_tokens": 214,
+      "python_data_literal_tokens": 0,
+      "python_docstring_tokens": 83,
+      "python_files": 7,
+      "unparsed_python_files": 0
+    },
+    "documentation": {
+      "documented": 0,
+      "documented_percent": 0.0,
+      "public_definitions": 112
+    },
+    "rewrite": {
+      "files_at_an_original_path": 9,
+      "unchanged_percent": 18.5
+    },
+    "total_tokens": 11949
+  },
+  "original": {
+    "composition": {
+      "code_tokens": 127451,
+      "other_tokens": 108559,
+      "python_code_tokens": 18892,
+      "python_comment_tokens": 9797,
+      "python_data_literal_tokens": 0,
+      "python_docstring_tokens": 6034,
+      "python_files": 16,
+      "unparsed_python_files": 0
+    },
+    "documentation": {
+      "documented": 99,
+      "documented_percent": 90.0,
+      "public_definitions": 110
+    },
+    "total_tokens": 144006
+  },
+  "original_overlap": {
+    "compared_lines": 715,
+    "documentation_percent": 3,
+    "function_limit_percent": 60,
+    "function_lines": 8,
+    "functions": 0,
+    "limit_percent": 40,
+    "mode": "auto",
+    "percent": 12
+  },
+  "schema_version": 1,
+  "status": "measured",
+  "summary": {
+    "documented_percent": {
+      "delivered": 0.0,
+      "original": 90.0
+    },
+    "total_retained_percent": 8.3,
+    "undocumented_retained_percent": 9.09
+  }
+}

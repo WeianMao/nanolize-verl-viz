@@ -1,0 +1,752 @@
+{
+  "limitations": [
+    "Only summary results are published; captured command output is omitted."
+  ],
+  "status": "checks_passed",
+  "tests": {
+    "original_total": 1,
+    "retained": 22,
+    "retired": 0,
+    "needs_adaptation": 0,
+    "adapted": 0,
+    "contract": 21,
+    "passed": 22,
+    "failed": 0,
+    "fixed_baseline_failure": 0,
+    "not_run": 0
+  },
+  "capability_results": [
+    {
+      "id": "bidict-project",
+      "status": "passed",
+      "checks": [],
+      "check_status": "passed",
+      "baseline_status": "not_run",
+      "candidate_status": "not_run"
+    },
+    {
+      "id": "mapping",
+      "status": "passed",
+      "checks": [
+        "original-documentation-examples",
+        "recovered-test_bidict-2",
+        "contract-mapping-e0eee6-17",
+        "contract-mapping-e0eee6-18",
+        "contract-mapping-e0eee6-19"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "duplicates",
+      "status": "passed",
+      "checks": [
+        "original-documentation-examples",
+        "contract-duplicates-e0eee6-4",
+        "contract-duplicates-e0eee6-5",
+        "scenario-duplicates-e0eee6-6"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "mutation",
+      "status": "passed",
+      "checks": [
+        "original-documentation-examples",
+        "recovered-test_bidict-3",
+        "contract-mutation-e0eee6-23"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "immutable",
+      "status": "passed",
+      "checks": [
+        "original-documentation-examples",
+        "recovered-test_bidict-1",
+        "scenario-immutable-e0eee6-12"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "ordered",
+      "status": "passed",
+      "checks": [
+        "original-documentation-examples",
+        "recovered-test_bidict-1",
+        "recovered-test_bidict-4",
+        "recovered-microbenchmarks",
+        "contract-ordered-e0eee6-30"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "inversion",
+      "status": "passed",
+      "checks": [
+        "original-documentation-examples",
+        "contract-inversion-e0eee6-14",
+        "contract-inversion-e0eee6-15",
+        "scenario-inversion-e0eee6-16"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "benchmarks",
+      "status": "passed",
+      "checks": [
+        "recovered-microbenchmarks",
+        "contract-benchmarks-e0eee6-13",
+        "contract-benchmarks-e0eee6-14"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "callgrind",
+      "status": "passed",
+      "checks": [
+        "callgrind-command-help",
+        "recovered-microbenchmarks"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "comparison",
+      "status": "passed",
+      "checks": [
+        "comparison-command-help"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "documentation",
+      "status": "passed",
+      "checks": [
+        "original-documentation-examples"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    }
+  ],
+  "checks": [
+    {
+      "name": "original-documentation-examples",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "mapping",
+        "duplicates",
+        "mutation",
+        "immutable",
+        "ordered",
+        "inversion",
+        "documentation"
+      ]
+    },
+    {
+      "name": "callgrind-command-help",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "callgrind"
+      ]
+    },
+    {
+      "name": "comparison-command-help",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "comparison"
+      ]
+    },
+    {
+      "name": "recovered-test_bidict-1",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "immutable",
+        "ordered"
+      ]
+    },
+    {
+      "name": "recovered-test_bidict-2",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "mapping"
+      ]
+    },
+    {
+      "name": "recovered-test_bidict-3",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "mutation"
+      ]
+    },
+    {
+      "name": "recovered-test_bidict-4",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "ordered"
+      ]
+    },
+    {
+      "name": "recovered-microbenchmarks",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "benchmarks",
+        "callgrind",
+        "ordered"
+      ]
+    },
+    {
+      "name": "contract-duplicates-e0eee6-4",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "duplicates"
+      ]
+    },
+    {
+      "name": "contract-duplicates-e0eee6-5",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "duplicates"
+      ]
+    },
+    {
+      "name": "scenario-duplicates-e0eee6-6",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "duplicates"
+      ]
+    },
+    {
+      "name": "scenario-immutable-e0eee6-12",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "immutable"
+      ]
+    },
+    {
+      "name": "contract-inversion-e0eee6-14",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "inversion"
+      ]
+    },
+    {
+      "name": "contract-inversion-e0eee6-15",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "inversion"
+      ]
+    },
+    {
+      "name": "scenario-inversion-e0eee6-16",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "inversion"
+      ]
+    },
+    {
+      "name": "contract-mapping-e0eee6-17",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "mapping"
+      ]
+    },
+    {
+      "name": "contract-mapping-e0eee6-18",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "mapping"
+      ]
+    },
+    {
+      "name": "contract-mapping-e0eee6-19",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "mapping"
+      ]
+    },
+    {
+      "name": "contract-mutation-e0eee6-23",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "mutation"
+      ]
+    },
+    {
+      "name": "contract-ordered-e0eee6-30",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "ordered"
+      ]
+    },
+    {
+      "name": "contract-benchmarks-e0eee6-13",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "benchmarks"
+      ]
+    },
+    {
+      "name": "contract-benchmarks-e0eee6-14",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "benchmarks"
+      ]
+    }
+  ],
+  "actual_size": {
+    "baseline_source_lines": 3444,
+    "source_lines": 1369,
+    "source_files": 9,
+    "retained_percent": 8.297570934544394,
+    "target_percent": 50.0,
+    "target_source_lines": 1722.0,
+    "estimated_source_lines": null,
+    "metric": "tokens",
+    "tokenizer": {
+      "classification": "source_and_configuration_v2",
+      "decoding": "python_encoding_cookie_else_utf8_strict",
+      "encoding": "cl100k_base",
+      "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+      "file_boundaries": "independent_sum",
+      "library": "tiktoken",
+      "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+      "special_tokens": "ordinary_text",
+      "text_policy": "raw_decoded_text_per_file",
+      "version": "0.12.0"
+    },
+    "measurement_sha256": "b18041926f018e30696fb16226a495b0bc6e2b3eb8fdf67a4276c6b869f9310c",
+    "source_tokens": 11422,
+    "configuration_tokens": 527,
+    "total_tokens": 11949,
+    "baseline_tokens": 144006,
+    "target_tokens": 72003,
+    "source_retained_percent": 39.750290360046456,
+    "complete": true,
+    "target_met": true
+  },
+  "budget_status": "met",
+  "verification_scope": "full",
+  "rewrite_progress": {
+    "priority": "functionality_first",
+    "author_attempts": 6,
+    "repair_attempts": 5,
+    "optimization_attempts": 0,
+    "restorations": 0,
+    "rejected_attempts": 0,
+    "failed_optimizations": 0,
+    "max_optimization_attempts": 3,
+    "stop_reason": null,
+    "accepted_candidate_available": true,
+    "behavior_acceptance": "passed",
+    "size_acceptance": "met"
+  },
+  "installation_evidence": {
+    "status": "passed",
+    "checks_passed": 2,
+    "checks_total": 2,
+    "environment_metadata_complete": true
+  },
+  "obligation_ledger": {
+    "records": [
+      {
+        "capability": "bidict-project",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          }
+        ]
+      },
+      {
+        "capability": "mapping",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-documentation-examples",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-test_bidict-2",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-mapping-e0eee6-17",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-mapping-e0eee6-18",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-mapping-e0eee6-19",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "duplicates",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-documentation-examples",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-duplicates-e0eee6-4",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-duplicates-e0eee6-5",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-duplicates-e0eee6-6",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "mutation",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-documentation-examples",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-test_bidict-3",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-mutation-e0eee6-23",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "immutable",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-documentation-examples",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-test_bidict-1",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-immutable-e0eee6-12",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "ordered",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-documentation-examples",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-test_bidict-1",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-test_bidict-4",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-microbenchmarks",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-ordered-e0eee6-30",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "inversion",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-documentation-examples",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-inversion-e0eee6-14",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-inversion-e0eee6-15",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-inversion-e0eee6-16",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "benchmarks",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "recovered-microbenchmarks",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-benchmarks-e0eee6-13",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-benchmarks-e0eee6-14",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "callgrind",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "callgrind-command-help",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-microbenchmarks",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "comparison",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "comparison-command-help",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "documentation",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-documentation-examples",
+            "kind": "declared_check"
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "unknown": 0,
+      "retired": 0,
+      "verified": 11,
+      "partial": 0,
+      "failed": 0,
+      "total": 11,
+      "retained": 11,
+      "complete": true
+    },
+    "limitations": [
+      "Public summaries omit private evidence bindings and raw output."
+    ]
+  },
+  "leaf_coverage": {
+    "status": "ready",
+    "strict": false,
+    "valid": [
+      "benchmarks",
+      "callgrind",
+      "comparison",
+      "documentation",
+      "duplicates",
+      "immutable",
+      "inversion",
+      "mapping",
+      "mutation",
+      "ordered"
+    ],
+    "missing": [],
+    "exempted": [],
+    "why_missing": {}
+  },
+  "task_effort": {
+    "schema_version": 1,
+    "operation": "task_effort_evaluation",
+    "status": "disabled",
+    "binding": {},
+    "policy": {
+      "comparison": "empirical_range",
+      "strict_all_tasks": true
+    },
+    "task_types": [
+      "understand",
+      "diagnose",
+      "modify",
+      "execute"
+    ],
+    "tasks": [],
+    "overhead": {
+      "examiner_tokens": null,
+      "judge_tokens": null,
+      "solver_tokens": null,
+      "total_tokens": null,
+      "usage_complete": false,
+      "observed_total_tokens": null,
+      "role_usage_complete": {
+        "examiner": false,
+        "solver": false,
+        "judge": false
+      }
+    },
+    "resources": {
+      "completed_runs": 0,
+      "cleanup_pending": false,
+      "cleanup_pending_runs": 0
+    },
+    "iterations": [],
+    "limitations": [
+      "Task effort measures these tasks under the recorded agent settings; it is not a universal measure of human cognitive burden.",
+      "Tokens count solver model inputs and outputs, including cached input. Missing usage is unavailable, never zero. Examiner and judge overhead is separate.",
+      "Empirical ranges describe repeated observations, not statistical confidence intervals. Failed or unrun tasks do not establish an improvement.",
+      "Task links identify assessed capabilities only; they do not change module behavior verification badges.",
+      "Task prompts, hidden inputs, judging rubrics, source excerpts, raw traces and local paths are omitted from this public report."
+    ],
+    "stop_reason": "owner_disabled"
+  }
+}

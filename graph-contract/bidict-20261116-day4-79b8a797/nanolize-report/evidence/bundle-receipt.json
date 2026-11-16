@@ -1,0 +1,5 @@
+{
+  "reason": "Portable metadata contains an absolute path (plan.manifest.original_checks[0].check.argv[0]); use relative check inputs",
+  "schema_version": 1,
+  "status": "unavailable"
+}

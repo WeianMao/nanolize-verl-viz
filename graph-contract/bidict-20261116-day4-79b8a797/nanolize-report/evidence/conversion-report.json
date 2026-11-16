@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "operation": "graph_contract_proposal",
+  "external_capabilities": 8,
+  "internal_capabilities": 3,
+  "interface_entries": 66,
+  "knowledge_library_removed": false,
+  "checks_kept": 8,
+  "checks_left_out": {
+    "original-unit-tests": [
+      "bidict._orderedbase.Node",
+      "bidict._orderedbase.Node.prv",
+      "bidict._orderedbase.WeakAttr",
+      "bidict._typing.MapOrItems",
+      "bidict._typing.Maplike",
+      "bidict._typing.override"
+    ],
+    "original-benchmark-workloads": [
+      "bidict.BidictBase._write"
+    ],
+    "documentation-settings": [
+      "docs.conf"
+    ]
+  },
+  "original_checks": {
+    "checks": 3,
+    "tests": 110,
+    "public_tests": 47
+  },
+  "checks_split": {
+    "original-unit-tests": {
+      "kept": 0,
+      "recovered": 13,
+      "migrate": 60,
+      "internal": 2,
+      "not_behavior": 0,
+      "checks": [
+        "recovered-test_bidict-1",
+        "recovered-test_bidict-2",
+        "recovered-test_bidict-3",
+        "recovered-test_bidict-4"
+      ]
+    },
+    "original-benchmark-workloads": {
+      "kept": 0,
+      "recovered": 34,
+      "migrate": 1,
+      "internal": 0,
+      "not_behavior": 0,
+      "checks": [
+        "recovered-microbenchmarks"
+      ]
+    }
+  },
+  "checks_recovered": {
+    "recovered-test_bidict-1": {
+      "file": "tests/test_nanolize_recovered_test_bidict_1.py",
+      "from": "tests/test_bidict.py",
+      "capabilities": [
+        "immutable",
+        "ordered"
+      ],
+      "tests": 1
+    },
+    "recovered-test_bidict-2": {
+      "file": "tests/test_nanolize_recovered_test_bidict_2.py",
+      "from": "tests/test_bidict.py",
+      "capabilities": [
+        "mapping"
+      ],
+      "tests": 2
+    },
+    "recovered-test_bidict-3": {
+      "file": "tests/test_nanolize_recovered_test_bidict_3.py",
+      "from": "tests/test_bidict.py",
+      "capabilities": [
+        "mutation"
+      ],
+      "tests": 4
+    },
+    "recovered-test_bidict-4": {
+      "file": "tests/test_nanolize_recovered_test_bidict_4.py",
+      "from": "tests/test_bidict.py",
+      "capabilities": [
+        "ordered"
+      ],
+      "tests": 6
+    },
+    "recovered-microbenchmarks": {
+      "file": "test_nanolize_recovered_microbenchmarks.py",
+      "from": "microbenchmarks.py",
+      "capabilities": [
+        "callgrind",
+        "ordered"
+      ],
+      "tests": 34
+    }
+  },
+  "recovered_files": {
+    "written": [
+      "test_nanolize_recovered_microbenchmarks.py",
+      "tests/test_nanolize_recovered_test_bidict_1.py",
+      "tests/test_nanolize_recovered_test_bidict_2.py",
+      "tests/test_nanolize_recovered_test_bidict_3.py",
+      "tests/test_nanolize_recovered_test_bidict_4.py"
+    ],
+    "changed": [],
+    "unchanged": [],
+    "commit": [
+      "test_nanolize_recovered_microbenchmarks.py",
+      "tests/test_nanolize_recovered_test_bidict_1.py",
+      "tests/test_nanolize_recovered_test_bidict_2.py",
+      "tests/test_nanolize_recovered_test_bidict_3.py",
+      "tests/test_nanolize_recovered_test_bidict_4.py"
+    ],
+    "stale": [],
+    "commit_identity": "nanolize",
+    "commit_author": "nanolize",
+    "commit_committer": "nanolize",
+    "branch": "nanolize-input",
+    "discard": "git reset -q -- test_nanolize_recovered_microbenchmarks.py tests/test_nanolize_recovered_test_bidict_1.py tests/test_nanolize_recovered_test_bidict_2.py tests/test_nanolize_recovered_test_bidict_3.py tests/test_nanolize_recovered_test_bidict_4.py && rm -f -- test_nanolize_recovered_microbenchmarks.py tests/test_nanolize_recovered_test_bidict_1.py tests/test_nanolize_recovered_test_bidict_2.py tests/test_nanolize_recovered_test_bidict_3.py tests/test_nanolize_recovered_test_bidict_4.py"
+  },
+  "checks_kept_with_names_stated": {},
+  "checks_not_inspected": [
+    "callgrind-command-help",
+    "comparison-command-help"
+  ],
+  "checks_recorded_as_contracts": [],
+  "unreadable_test_files": 0,
+  "test_side_names_not_followed": [
+    "tests/bidict_test_fixtures.py: KT",
+    "tests/bidict_test_fixtures.py: VT",
+    "tests/bidict_test_fixtures.py: bomb"
+  ],
+  "external_capabilities_without_check": [],
+  "internal_capabilities_not_reached": [
+    "benchmarks"
+  ],
+  "modules_read": 16,
+  "unreadable_modules": [],
+  "unresolved_exports": [],
+  "dropped_entries": 0,
+  "truncated": {},
+  "carried": {
+    "files": [],
+    "tokens": 0,
+    "share_percent": 0
+  },
+  "carry_candidates": [],
+  "carry_candidate_shares": {},
+  "limitations": [
+    "Static and Python only: nothing of the project ran. Review each capability's entries.",
+    "Settings, registered names, file formats and messages users rely on are not found by reading names: add them to the capability's interface in plain words.",
+    "A capability left without a check gets behavior tests from the test design when a job freezes.",
+    "A check listed under checks_not_inspected, and a kept check that reaches internal names through an object a fixture hands it or through a helper outside the test files, still holds the rewrite to those names: review them. Private names are looked for in a check's own test files, the conftest.py above them and the test modules they import, by file. A check that is left out is taken apart by test function (checks_split) unless --no-recover was given: the tests that use the contract alone are written into a new test file beside the original one and run by a contract check of their own (checks_recovered). Commit the written files before submitting a job (recovered_files). The rest is recorded in the manifest (original_checks, each test with its disposition and the reason) and is not in the acceptance until a test written another way stands for it.",
+    "A recovered test is found by reading: what it needs of its file is taken by name, a test defined by an assignment or made when the file runs is not seen, and nothing says here that a written file passes on the original. A job measures that like any check's.",
+    "A name stated for a kept check (checks_kept_with_names_stated) tells the author to keep the name, not what the check does with it: review those entries.",
+    "Python files that are data and nothing else (literals assigned to names: no import, function, class or call) and at least 90% literal data are in the manifest's carry list (carried) unless --no-carry was given: the verifier puts them into every candidate unchanged, no author writes them and they count on neither side of the size comparison. A data table below that share, or with code beside its data, is only listed (carry_candidates, with its share under carry_candidate_shares): carry it when its data is a table users rely on, knowing that its code is then carried as it stands too and that no author sees or replaces it."
+  ],
+  "status": "written"
+}
