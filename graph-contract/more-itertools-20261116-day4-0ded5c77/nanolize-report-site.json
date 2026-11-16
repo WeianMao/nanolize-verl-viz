@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "operation": "report_site",
+  "public_safe": true,
+  "report_id": "nrs_006e225cc5c4b31ebf8db74decb86368a5a14550102a6f2590fc53c614b46a03",
+  "files": [
+    {
+      "path": "audit-summary.json",
+      "sha256": "320b468e64cfc8e5366dd94cb0813b8c45f1fb1439dc7b5d9f82697e39d85b91"
+    },
+    {
+      "path": "data.json",
+      "sha256": "2b9dfba8d73d615ae7654e5cae1291f5b6622222b5bf514d5e1322780b8ddd93"
+    },
+    {
+      "path": "evidence.json",
+      "sha256": "35a771a1e3e522e6737c8d53f93aa6fbe8175ca9025e9da31cc77691b9fc3028"
+    },
+    {
+      "path": "index.html",
+      "sha256": "d9269a7e7fe9c658efe6f2f6ec7679aa3f9244fbbfba5a4d55e5b75573b27802"
+    },
+    {
+      "path": "metrics.csv",
+      "sha256": "37ab5b4ed4e12591e122afc2cffcbbfcfbd1339f56b7b80aca98a3da52e28445"
+    }
+  ],
+  "supplement": "Chinese audit summary prepared from saved run evidence"
+}

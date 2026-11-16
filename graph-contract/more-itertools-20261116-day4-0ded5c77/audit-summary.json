@@ -1,0 +1,280 @@
+{
+  "finished": true,
+  "completed_at": "2026-11-16 06:18:22 UTC（正式交付）",
+  "title": "more-itertools 全功能转换：冻结清单内正式检查通过",
+  "outcome": "固定提交已克隆，nanolize 正式任务 succeeded。冻结清单内的 5/5 检查通过；补充测试单独列示，正式验收结果不表示完全等价。",
+  "headline_metrics": [
+    [
+      "总量 / 去文档后保留",
+      "42.93% / 89.42%"
+    ],
+    [
+      "正式 / 补充测试",
+      "5/5 检查组、2/2 安装；docstring 163/164"
+    ],
+    [
+      "测试设计 / 动态验证缺口",
+      "补测 0 节点；17 叶节点未做独立 knockout"
+    ],
+    [
+      "相同行 / 防默写退回",
+      "常规 21.5%；防默写 27.00%；退回 0 文件"
+    ],
+    [
+      "后台用量 / 实际金额",
+      "15,679,874 token；美元账单不可得"
+    ],
+    [
+      "任务 / 流程耗时",
+      "1:03:56 / 1:14:23"
+    ]
+  ],
+  "metrics": [
+    [
+      "原版 / 候选提交",
+      "ceafee8ce96f4bc1eb74c528bc247c91d648a0bb / d06dbb8311e3c287733a1b7b6b16ad552e29fe15"
+    ],
+    [
+      "任务 / 设置",
+      "0ded5c77c8e34dd191c8dbd1db029c6d；unattended=on，scope=all，gpt-6-astra / xhigh；tasks=off（默认）"
+    ],
+    [
+      "正式运行结果",
+      "succeeded；candidate-1；冻结清单内的 5/5 检查通过，独立安装 2/2 通过"
+    ],
+    [
+      "原始转换：节点 / 接口",
+      "external 2，internal 16，interface_entries 490"
+    ],
+    [
+      "审阅后提交：节点 / 接口",
+      "external 17，internal 1，interface_entries 493；18/18 节点全选，0 排除，176 公开导出"
+    ],
+    [
+      "转换：检查",
+      "保留 5 组；丢弃 0；拆分 0；恢复 0；未静态检查 2 组（typing-original、docs-html，后续均执行通过）"
+    ],
+    [
+      "转换：覆盖与读取",
+      "外部节点无检查 0；内部节点未触达 0；未解析导出 0；丢弃接口 0；读取 Python 模块 4；不可读模块/测试文件 0"
+    ],
+    [
+      "转换：原样携带与恢复文件",
+      "携带 0 文件 / 0 token / 0%；候选携带文件 0；恢复测试文件 0，无恢复测试提交；knowledge_library_removed=false"
+    ],
+    [
+      "总 token 体积",
+      "75,955 → 32,610；保留 42.93%，减少 57.07%（43,345 token）；达到默认 50% 建议目标"
+    ],
+    [
+      "源码 / 配置 token",
+      "源码 72,854 → 27,308；配置 3,101 → 5,302"
+    ],
+    [
+      "源文件行数",
+      "8,843 → 3,157；保留 35.70%；源码文件两侧均 8 个"
+    ],
+    [
+      "去 Python 注释和 docstring 后",
+      "36,330 → 32,486；保留 89.42%，减少 10.58%"
+    ],
+    [
+      "Python 注释 / docstring",
+      "注释 4,613 → 124 token；docstring 35,012 → 0 token"
+    ],
+    [
+      "公开定义文档覆盖",
+      "176/189（93.1%）→ 0/189（0%）；计量包含类和方法，分母不同于 176 公开导出"
+    ],
+    [
+      "与原版相同行比例",
+      "常规同路径、按行长加权指标 21.5%；防默写可比较语句行 458/1,696 = 27.00%（报告整数 27%）"
+    ],
+    [
+      "防默写退回记录",
+      "0 个文件、0 次退回；auto 未超过整体 40% 激活线；side_effect 8/11（约73%）、time_limited.__next__ 5/8（约62%）超过函数参考线但不会单独激活 auto"
+    ],
+    [
+      "测试设计",
+      "新增测试节点 0（design_leaf_tests=not_run）；有效检查覆盖 17/17 叶节点，缺有效检查 0；动态 knockout 未验证 17"
+    ],
+    [
+      "测试事实",
+      "接受 778 条；历史驳回纠正 2 条；未覆盖测试 0"
+    ],
+    [
+      "正式用例执行",
+      "pytest 771/771（626 + 145），另 21,203 子测试通过；输出比较、mypy、Sphinx 通过；未运行检查组 0"
+    ],
+    [
+      "补充冻结 docstring 重放",
+      "原版 164/164；候选 163/164；714 条执行示例中 713 通过、1 失败；两侧均有 14 条显式 SKIP；独立补充指标，不在正式冻结清单的 5 组检查内"
+    ],
+    [
+      "图中的证据归属",
+      "18 个节点：直接检查证据 2，相关检查证据 16；不把关联通过当独立节点证据"
+    ],
+    [
+      "修复 / 作者调用",
+      "4 个初始作者调用，保存 1 个候选；功能修复 0，优化 0，拒绝 0；source_reference 未触发"
+    ],
+    [
+      "后台模型用量",
+      "输入 15,317,040（其中缓存 13,395,840）；输出 362,834；合计 15,679,874 token"
+    ],
+    [
+      "费用口径",
+      "美元实际账单不可得。上述为成功作业后台用量，不含主会话；另记已观察辅助调用 13,566 token。"
+    ],
+    [
+      "成功任务耗时",
+      "05:14:25.503 → 06:18:21.825 UTC，共 1 小时 3 分 56 秒"
+    ],
+    [
+      "流程耗时",
+      "从进度页开始到正式交付：05:03:59 → 06:18:21.825 UTC，共 1 小时 14 分 23 秒；不含交付后审计。"
+    ],
+    [
+      "阶段耗时",
+      "测试事实约 21 分 27 秒；4 次作者工作合计约 33 分 40 秒；完整行为比较约 90 秒、安装约 21 秒"
+    ],
+    [
+      "开发任务成本评估",
+      "tasks 默认 off，未运行任务设计/理解/修改成本对比；与叶节点补测是不同功能"
+    ]
+  ],
+  "scope_note": "全选 18 个功能节点（17 个叶节点），0 个排除。保留下面 nanolize 原生交互图及冻结检查结果；补充审计不修改历史证据。完整数字、费用口径和问题分类见图后。",
+  "issues": [
+    {
+      "id": "I10",
+      "classification": "已确认 nanolize bug",
+      "title": "内置 controller runner 丢失模型审计元数据并误标来源",
+      "summary": "实际 argv 固定 gpt-6-astra/xhigh，settings 却记为 null / unresolved，内置只读命令还被误标为 owner_adapter；controller._runner 构造 argv 后未把解析出的 model/reasoning_effort 传入 normalize_runner_config，来源识别又依赖与默认命令完全相等。应修复元数据传递和内置 runner 来源识别，位置为 src/nanolize/strategies/controller.py:626 与 src/nanolize/effort_runner.py:121、605–611。"
+    },
+    {
+      "id": "I05",
+      "classification": "静态映射局限",
+      "title": "共享文件接口集中于首个节点",
+      "summary": "多个功能节点共享文件时，静态转换按文件选唯一 owner，同深度优先靠前节点；按公开 API 分类人工重分配后，最终为 17 external / 1 internal、493 条接口，未丢弃接口。可提示归属歧义并支持符号级归属，位置为 src/nanolize/graph_contract.py:1283–1286。"
+    },
+    {
+      "id": "I07",
+      "classification": "正常分组现象",
+      "title": "同文件出现多个事实目录",
+      "summary": "同文件的多个事实目录由 check 和选中 test_nodes 的分组规则产生，目录重复不等于用例重复；最终合并为 5 组检查，仍运行两份完整 pytest 测试文件。目录数或分组变化不能直接推断实际 token 节省。"
+    },
+    {
+      "id": "I11",
+      "classification": "正常纠错机制",
+      "title": "两条测试事实被复核驳回",
+      "summary": "zip_broadcast 迭代次数和 reshape 异常类型被过度概括的两条测试事实已由内置第二轮复核纠正。最终接受 778 条事实，历史驳回纠正 2 条，未覆盖测试 0。"
+    },
+    {
+      "id": "I12",
+      "classification": "验证方法局限",
+      "title": "17 个叶节点无法独立 knockout",
+      "summary": "共享文件或非函数节点缺少独占可破坏源码，流程将这类不可评估情况作为可接受检查，记录有效检查覆盖 17、缺失 0，但 17 个叶节点均无独立 knockout 动态证据。可提前提示这一方法边界，并支持符号级 knockout 或替代证据；strict 只阻塞 missing，不能自动补出动态证据。"
+    },
+    {
+      "id": "I15",
+      "classification": "默认文档政策 / 计量现象",
+      "title": "体积减少主要来自 Python 文档",
+      "summary": "默认 minimal_explanation 政策使公开定义文档覆盖从 176/189 降到 0/189，Python docstring token 从 35,012 降到 0；Sphinx 构建通过不能代表文档内容保留，去注释/docstring 的体积仅减少 10.58%。可增加保留公共 API 文档内容的明确选项和独立验收，并列展示总量、去文档口径及文档覆盖率。"
+    }
+  ],
+  "limitations": [
+    "计量器为 tiktoken 0.12.0 / cl100k_base，按各文件独立求和；体积范围为源代码与配置，未把 Git、环境、日志、原样测试等算入。全选范围的原版分母与全库分母均为 75,955，范围裁剪节省为 0。",
+    "去 Python 注释和 docstring 后的 36,330 → 32,486 token、保留 89.42%，是总 token 减去注释、docstring 分项的残差口径，不是剥离文本后重新 tokenize 的 composition.code_tokens；不能把总减少 57.07% 全称为实现简化。",
+    "21.5% 是同路径文件的规范化相同行按行长加权；27.00% 是防默写语句行口径，剔除签名、导入、注释、docstring、短行和参数原名存储等。两者不是原始物理文本行的完全相同比率。",
+    "默认 auto 只有整体超过 40% 才启用退回机制。单函数参考阈值 60%、最少 8 条可比较行，每文件最多退回 1 次；本次未激活，不能把 0 次退回解读为没有相同行。",
+    "冻结验收覆盖 771 个 pytest 用例；checks_left_out=0 仅针对提交的清单。补充 docstring 重放另行列示，不计入正式冻结清单的 5 组检查。",
+    "17 个叶节点有检查映射、0 个缺有效检查；17 个节点均缺独立 knockout 动态证据。只测试 Python 3.12.1，未跑完整 Python 版本矩阵。",
+    "源码独立作者不含原版源代码、测试和 Git 历史；本次没有因失败检查调用原版源码参考。",
+    "后台用量取每个独立 stdout.ndjson 的 turn.completed 与 author-usage.jsonl，各调用只计一次。缓存输入属于输入，不再叠加；输出中的推理 token 也不叠加。主会话 token/费用不在此记录中。",
+    "成功任务有 5 次控制器、67 次事实代理、4 次作者调用，均有 usage。另记已观察辅助调用输入 13,561、缓存 11,776、输出 5，共 13,566 token。",
+    "实际美元账单不可得，不使用猜测的 API 价格换算。后台与辅助调用已观察合计 15,693,440 token，仍不含主会话及未知调用用量。"
+  ],
+  "evidence": {
+    "original_commit": "ceafee8ce96f4bc1eb74c528bc247c91d648a0bb",
+    "candidate_commit": "d06dbb8311e3c287733a1b7b6b16ad552e29fe15",
+    "nanolize_version": "0.8.0",
+    "job_id": "0ded5c77c8e34dd191c8dbd1db029c6d",
+    "report_id": "nrs_006e225cc5c4b31ebf8db74decb86368a5a14550102a6f2590fc53c614b46a03",
+    "runtime": "Python 3.12.1"
+  },
+  "usage_by_role": {
+    "0ded5c77c8e34dd191c8dbd1db029c6d/controller": {
+      "streams": 5,
+      "streams_without_usage": 0,
+      "failed_streams": 0,
+      "input_tokens": 145534,
+      "cached_input_tokens": 61440,
+      "output_tokens": 2964,
+      "reasoning_output_tokens": 1816
+    },
+    "0ded5c77c8e34dd191c8dbd1db029c6d/facts": {
+      "streams": 67,
+      "streams_without_usage": 0,
+      "failed_streams": 0,
+      "input_tokens": 8136471,
+      "cached_input_tokens": 6720640,
+      "output_tokens": 280344,
+      "reasoning_output_tokens": 122794
+    },
+    "0ded5c77c8e34dd191c8dbd1db029c6d/author": {
+      "streams": 4,
+      "streams_without_usage": 0,
+      "failed_streams": 0,
+      "input_tokens": 7035035,
+      "cached_input_tokens": 6613760,
+      "output_tokens": 79526,
+      "reasoning_output_tokens": 26617
+    }
+  },
+  "overlap": {
+    "percent": 27,
+    "compared_lines": 1696,
+    "documentation_percent": 1,
+    "functions": 2,
+    "listed_functions": [
+      {
+        "path": "more_itertools/more.py",
+        "function": "side_effect",
+        "lines": 11,
+        "percent": 73
+      },
+      {
+        "path": "more_itertools/more.py",
+        "function": "time_limited.__next__",
+        "lines": 8,
+        "percent": 62
+      }
+    ],
+    "identical_lines": 458,
+    "exact_percent": 27.004716981132077,
+    "mode": "auto",
+    "active": false,
+    "returned_files": 0
+  },
+  "settings": "nanolize 分支 claude/revert-author-policy e161c85（插件 0.8.0）；仓库原版提交 ceafee8ce96f4bc1eb74c528bc247c91d648a0bb；$nanolize more-itertools unattended=on scope=all --cn；Codex gpt-6-astra xhigh。",
+  "issue_sections": {
+    "bugs": {
+      "title": "需要对 nanolize 改动的 bugs",
+      "note": "本页问题列表只保留经核对确定由 nanolize 自身引起的 1 项。",
+      "ids": [
+        "I10"
+      ]
+    },
+    "phenomena": {
+      "title": "遇到的现象",
+      "note": "本节只列由 nanolize 流程本身产生的现象；我们运行环境造成的情况未列入。",
+      "ids": [
+        "I05",
+        "I07",
+        "I11",
+        "I12",
+        "I15"
+      ]
+    }
+  }
+}

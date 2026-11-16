@@ -1,0 +1,5346 @@
+{
+  "schema_version": 1,
+  "operation": "nanolize_report",
+  "binding": {
+    "original_git_head": "ceafee8ce96f4bc1eb74c528bc247c91d648a0bb",
+    "candidate_git_head": "d06dbb8311e3c287733a1b7b6b16ad552e29fe15",
+    "candidate_source_sha256": "4d5edca74bb6fea8ba0dd08a27ec3e94e77d7fbe5a941783b836dd590410e0a8",
+    "candidate_contract_sha256": "8a3c2a6f92e7f6b62d2322c7d9894650a35fca9bd977be847319268a80ae505c",
+    "plan_sha256": "81f0cd9c2d94252f62ccb473db3e120c3db25217581a5bcb4b01eef121d14bdd",
+    "verification_sha256": "2647b03e0e97849e8f8e6a7cb50ce28b0dc6a86942148a4d02b37d9eeed2c5e0",
+    "candidate_code_size_sha256": "5a2a8ce5a1426bd6cf087991bb1c57e6d1b752d3f714b4a634b6a6b2beec1057"
+  },
+  "summary": {
+    "before": 8843,
+    "after": 3157,
+    "reduction_percent": 64.299,
+    "capabilities": 18,
+    "count_unit": "capabilities",
+    "status_counts": {
+      "verified": 2,
+      "failed": 0,
+      "partial": 0,
+      "unknown": 16,
+      "retired": 0
+    },
+    "evidence_counts": {
+      "failed": 0,
+      "direct_passed": 2,
+      "direct_partial": 0,
+      "related_passed": 16,
+      "related_only": 0,
+      "unverified": 0,
+      "retired": 0
+    },
+    "aggregate_status_counts": {
+      "verified": 18,
+      "failed": 0,
+      "partial": 0,
+      "unknown": 0,
+      "retired": 0
+    },
+    "verification_status": "checks_passed",
+    "verification_tests": {
+      "original_total": 2,
+      "retained": 5,
+      "retired": 0,
+      "needs_adaptation": 0,
+      "adapted": 0,
+      "contract": 3,
+      "passed": 5,
+      "failed": 0,
+      "fixed_baseline_failure": 0,
+      "not_run": 0
+    },
+    "unattributed_checks": [
+      {
+        "name": "more-suite",
+        "status": "passed",
+        "role": "original",
+        "scope": "retained",
+        "capabilities": [
+          "augmenting",
+          "combinatorics",
+          "combining",
+          "concurrency",
+          "grouping",
+          "integer-math",
+          "lookahead-and-lookback",
+          "math",
+          "others",
+          "selecting",
+          "statistics",
+          "summarizing",
+          "windowing",
+          "wrapping"
+        ],
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "target_capabilities": [],
+        "attribution": "unattributed",
+        "facts_given": 622,
+        "baseline_cases": {
+          "passed": 626,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "executed": 626
+        },
+        "candidate_cases": {
+          "passed": 626,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "executed": 626
+        }
+      },
+      {
+        "name": "recipes-suite",
+        "status": "passed",
+        "role": "original",
+        "scope": "retained",
+        "capabilities": [
+          "augmenting",
+          "combinatorics",
+          "combining",
+          "grouping",
+          "integer-math",
+          "math",
+          "others",
+          "selecting",
+          "statistics",
+          "summarizing",
+          "windowing",
+          "wrapping"
+        ],
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "target_capabilities": [],
+        "attribution": "unattributed",
+        "facts_given": 156,
+        "baseline_cases": {
+          "passed": 145,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "executed": 145
+        },
+        "candidate_cases": {
+          "passed": 145,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "executed": 145
+        }
+      },
+      {
+        "name": "public-output",
+        "status": "passed",
+        "role": "contract",
+        "scope": "retained",
+        "capabilities": [
+          "package",
+          "grouping",
+          "windowing",
+          "selecting",
+          "others"
+        ],
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "target_capabilities": [],
+        "attribution": "unattributed"
+      }
+    ],
+    "leaf_coverage": {
+      "status": "ready",
+      "strict": false,
+      "valid": [
+        "augmenting",
+        "combinatorics",
+        "combining",
+        "concurrency",
+        "documentation",
+        "grouping",
+        "integer-math",
+        "lookahead-and-lookback",
+        "math",
+        "others",
+        "package",
+        "selecting",
+        "statistics",
+        "summarizing",
+        "typing",
+        "windowing",
+        "wrapping"
+      ],
+      "missing": [],
+      "exempted": [],
+      "why_missing": {}
+    },
+    "facts_given_checks": 2,
+    "unmapped_candidate_files": [],
+    "ignored_mapping_files": [
+      "MANIFEST.in",
+      "docs/api.rst",
+      "docs/index.rst",
+      "docs/more.rst",
+      "docs/recipes.rst",
+      "more_itertools/py.typed",
+      "pyproject.toml"
+    ],
+    "code_size": {
+      "metric": "tokens",
+      "tokenizer": {
+        "library": "tiktoken",
+        "version": "0.12.0",
+        "encoding": "cl100k_base",
+        "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+        "text_policy": "raw_decoded_text_per_file",
+        "classification": "source_and_configuration_v2",
+        "special_tokens": "ordinary_text",
+        "file_boundaries": "independent_sum",
+        "decoding": "python_encoding_cookie_else_utf8_strict",
+        "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets"
+      },
+      "before": 75955,
+      "after": 32610,
+      "reduction_percent": 57.067,
+      "source_before": 72854,
+      "source_after": 27308,
+      "configuration_before": 3101,
+      "configuration_after": 5302,
+      "observed_before": 75955,
+      "observed_after": 32610,
+      "complete": true,
+      "target_tokens": 37977,
+      "budget_status": "met",
+      "target_policy": "advisory",
+      "code_only": {
+        "before": 36330,
+        "after": 32486
+      },
+      "documented_percent": {
+        "original": 93.1,
+        "delivered": 0.0
+      }
+    },
+    "size_attribution": {
+      "metric": "tokens",
+      "tokenizer": {
+        "classification": "source_and_configuration_v2",
+        "decoding": "python_encoding_cookie_else_utf8_strict",
+        "encoding": "cl100k_base",
+        "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+        "file_boundaries": "independent_sum",
+        "library": "tiktoken",
+        "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+        "special_tokens": "ordinary_text",
+        "text_policy": "raw_decoded_text_per_file",
+        "version": "0.12.0"
+      },
+      "complete": true,
+      "original_total": 75955,
+      "selected_original_estimate": 75955,
+      "candidate_total": 32610,
+      "overall_reduction": {
+        "tokens": 43345,
+        "percent": 57.067
+      },
+      "scope_reduction_estimate": {
+        "tokens": 0,
+        "percent": 0.0
+      },
+      "rewrite_reduction_estimate": {
+        "tokens": 43345,
+        "percent": 57.067
+      },
+      "shared_scope_files": [],
+      "method": "unique_mapped_source_plus_all_original_configuration",
+      "estimate_only": false,
+      "limitations": [
+        "Scope and rewrite attribution are mapped-file estimates, not exact semantic savings. Shared files count once and retained/removed code within them cannot be separated.",
+        "All original configuration is charged to the retained footprint. Configuration changes appear in the rewrite estimate and may include scope-related savings.",
+        "Overall reduction uses the full original as denominator; rewrite reduction uses the selected original estimate. Their percentages must not be added.",
+        "Negative reductions indicate growth; incomplete measurements do not establish savings."
+      ]
+    }
+  },
+  "nodes": [
+    {
+      "id": "library",
+      "parent": null,
+      "name": "More Itertools 全功能库",
+      "kind": "capability",
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 8843,
+        "after": 3157,
+        "reduction_percent": 64.299,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "docs/_static/theme_overrides.css",
+            "lines": 14
+          },
+          {
+            "path": "docs/conf.py",
+            "lines": 286
+          },
+          {
+            "path": "more_itertools/__init__.py",
+            "lines": 6
+          },
+          {
+            "path": "more_itertools/__init__.pyi",
+            "lines": 2
+          },
+          {
+            "path": "more_itertools/more.py",
+            "lines": 5664
+          },
+          {
+            "path": "more_itertools/more.pyi",
+            "lines": 1022
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 1617
+          },
+          {
+            "path": "more_itertools/recipes.pyi",
+            "lines": 232
+          }
+        ],
+        "after_files": [
+          {
+            "path": "docs/_static/custom.css",
+            "lines": 3
+          },
+          {
+            "path": "docs/conf.py",
+            "lines": 15
+          },
+          {
+            "path": "more_itertools/__init__.py",
+            "lines": 8
+          },
+          {
+            "path": "more_itertools/__init__.pyi",
+            "lines": 4
+          },
+          {
+            "path": "more_itertools/more.py",
+            "lines": 1874
+          },
+          {
+            "path": "more_itertools/more.pyi",
+            "lines": 500
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 588
+          },
+          {
+            "path": "more_itertools/recipes.pyi",
+            "lines": 165
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "docs-html",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "documentation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "documentation"
+            ],
+            "attribution": "single_capability"
+          },
+          {
+            "name": "more-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "concurrency",
+              "grouping",
+              "integer-math",
+              "lookahead-and-lookback",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 622,
+            "baseline_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            },
+            "candidate_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            }
+          },
+          {
+            "name": "public-output",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "package",
+              "grouping",
+              "windowing",
+              "selecting",
+              "others"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed"
+          },
+          {
+            "name": "recipes-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "grouping",
+              "integer-math",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 156,
+            "baseline_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            },
+            "candidate_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            }
+          },
+          {
+            "name": "typing-original",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "typing"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "typing"
+            ],
+            "attribution": "single_capability"
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "docs-html",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "documentation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "documentation"
+              ],
+              "attribution": "single_capability"
+            },
+            {
+              "name": "more-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "concurrency",
+                "grouping",
+                "integer-math",
+                "lookahead-and-lookback",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 622,
+              "baseline_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              },
+              "candidate_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              }
+            },
+            {
+              "name": "public-output",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "package",
+                "grouping",
+                "windowing",
+                "selecting",
+                "others"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed"
+            },
+            {
+              "name": "recipes-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "grouping",
+                "integer-math",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 156,
+              "baseline_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              },
+              "candidate_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              }
+            },
+            {
+              "name": "typing-original",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "typing"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "typing"
+              ],
+              "attribution": "single_capability"
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "related_passed",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 5,
+            "passed": 5,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 72854,
+        "after": 27308,
+        "reduction_percent": 62.517,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "docs/_static/theme_overrides.css",
+            "tokens": 97
+          },
+          {
+            "path": "docs/conf.py",
+            "tokens": 2126
+          },
+          {
+            "path": "more_itertools/__init__.py",
+            "tokens": 41
+          },
+          {
+            "path": "more_itertools/__init__.pyi",
+            "tokens": 10
+          },
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 47001
+          },
+          {
+            "path": "more_itertools/more.pyi",
+            "tokens": 8563
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 12994
+          },
+          {
+            "path": "more_itertools/recipes.pyi",
+            "tokens": 2022
+          }
+        ],
+        "after_files": [
+          {
+            "path": "docs/_static/custom.css",
+            "tokens": 37
+          },
+          {
+            "path": "docs/conf.py",
+            "tokens": 111
+          },
+          {
+            "path": "more_itertools/__init__.py",
+            "tokens": 66
+          },
+          {
+            "path": "more_itertools/__init__.pyi",
+            "tokens": 15
+          },
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 13273
+          },
+          {
+            "path": "more_itertools/more.pyi",
+            "tokens": 7357
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 4316
+          },
+          {
+            "path": "more_itertools/recipes.pyi",
+            "tokens": 2133
+          }
+        ]
+      }
+    },
+    {
+      "id": "package",
+      "parent": "library",
+      "name": "安装与公开导入",
+      "kind": "capability",
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 6,
+        "after": 2470,
+        "reduction_percent": -41066.667,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "more_itertools/__init__.py",
+            "lines": 6
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/__init__.py",
+            "lines": 8
+          },
+          {
+            "path": "more_itertools/more.py",
+            "lines": 1874
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 588
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "public-output",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "package",
+              "grouping",
+              "windowing",
+              "selecting",
+              "others"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed"
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "public-output",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "package",
+                "grouping",
+                "windowing",
+                "selecting",
+                "others"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed"
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "public-output",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "related_passed",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 41,
+        "after": 17655,
+        "reduction_percent": -42960.976,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "more_itertools/__init__.py",
+            "tokens": 41
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/__init__.py",
+            "tokens": 66
+          },
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 13273
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 4316
+          }
+        ]
+      }
+    },
+    {
+      "id": "grouping",
+      "parent": "library",
+      "name": "分组与切分",
+      "kind": "capability",
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 7281,
+        "after": 2462,
+        "reduction_percent": 66.186,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 5664
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 1617
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 1874
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 588
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "more-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "concurrency",
+              "grouping",
+              "integer-math",
+              "lookahead-and-lookback",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 622,
+            "baseline_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            },
+            "candidate_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            }
+          },
+          {
+            "name": "public-output",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "package",
+              "grouping",
+              "windowing",
+              "selecting",
+              "others"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed"
+          },
+          {
+            "name": "recipes-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "grouping",
+              "integer-math",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 156,
+            "baseline_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            },
+            "candidate_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "more-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "concurrency",
+                "grouping",
+                "integer-math",
+                "lookahead-and-lookback",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 622,
+              "baseline_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              },
+              "candidate_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              }
+            },
+            {
+              "name": "public-output",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "package",
+                "grouping",
+                "windowing",
+                "selecting",
+                "others"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed"
+            },
+            {
+              "name": "recipes-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "grouping",
+                "integer-math",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 156,
+              "baseline_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              },
+              "candidate_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "more-suite",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "recipes-suite",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "public-output",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "related_passed",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 3,
+            "passed": 3,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 59995,
+        "after": 17589,
+        "reduction_percent": 70.683,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 47001
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 12994
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 13273
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 4316
+          }
+        ]
+      }
+    },
+    {
+      "id": "lookahead-and-lookback",
+      "parent": "library",
+      "name": "前瞻与回看",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 5664,
+        "after": 1874,
+        "reduction_percent": 66.914,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 5664
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 1874
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "more-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "concurrency",
+              "grouping",
+              "integer-math",
+              "lookahead-and-lookback",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 622,
+            "baseline_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            },
+            "candidate_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "more-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "concurrency",
+                "grouping",
+                "integer-math",
+                "lookahead-and-lookback",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 622,
+              "baseline_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              },
+              "candidate_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "more-suite",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "related_passed",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 47001,
+        "after": 13273,
+        "reduction_percent": 71.76,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 47001
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 13273
+          }
+        ]
+      }
+    },
+    {
+      "id": "windowing",
+      "parent": "library",
+      "name": "窗口与子序列",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 7281,
+        "after": 2462,
+        "reduction_percent": 66.186,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 5664
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 1617
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 1874
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 588
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "more-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "concurrency",
+              "grouping",
+              "integer-math",
+              "lookahead-and-lookback",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 622,
+            "baseline_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            },
+            "candidate_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            }
+          },
+          {
+            "name": "public-output",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "package",
+              "grouping",
+              "windowing",
+              "selecting",
+              "others"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed"
+          },
+          {
+            "name": "recipes-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "grouping",
+              "integer-math",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 156,
+            "baseline_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            },
+            "candidate_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "more-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "concurrency",
+                "grouping",
+                "integer-math",
+                "lookahead-and-lookback",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 622,
+              "baseline_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              },
+              "candidate_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              }
+            },
+            {
+              "name": "public-output",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "package",
+                "grouping",
+                "windowing",
+                "selecting",
+                "others"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed"
+            },
+            {
+              "name": "recipes-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "grouping",
+                "integer-math",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 156,
+              "baseline_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              },
+              "candidate_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "more-suite",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "recipes-suite",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "public-output",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "related_passed",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 3,
+            "passed": 3,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 59995,
+        "after": 17589,
+        "reduction_percent": 70.683,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 47001
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 12994
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 13273
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 4316
+          }
+        ]
+      }
+    },
+    {
+      "id": "augmenting",
+      "parent": "library",
+      "name": "扩展和标记迭代流",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 7281,
+        "after": 2462,
+        "reduction_percent": 66.186,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 5664
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 1617
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 1874
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 588
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "more-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "concurrency",
+              "grouping",
+              "integer-math",
+              "lookahead-and-lookback",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 622,
+            "baseline_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            },
+            "candidate_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            }
+          },
+          {
+            "name": "recipes-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "grouping",
+              "integer-math",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 156,
+            "baseline_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            },
+            "candidate_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "more-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "concurrency",
+                "grouping",
+                "integer-math",
+                "lookahead-and-lookback",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 622,
+              "baseline_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              },
+              "candidate_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              }
+            },
+            {
+              "name": "recipes-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "grouping",
+                "integer-math",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 156,
+              "baseline_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              },
+              "candidate_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "more-suite",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "recipes-suite",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "related_passed",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 2,
+            "passed": 2,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 59995,
+        "after": 17589,
+        "reduction_percent": 70.683,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 47001
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 12994
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 13273
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 4316
+          }
+        ]
+      }
+    },
+    {
+      "id": "combining",
+      "parent": "library",
+      "name": "合并多个迭代流",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 7281,
+        "after": 2462,
+        "reduction_percent": 66.186,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 5664
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 1617
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 1874
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 588
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "more-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "concurrency",
+              "grouping",
+              "integer-math",
+              "lookahead-and-lookback",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 622,
+            "baseline_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            },
+            "candidate_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            }
+          },
+          {
+            "name": "recipes-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "grouping",
+              "integer-math",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 156,
+            "baseline_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            },
+            "candidate_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "more-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "concurrency",
+                "grouping",
+                "integer-math",
+                "lookahead-and-lookback",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 622,
+              "baseline_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              },
+              "candidate_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              }
+            },
+            {
+              "name": "recipes-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "grouping",
+                "integer-math",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 156,
+              "baseline_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              },
+              "candidate_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "more-suite",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "recipes-suite",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "related_passed",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 2,
+            "passed": 2,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 59995,
+        "after": 17589,
+        "reduction_percent": 70.683,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 47001
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 12994
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 13273
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 4316
+          }
+        ]
+      }
+    },
+    {
+      "id": "concurrency",
+      "parent": "library",
+      "name": "线程安全迭代",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 5664,
+        "after": 1874,
+        "reduction_percent": 66.914,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 5664
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 1874
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "more-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "concurrency",
+              "grouping",
+              "integer-math",
+              "lookahead-and-lookback",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 622,
+            "baseline_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            },
+            "candidate_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "more-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "concurrency",
+                "grouping",
+                "integer-math",
+                "lookahead-and-lookback",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 622,
+              "baseline_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              },
+              "candidate_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "more-suite",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "related_passed",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 47001,
+        "after": 13273,
+        "reduction_percent": 71.76,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 47001
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 13273
+          }
+        ]
+      }
+    },
+    {
+      "id": "summarizing",
+      "parent": "library",
+      "name": "汇总与聚合",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 7281,
+        "after": 2462,
+        "reduction_percent": 66.186,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 5664
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 1617
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 1874
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 588
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "more-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "concurrency",
+              "grouping",
+              "integer-math",
+              "lookahead-and-lookback",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 622,
+            "baseline_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            },
+            "candidate_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            }
+          },
+          {
+            "name": "recipes-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "grouping",
+              "integer-math",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 156,
+            "baseline_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            },
+            "candidate_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "more-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "concurrency",
+                "grouping",
+                "integer-math",
+                "lookahead-and-lookback",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 622,
+              "baseline_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              },
+              "candidate_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              }
+            },
+            {
+              "name": "recipes-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "grouping",
+                "integer-math",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 156,
+              "baseline_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              },
+              "candidate_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "more-suite",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "recipes-suite",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "related_passed",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 2,
+            "passed": 2,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 59995,
+        "after": 17589,
+        "reduction_percent": 70.683,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 47001
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 12994
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 13273
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 4316
+          }
+        ]
+      }
+    },
+    {
+      "id": "selecting",
+      "parent": "library",
+      "name": "选择过滤与去重",
+      "kind": "capability",
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 7281,
+        "after": 2462,
+        "reduction_percent": 66.186,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 5664
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 1617
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 1874
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 588
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "more-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "concurrency",
+              "grouping",
+              "integer-math",
+              "lookahead-and-lookback",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 622,
+            "baseline_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            },
+            "candidate_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            }
+          },
+          {
+            "name": "public-output",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "package",
+              "grouping",
+              "windowing",
+              "selecting",
+              "others"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed"
+          },
+          {
+            "name": "recipes-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "grouping",
+              "integer-math",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 156,
+            "baseline_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            },
+            "candidate_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "more-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "concurrency",
+                "grouping",
+                "integer-math",
+                "lookahead-and-lookback",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 622,
+              "baseline_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              },
+              "candidate_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              }
+            },
+            {
+              "name": "public-output",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "package",
+                "grouping",
+                "windowing",
+                "selecting",
+                "others"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed"
+            },
+            {
+              "name": "recipes-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "grouping",
+                "integer-math",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 156,
+              "baseline_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              },
+              "candidate_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "more-suite",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "recipes-suite",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "public-output",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "related_passed",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 3,
+            "passed": 3,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 59995,
+        "after": 17589,
+        "reduction_percent": 70.683,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 47001
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 12994
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 13273
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 4316
+          }
+        ]
+      }
+    },
+    {
+      "id": "combinatorics",
+      "parent": "library",
+      "name": "组合排列与抽样",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 7281,
+        "after": 2462,
+        "reduction_percent": 66.186,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 5664
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 1617
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 1874
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 588
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "more-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "concurrency",
+              "grouping",
+              "integer-math",
+              "lookahead-and-lookback",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 622,
+            "baseline_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            },
+            "candidate_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            }
+          },
+          {
+            "name": "recipes-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "grouping",
+              "integer-math",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 156,
+            "baseline_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            },
+            "candidate_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "more-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "concurrency",
+                "grouping",
+                "integer-math",
+                "lookahead-and-lookback",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 622,
+              "baseline_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              },
+              "candidate_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              }
+            },
+            {
+              "name": "recipes-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "grouping",
+                "integer-math",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 156,
+              "baseline_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              },
+              "candidate_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "more-suite",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "recipes-suite",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "related_passed",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 2,
+            "passed": 2,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 59995,
+        "after": 17589,
+        "reduction_percent": 70.683,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 47001
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 12994
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 13273
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 4316
+          }
+        ]
+      }
+    },
+    {
+      "id": "wrapping",
+      "parent": "library",
+      "name": "迭代器包装与资源管理",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 7281,
+        "after": 2462,
+        "reduction_percent": 66.186,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 5664
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 1617
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 1874
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 588
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "more-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "concurrency",
+              "grouping",
+              "integer-math",
+              "lookahead-and-lookback",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 622,
+            "baseline_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            },
+            "candidate_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            }
+          },
+          {
+            "name": "recipes-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "grouping",
+              "integer-math",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 156,
+            "baseline_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            },
+            "candidate_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "more-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "concurrency",
+                "grouping",
+                "integer-math",
+                "lookahead-and-lookback",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 622,
+              "baseline_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              },
+              "candidate_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              }
+            },
+            {
+              "name": "recipes-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "grouping",
+                "integer-math",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 156,
+              "baseline_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              },
+              "candidate_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "more-suite",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "recipes-suite",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "related_passed",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 2,
+            "passed": 2,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 59995,
+        "after": 17589,
+        "reduction_percent": 70.683,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 47001
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 12994
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 13273
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 4316
+          }
+        ]
+      }
+    },
+    {
+      "id": "math",
+      "parent": "library",
+      "name": "数值与多项式运算",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 7281,
+        "after": 2462,
+        "reduction_percent": 66.186,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 5664
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 1617
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 1874
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 588
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "more-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "concurrency",
+              "grouping",
+              "integer-math",
+              "lookahead-and-lookback",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 622,
+            "baseline_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            },
+            "candidate_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            }
+          },
+          {
+            "name": "recipes-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "grouping",
+              "integer-math",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 156,
+            "baseline_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            },
+            "candidate_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "more-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "concurrency",
+                "grouping",
+                "integer-math",
+                "lookahead-and-lookback",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 622,
+              "baseline_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              },
+              "candidate_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              }
+            },
+            {
+              "name": "recipes-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "grouping",
+                "integer-math",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 156,
+              "baseline_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              },
+              "candidate_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "more-suite",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "recipes-suite",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "related_passed",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 2,
+            "passed": 2,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 59995,
+        "after": 17589,
+        "reduction_percent": 70.683,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 47001
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 12994
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 13273
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 4316
+          }
+        ]
+      }
+    },
+    {
+      "id": "integer-math",
+      "parent": "library",
+      "name": "整数与素数运算",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 7281,
+        "after": 2462,
+        "reduction_percent": 66.186,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 5664
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 1617
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 1874
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 588
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "more-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "concurrency",
+              "grouping",
+              "integer-math",
+              "lookahead-and-lookback",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 622,
+            "baseline_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            },
+            "candidate_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            }
+          },
+          {
+            "name": "recipes-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "grouping",
+              "integer-math",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 156,
+            "baseline_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            },
+            "candidate_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "more-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "concurrency",
+                "grouping",
+                "integer-math",
+                "lookahead-and-lookback",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 622,
+              "baseline_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              },
+              "candidate_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              }
+            },
+            {
+              "name": "recipes-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "grouping",
+                "integer-math",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 156,
+              "baseline_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              },
+              "candidate_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "more-suite",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "recipes-suite",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "related_passed",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 2,
+            "passed": 2,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 59995,
+        "after": 17589,
+        "reduction_percent": 70.683,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 47001
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 12994
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 13273
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 4316
+          }
+        ]
+      }
+    },
+    {
+      "id": "statistics",
+      "parent": "library",
+      "name": "滑动统计",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 1617,
+        "after": 588,
+        "reduction_percent": 63.636,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 1617
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 588
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "more-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "concurrency",
+              "grouping",
+              "integer-math",
+              "lookahead-and-lookback",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 622,
+            "baseline_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            },
+            "candidate_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            }
+          },
+          {
+            "name": "recipes-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "grouping",
+              "integer-math",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 156,
+            "baseline_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            },
+            "candidate_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "more-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "concurrency",
+                "grouping",
+                "integer-math",
+                "lookahead-and-lookback",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 622,
+              "baseline_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              },
+              "candidate_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              }
+            },
+            {
+              "name": "recipes-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "grouping",
+                "integer-math",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 156,
+              "baseline_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              },
+              "candidate_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "more-suite",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "recipes-suite",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "related_passed",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 2,
+            "passed": 2,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 12994,
+        "after": 4316,
+        "reduction_percent": 66.785,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 12994
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 4316
+          }
+        ]
+      }
+    },
+    {
+      "id": "others",
+      "parent": "library",
+      "name": "定位转换与控制迭代",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 7281,
+        "after": 2462,
+        "reduction_percent": 66.186,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 5664
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 1617
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 1874
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 588
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "more-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "concurrency",
+              "grouping",
+              "integer-math",
+              "lookahead-and-lookback",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 622,
+            "baseline_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            },
+            "candidate_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            }
+          },
+          {
+            "name": "public-output",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "package",
+              "grouping",
+              "windowing",
+              "selecting",
+              "others"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed"
+          },
+          {
+            "name": "recipes-suite",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "augmenting",
+              "combinatorics",
+              "combining",
+              "grouping",
+              "integer-math",
+              "math",
+              "others",
+              "selecting",
+              "statistics",
+              "summarizing",
+              "windowing",
+              "wrapping"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "facts_given": 156,
+            "baseline_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            },
+            "candidate_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "more-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "concurrency",
+                "grouping",
+                "integer-math",
+                "lookahead-and-lookback",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 622,
+              "baseline_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              },
+              "candidate_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              }
+            },
+            {
+              "name": "public-output",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "package",
+                "grouping",
+                "windowing",
+                "selecting",
+                "others"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed"
+            },
+            {
+              "name": "recipes-suite",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "augmenting",
+                "combinatorics",
+                "combining",
+                "grouping",
+                "integer-math",
+                "math",
+                "others",
+                "selecting",
+                "statistics",
+                "summarizing",
+                "windowing",
+                "wrapping"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "facts_given": 156,
+              "baseline_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              },
+              "candidate_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "more-suite",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "recipes-suite",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "public-output",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "related_passed",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 3,
+            "passed": 3,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 59995,
+        "after": 17589,
+        "reduction_percent": 70.683,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 47001
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 12994
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 13273
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 4316
+          }
+        ]
+      }
+    },
+    {
+      "id": "typing",
+      "parent": "library",
+      "name": "静态类型接口",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 1256,
+        "after": 669,
+        "reduction_percent": 46.736,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "more_itertools/__init__.pyi",
+            "lines": 2
+          },
+          {
+            "path": "more_itertools/more.pyi",
+            "lines": 1022
+          },
+          {
+            "path": "more_itertools/recipes.pyi",
+            "lines": 232
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/__init__.pyi",
+            "lines": 4
+          },
+          {
+            "path": "more_itertools/more.pyi",
+            "lines": 500
+          },
+          {
+            "path": "more_itertools/recipes.pyi",
+            "lines": 165
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "typing-original",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "typing"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "typing"
+            ],
+            "attribution": "single_capability"
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "typing-original",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "typing-original",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "typing"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "typing"
+              ],
+              "attribution": "single_capability"
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "typing-original",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 10595,
+        "after": 9505,
+        "reduction_percent": 10.288,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "more_itertools/__init__.pyi",
+            "tokens": 10
+          },
+          {
+            "path": "more_itertools/more.pyi",
+            "tokens": 8563
+          },
+          {
+            "path": "more_itertools/recipes.pyi",
+            "tokens": 2022
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/__init__.pyi",
+            "tokens": 15
+          },
+          {
+            "path": "more_itertools/more.pyi",
+            "tokens": 7357
+          },
+          {
+            "path": "more_itertools/recipes.pyi",
+            "tokens": 2133
+          }
+        ]
+      }
+    },
+    {
+      "id": "documentation",
+      "parent": "library",
+      "name": "文档构建与主题",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 300,
+        "after": 18,
+        "reduction_percent": 94.0,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "docs/_static/theme_overrides.css",
+            "lines": 14
+          },
+          {
+            "path": "docs/conf.py",
+            "lines": 286
+          }
+        ],
+        "after_files": [
+          {
+            "path": "docs/_static/custom.css",
+            "lines": 3
+          },
+          {
+            "path": "docs/conf.py",
+            "lines": 15
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "docs-html",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "documentation"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "documentation"
+            ],
+            "attribution": "single_capability"
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "docs-html",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "docs-html",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "documentation"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "documentation"
+              ],
+              "attribution": "single_capability"
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "docs-html",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 2223,
+        "after": 148,
+        "reduction_percent": 93.342,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "docs/_static/theme_overrides.css",
+            "tokens": 97
+          },
+          {
+            "path": "docs/conf.py",
+            "tokens": 2126
+          }
+        ],
+        "after_files": [
+          {
+            "path": "docs/_static/custom.css",
+            "tokens": 37
+          },
+          {
+            "path": "docs/conf.py",
+            "tokens": 111
+          }
+        ]
+      }
+    }
+  ],
+  "scope": {
+    "preset": "all",
+    "foundations": [
+      "grouping",
+      "library",
+      "package",
+      "selecting"
+    ],
+    "core": [
+      "grouping",
+      "library",
+      "package",
+      "selecting"
+    ],
+    "kept": [
+      "augmenting",
+      "combinatorics",
+      "combining",
+      "concurrency",
+      "documentation",
+      "grouping",
+      "integer-math",
+      "library",
+      "lookahead-and-lookback",
+      "math",
+      "others",
+      "package",
+      "selecting",
+      "statistics",
+      "summarizing",
+      "typing",
+      "windowing",
+      "wrapping"
+    ],
+    "removed": [],
+    "reasons": {
+      "library": "foundation",
+      "package": "foundation",
+      "grouping": "foundation",
+      "lookahead-and-lookback": "selected",
+      "windowing": "selected",
+      "augmenting": "selected",
+      "combining": "selected",
+      "concurrency": "selected",
+      "summarizing": "selected",
+      "selecting": "foundation",
+      "combinatorics": "selected",
+      "wrapping": "selected",
+      "math": "selected",
+      "integer-math": "selected",
+      "statistics": "selected",
+      "others": "selected",
+      "typing": "selected",
+      "documentation": "selected"
+    }
+  },
+  "methodology": [
+    "Scope and rewrite attribution are mapped-file estimates, not exact semantic savings. Shared files count once and retained/removed code within them cannot be separated.",
+    "All original configuration is charged to the retained footprint. Configuration changes appear in the rewrite estimate and may include scope-related savings.",
+    "Overall reduction uses the full original as denominator; rewrite reduction uses the selected original estimate. Their percentages must not be added.",
+    "Negative reductions indicate growth; incomplete measurements do not establish savings.",
+    "The primary size metric counts frozen-tokenizer tokens in source and configuration, summed independently per file. These are code-size tokens, not model usage or task effort.",
+    "Module token figures cover mapped source only; global configuration cost is not assigned to modules. Informational LOC remains separate.",
+    "Incomplete token measurements show observed subtotals, never a verified reduction or successful budget.",
+    "Informational LOC counts are physical source lines from the frozen original and bound candidate inventories, excluding tests and local state.",
+    "Original capability counts include all original descendants; candidate counts include explicitly mapped own files and retained descendants. Excluded descendants do not require candidate mapping. Shared files count once within a node; node counts cannot be added together.",
+    "Candidate ownership is explicitly supplied metadata, not proof of semantic ownership. Missing mappings remain unknown, never zero or a claimed reduction.",
+    "Function steps inherit their owning capability's code scope, but validation remains unknown without direct step evidence; they are not independently measured or tested.",
+    "Local validation statuses use directly targeted checks only. Evidence badges separately describe direct checks and related context. Parent, descendant, import-related and shared evidence never implies a local pass or failure.",
+    "A check targets the leaves whose knockout broke its behavior; a leaf it survived, or whose knockout only broke importing, is context. Otherwise checks naming one capability target that capability by default. Broad or unscoped checks need explicit report check_targets; unattributed results remain in the verification summary and evidence.",
+    "Where the author was given facts a check pins (its asserted behavior and reference values), that check's pass is not independent evidence; such checks are marked.",
+    "Evidence labels distinguish directly passed check records, mixed direct evidence, related passing evidence and missing evidence. Related passes do not verify this module; check-record counts are not a functional coverage percentage.",
+    "Verification describes declared check groups and their observed configurations, not individual unit-test counts or full semantic equivalence.",
+    "Failed original baselines, unrun checks, retired scope and incomplete coverage remain distinct. Installation is reported separately.",
+    "Only public labels, relative file mappings, hashes and summary observations are included. Source contents, command argv, environment values and captured output are omitted."
+  ],
+  "installation": {
+    "status": "passed",
+    "checks_passed": 2,
+    "checks_total": 2,
+    "environment_metadata_complete": true
+  },
+  "rewrite_progress": {
+    "priority": "functionality_first",
+    "author_attempts": 4,
+    "repair_attempts": 0,
+    "optimization_attempts": 0,
+    "restorations": 0,
+    "rejected_attempts": 0,
+    "failed_optimizations": 0,
+    "max_optimization_attempts": 3,
+    "stop_reason": null,
+    "accepted_candidate_available": true,
+    "behavior_acceptance": "passed",
+    "size_acceptance": "met"
+  },
+  "task_effort": {
+    "schema_version": 1,
+    "operation": "task_effort_evaluation",
+    "status": "disabled",
+    "binding": {},
+    "policy": {
+      "comparison": "empirical_range",
+      "strict_all_tasks": true
+    },
+    "task_types": [
+      "understand",
+      "diagnose",
+      "modify",
+      "execute"
+    ],
+    "tasks": [],
+    "overhead": {
+      "examiner_tokens": null,
+      "judge_tokens": null,
+      "solver_tokens": null,
+      "total_tokens": null,
+      "usage_complete": false,
+      "observed_total_tokens": null,
+      "role_usage_complete": {
+        "examiner": false,
+        "solver": false,
+        "judge": false
+      }
+    },
+    "resources": {
+      "completed_runs": 0,
+      "cleanup_pending": false,
+      "cleanup_pending_runs": 0
+    },
+    "iterations": [],
+    "limitations": [
+      "Task effort measures these tasks under the recorded agent settings; it is not a universal measure of human cognitive burden.",
+      "Tokens count solver model inputs and outputs, including cached input. Missing usage is unavailable, never zero. Examiner and judge overhead is separate.",
+      "Empirical ranges describe repeated observations, not statistical confidence intervals. Failed or unrun tasks do not establish an improvement.",
+      "Task links identify assessed capabilities only; they do not change module behavior verification badges.",
+      "Task prompts, hidden inputs, judging rubrics, source excerpts, raw traces and local paths are omitted from this public report."
+    ],
+    "stop_reason": "owner_disabled"
+  },
+  "report_id": "nrs_006e225cc5c4b31ebf8db74decb86368a5a14550102a6f2590fc53c614b46a03"
+}
