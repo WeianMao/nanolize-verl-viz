@@ -1,0 +1,819 @@
+{
+  "title": "tqdm 全范围 nanolize 运行报告",
+  "language": "zh-CN",
+  "original_commit": "9cf5a12b1f955468a17f0ba3c59092b23e4258ac",
+  "settings": "nanolize 分支 claude/revert-author-policy e161c85（插件 0.8.0），仓库原版提交 9cf5a12b1f955468a17f0ba3c59092b23e4258ac，$nanolize tqdm unattended=on scope=all --cn，Codex gpt-6-astra xhigh。 tasks=off。",
+  "methodology": [
+    "体积主指标为源码与配置的 token 数，使用 cl100k_base；原版合计 66,390。另列源码行数，不能将两种口径混用。",
+    "交付质量报告的 rewrite.unchanged_percent 比较同路径文件：忽略行首尾空白，保留至少 8 字符的行，按行长加权，包含配置与文档。防默写 original_overlap 则比较可执行语句，排除签名、导入、注释、文档字符串、短行与简单参数存储，可识别移动或改名。两项相同比例须分别报告，不能混用。",
+    "有有效测试的叶节点数与该节点的全部行为是否验证是两个问题。",
+    "缓存输入 tokens 是输入 tokens 的子集；推理输出 tokens 是输出 tokens 的子集，均不重复相加。美元账单仅在工具提供可核查记录时报告。",
+    "tasks=off，因此本次没有原版与候选维护任务的成本对比，也不宣称任务成本节省。",
+    "通过声明的检查提供有限证据，不能推出完整功能等价。"
+  ],
+  "issues": [
+    {
+      "id": "I09",
+      "category": "nanolize 文档 bug",
+      "summary": "技能写固定默认预算 7,200/3,600 秒，实际按体积分档，本项目为 43,200/7,200 秒；需更新说明。对应 skills/simplify-code/SKILL.md:307–312 与 src/nanolize/execution.py:310–321。",
+      "nanolize_change": true,
+      "public_section": "需要对 nanolize 改动的 bugs"
+    },
+    {
+      "id": "I13",
+      "category": "nanolize 诊断记录 bug",
+      "summary": "重复运行用全部轮次判断稳定，却只保存末轮摘要，丢失中间失败证据；受控 pass/fail/pass 已复现，需保留逐轮记录。对应 src/nanolize/verification.py:923–946 的 _repeat_stability。",
+      "nanolize_change": true,
+      "public_section": "需要对 nanolize 改动的 bugs"
+    },
+    {
+      "id": "I17",
+      "category": "nanolize 迁移账本 bug",
+      "summary": "局部内部断言排除被记为整项 excluded，即使公共部分的替代文件已被复核拒绝；本次涉及13项，工具账本为1迁移、13排除、9未验证，22/23没有完整迁移证据。对应 src/nanolize/leaf_test_design.py:480–482、609–612 及 src/nanolize/execution.py:3731–3738，应保留未获替代的公共迁移义务。",
+      "nanolize_change": true,
+      "public_section": "需要对 nanolize 改动的 bugs"
+    },
+    {
+      "id": "I19",
+      "category": "nanolize bug（确认）",
+      "summary": "pytest setup 包装消息未被异常解析器识别，丢失允许传递的 FileNotFoundError 类型，使修复反馈缺少异常摘要；已有最小复现。对应 src/nanolize/failure_digest.py:124–153 与 src/nanolize/leaf_test_validity.py:204–209。",
+      "nanolize_change": true,
+      "public_section": "需要对 nanolize 改动的 bugs"
+    },
+    {
+      "id": "I10",
+      "category": "事实复核现象",
+      "summary": "接受200条行为事实、覆盖18检查组，6条被复核拒绝，4个测试未形成接受事实；原测试仍参与执行。",
+      "nanolize_change": false,
+      "public_section": "遇到的现象"
+    },
+    {
+      "id": "I16",
+      "category": "模型产物/复核现象",
+      "summary": "部分测试提案虽执行通过，仍因改变公开输入、调用顺序或遗漏断言被独立复核拒绝；共退回15个测试提案和14个场景提案。执行通过不等于最终接受，未迁移缺口继续保留。",
+      "nanolize_change": false,
+      "public_section": "遇到的现象"
+    },
+    {
+      "id": "I18",
+      "category": "生成实现/修复现象",
+      "summary": "生成实现前7版有行为差异或遗漏必需资产；第8版全部56组通过、908用例通过、4跳过，独立安装通过，共8候选、9次作者调用。冻结验收保持不变，终态仍为 completed_with_gaps，不能宣称完全等价。",
+      "nanolize_change": false,
+      "public_section": "遇到的现象"
+    },
+    {
+      "id": "I20",
+      "category": "生成实现/证据缺口现象",
+      "summary": "旧测试回放有8个函数回归，其中尚存的公共差异是 tqdm.cli.main 将 TqdmKeyError 转成 SystemExit(1)；其余7个函数涉及内部依赖，不能一概称作公共功能回归。该回放属于交付后的额外度量，不改变56组冻结验收与 completed_with_gaps 终态。",
+      "nanolize_change": false,
+      "public_section": "遇到的现象"
+    },
+    {
+      "id": "现象-1",
+      "category": "验证方法适用范围",
+      "nanolize_change": false,
+      "summary": "bells 自身源码只有模块级导入和调用，无法做函数体 knockout；检查通过且稳定，但没有自身函数体的动态 knockout 证据。21/22有效叶节点不表示21个节点均完成动态失效验证（src/nanolize/leaf_test_validity.py:399–408）。",
+      "public_section": "遇到的现象"
+    }
+  ],
+  "reviewed_contract": {
+    "capabilities": 23,
+    "external_leaves": 22,
+    "internal_container": 1,
+    "interface_entries": 256,
+    "selected_leaves": 22,
+    "selection_percent": 100
+  },
+  "frozen_baseline": {
+    "status": "baseline_captured",
+    "verification_status": "ready",
+    "check_groups": 56,
+    "cases": {
+      "errors": 0,
+      "executed": 908,
+      "failed": 0,
+      "passed": 908,
+      "skipped": 4
+    },
+    "stability": {
+      "stable": 56
+    },
+    "valid_leaves": [
+      "async",
+      "auto",
+      "bells",
+      "cli",
+      "concurrent",
+      "core",
+      "dask",
+      "discord",
+      "examples",
+      "gui",
+      "iterables",
+      "itertools",
+      "logging",
+      "notebook",
+      "pandas",
+      "release",
+      "rich",
+      "slack",
+      "telegram",
+      "tk",
+      "worker"
+    ],
+    "missing_leaves": [
+      "keras"
+    ],
+    "leaf_warnings": [
+      {
+        "capabilities": [
+          "keras"
+        ],
+        "code": "selected_leaf_valid_checks_missing",
+        "detail": "These selected leaves have no valid test."
+      },
+      {
+        "capabilities": [
+          "bells"
+        ],
+        "code": "selected_leaf_knockout_not_assessable",
+        "detail": "Valid without dynamic evidence: no knockout of these leaves' own source is possible."
+      }
+    ],
+    "initial_valid_leaves": 11,
+    "new_valid_leaves": 10,
+    "async_final": {
+      "baseline_passed": true,
+      "case_evidence": "available",
+      "cases": {
+        "errors": 0,
+        "executed": 9,
+        "failed": 0,
+        "passed": 9,
+        "skipped": 0
+      },
+      "light": true,
+      "mapping_warnings": [
+        "mapping_without_static_evidence"
+      ],
+      "provenance": "original_verified",
+      "role_mismatch": false,
+      "stability": "stable",
+      "static_capabilities": [
+        "async"
+      ]
+    }
+  },
+  "generated_at": "2026-11-16T08:23:23.270570+00:00",
+  "job_id": "0494ca0c6f3e417182829eb9b49c085e",
+  "status": "completed_with_gaps",
+  "candidate": "candidate-8",
+  "candidate_commit": "2c2c88f8335f2ec60508ad1fde333d8755e6e7f9",
+  "branch": "codex/nanolize-0494ca0c6f3e417182829eb9b49c085e",
+  "recovered_tests_commit": "0bb350ffb34bef35841b71cf9d90805e858d39ef",
+  "conversion": {
+    "external_capabilities": 20,
+    "internal_capabilities": 3,
+    "interface_entries": 232,
+    "checks_kept": 21,
+    "original_checks": {
+      "checks": 5,
+      "tests": 117,
+      "public_tests": 85
+    },
+    "checks_split": {
+      "original-tqdm": {
+        "kept": 0,
+        "recovered": 68,
+        "migrate": 9,
+        "internal": 2,
+        "not_behavior": 1,
+        "checks": [
+          "recovered-tests_tqdm-1",
+          "recovered-tests_tqdm-2"
+        ]
+      },
+      "original-synchronisation": {
+        "kept": 0,
+        "recovered": 3,
+        "migrate": 3,
+        "internal": 0,
+        "not_behavior": 0,
+        "checks": [
+          "recovered-tests_synchronisation"
+        ]
+      },
+      "original-main": {
+        "kept": 0,
+        "recovered": 6,
+        "migrate": 2,
+        "internal": 0,
+        "not_behavior": 0,
+        "checks": [
+          "recovered-tests_main"
+        ]
+      },
+      "original-concurrent": {
+        "kept": 0,
+        "recovered": 3,
+        "migrate": 1,
+        "internal": 1,
+        "not_behavior": 0,
+        "checks": [
+          "recovered-tests_concurrent"
+        ]
+      },
+      "original-contrib_logging": {
+        "kept": 0,
+        "recovered": 5,
+        "migrate": 8,
+        "internal": 5,
+        "not_behavior": 0,
+        "checks": [
+          "recovered-tests_contrib_logging"
+        ]
+      }
+    },
+    "carried": {
+      "files": [],
+      "tokens": 0,
+      "share_percent": 0
+    }
+  },
+  "conversion_audit": {
+    "modules_read": 43,
+    "unreadable_modules": [],
+    "checks_not_inspected": [],
+    "external_capabilities_without_check": [
+      "discord",
+      "examples",
+      "slack",
+      "telegram",
+      "worker"
+    ],
+    "internal_capabilities_not_reached": [
+      "bells",
+      "release"
+    ],
+    "unresolved_exports": [],
+    "dropped_entries": 0,
+    "truncated": {}
+  },
+  "test_facts": {
+    "accepted_facts": 200,
+    "covered_checks": 18,
+    "dropped_facts": 6,
+    "tests_without_accepted_fact": 4
+  },
+  "test_design": {
+    "accepted_test_files": 30,
+    "test_leaves": [
+      "async",
+      "bells",
+      "cli",
+      "concurrent",
+      "core",
+      "discord",
+      "examples",
+      "gui",
+      "logging",
+      "release",
+      "slack",
+      "telegram",
+      "tk",
+      "worker"
+    ],
+    "accepted_scenario_files": 5,
+    "scenario_leaves": [
+      "concurrent",
+      "discord",
+      "gui",
+      "telegram",
+      "worker"
+    ],
+    "rejected_test_proposals": 15,
+    "rejected_scenario_proposals": 14,
+    "migration": {
+      "excluded": 13,
+      "given": 23,
+      "migrated": 1,
+      "unverified": 9
+    },
+    "runner_failures": [],
+    "final_leaf_validity": "21 valid / 22 selected; keras missing"
+  },
+  "design_trial": {
+    "check_groups": 35,
+    "cases": {
+      "errors": 0,
+      "executed": 767,
+      "failed": 0,
+      "passed": 767,
+      "skipped": 0
+    },
+    "stability": {
+      "stable": 35
+    },
+    "knockout_outcomes": {
+      "killed": 33,
+      "not_assessable": 2
+    },
+    "scope": "Final accepted design files on original; full combined contract baseline is a separate later result."
+  },
+  "original_checks": {
+    "checks": 5,
+    "excluded": 22,
+    "kept": 85,
+    "migrated": 1,
+    "public": 85,
+    "public_unverified": 0,
+    "tests": 117,
+    "unverified": 9
+  },
+  "migration_audit": {
+    "targets": 23,
+    "accepted_migrations": 1,
+    "tool_excluded": 13,
+    "tool_unverified": 9,
+    "excluded_without_accepted_replacement": 13,
+    "targets_without_complete_accepted_migration_evidence": 22
+  },
+  "verification": {
+    "groups": {
+      "failed": 0,
+      "not_run": 0,
+      "passed": 56
+    },
+    "cases": {
+      "passed": 908,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 4,
+      "executed": 908
+    },
+    "installation": "passed"
+  },
+  "original_size": {
+    "source_lines": 5608,
+    "source_tokens": 45979,
+    "configuration_tokens": 20411,
+    "total_tokens": 66390,
+    "target_tokens": 33195
+  },
+  "size": {
+    "baseline_source_lines": 5608,
+    "baseline_tokens": 66390,
+    "complete": true,
+    "configuration_tokens": 5979,
+    "metric": "tokens",
+    "retained_percent": 43.8108148817593,
+    "source_files": 41,
+    "source_lines": 2656,
+    "source_retained_percent": 47.360912981455066,
+    "source_tokens": 23107,
+    "target_met": true,
+    "target_percent": 50,
+    "target_source_lines": 2804,
+    "target_tokens": 33195,
+    "tokenizer": {
+      "classification": "source_and_configuration_v2",
+      "decoding": "python_encoding_cookie_else_utf8_strict",
+      "encoding": "cl100k_base",
+      "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+      "file_boundaries": "independent_sum",
+      "library": "tiktoken",
+      "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+      "special_tokens": "ordinary_text",
+      "text_policy": "raw_decoded_text_per_file",
+      "version": "0.12.0"
+    },
+    "total_tokens": 29086
+  },
+  "quality": {
+    "summary": {
+      "documented_percent": {
+        "delivered": 2.3,
+        "original": 63.3
+      },
+      "total_retained_percent": 43.81,
+      "undocumented_retained_percent": 51.91
+    },
+    "rewrite": {
+      "files_at_an_original_path": 39,
+      "unchanged_percent": 43.3
+    }
+  },
+  "anti_memorization": {
+    "returned_files": 0,
+    "return_events": 0,
+    "native_rejected_attempts": 0,
+    "measurement": {
+      "compared_lines": 1429,
+      "documentation_percent": 7,
+      "function_limit_percent": 60,
+      "function_lines": 8,
+      "functions": 2,
+      "limit_percent": 40,
+      "listed_functions": [
+        {
+          "function": "tqdm.update",
+          "lines": 23,
+          "path": "tqdm/std.py",
+          "percent": 61
+        },
+        {
+          "function": "tqdm.clear",
+          "lines": 12,
+          "path": "tqdm/std.py",
+          "percent": 67
+        }
+      ],
+      "mode": "auto",
+      "percent": 22
+    },
+    "note": "auto模式全局阈值40%；本次22%，未触发按文件退回。2个函数超过60%：update 61%、clear 67%，已保留原生明细。测试设计的29次提案退回不计入防默写。"
+  },
+  "source_reference": {
+    "author_calls": 7,
+    "capabilities": [
+      "cli",
+      "core",
+      "gui",
+      "release",
+      "tk"
+    ],
+    "files": 18
+  },
+  "original_replay": {
+    "summary": {
+      "cases": {
+        "candidate": 133,
+        "original": 133
+      },
+      "coupled": {
+        "candidate_passed": 9,
+        "original_passed": 10,
+        "regressed": 1,
+        "tests": 10
+      },
+      "files": 5,
+      "files_not_replayed": 0,
+      "files_without_result": 0,
+      "kept": {
+        "candidate_passed": 84,
+        "original_passed": 84,
+        "regressed": 0,
+        "tests": 85
+      },
+      "public": {
+        "candidate_passed": 0,
+        "original_passed": 0,
+        "regressed": 0,
+        "tests": 0
+      },
+      "set_aside": 22
+    },
+    "regressed_functions": [
+      {
+        "test": "tests/tests_tqdm.py::test_deprecated_gui",
+        "candidate": "failed",
+        "original": "passed",
+        "public": false,
+        "state": "excluded",
+        "verdict": "regressed"
+      },
+      {
+        "test": "tests/tests_main.py::test_exceptions",
+        "candidate": "failed",
+        "original": "passed",
+        "public": false,
+        "state": "unverified",
+        "verdict": "regressed"
+      },
+      {
+        "test": "tests/tests_concurrent.py::test_min_map_len",
+        "candidate": "failed",
+        "original": "passed",
+        "public": false,
+        "state": "excluded",
+        "verdict": "regressed"
+      },
+      {
+        "test": "tests/tests_contrib_logging.py::TestGetFirstFoundConsoleLoggingHandler::test_should_return_none_for_no_handlers",
+        "candidate": "failed",
+        "original": "passed",
+        "public": false,
+        "state": "excluded",
+        "verdict": "regressed"
+      },
+      {
+        "test": "tests/tests_contrib_logging.py::TestGetFirstFoundConsoleLoggingHandler::test_should_return_none_for_stream_handler_not_stdout_or_stderr",
+        "candidate": "failed",
+        "original": "passed",
+        "public": false,
+        "state": "excluded",
+        "verdict": "regressed"
+      },
+      {
+        "test": "tests/tests_contrib_logging.py::TestGetFirstFoundConsoleLoggingHandler::test_should_return_none_without_stream_handler",
+        "candidate": "failed",
+        "original": "passed",
+        "public": false,
+        "state": "excluded",
+        "verdict": "regressed"
+      },
+      {
+        "test": "tests/tests_contrib_logging.py::TestGetFirstFoundConsoleLoggingHandler::test_should_return_stream_handler_if_stream_is_stderr",
+        "candidate": "failed",
+        "original": "passed",
+        "public": false,
+        "state": "excluded",
+        "verdict": "regressed"
+      },
+      {
+        "test": "tests/tests_contrib_logging.py::TestGetFirstFoundConsoleLoggingHandler::test_should_return_stream_handler_if_stream_is_stdout",
+        "candidate": "failed",
+        "original": "passed",
+        "public": false,
+        "state": "excluded",
+        "verdict": "regressed"
+      }
+    ],
+    "function_counts": {
+      "('kept', 'same')": 84,
+      "('excluded', 'same')": 15,
+      "('unverified', 'same')": 8,
+      "('excluded', 'regressed')": 7,
+      "('unverified', 'regressed')": 1,
+      "('migrated', 'same')": 1,
+      "('kept', 'no_criterion')": 1
+    }
+  },
+  "acceptance": {
+    "details": {
+      "behavior_obligations_incomplete": {
+        "capabilities": {
+          "failed": 0,
+          "partial": 1,
+          "retained": 23,
+          "unknown": 1,
+          "verified": 21
+        },
+        "failed": false
+      },
+      "original_checks_not_verified": {
+        "checks": 5,
+        "failed": false,
+        "public": 85,
+        "public_unverified": 0,
+        "tests": 117,
+        "unverified": 9
+      }
+    },
+    "failed": false,
+    "gaps": [
+      "behavior_obligations_incomplete",
+      "original_checks_not_verified"
+    ],
+    "limitations": [
+      "Passing checks is not proof of semantic equivalence.",
+      "The report lists gaps; it does not choose the next action."
+    ],
+    "outcome": "incomplete",
+    "profile": "delivery"
+  },
+  "cost": {
+    "currency_amount": null,
+    "currency_note": "没有可核查美元账单，不等同于费用为零。以下仅为记录到的模型用量；缓存输入和推理输出分别是输入和输出的子集。",
+    "job": {
+      "calls": 112,
+      "usage_status": {
+        "complete": 103,
+        "reported": 9
+      },
+      "usage": {
+        "input_tokens": 28777987,
+        "cached_input_tokens": 24944512,
+        "output_tokens": 650421,
+        "reasoning_output_tokens": 287784,
+        "total_tokens": 29428408
+      },
+      "by_role": {
+        "controller": {
+          "calls": 23,
+          "input_tokens": 1781840,
+          "cached_input_tokens": 1079424,
+          "output_tokens": 20779,
+          "reasoning_output_tokens": 10426,
+          "total_tokens": 1802619
+        },
+        "test_reviewer": {
+          "calls": 8,
+          "input_tokens": 2509229,
+          "cached_input_tokens": 2062464,
+          "output_tokens": 37776,
+          "reasoning_output_tokens": 25968,
+          "total_tokens": 2547005
+        },
+        "test_designer": {
+          "calls": 20,
+          "input_tokens": 11874459,
+          "cached_input_tokens": 10827520,
+          "output_tokens": 371362,
+          "reasoning_output_tokens": 149537,
+          "total_tokens": 12245821
+        },
+        "fact_reviewer": {
+          "calls": 25,
+          "input_tokens": 2464777,
+          "cached_input_tokens": 1977472,
+          "output_tokens": 36602,
+          "reasoning_output_tokens": 16824,
+          "total_tokens": 2501379
+        },
+        "fact_writer": {
+          "calls": 27,
+          "input_tokens": 2705083,
+          "cached_input_tokens": 2249600,
+          "output_tokens": 98138,
+          "reasoning_output_tokens": 53667,
+          "total_tokens": 2803221
+        },
+        "author": {
+          "calls": 9,
+          "input_tokens": 7442599,
+          "cached_input_tokens": 6748032,
+          "output_tokens": 85764,
+          "reasoning_output_tokens": 31362,
+          "total_tokens": 7528363
+        }
+      }
+    },
+    "host": {
+      "method": "Last cumulative host usage snapshot; cache and reasoning are subsets. Excludes tokens after the cutoff.",
+      "model": "gpt-6-astra",
+      "cutoff": "2026-11-16T08:23:01.249Z",
+      "measured_at": "2026-11-16T08:23:23.175934+00:00",
+      "usage": {
+        "input_tokens": 67461552,
+        "cached_input_tokens": 66772352,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 181251,
+        "reasoning_output_tokens": 84499,
+        "total_tokens": 67642803
+      }
+    },
+    "task_effort": "off; 无维护任务成本比较或节省结论",
+    "recorded_total_tokens": 97100608,
+    "recorded_input_tokens": 96268926,
+    "recorded_cached_input_tokens": 91740928,
+    "recorded_output_tokens": 831682,
+    "additional_recorded_calls": {
+      "calls": 2,
+      "input_tokens": 29387,
+      "cached_input_tokens": 24064,
+      "output_tokens": 10,
+      "total_tokens": 29397
+    },
+    "recorded_total_scope": "全运行已记录用量下界；与后台作业用量分开列示，不等同于完整账单。"
+  },
+  "timing": {
+    "user_request_at": "2026-11-16T05:01:18.039Z",
+    "session_created_at": "2026-11-16T05:01:15.892Z",
+    "active_job_submitted_at": "2026-11-16T05:11:18.697908+00:00",
+    "job_completed_at": "2026-11-16T08:16:57.100369+00:00",
+    "request_to_delivery_seconds": 11739.061369,
+    "active_job_seconds": 11138.402461,
+    "report_generated_at": "2026-11-16T08:23:23.270570+00:00"
+  },
+  "candidate_history": [
+    {
+      "candidate": 1,
+      "checks": {
+        "failed": 5,
+        "not_run": 0,
+        "passed": 51
+      },
+      "cases": {
+        "passed": 876,
+        "failed": 24,
+        "errors": 8,
+        "skipped": 4
+      },
+      "tokens": 26012,
+      "commit": "942ba22febde8b277be6ee0d08255e3ba6ec9020"
+    },
+    {
+      "candidate": 2,
+      "checks": {
+        "failed": 3,
+        "not_run": 0,
+        "passed": 53
+      },
+      "cases": {
+        "passed": 878,
+        "failed": 22,
+        "errors": 8,
+        "skipped": 4
+      },
+      "tokens": 26098,
+      "commit": "7f1b2febab9cbc367181960b70def1d58a4074d8"
+    },
+    {
+      "candidate": 3,
+      "checks": {
+        "failed": 3,
+        "not_run": 0,
+        "passed": 53
+      },
+      "cases": {
+        "passed": 898,
+        "failed": 2,
+        "errors": 8,
+        "skipped": 4
+      },
+      "tokens": 26133,
+      "commit": "5bae7de23888178a44bef8997ad106c4fbde807c"
+    },
+    {
+      "candidate": 4,
+      "checks": {
+        "failed": 2,
+        "not_run": 0,
+        "passed": 54
+      },
+      "cases": {
+        "passed": 899,
+        "failed": 1,
+        "errors": 8,
+        "skipped": 4
+      },
+      "tokens": 26168,
+      "commit": "0ae1e2a56fafd3483dc75b4e881a9dd627bf8f0d"
+    },
+    {
+      "candidate": 5,
+      "checks": {
+        "failed": 1,
+        "not_run": 0,
+        "passed": 55
+      },
+      "cases": {
+        "passed": 900,
+        "failed": 0,
+        "errors": 8,
+        "skipped": 4
+      },
+      "tokens": 26199,
+      "commit": "5f5078a366a73efe44f762c315ff29679850aab7"
+    },
+    {
+      "candidate": 6,
+      "checks": {
+        "failed": 1,
+        "not_run": 0,
+        "passed": 55
+      },
+      "cases": {
+        "passed": 900,
+        "failed": 0,
+        "errors": 8,
+        "skipped": 4
+      },
+      "tokens": 29086,
+      "commit": "a62948d973e866810bc13dde820b9374220cd0a7"
+    },
+    {
+      "candidate": 7,
+      "checks": {
+        "failed": 1,
+        "not_run": 0,
+        "passed": 55
+      },
+      "cases": {
+        "passed": 900,
+        "failed": 0,
+        "errors": 8,
+        "skipped": 4
+      },
+      "tokens": 29122,
+      "commit": "f2573a6d1f88af1eb1f4a43104f09503e20de98f"
+    },
+    {
+      "candidate": 8,
+      "checks": {
+        "failed": 0,
+        "not_run": 0,
+        "passed": 56
+      },
+      "cases": {
+        "passed": 908,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 4
+      },
+      "tokens": 29086,
+      "commit": "2c2c88f8335f2ec60508ad1fde333d8755e6e7f9"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "operation": "report_site",
+  "public_safe": true,
+  "report_id": "nrs_b4ec7ba78c5fdd32cef0e36d66c05efa7cf9c9b127803909f9f6ff6afab97833",
+  "files": [
+    {
+      "path": "audit-data.json",
+      "sha256": "6f75f845d7fa4369161a372bac1671264260db989d15655f599ed8b0148a4491"
+    },
+    {
+      "path": "data.json",
+      "sha256": "d9d1b79e791a39815c0d320b0f6d8d621fba2dffa08adacaed30585458541074"
+    },
+    {
+      "path": "evidence.json",
+      "sha256": "72a01c02402bad1a89f04ebfa4e471c31a27f3667f06fcbaa101ba7c81882c50"
+    },
+    {
+      "path": "index.html",
+      "sha256": "da8e4107b98355c6532c25f8564f43083f97585843cb426d6557d3fd56ce29be"
+    },
+    {
+      "path": "issues.md",
+      "sha256": "0e96edcc298a29d6c8cf761bef86e95739727cadb888dff57f8917731dcb38a5"
+    },
+    {
+      "path": "metrics.csv",
+      "sha256": "c579029de8f0ef542f05c0461cb661d70c18bf20c9e0e90ca47e1bb99ca5eefd"
+    }
+  ],
+  "audit_extension": {
+    "original_report_id": "nrs_b4ec7ba78c5fdd32cef0e36d66c05efa7cf9c9b127803909f9f6ff6afab97833",
+    "generated_at": "2026-11-16T08:23:23.270570+00:00",
+    "language": "zh-CN"
+  }
+}

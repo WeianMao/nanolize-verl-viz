@@ -1,0 +1,1477 @@
+{
+  "limitations": [
+    "Only summary results are published; captured command output is omitted."
+  ],
+  "status": "checks_passed",
+  "tests": {
+    "original_total": 14,
+    "retained": 56,
+    "retired": 0,
+    "needs_adaptation": 0,
+    "adapted": 0,
+    "contract": 42,
+    "passed": 56,
+    "failed": 0,
+    "fixed_baseline_failure": 0,
+    "not_run": 0
+  },
+  "capability_results": [
+    {
+      "id": "tqdm",
+      "status": "passed",
+      "checks": [],
+      "check_status": "passed",
+      "baseline_status": "not_run",
+      "candidate_status": "not_run"
+    },
+    {
+      "id": "core",
+      "status": "passed",
+      "checks": [
+        "original-utils",
+        "original-version",
+        "original-rlock",
+        "original-pandas",
+        "original-asyncio",
+        "original-notebook",
+        "original-rich",
+        "original-perf",
+        "public-output",
+        "recovered-tests_tqdm-2",
+        "recovered-tests_synchronisation",
+        "contract-core-0494ca-42",
+        "contract-core-0494ca-43",
+        "contract-core-0494ca-44"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "cli",
+      "status": "passed",
+      "checks": [
+        "recovered-tests_main",
+        "contract-cli-0494ca-29",
+        "contract-cli-0494ca-30",
+        "contract-cli-0494ca-31"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "pandas",
+      "status": "passed",
+      "checks": [
+        "original-pandas"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "async",
+      "status": "passed",
+      "checks": [
+        "original-asyncio",
+        "contract-async-0494ca-1",
+        "contract-async-0494ca-2"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "notebook",
+      "status": "passed",
+      "checks": [
+        "original-notebook"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "auto",
+      "status": "passed",
+      "checks": [
+        "recovered-tests_tqdm-1"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "gui",
+      "status": "passed",
+      "checks": [
+        "original-gui",
+        "contract-gui-0494ca-27",
+        "contract-gui-0494ca-28",
+        "contract-gui-0494ca-29",
+        "contract-gui-0494ca-30",
+        "scenario-gui-0494ca-31"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "tk",
+      "status": "passed",
+      "checks": [
+        "original-tk",
+        "contract-tk-0494ca-24"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "rich",
+      "status": "passed",
+      "checks": [
+        "original-rich"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "dask",
+      "status": "passed",
+      "checks": [
+        "original-dask"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "keras",
+      "status": "passed",
+      "checks": [
+        "original-keras"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "iterables",
+      "status": "passed",
+      "checks": [
+        "original-contrib"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "concurrent",
+      "status": "passed",
+      "checks": [
+        "recovered-tests_concurrent",
+        "contract-concurrent-0494ca-34",
+        "contract-concurrent-0494ca-35",
+        "contract-concurrent-0494ca-36",
+        "contract-concurrent-0494ca-37",
+        "scenario-concurrent-0494ca-38"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "itertools",
+      "status": "passed",
+      "checks": [
+        "original-itertools"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "logging",
+      "status": "passed",
+      "checks": [
+        "recovered-tests_contrib_logging",
+        "contract-logging-0494ca-47"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "worker",
+      "status": "passed",
+      "checks": [
+        "contract-worker-0494ca-26",
+        "scenario-worker-0494ca-27"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "slack",
+      "status": "passed",
+      "checks": [
+        "contract-slack-0494ca-16",
+        "contract-slack-0494ca-18",
+        "contract-slack-0494ca-19"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "telegram",
+      "status": "passed",
+      "checks": [
+        "contract-telegram-0494ca-32",
+        "contract-telegram-0494ca-33",
+        "contract-telegram-0494ca-34",
+        "scenario-telegram-0494ca-35"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "discord",
+      "status": "passed",
+      "checks": [
+        "contract-discord-0494ca-7",
+        "scenario-discord-0494ca-8"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "bells",
+      "status": "passed",
+      "checks": [
+        "contract-bells-0494ca-25",
+        "contract-bells-0494ca-26"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "examples",
+      "status": "passed",
+      "checks": [
+        "contract-examples-0494ca-47"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "release",
+      "status": "passed",
+      "checks": [
+        "contract-release-0494ca-14"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    }
+  ],
+  "checks": [
+    {
+      "name": "original-utils",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "core"
+      ]
+    },
+    {
+      "name": "original-version",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "core"
+      ]
+    },
+    {
+      "name": "original-rlock",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "core"
+      ]
+    },
+    {
+      "name": "original-pandas",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "pandas",
+        "core"
+      ]
+    },
+    {
+      "name": "original-asyncio",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "async",
+        "core"
+      ]
+    },
+    {
+      "name": "original-notebook",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "notebook",
+        "core"
+      ]
+    },
+    {
+      "name": "original-gui",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "gui"
+      ]
+    },
+    {
+      "name": "original-tk",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "tk"
+      ]
+    },
+    {
+      "name": "original-rich",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "rich",
+        "core"
+      ]
+    },
+    {
+      "name": "original-dask",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "dask"
+      ]
+    },
+    {
+      "name": "original-keras",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "keras"
+      ]
+    },
+    {
+      "name": "original-contrib",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "iterables"
+      ]
+    },
+    {
+      "name": "original-itertools",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "itertools"
+      ]
+    },
+    {
+      "name": "original-perf",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "core"
+      ]
+    },
+    {
+      "name": "public-output",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "core"
+      ]
+    },
+    {
+      "name": "recovered-tests_tqdm-1",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "auto"
+      ]
+    },
+    {
+      "name": "recovered-tests_tqdm-2",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "core"
+      ]
+    },
+    {
+      "name": "recovered-tests_synchronisation",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "core"
+      ]
+    },
+    {
+      "name": "recovered-tests_main",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "cli"
+      ]
+    },
+    {
+      "name": "recovered-tests_concurrent",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "concurrent"
+      ]
+    },
+    {
+      "name": "recovered-tests_contrib_logging",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "logging"
+      ]
+    },
+    {
+      "name": "contract-async-0494ca-1",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "async"
+      ]
+    },
+    {
+      "name": "contract-async-0494ca-2",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "async"
+      ]
+    },
+    {
+      "name": "contract-discord-0494ca-7",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "discord"
+      ]
+    },
+    {
+      "name": "scenario-discord-0494ca-8",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "discord"
+      ]
+    },
+    {
+      "name": "contract-release-0494ca-14",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "release"
+      ]
+    },
+    {
+      "name": "contract-slack-0494ca-16",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "slack"
+      ]
+    },
+    {
+      "name": "contract-slack-0494ca-18",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "slack"
+      ]
+    },
+    {
+      "name": "contract-slack-0494ca-19",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "slack"
+      ]
+    },
+    {
+      "name": "contract-tk-0494ca-24",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "tk"
+      ]
+    },
+    {
+      "name": "contract-worker-0494ca-26",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "worker"
+      ]
+    },
+    {
+      "name": "scenario-worker-0494ca-27",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "worker"
+      ]
+    },
+    {
+      "name": "contract-cli-0494ca-29",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "cli"
+      ]
+    },
+    {
+      "name": "contract-cli-0494ca-30",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "cli"
+      ]
+    },
+    {
+      "name": "contract-cli-0494ca-31",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "cli"
+      ]
+    },
+    {
+      "name": "contract-concurrent-0494ca-34",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "concurrent"
+      ]
+    },
+    {
+      "name": "contract-concurrent-0494ca-35",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "concurrent"
+      ]
+    },
+    {
+      "name": "contract-concurrent-0494ca-36",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "concurrent"
+      ]
+    },
+    {
+      "name": "contract-concurrent-0494ca-37",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "concurrent"
+      ]
+    },
+    {
+      "name": "scenario-concurrent-0494ca-38",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "concurrent"
+      ]
+    },
+    {
+      "name": "contract-core-0494ca-42",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "core"
+      ]
+    },
+    {
+      "name": "contract-core-0494ca-43",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "core"
+      ]
+    },
+    {
+      "name": "contract-core-0494ca-44",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "core"
+      ]
+    },
+    {
+      "name": "contract-logging-0494ca-47",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "logging"
+      ]
+    },
+    {
+      "name": "contract-examples-0494ca-47",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "examples"
+      ]
+    },
+    {
+      "name": "contract-bells-0494ca-25",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "bells"
+      ]
+    },
+    {
+      "name": "contract-bells-0494ca-26",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "bells"
+      ]
+    },
+    {
+      "name": "contract-gui-0494ca-27",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "gui"
+      ]
+    },
+    {
+      "name": "contract-gui-0494ca-28",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "gui"
+      ]
+    },
+    {
+      "name": "contract-gui-0494ca-29",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "gui"
+      ]
+    },
+    {
+      "name": "contract-gui-0494ca-30",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "gui"
+      ]
+    },
+    {
+      "name": "scenario-gui-0494ca-31",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "gui"
+      ]
+    },
+    {
+      "name": "contract-telegram-0494ca-32",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "telegram"
+      ]
+    },
+    {
+      "name": "contract-telegram-0494ca-33",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "telegram"
+      ]
+    },
+    {
+      "name": "contract-telegram-0494ca-34",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "telegram"
+      ]
+    },
+    {
+      "name": "scenario-telegram-0494ca-35",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "telegram"
+      ]
+    }
+  ],
+  "actual_size": {
+    "baseline_source_lines": 5608,
+    "source_lines": 2656,
+    "source_files": 41,
+    "retained_percent": 43.8108148817593,
+    "target_percent": 50.0,
+    "target_source_lines": 2804.0,
+    "estimated_source_lines": null,
+    "metric": "tokens",
+    "tokenizer": {
+      "classification": "source_and_configuration_v2",
+      "decoding": "python_encoding_cookie_else_utf8_strict",
+      "encoding": "cl100k_base",
+      "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+      "file_boundaries": "independent_sum",
+      "library": "tiktoken",
+      "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+      "special_tokens": "ordinary_text",
+      "text_policy": "raw_decoded_text_per_file",
+      "version": "0.12.0"
+    },
+    "measurement_sha256": "e7636b51afced9963df6d97b78a069575f8ba15d64baef008e592f038653ad86",
+    "source_tokens": 23107,
+    "configuration_tokens": 5979,
+    "total_tokens": 29086,
+    "baseline_tokens": 66390,
+    "target_tokens": 33195,
+    "source_retained_percent": 47.360912981455066,
+    "complete": true,
+    "target_met": true
+  },
+  "budget_status": "met",
+  "verification_scope": "full",
+  "rewrite_progress": {
+    "priority": "functionality_first",
+    "author_attempts": 9,
+    "repair_attempts": 7,
+    "optimization_attempts": 0,
+    "restorations": 0,
+    "rejected_attempts": 0,
+    "failed_optimizations": 0,
+    "max_optimization_attempts": 3,
+    "stop_reason": null,
+    "accepted_candidate_available": true,
+    "behavior_acceptance": "passed",
+    "size_acceptance": "met"
+  },
+  "installation_evidence": {
+    "status": "passed",
+    "checks_passed": 3,
+    "checks_total": 3,
+    "environment_metadata_complete": true
+  },
+  "obligation_ledger": {
+    "records": [
+      {
+        "capability": "tqdm",
+        "status": "partial",
+        "obligations": [
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "unknown",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          }
+        ]
+      },
+      {
+        "capability": "core",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-utils",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "original-version",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "original-rlock",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "original-pandas",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "original-asyncio",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "original-notebook",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "original-rich",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "original-perf",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "public-output",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-tests_tqdm-2",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-tests_synchronisation",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-core-0494ca-42",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-core-0494ca-43",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-core-0494ca-44",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "cli",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "recovered-tests_main",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-cli-0494ca-29",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-cli-0494ca-30",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-cli-0494ca-31",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "pandas",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-pandas",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "async",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-asyncio",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-async-0494ca-1",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-async-0494ca-2",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "notebook",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-notebook",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "auto",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "recovered-tests_tqdm-1",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "gui",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-gui",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-gui-0494ca-27",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-gui-0494ca-28",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-gui-0494ca-29",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-gui-0494ca-30",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-gui-0494ca-31",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "tk",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-tk",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-tk-0494ca-24",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "rich",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-rich",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "dask",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-dask",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "keras",
+        "status": "unknown",
+        "obligations": [
+          {
+            "status": "unknown",
+            "check": "original-keras",
+            "kind": "declared_check"
+          },
+          {
+            "status": "unknown",
+            "kind": "coverage"
+          }
+        ]
+      },
+      {
+        "capability": "iterables",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-contrib",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "concurrent",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "recovered-tests_concurrent",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-concurrent-0494ca-34",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-concurrent-0494ca-35",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-concurrent-0494ca-36",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-concurrent-0494ca-37",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-concurrent-0494ca-38",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "itertools",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "original-itertools",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "logging",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "recovered-tests_contrib_logging",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-logging-0494ca-47",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "worker",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-worker-0494ca-26",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-worker-0494ca-27",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "slack",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-slack-0494ca-16",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-slack-0494ca-18",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-slack-0494ca-19",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "telegram",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-telegram-0494ca-32",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-telegram-0494ca-33",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-telegram-0494ca-34",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-telegram-0494ca-35",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "discord",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-discord-0494ca-7",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-discord-0494ca-8",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "bells",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-bells-0494ca-25",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-bells-0494ca-26",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "examples",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-examples-0494ca-47",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "release",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-release-0494ca-14",
+            "kind": "declared_check"
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "verified": 21,
+      "partial": 1,
+      "retired": 0,
+      "failed": 0,
+      "unknown": 1,
+      "total": 23,
+      "retained": 23,
+      "complete": false
+    },
+    "limitations": [
+      "Public summaries omit private evidence bindings and raw output."
+    ]
+  },
+  "leaf_coverage": {
+    "status": "ready",
+    "strict": false,
+    "valid": [
+      "async",
+      "auto",
+      "bells",
+      "cli",
+      "concurrent",
+      "core",
+      "dask",
+      "discord",
+      "examples",
+      "gui",
+      "iterables",
+      "itertools",
+      "logging",
+      "notebook",
+      "pandas",
+      "release",
+      "rich",
+      "slack",
+      "telegram",
+      "tk",
+      "worker"
+    ],
+    "missing": [
+      "keras"
+    ],
+    "exempted": [],
+    "why_missing": {
+      "keras": [
+        "no_behavioral_knockout_failure",
+        "no_passing_cases"
+      ]
+    }
+  },
+  "task_effort": {
+    "schema_version": 1,
+    "operation": "task_effort_evaluation",
+    "status": "disabled",
+    "binding": {},
+    "policy": {
+      "comparison": "empirical_range",
+      "strict_all_tasks": true
+    },
+    "task_types": [
+      "understand",
+      "diagnose",
+      "modify",
+      "execute"
+    ],
+    "tasks": [],
+    "overhead": {
+      "examiner_tokens": null,
+      "judge_tokens": null,
+      "solver_tokens": null,
+      "total_tokens": null,
+      "usage_complete": false,
+      "observed_total_tokens": null,
+      "role_usage_complete": {
+        "examiner": false,
+        "solver": false,
+        "judge": false
+      }
+    },
+    "resources": {
+      "completed_runs": 0,
+      "cleanup_pending": false,
+      "cleanup_pending_runs": 0
+    },
+    "iterations": [],
+    "limitations": [
+      "Task effort measures these tasks under the recorded agent settings; it is not a universal measure of human cognitive burden.",
+      "Tokens count solver model inputs and outputs, including cached input. Missing usage is unavailable, never zero. Examiner and judge overhead is separate.",
+      "Empirical ranges describe repeated observations, not statistical confidence intervals. Failed or unrun tasks do not establish an improvement.",
+      "Task links identify assessed capabilities only; they do not change module behavior verification badges.",
+      "Task prompts, hidden inputs, judging rubrics, source excerpts, raw traces and local paths are omitted from this public report."
+    ],
+    "stop_reason": "owner_disabled"
+  }
+}
