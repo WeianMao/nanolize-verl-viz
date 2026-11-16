@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "operation": "report_site",
+  "public_safe": true,
+  "report_id": "nrs_e3a6a34d69b451555da1c9ca14a76cc4bf88f0cdbec149519c23a0d115e747ec-zh-9a308449e0",
+  "files": [
+    {
+      "path": "data.json",
+      "sha256": "72a527be8d50a7210c883f209919a1c08a70ff9511b47faedc199994e7adc597"
+    },
+    {
+      "path": "evidence.json",
+      "sha256": "9697099a66807a953cc7e8be850d0ead928d051dd7c267aa85d1b6ef6412affa"
+    },
+    {
+      "path": "graph.html",
+      "sha256": "0a3ab95b2f834e4b15b35052346523894907a5df84563b29ac6bfc53b4bd32fe"
+    },
+    {
+      "path": "index.html",
+      "sha256": "5a93318984c4a20b217bbfd8c24645a3a1a9138dae57855628053c4fe459a49f"
+    },
+    {
+      "path": "issues.html",
+      "sha256": "8e0a43d3ae4a2eff3d4842dc3ea375ff7c8ae9bc1d15a36e53fcf16892b664db"
+    },
+    {
+      "path": "issues.md",
+      "sha256": "d025b253993892b9a554b1f2ca047991f4d707a3d595faca1ae5f0ccde76aa3c"
+    },
+    {
+      "path": "metrics.csv",
+      "sha256": "012ae7c633de6929737f0a20f8fc7258ba2a3bb4b41e6db1f7eed40cd9b92b36"
+    },
+    {
+      "path": "summary.json",
+      "sha256": "4c3084ed8024284bafa430630fce4200750a8c1dd55045ebec2ce9d11e9f8c9c"
+    },
+    {
+      "path": "public-files.json",
+      "sha256": "d9efe8c0db64d4d3621244d970878c47e01472f9b746b2978f594aa76a5bb687"
+    }
+  ]
+}
