@@ -1,0 +1,31 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>packaging 双作业交付报告</title>
+<style>html{background:#f5f5ef;color:#162c32;font:16px/1.65 system-ui,sans-serif}body{max-width:56rem;margin:auto;padding:3rem 1rem}h1{line-height:1.18;font-size:2.2rem}h2{font-size:1.25rem;margin-top:2.2rem;border-top:1px solid #9eafaa;padding-top:.8rem}table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:.92rem}td,th{padding:.45em;text-align:right;border-bottom:1px solid #cbd6cf}th:first-child,td:first-child{text-align:left}.scroll{overflow:auto}strong{color:#104e4f}.fail{color:#853d21}code{overflow-wrap:anywhere}a{color:#175b74}</style>
+<h1>packaging 双作业交付报告</h1><p>nanolize main <code>1ef5998</code>（插件 0.8.0） · packaging 原版提交 <code>284ff89</code> · <code>$nanolize packaging unattended=on scope=all --cn</code> · 11-19 prompt 补充要求 <code>pair="on"</code>，主作业检查在 Slurm 计算节点执行 · Codex <code>gpt-6.2-astra xhigh</code></p><p>2026-11-19 UTC · 全功能 · 候选 4 · 提交 <code>64b8fc4</code></p>
+<p><strong class="fail">带失败交付。</strong>150/153 项冻结检查通过；3 项检查共 7 个用例失败。独立安装和安装后 API 检查 2/2 通过。</p>
+<h2>四项重点指标</h2><table><tr><th>指标<th>结果<tr><td>交付源码与配置<td>66,680 个词元，原版的 44.90%<tr><td>第一版作者调用<td>3 次，累计 24 分 26 秒，$9.67<tr><td>测试文件被评审否决<td>27 次（初审 22，复审 5）<tr><td>行为修复<td>3 轮，另有 1 次只读诊断</table>
+<p>原版 148,516 个词元，50% 目标为 74,258。交付含源码 42,009、配置 24,671 个词元；37 个 Python 源文件，5,484 行，225,034 字节。nanolize 对生成代码的 2,798 个可比行报告重合率 12%。按同路径文件逐行精确匹配，则为 1,927/5,484（35.14%）；扣除原样保留的 SPDX 表，为 1,129/4,686（24.09%）。</p>
+<h2>耗时</h2><p>从进度页启动到终态共 <strong>3 小时 55 分</strong>；提交双作业后用时 3 小时 49 分 26 秒。</p>
+<table><tr><th>主作业时间线<th>墙钟耗时<tr><td>提交前准备<td>5 分 34 秒<tr><td>冻结（含执行器确认、封存）<td>2 小时 27 分 05 秒<tr><td>导入第一版并首次全量比较<td>8 分 30 秒<tr><td>首次失败至决定交付（修复、诊断和复验）<td>1 小时 07 分 58 秒<tr><td>交付与补充回放<td>5 分 52 秒</table>
+<p>冻结中，两次录基线各用 32 分 01 秒、50 分 24 秒。设计者两批共用 18 分 11 秒墙钟，25 个会话累计 1 小时 57 分 06 秒。三段评审（含排除评审）合计 6 分 14 秒墙钟，20 个会话累计 31 分 33 秒。其余时间包括候选测试试跑、复测与封存。</p>
+<p>第一版与冻结并行。首个作者启动到草稿就绪为 25 分 29 秒。三个会话按顺序各用 6:28、7:22、10:36，各折算 $2.24、$2.75、$4.68，共 87 次底层模型请求。</p>
+<h2>角色调用与标准价折算</h2><div class="scroll"><table><tr><th>适配器角色<th>会话<th>未缓存输入<th>缓存输入<th>输出<th>美元<tr><td>作者<td>7<td>995,807<td>24,156,544<td>172,260<td>24.5195<tr><td>controller<td>8<td>366,481<td>1,038,080<td>8,596<td>3.6909<tr><td>设计者<td>25<td>1,944,750<td>27,862,400<td>347,849<td>40.6169<tr><td>评审者<td>20<td>1,016,843<td>4,929,408<td>75,012<td>13.1070<tr><th>合计<th>60<th>4,323,881<th>57,986,432<th>603,717<th>81.9343</table></div>
+<p>全部 60 个会话均有 Codex 适配器的结束用量记录。总计 62,914,030 个词元。未缓存输入已扣除缓存命中，缓存写入为 0。模型 GPT-6.2 Astra 按标准短上下文 API 价折算，每百万未缓存输入、缓存输入、输出分别为 $8、$0.40、$40；实际账单未提供。</p>
+<h2>测试与验证缺口</h2><p>首次基线中 22 个叶节点有 17 个有效、1 个豁免、4 个缺测试。11 个节点补入 94 个测试文件和 20 个场景文件（129 个用例）。冻结后 21 个节点有有效测试、1 个豁免、0 个缺有效测试。</p>
+<p>404 个待迁移的上游测试函数中，355 个已迁移、9 个获准排除、40 个仍未验证。</p>
+<p>功能图共 25 个节点，直接验证状态为 18 个已验证、3 个失败、4 个未知；按交付义务汇总为 18 个已验证、6 个失败、1 个未知。</p>
+<p>交付时另行回放了 10 个原测试文件，6 个未回放；回放报告记录 255 个函数在原版通过、在候选上未通过，其中 202 个属于保留组，53 个属于与内部实现耦合组。这些结果独立于 150/153 的验收计数。</p>
+<h2>需要对 nanolize 改动的 bugs</h2>
+<p>本页问题列表只保留经核对确定由 nanolize 自身引起的 2 项。</p>
+<ul>
+<li><strong>缺陷-1　恢复测试的 Git 提交回执。</strong><code>propose_contract</code> 在提交前推算作者和提交者，却把预计身份写成实际归属。13 个恢复测试文件已进入输入分支，提交 <code>8c256d9</code> 记录的身份与回执不一致。</li>
+<li><strong>缺陷-2　合同转换漏识别私有成员依赖。</strong>冻结测试仍检查公开接口清单未声明的 <code>VersionRange._same_releases</code>、<code>Specifier._to_ranges</code> 和 <code>Tag._hash</code>。交付候选的最终全量比较中，三组检查分别有 1、3、3 个用例因 <code>AttributeError</code> 失败。</li>
+</ul>
+<h2>遇到的现象</h2>
+<p>本节只列由 nanolize 流程本身产生的现象；我们运行环境造成的情况未列入。</p>
+<ul>
+<li><strong>现象-2　pytest 测试选择。</strong>转换器遇到 <code>pytest_collection</code> 钩子且需判断 <code>-m &quot;not property&quot;</code> 时，首轮保守地跳过了 14 个常规检查的按函数拆分。冻结前用 <code>-m=</code> 显式按文件全选后，转换器完成拆分。</li>
+<li><strong>现象-4　修复与带失败交付。</strong>首版全量比较有 10 组回归，首轮修复中暂缓的 <code>pins-output</code> 检查随后已在全量比较中执行。三轮修复后，候选 4 的 153 组冻结检查中有 150 组通过、3 组失败，controller 选择带失败交付。</li>
+</ul>
+<p><a href="issues.md">问题记录（issues.md）</a></p>
+<h2>调度与交付</h2><p>sacctmgr 确认默认账户 nvr_elm_llm 可用 normal QoS；sinfo 显示 cpu_short 开放、无 GPU、时限 4 小时。同账户在该分区已有 normal 作业运行，5 分钟 sbatch --test-only 成功。nanolize 的检查执行器使用此组合，排队超时 1,800 秒。</p>
+<p>主作业 <code>0175c2b8876643a4b61a6d90deeae1ba</code><br>草稿作业 <code>f1dd1d9f2db74030b0429519cdd1b90f</code><br>结果分支 <code>codex/nanolize-0175c2b8876643a4b61a6d90deeae1ba</code>，本地提交 <code>64b8fc4357ba0e9825a2069e3b0c6509ec10d68d</code>。</p></html>
