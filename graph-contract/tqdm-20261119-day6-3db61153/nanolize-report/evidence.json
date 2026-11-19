@@ -1,0 +1,1576 @@
+{
+  "limitations": [
+    "Only summary results are published; captured command output is omitted."
+  ],
+  "status": "checks_passed",
+  "tests": {
+    "original_total": 13,
+    "retained": 71,
+    "retired": 0,
+    "needs_adaptation": 0,
+    "adapted": 0,
+    "contract": 58,
+    "passed": 70,
+    "failed": 0,
+    "fixed_baseline_failure": 0,
+    "not_run": 0
+  },
+  "capability_results": [
+    {
+      "id": "graphify-root-ddcb2dfa42d8",
+      "status": "passed",
+      "checks": [],
+      "check_status": "passed",
+      "baseline_status": "not_run",
+      "candidate_status": "not_run"
+    },
+    {
+      "id": "graphify-progress-b5f90a96e680",
+      "status": "passed",
+      "checks": [],
+      "check_status": "passed",
+      "baseline_status": "not_run",
+      "candidate_status": "not_run"
+    },
+    {
+      "id": "graphify-adapt-f1f61cc7216e",
+      "status": "passed",
+      "checks": [],
+      "check_status": "passed",
+      "baseline_status": "not_run",
+      "candidate_status": "not_run"
+    },
+    {
+      "id": "graphify-tools-f9d35d43770d",
+      "status": "passed",
+      "checks": [],
+      "check_status": "passed",
+      "baseline_status": "not_run",
+      "candidate_status": "not_run"
+    },
+    {
+      "id": "graphify-terminal-4e686af7bdcc",
+      "status": "passed",
+      "checks": [
+        "upstream-rlock",
+        "upstream-utils",
+        "upstream-version",
+        "terminal-output",
+        "recovered-tests_synchronisation",
+        "recovered-tests_tqdm",
+        "contract-graphify_terminal_4e686af7bdcc_640224df-3db611-47",
+        "contract-graphify_terminal_4e686af7bdcc_640224df-3db611-48",
+        "scenario-graphify_terminal_4e686af7bdcc_640224df-3db611-49",
+        "contract-graphify_terminal_4e686af7bdcc_640224df-3db611-50",
+        "contract-graphify_terminal_4e686af7bdcc_640224df-3db611-52",
+        "contract-graphify_terminal_4e686af7bdcc_640224df-3db611-53",
+        "contract-graphify_terminal_4e686af7bdcc_640224df-3db611-55",
+        "scenario-graphify_terminal_4e686af7bdcc_640224df-3db611-57",
+        "contract-graphify_terminal_4e686af7bdcc_640224df-3db611-80",
+        "contract-graphify_terminal_4e686af7bdcc_640224df-3db611-86",
+        "scenario-graphify_terminal_4e686af7bdcc_640224df-3db611-87"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "graphify-widgets-08c07051187c",
+      "status": "passed",
+      "checks": [
+        "upstream-notebook"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "graphify-async-2d4a6334d2f2",
+      "status": "passed",
+      "checks": [
+        "upstream-asyncio"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "graphify-auto-929260ad9b9e",
+      "status": "passed",
+      "checks": [
+        "auto-range"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "graphify-desktop-68693d02ab4f",
+      "status": "passed",
+      "checks": [
+        "upstream-gui",
+        "upstream-tk",
+        "contract-graphify_desktop_68693d02ab4f_fa0466b1-3db611-1",
+        "scenario-graphify_desktop_68693d02ab4f_fa0466b1-3db611-4",
+        "scenario-graphify_desktop_68693d02ab4f_fa0466b1-3db611-5",
+        "contract-graphify_desktop_68693d02ab4f_fa0466b1-3db611-59"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "graphify-rich-7baa68f2418b",
+      "status": "passed",
+      "checks": [
+        "upstream-rich"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "graphify-pandas-ae4863bdae02",
+      "status": "passed",
+      "checks": [
+        "upstream-pandas"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "graphify-dask-bb384ab2177d",
+      "status": "passed",
+      "checks": [
+        "upstream-dask"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "graphify-keras-f6cc6ef87745",
+      "status": "passed",
+      "checks": [
+        "upstream-keras",
+        "contract-graphify_keras_f6cc6ef87745_043929eb-3db611-11",
+        "contract-graphify_keras_f6cc6ef87745_043929eb-3db611-12",
+        "contract-graphify_keras_f6cc6ef87745_043929eb-3db611-13",
+        "scenario-graphify_keras_f6cc6ef87745_043929eb-3db611-14",
+        "scenario-graphify_keras_f6cc6ef87745_043929eb-3db611-15"
+      ],
+      "check_status": "passed",
+      "baseline_status": "failed",
+      "candidate_status": "failed"
+    },
+    {
+      "id": "graphify-iter-82439cbebbb0",
+      "status": "passed",
+      "checks": [
+        "upstream-contrib",
+        "upstream-itertools",
+        "recovered-tests_concurrent"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "graphify-parallel-83a00300ad6a",
+      "status": "passed",
+      "checks": [
+        "recovered-tests_concurrent",
+        "contract-graphify_parallel_83a00300ad6a_cbff0f46-3db611-39",
+        "scenario-graphify_parallel_83a00300ad6a_cbff0f46-3db611-40",
+        "contract-graphify_parallel_83a00300ad6a_cbff0f46-3db611-75",
+        "contract-graphify_parallel_83a00300ad6a_cbff0f46-3db611-77",
+        "scenario-graphify_parallel_83a00300ad6a_cbff0f46-3db611-79"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "graphify-logs-98f38f12db22",
+      "status": "passed",
+      "checks": [
+        "recovered-tests_contrib_logging",
+        "contract-graphify_logs_98f38f12db22_a136cdf7-3db611-30",
+        "contract-graphify_logs_98f38f12db22_a136cdf7-3db611-33",
+        "scenario-graphify_logs_98f38f12db22_a136cdf7-3db611-36",
+        "contract-graphify_logs_98f38f12db22_a136cdf7-3db611-71",
+        "contract-graphify_logs_98f38f12db22_a136cdf7-3db611-72",
+        "contract-graphify_logs_98f38f12db22_a136cdf7-3db611-73"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "graphify-messages-f5cccfb73751",
+      "status": "passed",
+      "checks": [
+        "message-fallback",
+        "contract-graphify_messages_f5cccfb73751_8ed3a402-3db611-17",
+        "contract-graphify_messages_f5cccfb73751_8ed3a402-3db611-18",
+        "contract-graphify_messages_f5cccfb73751_8ed3a402-3db611-19",
+        "scenario-graphify_messages_f5cccfb73751_8ed3a402-3db611-20",
+        "contract-graphify_messages_f5cccfb73751_8ed3a402-3db611-61",
+        "scenario-graphify_messages_f5cccfb73751_8ed3a402-3db611-62"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "graphify-cli-99bb88401742",
+      "status": "passed",
+      "checks": [
+        "recovered-tests_main",
+        "contract-graphify_cli_99bb88401742_a4a9f67e-3db611-27",
+        "contract-graphify_cli_99bb88401742_a4a9f67e-3db611-28",
+        "contract-graphify_cli_99bb88401742_a4a9f67e-3db611-66",
+        "contract-graphify_cli_99bb88401742_a4a9f67e-3db611-67",
+        "contract-graphify_cli_99bb88401742_a4a9f67e-3db611-68",
+        "scenario-graphify_cli_99bb88401742_a4a9f67e-3db611-69",
+        "scenario-graphify_cli_99bb88401742_a4a9f67e-3db611-70"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "graphify-examples-c590b3c924c3",
+      "status": "passed",
+      "checks": [
+        "example-fallback",
+        "contract-graphify_examples_c590b3c924c3_7e1d55ee-3db611-6",
+        "contract-graphify_examples_c590b3c924c3_7e1d55ee-3db611-7",
+        "contract-graphify_examples_c590b3c924c3_7e1d55ee-3db611-8"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "graphify-release-a4d451ec2346",
+      "status": "passed",
+      "checks": [
+        "generate-snap-metadata"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "graphify-asv-cb6d3f99c573",
+      "status": "passed",
+      "checks": [
+        "benchmark-entry"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    }
+  ],
+  "checks": [
+    {
+      "name": "upstream-asyncio",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-async-2d4a6334d2f2"
+      ]
+    },
+    {
+      "name": "upstream-contrib",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-iter-82439cbebbb0"
+      ]
+    },
+    {
+      "name": "upstream-dask",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-dask-bb384ab2177d"
+      ]
+    },
+    {
+      "name": "upstream-gui",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-desktop-68693d02ab4f"
+      ]
+    },
+    {
+      "name": "upstream-itertools",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-iter-82439cbebbb0"
+      ]
+    },
+    {
+      "name": "upstream-keras",
+      "status": "preexisting_failure",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-keras-f6cc6ef87745"
+      ]
+    },
+    {
+      "name": "upstream-notebook",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-widgets-08c07051187c"
+      ]
+    },
+    {
+      "name": "upstream-pandas",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-pandas-ae4863bdae02"
+      ]
+    },
+    {
+      "name": "upstream-rich",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-rich-7baa68f2418b"
+      ]
+    },
+    {
+      "name": "upstream-rlock",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-terminal-4e686af7bdcc"
+      ]
+    },
+    {
+      "name": "upstream-tk",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-desktop-68693d02ab4f"
+      ]
+    },
+    {
+      "name": "upstream-utils",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-terminal-4e686af7bdcc"
+      ]
+    },
+    {
+      "name": "upstream-version",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-terminal-4e686af7bdcc"
+      ]
+    },
+    {
+      "name": "terminal-output",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-terminal-4e686af7bdcc"
+      ]
+    },
+    {
+      "name": "auto-range",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-auto-929260ad9b9e"
+      ]
+    },
+    {
+      "name": "message-fallback",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-messages-f5cccfb73751"
+      ]
+    },
+    {
+      "name": "example-fallback",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-examples-c590b3c924c3"
+      ]
+    },
+    {
+      "name": "benchmark-entry",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-asv-cb6d3f99c573"
+      ]
+    },
+    {
+      "name": "recovered-tests_concurrent",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-iter-82439cbebbb0",
+        "graphify-parallel-83a00300ad6a"
+      ]
+    },
+    {
+      "name": "recovered-tests_contrib_logging",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-logs-98f38f12db22"
+      ]
+    },
+    {
+      "name": "recovered-tests_main",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-cli-99bb88401742"
+      ]
+    },
+    {
+      "name": "recovered-tests_synchronisation",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-terminal-4e686af7bdcc"
+      ]
+    },
+    {
+      "name": "recovered-tests_tqdm",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-terminal-4e686af7bdcc"
+      ]
+    },
+    {
+      "name": "generate-snap-metadata",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-release-a4d451ec2346"
+      ]
+    },
+    {
+      "name": "contract-graphify_desktop_68693d02ab4f_fa0466b1-3db611-1",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-desktop-68693d02ab4f"
+      ]
+    },
+    {
+      "name": "scenario-graphify_desktop_68693d02ab4f_fa0466b1-3db611-4",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-desktop-68693d02ab4f"
+      ]
+    },
+    {
+      "name": "scenario-graphify_desktop_68693d02ab4f_fa0466b1-3db611-5",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-desktop-68693d02ab4f"
+      ]
+    },
+    {
+      "name": "contract-graphify_examples_c590b3c924c3_7e1d55ee-3db611-6",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-examples-c590b3c924c3"
+      ]
+    },
+    {
+      "name": "contract-graphify_examples_c590b3c924c3_7e1d55ee-3db611-7",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-examples-c590b3c924c3"
+      ]
+    },
+    {
+      "name": "contract-graphify_examples_c590b3c924c3_7e1d55ee-3db611-8",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-examples-c590b3c924c3"
+      ]
+    },
+    {
+      "name": "contract-graphify_keras_f6cc6ef87745_043929eb-3db611-11",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-keras-f6cc6ef87745"
+      ]
+    },
+    {
+      "name": "contract-graphify_keras_f6cc6ef87745_043929eb-3db611-12",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-keras-f6cc6ef87745"
+      ]
+    },
+    {
+      "name": "contract-graphify_keras_f6cc6ef87745_043929eb-3db611-13",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-keras-f6cc6ef87745"
+      ]
+    },
+    {
+      "name": "scenario-graphify_keras_f6cc6ef87745_043929eb-3db611-14",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-keras-f6cc6ef87745"
+      ]
+    },
+    {
+      "name": "scenario-graphify_keras_f6cc6ef87745_043929eb-3db611-15",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-keras-f6cc6ef87745"
+      ]
+    },
+    {
+      "name": "contract-graphify_messages_f5cccfb73751_8ed3a402-3db611-17",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-messages-f5cccfb73751"
+      ]
+    },
+    {
+      "name": "contract-graphify_messages_f5cccfb73751_8ed3a402-3db611-18",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-messages-f5cccfb73751"
+      ]
+    },
+    {
+      "name": "contract-graphify_messages_f5cccfb73751_8ed3a402-3db611-19",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-messages-f5cccfb73751"
+      ]
+    },
+    {
+      "name": "scenario-graphify_messages_f5cccfb73751_8ed3a402-3db611-20",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-messages-f5cccfb73751"
+      ]
+    },
+    {
+      "name": "contract-graphify_cli_99bb88401742_a4a9f67e-3db611-27",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-cli-99bb88401742"
+      ]
+    },
+    {
+      "name": "contract-graphify_cli_99bb88401742_a4a9f67e-3db611-28",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-cli-99bb88401742"
+      ]
+    },
+    {
+      "name": "contract-graphify_logs_98f38f12db22_a136cdf7-3db611-30",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-logs-98f38f12db22"
+      ]
+    },
+    {
+      "name": "contract-graphify_logs_98f38f12db22_a136cdf7-3db611-33",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-logs-98f38f12db22"
+      ]
+    },
+    {
+      "name": "scenario-graphify_logs_98f38f12db22_a136cdf7-3db611-36",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-logs-98f38f12db22"
+      ]
+    },
+    {
+      "name": "contract-graphify_parallel_83a00300ad6a_cbff0f46-3db611-39",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-parallel-83a00300ad6a"
+      ]
+    },
+    {
+      "name": "scenario-graphify_parallel_83a00300ad6a_cbff0f46-3db611-40",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-parallel-83a00300ad6a"
+      ]
+    },
+    {
+      "name": "contract-graphify_terminal_4e686af7bdcc_640224df-3db611-47",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-terminal-4e686af7bdcc"
+      ]
+    },
+    {
+      "name": "contract-graphify_terminal_4e686af7bdcc_640224df-3db611-48",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-terminal-4e686af7bdcc"
+      ]
+    },
+    {
+      "name": "scenario-graphify_terminal_4e686af7bdcc_640224df-3db611-49",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-terminal-4e686af7bdcc"
+      ]
+    },
+    {
+      "name": "contract-graphify_terminal_4e686af7bdcc_640224df-3db611-50",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-terminal-4e686af7bdcc"
+      ]
+    },
+    {
+      "name": "contract-graphify_terminal_4e686af7bdcc_640224df-3db611-52",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-terminal-4e686af7bdcc"
+      ]
+    },
+    {
+      "name": "contract-graphify_terminal_4e686af7bdcc_640224df-3db611-53",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-terminal-4e686af7bdcc"
+      ]
+    },
+    {
+      "name": "contract-graphify_terminal_4e686af7bdcc_640224df-3db611-55",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-terminal-4e686af7bdcc"
+      ]
+    },
+    {
+      "name": "scenario-graphify_terminal_4e686af7bdcc_640224df-3db611-57",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-terminal-4e686af7bdcc"
+      ]
+    },
+    {
+      "name": "contract-graphify_desktop_68693d02ab4f_fa0466b1-3db611-59",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-desktop-68693d02ab4f"
+      ]
+    },
+    {
+      "name": "contract-graphify_messages_f5cccfb73751_8ed3a402-3db611-61",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-messages-f5cccfb73751"
+      ]
+    },
+    {
+      "name": "scenario-graphify_messages_f5cccfb73751_8ed3a402-3db611-62",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-messages-f5cccfb73751"
+      ]
+    },
+    {
+      "name": "contract-graphify_cli_99bb88401742_a4a9f67e-3db611-66",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-cli-99bb88401742"
+      ]
+    },
+    {
+      "name": "contract-graphify_cli_99bb88401742_a4a9f67e-3db611-67",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-cli-99bb88401742"
+      ]
+    },
+    {
+      "name": "contract-graphify_cli_99bb88401742_a4a9f67e-3db611-68",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-cli-99bb88401742"
+      ]
+    },
+    {
+      "name": "scenario-graphify_cli_99bb88401742_a4a9f67e-3db611-69",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-cli-99bb88401742"
+      ]
+    },
+    {
+      "name": "scenario-graphify_cli_99bb88401742_a4a9f67e-3db611-70",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-cli-99bb88401742"
+      ]
+    },
+    {
+      "name": "contract-graphify_logs_98f38f12db22_a136cdf7-3db611-71",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-logs-98f38f12db22"
+      ]
+    },
+    {
+      "name": "contract-graphify_logs_98f38f12db22_a136cdf7-3db611-72",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-logs-98f38f12db22"
+      ]
+    },
+    {
+      "name": "contract-graphify_logs_98f38f12db22_a136cdf7-3db611-73",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-logs-98f38f12db22"
+      ]
+    },
+    {
+      "name": "contract-graphify_parallel_83a00300ad6a_cbff0f46-3db611-75",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-parallel-83a00300ad6a"
+      ]
+    },
+    {
+      "name": "contract-graphify_parallel_83a00300ad6a_cbff0f46-3db611-77",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-parallel-83a00300ad6a"
+      ]
+    },
+    {
+      "name": "scenario-graphify_parallel_83a00300ad6a_cbff0f46-3db611-79",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-parallel-83a00300ad6a"
+      ]
+    },
+    {
+      "name": "contract-graphify_terminal_4e686af7bdcc_640224df-3db611-80",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-terminal-4e686af7bdcc"
+      ]
+    },
+    {
+      "name": "contract-graphify_terminal_4e686af7bdcc_640224df-3db611-86",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-terminal-4e686af7bdcc"
+      ]
+    },
+    {
+      "name": "scenario-graphify_terminal_4e686af7bdcc_640224df-3db611-87",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-terminal-4e686af7bdcc"
+      ]
+    }
+  ],
+  "actual_size": {
+    "baseline_source_lines": 5608,
+    "source_lines": 3115,
+    "source_files": 53,
+    "retained_percent": 51.503238439524026,
+    "target_percent": 50.0,
+    "target_source_lines": 2804.0,
+    "estimated_source_lines": null,
+    "metric": "tokens",
+    "tokenizer": {
+      "classification": "source_and_configuration_v2",
+      "decoding": "python_encoding_cookie_else_utf8_strict",
+      "encoding": "cl100k_base",
+      "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+      "file_boundaries": "independent_sum",
+      "library": "tiktoken",
+      "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+      "special_tokens": "ordinary_text",
+      "text_policy": "raw_decoded_text_per_file",
+      "version": "0.12.0"
+    },
+    "measurement_sha256": "4af67265fa78f954cf3d7fd6ad2f8f2be672d75862257b5e701d659e8ec69673",
+    "source_tokens": 27112,
+    "configuration_tokens": 7081,
+    "total_tokens": 34193,
+    "baseline_tokens": 66390,
+    "target_tokens": 33195,
+    "source_retained_percent": 55.54564907275321,
+    "complete": true,
+    "target_met": false
+  },
+  "budget_status": "unmet",
+  "verification_scope": "full",
+  "installation_evidence": {
+    "status": "passed",
+    "checks_passed": 2,
+    "checks_total": 2,
+    "environment_metadata_complete": true
+  },
+  "obligation_ledger": {
+    "records": [
+      {
+        "capability": "graphify-root-ddcb2dfa42d8",
+        "status": "partial",
+        "obligations": [
+          {
+            "status": "partial",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "partial",
+            "kind": "retained_child"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-progress-b5f90a96e680",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-adapt-f1f61cc7216e",
+        "status": "partial",
+        "obligations": [
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "partial",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-tools-f9d35d43770d",
+        "status": "partial",
+        "obligations": [
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "partial",
+            "kind": "retained_child"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-terminal-4e686af7bdcc",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "upstream-rlock",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "upstream-utils",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "upstream-version",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "terminal-output",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-tests_synchronisation",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-tests_tqdm",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_terminal_4e686af7bdcc_640224df-3db611-47",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_terminal_4e686af7bdcc_640224df-3db611-48",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-graphify_terminal_4e686af7bdcc_640224df-3db611-49",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_terminal_4e686af7bdcc_640224df-3db611-50",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_terminal_4e686af7bdcc_640224df-3db611-52",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_terminal_4e686af7bdcc_640224df-3db611-53",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_terminal_4e686af7bdcc_640224df-3db611-55",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-graphify_terminal_4e686af7bdcc_640224df-3db611-57",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_terminal_4e686af7bdcc_640224df-3db611-80",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_terminal_4e686af7bdcc_640224df-3db611-86",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-graphify_terminal_4e686af7bdcc_640224df-3db611-87",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-widgets-08c07051187c",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "upstream-notebook",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-async-2d4a6334d2f2",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "upstream-asyncio",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-auto-929260ad9b9e",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "auto-range",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-desktop-68693d02ab4f",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "upstream-gui",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "upstream-tk",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_desktop_68693d02ab4f_fa0466b1-3db611-1",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-graphify_desktop_68693d02ab4f_fa0466b1-3db611-4",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-graphify_desktop_68693d02ab4f_fa0466b1-3db611-5",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_desktop_68693d02ab4f_fa0466b1-3db611-59",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-rich-7baa68f2418b",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "upstream-rich",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-pandas-ae4863bdae02",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "upstream-pandas",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-dask-bb384ab2177d",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "upstream-dask",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-keras-f6cc6ef87745",
+        "status": "partial",
+        "obligations": [
+          {
+            "status": "unknown",
+            "check": "upstream-keras",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_keras_f6cc6ef87745_043929eb-3db611-11",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_keras_f6cc6ef87745_043929eb-3db611-12",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_keras_f6cc6ef87745_043929eb-3db611-13",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-graphify_keras_f6cc6ef87745_043929eb-3db611-14",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-graphify_keras_f6cc6ef87745_043929eb-3db611-15",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-iter-82439cbebbb0",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "upstream-contrib",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "upstream-itertools",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-tests_concurrent",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-parallel-83a00300ad6a",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "recovered-tests_concurrent",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_parallel_83a00300ad6a_cbff0f46-3db611-39",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-graphify_parallel_83a00300ad6a_cbff0f46-3db611-40",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_parallel_83a00300ad6a_cbff0f46-3db611-75",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_parallel_83a00300ad6a_cbff0f46-3db611-77",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-graphify_parallel_83a00300ad6a_cbff0f46-3db611-79",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-logs-98f38f12db22",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "recovered-tests_contrib_logging",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_logs_98f38f12db22_a136cdf7-3db611-30",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_logs_98f38f12db22_a136cdf7-3db611-33",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-graphify_logs_98f38f12db22_a136cdf7-3db611-36",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_logs_98f38f12db22_a136cdf7-3db611-71",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_logs_98f38f12db22_a136cdf7-3db611-72",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_logs_98f38f12db22_a136cdf7-3db611-73",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-messages-f5cccfb73751",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "message-fallback",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_messages_f5cccfb73751_8ed3a402-3db611-17",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_messages_f5cccfb73751_8ed3a402-3db611-18",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_messages_f5cccfb73751_8ed3a402-3db611-19",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-graphify_messages_f5cccfb73751_8ed3a402-3db611-20",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_messages_f5cccfb73751_8ed3a402-3db611-61",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-graphify_messages_f5cccfb73751_8ed3a402-3db611-62",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-cli-99bb88401742",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "recovered-tests_main",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_cli_99bb88401742_a4a9f67e-3db611-27",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_cli_99bb88401742_a4a9f67e-3db611-28",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_cli_99bb88401742_a4a9f67e-3db611-66",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_cli_99bb88401742_a4a9f67e-3db611-67",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_cli_99bb88401742_a4a9f67e-3db611-68",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-graphify_cli_99bb88401742_a4a9f67e-3db611-69",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-graphify_cli_99bb88401742_a4a9f67e-3db611-70",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-examples-c590b3c924c3",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "example-fallback",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_examples_c590b3c924c3_7e1d55ee-3db611-6",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_examples_c590b3c924c3_7e1d55ee-3db611-7",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_examples_c590b3c924c3_7e1d55ee-3db611-8",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-release-a4d451ec2346",
+        "status": "partial",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "generate-snap-metadata",
+            "kind": "declared_check"
+          },
+          {
+            "status": "unknown",
+            "kind": "coverage"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-asv-cb6d3f99c573",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "benchmark-entry",
+            "kind": "declared_check"
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "partial": 5,
+      "retired": 0,
+      "verified": 16,
+      "unknown": 0,
+      "failed": 0,
+      "total": 21,
+      "retained": 21,
+      "complete": false
+    },
+    "limitations": [
+      "Public summaries omit private evidence bindings and raw output."
+    ]
+  },
+  "leaf_coverage": {
+    "status": "ready",
+    "strict": false,
+    "valid": [
+      "graphify-asv-cb6d3f99c573",
+      "graphify-async-2d4a6334d2f2",
+      "graphify-auto-929260ad9b9e",
+      "graphify-cli-99bb88401742",
+      "graphify-dask-bb384ab2177d",
+      "graphify-desktop-68693d02ab4f",
+      "graphify-examples-c590b3c924c3",
+      "graphify-iter-82439cbebbb0",
+      "graphify-keras-f6cc6ef87745",
+      "graphify-logs-98f38f12db22",
+      "graphify-messages-f5cccfb73751",
+      "graphify-pandas-ae4863bdae02",
+      "graphify-parallel-83a00300ad6a",
+      "graphify-rich-7baa68f2418b",
+      "graphify-terminal-4e686af7bdcc",
+      "graphify-widgets-08c07051187c"
+    ],
+    "missing": [
+      "graphify-release-a4d451ec2346"
+    ],
+    "exempted": [],
+    "why_missing": {
+      "graphify-release-a4d451ec2346": [
+        "no_behavioral_knockout_failure"
+      ]
+    }
+  }
+}
