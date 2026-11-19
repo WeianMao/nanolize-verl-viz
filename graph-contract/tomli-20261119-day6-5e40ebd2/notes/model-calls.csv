@@ -1,0 +1,17 @@
+job,role,transport_role,model,metered,input_total,cache_read,cache_write,input_uncached,output,estimated_usd_std_short,seconds,adapter_status,role_detail,attempt_group
+2c186d2cd5274b50a5eefa2a95af1d08,设计者,test_designer,gpt-6.2-astra,True,742586,695040,0,47546,11088,1.101904,201.9578,completed,test_designer,首轮
+5e40ebd2b39f42e0916595b9b637149e,作者,author,gpt-6.2-astra (owner default),True,567281,522240,0,45041,4208,0.737544,117.742,,repair,交付轮
+5e40ebd2b39f42e0916595b9b637149e,作者,author,gpt-6.2-astra (owner default),True,724897,678912,0,45985,7162,0.9259248,180.625,,repair,交付轮
+5e40ebd2b39f42e0916595b9b637149e,评审者,author,gpt-6.2-astra (owner default),True,450630,408320,0,42310,3121,0.626648,76.36,,reviewer,交付轮
+5e40ebd2b39f42e0916595b9b637149e,设计者,test_designer,gpt-6.2-astra,True,921493,871936,0,49557,12061,1.2276703999999998,221.6695,completed,test_designer,交付轮
+5e40ebd2b39f42e0916595b9b637149e,评审者,test_reviewer,gpt-6.2-astra,True,151377,114944,0,36433,3291,0.4690816,82.5657,completed,test_reviewer,交付轮
+5e40ebd2b39f42e0916595b9b637149e,评审者,test_reviewer,gpt-6.2-astra,True,104894,86016,0,18878,850,0.2194304,33.6185,completed,test_reviewer,交付轮
+5e40ebd2b39f42e0916595b9b637149e,设计者,test_designer,gpt-6.2-astra,True,129928,115968,0,13960,915,0.1946672,33.6338,completed,test_designer,交付轮
+5e40ebd2b39f42e0916595b9b637149e,评审者,test_reviewer,gpt-6.2-astra,True,59634,39040,0,20594,274,0.191328,12.0325,completed,test_reviewer,交付轮
+5e40ebd2b39f42e0916595b9b637149e,controller,controller,gpt-6.2-astra,True,127575,82816,0,44759,896,0.42703840000000004,23.4444,completed,controller,交付轮
+5e40ebd2b39f42e0916595b9b637149e,controller,controller,gpt-6.2-astra,True,39004,0,0,39004,178,0.319152,10.7057,completed,controller,交付轮
+5e40ebd2b39f42e0916595b9b637149e,controller,controller,gpt-6.2-astra,True,83751,54400,0,29351,467,0.275248,16.9996,completed,controller,交付轮
+5e40ebd2b39f42e0916595b9b637149e,controller,controller,gpt-6.2-astra,True,117304,91008,0,26296,1076,0.2898112,24.3524,completed,controller,交付轮
+5e40ebd2b39f42e0916595b9b637149e,controller,controller,gpt-6.2-astra,True,126902,81408,0,45494,1190,0.4441152,30.7488,completed,controller,交付轮
+5e40ebd2b39f42e0916595b9b637149e,controller,controller,gpt-6.2-astra,True,86740,54784,0,31956,802,0.30964159999999996,21.1795,completed,controller,交付轮
+72c307f9a8b4480e8481ca2ff5a80720,作者,author,gpt-6.2-astra (owner default),True,899025,838016,0,61009,16816,1.4959183999999999,312.608,,implement,交付轮

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tomli 全范围双作业运行报告</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<h1 id="tomli-全范围双作业运行报告">Tomli 全范围双作业运行报告</h1>
+<p>2026-11-19（UTC） · nanolize main <code>1ef5998</code>（插件 0.8.0） · tomli 原版提交 <code>43a86ade</code> · <code>$nanolize tomli unattended=on scope=all --cn</code> · 11-19 补充说明（<code>pair="on"</code>，主作业检查在 Slurm 计算节点） · Codex gpt-6.2-astra xhigh</p>
+<p><strong>候选 3 通过全部 14 组冻结行为检查。</strong> nanolize
+的交付状态为
+<code>delivered_with_failures</code>，作业内安装检查为 0/2。交付后，对<strong>同一提交、同一源码摘要、同一契约摘要</strong>单独执行原安装命令，构建安装和已安装包冒烟检查均通过（2/2）。</p>
+<p>交付分支为
+<code>codex/nanolize-5e40ebd2b39f42e0916595b9b637149e</code>，提交为
+<code>b836374f4a34a35370b4e26ee0e4926f7e05a98a</code>。运行记录、测试和核算见<a
+href="nanolize-report/index.html">原生图报告</a>、<a
+href="notes/final-installation.json">独立安装复核</a>及<a
+href="notes/model-calls.csv">逐调用台账</a>。另见<a href="issues.md">问题记录（issues.md）</a>。<a href="tomli-report.zip" download>下载离线包</a>（解压后打开 <code>report.html</code>）。</p>
+<h2 id="四项重点指标">四项重点指标</h2>
+<table>
+<thead>
+<tr class="header">
+<th>指标</th>
+<th>本次结果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>交付体积</td>
+<td>源码加配置 7,697 / 16,101 token，保留 47.80%，减少 52.20%（按 <code>cl100k_base</code> 逐文件计数，原生报告为 52.196%）。其中源码
+4,510、配置 3,187 token。9 份源码共 536 / 1,132 行，18,459 / 36,286
+字节。独立安装时构建出的纯 Python wheel 为 7,581 字节。</td>
+</tr>
+<tr class="even">
+<td>第一版作者调用</td>
+<td>草稿作业实际调用作者 1 次，312.608 秒（5 分 12.6 秒），约 1.4959
+美元。未缓存输入 61,009，缓存读取 838,016，输出 16,816
+token。含准备和保存的草稿作业共 6 分 30 秒。</td>
+</tr>
+<tr class="odd">
+<td>测试评审否决</td>
+<td>共 2 次，均在首次文件评审；两份测试修改后均获接受。场景文件否决 0
+次。</td>
+</tr>
+<tr class="even">
+<td>修复</td>
+<td>2
+轮改写，先修复解析差异，再处理打包安装。另有一次只读代码评审。</td>
+</tr>
+</tbody>
+</table>
+<p>nanolize 的原版重合指标为 <strong>6%</strong>，共比较 351
+行。它忽略空白、注释、文档字符串、签名、导入和短行。另按字面复核，9
+份交付源码的 461 个非空行中，有 77 行与原版源码逐字节相同，占
+<strong>16.70%</strong>。该复核跨文件匹配、保留缩进、忽略行尾换行，每种行内容最多匹配到两侧出现次数的较小值。</p>
+<h2 id="耗时">耗时</h2>
+<p>从中文运行页建立（06:24:43）到交付（07:15:24.624）共 <strong>50 分
+41.6 秒</strong>，含首轮及交付轮。到独立安装复核写出结果（07:16:19）共
+<strong>51 分 36 秒</strong>。交付轮从配对提交到主作业结束共 <strong>35
+分 45.8 秒</strong>。</p>
+<table>
+<thead>
+<tr class="header">
+<th>阶段</th>
+<th>UTC 起止</th>
+<th style="text-align: right;">墙钟耗时</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>准备、首轮至交付轮提交前</td>
+<td>06:24:43 – 06:39:38.831</td>
+<td style="text-align: right;">14 分 55.8 秒</td>
+</tr>
+<tr class="even">
+<td>交付轮主作业冻结，含调度与封存</td>
+<td>06:39:38.831 – 07:00:43.008</td>
+<td style="text-align: right;">21 分 04.2 秒</td>
+</tr>
+<tr class="odd">
+<td>交付轮草稿第一版，与冻结并行</td>
+<td>06:39:39.513 – 06:46:09.481</td>
+<td style="text-align: right;">6 分 30.0 秒</td>
+</tr>
+<tr class="even">
+<td>导入草稿、首次验证、安装及修复决策</td>
+<td>07:00:43.008 – 07:02:53.759</td>
+<td style="text-align: right;">2 分 10.8 秒</td>
+</tr>
+<tr class="odd">
+<td>修复、复验、只读评审及候选选择</td>
+<td>07:02:53.759 – 07:14:36.787</td>
+<td style="text-align: right;">11 分 43.0 秒</td>
+</tr>
+<tr class="even">
+<td>交付动作开始至主作业终态</td>
+<td>07:14:36.787 – 07:15:24.624</td>
+<td style="text-align: right;">47.8 秒</td>
+</tr>
+</tbody>
+</table>
+<p>草稿耗时与冻结重叠，仅计入总墙钟一次。交付轮冻结的细分如下。</p>
+<table>
+<thead>
+<tr class="header">
+<th>冻结组成</th>
+<th style="text-align: right;">耗时</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>首次录基线</td>
+<td style="text-align: right;">225.749 秒</td>
+</tr>
+<tr class="even">
+<td>设计者会话，2 次</td>
+<td style="text-align: right;">255.303 秒</td>
+</tr>
+<tr class="odd">
+<td>测试文件评审两次、排除理由评审一次</td>
+<td style="text-align: right;">128.217 秒</td>
+</tr>
+<tr class="even">
+<td>设计流程其余工作，包括执行和复验提案、文件处理</td>
+<td style="text-align: right;">356.814 秒</td>
+</tr>
+<tr class="odd">
+<td>第二次录基线</td>
+<td style="text-align: right;">208.044 秒</td>
+</tr>
+<tr class="even">
+<td>节点准备、工作树、最终封存等其余时间</td>
+<td style="text-align: right;">约 90.1 秒</td>
+</tr>
+</tbody>
+</table>
+<p>设计阶段总计 740.334
+秒。首轮主作业另有一次完整设计者调用（201.958
+秒），已列入下方总账。</p>
+<h2 id="调用与费用">调用与费用</h2>
+<table>
+<thead>
+<tr class="header">
+<th>实际角色</th>
+<th style="text-align: right;">调用次数</th>
+<th style="text-align: right;">总输入（含缓存）</th>
+<th style="text-align: right;">未缓存输入</th>
+<th style="text-align: right;">缓存输入</th>
+<th style="text-align: right;">输出</th>
+<th style="text-align: right;">会话耗时合计</th>
+<th style="text-align: right;">估算美元</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>作者</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2,191,203</td>
+<td style="text-align: right;">152,035</td>
+<td style="text-align: right;">2,039,168</td>
+<td style="text-align: right;">28,186</td>
+<td style="text-align: right;">610.975 秒</td>
+<td style="text-align: right;">3.1594</td>
+</tr>
+<tr class="even">
+<td>controller</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">581,276</td>
+<td style="text-align: right;">216,860</td>
+<td style="text-align: right;">364,416</td>
+<td style="text-align: right;">4,609</td>
+<td style="text-align: right;">127.430 秒</td>
+<td style="text-align: right;">2.0650</td>
+</tr>
+<tr class="odd">
+<td>设计者</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1,794,007</td>
+<td style="text-align: right;">111,063</td>
+<td style="text-align: right;">1,682,944</td>
+<td style="text-align: right;">24,064</td>
+<td style="text-align: right;">457.261 秒</td>
+<td style="text-align: right;">2.5242</td>
+</tr>
+<tr class="even">
+<td>评审者</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">766,535</td>
+<td style="text-align: right;">118,215</td>
+<td style="text-align: right;">648,320</td>
+<td style="text-align: right;">7,536</td>
+<td style="text-align: right;">204.577 秒</td>
+<td style="text-align: right;">1.5065</td>
+</tr>
+<tr class="odd">
+<td><strong>合计</strong></td>
+<td style="text-align: right;"><strong>16</strong></td>
+<td style="text-align: right;"><strong>5,333,021</strong></td>
+<td style="text-align: right;"><strong>598,173</strong></td>
+<td style="text-align: right;"><strong>4,734,848</strong></td>
+<td style="text-align: right;"><strong>64,395</strong></td>
+<td style="text-align: right;"><strong>1,400.243 秒</strong></td>
+<td style="text-align: right;"><strong>9.2551</strong></td>
+</tr>
+</tbody>
+</table>
+<p>实际角色按调用目的归类。作者包括第一版和两轮修复。评审者包括 3
+次测试相关评审和 1
+次通过作者适配器执行的只读代码评审。若按适配器通道统计，作者通道 4
+次、测试评审通道 3 次。交付轮共 15 次，约 8.1532 美元；首轮 1 次，约
+1.1019 美元。此表覆盖两对作业的四类运行角色。</p>
+<p>从 Codex 原始调用事件流
+<code>runner.log</code>、<code>stdout.ndjson</code> 的
+<code>turn.completed.usage</code> 取数。16
+个会话均有用量事件。原始输入合计 5,333,021，其中缓存读取
+4,734,848，缓存写入 0；加上输出共 <strong>5,397,416
+token</strong>。每百万 token 按 GPT-6.2 Astra 标准短上下文输入
+8、缓存读取 0.40、输出 40
+美元折算。会话聚合事件未给出美元账单、服务层级及逐请求长上下文计价信息，因此金额为该口径的估算；实际账户扣费不可由这些事件确定。</p>
+<h2 id="测试设计与原版证据">测试设计与原版证据</h2>
+<ul>
+<li>全选 6 个节点，其中 5 个承载源码的功能叶节点，映射了清单内全部 9
+份生产源码。最终 5/5 个叶节点有有效测试，0 个缺少验证；义务台账 6/6
+完整。</li>
+<li>1 个节点（解析）补了测试。最终接纳 4 份测试、2 份场景文件，包含 24
+个场景用例。其他 4 个叶节点沿用已有检查。</li>
+<li>首轮测试文件评审核出的两个问题是指数值断言的容差过宽和浮点重读断言的精度。第二次文件评审接受修订。另有
+1 项待迁移旧测试获准按理由排除，迁移 0 项、悬而未决 0 项。</li>
+<li>仓库原版的 unittest 在 Python 3.12.1 上运行 17 项，16 项通过，1
+项因仅适用于纯 Python 3.15+ 跳过。契约转换从一组 9 项旧测试恢复了 7
+项公开接口测试。nanolize 身份将
+<code>tests/test_nanolize_recovered_test_misc.py</code> 提交到输入分支
+<code>nanolize-input</code>，提交为
+<code>1504326d0e6ea7c9dc78fc509559624a0ace746f</code>，原始起点为
+<code>43a86ade8b795c6ef9b4ec53372a607cd1ed426f</code>。</li>
+<li>候选 3 通过 14/14 组冻结行为检查，其中 2 组为原始检查，12
+组为契约检查。回放另列 1
+份旧测试文件未回放。全量通过的范围由这份冻结清单界定。</li>
+<li>作业的最终安装计数为 0/2（第 1 项失败，第 2
+项未运行）。独立复核在新虚拟环境中执行原来的 2 项命令，均通过，成功安装
+<code>tomli==2.5.0</code> 并从已安装包解析二进制
+TOML。作业安装记录与独立复核绑定相同的 Git
+提交、源码摘要及契约摘要。</li>
+</ul>
+<h2 id="slurm-与双作业">Slurm 与双作业</h2>
+<ul>
+<li><code>sacctmgr show user</code> 返回默认账户
+<code>nvr_elm_llm</code>，账户关联列出 <code>free,normal</code>。</li>
+<li><code>sinfo</code> 返回
+<code>cpu_short|up|(null)|4:00:00</code>。该分区开放，无 GPU
+GRES，时间上限 4 小时。查询时账户在此分区有 59 个使用
+<code>normal</code> 的运行中作业。5 分钟、单任务的
+<code>sbatch --test-only</code> 验证通过。</li>
+<li>两轮均以 <code>pair="on"</code> 和
+<code>{"kind":"auto","account":"nvr_elm_llm","partition":"cpu_short","qos":"normal","queue_timeout":1800}</code>
+提交并得到 <code>pair_started</code>。主作业确认检查位于 Slurm CPU
+节点；授权的实际调度由 nanolize 的检查执行器执行。</li>
+<li>交付轮的主作业为
+<code>5e40ebd2b39f42e0916595b9b637149e</code>，草稿为
+<code>72c307f9a8b4480e8481ca2ff5a80720</code>。主作业封存后导入草稿为候选
+1。首轮的主作业为 <code>2c186d2cd5274b50a5eefa2a95af1d08</code>，草稿为
+<code>d04908874597448ea4ce13e942ad863b</code>。</li>
+</ul>
+<h2 id="bugs">需要对 nanolize 改动的 bugs</h2>
+<p>本页问题列表只保留经核对确定由 nanolize 自身引起的 2 项。</p>
+<ol>
+<li value="1"><strong>提交前检查漏报生产文件与冻结输入的冲突。</strong> 执行就绪审计将 <code>profile-workload</code> 列为可用，却漏报了退出码检查会把待改写的 <code>profiler/profiler_script.py</code> 冻结为验证输入。直到封存时，nanolize 才指出这个文件同时属于冻结输入和生产清单。</li>
+<li value="2"><strong>安装失败的诊断信息没有传到修复决策。</strong> pip 已报告构建依赖名、所需版本范围和可用版本，但 <code>check_installation</code> 的错误摘要遗漏了依赖解析原因。controller 和修复作者只收到失败状态和退出码。</li>
+</ol>
+<h2 id="observations">遇到的现象</h2>
+<p>本节只列由 nanolize 流程本身产生的现象；我们运行环境造成的情况未列入。</p>
+<ul>
+<li><strong>现象-3｜候选行为差异。</strong> 候选 1 的 <code>check-11</code> 和 <code>check-12</code> 分别有 2 项和 16 项解析场景在原版通过、在候选中失败，共 18 项。第一次修复后，候选 2 的定向复验 2/2 通过，随后候选 2 和候选 3 的全量复验均为 14/14。</li>
+</ul>
+</body>
+</html>

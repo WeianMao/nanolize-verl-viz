@@ -1,0 +1,30 @@
+{
+  "operation": "installation_check",
+  "status": "passed",
+  "git_head": "b836374f4a34a35370b4e26ee0e4926f7e05a98a",
+  "candidate_source_sha256": "28cc6220108dba0ef7e0adb42a608add46e10cd54e8be043b2e9ed1b7fb0f0b3",
+  "candidate_contract_sha256": "65abb8d9c588e22229de9833d52ae7720f6bb3022aa6e7e702de1f892772af3e",
+  "source_and_contract_unchanged": true,
+  "isolation": {
+    "built_from_copy": true,
+    "cwd_outside_checkout": true,
+    "environment_removed_after_run": true,
+    "new_venv": true,
+    "python_path_inherited_by_default": false,
+    "system_site_packages": false
+  },
+  "results": [
+    {
+      "name": "offline-install",
+      "status": "passed",
+      "exit_code": 0,
+      "duration_seconds": 3.4833
+    },
+    {
+      "name": "installed-package",
+      "status": "passed",
+      "exit_code": 0,
+      "duration_seconds": 0.1921
+    }
+  ]
+}
