@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Click 全范围双作业报告</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <style>
+  html{color:#192836;background:#edf1f2;font-family:system-ui,"Noto Sans CJK SC",sans-serif}
+  body{max-width:78rem;margin:0 auto;padding:2.5rem 3.5rem 4rem;background:white;line-height:1.65}
+  header{display:none}h1,h2,h3{color:#11384b;line-height:1.35}h1{font-size:2rem;border-bottom:3px solid #278078;padding-bottom:1rem}
+  h2{font-size:1.45rem;margin-top:2.35rem}h3{font-size:1.18rem;margin-top:1.6rem}
+  table{font-size:.93rem;border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+  th,td{padding:.48rem .6rem;text-align:right;border-bottom:1px solid #d1dbde}th{background:#e4eff0;color:#173d48}
+  th:first-child,td:first-child{text-align:left}code{overflow-wrap:anywhere;white-space:normal;color:#3f495c}
+  li{margin:.45rem 0}a{color:#086c76}p{margin:.65rem 0}ul{padding-left:1.4rem}
+  @media(max-width:700px){body{padding:1.25rem}table{display:block;overflow-x:auto;font-size:.85rem}th,td{white-space:nowrap}}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Click 全范围双作业报告</h1>
+</header>
+<h1 id="click-全范围双作业报告">Click 全范围双作业报告</h1>
+<p>设置：nanolize main <code>1ef5998</code>（插件 0.8.0），Click 原版 <code>e38188e9e205005d5af5f9e59df51904c984586a</code>；<code>$nanolize click unattended=on scope=all --cn</code>。11-19 prompt 补充 <code>pair="on"</code>，主作业检查在 Slurm 计算节点执行。Codex <code>gpt-6.2-astra</code>，推理强度 <code>xhigh</code>。</p>
+<p><strong>结果为带失败交付（delivered_with_failures）。</strong>
+主作业选定 candidate-5，提交为
+<code>e724b7a3718575a8e74b6450848242235004b33f</code>，本地交付分支为
+<code>codex/nanolize-251867bedb76419ea57811c85002c35e</code>。90
+项冻结行为检查通过 88 项，独立安装与安装后 CLI 冒烟检查均通过（2/2）。<a
+href="graph-report/index.html">打开功能图及逐项验证证据</a> · <a href="issues.md">查看 issues.md</a></p>
+<table>
+<thead>
+<tr class="header">
+<th>本次重点</th>
+<th>交付双作业的实测值</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>交付体积</td>
+<td>源码与配置合计 <strong>50,371 token</strong>，原版 215,194，保留
+<strong>23.41%</strong>。计量文件 55 个、214,779 字节；其中源码 36
+个文件、5,259 行、47,982 token。配置 2,389 token。原版源码 13,990
+行。</td>
+</tr>
+<tr class="even">
+<td>第一版作者调用</td>
+<td>首次 <strong>7 分 35 秒，$3.38</strong>。整个第一版共 <strong>3 次，25 分 47 秒，$10.86</strong>。草稿封存历时
+26 分 31 秒。金额按公开 Standard 牌价折算。</td>
+</tr>
+<tr class="odd">
+<td>对设计测试的否决</td>
+<td>测试文件 <strong>10 次</strong>，另有场景文件 <strong>5
+次</strong>。首次失败尝试额外产生测试否决 12 次、场景否决 3
+次。按每轮每个文件的否决计一次。</td>
+</tr>
+<tr class="even">
+<td>修复</td>
+<td><strong>4 轮</strong>。主作业另调用作者执行器进行 1
+次只读代码复核。最终全量比较仍有 2 项回归。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="相同行比例和验证范围">相同行比例和验证范围</h2>
+<ul>
+<li>Git 按同路径、完整物理行逐字对照原始提交，交付源码有 <strong>1,370 /
+5,259
+行相同（26.05%）</strong>。此项包括空行和注释，新增文件的行计入分母。nanolize
+的同路径长行按长度加权为
+<strong>23.0%</strong>；其忽略空白、注释、签名等因素的实现重合指标为
+<strong>19%</strong>，比较了 2,778 行。</li>
+<li>全部 22 个节点均纳入范围，其中 20
+个叶节点全部有有效测试，缺有效测试的叶节点为 <strong>0</strong>。7
+个节点补入 39 个测试文件，另接受 14 个场景文件，共 78
+个场景用例。功能义务账本的 22 个节点中 19 个通过，3
+个带失败，包含上层汇总。</li>
+<li>23 项因涉及内部实现等原因而转换的原检查共 503 个测试函数。29
+个恢复为准入检查，9 个迁移成功，11 个明确排除，454 个未纳入冻结验收。11
+个明确交给设计者迁移的函数中有 2 个仍未验证。</li>
+<li>交付后的独立回放覆盖 19 个原检查文件，另外 4 个文件未回放。328
+个未覆盖的公开测试函数中，原版通过 327 个，候选通过 326
+个；多出的一项回归是
+<code>tests/test_shell_completion.py::test_chained</code>。135
+个依赖内部实现的函数中，候选比原版少通过 36 个。回放单独计数，未改变
+88/90 的冻结验收结果。</li>
+</ul>
+<h2 id="耗时与费用总览">耗时与费用总览</h2>
+<ul>
+<li>2026-11-19 UTC，从 06:22:14 建立运行页到 09:23:56 交付，总墙钟
+<strong>3 小时 1 分 42 秒</strong>。首次失败双作业从提交到结束为 1 小时
+11 分 24 秒；交付双作业从重新提交到交付为 2 小时 26 分 6
+秒。两次尝试部分重叠。</li>
+<li>交付双作业中，主作业等待仓库执行锁约 40 分 53
+秒，草稿作业利用独立副本同时写第一版。冻结 1 小时 1 分 26
+秒。两遍基线分别为 6 分 6 秒和 12 分 25 秒。中间的设计、评审和门控合计
+42 分 20 秒，其中设计者会话并集 20 分 51 秒，评审者会话并集 4 分 34
+秒，其余包括执行新测试、变异检查和协调。导入第一版至首次修复为 3 分 45
+秒，修复及复验为 37 分 24 秒，最终交付为 2 分 39 秒（含原版回放 2 分 23
+秒）。</li>
+<li>两次双作业的 58 次调用均有完整用量事件。交付双作业 38 次，折合
+<strong>$46.47</strong>；首次失败尝试 20 次，折合 <strong>$21.81</strong>；按未舍入金额合计
+<strong>$68.27</strong>。统计范围是两个双作业的四类执行角色；宿主对话、Slurm
+和存储另行计量。</li>
+<li>模型为 GPT-6.2 Astra。表中金额统一按 Standard
+短上下文牌价折算，调用记录没有实扣美元字段。作者的持久调用记录显示单次模型请求最大输入低于
+272K。若作者请求实际按 Fast
+结算、其余请求按表中费率，则第一版首次为 $6.76、3 次合计
+$21.71、两次运行总计约
+$89.75。实际服务档位及账单未返回，短上下文费率是对其他角色的估算假设。 <a href="#rates">折算费率</a></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>执行角色（两次双作业合计）</th>
+<th style="text-align: right;">调用</th>
+<th style="text-align: right;">非缓存输入</th>
+<th style="text-align: right;">缓存命中输入</th>
+<th style="text-align: right;">输出</th>
+<th style="text-align: right;">折算美元</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>作者</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">953,248</td>
+<td style="text-align: right;">19,750,656</td>
+<td style="text-align: right;">148,720</td>
+<td style="text-align: right;">21.4750</td>
+</tr>
+<tr class="even">
+<td>Controller</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">311,869</td>
+<td style="text-align: right;">490,624</td>
+<td style="text-align: right;">6,536</td>
+<td style="text-align: right;">2.9526</td>
+</tr>
+<tr class="odd">
+<td>测试设计者</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">1,277,790</td>
+<td style="text-align: right;">22,236,032</td>
+<td style="text-align: right;">341,297</td>
+<td style="text-align: right;">32.7686</td>
+</tr>
+<tr class="even">
+<td>测试评审者</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">817,215</td>
+<td style="text-align: right;">4,303,616</td>
+<td style="text-align: right;">70,462</td>
+<td style="text-align: right;">11.0776</td>
+</tr>
+<tr class="odd">
+<td>合计</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">3,360,122</td>
+<td style="text-align: right;">46,780,928</td>
+<td style="text-align: right;">567,015</td>
+<td style="text-align: right;">68.2739</td>
+</tr>
+</tbody>
+</table>
+<p>作者执行器的 8 次调用包括 3 次第一版、4 次修复和 1
+次只读代码复核。测试评审者统计独立的测试评审会话。缓存写入均为
+0。输出已包含推理 token；三列互斥 token 合计
+50,708,065。逐调用证据摘要见 <a
+href="notes/call-metrics.json">call-metrics.json</a>。</p>
+<h2 id="slurm-选择与代码变更">Slurm 选择与代码变更</h2>
+<ul>
+<li><code>sacctmgr</code> 给出的默认账户为
+<code>nvr_elm_llm</code>，关联 QoS 为
+<code>free,normal</code>。<code>sinfo</code> 显示 <code>cpu_short</code>
+为 up、时限 4 小时、GRES 为 (null)。<code>squeue</code> 观察到该账户的
+normal 作业在此分区运行；5 分钟的 <code>sbatch --test-only</code>
+接受了组合。主作业也实际记录了无 GPU 的 Slurm 计算节点。</li>
+<li>两次评审均传入 <code>pair="on"</code> 和
+<code>check_executor={"kind":"auto","account":"nvr_elm_llm","partition":"cpu_short","qos":"normal","queue_timeout":1800}</code>。提交和调度由
+nanolize 管理。</li>
+<li>原版提交为
+<code>e38188e9e205005d5af5f9e59df51904c984586a</code>。nanolize 以自己的
+Git 身份在 <code>nanolize-input</code> 提交了 4 个恢复测试文件，提交为
+<code>82035bc13851c1e4a3810e1c3d172e843a7208b9</code>。原版工作树停留在此分支且干净，交付分支独立保留。</li>
+<li>恢复文件为
+<code>tests/test_nanolize_recovered_test_stream_lifecycle.py</code>，以及
+<code>tests/test_utils/</code> 中的
+<code>test_nanolize_recovered_test_open_file_1.py</code>、<code>test_nanolize_recovered_test_open_file_2.py</code>、<code>test_nanolize_recovered_test_prompt.py</code>。</li>
+</ul>
+<h2 id="bugs">需要对 nanolize 改动的 bugs</h2>
+<p>本页问题列表只保留经核对确定由 nanolize 自身引起的 4 项。</p>
+<ul>
+<li><strong>1　提交前未发现生产脚本被列为冻结输入。</strong><code>container-shell-syntax</code> 通过就绪审计，主作业完成两遍基线和测试设计后，<code>seal_contract</code> 才发现检查输入与生产脚本 <code>.devcontainer/on-create-command.sh</code> 重叠。</li>
+<li><strong>2　全范围清单与候选导入的文件规则冲突。</strong>规划收录了开发容器入口，但 <code>import_draft</code> 和保存候选时都会剔除作者提供的配置和脚本，最终 <code>container-entrypoint-syntax</code> 因找不到 <code>.devcontainer/devcontainer.json</code> 而失败。</li>
+<li><strong>3　报告映射保留了导入时已剔除的文件。</strong>自动建站读取 <code>development</code> 下两个已剔除的路径而失败，从映射中移除这两项后，使用同一候选、验证和安装证据即可生成功能图。</li>
+<li><strong>现象-3　Stage 01 在缺少 Click 自身发行元数据时仍将源码测试环境标为 <code>ready</code>，原测试在收集时查询发行版本，触发 <code>PackageNotFoundError</code>。</strong>仅补齐发行元数据后，原版默认套件 2,626 通过、24 跳过、1 个预期失败，31,000 个压力用例按项目默认配置未选。</li>
+</ul>
+
+<h2 id="observations">遇到的现象</h2>
+<p>本节只列由 nanolize 流程本身产生的现象；我们运行环境造成的情况未列入。</p>
+<ul>
+<li><strong>现象-1　Click 路径转换回归。</strong>候选在严格字节告警模式下处理 <code>click.Path(allow_dash=True)</code> 时跨类型比较，触发 <code>BytesWarning</code>，冻结检查 <code>test-types-test-Path</code> 在最终复验仍失败。</li>
+<li><strong>现象-2　额外回放发现链式命令的 Shell 补全公开测试 <code>tests/test_shell_completion.py::test_chained</code> 从通过变为失败。</strong>135 个依赖内部实现的测试函数中，原版通过 128 个，候选通过 92 个，相差的 36 个单独计数。</li>
+<li><strong>现象-7　四轮行为修复及一次只读复核后，controller 选定了仍有两项失败的候选 5。</strong>基于 <code>verification-20</code> 的诊断 <code>diagnostics-1</code> 在交付操作开始后登记。</li>
+</ul>
+
+<!-- metrics -->
+
+<h2 id="运行计量">运行计量</h2>
+<p>生成时间 2026-11-19 09:26:57 UTC。</p>
+<h3 id="首次双作业">首次双作业</h3>
+<p>主作业
+<code>6efc60220d7d4e0e817dbdaef780614e</code>（failed），草稿作业
+<code>b8b9a5ce4957497aa7a660ab4a45d128</code>（failed）。</p>
+<table>
+<thead>
+<tr class="header">
+<th>阶段</th>
+<th>墙钟耗时</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>主作业冻结（建工作树至封存结束）</td>
+<td>1 小时 10 分 36 秒</td>
+</tr>
+<tr class="even">
+<td>第一版（首个作者操作至草稿封存）</td>
+<td>未进入</td>
+</tr>
+<tr class="odd">
+<td>修复（首次修复至交付操作开始，含复验和决策）</td>
+<td>未进入</td>
+</tr>
+<tr class="even">
+<td>交付操作</td>
+<td>未进入</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>角色</th>
+<th>已启动会话</th>
+<th>有完整用量</th>
+<th>非缓存输入</th>
+<th>缓存命中输入</th>
+<th>缓存写入</th>
+<th>输出</th>
+<th>Standard 短上下文折算</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>作者</td>
+<td>0</td>
+<td>0/0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>$0.0000</td>
+</tr>
+<tr class="even">
+<td>Controller</td>
+<td>0</td>
+<td>0/0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>$0.0000</td>
+</tr>
+<tr class="odd">
+<td>设计者</td>
+<td>11</td>
+<td>11/11</td>
+<td>617,394</td>
+<td>11,080,448</td>
+<td>0</td>
+<td>172,908</td>
+<td>$16.2877</td>
+</tr>
+<tr class="even">
+<td>评审者</td>
+<td>9</td>
+<td>9/9</td>
+<td>422,687</td>
+<td>2,112,640</td>
+<td>0</td>
+<td>32,365</td>
+<td>$5.5212</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>第一次主基线用时 5 分 55 秒。</li>
+<li>冻结阶段设计者会话的并集墙钟时间 22 分 44 秒，评审会话的并集墙钟时间
+4 分 10 秒。</li>
+<li>已返回的评审批次中，测试文件被否决 12 次，其他文件（含场景）被否决 3
+次。</li>
+<li>第二次主基线用时 21 分 39 秒。</li>
+<li>已接受测试覆盖 7 个节点，接受 34 个测试文件。</li>
+<li>主作业记录的修复轮数 0。</li>
+</ul>
+<h3 id="交付双作业">交付双作业</h3>
+<p>主作业
+<code>251867bedb76419ea57811c85002c35e</code>（delivered_with_failures），草稿作业
+<code>bd7cf6ab624c4499b4e5796d78d5803f</code>（draft_ready）。</p>
+<table>
+<thead>
+<tr class="header">
+<th>阶段</th>
+<th>墙钟耗时</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>主作业冻结（建工作树至封存结束）</td>
+<td>1 小时 1 分 26 秒</td>
+</tr>
+<tr class="even">
+<td>第一版（首个作者操作至草稿封存）</td>
+<td>26 分 31 秒</td>
+</tr>
+<tr class="odd">
+<td>修复（首次修复至交付操作开始，含复验和决策）</td>
+<td>37 分 24 秒</td>
+</tr>
+<tr class="even">
+<td>交付操作</td>
+<td>2 分 39 秒</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>角色</th>
+<th>已启动会话</th>
+<th>有完整用量</th>
+<th>非缓存输入</th>
+<th>缓存命中输入</th>
+<th>缓存写入</th>
+<th>输出</th>
+<th>Standard 短上下文折算</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>作者</td>
+<td>8</td>
+<td>8/8</td>
+<td>953,248</td>
+<td>19,750,656</td>
+<td>0</td>
+<td>148,720</td>
+<td>$21.4750</td>
+</tr>
+<tr class="even">
+<td>Controller</td>
+<td>8</td>
+<td>8/8</td>
+<td>311,869</td>
+<td>490,624</td>
+<td>0</td>
+<td>6,536</td>
+<td>$2.9526</td>
+</tr>
+<tr class="odd">
+<td>设计者</td>
+<td>13</td>
+<td>13/13</td>
+<td>660,396</td>
+<td>11,155,584</td>
+<td>0</td>
+<td>168,389</td>
+<td>$16.4810</td>
+</tr>
+<tr class="even">
+<td>评审者</td>
+<td>9</td>
+<td>9/9</td>
+<td>394,528</td>
+<td>2,190,976</td>
+<td>0</td>
+<td>38,097</td>
+<td>$5.5565</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>第一次主基线用时 6 分 6 秒。</li>
+<li>冻结阶段设计者会话的并集墙钟时间 20 分 51 秒，评审会话的并集墙钟时间
+4 分 34 秒。</li>
+<li>已返回的评审批次中，测试文件被否决 10 次，其他文件（含场景）被否决 5
+次。</li>
+<li>第二次主基线用时 12 分 25 秒。</li>
+<li>已接受测试覆盖 7 个节点，接受 39 个测试文件。</li>
+<li>第一版草稿已完成的 3 次作者调用合计 25 分 47 秒，Standard
+短上下文折算 $10.8560。</li>
+<li>首次作者调用用时 7 分 35 秒，Standard 短上下文折算 $3.3815。</li>
+<li>主作业记录的修复轮数 4。</li>
+</ul>
+<p id="rates">用量取自适配器记录的 Codex
+调用事件。输入已拆出缓存命中和缓存写入，输出包含推理
+token。已启动但未返回完整用量的会话只计调用数。“Standard 短上下文折算”按
+GPT‑6.2 Astra 每百万 token 的非缓存输入 8 美元、缓存命中 0.40 美元、输出
+40 美元、30 分钟缓存写入 10
+美元计算。当前调用事件没有返回实际扣款。阶段和角色的并行时间存在重叠。</p>
+</body>
+</html>

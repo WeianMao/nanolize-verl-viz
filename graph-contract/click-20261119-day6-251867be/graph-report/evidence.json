@@ -1,0 +1,1890 @@
+{
+  "limitations": [
+    "Only summary results are published; captured command output is omitted."
+  ],
+  "status": "regressed",
+  "tests": {
+    "original_total": 20,
+    "retained": 90,
+    "retired": 0,
+    "needs_adaptation": 0,
+    "adapted": 0,
+    "contract": 70,
+    "passed": 88,
+    "failed": 2,
+    "fixed_baseline_failure": 0,
+    "not_run": 0
+  },
+  "capability_results": [
+    {
+      "id": "click",
+      "status": "regressed",
+      "checks": [],
+      "check_status": "regressed",
+      "baseline_status": "not_run",
+      "candidate_status": "not_run"
+    },
+    {
+      "id": "commands",
+      "status": "passed",
+      "checks": [
+        "test-chain",
+        "test-commands",
+        "test-context",
+        "test-custom-classes",
+        "test-info-dict"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "decorators",
+      "status": "passed",
+      "checks": [
+        "test-command-decorators",
+        "public-command-output",
+        "recovered-test_open_file-1",
+        "contract-decorators-251867-21",
+        "contract-decorators-251867-22",
+        "contract-decorators-251867-23",
+        "contract-decorators-251867-24",
+        "scenario-decorators-251867-25",
+        "contract-decorators-251867-50",
+        "contract-decorators-251867-51",
+        "contract-decorators-251867-52",
+        "contract-decorators-251867-53",
+        "contract-decorators-251867-54",
+        "scenario-decorators-251867-55",
+        "scenario-decorators-251867-56"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "parameters",
+      "status": "regressed",
+      "checks": [
+        "test-normalization",
+        "test-types-test-Choice",
+        "test-types-test-File",
+        "test-types-test-FloatRange",
+        "test-types-test-FuncParamType",
+        "test-types-test-IntRange",
+        "test-types-test-ParamType",
+        "test-types-test-Path",
+        "test-types-test-convert-type"
+      ],
+      "check_status": "regressed",
+      "baseline_status": "passed",
+      "candidate_status": "failed"
+    },
+    {
+      "id": "errors",
+      "status": "passed",
+      "checks": [
+        "test-abort-interrupt",
+        "test-exceptions-test-FileError"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "help",
+      "status": "passed",
+      "checks": [
+        "contract-help-251867-12",
+        "contract-help-251867-13",
+        "contract-help-251867-14",
+        "contract-help-251867-15",
+        "contract-help-251867-16",
+        "scenario-help-251867-17",
+        "scenario-help-251867-18"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "streams",
+      "status": "passed",
+      "checks": [
+        "test-utils-test-format-filename",
+        "recovered-test_open_file-2",
+        "contract-streams-251867-27",
+        "contract-streams-251867-28",
+        "contract-streams-251867-30",
+        "contract-streams-251867-31",
+        "scenario-streams-251867-32",
+        "contract-streams-251867-57",
+        "scenario-streams-251867-58"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "terminal",
+      "status": "passed",
+      "checks": [
+        "test-utils-test-confirm",
+        "test-utils-test-style",
+        "recovered-test_prompt",
+        "contract-terminal-251867-36",
+        "contract-terminal-251867-38",
+        "contract-terminal-251867-39",
+        "contract-terminal-251867-40",
+        "contract-terminal-251867-59",
+        "contract-terminal-251867-60",
+        "contract-terminal-251867-63",
+        "contract-terminal-251867-64",
+        "scenario-terminal-251867-65",
+        "scenario-terminal-251867-66"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "completion",
+      "status": "passed",
+      "checks": [
+        "contract-completion-251867-1",
+        "contract-completion-251867-2",
+        "contract-completion-251867-3",
+        "contract-completion-251867-4",
+        "scenario-completion-251867-6",
+        "scenario-completion-251867-7",
+        "scenario-completion-251867-8",
+        "contract-completion-251867-48"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "testing",
+      "status": "passed",
+      "checks": [
+        "recovered-test_stream_lifecycle",
+        "recovered-test_open_file-1",
+        "recovered-test_open_file-2",
+        "recovered-test_prompt",
+        "contract-testing-251867-42",
+        "contract-testing-251867-43",
+        "contract-testing-251867-44",
+        "contract-testing-251867-46",
+        "contract-testing-251867-67",
+        "scenario-testing-251867-68"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "examples",
+      "status": "passed",
+      "checks": [],
+      "check_status": "passed",
+      "baseline_status": "not_run",
+      "candidate_status": "not_run"
+    },
+    {
+      "id": "example-aliases",
+      "status": "passed",
+      "checks": [
+        "example-aliases-help"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "example-colors",
+      "status": "passed",
+      "checks": [
+        "example-colors-help"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "example-completion",
+      "status": "passed",
+      "checks": [
+        "example-completion-help",
+        "contract-example_completion_ad7fe729-251867-9",
+        "contract-example_completion_ad7fe729-251867-10",
+        "scenario-example_completion_ad7fe729-251867-49"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "example-complex",
+      "status": "passed",
+      "checks": [
+        "example-complex-help"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "example-imagepipe",
+      "status": "passed",
+      "checks": [
+        "example-imagepipe-help"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "example-inout",
+      "status": "passed",
+      "checks": [
+        "example-inout-help"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "example-naval",
+      "status": "passed",
+      "checks": [
+        "example-naval-help"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "example-repo",
+      "status": "passed",
+      "checks": [
+        "example-repo-help"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "example-termui",
+      "status": "passed",
+      "checks": [
+        "example-termui-help"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "example-validation",
+      "status": "passed",
+      "checks": [
+        "example-validation-help"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "development",
+      "status": "regressed",
+      "checks": [
+        "documentation-settings",
+        "container-entrypoint-syntax"
+      ],
+      "check_status": "regressed",
+      "baseline_status": "passed",
+      "candidate_status": "failed"
+    }
+  ],
+  "checks": [
+    {
+      "name": "example-aliases-help",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "example-aliases"
+      ]
+    },
+    {
+      "name": "example-colors-help",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "example-colors"
+      ]
+    },
+    {
+      "name": "example-completion-help",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "example-completion"
+      ]
+    },
+    {
+      "name": "example-complex-help",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "example-complex"
+      ]
+    },
+    {
+      "name": "example-imagepipe-help",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "example-imagepipe"
+      ]
+    },
+    {
+      "name": "example-inout-help",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "example-inout"
+      ]
+    },
+    {
+      "name": "example-naval-help",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "example-naval"
+      ]
+    },
+    {
+      "name": "example-repo-help",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "example-repo"
+      ]
+    },
+    {
+      "name": "example-termui-help",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "example-termui"
+      ]
+    },
+    {
+      "name": "example-validation-help",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "example-validation"
+      ]
+    },
+    {
+      "name": "documentation-settings",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "development"
+      ]
+    },
+    {
+      "name": "container-entrypoint-syntax",
+      "status": "regressed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "development"
+      ]
+    },
+    {
+      "name": "test-abort-interrupt",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "errors"
+      ]
+    },
+    {
+      "name": "test-chain",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "commands"
+      ]
+    },
+    {
+      "name": "test-command-decorators",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "decorators"
+      ]
+    },
+    {
+      "name": "test-commands",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "commands"
+      ]
+    },
+    {
+      "name": "test-context",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "commands"
+      ]
+    },
+    {
+      "name": "test-custom-classes",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "commands"
+      ]
+    },
+    {
+      "name": "test-exceptions-test-FileError",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "errors"
+      ]
+    },
+    {
+      "name": "test-info-dict",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "commands"
+      ]
+    },
+    {
+      "name": "test-normalization",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "parameters"
+      ]
+    },
+    {
+      "name": "test-types-test-Choice",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "parameters"
+      ]
+    },
+    {
+      "name": "test-types-test-File",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "parameters"
+      ]
+    },
+    {
+      "name": "test-types-test-FloatRange",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "parameters"
+      ]
+    },
+    {
+      "name": "test-types-test-FuncParamType",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "parameters"
+      ]
+    },
+    {
+      "name": "test-types-test-IntRange",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "parameters"
+      ]
+    },
+    {
+      "name": "test-types-test-ParamType",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "parameters"
+      ]
+    },
+    {
+      "name": "test-types-test-Path",
+      "status": "regressed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "parameters"
+      ]
+    },
+    {
+      "name": "test-types-test-convert-type",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "parameters"
+      ]
+    },
+    {
+      "name": "test-utils-test-confirm",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "terminal"
+      ]
+    },
+    {
+      "name": "test-utils-test-format-filename",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "streams"
+      ]
+    },
+    {
+      "name": "test-utils-test-style",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "terminal"
+      ]
+    },
+    {
+      "name": "public-command-output",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "decorators"
+      ]
+    },
+    {
+      "name": "recovered-test_stream_lifecycle",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "testing"
+      ]
+    },
+    {
+      "name": "recovered-test_open_file-1",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "decorators",
+        "testing"
+      ]
+    },
+    {
+      "name": "recovered-test_open_file-2",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "streams",
+        "testing"
+      ]
+    },
+    {
+      "name": "recovered-test_prompt",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "terminal",
+        "testing"
+      ]
+    },
+    {
+      "name": "contract-completion-251867-1",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "completion"
+      ]
+    },
+    {
+      "name": "contract-completion-251867-2",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "completion"
+      ]
+    },
+    {
+      "name": "contract-completion-251867-3",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "completion"
+      ]
+    },
+    {
+      "name": "contract-completion-251867-4",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "completion"
+      ]
+    },
+    {
+      "name": "scenario-completion-251867-6",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "completion"
+      ]
+    },
+    {
+      "name": "scenario-completion-251867-7",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "completion"
+      ]
+    },
+    {
+      "name": "scenario-completion-251867-8",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "completion"
+      ]
+    },
+    {
+      "name": "contract-example_completion_ad7fe729-251867-9",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "example-completion"
+      ]
+    },
+    {
+      "name": "contract-example_completion_ad7fe729-251867-10",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "example-completion"
+      ]
+    },
+    {
+      "name": "contract-help-251867-12",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "help"
+      ]
+    },
+    {
+      "name": "contract-help-251867-13",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "help"
+      ]
+    },
+    {
+      "name": "contract-help-251867-14",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "help"
+      ]
+    },
+    {
+      "name": "contract-help-251867-15",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "help"
+      ]
+    },
+    {
+      "name": "contract-help-251867-16",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "help"
+      ]
+    },
+    {
+      "name": "scenario-help-251867-17",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "help"
+      ]
+    },
+    {
+      "name": "scenario-help-251867-18",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "help"
+      ]
+    },
+    {
+      "name": "contract-decorators-251867-21",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "decorators"
+      ]
+    },
+    {
+      "name": "contract-decorators-251867-22",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "decorators"
+      ]
+    },
+    {
+      "name": "contract-decorators-251867-23",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "decorators"
+      ]
+    },
+    {
+      "name": "contract-decorators-251867-24",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "decorators"
+      ]
+    },
+    {
+      "name": "scenario-decorators-251867-25",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "decorators"
+      ]
+    },
+    {
+      "name": "contract-streams-251867-27",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "streams"
+      ]
+    },
+    {
+      "name": "contract-streams-251867-28",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "streams"
+      ]
+    },
+    {
+      "name": "contract-streams-251867-30",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "streams"
+      ]
+    },
+    {
+      "name": "contract-streams-251867-31",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "streams"
+      ]
+    },
+    {
+      "name": "scenario-streams-251867-32",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "streams"
+      ]
+    },
+    {
+      "name": "contract-terminal-251867-36",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "terminal"
+      ]
+    },
+    {
+      "name": "contract-terminal-251867-38",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "terminal"
+      ]
+    },
+    {
+      "name": "contract-terminal-251867-39",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "terminal"
+      ]
+    },
+    {
+      "name": "contract-terminal-251867-40",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "terminal"
+      ]
+    },
+    {
+      "name": "contract-testing-251867-42",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "testing"
+      ]
+    },
+    {
+      "name": "contract-testing-251867-43",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "testing"
+      ]
+    },
+    {
+      "name": "contract-testing-251867-44",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "testing"
+      ]
+    },
+    {
+      "name": "contract-testing-251867-46",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "testing"
+      ]
+    },
+    {
+      "name": "contract-completion-251867-48",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "completion"
+      ]
+    },
+    {
+      "name": "scenario-example_completion_ad7fe729-251867-49",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "example-completion"
+      ]
+    },
+    {
+      "name": "contract-decorators-251867-50",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "decorators"
+      ]
+    },
+    {
+      "name": "contract-decorators-251867-51",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "decorators"
+      ]
+    },
+    {
+      "name": "contract-decorators-251867-52",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "decorators"
+      ]
+    },
+    {
+      "name": "contract-decorators-251867-53",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "decorators"
+      ]
+    },
+    {
+      "name": "contract-decorators-251867-54",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "decorators"
+      ]
+    },
+    {
+      "name": "scenario-decorators-251867-55",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "decorators"
+      ]
+    },
+    {
+      "name": "scenario-decorators-251867-56",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "decorators"
+      ]
+    },
+    {
+      "name": "contract-streams-251867-57",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "streams"
+      ]
+    },
+    {
+      "name": "scenario-streams-251867-58",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "streams"
+      ]
+    },
+    {
+      "name": "contract-terminal-251867-59",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "terminal"
+      ]
+    },
+    {
+      "name": "contract-terminal-251867-60",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "terminal"
+      ]
+    },
+    {
+      "name": "contract-terminal-251867-63",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "terminal"
+      ]
+    },
+    {
+      "name": "contract-terminal-251867-64",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "terminal"
+      ]
+    },
+    {
+      "name": "scenario-terminal-251867-65",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "terminal"
+      ]
+    },
+    {
+      "name": "scenario-terminal-251867-66",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "terminal"
+      ]
+    },
+    {
+      "name": "contract-testing-251867-67",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "testing"
+      ]
+    },
+    {
+      "name": "scenario-testing-251867-68",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "testing"
+      ]
+    }
+  ],
+  "actual_size": {
+    "baseline_source_lines": 13990,
+    "source_lines": 5259,
+    "source_files": 36,
+    "retained_percent": 23.407251131537123,
+    "target_percent": 50.0,
+    "target_source_lines": 6995.0,
+    "estimated_source_lines": null,
+    "metric": "tokens",
+    "tokenizer": {
+      "classification": "source_and_configuration_v2",
+      "decoding": "python_encoding_cookie_else_utf8_strict",
+      "encoding": "cl100k_base",
+      "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+      "file_boundaries": "independent_sum",
+      "library": "tiktoken",
+      "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+      "special_tokens": "ordinary_text",
+      "text_policy": "raw_decoded_text_per_file",
+      "version": "0.12.0"
+    },
+    "measurement_sha256": "ea0c39889b1e1298e19fc8c056cda9533be6bf9fede6c94f9ae826bd5daba382",
+    "source_tokens": 47982,
+    "configuration_tokens": 2389,
+    "total_tokens": 50371,
+    "baseline_tokens": 215194,
+    "target_tokens": 107597,
+    "source_retained_percent": 37.59113652609006,
+    "complete": true,
+    "target_met": true
+  },
+  "budget_status": "met",
+  "verification_scope": "full",
+  "installation_evidence": {
+    "status": "passed",
+    "checks_passed": 2,
+    "checks_total": 2,
+    "environment_metadata_complete": true
+  },
+  "obligation_ledger": {
+    "records": [
+      {
+        "capability": "click",
+        "status": "failed",
+        "obligations": [
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "failed",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "failed",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          }
+        ]
+      },
+      {
+        "capability": "commands",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "test-chain",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-commands",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-context",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-custom-classes",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-info-dict",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "decorators",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "test-command-decorators",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "public-command-output",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-test_open_file-1",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-decorators-251867-21",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-decorators-251867-22",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-decorators-251867-23",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-decorators-251867-24",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-decorators-251867-25",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-decorators-251867-50",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-decorators-251867-51",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-decorators-251867-52",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-decorators-251867-53",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-decorators-251867-54",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-decorators-251867-55",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-decorators-251867-56",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "parameters",
+        "status": "failed",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "test-normalization",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-types-test-Choice",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-types-test-File",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-types-test-FloatRange",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-types-test-FuncParamType",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-types-test-IntRange",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-types-test-ParamType",
+            "kind": "declared_check"
+          },
+          {
+            "status": "failed",
+            "check": "test-types-test-Path",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-types-test-convert-type",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "errors",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "test-abort-interrupt",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-exceptions-test-FileError",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "help",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-help-251867-12",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-help-251867-13",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-help-251867-14",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-help-251867-15",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-help-251867-16",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-help-251867-17",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-help-251867-18",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "streams",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "test-utils-test-format-filename",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-test_open_file-2",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-streams-251867-27",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-streams-251867-28",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-streams-251867-30",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-streams-251867-31",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-streams-251867-32",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-streams-251867-57",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-streams-251867-58",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "terminal",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "test-utils-test-confirm",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-utils-test-style",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-test_prompt",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-terminal-251867-36",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-terminal-251867-38",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-terminal-251867-39",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-terminal-251867-40",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-terminal-251867-59",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-terminal-251867-60",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-terminal-251867-63",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-terminal-251867-64",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-terminal-251867-65",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-terminal-251867-66",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "completion",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-completion-251867-1",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-completion-251867-2",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-completion-251867-3",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-completion-251867-4",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-completion-251867-6",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-completion-251867-7",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-completion-251867-8",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-completion-251867-48",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "testing",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "recovered-test_stream_lifecycle",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-test_open_file-1",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-test_open_file-2",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-test_prompt",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-testing-251867-42",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-testing-251867-43",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-testing-251867-44",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-testing-251867-46",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-testing-251867-67",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-testing-251867-68",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "examples",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          }
+        ]
+      },
+      {
+        "capability": "example-aliases",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "example-aliases-help",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "example-colors",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "example-colors-help",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "example-completion",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "example-completion-help",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-example_completion_ad7fe729-251867-9",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-example_completion_ad7fe729-251867-10",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-example_completion_ad7fe729-251867-49",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "example-complex",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "example-complex-help",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "example-imagepipe",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "example-imagepipe-help",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "example-inout",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "example-inout-help",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "example-naval",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "example-naval-help",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "example-repo",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "example-repo-help",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "example-termui",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "example-termui-help",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "example-validation",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "example-validation-help",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "development",
+        "status": "failed",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "documentation-settings",
+            "kind": "declared_check"
+          },
+          {
+            "status": "failed",
+            "check": "container-entrypoint-syntax",
+            "kind": "declared_check"
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "retired": 0,
+      "failed": 3,
+      "partial": 0,
+      "verified": 19,
+      "unknown": 0,
+      "total": 22,
+      "retained": 22,
+      "complete": false
+    },
+    "limitations": [
+      "Public summaries omit private evidence bindings and raw output."
+    ]
+  },
+  "leaf_coverage": {
+    "status": "ready",
+    "strict": false,
+    "valid": [
+      "commands",
+      "completion",
+      "decorators",
+      "development",
+      "errors",
+      "example-aliases",
+      "example-colors",
+      "example-completion",
+      "example-complex",
+      "example-imagepipe",
+      "example-inout",
+      "example-naval",
+      "example-repo",
+      "example-termui",
+      "example-validation",
+      "help",
+      "parameters",
+      "streams",
+      "terminal",
+      "testing"
+    ],
+    "missing": [],
+    "exempted": [],
+    "why_missing": {}
+  }
+}
