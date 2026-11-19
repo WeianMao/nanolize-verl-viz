@@ -1,0 +1,1392 @@
+{
+  "limitations": [
+    "Only summary results are published; captured command output is omitted."
+  ],
+  "status": "unverified",
+  "tests": {
+    "original_total": 1,
+    "retained": 56,
+    "retired": 0,
+    "needs_adaptation": 0,
+    "adapted": 0,
+    "contract": 55,
+    "passed": 55,
+    "failed": 1,
+    "fixed_baseline_failure": 0,
+    "not_run": 0
+  },
+  "capability_results": [
+    {
+      "id": "graphify-root-ddcb2dfa42d8",
+      "status": "regressed",
+      "checks": [],
+      "check_status": "regressed",
+      "baseline_status": "not_run",
+      "candidate_status": "not_run"
+    },
+    {
+      "id": "graphify-library-b718f1354f72",
+      "status": "regressed",
+      "checks": [],
+      "check_status": "regressed",
+      "baseline_status": "not_run",
+      "candidate_status": "not_run"
+    },
+    {
+      "id": "graphify-tools-f9d35d43770d",
+      "status": "unverified",
+      "checks": [],
+      "check_status": "unverified",
+      "baseline_status": "not_run",
+      "candidate_status": "not_run"
+    },
+    {
+      "id": "graphify-lookup-29a1af58c138",
+      "status": "regressed",
+      "checks": [
+        "documented-examples",
+        "public-round-trip",
+        "library-static-types",
+        "recovered-test_bidict-2",
+        "contract-graphify_lookup_29a1af58c138_562d85c8-3b5e08-21",
+        "contract-graphify_lookup_29a1af58c138_562d85c8-3b5e08-22",
+        "contract-graphify_lookup_29a1af58c138_562d85c8-3b5e08-23",
+        "contract-graphify_lookup_29a1af58c138_562d85c8-3b5e08-24",
+        "contract-graphify_lookup_29a1af58c138_562d85c8-3b5e08-25",
+        "scenario-graphify_lookup_29a1af58c138_562d85c8-3b5e08-26",
+        "contract-graphify_lookup_29a1af58c138_562d85c8-3b5e08-59",
+        "contract-graphify_lookup_29a1af58c138_562d85c8-3b5e08-60",
+        "contract-graphify_lookup_29a1af58c138_562d85c8-3b5e08-61",
+        "scenario-graphify_lookup_29a1af58c138_562d85c8-3b5e08-62"
+      ],
+      "check_status": "regressed",
+      "baseline_status": "passed",
+      "candidate_status": "failed"
+    },
+    {
+      "id": "graphify-duplicates-fcea2252477f",
+      "status": "unverified",
+      "checks": [
+        "documented-examples",
+        "collision-actions",
+        "contract-graphify_duplicates_fcea2252477f_f54fbd40-3b5e08-6",
+        "contract-graphify_duplicates_fcea2252477f_f54fbd40-3b5e08-7",
+        "scenario-graphify_duplicates_fcea2252477f_f54fbd40-3b5e08-8",
+        "contract-graphify_duplicates_fcea2252477f_f54fbd40-3b5e08-45",
+        "contract-graphify_duplicates_fcea2252477f_f54fbd40-3b5e08-46",
+        "scenario-graphify_duplicates_fcea2252477f_f54fbd40-3b5e08-47"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "graphify-invert-6e77e1227ec2",
+      "status": "unverified",
+      "checks": [
+        "documented-examples",
+        "public-round-trip",
+        "contract-graphify_invert_6e77e1227ec2_58776f7a-3b5e08-18",
+        "scenario-graphify_invert_6e77e1227ec2_58776f7a-3b5e08-19",
+        "contract-graphify_invert_6e77e1227ec2_58776f7a-3b5e08-57",
+        "scenario-graphify_invert_6e77e1227ec2_58776f7a-3b5e08-58"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "graphify-mutation-d3336a334a5e",
+      "status": "regressed",
+      "checks": [
+        "documented-examples",
+        "public-round-trip",
+        "collision-actions",
+        "library-static-types",
+        "recovered-test_bidict-3",
+        "contract-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-29",
+        "contract-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-30",
+        "contract-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-31",
+        "contract-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-32",
+        "contract-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-33",
+        "scenario-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-34",
+        "contract-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-63",
+        "contract-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-65",
+        "scenario-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-67"
+      ],
+      "check_status": "regressed",
+      "baseline_status": "passed",
+      "candidate_status": "failed"
+    },
+    {
+      "id": "graphify-frozen-ffb304816a10",
+      "status": "regressed",
+      "checks": [
+        "documented-examples",
+        "ordered-and-frozen",
+        "library-static-types",
+        "recovered-test_bidict-1",
+        "scenario-graphify_frozen_ffb304816a10_c5800348-3b5e08-16",
+        "contract-graphify_frozen_ffb304816a10_c5800348-3b5e08-48",
+        "contract-graphify_frozen_ffb304816a10_c5800348-3b5e08-49",
+        "contract-graphify_frozen_ffb304816a10_c5800348-3b5e08-50",
+        "contract-graphify_frozen_ffb304816a10_c5800348-3b5e08-51",
+        "contract-graphify_frozen_ffb304816a10_c5800348-3b5e08-52"
+      ],
+      "check_status": "regressed",
+      "baseline_status": "passed",
+      "candidate_status": "failed"
+    },
+    {
+      "id": "graphify-ordered-7fdbf2f7e97f",
+      "status": "regressed",
+      "checks": [
+        "documented-examples",
+        "ordered-and-frozen",
+        "library-static-types",
+        "recovered-test_bidict-1",
+        "recovered-test_bidict-4",
+        "recovered-microbenchmarks",
+        "contract-graphify_ordered_7fdbf2f7e97f_67acec63-3b5e08-41",
+        "scenario-graphify_ordered_7fdbf2f7e97f_67acec63-3b5e08-42",
+        "contract-graphify_ordered_7fdbf2f7e97f_67acec63-3b5e08-68",
+        "contract-graphify_ordered_7fdbf2f7e97f_67acec63-3b5e08-69",
+        "scenario-graphify_ordered_7fdbf2f7e97f_67acec63-3b5e08-75"
+      ],
+      "check_status": "regressed",
+      "baseline_status": "passed",
+      "candidate_status": "failed"
+    },
+    {
+      "id": "graphify-docs-46b42b4229cd",
+      "status": "unverified",
+      "checks": [
+        "documented-examples",
+        "documentation-settings"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "graphify-count-6c35493a2b93",
+      "status": "unverified",
+      "checks": [
+        "callgrind-cli",
+        "recovered-microbenchmarks"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "graphify-benches-5a0ac63ebbe2",
+      "status": "unverified",
+      "checks": [
+        "benchmark-catalogue",
+        "contract-graphify_benches_5a0ac63ebbe2_da3ed8e2-3b5e08-1",
+        "scenario-graphify_benches_5a0ac63ebbe2_da3ed8e2-3b5e08-3"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "graphify-compare-1241626eb8ca",
+      "status": "unverified",
+      "checks": [
+        "compare-cli"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    }
+  ],
+  "checks": [
+    {
+      "name": "documented-examples",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-docs-46b42b4229cd",
+        "graphify-lookup-29a1af58c138",
+        "graphify-duplicates-fcea2252477f",
+        "graphify-invert-6e77e1227ec2",
+        "graphify-mutation-d3336a334a5e",
+        "graphify-frozen-ffb304816a10",
+        "graphify-ordered-7fdbf2f7e97f"
+      ]
+    },
+    {
+      "name": "public-round-trip",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-lookup-29a1af58c138",
+        "graphify-invert-6e77e1227ec2",
+        "graphify-mutation-d3336a334a5e"
+      ]
+    },
+    {
+      "name": "collision-actions",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-duplicates-fcea2252477f",
+        "graphify-mutation-d3336a334a5e"
+      ]
+    },
+    {
+      "name": "ordered-and-frozen",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-ordered-7fdbf2f7e97f",
+        "graphify-frozen-ffb304816a10"
+      ]
+    },
+    {
+      "name": "callgrind-cli",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-count-6c35493a2b93"
+      ]
+    },
+    {
+      "name": "compare-cli",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-compare-1241626eb8ca"
+      ]
+    },
+    {
+      "name": "documentation-settings",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-docs-46b42b4229cd"
+      ]
+    },
+    {
+      "name": "library-static-types",
+      "status": "regressed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-lookup-29a1af58c138",
+        "graphify-mutation-d3336a334a5e",
+        "graphify-frozen-ffb304816a10",
+        "graphify-ordered-7fdbf2f7e97f"
+      ]
+    },
+    {
+      "name": "recovered-test_bidict-1",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-frozen-ffb304816a10",
+        "graphify-ordered-7fdbf2f7e97f"
+      ]
+    },
+    {
+      "name": "recovered-test_bidict-2",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-lookup-29a1af58c138"
+      ]
+    },
+    {
+      "name": "recovered-test_bidict-3",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-mutation-d3336a334a5e"
+      ]
+    },
+    {
+      "name": "recovered-test_bidict-4",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-ordered-7fdbf2f7e97f"
+      ]
+    },
+    {
+      "name": "recovered-microbenchmarks",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-count-6c35493a2b93",
+        "graphify-ordered-7fdbf2f7e97f"
+      ]
+    },
+    {
+      "name": "benchmark-catalogue",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-benches-5a0ac63ebbe2"
+      ]
+    },
+    {
+      "name": "contract-graphify_benches_5a0ac63ebbe2_da3ed8e2-3b5e08-1",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-benches-5a0ac63ebbe2"
+      ]
+    },
+    {
+      "name": "scenario-graphify_benches_5a0ac63ebbe2_da3ed8e2-3b5e08-3",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-benches-5a0ac63ebbe2"
+      ]
+    },
+    {
+      "name": "contract-graphify_duplicates_fcea2252477f_f54fbd40-3b5e08-6",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-duplicates-fcea2252477f"
+      ]
+    },
+    {
+      "name": "contract-graphify_duplicates_fcea2252477f_f54fbd40-3b5e08-7",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-duplicates-fcea2252477f"
+      ]
+    },
+    {
+      "name": "scenario-graphify_duplicates_fcea2252477f_f54fbd40-3b5e08-8",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-duplicates-fcea2252477f"
+      ]
+    },
+    {
+      "name": "scenario-graphify_frozen_ffb304816a10_c5800348-3b5e08-16",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-frozen-ffb304816a10"
+      ]
+    },
+    {
+      "name": "contract-graphify_invert_6e77e1227ec2_58776f7a-3b5e08-18",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-invert-6e77e1227ec2"
+      ]
+    },
+    {
+      "name": "scenario-graphify_invert_6e77e1227ec2_58776f7a-3b5e08-19",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-invert-6e77e1227ec2"
+      ]
+    },
+    {
+      "name": "contract-graphify_lookup_29a1af58c138_562d85c8-3b5e08-21",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-lookup-29a1af58c138"
+      ]
+    },
+    {
+      "name": "contract-graphify_lookup_29a1af58c138_562d85c8-3b5e08-22",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-lookup-29a1af58c138"
+      ]
+    },
+    {
+      "name": "contract-graphify_lookup_29a1af58c138_562d85c8-3b5e08-23",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-lookup-29a1af58c138"
+      ]
+    },
+    {
+      "name": "contract-graphify_lookup_29a1af58c138_562d85c8-3b5e08-24",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-lookup-29a1af58c138"
+      ]
+    },
+    {
+      "name": "contract-graphify_lookup_29a1af58c138_562d85c8-3b5e08-25",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-lookup-29a1af58c138"
+      ]
+    },
+    {
+      "name": "scenario-graphify_lookup_29a1af58c138_562d85c8-3b5e08-26",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-lookup-29a1af58c138"
+      ]
+    },
+    {
+      "name": "contract-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-29",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-mutation-d3336a334a5e"
+      ]
+    },
+    {
+      "name": "contract-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-30",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-mutation-d3336a334a5e"
+      ]
+    },
+    {
+      "name": "contract-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-31",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-mutation-d3336a334a5e"
+      ]
+    },
+    {
+      "name": "contract-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-32",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-mutation-d3336a334a5e"
+      ]
+    },
+    {
+      "name": "contract-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-33",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-mutation-d3336a334a5e"
+      ]
+    },
+    {
+      "name": "scenario-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-34",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-mutation-d3336a334a5e"
+      ]
+    },
+    {
+      "name": "contract-graphify_ordered_7fdbf2f7e97f_67acec63-3b5e08-41",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-ordered-7fdbf2f7e97f"
+      ]
+    },
+    {
+      "name": "scenario-graphify_ordered_7fdbf2f7e97f_67acec63-3b5e08-42",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-ordered-7fdbf2f7e97f"
+      ]
+    },
+    {
+      "name": "contract-graphify_duplicates_fcea2252477f_f54fbd40-3b5e08-45",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-duplicates-fcea2252477f"
+      ]
+    },
+    {
+      "name": "contract-graphify_duplicates_fcea2252477f_f54fbd40-3b5e08-46",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-duplicates-fcea2252477f"
+      ]
+    },
+    {
+      "name": "scenario-graphify_duplicates_fcea2252477f_f54fbd40-3b5e08-47",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-duplicates-fcea2252477f"
+      ]
+    },
+    {
+      "name": "contract-graphify_frozen_ffb304816a10_c5800348-3b5e08-48",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-frozen-ffb304816a10"
+      ]
+    },
+    {
+      "name": "contract-graphify_frozen_ffb304816a10_c5800348-3b5e08-49",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-frozen-ffb304816a10"
+      ]
+    },
+    {
+      "name": "contract-graphify_frozen_ffb304816a10_c5800348-3b5e08-50",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-frozen-ffb304816a10"
+      ]
+    },
+    {
+      "name": "contract-graphify_frozen_ffb304816a10_c5800348-3b5e08-51",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-frozen-ffb304816a10"
+      ]
+    },
+    {
+      "name": "contract-graphify_frozen_ffb304816a10_c5800348-3b5e08-52",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-frozen-ffb304816a10"
+      ]
+    },
+    {
+      "name": "contract-graphify_invert_6e77e1227ec2_58776f7a-3b5e08-57",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-invert-6e77e1227ec2"
+      ]
+    },
+    {
+      "name": "scenario-graphify_invert_6e77e1227ec2_58776f7a-3b5e08-58",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-invert-6e77e1227ec2"
+      ]
+    },
+    {
+      "name": "contract-graphify_lookup_29a1af58c138_562d85c8-3b5e08-59",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-lookup-29a1af58c138"
+      ]
+    },
+    {
+      "name": "contract-graphify_lookup_29a1af58c138_562d85c8-3b5e08-60",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-lookup-29a1af58c138"
+      ]
+    },
+    {
+      "name": "contract-graphify_lookup_29a1af58c138_562d85c8-3b5e08-61",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-lookup-29a1af58c138"
+      ]
+    },
+    {
+      "name": "scenario-graphify_lookup_29a1af58c138_562d85c8-3b5e08-62",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-lookup-29a1af58c138"
+      ]
+    },
+    {
+      "name": "contract-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-63",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-mutation-d3336a334a5e"
+      ]
+    },
+    {
+      "name": "contract-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-65",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-mutation-d3336a334a5e"
+      ]
+    },
+    {
+      "name": "scenario-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-67",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-mutation-d3336a334a5e"
+      ]
+    },
+    {
+      "name": "contract-graphify_ordered_7fdbf2f7e97f_67acec63-3b5e08-68",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-ordered-7fdbf2f7e97f"
+      ]
+    },
+    {
+      "name": "contract-graphify_ordered_7fdbf2f7e97f_67acec63-3b5e08-69",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-ordered-7fdbf2f7e97f"
+      ]
+    },
+    {
+      "name": "scenario-graphify_ordered_7fdbf2f7e97f_67acec63-3b5e08-75",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "graphify-ordered-7fdbf2f7e97f"
+      ]
+    }
+  ],
+  "actual_size": {
+    "baseline_source_lines": 3444,
+    "source_lines": 1652,
+    "source_files": 13,
+    "retained_percent": 10.920378317570101,
+    "target_percent": 50.0,
+    "target_source_lines": 1722.0,
+    "estimated_source_lines": null,
+    "metric": "tokens",
+    "tokenizer": {
+      "classification": "source_and_configuration_v2",
+      "decoding": "python_encoding_cookie_else_utf8_strict",
+      "encoding": "cl100k_base",
+      "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+      "file_boundaries": "independent_sum",
+      "library": "tiktoken",
+      "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+      "special_tokens": "ordinary_text",
+      "text_policy": "raw_decoded_text_per_file",
+      "version": "0.12.0"
+    },
+    "measurement_sha256": "660363e0109a14292a1ac9ef697a8e2dd84bab4a90b94e232997e4150185804f",
+    "source_tokens": 14524,
+    "configuration_tokens": 1202,
+    "total_tokens": 15726,
+    "baseline_tokens": 144006,
+    "target_tokens": 72003,
+    "source_retained_percent": 47.96747967479675,
+    "complete": true,
+    "target_met": true
+  },
+  "budget_status": "met",
+  "verification_scope": "full",
+  "rewrite_progress": {
+    "priority": "functionality_first",
+    "author_attempts": 6,
+    "repair_attempts": 4,
+    "optimization_attempts": 0,
+    "restorations": 0,
+    "rejected_attempts": 0,
+    "failed_optimizations": 0,
+    "max_optimization_attempts": 2,
+    "stop_reason": null,
+    "accepted_candidate_available": false,
+    "behavior_acceptance": "not_established",
+    "size_acceptance": "met"
+  },
+  "installation_evidence": {
+    "status": "passed",
+    "checks_passed": 2,
+    "checks_total": 2,
+    "environment_metadata_complete": true
+  },
+  "obligation_ledger": {
+    "records": [
+      {
+        "capability": "graphify-root-ddcb2dfa42d8",
+        "status": "failed",
+        "obligations": [
+          {
+            "status": "failed",
+            "kind": "retained_child"
+          },
+          {
+            "status": "partial",
+            "kind": "retained_child"
+          },
+          {
+            "status": "unknown",
+            "kind": "coverage"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-library-b718f1354f72",
+        "status": "failed",
+        "obligations": [
+          {
+            "status": "partial",
+            "kind": "retained_child"
+          },
+          {
+            "status": "failed",
+            "kind": "retained_child"
+          },
+          {
+            "status": "partial",
+            "kind": "retained_child"
+          },
+          {
+            "status": "failed",
+            "kind": "retained_child"
+          },
+          {
+            "status": "failed",
+            "kind": "retained_child"
+          },
+          {
+            "status": "failed",
+            "kind": "retained_child"
+          },
+          {
+            "status": "unknown",
+            "kind": "coverage"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-tools-f9d35d43770d",
+        "status": "partial",
+        "obligations": [
+          {
+            "status": "partial",
+            "kind": "retained_child"
+          },
+          {
+            "status": "partial",
+            "kind": "retained_child"
+          },
+          {
+            "status": "partial",
+            "kind": "retained_child"
+          },
+          {
+            "status": "partial",
+            "kind": "retained_child"
+          },
+          {
+            "status": "unknown",
+            "kind": "coverage"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-lookup-29a1af58c138",
+        "status": "failed",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "documented-examples",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "public-round-trip",
+            "kind": "declared_check"
+          },
+          {
+            "status": "failed",
+            "check": "library-static-types",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-test_bidict-2",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_lookup_29a1af58c138_562d85c8-3b5e08-21",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_lookup_29a1af58c138_562d85c8-3b5e08-22",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_lookup_29a1af58c138_562d85c8-3b5e08-23",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_lookup_29a1af58c138_562d85c8-3b5e08-24",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_lookup_29a1af58c138_562d85c8-3b5e08-25",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-graphify_lookup_29a1af58c138_562d85c8-3b5e08-26",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_lookup_29a1af58c138_562d85c8-3b5e08-59",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_lookup_29a1af58c138_562d85c8-3b5e08-60",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_lookup_29a1af58c138_562d85c8-3b5e08-61",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-graphify_lookup_29a1af58c138_562d85c8-3b5e08-62",
+            "kind": "declared_check"
+          },
+          {
+            "status": "unknown",
+            "kind": "coverage"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-duplicates-fcea2252477f",
+        "status": "partial",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "documented-examples",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "collision-actions",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_duplicates_fcea2252477f_f54fbd40-3b5e08-6",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_duplicates_fcea2252477f_f54fbd40-3b5e08-7",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-graphify_duplicates_fcea2252477f_f54fbd40-3b5e08-8",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_duplicates_fcea2252477f_f54fbd40-3b5e08-45",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_duplicates_fcea2252477f_f54fbd40-3b5e08-46",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-graphify_duplicates_fcea2252477f_f54fbd40-3b5e08-47",
+            "kind": "declared_check"
+          },
+          {
+            "status": "unknown",
+            "kind": "coverage"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-invert-6e77e1227ec2",
+        "status": "partial",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "documented-examples",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "public-round-trip",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_invert_6e77e1227ec2_58776f7a-3b5e08-18",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-graphify_invert_6e77e1227ec2_58776f7a-3b5e08-19",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_invert_6e77e1227ec2_58776f7a-3b5e08-57",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-graphify_invert_6e77e1227ec2_58776f7a-3b5e08-58",
+            "kind": "declared_check"
+          },
+          {
+            "status": "unknown",
+            "kind": "coverage"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-mutation-d3336a334a5e",
+        "status": "failed",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "documented-examples",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "public-round-trip",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "collision-actions",
+            "kind": "declared_check"
+          },
+          {
+            "status": "failed",
+            "check": "library-static-types",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-test_bidict-3",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-29",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-30",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-31",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-32",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-33",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-34",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-63",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-65",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-graphify_mutation_d3336a334a5e_619d4e25-3b5e08-67",
+            "kind": "declared_check"
+          },
+          {
+            "status": "unknown",
+            "kind": "coverage"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-frozen-ffb304816a10",
+        "status": "failed",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "documented-examples",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "ordered-and-frozen",
+            "kind": "declared_check"
+          },
+          {
+            "status": "failed",
+            "check": "library-static-types",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-test_bidict-1",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-graphify_frozen_ffb304816a10_c5800348-3b5e08-16",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_frozen_ffb304816a10_c5800348-3b5e08-48",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_frozen_ffb304816a10_c5800348-3b5e08-49",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_frozen_ffb304816a10_c5800348-3b5e08-50",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_frozen_ffb304816a10_c5800348-3b5e08-51",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_frozen_ffb304816a10_c5800348-3b5e08-52",
+            "kind": "declared_check"
+          },
+          {
+            "status": "unknown",
+            "kind": "coverage"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-ordered-7fdbf2f7e97f",
+        "status": "failed",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "documented-examples",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "ordered-and-frozen",
+            "kind": "declared_check"
+          },
+          {
+            "status": "failed",
+            "check": "library-static-types",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-test_bidict-1",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-test_bidict-4",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-microbenchmarks",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_ordered_7fdbf2f7e97f_67acec63-3b5e08-41",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-graphify_ordered_7fdbf2f7e97f_67acec63-3b5e08-42",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_ordered_7fdbf2f7e97f_67acec63-3b5e08-68",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_ordered_7fdbf2f7e97f_67acec63-3b5e08-69",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-graphify_ordered_7fdbf2f7e97f_67acec63-3b5e08-75",
+            "kind": "declared_check"
+          },
+          {
+            "status": "unknown",
+            "kind": "coverage"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-docs-46b42b4229cd",
+        "status": "partial",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "documented-examples",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "documentation-settings",
+            "kind": "declared_check"
+          },
+          {
+            "status": "unknown",
+            "kind": "coverage"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-count-6c35493a2b93",
+        "status": "partial",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "callgrind-cli",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-microbenchmarks",
+            "kind": "declared_check"
+          },
+          {
+            "status": "unknown",
+            "kind": "coverage"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-benches-5a0ac63ebbe2",
+        "status": "partial",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "benchmark-catalogue",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-graphify_benches_5a0ac63ebbe2_da3ed8e2-3b5e08-1",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-graphify_benches_5a0ac63ebbe2_da3ed8e2-3b5e08-3",
+            "kind": "declared_check"
+          },
+          {
+            "status": "unknown",
+            "kind": "coverage"
+          }
+        ]
+      },
+      {
+        "capability": "graphify-compare-1241626eb8ca",
+        "status": "partial",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "compare-cli",
+            "kind": "declared_check"
+          },
+          {
+            "status": "unknown",
+            "kind": "coverage"
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "unknown": 0,
+      "retired": 0,
+      "failed": 6,
+      "partial": 7,
+      "verified": 0,
+      "total": 13,
+      "retained": 13,
+      "complete": false
+    },
+    "limitations": [
+      "Public summaries omit private evidence bindings and raw output."
+    ]
+  },
+  "leaf_coverage": {
+    "status": "ready",
+    "strict": false,
+    "valid": [
+      "graphify-benches-5a0ac63ebbe2",
+      "graphify-compare-1241626eb8ca",
+      "graphify-count-6c35493a2b93",
+      "graphify-docs-46b42b4229cd",
+      "graphify-duplicates-fcea2252477f",
+      "graphify-frozen-ffb304816a10",
+      "graphify-invert-6e77e1227ec2",
+      "graphify-lookup-29a1af58c138",
+      "graphify-mutation-d3336a334a5e",
+      "graphify-ordered-7fdbf2f7e97f"
+    ],
+    "missing": [],
+    "exempted": [],
+    "why_missing": {}
+  },
+  "task_effort": {
+    "schema_version": 1,
+    "operation": "task_effort_evaluation",
+    "status": "disabled",
+    "binding": {},
+    "policy": {
+      "comparison": "empirical_range",
+      "strict_all_tasks": true
+    },
+    "task_types": [
+      "understand",
+      "diagnose",
+      "modify",
+      "execute"
+    ],
+    "tasks": [],
+    "overhead": {
+      "examiner_tokens": null,
+      "judge_tokens": null,
+      "solver_tokens": null,
+      "total_tokens": null,
+      "usage_complete": false,
+      "observed_total_tokens": null,
+      "role_usage_complete": {
+        "examiner": false,
+        "solver": false,
+        "judge": false
+      }
+    },
+    "resources": {
+      "completed_runs": 0,
+      "cleanup_pending": false,
+      "cleanup_pending_runs": 0
+    },
+    "iterations": [],
+    "limitations": [
+      "Task effort measures these tasks under the recorded agent settings; it is not a universal measure of human cognitive burden.",
+      "Tokens count solver model inputs and outputs, including cached input. Missing usage is unavailable, never zero. Examiner and judge overhead is separate.",
+      "Empirical ranges describe repeated observations, not statistical confidence intervals. Failed or unrun tasks do not establish an improvement.",
+      "Task links identify assessed capabilities only; they do not change module behavior verification badges.",
+      "Task prompts, hidden inputs, judging rubrics, source excerpts, raw traces and local paths are omitted from this public report."
+    ],
+    "stop_reason": "owner_disabled"
+  }
+}

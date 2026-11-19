@@ -1,0 +1,14 @@
+capability_id,before_lines,after_lines,reduction_percent,mapping_status,validation_status,executed,evidence_category,direct_checks,related_checks,direct_checks_passed,direct_checks_failed,direct_checks_inconclusive,related_checks_passed,related_checks_failed,related_checks_inconclusive,evidence_coverage,before_source_tokens,after_source_tokens,source_token_reduction_percent
+graphify-root-ddcb2dfa42d8,3444,1652,52.033,mapped,unknown,False,related_passed,0,56,0,0,0,55,1,0,limited,35666,14524,59.278
+graphify-library-b718f1354f72,2039,916,55.076,mapped,unknown,False,related_passed,0,50,0,0,0,49,1,0,limited,21129,8003,62.123
+graphify-tools-f9d35d43770d,1405,736,47.616,mapped,unknown,False,related_passed,0,8,0,0,0,8,0,0,limited,14537,6521,55.142
+graphify-lookup-29a1af58c138,1051,791,24.738,mapped,partial,True,direct_passed,12,2,12,0,0,1,1,0,limited,11447,6949,39.294
+graphify-duplicates-fcea2252477f,100,639,-539.0,mapped,partial,True,direct_passed,6,2,6,0,0,2,0,0,limited,848,5620,-562.736
+graphify-invert-6e77e1227ec2,55,103,-87.273,mapped,partial,True,direct_passed,6,0,6,0,0,0,0,0,limited,484,673,-39.05
+graphify-mutation-d3336a334a5e,234,536,-129.06,mapped,partial,True,direct_passed,12,2,12,0,0,1,1,0,limited,2091,4947,-136.585
+graphify-frozen-ffb304816a10,55,536,-874.545,mapped,partial,True,direct_passed,8,2,8,0,0,1,1,0,limited,394,4947,-1155.584
+graphify-ordered-7fdbf2f7e97f,544,813,-49.449,mapped,partial,True,direct_passed,10,1,10,0,0,0,1,0,limited,5865,7330,-24.979
+graphify-docs-46b42b4229cd,272,129,52.574,mapped,partial,True,direct_passed,1,1,1,0,0,1,0,0,limited,2457,1548,36.996
+graphify-count-6c35493a2b93,323,166,48.607,mapped,partial,True,direct_passed,1,1,1,0,0,1,0,0,limited,3444,1556,54.82
+graphify-benches-5a0ac63ebbe2,700,353,49.571,mapped,partial,True,direct_passed,3,0,3,0,0,0,0,0,limited,7373,2524,65.767
+graphify-compare-1241626eb8ca,110,88,20.0,mapped,partial,True,direct_passed,1,0,1,0,0,0,0,0,limited,1263,893,29.295

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>bidict 问题与最终计量</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>html{background:#f7f7f3;color:#192c31}body{margin:3rem auto;max-width:62rem;padding:0 1.4rem;font-family:system-ui,'Noto Sans CJK SC',sans-serif;line-height:1.7}h1,h2{color:#153e46}h1{font-size:2.2rem;margin-bottom:.6rem}h2{font-size:1.4rem;margin:2.3rem 0 .8rem;padding-bottom:.3rem;border-bottom:2px solid #8ab7ab}a{color:#065e65}table{font-size:.96rem;border-collapse:collapse;width:100%;background:#fff;display:block;overflow:auto}td,th{padding:.45rem .8rem;border-bottom:1px solid #d8deda}th{background:#e4efeb;font-weight:650}code{overflow-wrap:anywhere;white-space:normal;font-size:.9em}li{margin:.45rem 0}@media(max-width:600px){body{margin:1rem auto}h1{font-size:1.7rem}td,th{padding:.35rem}}</style></head>
+<body>
+<h1 id="bidict-运行问题与最终计量">bidict 运行问题与最终计量</h1>
+<p>2026-11-19，最终状态
+<code>delivered_with_failures</code>。完整中文报告和功能图见<a
+href="index.html">报告首页</a>。对应导出提交
+<code>889f4b01f96dee625b4750504ff738eea62d3c3b</code>。</p>
+<h2 id="最终指标">最终指标</h2>
+<ul>
+<li><strong>体积与原版相同行。</strong> 源码加配置 144,006 →
+<strong>15,726 token（10.92%）</strong>，其中源码 35,666 → 14,524、配置
+108,340 → 1,202。纳入计量的 22 个交付文件合计 59,908 字节。源码物理行
+3,444 → 1,652。nanolize 的实现行比对覆盖 884 行，<strong>13%
+与原版重合</strong>。同路径 17 个文件按行长加权的相同行占 13.8%。</li>
+<li><strong>第一版与修复。</strong> 草稿作者 1 次，14 分 21 秒，标准 API
+价折算 <strong>$4.7105</strong>。输入 141,640、缓存输入 4,517,632、输出
+44,257 token。草稿交出 19 个文件，主作业在封存后完整导入。行为修复
+<strong>4 轮</strong>，另有 1 次只读代码评审。候选 1–5
+的全量检查通过数依次为 53、55、55、55、55（分母均为 56）。</li>
+<li><strong>测试设计。</strong> 原版预跑 pytest 1,236
+项通过。第一次冻结基线为 14 组检查，10 个功能叶节点中有 2
+个缺有效测试。<strong>7 个节点补了测试</strong>，共接受 30
+个测试文件、12 个场景文件；第二次基线运行 56 组，<strong>0
+个叶节点缺有效测试</strong>。共 11 次测试文件评审会话，首轮测试文件 15
+通过/20 否决，第二轮 15 通过/12 否决，合计 <strong>32
+次测试否决</strong>。场景 12 通过/1
+否决；另有一次排除提案评审。两组被拆分的原检查中，110 个原测试函数共保留
+46、迁移 5、排除 3、仍未验证 56。</li>
+<li><strong>耗时。</strong> 06:10:24 UTC 进度页创建，到 08:02:24.531
+交付约 <strong>1 小时 52 分钟</strong>。提交前准备 6 分 00
+秒；主作业冻结（含准备）56 分 27 秒；导入及初验 2 分 36 秒；修复与复验
+46 分 08 秒；交付 50 秒。第一版作者 14 分 21
+秒与冻结重叠。两次主作业基线分别为 182.759 秒和 270.773
+秒。测试设计及验真整个步骤 2,839.468 秒，其中设计者会话墙钟并集 1,279.79
+秒（累计 4,746.05 秒），评审者墙钟并集 409.43 秒（累计 1,302.81
+秒）。</li>
+<li><strong>花费。</strong> 四类角色合计 40 次会话，41,239,589
+token，标准短上下文公开价折算 <strong>$54.5970</strong>。统计源为 Codex
+调用的原始 rollout 和各角色
+<code>stdout.ndjson</code>；作业汇总计数未用于加总。缓存写入为
+0。账户实际扣费未返回。每百万 token 未缓存输入 $8、缓存读取 $0.40、输出
+$40。</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>角色</th>
+<th style="text-align: right;">调用</th>
+<th style="text-align: right;">未缓存输入</th>
+<th style="text-align: right;">缓存输入</th>
+<th style="text-align: right;">输出</th>
+<th style="text-align: right;">美元估算</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>作者</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">632,872</td>
+<td style="text-align: right;">12,588,416</td>
+<td style="text-align: right;">137,433</td>
+<td style="text-align: right;">15.5957</td>
+</tr>
+<tr class="even">
+<td>controller</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">346,028</td>
+<td style="text-align: right;">1,157,888</td>
+<td style="text-align: right;">11,067</td>
+<td style="text-align: right;">3.6741</td>
+</tr>
+<tr class="odd">
+<td>测试设计者</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">1,044,869</td>
+<td style="text-align: right;">19,904,896</td>
+<td style="text-align: right;">230,226</td>
+<td style="text-align: right;">25.5300</td>
+</tr>
+<tr class="even">
+<td>测试及排除提案评审者</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">595,500</td>
+<td style="text-align: right;">2,696,192</td>
+<td style="text-align: right;">46,604</td>
+<td style="text-align: right;">7.7066</td>
+</tr>
+<tr class="odd">
+<td>代码评审者</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">103,388</td>
+<td style="text-align: right;">1,729,920</td>
+<td style="text-align: right;">14,290</td>
+<td style="text-align: right;">2.0907</td>
+</tr>
+<tr class="even">
+<td><strong>合计</strong></td>
+<td style="text-align: right;"><strong>40</strong></td>
+<td style="text-align: right;"><strong>2,722,657</strong></td>
+<td style="text-align: right;"><strong>38,077,312</strong></td>
+<td style="text-align: right;"><strong>439,620</strong></td>
+<td style="text-align: right;"><strong>54.5970</strong></td>
+</tr>
+</tbody>
+</table>
+<p>两类评审者合计 13 次调用，未缓存输入 698,888、缓存输入 4,426,112、输出 60,894 token，估算 $9.7973。</p>
+<h2 id="bugs">需要对 nanolize 改动的 bugs</h2>
+<p>本页问题列表只保留经核对确定由 nanolize 自身引起的 3 项。</p>
+<ul>
+<li><strong>Bug-1</strong>　默认 controller 的就绪审计已将文档符号链接标为 <code>check_inputs_unavailable</code>，仍允许主作业和草稿作业入队。两个作业都在第一次录基线时因同一输入 <code>docs/changelog.rst</code> 终止。</li>
+<li><strong>Bug-2</strong>　交付版 <code>callgrind.py</code> 用 <code>HookimplMarker('pytest')</code> 注册钩子，用 <code>exc.name != 'pluggy'</code> 判断缺失的可选依赖。静态检查把两处字符串都归为 <code>names_test_runner</code>，任一处都会误触发 <code>test_machinery_referenced</code> 告警。</li>
+<li><strong>现象-5</strong>　回放原测试时，nanolize 只对 <code>tests/test_bidict.py</code> 应用导入保护，遗漏了检查输入中声明的 <code>tests/bidict_test_fixtures.py</code>。该 fixture 导入了候选中已移除的 <code>bidict._typing</code>，导致整个测试文件在收集时中止，原版通过 1,228 项，候选通过 0 项。</li>
+</ul>
+<h2 id="observations">遇到的现象</h2>
+<p>本节只列由 nanolize 流程本身产生的现象；我们运行环境造成的情况未列入。</p>
+<ul>
+<li><strong>现象-4</strong>　经过 4 轮修复，交付版仍有 6 条库类型诊断，冻结检查通过 55/56 组，独立安装检查通过 2/2。controller 选择 <code>deliver(require="any")</code>，作业以 <code>delivered_with_failures</code> 交付，验收结果为 <code>incomplete</code>。</li>
+</ul>
+<h2 id="运行身份及源仓库的改动">运行身份及源仓库的改动</h2>
+<ul>
+<li>nanolize 0.8.0，Graphify 0.9.111，Python 3.12.1。Graphify 提取 1,130
+个节点、2,123 条边、79 个社区，生产文件 17/17 已映射。</li>
+<li>默认账户 <code>nvr_elm_llm</code> 由 sacctmgr 的 DefaultAccount
+确认；cpu_short 为 up，无 GPU，时限 4 小时。账户允许 normal 与
+free，squeue 显示 normal 在该分区有该账户作业；5 分钟 normal 的 sbatch
+--test-only 试算通过。本次作业使用 <code>pair="on"</code> 和
+<code>{"kind":"auto","account":"nvr_elm_llm","partition":"cpu_short","qos":"normal","queue_timeout":1800}</code>。真正的
+Slurm 操作均经 nanolize 检查执行器。</li>
+<li>有效主作业 <code>3b5e083058ee405abd45b2206643fc55</code>、草稿作业
+<code>bd5790708bd44964a89ea793a30af746</code>。结果分支
+<code>codex/nanolize-3b5e083058ee405abd45b2206643fc55</code>，独立导出工作树干净。目标仓库仍检出
+<code>nanolize-input</code>。</li>
+<li>原版 <code>299fedc89f1d70d5d41cf7922564b376d3e2d435</code>。nanolize
+以自身身份将 5 个恢复测试文件提交在 <code>nanolize-input</code> 的
+<code>8be987e3f08add55f4790623ebcc2851512a44f3</code>。文件为
+<code>test_nanolize_recovered_microbenchmarks.py</code> 和
+<code>tests/test_nanolize_recovered_test_bidict_1.py</code>、<code>tests/test_nanolize_recovered_test_bidict_2.py</code>、<code>tests/test_nanolize_recovered_test_bidict_3.py</code>、<code>tests/test_nanolize_recovered_test_bidict_4.py</code>。</li>
+</ul>
+<p><a href="issues.md">issues.md</a></p>
+</body>
+</html>
