@@ -1,0 +1,561 @@
+{
+  "limitations": [
+    "Only summary results are published; captured command output is omitted."
+  ],
+  "status": "checks_passed",
+  "tests": {
+    "original_total": 9,
+    "retained": 12,
+    "retired": 0,
+    "needs_adaptation": 0,
+    "adapted": 0,
+    "contract": 3,
+    "passed": 12,
+    "failed": 0,
+    "fixed_baseline_failure": 0,
+    "not_run": 0
+  },
+  "capability_results": [
+    {
+      "id": "app",
+      "status": "passed",
+      "checks": [],
+      "check_status": "passed",
+      "baseline_status": "not_run",
+      "candidate_status": "not_run"
+    },
+    {
+      "id": "syntax",
+      "status": "passed",
+      "checks": [
+        "pytest-parser",
+        "output-values"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "expand",
+      "status": "passed",
+      "checks": [
+        "pytest-variables",
+        "output-values"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "values",
+      "status": "passed",
+      "checks": [
+        "pytest-main",
+        "pytest-fifo_dotenv",
+        "pytest-zip_imports",
+        "output-values"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "find",
+      "status": "passed",
+      "checks": [
+        "pytest-main",
+        "pytest-is_interactive",
+        "pytest-zip_imports"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "edit",
+      "status": "passed",
+      "checks": [
+        "pytest-main"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "cmd",
+      "status": "passed",
+      "checks": [
+        "pytest-cli"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "string",
+      "status": "passed",
+      "checks": [
+        "pytest-utils",
+        "output-command"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "interactive",
+      "status": "passed",
+      "checks": [
+        "pytest-ipython"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "version",
+      "status": "passed",
+      "checks": [
+        "pytest-cli",
+        "output-version"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    }
+  ],
+  "checks": [
+    {
+      "name": "pytest-parser",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "syntax"
+      ]
+    },
+    {
+      "name": "pytest-variables",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "expand"
+      ]
+    },
+    {
+      "name": "pytest-main",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "values",
+        "find",
+        "edit"
+      ]
+    },
+    {
+      "name": "pytest-is_interactive",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "find"
+      ]
+    },
+    {
+      "name": "pytest-fifo_dotenv",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "values"
+      ]
+    },
+    {
+      "name": "pytest-zip_imports",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "find",
+        "values"
+      ]
+    },
+    {
+      "name": "pytest-cli",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "cmd",
+        "version"
+      ]
+    },
+    {
+      "name": "pytest-utils",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "string"
+      ]
+    },
+    {
+      "name": "pytest-ipython",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "interactive"
+      ]
+    },
+    {
+      "name": "output-values",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "values",
+        "syntax",
+        "expand"
+      ]
+    },
+    {
+      "name": "output-version",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "version"
+      ]
+    },
+    {
+      "name": "output-command",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "string"
+      ]
+    }
+  ],
+  "actual_size": {
+    "baseline_source_lines": 1181,
+    "source_lines": 566,
+    "source_files": 8,
+    "retained_percent": 49.61126863623891,
+    "target_percent": 50.0,
+    "target_source_lines": 590.5,
+    "estimated_source_lines": null,
+    "metric": "tokens",
+    "tokenizer": {
+      "classification": "source_and_configuration_v2",
+      "decoding": "python_encoding_cookie_else_utf8_strict",
+      "encoding": "cl100k_base",
+      "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+      "file_boundaries": "independent_sum",
+      "library": "tiktoken",
+      "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+      "special_tokens": "ordinary_text",
+      "text_policy": "raw_decoded_text_per_file",
+      "version": "0.12.0"
+    },
+    "measurement_sha256": "db53aef1a887c0444c707c283dc19ed692dd35970879a930477525093b6fa890",
+    "source_tokens": 4858,
+    "configuration_tokens": 566,
+    "total_tokens": 5424,
+    "baseline_tokens": 10933,
+    "target_tokens": 5466,
+    "source_retained_percent": 47.92548687552921,
+    "complete": true,
+    "target_met": true
+  },
+  "budget_status": "met",
+  "verification_scope": "full",
+  "rewrite_progress": {
+    "priority": "functionality_first",
+    "author_attempts": 2,
+    "repair_attempts": 1,
+    "optimization_attempts": 0,
+    "restorations": 0,
+    "rejected_attempts": 0,
+    "failed_optimizations": 0,
+    "max_optimization_attempts": 2,
+    "stop_reason": null,
+    "accepted_candidate_available": true,
+    "behavior_acceptance": "passed",
+    "size_acceptance": "met"
+  },
+  "installation_evidence": {
+    "status": "passed",
+    "checks_passed": 2,
+    "checks_total": 2,
+    "environment_metadata_complete": true
+  },
+  "obligation_ledger": {
+    "records": [
+      {
+        "capability": "app",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          }
+        ]
+      },
+      {
+        "capability": "syntax",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "pytest-parser",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "output-values",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "expand",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "pytest-variables",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "output-values",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "values",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "pytest-main",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "pytest-fifo_dotenv",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "pytest-zip_imports",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "output-values",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "find",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "pytest-main",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "pytest-is_interactive",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "pytest-zip_imports",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "edit",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "pytest-main",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "cmd",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "pytest-cli",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "string",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "pytest-utils",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "output-command",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "interactive",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "pytest-ipython",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "version",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "pytest-cli",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "output-version",
+            "kind": "declared_check"
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "partial": 0,
+      "failed": 0,
+      "retired": 0,
+      "verified": 10,
+      "unknown": 0,
+      "total": 10,
+      "retained": 10,
+      "complete": true
+    },
+    "limitations": [
+      "Public summaries omit private evidence bindings and raw output."
+    ]
+  },
+  "leaf_coverage": {
+    "status": "ready",
+    "strict": false,
+    "valid": [
+      "cmd",
+      "edit",
+      "expand",
+      "find",
+      "interactive",
+      "string",
+      "syntax",
+      "values",
+      "version"
+    ],
+    "missing": [],
+    "exempted": [],
+    "why_missing": {}
+  },
+  "task_effort": {
+    "schema_version": 1,
+    "operation": "task_effort_evaluation",
+    "status": "disabled",
+    "binding": {},
+    "policy": {
+      "comparison": "empirical_range",
+      "strict_all_tasks": true
+    },
+    "task_types": [
+      "understand",
+      "diagnose",
+      "modify",
+      "execute"
+    ],
+    "tasks": [],
+    "overhead": {
+      "examiner_tokens": null,
+      "judge_tokens": null,
+      "solver_tokens": null,
+      "total_tokens": null,
+      "usage_complete": false,
+      "observed_total_tokens": null,
+      "role_usage_complete": {
+        "examiner": false,
+        "solver": false,
+        "judge": false
+      }
+    },
+    "resources": {
+      "completed_runs": 0,
+      "cleanup_pending": false,
+      "cleanup_pending_runs": 0
+    },
+    "iterations": [],
+    "limitations": [
+      "Task effort measures these tasks under the recorded agent settings; it is not a universal measure of human cognitive burden.",
+      "Tokens count solver model inputs and outputs, including cached input. Missing usage is unavailable, never zero. Examiner and judge overhead is separate.",
+      "Empirical ranges describe repeated observations, not statistical confidence intervals. Failed or unrun tasks do not establish an improvement.",
+      "Task links identify assessed capabilities only; they do not change module behavior verification badges.",
+      "Task prompts, hidden inputs, judging rubrics, source excerpts, raw traces and local paths are omitted from this public report."
+    ],
+    "stop_reason": "owner_disabled"
+  }
+}

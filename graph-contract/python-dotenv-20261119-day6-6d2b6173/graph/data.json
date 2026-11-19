@@ -1,0 +1,3224 @@
+{
+  "schema_version": 1,
+  "operation": "nanolize_report",
+  "binding": {
+    "original_git_head": "4fbc6ff07215367ece731006855e732d1405992c",
+    "candidate_git_head": "e7861072aab3db022e20b5c47c6ec0fd6acee793",
+    "candidate_source_sha256": "f0fe51706a47b6fa227dc695adffdf49d46dceca2de82dc56a36c54e10c6eb6d",
+    "candidate_contract_sha256": "68687fc86989036b1c84535992a1552ecf3026e6a08642733fa486f4baf879b1",
+    "plan_sha256": "f68567fcd3e6be35d461e9a5e4694c512712205f40586eeed9d1070982444942",
+    "verification_sha256": "7ea339a7d9179d32c09f655645cfae4ce0218ab43e1b1cd1bb0b9b54decf01c1",
+    "candidate_code_size_sha256": "db53aef1a887c0444c707c283dc19ed692dd35970879a930477525093b6fa890"
+  },
+  "summary": {
+    "before": 1181,
+    "after": 566,
+    "reduction_percent": 52.075,
+    "capabilities": 10,
+    "count_unit": "capabilities",
+    "status_counts": {
+      "verified": 8,
+      "failed": 0,
+      "partial": 0,
+      "unknown": 2,
+      "retired": 0
+    },
+    "evidence_counts": {
+      "failed": 0,
+      "direct_passed": 8,
+      "direct_partial": 0,
+      "related_passed": 2,
+      "related_only": 0,
+      "unverified": 0,
+      "retired": 0
+    },
+    "aggregate_status_counts": {
+      "verified": 10,
+      "failed": 0,
+      "partial": 0,
+      "unknown": 0,
+      "retired": 0
+    },
+    "verification_status": "checks_passed",
+    "verification_tests": {
+      "original_total": 9,
+      "retained": 12,
+      "retired": 0,
+      "needs_adaptation": 0,
+      "adapted": 0,
+      "contract": 3,
+      "passed": 12,
+      "failed": 0,
+      "fixed_baseline_failure": 0,
+      "not_run": 0
+    },
+    "unattributed_checks": [
+      {
+        "name": "pytest-main",
+        "status": "passed",
+        "role": "original",
+        "scope": "retained",
+        "capabilities": [
+          "values",
+          "find",
+          "edit"
+        ],
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "target_capabilities": [],
+        "attribution": "unattributed",
+        "baseline_cases": {
+          "passed": 156,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "executed": 156
+        },
+        "candidate_cases": {
+          "passed": 156,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "executed": 156
+        }
+      },
+      {
+        "name": "pytest-zip_imports",
+        "status": "passed",
+        "role": "original",
+        "scope": "retained",
+        "capabilities": [
+          "find",
+          "values"
+        ],
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "target_capabilities": [],
+        "attribution": "unattributed",
+        "baseline_cases": {
+          "passed": 2,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "executed": 2
+        },
+        "candidate_cases": {
+          "passed": 2,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "executed": 2
+        }
+      }
+    ],
+    "leaf_coverage": {
+      "status": "ready",
+      "strict": false,
+      "valid": [
+        "cmd",
+        "edit",
+        "expand",
+        "find",
+        "interactive",
+        "string",
+        "syntax",
+        "values",
+        "version"
+      ],
+      "missing": [],
+      "exempted": [],
+      "why_missing": {}
+    },
+    "source_consulted": {
+      "author_calls": 2,
+      "files": 9,
+      "draft_files": 9,
+      "calls": [
+        {
+          "job": "draft",
+          "mode": "initial",
+          "files": 9,
+          "omitted": 0,
+          "opened": 9,
+          "overlap_percent": 12
+        },
+        {
+          "job": "main",
+          "mode": "behavior_repair",
+          "files": 9,
+          "omitted": 0,
+          "opened": 3,
+          "overlap_percent": 13
+        }
+      ]
+    },
+    "original_overlap": {
+      "percent": 13,
+      "compared_lines": 299,
+      "mark_percent": 40,
+      "mark_function_percent": 60,
+      "function_lines": 8,
+      "functions_marked": 0,
+      "marked_functions": [],
+      "refused_saves": false
+    },
+    "assertion_values": {
+      "author_calls": 1,
+      "cases": 2
+    },
+    "unmapped_candidate_files": [],
+    "ignored_mapping_files": [
+      "pyproject.toml",
+      "src/dotenv/py.typed"
+    ],
+    "code_size": {
+      "metric": "tokens",
+      "tokenizer": {
+        "library": "tiktoken",
+        "version": "0.12.0",
+        "encoding": "cl100k_base",
+        "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+        "text_policy": "raw_decoded_text_per_file",
+        "classification": "source_and_configuration_v2",
+        "special_tokens": "ordinary_text",
+        "file_boundaries": "independent_sum",
+        "decoding": "python_encoding_cookie_else_utf8_strict",
+        "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets"
+      },
+      "before": 10933,
+      "after": 5424,
+      "reduction_percent": 50.389,
+      "source_before": 8215,
+      "source_after": 4858,
+      "configuration_before": 2718,
+      "configuration_after": 566,
+      "observed_before": 10933,
+      "observed_after": 5424,
+      "complete": true,
+      "target_tokens": 5466,
+      "budget_status": "met",
+      "target_policy": "advisory",
+      "code_only": {
+        "before": 9374,
+        "after": 5400
+      },
+      "documented_percent": {
+        "original": 35.7,
+        "delivered": 0.0
+      }
+    },
+    "size_attribution": {
+      "metric": "tokens",
+      "tokenizer": {
+        "classification": "source_and_configuration_v2",
+        "decoding": "python_encoding_cookie_else_utf8_strict",
+        "encoding": "cl100k_base",
+        "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+        "file_boundaries": "independent_sum",
+        "library": "tiktoken",
+        "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+        "special_tokens": "ordinary_text",
+        "text_policy": "raw_decoded_text_per_file",
+        "version": "0.12.0"
+      },
+      "complete": true,
+      "original_total": 10933,
+      "selected_original_estimate": 10933,
+      "candidate_total": 5424,
+      "overall_reduction": {
+        "tokens": 5509,
+        "percent": 50.389
+      },
+      "scope_reduction_estimate": {
+        "tokens": 0,
+        "percent": 0.0
+      },
+      "rewrite_reduction_estimate": {
+        "tokens": 5509,
+        "percent": 50.389
+      },
+      "shared_scope_files": [],
+      "method": "unique_mapped_source_plus_all_original_configuration",
+      "estimate_only": false,
+      "limitations": [
+        "Scope and rewrite attribution are mapped-file estimates, not exact semantic savings. Shared files count once and retained/removed code within them cannot be separated.",
+        "All original configuration is charged to the retained footprint. Configuration changes appear in the rewrite estimate and may include scope-related savings.",
+        "Overall reduction uses the full original as denominator; rewrite reduction uses the selected original estimate. Their percentages must not be added.",
+        "Negative reductions indicate growth; incomplete measurements do not establish savings."
+      ]
+    }
+  },
+  "nodes": [
+    {
+      "id": "app",
+      "parent": null,
+      "name": "使用 .env 管理应用配置",
+      "kind": "capability",
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 1181,
+        "after": 566,
+        "reduction_percent": 52.075,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/dotenv/__init__.py",
+            "lines": 51
+          },
+          {
+            "path": "src/dotenv/__main__.py",
+            "lines": 6
+          },
+          {
+            "path": "src/dotenv/cli.py",
+            "lines": 264
+          },
+          {
+            "path": "src/dotenv/ipython.py",
+            "lines": 50
+          },
+          {
+            "path": "src/dotenv/main.py",
+            "lines": 532
+          },
+          {
+            "path": "src/dotenv/parser.py",
+            "lines": 191
+          },
+          {
+            "path": "src/dotenv/variables.py",
+            "lines": 86
+          },
+          {
+            "path": "src/dotenv/version.py",
+            "lines": 1
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/__init__.py",
+            "lines": 48
+          },
+          {
+            "path": "src/dotenv/__main__.py",
+            "lines": 4
+          },
+          {
+            "path": "src/dotenv/_edit.py",
+            "lines": 90
+          },
+          {
+            "path": "src/dotenv/cli.py",
+            "lines": 130
+          },
+          {
+            "path": "src/dotenv/main.py",
+            "lines": 155
+          },
+          {
+            "path": "src/dotenv/parser.py",
+            "lines": 79
+          },
+          {
+            "path": "src/dotenv/variables.py",
+            "lines": 59
+          },
+          {
+            "path": "src/dotenv/version.py",
+            "lines": 1
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "output-command",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "string"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "string"
+            ],
+            "attribution": "single_capability"
+          },
+          {
+            "name": "output-values",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "values",
+              "syntax",
+              "expand"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "expand",
+              "syntax"
+            ],
+            "attribution": "knockout_confirmed"
+          },
+          {
+            "name": "output-version",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "version"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "version"
+            ],
+            "attribution": "single_capability"
+          },
+          {
+            "name": "pytest-cli",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "cmd",
+              "version"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "cmd"
+            ],
+            "attribution": "knockout_confirmed",
+            "baseline_cases": {
+              "passed": 53,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 1,
+              "executed": 53
+            },
+            "candidate_cases": {
+              "passed": 53,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 1,
+              "executed": 53
+            }
+          },
+          {
+            "name": "pytest-fifo_dotenv",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "values"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "values"
+            ],
+            "attribution": "single_capability",
+            "baseline_cases": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 1
+            },
+            "candidate_cases": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 1
+            }
+          },
+          {
+            "name": "pytest-ipython",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "interactive"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "interactive"
+            ],
+            "attribution": "knockout_confirmed",
+            "baseline_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            },
+            "candidate_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            }
+          },
+          {
+            "name": "pytest-is_interactive",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "find"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "find"
+            ],
+            "attribution": "single_capability",
+            "baseline_cases": {
+              "passed": 10,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 10
+            },
+            "candidate_cases": {
+              "passed": 10,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 10
+            }
+          },
+          {
+            "name": "pytest-main",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "values",
+              "find",
+              "edit"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "baseline_cases": {
+              "passed": 156,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 156
+            },
+            "candidate_cases": {
+              "passed": 156,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 156
+            }
+          },
+          {
+            "name": "pytest-parser",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "syntax"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "syntax"
+            ],
+            "attribution": "knockout_confirmed",
+            "baseline_cases": {
+              "passed": 58,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 58
+            },
+            "candidate_cases": {
+              "passed": 58,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 58
+            }
+          },
+          {
+            "name": "pytest-utils",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "string"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "string"
+            ],
+            "attribution": "single_capability",
+            "baseline_cases": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 1
+            },
+            "candidate_cases": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 1
+            }
+          },
+          {
+            "name": "pytest-variables",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "expand"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "expand"
+            ],
+            "attribution": "knockout_confirmed",
+            "baseline_cases": {
+              "passed": 6,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 6
+            },
+            "candidate_cases": {
+              "passed": 6,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 6
+            }
+          },
+          {
+            "name": "pytest-zip_imports",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "find",
+              "values"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "baseline_cases": {
+              "passed": 2,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 2
+            },
+            "candidate_cases": {
+              "passed": 2,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 2
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "output-command",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "string"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "string"
+              ],
+              "attribution": "single_capability"
+            },
+            {
+              "name": "output-values",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "values",
+                "syntax",
+                "expand"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "expand",
+                "syntax"
+              ],
+              "attribution": "knockout_confirmed"
+            },
+            {
+              "name": "output-version",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "version"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "version"
+              ],
+              "attribution": "single_capability"
+            },
+            {
+              "name": "pytest-cli",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "cmd",
+                "version"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "cmd"
+              ],
+              "attribution": "knockout_confirmed",
+              "baseline_cases": {
+                "passed": 53,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 1,
+                "executed": 53
+              },
+              "candidate_cases": {
+                "passed": 53,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 1,
+                "executed": 53
+              }
+            },
+            {
+              "name": "pytest-fifo_dotenv",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "values"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "values"
+              ],
+              "attribution": "single_capability",
+              "baseline_cases": {
+                "passed": 1,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 1
+              },
+              "candidate_cases": {
+                "passed": 1,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 1
+              }
+            },
+            {
+              "name": "pytest-ipython",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "interactive"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "interactive"
+              ],
+              "attribution": "knockout_confirmed",
+              "baseline_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              },
+              "candidate_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              }
+            },
+            {
+              "name": "pytest-is_interactive",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "find"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "find"
+              ],
+              "attribution": "single_capability",
+              "baseline_cases": {
+                "passed": 10,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 10
+              },
+              "candidate_cases": {
+                "passed": 10,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 10
+              }
+            },
+            {
+              "name": "pytest-main",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "values",
+                "find",
+                "edit"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "baseline_cases": {
+                "passed": 156,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 156
+              },
+              "candidate_cases": {
+                "passed": 156,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 156
+              }
+            },
+            {
+              "name": "pytest-parser",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "syntax"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "syntax"
+              ],
+              "attribution": "knockout_confirmed",
+              "baseline_cases": {
+                "passed": 58,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 58
+              },
+              "candidate_cases": {
+                "passed": 58,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 58
+              }
+            },
+            {
+              "name": "pytest-utils",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "string"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "string"
+              ],
+              "attribution": "single_capability",
+              "baseline_cases": {
+                "passed": 1,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 1
+              },
+              "candidate_cases": {
+                "passed": 1,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 1
+              }
+            },
+            {
+              "name": "pytest-variables",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "expand"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "expand"
+              ],
+              "attribution": "knockout_confirmed",
+              "baseline_cases": {
+                "passed": 6,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 6
+              },
+              "candidate_cases": {
+                "passed": 6,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 6
+              }
+            },
+            {
+              "name": "pytest-zip_imports",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "find",
+                "values"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "baseline_cases": {
+                "passed": 2,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 2
+              },
+              "candidate_cases": {
+                "passed": 2,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 2
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "related_passed",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 12,
+            "passed": 12,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 8215,
+        "after": 4858,
+        "reduction_percent": 40.864,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/dotenv/__init__.py",
+            "tokens": 296
+          },
+          {
+            "path": "src/dotenv/__main__.py",
+            "tokens": 33
+          },
+          {
+            "path": "src/dotenv/cli.py",
+            "tokens": 1789
+          },
+          {
+            "path": "src/dotenv/ipython.py",
+            "tokens": 306
+          },
+          {
+            "path": "src/dotenv/main.py",
+            "tokens": 3829
+          },
+          {
+            "path": "src/dotenv/parser.py",
+            "tokens": 1391
+          },
+          {
+            "path": "src/dotenv/variables.py",
+            "tokens": 560
+          },
+          {
+            "path": "src/dotenv/version.py",
+            "tokens": 11
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/__init__.py",
+            "tokens": 448
+          },
+          {
+            "path": "src/dotenv/__main__.py",
+            "tokens": 17
+          },
+          {
+            "path": "src/dotenv/_edit.py",
+            "tokens": 789
+          },
+          {
+            "path": "src/dotenv/cli.py",
+            "tokens": 1193
+          },
+          {
+            "path": "src/dotenv/main.py",
+            "tokens": 1296
+          },
+          {
+            "path": "src/dotenv/parser.py",
+            "tokens": 728
+          },
+          {
+            "path": "src/dotenv/variables.py",
+            "tokens": 376
+          },
+          {
+            "path": "src/dotenv/version.py",
+            "tokens": 11
+          }
+        ]
+      }
+    },
+    {
+      "id": "syntax",
+      "parent": "app",
+      "name": "解析 .env 文件格式",
+      "kind": "capability",
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 191,
+        "after": 79,
+        "reduction_percent": 58.639,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/dotenv/parser.py",
+            "lines": 191
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/parser.py",
+            "lines": 79
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "pytest-parser",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "syntax"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "syntax"
+            ],
+            "attribution": "knockout_confirmed",
+            "baseline_cases": {
+              "passed": 58,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 58
+            },
+            "candidate_cases": {
+              "passed": 58,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 58
+            }
+          },
+          {
+            "name": "output-values",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "values",
+              "syntax",
+              "expand"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "expand",
+              "syntax"
+            ],
+            "attribution": "knockout_confirmed"
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "pytest-parser",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "output-values",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "output-values",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "values",
+                "syntax",
+                "expand"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "expand",
+                "syntax"
+              ],
+              "attribution": "knockout_confirmed"
+            },
+            {
+              "name": "pytest-parser",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "syntax"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "syntax"
+              ],
+              "attribution": "knockout_confirmed",
+              "baseline_cases": {
+                "passed": 58,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 58
+              },
+              "candidate_cases": {
+                "passed": 58,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 58
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "pytest-parser",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "output-values",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 2,
+            "passed": 2,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 1391,
+        "after": 728,
+        "reduction_percent": 47.664,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/dotenv/parser.py",
+            "tokens": 1391
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/parser.py",
+            "tokens": 728
+          }
+        ]
+      }
+    },
+    {
+      "id": "expand",
+      "parent": "app",
+      "name": "展开变量引用",
+      "kind": "capability",
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 86,
+        "after": 214,
+        "reduction_percent": -148.837,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/dotenv/variables.py",
+            "lines": 86
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/main.py",
+            "lines": 155
+          },
+          {
+            "path": "src/dotenv/variables.py",
+            "lines": 59
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "pytest-variables",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "expand"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "expand"
+            ],
+            "attribution": "knockout_confirmed",
+            "baseline_cases": {
+              "passed": 6,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 6
+            },
+            "candidate_cases": {
+              "passed": 6,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 6
+            }
+          },
+          {
+            "name": "output-values",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "values",
+              "syntax",
+              "expand"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "expand",
+              "syntax"
+            ],
+            "attribution": "knockout_confirmed"
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "pytest-variables",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "output-values",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "output-values",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "values",
+                "syntax",
+                "expand"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "expand",
+                "syntax"
+              ],
+              "attribution": "knockout_confirmed"
+            },
+            {
+              "name": "pytest-variables",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "expand"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "expand"
+              ],
+              "attribution": "knockout_confirmed",
+              "baseline_cases": {
+                "passed": 6,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 6
+              },
+              "candidate_cases": {
+                "passed": 6,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 6
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "pytest-variables",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "output-values",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 2,
+            "passed": 2,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 560,
+        "after": 1672,
+        "reduction_percent": -198.571,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/dotenv/variables.py",
+            "tokens": 560
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/main.py",
+            "tokens": 1296
+          },
+          {
+            "path": "src/dotenv/variables.py",
+            "tokens": 376
+          }
+        ]
+      }
+    },
+    {
+      "id": "values",
+      "parent": "app",
+      "name": "读取配置并设置进程环境",
+      "kind": "capability",
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 583,
+        "after": 203,
+        "reduction_percent": 65.18,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/dotenv/__init__.py",
+            "lines": 51
+          },
+          {
+            "path": "src/dotenv/main.py",
+            "lines": 532
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/__init__.py",
+            "lines": 48
+          },
+          {
+            "path": "src/dotenv/main.py",
+            "lines": 155
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "pytest-fifo_dotenv",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "values"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "values"
+            ],
+            "attribution": "single_capability",
+            "baseline_cases": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 1
+            },
+            "candidate_cases": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 1
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "pytest-fifo_dotenv",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "output-values",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "values",
+              "syntax",
+              "expand"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "expand",
+              "syntax"
+            ],
+            "attribution": "knockout_confirmed"
+          },
+          {
+            "name": "pytest-main",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "values",
+              "find",
+              "edit"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "baseline_cases": {
+              "passed": 156,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 156
+            },
+            "candidate_cases": {
+              "passed": 156,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 156
+            }
+          },
+          {
+            "name": "pytest-zip_imports",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "find",
+              "values"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "baseline_cases": {
+              "passed": 2,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 2
+            },
+            "candidate_cases": {
+              "passed": 2,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 2
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "output-values",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "values",
+                "syntax",
+                "expand"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "expand",
+                "syntax"
+              ],
+              "attribution": "knockout_confirmed"
+            },
+            {
+              "name": "pytest-fifo_dotenv",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "values"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "values"
+              ],
+              "attribution": "single_capability",
+              "baseline_cases": {
+                "passed": 1,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 1
+              },
+              "candidate_cases": {
+                "passed": 1,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 1
+              }
+            },
+            {
+              "name": "pytest-main",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "values",
+                "find",
+                "edit"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "baseline_cases": {
+                "passed": 156,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 156
+              },
+              "candidate_cases": {
+                "passed": 156,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 156
+              }
+            },
+            {
+              "name": "pytest-zip_imports",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "find",
+                "values"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "baseline_cases": {
+                "passed": 2,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 2
+              },
+              "candidate_cases": {
+                "passed": 2,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 2
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "pytest-main",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "pytest-fifo_dotenv",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "pytest-zip_imports",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "output-values",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 3,
+            "passed": 3,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 4125,
+        "after": 1744,
+        "reduction_percent": 57.721,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/dotenv/__init__.py",
+            "tokens": 296
+          },
+          {
+            "path": "src/dotenv/main.py",
+            "tokens": 3829
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/__init__.py",
+            "tokens": 448
+          },
+          {
+            "path": "src/dotenv/main.py",
+            "tokens": 1296
+          }
+        ]
+      }
+    },
+    {
+      "id": "find",
+      "parent": "app",
+      "name": "定位 .env 文件",
+      "kind": "capability",
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 532,
+        "after": 155,
+        "reduction_percent": 70.865,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/dotenv/main.py",
+            "lines": 532
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/main.py",
+            "lines": 155
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "pytest-is_interactive",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "find"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "find"
+            ],
+            "attribution": "single_capability",
+            "baseline_cases": {
+              "passed": 10,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 10
+            },
+            "candidate_cases": {
+              "passed": 10,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 10
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "pytest-is_interactive",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "pytest-main",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "values",
+              "find",
+              "edit"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "baseline_cases": {
+              "passed": 156,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 156
+            },
+            "candidate_cases": {
+              "passed": 156,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 156
+            }
+          },
+          {
+            "name": "pytest-zip_imports",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "find",
+              "values"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "baseline_cases": {
+              "passed": 2,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 2
+            },
+            "candidate_cases": {
+              "passed": 2,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 2
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "pytest-is_interactive",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "find"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "find"
+              ],
+              "attribution": "single_capability",
+              "baseline_cases": {
+                "passed": 10,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 10
+              },
+              "candidate_cases": {
+                "passed": 10,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 10
+              }
+            },
+            {
+              "name": "pytest-main",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "values",
+                "find",
+                "edit"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "baseline_cases": {
+                "passed": 156,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 156
+              },
+              "candidate_cases": {
+                "passed": 156,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 156
+              }
+            },
+            {
+              "name": "pytest-zip_imports",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "find",
+                "values"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "baseline_cases": {
+                "passed": 2,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 2
+              },
+              "candidate_cases": {
+                "passed": 2,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 2
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "pytest-main",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "pytest-is_interactive",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "pytest-zip_imports",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 2,
+            "passed": 2,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 3829,
+        "after": 1296,
+        "reduction_percent": 66.153,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/dotenv/main.py",
+            "tokens": 3829
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/main.py",
+            "tokens": 1296
+          }
+        ]
+      }
+    },
+    {
+      "id": "edit",
+      "parent": "app",
+      "name": "读取和修改单个键",
+      "kind": "capability",
+      "selection_reason": "selected_dependency",
+      "loc": {
+        "before": 532,
+        "after": 245,
+        "reduction_percent": 53.947,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/dotenv/main.py",
+            "lines": 532
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/_edit.py",
+            "lines": 90
+          },
+          {
+            "path": "src/dotenv/main.py",
+            "lines": 155
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "pytest-main",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "values",
+              "find",
+              "edit"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [],
+            "attribution": "unattributed",
+            "baseline_cases": {
+              "passed": 156,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 156
+            },
+            "candidate_cases": {
+              "passed": 156,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 156
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "pytest-main",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "values",
+                "find",
+                "edit"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [],
+              "attribution": "unattributed",
+              "baseline_cases": {
+                "passed": 156,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 156
+              },
+              "candidate_cases": {
+                "passed": 156,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 156
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "pytest-main",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "related_passed",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 3829,
+        "after": 2085,
+        "reduction_percent": 45.547,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/dotenv/main.py",
+            "tokens": 3829
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/_edit.py",
+            "tokens": 789
+          },
+          {
+            "path": "src/dotenv/main.py",
+            "tokens": 1296
+          }
+        ]
+      }
+    },
+    {
+      "id": "cmd",
+      "parent": "app",
+      "name": "通过命令行查询、编辑和启动子进程",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 270,
+        "after": 134,
+        "reduction_percent": 50.37,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/dotenv/__main__.py",
+            "lines": 6
+          },
+          {
+            "path": "src/dotenv/cli.py",
+            "lines": 264
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/__main__.py",
+            "lines": 4
+          },
+          {
+            "path": "src/dotenv/cli.py",
+            "lines": 130
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "pytest-cli",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "cmd",
+              "version"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "cmd"
+            ],
+            "attribution": "knockout_confirmed",
+            "baseline_cases": {
+              "passed": 53,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 1,
+              "executed": 53
+            },
+            "candidate_cases": {
+              "passed": 53,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 1,
+              "executed": 53
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "pytest-cli",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "pytest-cli",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "cmd",
+                "version"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "cmd"
+              ],
+              "attribution": "knockout_confirmed",
+              "baseline_cases": {
+                "passed": 53,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 1,
+                "executed": 53
+              },
+              "candidate_cases": {
+                "passed": 53,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 1,
+                "executed": 53
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "pytest-cli",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 1822,
+        "after": 1210,
+        "reduction_percent": 33.589,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/dotenv/__main__.py",
+            "tokens": 33
+          },
+          {
+            "path": "src/dotenv/cli.py",
+            "tokens": 1789
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/__main__.py",
+            "tokens": 17
+          },
+          {
+            "path": "src/dotenv/cli.py",
+            "tokens": 1193
+          }
+        ]
+      }
+    },
+    {
+      "id": "string",
+      "parent": "app",
+      "name": "为脚本生成 dotenv 命令",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 51,
+        "after": 48,
+        "reduction_percent": 5.882,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/dotenv/__init__.py",
+            "lines": 51
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/__init__.py",
+            "lines": 48
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "pytest-utils",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "string"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "string"
+            ],
+            "attribution": "single_capability",
+            "baseline_cases": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 1
+            },
+            "candidate_cases": {
+              "passed": 1,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 1
+            }
+          },
+          {
+            "name": "output-command",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "string"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "string"
+            ],
+            "attribution": "single_capability"
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "pytest-utils",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "output-command",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "output-command",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "string"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "string"
+              ],
+              "attribution": "single_capability"
+            },
+            {
+              "name": "pytest-utils",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "string"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "string"
+              ],
+              "attribution": "single_capability",
+              "baseline_cases": {
+                "passed": 1,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 1
+              },
+              "candidate_cases": {
+                "passed": 1,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 1
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "pytest-utils",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "output-command",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 2,
+            "passed": 2,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 296,
+        "after": 448,
+        "reduction_percent": -51.351,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/dotenv/__init__.py",
+            "tokens": 296
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/__init__.py",
+            "tokens": 448
+          }
+        ]
+      }
+    },
+    {
+      "id": "interactive",
+      "parent": "app",
+      "name": "在 IPython 中加载 .env",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 101,
+        "after": 48,
+        "reduction_percent": 52.475,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/dotenv/__init__.py",
+            "lines": 51
+          },
+          {
+            "path": "src/dotenv/ipython.py",
+            "lines": 50
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/__init__.py",
+            "lines": 48
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "pytest-ipython",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "interactive"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "interactive"
+            ],
+            "attribution": "knockout_confirmed",
+            "baseline_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            },
+            "candidate_cases": {
+              "passed": 4,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 4
+            }
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "pytest-ipython",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "pytest-ipython",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "interactive"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "interactive"
+              ],
+              "attribution": "knockout_confirmed",
+              "baseline_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              },
+              "candidate_cases": {
+                "passed": 4,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 4
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "pytest-ipython",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 602,
+        "after": 448,
+        "reduction_percent": 25.581,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/dotenv/__init__.py",
+            "tokens": 296
+          },
+          {
+            "path": "src/dotenv/ipython.py",
+            "tokens": 306
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/__init__.py",
+            "tokens": 448
+          }
+        ]
+      }
+    },
+    {
+      "id": "version",
+      "parent": "app",
+      "name": "提供版本和安装入口",
+      "kind": "capability",
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 1,
+        "after": 1,
+        "reduction_percent": 0.0,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "src/dotenv/version.py",
+            "lines": 1
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/version.py",
+            "lines": 1
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "output-version",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "version"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "version"
+            ],
+            "attribution": "single_capability"
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "output-version",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "pytest-cli",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "cmd",
+              "version"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "cmd"
+            ],
+            "attribution": "knockout_confirmed",
+            "baseline_cases": {
+              "passed": 53,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 1,
+              "executed": 53
+            },
+            "candidate_cases": {
+              "passed": 53,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 1,
+              "executed": 53
+            }
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "output-version",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "version"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "version"
+              ],
+              "attribution": "single_capability"
+            },
+            {
+              "name": "pytest-cli",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "cmd",
+                "version"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "cmd"
+              ],
+              "attribution": "knockout_confirmed",
+              "baseline_cases": {
+                "passed": 53,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 1,
+                "executed": 53
+              },
+              "candidate_cases": {
+                "passed": 53,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 1,
+                "executed": 53
+              }
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "pytest-cli",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "output-version",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 11,
+        "after": 11,
+        "reduction_percent": 0.0,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "src/dotenv/version.py",
+            "tokens": 11
+          }
+        ],
+        "after_files": [
+          {
+            "path": "src/dotenv/version.py",
+            "tokens": 11
+          }
+        ]
+      }
+    }
+  ],
+  "scope": {
+    "preset": "all",
+    "foundations": [
+      "app",
+      "expand",
+      "find",
+      "syntax",
+      "values",
+      "version"
+    ],
+    "core": [
+      "app",
+      "expand",
+      "find",
+      "syntax",
+      "values",
+      "version"
+    ],
+    "kept": [
+      "app",
+      "cmd",
+      "edit",
+      "expand",
+      "find",
+      "interactive",
+      "string",
+      "syntax",
+      "values",
+      "version"
+    ],
+    "removed": [],
+    "reasons": {
+      "app": "foundation",
+      "syntax": "foundation",
+      "expand": "foundation",
+      "values": "foundation",
+      "find": "foundation",
+      "edit": "selected_dependency",
+      "cmd": "selected",
+      "string": "selected",
+      "interactive": "selected",
+      "version": "foundation"
+    }
+  },
+  "methodology": [
+    "Scope and rewrite attribution are mapped-file estimates, not exact semantic savings. Shared files count once and retained/removed code within them cannot be separated.",
+    "All original configuration is charged to the retained footprint. Configuration changes appear in the rewrite estimate and may include scope-related savings.",
+    "Overall reduction uses the full original as denominator; rewrite reduction uses the selected original estimate. Their percentages must not be added.",
+    "Negative reductions indicate growth; incomplete measurements do not establish savings.",
+    "The primary size metric counts frozen-tokenizer tokens in source and configuration, summed independently per file. These are code-size tokens, not model usage or task effort.",
+    "Module token figures cover mapped source only; global configuration cost is not assigned to modules. Informational LOC remains separate.",
+    "Incomplete token measurements show observed subtotals, never a verified reduction or successful budget.",
+    "Informational LOC counts are physical source lines from the frozen original and bound candidate inventories, excluding tests and local state.",
+    "Original capability counts include all original descendants; candidate counts include explicitly mapped own files and retained descendants. Excluded descendants do not require candidate mapping. Shared files count once within a node; node counts cannot be added together.",
+    "Candidate ownership is explicitly supplied metadata, not proof of semantic ownership. Missing mappings remain unknown, never zero or a claimed reduction.",
+    "Function steps inherit their owning capability's code scope, but validation remains unknown without direct step evidence; they are not independently measured or tested.",
+    "Local validation statuses use directly targeted checks only. Evidence badges separately describe direct checks and related context. Parent, descendant, import-related and shared evidence never implies a local pass or failure.",
+    "A check targets the leaves whose knockout broke its behavior; a leaf it survived, or whose knockout only broke importing, is context. Otherwise checks naming one capability target that capability by default. Broad or unscoped checks need explicit report check_targets; unattributed results remain in the verification summary and evidence.",
+    "The author could read the original's source of every checked capability: each author call was lent, read-only, the original files of the capabilities it worked on, of those they depend on and of the ones above them, never a test. A passing check shows that the behavior was kept, not that it was written without sight of the original. Where the job recorded it, the report states how many files each call was lent and opened, and how much of the delivered code repeats the original line for line.",
+    "Evidence labels distinguish directly passed check records, mixed direct evidence, related passing evidence and missing evidence. Related passes do not verify this module; check-record counts are not a functional coverage percentage.",
+    "Verification describes declared check groups and their observed configurations, not individual unit-test counts or full semantic equivalence.",
+    "Failed original baselines, unrun checks, retired scope and incomplete coverage remain distinct. Installation is reported separately.",
+    "Only public labels, relative file mappings, hashes and summary observations are included. Source contents, command argv, environment values and captured output are omitted."
+  ],
+  "installation": {
+    "status": "passed",
+    "checks_passed": 2,
+    "checks_total": 2,
+    "environment_metadata_complete": true
+  },
+  "rewrite_progress": {
+    "priority": "functionality_first",
+    "author_attempts": 2,
+    "repair_attempts": 1,
+    "optimization_attempts": 0,
+    "restorations": 0,
+    "rejected_attempts": 0,
+    "failed_optimizations": 0,
+    "max_optimization_attempts": 2,
+    "stop_reason": null,
+    "accepted_candidate_available": true,
+    "behavior_acceptance": "passed",
+    "size_acceptance": "met"
+  },
+  "task_effort": {
+    "schema_version": 1,
+    "operation": "task_effort_evaluation",
+    "status": "disabled",
+    "binding": {},
+    "policy": {
+      "comparison": "empirical_range",
+      "strict_all_tasks": true
+    },
+    "task_types": [
+      "understand",
+      "diagnose",
+      "modify",
+      "execute"
+    ],
+    "tasks": [],
+    "overhead": {
+      "examiner_tokens": null,
+      "judge_tokens": null,
+      "solver_tokens": null,
+      "total_tokens": null,
+      "usage_complete": false,
+      "observed_total_tokens": null,
+      "role_usage_complete": {
+        "examiner": false,
+        "solver": false,
+        "judge": false
+      }
+    },
+    "resources": {
+      "completed_runs": 0,
+      "cleanup_pending": false,
+      "cleanup_pending_runs": 0
+    },
+    "iterations": [],
+    "limitations": [
+      "Task effort measures these tasks under the recorded agent settings; it is not a universal measure of human cognitive burden.",
+      "Tokens count solver model inputs and outputs, including cached input. Missing usage is unavailable, never zero. Examiner and judge overhead is separate.",
+      "Empirical ranges describe repeated observations, not statistical confidence intervals. Failed or unrun tasks do not establish an improvement.",
+      "Task links identify assessed capabilities only; they do not change module behavior verification badges.",
+      "Task prompts, hidden inputs, judging rubrics, source excerpts, raw traces and local paths are omitted from this public report."
+    ],
+    "stop_reason": "owner_disabled"
+  },
+  "report_id": "nrs_f966bb56cacef18274ccd0bfecbe9fbfb259eef90dc3a2dd5e1298c62b49e9c9"
+}
