@@ -1,0 +1,7 @@
+capability_id,before_lines,after_lines,reduction_percent,mapping_status,validation_status,executed,evidence_category,direct_checks,related_checks,direct_checks_passed,direct_checks_failed,direct_checks_inconclusive,related_checks_passed,related_checks_failed,related_checks_inconclusive,evidence_coverage,before_source_tokens,after_source_tokens,source_token_reduction_percent
+graphify-root-ddcb2dfa42d8,8843,5554,37.193,mapped,unknown,False,related_passed,0,6,0,0,0,4,2,0,limited,72854,46733,35.854
+graphify-package-bc4a71180870,6,4,33.333,mapped,unknown,False,related_passed,0,1,0,0,0,1,0,0,limited,41,21,48.78
+graphify-recipes-63b8bd59a482,1617,1088,32.715,mapped,failed,True,failed,3,0,2,1,0,0,0,0,limited,12994,8235,36.625
+graphify-advanced-d21f85ea3816,5664,3824,32.486,mapped,failed,True,failed,3,0,1,2,0,0,0,0,limited,47001,28987,38.327
+graphify-typing-f8fd8e84e5d0,1256,595,52.627,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,10595,9114,13.978
+graphify-docs-46b42b4229cd,300,51,83.0,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,2223,418,81.197

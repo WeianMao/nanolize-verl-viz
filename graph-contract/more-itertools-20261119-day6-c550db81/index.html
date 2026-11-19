@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>more-itertools 全范围重写报告</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <style>
+  :root { color-scheme:light; --ink:#122b3b; --muted:#475c67; --line:#ccd8dc; --accent:#076460; }
+  html { background:#f3f6f6; }
+  body { margin:2rem auto; max-width:64rem; padding:2.5rem clamp(1.25rem,4vw,4rem); color:var(--ink); background:#fff; font:16px/1.65 system-ui,"Noto Sans CJK SC",sans-serif; }
+  h1 { font-size:clamp(1.65rem,4vw,2.5rem); line-height:1.2; border-bottom:3px solid var(--accent); padding-bottom:.65rem; }
+  h2 { font-size:1.35rem; margin:2.25rem 0 .55rem; } h3 { font-size:1.07rem; }
+  table { border-collapse:collapse; width:100%; display:block; overflow:auto; font-variant-numeric:tabular-nums; margin:.85rem 0; }
+  th,td { border:1px solid var(--line); text-align:left; padding:.48rem .68rem; vertical-align:top; } th { background:#e8f1f0; white-space:nowrap; } tr:nth-child(even) td { background:#f8faf9; }
+  a { color:var(--accent); } code { overflow-wrap:anywhere; color:#314852; font-size:.9em; } li {margin:.35rem 0;} strong { font-weight:650; }
+  @media(max-width:700px) {body {margin:0; padding:1rem;} table {font-size:.86rem;} }
+  @media print { html,body {background:white; margin:0; padding:0;} h2 {break-after:avoid;} table{display:table;} }
+  </style>
+</head>
+<body>
+<h1 id="more-itertools-全范围重写报告">more-itertools
+全范围重写报告</h1>
+<p>设置：nanolize main <code>1ef5998</code>（插件 0.8.0），more-itertools 原版提交 <code>ceafee8ce96f4bc1eb74c528bc247c91d648a0bb</code>。<code>$nanolize more-itertools unattended=on scope=all --cn</code>，按 11-19 prompt 的补充说明启用 <code>pair="on"</code>，主作业检查在 Slurm 计算节点。Codex <code>gpt-6.2-astra xhigh</code>。</p>
+<p>2026 年 11 月 19 日，nanolize 0.8.0。双作业完成，终态为
+<strong><code>delivered_with_failures</code></strong>。交付候选
+<code>candidate-5</code> 通过 4/6 组行为检查、2/2
+项安装检查。唯一已定位的回归是 <code>always_reversible</code>
+对生成器返回的迭代器类型，与原版不同。两组上游检查都观察到了这个差异。</p>
+<p><a href="graph/index.html">查看 nanolize 原生功能图与验证报告</a> · <a href="issues.md">问题清单与核算明细（issues.md）</a></p>
+<h2 id="四项重点指标">四项重点指标</h2>
+<table>
+<thead>
+<tr class="header">
+<th>指标</th>
+<th>实测结果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>交付体积</td>
+<td><strong>48,089 token</strong>，原版 75,955 的
+<strong>63.31%</strong>，减少 36.69%（原生报告按源码与配置逐文件计量，缩减率为 36.688%）。目标为 37,977 token，超出
+10,112。</td>
+</tr>
+<tr class="even">
+<td>第一版作者调用</td>
+<td><strong>3 次</strong>，运行器合计 <strong>21 分 35.8
+秒</strong>，标准价折算 <strong>$7.2076</strong>。其中第 1 次用时 <strong>4 分 20.0 秒</strong>，折算 <strong>$1.4826</strong>。</td>
+</tr>
+<tr class="odd">
+<td>测试评审否决</td>
+<td><strong>0 次</strong>。冻结时 5/5
+个叶节点都有有效测试，没有提案送审。</td>
+</tr>
+<tr class="even">
+<td>行为修复</td>
+<td><strong>4 轮</strong>。另有 1
+次只读实现评审；该调用未修改候选。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="交付与验证">交付与验证</h2>
+<ul>
+<li>原版提交
+<code>ceafee8ce96f4bc1eb74c528bc247c91d648a0bb</code>。交付分支
+<code>codex/nanolize-c550db81f31b476c924e7efa2452405a</code>，提交
+<code>171beddbe2295f62e1ac974bea3e48b836c79f08</code>。输入分支
+<code>nanolize-input</code>
+保持干净。契约转换没有产生需提交的恢复测试。</li>
+<li>交付体积包括源码 46,733 token、配置 1,356 token。源码 5,554 行，原版
+8,843 行。按验证器的文件清单，交付提交中计量的 29 个文件共 164,652
+字节（160.8 KiB）。字节数以 Git 文件内容为准。</li>
+<li><strong>与原版相同的行比例为 12%。</strong> nanolize 比较了 1,815
+行实现代码，包含函数体和文件中的其他可比较语句，并识别移动到其他位置的重复内容。分母排除签名、导入、注释及文档字符串。</li>
+<li>首版为 47,643 token，最终版为 48,089 token。修复净增加 446
+token。全程保留 5
+个功能叶节点，任务成本对照沿用本次默认配置，未启用。</li>
+<li>冻结时 5/5 个叶节点有有效测试，新增测试覆盖 0 个节点，缺少有效测试 0
+个节点，豁免 0 个节点。交付时，含分组根节点的义务清单共有 6 项，3
+项通过、3 项受失败影响、0
+项未知。两处计数分别回答“原版有没有可用测试”和“候选有没有通过”。原生报告另按各节点的直接验证证据统计，通过 2 个、失败 2 个、未知 2 个。</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>最终检查</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>上游扩展迭代工具 pytest</td>
+<td>625/626 通过，1 个失败</td>
+</tr>
+<tr class="even">
+<td>上游基础配方 pytest</td>
+<td>145/145 通过</td>
+</tr>
+<tr class="odd">
+<td>完整 unittest（含 doctest）</td>
+<td>934/935 通过；剩余失败与 pytest 指向同一断言</td>
+</tr>
+<tr class="even">
+<td>公共包输出、类型存根导出、文档配置输出</td>
+<td>3/3 组通过</td>
+</tr>
+<tr class="odd">
+<td>全新环境安装、从安装位置调用公共 API</td>
+<td>2/2 项通过</td>
+</tr>
+</tbody>
+</table>
+<h2 id="耗时">耗时</h2>
+<p>以下均为 UTC。<strong>从运行页创建到交付为 1 小时 9 分 56
+秒，从双作业提交到交付为 1 小时 5 分 47 秒。</strong>
+下表按墙钟划分主时间线，每段只计一次。</p>
+<table>
+<thead>
+<tr class="header">
+<th>阶段</th>
+<th>起止时间</th>
+<th style="text-align: right;">用时</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>准备环境、发现、映射、提交</td>
+<td>06:08:20–06:12:29</td>
+<td style="text-align: right;">4 分 09 秒</td>
+</tr>
+<tr class="even">
+<td>主作业冻结（草稿同时开始）</td>
+<td>06:12:29–06:20:11</td>
+<td style="text-align: right;">7 分 42 秒</td>
+</tr>
+<tr class="odd">
+<td>冻结后等待第一版完成</td>
+<td>06:20:11–06:35:11</td>
+<td style="text-align: right;">15 分 00 秒</td>
+</tr>
+<tr class="even">
+<td>导入第一版、首次全量验证与安装</td>
+<td>06:35:11–06:37:00</td>
+<td style="text-align: right;">1 分 49 秒</td>
+</tr>
+<tr class="odd">
+<td>4 轮修复、只读评审、重验、选择交付决策</td>
+<td>06:37:00–07:18:08</td>
+<td style="text-align: right;">41 分 08 秒</td>
+</tr>
+<tr class="even">
+<td>选中候选并生成交付结果</td>
+<td>07:18:08–07:18:16</td>
+<td style="text-align: right;">8.5 秒</td>
+</tr>
+</tbody>
+</table>
+<p>草稿从首次进入编写到保存完整第一版为 <strong>21 分 54.4
+秒</strong>，其中一部分与冻结重叠。3 次作者会话内的活动时间合计
+<strong>21 分 25.1 秒</strong>；含进程启动与收尾的运行器调用合计
+<strong>21 分 35.8 秒</strong>。</p>
+<table>
+<thead>
+<tr class="header">
+<th>冻结明细</th>
+<th style="text-align: right;">用时</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>主作业第一次录基线</td>
+<td style="text-align: right;">441.653 秒</td>
+<td>6 组检查可用，5 个叶节点均有有效测试</td>
+</tr>
+<tr class="even">
+<td>测试设计者会话</td>
+<td style="text-align: right;">0 秒</td>
+<td>0 次；设计步骤判定无目标（<code>no_target</code>）用时 0.232 秒</td>
+</tr>
+<tr class="odd">
+<td>测试评审者会话</td>
+<td style="text-align: right;">0 秒</td>
+<td>0 次提交，0 次否决</td>
+</tr>
+<tr class="even">
+<td>主作业第二次录基线</td>
+<td style="text-align: right;">未触发</td>
+<td>未新增测试，契约无需重录</td>
+</tr>
+<tr class="odd">
+<td>封存验证包</td>
+<td style="text-align: right;">2.661 秒</td>
+<td>保护了 6 个验证文件</td>
+</tr>
+<tr class="even">
+<td>草稿作业独立录基线</td>
+<td style="text-align: right;">37.653 秒</td>
+<td>与主作业并行，单独计时</td>
+</tr>
+</tbody>
+</table>
+<h2 id="角色用量与费用">角色用量与费用</h2>
+<p>逐笔读取 Codex 适配器输出的 <code>turn.completed.usage</code>，按
+<code>thread.started.thread_id</code>
+去重。作者与只读实现评审取自主、草稿两份
+<code>runner.log</code>；controller 取自各轮
+<code>run/stdout.ndjson</code>。统计了这两个作业的角色调用，宿主对话的发现、监控和撰写报告单列在统计范围之外。输入列已扣除缓存读取；缓存写入均为
+0，推理 token 已含在输出中。原生报告按作者运行器计 8 次调用，其中 1 次为只读实现评审，表中按角色单列。</p>
+<table>
+<thead>
+<tr class="header">
+<th>角色</th>
+<th style="text-align: right;">调用次数</th>
+<th style="text-align: right;">非缓存输入</th>
+<th style="text-align: right;">缓存输入</th>
+<th style="text-align: right;">输出</th>
+<th style="text-align: right;">标准价折算（美元）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>作者（3 次首版、4 次修复）</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">630,959</td>
+<td style="text-align: right;">12,983,936</td>
+<td style="text-align: right;">131,120</td>
+<td style="text-align: right;">15.4860</td>
+</tr>
+<tr class="even">
+<td>Controller</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">266,580</td>
+<td style="text-align: right;">668,160</td>
+<td style="text-align: right;">6,659</td>
+<td style="text-align: right;">2.6663</td>
+</tr>
+<tr class="odd">
+<td>测试设计者</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td>测试评审者</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td>实现评审者（经作者运行器）</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">118,965</td>
+<td style="text-align: right;">3,223,552</td>
+<td style="text-align: right;">24,504</td>
+<td style="text-align: right;">3.2213</td>
+</tr>
+<tr class="even">
+<td><strong>合计</strong></td>
+<td style="text-align: right;"><strong>15</strong></td>
+<td style="text-align: right;"><strong>1,016,504</strong></td>
+<td style="text-align: right;"><strong>16,875,648</strong></td>
+<td style="text-align: right;"><strong>162,283</strong></td>
+<td style="text-align: right;"><strong>21.3736</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>第一版作者调用</th>
+<th style="text-align: right;">运行器用时</th>
+<th style="text-align: right;">非缓存输入</th>
+<th style="text-align: right;">缓存输入</th>
+<th style="text-align: right;">输出</th>
+<th style="text-align: right;">折算美元</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>基础迭代配方</td>
+<td style="text-align: right;">4 分 20.0 秒</td>
+<td style="text-align: right;">70,930</td>
+<td style="text-align: right;">919,552</td>
+<td style="text-align: right;">13,683</td>
+<td style="text-align: right;">1.4826</td>
+</tr>
+<tr class="even">
+<td>扩展迭代工具</td>
+<td style="text-align: right;">10 分 58.1 秒</td>
+<td style="text-align: right;">116,826</td>
+<td style="text-align: right;">3,176,704</td>
+<td style="text-align: right;">33,942</td>
+<td style="text-align: right;">3.5630</td>
+</tr>
+<tr class="odd">
+<td>包导出、类型与文档</td>
+<td style="text-align: right;">6 分 17.7 秒</td>
+<td style="text-align: right;">75,320</td>
+<td style="text-align: right;">1,691,008</td>
+<td style="text-align: right;">22,078</td>
+<td style="text-align: right;">2.1621</td>
+</tr>
+</tbody>
+</table>
+<p>总量为 <strong>18,054,435
+token</strong>。全部调用使用
+<code>gpt-6.2-astra</code>，统一按标准短上下文 API
+参考价折算，每百万非缓存输入 $8、缓存输入 $0.40、输出
+$40。</p>
+<h2 id="调度依据">调度依据</h2>
+<ul>
+<li><code>sacctmgr</code> 报告的默认账户为
+<code>nvr_elm_llm</code>，其关联允许
+<code>free,normal</code>。<code>sinfo</code> 显示 <code>cpu_short</code>
+为 <code>up</code>、GRES 为 <code>(null)</code>、时限 4
+小时；查询时有可用 CPU 节点。</li>
+<li><code>squeue</code> 中已有该账户在 <code>cpu_short</code> 以
+<code>normal</code> QoS 运行的作业。使用同一组合及 5 分钟时限运行
+<code>sbatch --test-only</code> 返回预计节点。实际传入
+<code>kind=auto</code>、上述账户/分区/QoS，以及
+<code>queue_timeout=1800</code>。</li>
+<li>nanolize 确认主作业
+<code>c550db81f31b476c924e7efa2452405a</code>，草稿作业
+<code>aa2b8ad8389f436e9a304258cb36930c</code>。主作业的检查由 nanolize
+调度到 <code>cpu_short</code> 无 GPU 节点。</li>
+</ul>
+<h2 id="问题清单">问题清单</h2>
+<h3 id="需要对-nanolize-改动的-bugs">需要对 nanolize 改动的 bugs</h3>
+<p>本页问题列表只保留经核对确定由 nanolize 自身引起的 2 项。</p>
+<ul>
+<li><strong>问题-1</strong>　完整 unittest 已打印失败用例 <code>AlwaysReversibleTests.test_nonseq_reversed</code>，但 nanolize 按文本提取用例名时漏读了标准的 <code>FAIL:</code> 行。交付清单对该组只显示 <code>1 check without test names</code>，漏掉了与 pytest 指向同一断言的用例名。</li>
+<li><strong>现象-3</strong>　<code>assertNotEqual</code> 在两侧相等时会打印带 <code> == </code> 的比较行，nanolize 修复反馈解析器的 unittest 分支只识别带 <code> != </code> 的格式。第 2 至第 5 个候选的反馈都保留了 <code>AssertionError</code>，却漏掉了两侧的比较值。</li>
+</ul>
+<h3 id="遇到的现象">遇到的现象</h3>
+<p>本节只列由 nanolize 流程本身产生的现象；我们运行环境造成的情况未列入。</p>
+<ul>
+<li><strong>现象-1</strong>　Graphify 初稿只归属了 4/8 个源文件，3 个类型存根和 1 个文档样式表留在受保护的未映射组。补齐类型接口及文档构建的映射后，覆盖达到 8/8。</li>
+<li><strong>现象-2</strong>　第一版的扩展迭代工具 pytest 组有 3/626 个用例失败，分别涉及生成器反转的迭代器类型、切片释放元素引用的时机和并发消费者。首轮行为修复解决了后两项，后续四个候选均为 625/626。</li>
+<li><strong>现象-4</strong>　集成首版为 47,643 token，四轮行为修复净增 446 token。交付为 48,089 token，比原版减少 27,866 token，保留 63.31%，比 37,977 token 的建议目标高 10,112 token。</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,1992 @@
+{
+  "schema_version": 1,
+  "operation": "nanolize_report",
+  "binding": {
+    "original_git_head": "ceafee8ce96f4bc1eb74c528bc247c91d648a0bb",
+    "candidate_git_head": "171beddbe2295f62e1ac974bea3e48b836c79f08",
+    "candidate_source_sha256": "18516ea668522ed280ea36c38d7531600471fbf35251bd075cd5e4b2b02eb025",
+    "candidate_contract_sha256": "3df768fa5bbd2cce9d5901eed0e8766c9d0492efa8d326f5f36d92537da8310d",
+    "plan_sha256": "3bb13fe4d39d7e8a190aa10a67e271729437d41b98833c2393d24ccd1e2436df",
+    "verification_sha256": "5f4014f9b02bcad115b176b1cd14ce6a58d6f99b4624594bfbea68b41ab0729e",
+    "candidate_code_size_sha256": "65635132e523a49b3b53d7683b2513650432434ef7d2ec22b2477408c5b6d2bd"
+  },
+  "summary": {
+    "before": 8843,
+    "after": 5554,
+    "reduction_percent": 37.193,
+    "capabilities": 6,
+    "count_unit": "capabilities",
+    "status_counts": {
+      "verified": 2,
+      "failed": 2,
+      "partial": 0,
+      "unknown": 2,
+      "retired": 0
+    },
+    "evidence_counts": {
+      "failed": 2,
+      "direct_passed": 2,
+      "direct_partial": 0,
+      "related_passed": 2,
+      "related_only": 0,
+      "unverified": 0,
+      "retired": 0
+    },
+    "aggregate_status_counts": {
+      "verified": 3,
+      "failed": 3,
+      "partial": 0,
+      "unknown": 0,
+      "retired": 0
+    },
+    "verification_status": "regressed",
+    "verification_tests": {
+      "original_total": 3,
+      "retained": 6,
+      "retired": 0,
+      "needs_adaptation": 0,
+      "adapted": 0,
+      "contract": 3,
+      "passed": 4,
+      "failed": 2,
+      "fixed_baseline_failure": 0,
+      "not_run": 0
+    },
+    "unattributed_checks": [],
+    "leaf_coverage": {
+      "status": "ready",
+      "strict": false,
+      "valid": [
+        "graphify-advanced-d21f85ea3816",
+        "graphify-docs-46b42b4229cd",
+        "graphify-package-bc4a71180870",
+        "graphify-recipes-63b8bd59a482",
+        "graphify-typing-f8fd8e84e5d0"
+      ],
+      "missing": [],
+      "exempted": [],
+      "why_missing": {}
+    },
+    "source_consulted": {
+      "author_calls": 8,
+      "files": 11,
+      "draft_files": 11,
+      "calls": [
+        {
+          "job": "draft",
+          "mode": "initial",
+          "files": 2,
+          "omitted": 0,
+          "opened": 1,
+          "overlap_percent": 21
+        },
+        {
+          "job": "draft",
+          "mode": "initial",
+          "files": 3,
+          "omitted": 0,
+          "opened": 3,
+          "overlap_percent": 10
+        },
+        {
+          "job": "draft",
+          "mode": "initial",
+          "files": 11,
+          "omitted": 0,
+          "opened": 11,
+          "overlap_percent": 12
+        },
+        {
+          "job": "main",
+          "mode": "behavior_repair",
+          "files": 11,
+          "omitted": 0,
+          "opened": 3,
+          "overlap_percent": 12
+        },
+        {
+          "job": "main",
+          "mode": "behavior_repair",
+          "files": 3,
+          "omitted": 0,
+          "opened": 3,
+          "overlap_percent": 12
+        },
+        {
+          "job": "main",
+          "mode": "review",
+          "files": 3,
+          "omitted": 0,
+          "opened": 3,
+          "overlap_percent": 12
+        },
+        {
+          "job": "main",
+          "mode": "behavior_repair",
+          "files": 3,
+          "omitted": 0,
+          "opened": 1,
+          "overlap_percent": 12
+        },
+        {
+          "job": "main",
+          "mode": "behavior_repair",
+          "files": 3,
+          "omitted": 0,
+          "opened": 1,
+          "overlap_percent": 12
+        }
+      ]
+    },
+    "original_overlap": {
+      "percent": 12,
+      "compared_lines": 1815,
+      "mark_percent": 40,
+      "mark_function_percent": 60,
+      "function_lines": 8,
+      "functions_marked": 0,
+      "marked_functions": [],
+      "refused_saves": false
+    },
+    "assertion_values": {
+      "author_calls": 1,
+      "cases": 1
+    },
+    "unmapped_candidate_files": [],
+    "ignored_mapping_files": [
+      "MANIFEST.in",
+      "README.rst",
+      "docs/api.rst",
+      "docs/index.rst",
+      "docs/make.bat",
+      "docs/requirements.txt",
+      "docs/toctree.rst",
+      "more_itertools/py.typed",
+      "pyproject.toml"
+    ],
+    "code_size": {
+      "metric": "tokens",
+      "tokenizer": {
+        "library": "tiktoken",
+        "version": "0.12.0",
+        "encoding": "cl100k_base",
+        "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+        "text_policy": "raw_decoded_text_per_file",
+        "classification": "source_and_configuration_v2",
+        "special_tokens": "ordinary_text",
+        "file_boundaries": "independent_sum",
+        "decoding": "python_encoding_cookie_else_utf8_strict",
+        "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets"
+      },
+      "before": 75955,
+      "after": 48089,
+      "reduction_percent": 36.688,
+      "source_before": 72854,
+      "source_after": 46733,
+      "configuration_before": 3101,
+      "configuration_after": 1356,
+      "observed_before": 75955,
+      "observed_after": 48089,
+      "complete": true,
+      "target_tokens": 37977,
+      "budget_status": "unmet",
+      "target_policy": "advisory",
+      "code_only": {
+        "before": 36330,
+        "after": 29570
+      },
+      "documented_percent": {
+        "original": 93.1,
+        "delivered": 83.2
+      }
+    },
+    "size_attribution": {
+      "metric": "tokens",
+      "tokenizer": {
+        "classification": "source_and_configuration_v2",
+        "decoding": "python_encoding_cookie_else_utf8_strict",
+        "encoding": "cl100k_base",
+        "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+        "file_boundaries": "independent_sum",
+        "library": "tiktoken",
+        "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+        "special_tokens": "ordinary_text",
+        "text_policy": "raw_decoded_text_per_file",
+        "version": "0.12.0"
+      },
+      "complete": true,
+      "original_total": 75955,
+      "selected_original_estimate": 75955,
+      "candidate_total": 48089,
+      "overall_reduction": {
+        "tokens": 27866,
+        "percent": 36.688
+      },
+      "scope_reduction_estimate": {
+        "tokens": 0,
+        "percent": 0.0
+      },
+      "rewrite_reduction_estimate": {
+        "tokens": 27866,
+        "percent": 36.688
+      },
+      "shared_scope_files": [],
+      "method": "unique_mapped_source_plus_all_original_configuration",
+      "estimate_only": false,
+      "limitations": [
+        "Scope and rewrite attribution are mapped-file estimates, not exact semantic savings. Shared files count once and retained/removed code within them cannot be separated.",
+        "All original configuration is charged to the retained footprint. Configuration changes appear in the rewrite estimate and may include scope-related savings.",
+        "Overall reduction uses the full original as denominator; rewrite reduction uses the selected original estimate. Their percentages must not be added.",
+        "Negative reductions indicate growth; incomplete measurements do not establish savings."
+      ]
+    }
+  },
+  "nodes": [
+    {
+      "id": "graphify-root-ddcb2dfa42d8",
+      "parent": null,
+      "name": "more-itertools",
+      "kind": "capability",
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 8843,
+        "after": 5554,
+        "reduction_percent": 37.193,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "docs/_static/theme_overrides.css",
+            "lines": 14
+          },
+          {
+            "path": "docs/conf.py",
+            "lines": 286
+          },
+          {
+            "path": "more_itertools/__init__.py",
+            "lines": 6
+          },
+          {
+            "path": "more_itertools/__init__.pyi",
+            "lines": 2
+          },
+          {
+            "path": "more_itertools/more.py",
+            "lines": 5664
+          },
+          {
+            "path": "more_itertools/more.pyi",
+            "lines": 1022
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 1617
+          },
+          {
+            "path": "more_itertools/recipes.pyi",
+            "lines": 232
+          }
+        ],
+        "after_files": [
+          {
+            "path": "docs/_static/theme_overrides.css",
+            "lines": 8
+          },
+          {
+            "path": "docs/conf.py",
+            "lines": 43
+          },
+          {
+            "path": "more_itertools/__init__.py",
+            "lines": 4
+          },
+          {
+            "path": "more_itertools/__init__.pyi",
+            "lines": 5
+          },
+          {
+            "path": "more_itertools/_buffers.py",
+            "lines": 614
+          },
+          {
+            "path": "more_itertools/_combinatorics.py",
+            "lines": 466
+          },
+          {
+            "path": "more_itertools/_cursors.py",
+            "lines": 552
+          },
+          {
+            "path": "more_itertools/_numbers.py",
+            "lines": 261
+          },
+          {
+            "path": "more_itertools/_ordering.py",
+            "lines": 445
+          },
+          {
+            "path": "more_itertools/_parallel.py",
+            "lines": 161
+          },
+          {
+            "path": "more_itertools/_primes.py",
+            "lines": 100
+          },
+          {
+            "path": "more_itertools/_running.py",
+            "lines": 85
+          },
+          {
+            "path": "more_itertools/_sampling.py",
+            "lines": 120
+          },
+          {
+            "path": "more_itertools/_streams.py",
+            "lines": 1042
+          },
+          {
+            "path": "more_itertools/_typing.pyi",
+            "lines": 11
+          },
+          {
+            "path": "more_itertools/more.py",
+            "lines": 159
+          },
+          {
+            "path": "more_itertools/more.pyi",
+            "lines": 469
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 899
+          },
+          {
+            "path": "more_itertools/recipes.pyi",
+            "lines": 110
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "documentation-output",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "graphify-docs-46b42b4229cd"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "graphify-docs-46b42b4229cd"
+            ],
+            "attribution": "single_capability"
+          },
+          {
+            "name": "package-output",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "graphify-package-bc4a71180870",
+              "graphify-advanced-d21f85ea3816",
+              "graphify-recipes-63b8bd59a482"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "graphify-advanced-d21f85ea3816",
+              "graphify-recipes-63b8bd59a482"
+            ],
+            "attribution": "knockout_confirmed"
+          },
+          {
+            "name": "typing-exports",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "graphify-typing-f8fd8e84e5d0"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "graphify-typing-f8fd8e84e5d0"
+            ],
+            "attribution": "single_capability"
+          },
+          {
+            "name": "upstream-more",
+            "status": "regressed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "graphify-advanced-d21f85ea3816"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "failed",
+            "target_capabilities": [
+              "graphify-advanced-d21f85ea3816"
+            ],
+            "attribution": "single_capability",
+            "baseline_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            },
+            "candidate_cases": {
+              "passed": 625,
+              "failed": 1,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            }
+          },
+          {
+            "name": "upstream-recipes",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "graphify-recipes-63b8bd59a482"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "graphify-recipes-63b8bd59a482"
+            ],
+            "attribution": "knockout_confirmed",
+            "baseline_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            },
+            "candidate_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            }
+          },
+          {
+            "name": "upstream-unittest-doctests",
+            "status": "regressed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "graphify-advanced-d21f85ea3816",
+              "graphify-recipes-63b8bd59a482"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "failed",
+            "target_capabilities": [
+              "graphify-advanced-d21f85ea3816",
+              "graphify-recipes-63b8bd59a482"
+            ],
+            "attribution": "knockout_confirmed"
+          }
+        ],
+        "context": {
+          "status": "failed",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "failed",
+          "checks": [
+            {
+              "name": "documentation-output",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "graphify-docs-46b42b4229cd"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "graphify-docs-46b42b4229cd"
+              ],
+              "attribution": "single_capability"
+            },
+            {
+              "name": "package-output",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "graphify-package-bc4a71180870",
+                "graphify-advanced-d21f85ea3816",
+                "graphify-recipes-63b8bd59a482"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "graphify-advanced-d21f85ea3816",
+                "graphify-recipes-63b8bd59a482"
+              ],
+              "attribution": "knockout_confirmed"
+            },
+            {
+              "name": "typing-exports",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "graphify-typing-f8fd8e84e5d0"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "graphify-typing-f8fd8e84e5d0"
+              ],
+              "attribution": "single_capability"
+            },
+            {
+              "name": "upstream-more",
+              "status": "regressed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "graphify-advanced-d21f85ea3816"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "failed",
+              "target_capabilities": [
+                "graphify-advanced-d21f85ea3816"
+              ],
+              "attribution": "single_capability",
+              "baseline_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              },
+              "candidate_cases": {
+                "passed": 625,
+                "failed": 1,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              }
+            },
+            {
+              "name": "upstream-recipes",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "graphify-recipes-63b8bd59a482"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "graphify-recipes-63b8bd59a482"
+              ],
+              "attribution": "knockout_confirmed",
+              "baseline_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              },
+              "candidate_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              }
+            },
+            {
+              "name": "upstream-unittest-doctests",
+              "status": "regressed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "graphify-advanced-d21f85ea3816",
+                "graphify-recipes-63b8bd59a482"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "failed",
+              "target_capabilities": [
+                "graphify-advanced-d21f85ea3816",
+                "graphify-recipes-63b8bd59a482"
+              ],
+              "attribution": "knockout_confirmed"
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "failed",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            },
+            {
+              "status": "failed",
+              "kind": "retained_child"
+            },
+            {
+              "status": "verified",
+              "kind": "retained_child"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "related_passed",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 6,
+            "passed": 4,
+            "failed": 2,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 72854,
+        "after": 46733,
+        "reduction_percent": 35.854,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "docs/_static/theme_overrides.css",
+            "tokens": 97
+          },
+          {
+            "path": "docs/conf.py",
+            "tokens": 2126
+          },
+          {
+            "path": "more_itertools/__init__.py",
+            "tokens": 41
+          },
+          {
+            "path": "more_itertools/__init__.pyi",
+            "tokens": 10
+          },
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 47001
+          },
+          {
+            "path": "more_itertools/more.pyi",
+            "tokens": 8563
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 12994
+          },
+          {
+            "path": "more_itertools/recipes.pyi",
+            "tokens": 2022
+          }
+        ],
+        "after_files": [
+          {
+            "path": "docs/_static/theme_overrides.css",
+            "tokens": 46
+          },
+          {
+            "path": "docs/conf.py",
+            "tokens": 372
+          },
+          {
+            "path": "more_itertools/__init__.py",
+            "tokens": 21
+          },
+          {
+            "path": "more_itertools/__init__.pyi",
+            "tokens": 26
+          },
+          {
+            "path": "more_itertools/_buffers.py",
+            "tokens": 5376
+          },
+          {
+            "path": "more_itertools/_combinatorics.py",
+            "tokens": 3921
+          },
+          {
+            "path": "more_itertools/_cursors.py",
+            "tokens": 3414
+          },
+          {
+            "path": "more_itertools/_numbers.py",
+            "tokens": 2161
+          },
+          {
+            "path": "more_itertools/_ordering.py",
+            "tokens": 3485
+          },
+          {
+            "path": "more_itertools/_parallel.py",
+            "tokens": 945
+          },
+          {
+            "path": "more_itertools/_primes.py",
+            "tokens": 783
+          },
+          {
+            "path": "more_itertools/_running.py",
+            "tokens": 559
+          },
+          {
+            "path": "more_itertools/_sampling.py",
+            "tokens": 893
+          },
+          {
+            "path": "more_itertools/_streams.py",
+            "tokens": 8055
+          },
+          {
+            "path": "more_itertools/_typing.pyi",
+            "tokens": 81
+          },
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 716
+          },
+          {
+            "path": "more_itertools/more.pyi",
+            "tokens": 7275
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 6872
+          },
+          {
+            "path": "more_itertools/recipes.pyi",
+            "tokens": 1732
+          }
+        ]
+      }
+    },
+    {
+      "id": "graphify-package-bc4a71180870",
+      "parent": "graphify-root-ddcb2dfa42d8",
+      "name": "公共命名空间与发行包",
+      "kind": "capability",
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 6,
+        "after": 4,
+        "reduction_percent": 33.333,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "more_itertools/__init__.py",
+            "lines": 6
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/__init__.py",
+            "lines": 4
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "unknown",
+        "executed": false,
+        "baseline_status": "not_run",
+        "candidate_status": "not_run",
+        "checks": [],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "kind": "coverage",
+            "status": "unknown",
+            "reason": "no_direct_checks"
+          }
+        ],
+        "related_checks": [
+          {
+            "name": "package-output",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "graphify-package-bc4a71180870",
+              "graphify-advanced-d21f85ea3816",
+              "graphify-recipes-63b8bd59a482"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "graphify-advanced-d21f85ea3816",
+              "graphify-recipes-63b8bd59a482"
+            ],
+            "attribution": "knockout_confirmed"
+          }
+        ],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "package-output",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "graphify-package-bc4a71180870",
+                "graphify-advanced-d21f85ea3816",
+                "graphify-recipes-63b8bd59a482"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "graphify-advanced-d21f85ea3816",
+                "graphify-recipes-63b8bd59a482"
+              ],
+              "attribution": "knockout_confirmed"
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "package-output",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "related_passed",
+          "direct": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 41,
+        "after": 21,
+        "reduction_percent": 48.78,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "more_itertools/__init__.py",
+            "tokens": 41
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/__init__.py",
+            "tokens": 21
+          }
+        ]
+      }
+    },
+    {
+      "id": "graphify-recipes-63b8bd59a482",
+      "parent": "graphify-root-ddcb2dfa42d8",
+      "name": "迭代器基础配方",
+      "kind": "capability",
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 1617,
+        "after": 1088,
+        "reduction_percent": 32.715,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 1617
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/__init__.py",
+            "lines": 4
+          },
+          {
+            "path": "more_itertools/_primes.py",
+            "lines": 100
+          },
+          {
+            "path": "more_itertools/_running.py",
+            "lines": 85
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "lines": 899
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "failed",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "failed",
+        "checks": [
+          {
+            "name": "upstream-recipes",
+            "status": "passed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "graphify-recipes-63b8bd59a482"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "graphify-recipes-63b8bd59a482"
+            ],
+            "attribution": "knockout_confirmed",
+            "baseline_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            },
+            "candidate_cases": {
+              "passed": 145,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 145
+            }
+          },
+          {
+            "name": "upstream-unittest-doctests",
+            "status": "regressed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "graphify-advanced-d21f85ea3816",
+              "graphify-recipes-63b8bd59a482"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "failed",
+            "target_capabilities": [
+              "graphify-advanced-d21f85ea3816",
+              "graphify-recipes-63b8bd59a482"
+            ],
+            "attribution": "knockout_confirmed"
+          },
+          {
+            "name": "package-output",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "graphify-package-bc4a71180870",
+              "graphify-advanced-d21f85ea3816",
+              "graphify-recipes-63b8bd59a482"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "graphify-advanced-d21f85ea3816",
+              "graphify-recipes-63b8bd59a482"
+            ],
+            "attribution": "knockout_confirmed"
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "upstream-recipes",
+            "kind": "declared_check"
+          },
+          {
+            "status": "failed",
+            "check": "upstream-unittest-doctests",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "package-output",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "failed",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "failed",
+          "checks": [
+            {
+              "name": "package-output",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "graphify-package-bc4a71180870",
+                "graphify-advanced-d21f85ea3816",
+                "graphify-recipes-63b8bd59a482"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "graphify-advanced-d21f85ea3816",
+                "graphify-recipes-63b8bd59a482"
+              ],
+              "attribution": "knockout_confirmed"
+            },
+            {
+              "name": "upstream-recipes",
+              "status": "passed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "graphify-recipes-63b8bd59a482"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "graphify-recipes-63b8bd59a482"
+              ],
+              "attribution": "knockout_confirmed",
+              "baseline_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              },
+              "candidate_cases": {
+                "passed": 145,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 145
+              }
+            },
+            {
+              "name": "upstream-unittest-doctests",
+              "status": "regressed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "graphify-advanced-d21f85ea3816",
+                "graphify-recipes-63b8bd59a482"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "failed",
+              "target_capabilities": [
+                "graphify-advanced-d21f85ea3816",
+                "graphify-recipes-63b8bd59a482"
+              ],
+              "attribution": "knockout_confirmed"
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "upstream-recipes",
+              "kind": "declared_check"
+            },
+            {
+              "status": "failed",
+              "check": "upstream-unittest-doctests",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "package-output",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "failed",
+          "direct": {
+            "total": 3,
+            "passed": 2,
+            "failed": 1,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 12994,
+        "after": 8235,
+        "reduction_percent": 36.625,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 12994
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/__init__.py",
+            "tokens": 21
+          },
+          {
+            "path": "more_itertools/_primes.py",
+            "tokens": 783
+          },
+          {
+            "path": "more_itertools/_running.py",
+            "tokens": 559
+          },
+          {
+            "path": "more_itertools/recipes.py",
+            "tokens": 6872
+          }
+        ]
+      }
+    },
+    {
+      "id": "graphify-advanced-d21f85ea3816",
+      "parent": "graphify-root-ddcb2dfa42d8",
+      "name": "扩展迭代工具",
+      "kind": "capability",
+      "selection_reason": "foundation",
+      "loc": {
+        "before": 5664,
+        "after": 3824,
+        "reduction_percent": 32.486,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "lines": 5664
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/__init__.py",
+            "lines": 4
+          },
+          {
+            "path": "more_itertools/_buffers.py",
+            "lines": 614
+          },
+          {
+            "path": "more_itertools/_combinatorics.py",
+            "lines": 466
+          },
+          {
+            "path": "more_itertools/_cursors.py",
+            "lines": 552
+          },
+          {
+            "path": "more_itertools/_numbers.py",
+            "lines": 261
+          },
+          {
+            "path": "more_itertools/_ordering.py",
+            "lines": 445
+          },
+          {
+            "path": "more_itertools/_parallel.py",
+            "lines": 161
+          },
+          {
+            "path": "more_itertools/_sampling.py",
+            "lines": 120
+          },
+          {
+            "path": "more_itertools/_streams.py",
+            "lines": 1042
+          },
+          {
+            "path": "more_itertools/more.py",
+            "lines": 159
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "failed",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "failed",
+        "checks": [
+          {
+            "name": "upstream-more",
+            "status": "regressed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "graphify-advanced-d21f85ea3816"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "failed",
+            "target_capabilities": [
+              "graphify-advanced-d21f85ea3816"
+            ],
+            "attribution": "single_capability",
+            "baseline_cases": {
+              "passed": 626,
+              "failed": 0,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            },
+            "candidate_cases": {
+              "passed": 625,
+              "failed": 1,
+              "errors": 0,
+              "skipped": 0,
+              "executed": 626
+            }
+          },
+          {
+            "name": "upstream-unittest-doctests",
+            "status": "regressed",
+            "role": "original",
+            "scope": "retained",
+            "capabilities": [
+              "graphify-advanced-d21f85ea3816",
+              "graphify-recipes-63b8bd59a482"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "failed",
+            "target_capabilities": [
+              "graphify-advanced-d21f85ea3816",
+              "graphify-recipes-63b8bd59a482"
+            ],
+            "attribution": "knockout_confirmed"
+          },
+          {
+            "name": "package-output",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "graphify-package-bc4a71180870",
+              "graphify-advanced-d21f85ea3816",
+              "graphify-recipes-63b8bd59a482"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "graphify-advanced-d21f85ea3816",
+              "graphify-recipes-63b8bd59a482"
+            ],
+            "attribution": "knockout_confirmed"
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "failed",
+            "check": "upstream-more",
+            "kind": "declared_check"
+          },
+          {
+            "status": "failed",
+            "check": "upstream-unittest-doctests",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "package-output",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "failed",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "failed",
+          "checks": [
+            {
+              "name": "package-output",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "graphify-package-bc4a71180870",
+                "graphify-advanced-d21f85ea3816",
+                "graphify-recipes-63b8bd59a482"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "graphify-advanced-d21f85ea3816",
+                "graphify-recipes-63b8bd59a482"
+              ],
+              "attribution": "knockout_confirmed"
+            },
+            {
+              "name": "upstream-more",
+              "status": "regressed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "graphify-advanced-d21f85ea3816"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "failed",
+              "target_capabilities": [
+                "graphify-advanced-d21f85ea3816"
+              ],
+              "attribution": "single_capability",
+              "baseline_cases": {
+                "passed": 626,
+                "failed": 0,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              },
+              "candidate_cases": {
+                "passed": 625,
+                "failed": 1,
+                "errors": 0,
+                "skipped": 0,
+                "executed": 626
+              }
+            },
+            {
+              "name": "upstream-unittest-doctests",
+              "status": "regressed",
+              "role": "original",
+              "scope": "retained",
+              "capabilities": [
+                "graphify-advanced-d21f85ea3816",
+                "graphify-recipes-63b8bd59a482"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "failed",
+              "target_capabilities": [
+                "graphify-advanced-d21f85ea3816",
+                "graphify-recipes-63b8bd59a482"
+              ],
+              "attribution": "knockout_confirmed"
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "failed",
+              "check": "upstream-more",
+              "kind": "declared_check"
+            },
+            {
+              "status": "failed",
+              "check": "upstream-unittest-doctests",
+              "kind": "declared_check"
+            },
+            {
+              "status": "verified",
+              "check": "package-output",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "failed",
+          "direct": {
+            "total": 3,
+            "passed": 1,
+            "failed": 2,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "limited",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 47001,
+        "after": 28987,
+        "reduction_percent": 38.327,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 47001
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/__init__.py",
+            "tokens": 21
+          },
+          {
+            "path": "more_itertools/_buffers.py",
+            "tokens": 5376
+          },
+          {
+            "path": "more_itertools/_combinatorics.py",
+            "tokens": 3921
+          },
+          {
+            "path": "more_itertools/_cursors.py",
+            "tokens": 3414
+          },
+          {
+            "path": "more_itertools/_numbers.py",
+            "tokens": 2161
+          },
+          {
+            "path": "more_itertools/_ordering.py",
+            "tokens": 3485
+          },
+          {
+            "path": "more_itertools/_parallel.py",
+            "tokens": 945
+          },
+          {
+            "path": "more_itertools/_sampling.py",
+            "tokens": 893
+          },
+          {
+            "path": "more_itertools/_streams.py",
+            "tokens": 8055
+          },
+          {
+            "path": "more_itertools/more.py",
+            "tokens": 716
+          }
+        ]
+      }
+    },
+    {
+      "id": "graphify-typing-f8fd8e84e5d0",
+      "parent": "graphify-root-ddcb2dfa42d8",
+      "name": "静态类型接口",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 1256,
+        "after": 595,
+        "reduction_percent": 52.627,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "more_itertools/__init__.pyi",
+            "lines": 2
+          },
+          {
+            "path": "more_itertools/more.pyi",
+            "lines": 1022
+          },
+          {
+            "path": "more_itertools/recipes.pyi",
+            "lines": 232
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/__init__.pyi",
+            "lines": 5
+          },
+          {
+            "path": "more_itertools/_typing.pyi",
+            "lines": 11
+          },
+          {
+            "path": "more_itertools/more.pyi",
+            "lines": 469
+          },
+          {
+            "path": "more_itertools/recipes.pyi",
+            "lines": 110
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "typing-exports",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "graphify-typing-f8fd8e84e5d0"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "graphify-typing-f8fd8e84e5d0"
+            ],
+            "attribution": "single_capability"
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "typing-exports",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "typing-exports",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "graphify-typing-f8fd8e84e5d0"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "graphify-typing-f8fd8e84e5d0"
+              ],
+              "attribution": "single_capability"
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "typing-exports",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 10595,
+        "after": 9114,
+        "reduction_percent": 13.978,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "more_itertools/__init__.pyi",
+            "tokens": 10
+          },
+          {
+            "path": "more_itertools/more.pyi",
+            "tokens": 8563
+          },
+          {
+            "path": "more_itertools/recipes.pyi",
+            "tokens": 2022
+          }
+        ],
+        "after_files": [
+          {
+            "path": "more_itertools/__init__.pyi",
+            "tokens": 26
+          },
+          {
+            "path": "more_itertools/_typing.pyi",
+            "tokens": 81
+          },
+          {
+            "path": "more_itertools/more.pyi",
+            "tokens": 7275
+          },
+          {
+            "path": "more_itertools/recipes.pyi",
+            "tokens": 1732
+          }
+        ]
+      }
+    },
+    {
+      "id": "graphify-docs-46b42b4229cd",
+      "parent": "graphify-root-ddcb2dfa42d8",
+      "name": "构建 API 参考文档",
+      "kind": "capability",
+      "selection_reason": "selected",
+      "loc": {
+        "before": 300,
+        "after": 51,
+        "reduction_percent": 83.0,
+        "method": "mapped_file_union",
+        "shared": true,
+        "before_files": [
+          {
+            "path": "docs/_static/theme_overrides.css",
+            "lines": 14
+          },
+          {
+            "path": "docs/conf.py",
+            "lines": 286
+          }
+        ],
+        "after_files": [
+          {
+            "path": "docs/_static/theme_overrides.css",
+            "lines": 8
+          },
+          {
+            "path": "docs/conf.py",
+            "lines": 43
+          }
+        ],
+        "mapping_status": "mapped"
+      },
+      "validation": {
+        "status": "verified",
+        "executed": true,
+        "baseline_status": "passed",
+        "candidate_status": "passed",
+        "checks": [
+          {
+            "name": "documentation-output",
+            "status": "passed",
+            "role": "contract",
+            "scope": "retained",
+            "capabilities": [
+              "graphify-docs-46b42b4229cd"
+            ],
+            "baseline_status": "passed",
+            "candidate_status": "passed",
+            "target_capabilities": [
+              "graphify-docs-46b42b4229cd"
+            ],
+            "attribution": "single_capability"
+          }
+        ],
+        "coverage": "direct_checks",
+        "scope": "capability_only",
+        "independently_tested": false,
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "documentation-output",
+            "kind": "declared_check"
+          }
+        ],
+        "related_checks": [],
+        "context": {
+          "status": "verified",
+          "executed": true,
+          "baseline_status": "passed",
+          "candidate_status": "passed",
+          "checks": [
+            {
+              "name": "documentation-output",
+              "status": "passed",
+              "role": "contract",
+              "scope": "retained",
+              "capabilities": [
+                "graphify-docs-46b42b4229cd"
+              ],
+              "baseline_status": "passed",
+              "candidate_status": "passed",
+              "target_capabilities": [
+                "graphify-docs-46b42b4229cd"
+              ],
+              "attribution": "single_capability"
+            }
+          ],
+          "coverage": "mapped_checks",
+          "scope": "capability_and_descendants",
+          "independently_tested": false,
+          "blockers": [],
+          "obligations": [
+            {
+              "status": "verified",
+              "check": "documentation-output",
+              "kind": "declared_check"
+            }
+          ],
+          "evidence_href": "evidence.json"
+        },
+        "evidence_href": "evidence.json",
+        "evidence": {
+          "category": "direct_passed",
+          "direct": {
+            "total": 1,
+            "passed": 1,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "related": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "inconclusive": 0
+          },
+          "coverage": "declared_checks_only",
+          "count_unit": "check_records"
+        }
+      },
+      "tokens": {
+        "metric": "source_tokens",
+        "before": 2223,
+        "after": 418,
+        "reduction_percent": 81.197,
+        "mapping_status": "mapped",
+        "scope": "Mapped source only; configuration tokens are measured globally, not allocated to modules.",
+        "before_files": [
+          {
+            "path": "docs/_static/theme_overrides.css",
+            "tokens": 97
+          },
+          {
+            "path": "docs/conf.py",
+            "tokens": 2126
+          }
+        ],
+        "after_files": [
+          {
+            "path": "docs/_static/theme_overrides.css",
+            "tokens": 46
+          },
+          {
+            "path": "docs/conf.py",
+            "tokens": 372
+          }
+        ]
+      }
+    }
+  ],
+  "scope": {
+    "preset": "all",
+    "foundations": [
+      "graphify-advanced-d21f85ea3816",
+      "graphify-package-bc4a71180870",
+      "graphify-recipes-63b8bd59a482",
+      "graphify-root-ddcb2dfa42d8"
+    ],
+    "core": [
+      "graphify-advanced-d21f85ea3816",
+      "graphify-package-bc4a71180870",
+      "graphify-recipes-63b8bd59a482",
+      "graphify-root-ddcb2dfa42d8"
+    ],
+    "kept": [
+      "graphify-advanced-d21f85ea3816",
+      "graphify-docs-46b42b4229cd",
+      "graphify-package-bc4a71180870",
+      "graphify-recipes-63b8bd59a482",
+      "graphify-root-ddcb2dfa42d8",
+      "graphify-typing-f8fd8e84e5d0"
+    ],
+    "removed": [],
+    "reasons": {
+      "graphify-root-ddcb2dfa42d8": "foundation",
+      "graphify-package-bc4a71180870": "foundation",
+      "graphify-recipes-63b8bd59a482": "foundation",
+      "graphify-advanced-d21f85ea3816": "foundation",
+      "graphify-typing-f8fd8e84e5d0": "selected",
+      "graphify-docs-46b42b4229cd": "selected"
+    }
+  },
+  "methodology": [
+    "Scope and rewrite attribution are mapped-file estimates, not exact semantic savings. Shared files count once and retained/removed code within them cannot be separated.",
+    "All original configuration is charged to the retained footprint. Configuration changes appear in the rewrite estimate and may include scope-related savings.",
+    "Overall reduction uses the full original as denominator; rewrite reduction uses the selected original estimate. Their percentages must not be added.",
+    "Negative reductions indicate growth; incomplete measurements do not establish savings.",
+    "The primary size metric counts frozen-tokenizer tokens in source and configuration, summed independently per file. These are code-size tokens, not model usage or task effort.",
+    "Module token figures cover mapped source only; global configuration cost is not assigned to modules. Informational LOC remains separate.",
+    "Incomplete token measurements show observed subtotals, never a verified reduction or successful budget.",
+    "Informational LOC counts are physical source lines from the frozen original and bound candidate inventories, excluding tests and local state.",
+    "Original capability counts include all original descendants; candidate counts include explicitly mapped own files and retained descendants. Excluded descendants do not require candidate mapping. Shared files count once within a node; node counts cannot be added together.",
+    "Candidate ownership is explicitly supplied metadata, not proof of semantic ownership. Missing mappings remain unknown, never zero or a claimed reduction.",
+    "Function steps inherit their owning capability's code scope, but validation remains unknown without direct step evidence; they are not independently measured or tested.",
+    "Local validation statuses use directly targeted checks only. Evidence badges separately describe direct checks and related context. Parent, descendant, import-related and shared evidence never implies a local pass or failure.",
+    "A check targets the leaves whose knockout broke its behavior; a leaf it survived, or whose knockout only broke importing, is context. Otherwise checks naming one capability target that capability by default. Broad or unscoped checks need explicit report check_targets; unattributed results remain in the verification summary and evidence.",
+    "The author could read the original's source of every checked capability: each author call was lent, read-only, the original files of the capabilities it worked on, of those they depend on and of the ones above them, never a test. A passing check shows that the behavior was kept, not that it was written without sight of the original. Where the job recorded it, the report states how many files each call was lent and opened, and how much of the delivered code repeats the original line for line.",
+    "Evidence labels distinguish directly passed check records, mixed direct evidence, related passing evidence and missing evidence. Related passes do not verify this module; check-record counts are not a functional coverage percentage.",
+    "Verification describes declared check groups and their observed configurations, not individual unit-test counts or full semantic equivalence.",
+    "Failed original baselines, unrun checks, retired scope and incomplete coverage remain distinct. Installation is reported separately.",
+    "Only public labels, relative file mappings, hashes and summary observations are included. Source contents, command argv, environment values and captured output are omitted."
+  ],
+  "installation": {
+    "status": "passed",
+    "checks_passed": 2,
+    "checks_total": 2,
+    "environment_metadata_complete": true
+  },
+  "rewrite_progress": {
+    "priority": "functionality_first",
+    "author_attempts": 6,
+    "repair_attempts": 4,
+    "optimization_attempts": 0,
+    "restorations": 0,
+    "rejected_attempts": 0,
+    "failed_optimizations": 0,
+    "max_optimization_attempts": 2,
+    "stop_reason": null,
+    "accepted_candidate_available": false,
+    "behavior_acceptance": "not_established",
+    "size_acceptance": "unmet"
+  },
+  "task_effort": {
+    "schema_version": 1,
+    "operation": "task_effort_evaluation",
+    "status": "disabled",
+    "binding": {},
+    "policy": {
+      "comparison": "empirical_range",
+      "strict_all_tasks": true
+    },
+    "task_types": [
+      "understand",
+      "diagnose",
+      "modify",
+      "execute"
+    ],
+    "tasks": [],
+    "overhead": {
+      "examiner_tokens": null,
+      "judge_tokens": null,
+      "solver_tokens": null,
+      "total_tokens": null,
+      "usage_complete": false,
+      "observed_total_tokens": null,
+      "role_usage_complete": {
+        "examiner": false,
+        "solver": false,
+        "judge": false
+      }
+    },
+    "resources": {
+      "completed_runs": 0,
+      "cleanup_pending": false,
+      "cleanup_pending_runs": 0
+    },
+    "iterations": [],
+    "limitations": [
+      "Task effort measures these tasks under the recorded agent settings; it is not a universal measure of human cognitive burden.",
+      "Tokens count solver model inputs and outputs, including cached input. Missing usage is unavailable, never zero. Examiner and judge overhead is separate.",
+      "Empirical ranges describe repeated observations, not statistical confidence intervals. Failed or unrun tasks do not establish an improvement.",
+      "Task links identify assessed capabilities only; they do not change module behavior verification badges.",
+      "Task prompts, hidden inputs, judging rubrics, source excerpts, raw traces and local paths are omitted from this public report."
+    ],
+    "stop_reason": "owner_disabled"
+  },
+  "report_id": "nrs_b72ba499a137a0ab8a15cd6061571cd51fd37504b627b5d47f9bdf15f7ad1498"
+}
