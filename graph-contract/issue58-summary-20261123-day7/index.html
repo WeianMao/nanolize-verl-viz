@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>issue 58 八个仓库 · main cd7fd735 · 总表</title>
+<meta name="description" content="八个仓库在 nanolize main cd7fd735 上的运行总表，口径同参照页第 3 节。">
+<style>
+:root{--bg:#fbfaf7;--fg:#1d1c1a;--muted:#6b665e;--line:#e3ded4;--head:#f1ede5;--accent:#8a4b16;--ok:#2f6b3a;--gap:#8a5a00;--bad:#a03028;--card:#ffffff}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#171614;--fg:#ebe7df;--muted:#a39d92;--line:#36332e;--head:#211f1c;--accent:#e0a36a;--ok:#7fc28c;--gap:#e2b75c;--bad:#ee8a80;--card:#1d1c19}}
+:root[data-theme="dark"]{--bg:#171614;--fg:#ebe7df;--muted:#a39d92;--line:#36332e;--head:#211f1c;--accent:#e0a36a;--ok:#7fc28c;--gap:#e2b75c;--bad:#ee8a80;--card:#1d1c19}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.65 -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Noto Sans CJK SC","Microsoft YaHei",sans-serif}
+main{max-width:1440px;margin:0 auto;padding:28px 16px 48px}
+h1{font-size:1.45rem;line-height:1.3;margin:0 0 8px}
+h2{font-size:1.1rem;margin:28px 0 8px}
+.setup{color:var(--muted);margin:0 0 20px;max-width:62em}
+.wrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:980px;font-variant-numeric:tabular-nums}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:right;vertical-align:top;white-space:nowrap}
+th{background:var(--head);font-weight:600;font-size:.86rem;color:var(--muted);white-space:normal;min-width:4.5em}
+th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:var(--card);z-index:1}
+th:first-child{background:var(--head)}
+td.res{text-align:left;white-space:normal;min-width:11em;max-width:16em}
+td.res small{display:block;color:var(--muted);font-size:.8rem;line-height:1.4}
+.ok{color:var(--ok)}.gap{color:var(--gap)}.bad{color:var(--bad)}
+tr.total td{font-weight:600;border-bottom:0;background:var(--head)}
+tr.total td:first-child{background:var(--head)}
+ol{padding-left:1.4em;max-width:62em}
+li{margin:0 0 10px}
+.foot{color:var(--muted);font-size:.82rem;margin-top:24px}
+sup.n{color:var(--muted);font-size:.7rem;margin-left:2px}
+.key table{min-width:0}
+.key td,.key th{white-space:nowrap}
+.key th{white-space:normal}
+@media (max-width:560px){.key th,.key td{padding:6px 4px;font-size:.8rem}.key th{min-width:0}.key td:first-child{white-space:normal;overflow-wrap:normal;max-width:7.2em}.key td{white-space:nowrap}}
+.keynote{color:var(--muted);font-size:.85rem;margin:8px 0 0}
+</style></head>
+<body><main>
+<h1>issue 58 八个仓库 · main cd7fd735 · 总表</h1>
+<p class="setup">八个仓库在 nanolize main cd7fd735 上各跑一次：保留全部功能、一个主作业加一个草稿作业、并行模式、无人值守，主作业的检查在计算节点上；主持会话和作业各角色都是 Codex gpt-6.2-astra（xhigh），2026-11-23 06:29–09:47 UTC 同时进行。</p>
+<h2>要点</h2>
+<div class="wrap key"><table><thead><tr><th>仓库</th><th>检查通过</th><th>主作业用时（扣等节点）</th><th>花费</th><th>体积（留下的 token）</th></tr></thead><tbody><tr><td>python-<wbr>dotenv</td><td>10 / 10</td><td>9.4 分钟</td><td>$3.31</td><td>50.28%</td></tr><tr><td>more-<wbr>itertools</td><td>15 / 15</td><td>55.4 分钟</td><td>$24.93</td><td>62.62%</td></tr><tr><td>requests</td><td>0 / 12<sup class="n">注2</sup></td><td>61.1 分钟</td><td>$59.37</td><td>4.08%<sup class="n">注3</sup></td></tr><tr><td>tomli</td><td>14 / 14</td><td>27.2 分钟</td><td>$4.34</td><td>39.80%</td></tr><tr><td>bidict</td><td>64 / 64</td><td>53.2 分钟</td><td>$35.02</td><td>9.81%<sup class="n">注3</sup></td></tr><tr><td>click</td><td>81 / 81</td><td>92.6 分钟</td><td>$60.63</td><td>44.37%</td></tr><tr><td>packaging</td><td>133 / 138</td><td>130.1 分钟</td><td>$64.54</td><td>34.63%</td></tr><tr><td>tqdm</td><td>54 / 55</td><td>179.3 分钟</td><td>$83.16</td><td>54.50%</td></tr><tr class="total"><td>八个合计</td><td></td><td>608.2 分钟</td><td>$335.30</td><td></td></tr></tbody></table></div>
+<p class="keynote">注2：requests 的 12 个检查在原版上就被运行时审计拦下，nanolize 没能验证行为（见说明 2）。注3：这两行的原版基线里有大的非代码文件，只算源码 requests 留下 44.40%、bidict 约 36.7%（见说明 3）。</p>
+<h2>完整表格</h2>
+<div class="wrap"><table><thead><tr><th>仓库</th><th>结果</th><th>检查通过</th><th>安装检查</th><th>主作业里的修复</th><th>主作业用时（扣等节点）</th><th>实际用时</th><th>花费</th><th>体积（留下的 token）</th><th>与原版相同的行</th><th>函数体重合</th></tr></thead><tbody><tr><td>python-dotenv</td><td class="res"><span class="ok">成功</span></td><td>10 / 10</td><td>3 / 3</td><td>0</td><td>9.4 分钟</td><td>13.4 分钟</td><td>$3.31</td><td>50.28%</td><td>24.2%</td><td>12%</td></tr><tr><td>more-itertools</td><td class="res"><span class="ok">成功</span></td><td>15 / 15</td><td>2 / 2</td><td>0</td><td>55.4 分钟</td><td>59.2 分钟</td><td>$24.93</td><td>62.62%</td><td>49.8%</td><td>18%</td></tr><tr><td>requests</td><td class="res"><span class="gap">带缺口完成</span><small>检查在原版上就不过、行为没验证；有原版测试没验证</small></td><td>0 / 12<sup class="n">注2</sup></td><td>2 / 2</td><td>0</td><td>61.1 分钟</td><td>65.5 分钟</td><td>$59.37</td><td>4.08%<sup class="n">注3</sup></td><td>21.5%</td><td>19%</td></tr><tr><td>tomli</td><td class="res"><span class="ok">成功</span></td><td>14 / 14</td><td>2 / 2</td><td>行为 1</td><td>27.2 分钟</td><td>27.3 分钟</td><td>$4.34</td><td>39.80%</td><td>43.5%</td><td>6%</td></tr><tr><td>bidict</td><td class="res"><span class="gap">带缺口完成</span><small>有原版测试没验证</small></td><td>64 / 64</td><td>2 / 2</td><td>行为 1</td><td>53.2 分钟</td><td>54.0 分钟</td><td>$35.02</td><td>9.81%<sup class="n">注3</sup></td><td>16.5%</td><td>10%</td></tr><tr><td>click</td><td class="res"><span class="gap">带缺口完成</span><small>有原版测试没验证</small></td><td>81 / 81</td><td>2 / 2</td><td>行为 3</td><td>92.6 分钟</td><td>94.9 分钟</td><td>$60.63</td><td>44.37%</td><td>25.2%</td><td>23%</td></tr><tr><td>packaging</td><td class="res"><span class="bad">带失败交付</span><small>5 个检查不过</small></td><td>133 / 138</td><td>2 / 2</td><td>行为 2</td><td>130.1 分钟</td><td>131.2 分钟</td><td>$64.54</td><td>34.63%</td><td>19.9%</td><td>12%</td></tr><tr><td>tqdm</td><td class="res"><span class="bad">带失败交付</span><small>1 个检查不过</small></td><td>54 / 55</td><td>2 / 2</td><td>行为 6</td><td>179.3 分钟</td><td>180.1 分钟</td><td>$83.16</td><td>54.50%</td><td>32.3%</td><td>22%</td></tr><tr class="total"><td>八个合计</td><td></td><td></td><td></td><td></td><td>608.2 分钟</td><td>625.7 分钟</td><td>$335.30</td><td></td><td></td><td></td></tr></tbody></table></div>
+<h2>说明</h2>
+<ol><li>用时照参照页：主作业从提交（作业记录创建）到交付（作业的最后一条事件；交付步骤里还会回放一遍原版测试，算在内）。“扣等节点”减去主作业自己每个调度器分配从提交到在节点上开始的时间：批次文件夹还在的，取 batch.sh 的创建时间（nanolize 调 sbatch 前一刻写下）到 batch.log 的创建时间（Slurm 在节点上开始时创建）；文件夹已删的，取 nanolize 事件里的“提交后约 N 秒看到开始”；交给已在运行的分配接着跑的批次不算等。每个仓库合计 0.1–4.4 分钟。20 秒内就开始、文件夹又已删的分配（几个探测批次）没有任何记录，按 0 计（每个不到 20 秒）；sbatch 超时没拿到作业号的提交和随后的暂停不算排队，留在用时里。</li><li>检查通过取交付时用的那份完整比较（交付步骤复用的验证）。requests 的 0 / 12 不是测试不过：12 个检查在原版和交付版上都被运行时审计拦下（requests 把 urllib3 等依赖注册成 requests.packages.*），nanolize 因此没能验证行为；主持会话在 nanolize 之外放开依赖目录重跑，两边都是 12 / 12。主作业里的修复按 nanolize 自己的修复轮数计，一组并行的作者会话算一轮，都是行为修复；草稿作业在交出第一版前另修过（python-dotenv 1 次、more-itertools 1 次、click 3 次、packaging 1 次、tqdm 1 次），不算在内。</li><li>体积照参照页取 nanolize 自己的比例（源码加配置留下的 token / 原版）。requests 的原版基线里一个 SVG 标志约占九成，只算源码留下 44.40%；bidict 的基线里有 uv.lock 等大文件，只算源码约 36.7%。参照页那几次是把这类文件“原样带过去”、不进基线的，所以这两行和参照页不可比。</li><li>花费是两个作业里全部 276 次模型调用（作者、测试设计、测试评审、控制器；控制器让作者会话做的代码评审算在作者里），不含主持会话和提交前的试调；按每次调用记录里 turn.completed 的用量计价：未缓存输入 $8、缓存输入 $0.40、输出（含推理）$40 每百万 token。每个仓库的数和主持会话自己的总结一致（三个把作者按 Fast 折算的，换回标准价后也一致）。</li><li>价格档：调用记录里没有服务档字段，看不出实际用了哪一档。只有作者会话读运行目录的 Codex 配置（service_tier = &quot;fast&quot;）；测试设计、评审和控制器的会话带 --ignore-user-config 启动、只拿模型和推理等级，不会要 fast；同期 Codex 的模型清单里 gpt-6.2-astra 也没有列出任何服务档。表里一律按标准价，合计 $335.30。若按 fast 计费、倍率按标准价的 2 倍（bidict、more-itertools、tqdm 的主持会话给作者按 Fast 折算时用的就是 $16 / $0.80 / $80，注明出自 OpenAI 公开价目；我没有联网核对）：只有作者调用按 fast 时合计 $435.17，全部调用都按 fast 时合计 $670.60。</li><li>和参照页那七次的不同：主持会话是 Codex gpt-6.2-astra（xhigh），作业里各角色也是 gpt-6.2-astra xhigh（参照页是 Claude 主持、各角色 Fable 5.2）；八个仓库在 06:29–06:39 UTC 一分钟一个起跑、同时进行，而参照页是七个一个接一个跑；这里多了 tqdm，合计是八个；开头十来分钟集群调度器的控制器反复卡住，几个主作业提交超时、暂停后又恢复。每个仓库只跑了一次。</li></ol>
+<p class="foot">数字由同一个脚本从每次运行自己的记录算出（作业结果、运行记录、模型调用记录、检查批次的文件）。每个仓库只跑了一次。</p>
+</main></body></html>
