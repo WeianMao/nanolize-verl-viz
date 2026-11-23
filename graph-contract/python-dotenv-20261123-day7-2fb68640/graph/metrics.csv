@@ -1,0 +1,8 @@
+capability_id,before_lines,after_lines,reduction_percent,mapping_status,validation_status,executed,evidence_category,direct_checks,related_checks,direct_checks_passed,direct_checks_failed,direct_checks_inconclusive,related_checks_passed,related_checks_failed,related_checks_inconclusive,evidence_coverage,before_source_tokens,after_source_tokens,source_token_reduction_percent
+dotenv,1181,559,52.667,mapped,unknown,False,related_passed,0,10,0,0,0,10,0,0,limited,8215,4726,42.471
+syntax,191,74,61.257,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,1391,660,52.552
+expand,86,60,30.233,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,560,374,33.214
+settings,532,236,55.639,mapped,verified,True,direct_passed,4,1,4,0,0,1,0,0,declared_checks_only,3829,2017,47.323
+notebook,50,25,50.0,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,306,234,23.529
+api,51,28,45.098,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,296,239,19.257
+cli,271,136,49.815,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,1833,1202,34.424
