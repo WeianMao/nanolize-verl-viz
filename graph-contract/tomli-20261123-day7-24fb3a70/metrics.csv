@@ -1,0 +1,8 @@
+capability_id,before_lines,after_lines,reduction_percent,mapping_status,validation_status,executed,evidence_category,direct_checks,related_checks,direct_checks_passed,direct_checks_failed,direct_checks_inconclusive,related_checks_passed,related_checks_failed,related_checks_inconclusive,evidence_coverage,before_source_tokens,after_source_tokens,source_token_reduction_percent
+tomli,1132,537,52.562,mapped,unknown,False,related_passed,0,14,0,0,0,14,0,0,limited,9468,4519,52.271
+reader,938,393,58.102,mapped,verified,True,direct_passed,10,0,10,0,0,0,0,0,declared_checks_only,7949,3530,55.592
+tools,194,144,25.773,mapped,unknown,False,related_passed,0,4,0,0,0,4,0,0,limited,1519,989,34.891
+wheel,38,34,10.526,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,252,211,16.27
+benchmark,59,38,35.593,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,617,344,44.246
+profile,18,7,61.111,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,106,48,54.717
+roundtrip,79,65,17.722,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,544,386,29.044
