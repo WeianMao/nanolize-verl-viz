@@ -1,0 +1,14 @@
+capability_id,before_lines,after_lines,reduction_percent,mapping_status,validation_status,executed,evidence_category,direct_checks,related_checks,direct_checks_passed,direct_checks_failed,direct_checks_inconclusive,related_checks_passed,related_checks_failed,related_checks_inconclusive,evidence_coverage,before_source_tokens,after_source_tokens,source_token_reduction_percent
+library,2039,766,62.433,mapped,unknown,False,related_passed,0,60,0,0,0,60,0,0,limited,21129,6028,71.47
+items,104,246,-136.538,mapped,verified,True,direct_passed,7,0,7,0,0,0,0,0,declared_checks_only,895,1770,-97.765
+duplicates,100,506,-406.0,mapped,verified,True,direct_passed,6,2,6,0,0,2,0,0,declared_checks_only,848,4132,-387.264
+mapping,898,752,16.258,mapped,verified,True,direct_passed,10,1,10,0,0,1,0,0,declared_checks_only,9992,5902,40.933
+mutation,234,752,-221.368,mapped,verified,True,direct_passed,14,1,14,0,0,1,0,0,declared_checks_only,2091,5902,-182.257
+immutable,55,506,-820.0,mapped,verified,True,direct_passed,5,1,5,0,0,1,0,0,declared_checks_only,394,4132,-948.731
+ordered,544,752,-38.235,mapped,verified,True,direct_passed,12,0,12,0,0,0,0,0,declared_checks_only,5865,5902,-0.631
+exports,104,766,-636.538,mapped,verified,True,direct_passed,9,1,9,0,0,1,0,0,declared_checks_only,1044,6028,-477.395
+tooling,1405,717,48.968,mapped,unknown,False,related_passed,0,5,0,0,0,5,0,0,limited,14537,7056,51.462
+documentation,272,72,73.529,mapped,verified,True,direct_passed,1,1,1,0,0,1,0,0,declared_checks_only,2457,913,62.841
+counter,323,202,37.461,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,3444,1920,44.251
+workloads,700,350,50.0,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,7373,3228,56.219
+comparison,110,93,15.455,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,1263,995,21.219
