@@ -1,0 +1,597 @@
+{
+  "limitations": [
+    "Only summary results are published; captured command output is omitted."
+  ],
+  "status": "unverified",
+  "tests": {
+    "original_total": 6,
+    "retained": 12,
+    "retired": 0,
+    "needs_adaptation": 0,
+    "adapted": 0,
+    "contract": 6,
+    "passed": 0,
+    "failed": 0,
+    "fixed_baseline_failure": 0,
+    "not_run": 0
+  },
+  "capability_results": [
+    {
+      "id": "requests",
+      "status": "unverified",
+      "checks": [],
+      "check_status": "unverified",
+      "baseline_status": "not_run",
+      "candidate_status": "not_run"
+    },
+    {
+      "id": "client",
+      "status": "unverified",
+      "checks": [
+        "upstream-lowlevel",
+        "prepared-request-values"
+      ],
+      "check_status": "unverified",
+      "baseline_status": "failed",
+      "candidate_status": "failed"
+    },
+    {
+      "id": "messages",
+      "status": "unverified",
+      "checks": [
+        "upstream-lowlevel",
+        "prepared-request-values"
+      ],
+      "check_status": "unverified",
+      "baseline_status": "failed",
+      "candidate_status": "failed"
+    },
+    {
+      "id": "adapters",
+      "status": "unverified",
+      "checks": [
+        "upstream-lowlevel",
+        "upstream-adapters",
+        "upstream-testserver"
+      ],
+      "check_status": "unverified",
+      "baseline_status": "failed",
+      "candidate_status": "failed"
+    },
+    {
+      "id": "auth",
+      "status": "unverified",
+      "checks": [
+        "prepared-request-values"
+      ],
+      "check_status": "unverified",
+      "baseline_status": "failed",
+      "candidate_status": "failed"
+    },
+    {
+      "id": "cookies",
+      "status": "unverified",
+      "checks": [
+        "prepared-request-values"
+      ],
+      "check_status": "unverified",
+      "baseline_status": "failed",
+      "candidate_status": "failed"
+    },
+    {
+      "id": "hooks",
+      "status": "unverified",
+      "checks": [
+        "upstream-hooks",
+        "prepared-request-values"
+      ],
+      "check_status": "unverified",
+      "baseline_status": "failed",
+      "candidate_status": "failed"
+    },
+    {
+      "id": "utilities",
+      "status": "unverified",
+      "checks": [
+        "prepared-request-values",
+        "recovered-test_utils-2"
+      ],
+      "check_status": "unverified",
+      "baseline_status": "failed",
+      "candidate_status": "failed"
+    },
+    {
+      "id": "values",
+      "status": "unverified",
+      "checks": [
+        "upstream-structures",
+        "prepared-request-values"
+      ],
+      "check_status": "unverified",
+      "baseline_status": "failed",
+      "candidate_status": "failed"
+    },
+    {
+      "id": "compatibility",
+      "status": "unverified",
+      "checks": [
+        "package-version",
+        "recovered-test_utils-1",
+        "recovered-test_packages"
+      ],
+      "check_status": "unverified",
+      "baseline_status": "failed",
+      "candidate_status": "failed"
+    },
+    {
+      "id": "diagnostics",
+      "status": "unverified",
+      "checks": [
+        "upstream-help"
+      ],
+      "check_status": "unverified",
+      "baseline_status": "failed",
+      "candidate_status": "failed"
+    },
+    {
+      "id": "distribution",
+      "status": "unverified",
+      "checks": [
+        "package-version"
+      ],
+      "check_status": "unverified",
+      "baseline_status": "failed",
+      "candidate_status": "failed"
+    },
+    {
+      "id": "docs",
+      "status": "unverified",
+      "checks": [
+        "documentation-settings"
+      ],
+      "check_status": "unverified",
+      "baseline_status": "failed",
+      "candidate_status": "failed"
+    }
+  ],
+  "checks": [
+    {
+      "name": "upstream-lowlevel",
+      "status": "preexisting_failure",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "client",
+        "adapters",
+        "messages"
+      ]
+    },
+    {
+      "name": "upstream-adapters",
+      "status": "preexisting_failure",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "adapters"
+      ]
+    },
+    {
+      "name": "upstream-hooks",
+      "status": "preexisting_failure",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "hooks"
+      ]
+    },
+    {
+      "name": "upstream-help",
+      "status": "preexisting_failure",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "diagnostics"
+      ]
+    },
+    {
+      "name": "upstream-structures",
+      "status": "preexisting_failure",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "values"
+      ]
+    },
+    {
+      "name": "upstream-testserver",
+      "status": "preexisting_failure",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "adapters"
+      ]
+    },
+    {
+      "name": "prepared-request-values",
+      "status": "preexisting_failure",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "client",
+        "messages",
+        "auth",
+        "cookies",
+        "hooks",
+        "utilities",
+        "values"
+      ]
+    },
+    {
+      "name": "documentation-settings",
+      "status": "preexisting_failure",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "docs"
+      ]
+    },
+    {
+      "name": "package-version",
+      "status": "preexisting_failure",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "distribution",
+        "compatibility"
+      ]
+    },
+    {
+      "name": "recovered-test_utils-1",
+      "status": "preexisting_failure",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "compatibility"
+      ]
+    },
+    {
+      "name": "recovered-test_utils-2",
+      "status": "preexisting_failure",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "utilities"
+      ]
+    },
+    {
+      "name": "recovered-test_packages",
+      "status": "preexisting_failure",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "compatibility"
+      ]
+    }
+  ],
+  "actual_size": {
+    "baseline_source_lines": 6886,
+    "source_lines": 2662,
+    "source_files": 23,
+    "retained_percent": 4.0774916974333415,
+    "target_percent": 50.0,
+    "target_source_lines": 3443.0,
+    "estimated_source_lines": null,
+    "metric": "tokens",
+    "tokenizer": {
+      "classification": "source_and_configuration_v2",
+      "decoding": "python_encoding_cookie_else_utf8_strict",
+      "encoding": "cl100k_base",
+      "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+      "file_boundaries": "independent_sum",
+      "library": "tiktoken",
+      "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+      "special_tokens": "ordinary_text",
+      "text_policy": "raw_decoded_text_per_file",
+      "version": "0.12.0"
+    },
+    "measurement_sha256": "9fff9fb1a85f0febf3fa19150cf6f8d32d2db2f93c52a0c0a73867914283f06a",
+    "source_tokens": 23812,
+    "configuration_tokens": 1468,
+    "total_tokens": 25280,
+    "baseline_tokens": 619989,
+    "target_tokens": 309994,
+    "source_retained_percent": 38.65814696485623,
+    "complete": true,
+    "target_met": true
+  },
+  "budget_status": "met",
+  "verification_scope": "full",
+  "rewrite_progress": {
+    "priority": "functionality_first",
+    "author_attempts": 1,
+    "repair_attempts": 0,
+    "optimization_attempts": 0,
+    "restorations": 0,
+    "rejected_attempts": 0,
+    "failed_optimizations": 0,
+    "max_optimization_attempts": 2,
+    "stop_reason": null,
+    "accepted_candidate_available": false,
+    "behavior_acceptance": "not_established",
+    "size_acceptance": "met"
+  },
+  "installation_evidence": {
+    "status": "passed",
+    "checks_passed": 2,
+    "checks_total": 2,
+    "environment_metadata_complete": true
+  },
+  "obligation_ledger": {
+    "records": [
+      {
+        "capability": "requests",
+        "status": "unknown",
+        "obligations": [
+          {
+            "status": "unknown",
+            "kind": "retained_child"
+          },
+          {
+            "status": "unknown",
+            "kind": "retained_child"
+          },
+          {
+            "status": "unknown",
+            "kind": "retained_child"
+          },
+          {
+            "status": "unknown",
+            "kind": "retained_child"
+          },
+          {
+            "status": "unknown",
+            "kind": "retained_child"
+          },
+          {
+            "status": "unknown",
+            "kind": "retained_child"
+          },
+          {
+            "status": "unknown",
+            "kind": "retained_child"
+          },
+          {
+            "status": "unknown",
+            "kind": "retained_child"
+          },
+          {
+            "status": "unknown",
+            "kind": "retained_child"
+          },
+          {
+            "status": "unknown",
+            "kind": "retained_child"
+          },
+          {
+            "status": "unknown",
+            "kind": "retained_child"
+          },
+          {
+            "status": "unknown",
+            "kind": "retained_child"
+          }
+        ]
+      },
+      {
+        "capability": "client",
+        "status": "unknown",
+        "obligations": [
+          {
+            "status": "unknown",
+            "check": "upstream-lowlevel",
+            "kind": "declared_check"
+          },
+          {
+            "status": "unknown",
+            "check": "prepared-request-values",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "messages",
+        "status": "unknown",
+        "obligations": [
+          {
+            "status": "unknown",
+            "check": "upstream-lowlevel",
+            "kind": "declared_check"
+          },
+          {
+            "status": "unknown",
+            "check": "prepared-request-values",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "adapters",
+        "status": "unknown",
+        "obligations": [
+          {
+            "status": "unknown",
+            "check": "upstream-lowlevel",
+            "kind": "declared_check"
+          },
+          {
+            "status": "unknown",
+            "check": "upstream-adapters",
+            "kind": "declared_check"
+          },
+          {
+            "status": "unknown",
+            "check": "upstream-testserver",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "auth",
+        "status": "unknown",
+        "obligations": [
+          {
+            "status": "unknown",
+            "check": "prepared-request-values",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "cookies",
+        "status": "unknown",
+        "obligations": [
+          {
+            "status": "unknown",
+            "check": "prepared-request-values",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "hooks",
+        "status": "unknown",
+        "obligations": [
+          {
+            "status": "unknown",
+            "check": "upstream-hooks",
+            "kind": "declared_check"
+          },
+          {
+            "status": "unknown",
+            "check": "prepared-request-values",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "utilities",
+        "status": "unknown",
+        "obligations": [
+          {
+            "status": "unknown",
+            "check": "prepared-request-values",
+            "kind": "declared_check"
+          },
+          {
+            "status": "unknown",
+            "check": "recovered-test_utils-2",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "values",
+        "status": "unknown",
+        "obligations": [
+          {
+            "status": "unknown",
+            "check": "upstream-structures",
+            "kind": "declared_check"
+          },
+          {
+            "status": "unknown",
+            "check": "prepared-request-values",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "compatibility",
+        "status": "unknown",
+        "obligations": [
+          {
+            "status": "unknown",
+            "check": "package-version",
+            "kind": "declared_check"
+          },
+          {
+            "status": "unknown",
+            "check": "recovered-test_utils-1",
+            "kind": "declared_check"
+          },
+          {
+            "status": "unknown",
+            "check": "recovered-test_packages",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "diagnostics",
+        "status": "unknown",
+        "obligations": [
+          {
+            "status": "unknown",
+            "check": "upstream-help",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "distribution",
+        "status": "unknown",
+        "obligations": [
+          {
+            "status": "unknown",
+            "check": "package-version",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "docs",
+        "status": "unknown",
+        "obligations": [
+          {
+            "status": "unknown",
+            "check": "documentation-settings",
+            "kind": "declared_check"
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "partial": 0,
+      "failed": 0,
+      "retired": 0,
+      "verified": 0,
+      "unknown": 13,
+      "total": 13,
+      "retained": 13,
+      "complete": false
+    },
+    "limitations": [
+      "Public summaries omit private evidence bindings and raw output."
+    ]
+  },
+  "leaf_coverage": {
+    "status": "ready",
+    "strict": false,
+    "valid": [],
+    "missing": [
+      "adapters",
+      "auth",
+      "client",
+      "compatibility",
+      "cookies",
+      "diagnostics",
+      "distribution",
+      "docs",
+      "hooks",
+      "messages",
+      "utilities",
+      "values"
+    ],
+    "exempted": []
+  }
+}

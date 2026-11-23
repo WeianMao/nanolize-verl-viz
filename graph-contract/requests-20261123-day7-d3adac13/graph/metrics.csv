@@ -1,0 +1,14 @@
+capability_id,before_lines,after_lines,reduction_percent,mapping_status,validation_status,executed,evidence_category,direct_checks,related_checks,direct_checks_passed,direct_checks_failed,direct_checks_inconclusive,related_checks_passed,related_checks_failed,related_checks_inconclusive,evidence_coverage,before_source_tokens,after_source_tokens,source_token_reduction_percent
+requests,6886,2662,61.342,mapped,unknown,False,related_only,0,12,0,0,0,0,0,12,limited,53627,23812,55.597
+client,1319,439,66.717,mapped,unknown,False,related_only,0,2,0,0,0,0,0,2,limited,10570,4317,59.158
+messages,1184,431,63.598,mapped,unknown,False,related_only,0,2,0,0,0,0,0,2,limited,9114,4024,55.848
+adapters,748,223,70.187,mapped,unknown,False,related_only,2,1,0,0,2,0,0,1,limited,5953,2461,58.659
+auth,354,166,53.107,mapped,unknown,False,related_only,0,1,0,0,0,0,0,1,limited,2846,1470,48.349
+cookies,625,293,53.12,mapped,unknown,False,related_only,0,1,0,0,0,0,0,1,limited,4906,2331,52.487
+hooks,48,41,14.583,mapped,unknown,False,related_only,1,1,0,0,1,0,0,1,limited,278,279,-0.36
+utilities,1173,508,56.692,mapped,unknown,False,related_only,1,1,0,0,1,0,0,1,limited,8713,4154,52.324
+values,420,231,45.0,mapped,unknown,False,related_only,1,1,0,0,1,0,0,1,limited,3173,1788,43.65
+compatibility,391,249,36.317,mapped,unknown,False,related_only,2,1,0,0,2,0,0,1,limited,2829,2181,22.906
+diagnostics,132,75,43.182,mapped,unknown,False,unverified,1,0,0,0,1,0,0,0,limited,911,521,42.81
+distribution,9,14,-55.556,mapped,unknown,False,related_only,0,1,0,0,0,0,0,1,limited,51,143,-180.392
+docs,483,89,81.573,mapped,unknown,False,unverified,1,0,0,0,1,0,0,0,limited,4283,1031,75.928
