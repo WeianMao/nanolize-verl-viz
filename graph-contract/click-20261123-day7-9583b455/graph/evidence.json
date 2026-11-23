@@ -1,0 +1,1552 @@
+{
+  "limitations": [
+    "Only summary results are published; captured command output is omitted."
+  ],
+  "status": "checks_passed",
+  "tests": {
+    "original_total": 20,
+    "retained": 81,
+    "retired": 0,
+    "needs_adaptation": 0,
+    "adapted": 0,
+    "contract": 61,
+    "passed": 81,
+    "failed": 0,
+    "fixed_baseline_failure": 0,
+    "not_run": 0
+  },
+  "capability_results": [
+    {
+      "id": "click",
+      "status": "passed",
+      "checks": [],
+      "check_status": "passed",
+      "baseline_status": "not_run",
+      "candidate_status": "not_run"
+    },
+    {
+      "id": "commands",
+      "status": "passed",
+      "checks": [
+        "test-abort-interrupt",
+        "test-chain",
+        "test-command-decorators",
+        "test-commands",
+        "test-context",
+        "test-custom-classes",
+        "test-exceptions-test-FileError",
+        "test-info-dict",
+        "test-normalization",
+        "command-output",
+        "recovered-test_open_file-1",
+        "recovered-test_prompt-1",
+        "contract-commands-9583b4-15",
+        "contract-commands-9583b4-17",
+        "contract-commands-9583b4-19",
+        "scenario-commands-9583b4-20",
+        "scenario-commands-9583b4-21",
+        "contract-commands-9583b4-44",
+        "contract-commands-9583b4-46",
+        "contract-commands-9583b4-47",
+        "scenario-commands-9583b4-48",
+        "scenario-commands-9583b4-49"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "values",
+      "status": "passed",
+      "checks": [
+        "test-types-test-Choice",
+        "test-types-test-File",
+        "test-types-test-FloatRange",
+        "test-types-test-FuncParamType",
+        "test-types-test-IntRange",
+        "test-types-test-ParamType",
+        "test-types-test-Path",
+        "test-types-test-convert-type",
+        "command-output"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "help",
+      "status": "passed",
+      "checks": [
+        "contract-help-9583b4-7",
+        "contract-help-9583b4-8",
+        "contract-help-9583b4-9",
+        "contract-help-9583b4-10",
+        "contract-help-9583b4-11",
+        "scenario-help-9583b4-12",
+        "scenario-help-9583b4-13"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "streams",
+      "status": "passed",
+      "checks": [
+        "test-utils-test-format-filename",
+        "command-output",
+        "recovered-test_open_file-2",
+        "contract-streams-9583b4-22",
+        "contract-streams-9583b4-23",
+        "contract-streams-9583b4-24",
+        "contract-streams-9583b4-26",
+        "contract-streams-9583b4-27",
+        "scenario-streams-9583b4-28"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "terminal",
+      "status": "passed",
+      "checks": [
+        "test-utils-test-confirm",
+        "test-utils-test-style",
+        "recovered-test_prompt-2",
+        "contract-terminal-9583b4-31",
+        "contract-terminal-9583b4-32",
+        "contract-terminal-9583b4-33",
+        "contract-terminal-9583b4-34",
+        "contract-terminal-9583b4-35",
+        "contract-terminal-9583b4-50",
+        "contract-terminal-9583b4-54",
+        "scenario-terminal-9583b4-55",
+        "scenario-terminal-9583b4-56"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "completion",
+      "status": "passed",
+      "checks": [
+        "contract-completion-9583b4-1",
+        "contract-completion-9583b4-2",
+        "contract-completion-9583b4-4",
+        "scenario-completion-9583b4-5",
+        "scenario-completion-9583b4-6",
+        "contract-completion-9583b4-43"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "testing",
+      "status": "passed",
+      "checks": [
+        "recovered-test_stream_lifecycle",
+        "recovered-test_open_file-1",
+        "recovered-test_open_file-2",
+        "recovered-test_prompt-1",
+        "recovered-test_prompt-2",
+        "contract-testing-9583b4-37",
+        "contract-testing-9583b4-38",
+        "contract-testing-9583b4-39",
+        "contract-testing-9583b4-40",
+        "contract-testing-9583b4-41",
+        "scenario-testing-9583b4-57"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "examples",
+      "status": "passed",
+      "checks": [
+        "example-help-aliases",
+        "example-help-colors",
+        "example-help-completion",
+        "example-help-complex",
+        "example-help-imagepipe",
+        "example-help-inout",
+        "example-help-naval",
+        "example-help-repo",
+        "example-help-termui",
+        "example-help-validation"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    },
+    {
+      "id": "docs",
+      "status": "passed",
+      "checks": [
+        "documentation-project-settings"
+      ],
+      "check_status": "passed",
+      "baseline_status": "passed",
+      "candidate_status": "passed"
+    }
+  ],
+  "checks": [
+    {
+      "name": "test-abort-interrupt",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "commands"
+      ]
+    },
+    {
+      "name": "test-chain",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "commands"
+      ]
+    },
+    {
+      "name": "test-command-decorators",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "commands"
+      ]
+    },
+    {
+      "name": "test-commands",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "commands"
+      ]
+    },
+    {
+      "name": "test-context",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "commands"
+      ]
+    },
+    {
+      "name": "test-custom-classes",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "commands"
+      ]
+    },
+    {
+      "name": "test-exceptions-test-FileError",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "commands"
+      ]
+    },
+    {
+      "name": "test-info-dict",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "commands"
+      ]
+    },
+    {
+      "name": "test-normalization",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "commands"
+      ]
+    },
+    {
+      "name": "test-types-test-Choice",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "values"
+      ]
+    },
+    {
+      "name": "test-types-test-File",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "values"
+      ]
+    },
+    {
+      "name": "test-types-test-FloatRange",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "values"
+      ]
+    },
+    {
+      "name": "test-types-test-FuncParamType",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "values"
+      ]
+    },
+    {
+      "name": "test-types-test-IntRange",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "values"
+      ]
+    },
+    {
+      "name": "test-types-test-ParamType",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "values"
+      ]
+    },
+    {
+      "name": "test-types-test-Path",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "values"
+      ]
+    },
+    {
+      "name": "test-types-test-convert-type",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "values"
+      ]
+    },
+    {
+      "name": "test-utils-test-confirm",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "terminal"
+      ]
+    },
+    {
+      "name": "test-utils-test-format-filename",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "streams"
+      ]
+    },
+    {
+      "name": "test-utils-test-style",
+      "status": "passed",
+      "role": "original",
+      "scope": "retained",
+      "capabilities": [
+        "terminal"
+      ]
+    },
+    {
+      "name": "command-output",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "commands",
+        "values",
+        "streams"
+      ]
+    },
+    {
+      "name": "example-help-aliases",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "examples"
+      ]
+    },
+    {
+      "name": "example-help-colors",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "examples"
+      ]
+    },
+    {
+      "name": "example-help-completion",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "examples"
+      ]
+    },
+    {
+      "name": "example-help-complex",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "examples"
+      ]
+    },
+    {
+      "name": "example-help-imagepipe",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "examples"
+      ]
+    },
+    {
+      "name": "example-help-inout",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "examples"
+      ]
+    },
+    {
+      "name": "example-help-naval",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "examples"
+      ]
+    },
+    {
+      "name": "example-help-repo",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "examples"
+      ]
+    },
+    {
+      "name": "example-help-termui",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "examples"
+      ]
+    },
+    {
+      "name": "example-help-validation",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "examples"
+      ]
+    },
+    {
+      "name": "documentation-project-settings",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "docs"
+      ]
+    },
+    {
+      "name": "recovered-test_stream_lifecycle",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "testing"
+      ]
+    },
+    {
+      "name": "recovered-test_open_file-1",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "commands",
+        "testing"
+      ]
+    },
+    {
+      "name": "recovered-test_open_file-2",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "streams",
+        "testing"
+      ]
+    },
+    {
+      "name": "recovered-test_prompt-1",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "commands",
+        "testing"
+      ]
+    },
+    {
+      "name": "recovered-test_prompt-2",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "terminal",
+        "testing"
+      ]
+    },
+    {
+      "name": "contract-completion-9583b4-1",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "completion"
+      ]
+    },
+    {
+      "name": "contract-completion-9583b4-2",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "completion"
+      ]
+    },
+    {
+      "name": "contract-completion-9583b4-4",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "completion"
+      ]
+    },
+    {
+      "name": "scenario-completion-9583b4-5",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "completion"
+      ]
+    },
+    {
+      "name": "scenario-completion-9583b4-6",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "completion"
+      ]
+    },
+    {
+      "name": "contract-help-9583b4-7",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "help"
+      ]
+    },
+    {
+      "name": "contract-help-9583b4-8",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "help"
+      ]
+    },
+    {
+      "name": "contract-help-9583b4-9",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "help"
+      ]
+    },
+    {
+      "name": "contract-help-9583b4-10",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "help"
+      ]
+    },
+    {
+      "name": "contract-help-9583b4-11",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "help"
+      ]
+    },
+    {
+      "name": "scenario-help-9583b4-12",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "help"
+      ]
+    },
+    {
+      "name": "scenario-help-9583b4-13",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "help"
+      ]
+    },
+    {
+      "name": "contract-commands-9583b4-15",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "commands"
+      ]
+    },
+    {
+      "name": "contract-commands-9583b4-17",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "commands"
+      ]
+    },
+    {
+      "name": "contract-commands-9583b4-19",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "commands"
+      ]
+    },
+    {
+      "name": "scenario-commands-9583b4-20",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "commands"
+      ]
+    },
+    {
+      "name": "scenario-commands-9583b4-21",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "commands"
+      ]
+    },
+    {
+      "name": "contract-streams-9583b4-22",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "streams"
+      ]
+    },
+    {
+      "name": "contract-streams-9583b4-23",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "streams"
+      ]
+    },
+    {
+      "name": "contract-streams-9583b4-24",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "streams"
+      ]
+    },
+    {
+      "name": "contract-streams-9583b4-26",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "streams"
+      ]
+    },
+    {
+      "name": "contract-streams-9583b4-27",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "streams"
+      ]
+    },
+    {
+      "name": "scenario-streams-9583b4-28",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "streams"
+      ]
+    },
+    {
+      "name": "contract-terminal-9583b4-31",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "terminal"
+      ]
+    },
+    {
+      "name": "contract-terminal-9583b4-32",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "terminal"
+      ]
+    },
+    {
+      "name": "contract-terminal-9583b4-33",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "terminal"
+      ]
+    },
+    {
+      "name": "contract-terminal-9583b4-34",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "terminal"
+      ]
+    },
+    {
+      "name": "contract-terminal-9583b4-35",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "terminal"
+      ]
+    },
+    {
+      "name": "contract-testing-9583b4-37",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "testing"
+      ]
+    },
+    {
+      "name": "contract-testing-9583b4-38",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "testing"
+      ]
+    },
+    {
+      "name": "contract-testing-9583b4-39",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "testing"
+      ]
+    },
+    {
+      "name": "contract-testing-9583b4-40",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "testing"
+      ]
+    },
+    {
+      "name": "contract-testing-9583b4-41",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "testing"
+      ]
+    },
+    {
+      "name": "contract-completion-9583b4-43",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "completion"
+      ]
+    },
+    {
+      "name": "contract-commands-9583b4-44",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "commands"
+      ]
+    },
+    {
+      "name": "contract-commands-9583b4-46",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "commands"
+      ]
+    },
+    {
+      "name": "contract-commands-9583b4-47",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "commands"
+      ]
+    },
+    {
+      "name": "scenario-commands-9583b4-48",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "commands"
+      ]
+    },
+    {
+      "name": "scenario-commands-9583b4-49",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "commands"
+      ]
+    },
+    {
+      "name": "contract-terminal-9583b4-50",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "terminal"
+      ]
+    },
+    {
+      "name": "contract-terminal-9583b4-54",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "terminal"
+      ]
+    },
+    {
+      "name": "scenario-terminal-9583b4-55",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "terminal"
+      ]
+    },
+    {
+      "name": "scenario-terminal-9583b4-56",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "terminal"
+      ]
+    },
+    {
+      "name": "scenario-testing-9583b4-57",
+      "status": "passed",
+      "role": "contract",
+      "scope": "retained",
+      "capabilities": [
+        "testing"
+      ]
+    }
+  ],
+  "actual_size": {
+    "baseline_source_lines": 13983,
+    "source_lines": 5712,
+    "source_files": 32,
+    "retained_percent": 44.36510675196206,
+    "target_percent": 50.0,
+    "target_source_lines": 6991.5,
+    "estimated_source_lines": null,
+    "metric": "tokens",
+    "tokenizer": {
+      "classification": "source_and_configuration_v2",
+      "decoding": "python_encoding_cookie_else_utf8_strict",
+      "encoding": "cl100k_base",
+      "exclusion_policy": "unchanged_original_tests_documentation_launcher_configuration_binary_assets",
+      "file_boundaries": "independent_sum",
+      "library": "tiktoken",
+      "ranks_sha256": "223921b76ee99bde995b7ff738513eef100fb51d18c93597a113bcffe865b2a7",
+      "special_tokens": "ordinary_text",
+      "text_policy": "raw_decoded_text_per_file",
+      "version": "0.12.0"
+    },
+    "measurement_sha256": "e86c52e38ff6ffd638eb0dfc7205cfc1dba9bff9a5fccae4d015e100c1bfdb02",
+    "source_tokens": 50112,
+    "configuration_tokens": 29,
+    "total_tokens": 50141,
+    "baseline_tokens": 113019,
+    "target_tokens": 56509,
+    "source_retained_percent": 40.84960308946578,
+    "complete": true,
+    "target_met": true
+  },
+  "budget_status": "met",
+  "verification_scope": "full",
+  "rewrite_progress": {
+    "priority": "functionality_first",
+    "author_attempts": 5,
+    "repair_attempts": 3,
+    "optimization_attempts": 0,
+    "restorations": 3,
+    "rejected_attempts": 0,
+    "failed_optimizations": 0,
+    "max_optimization_attempts": 2,
+    "stop_reason": null,
+    "accepted_candidate_available": true,
+    "behavior_acceptance": "passed",
+    "size_acceptance": "met"
+  },
+  "installation_evidence": {
+    "status": "passed",
+    "checks_passed": 2,
+    "checks_total": 2,
+    "environment_metadata_complete": true
+  },
+  "obligation_ledger": {
+    "records": [
+      {
+        "capability": "click",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          },
+          {
+            "status": "verified",
+            "kind": "retained_child"
+          }
+        ]
+      },
+      {
+        "capability": "commands",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "test-abort-interrupt",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-chain",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-command-decorators",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-commands",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-context",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-custom-classes",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-exceptions-test-FileError",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-info-dict",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-normalization",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "command-output",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-test_open_file-1",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-test_prompt-1",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-commands-9583b4-15",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-commands-9583b4-17",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-commands-9583b4-19",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-commands-9583b4-20",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-commands-9583b4-21",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-commands-9583b4-44",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-commands-9583b4-46",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-commands-9583b4-47",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-commands-9583b4-48",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-commands-9583b4-49",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "values",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "test-types-test-Choice",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-types-test-File",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-types-test-FloatRange",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-types-test-FuncParamType",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-types-test-IntRange",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-types-test-ParamType",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-types-test-Path",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-types-test-convert-type",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "command-output",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "help",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-help-9583b4-7",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-help-9583b4-8",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-help-9583b4-9",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-help-9583b4-10",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-help-9583b4-11",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-help-9583b4-12",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-help-9583b4-13",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "streams",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "test-utils-test-format-filename",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "command-output",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-test_open_file-2",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-streams-9583b4-22",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-streams-9583b4-23",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-streams-9583b4-24",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-streams-9583b4-26",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-streams-9583b4-27",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-streams-9583b4-28",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "terminal",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "test-utils-test-confirm",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "test-utils-test-style",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-test_prompt-2",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-terminal-9583b4-31",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-terminal-9583b4-32",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-terminal-9583b4-33",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-terminal-9583b4-34",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-terminal-9583b4-35",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-terminal-9583b4-50",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-terminal-9583b4-54",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-terminal-9583b4-55",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-terminal-9583b4-56",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "completion",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "contract-completion-9583b4-1",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-completion-9583b4-2",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-completion-9583b4-4",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-completion-9583b4-5",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-completion-9583b4-6",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-completion-9583b4-43",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "testing",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "recovered-test_stream_lifecycle",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-test_open_file-1",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-test_open_file-2",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-test_prompt-1",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "recovered-test_prompt-2",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-testing-9583b4-37",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-testing-9583b4-38",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-testing-9583b4-39",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-testing-9583b4-40",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "contract-testing-9583b4-41",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "scenario-testing-9583b4-57",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "examples",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "example-help-aliases",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "example-help-colors",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "example-help-completion",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "example-help-complex",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "example-help-imagepipe",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "example-help-inout",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "example-help-naval",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "example-help-repo",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "example-help-termui",
+            "kind": "declared_check"
+          },
+          {
+            "status": "verified",
+            "check": "example-help-validation",
+            "kind": "declared_check"
+          }
+        ]
+      },
+      {
+        "capability": "docs",
+        "status": "verified",
+        "obligations": [
+          {
+            "status": "verified",
+            "check": "documentation-project-settings",
+            "kind": "declared_check"
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "verified": 10,
+      "retired": 0,
+      "partial": 0,
+      "unknown": 0,
+      "failed": 0,
+      "total": 10,
+      "retained": 10,
+      "complete": true
+    },
+    "limitations": [
+      "Public summaries omit private evidence bindings and raw output."
+    ]
+  },
+  "leaf_coverage": {
+    "status": "ready",
+    "strict": false,
+    "valid": [
+      "commands",
+      "completion",
+      "docs",
+      "examples",
+      "help",
+      "streams",
+      "terminal",
+      "testing",
+      "values"
+    ],
+    "missing": [],
+    "exempted": [],
+    "why_missing": {}
+  }
+}

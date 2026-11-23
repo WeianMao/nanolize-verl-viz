@@ -1,0 +1,11 @@
+capability_id,before_lines,after_lines,reduction_percent,mapping_status,validation_status,executed,evidence_category,direct_checks,related_checks,direct_checks_passed,direct_checks_failed,direct_checks_inconclusive,related_checks_passed,related_checks_failed,related_checks_inconclusive,evidence_coverage,before_source_tokens,after_source_tokens,source_token_reduction_percent
+click,13983,5712,59.15,mapped,unknown,False,related_passed,0,81,0,0,0,81,0,0,limited,109300,50112,54.152
+commands,5806,2192,62.246,mapped,verified,True,direct_passed,22,0,22,0,0,0,0,0,declared_checks_only,47605,20270,57.42
+values,1408,2519,-78.906,mapped,verified,True,direct_passed,9,0,9,0,0,0,0,0,declared_checks_only,10878,23115,-112.493
+help,431,661,-53.364,mapped,verified,True,direct_passed,7,0,7,0,0,0,0,0,declared_checks_only,3096,5071,-63.792
+streams,1554,612,60.618,mapped,verified,True,direct_passed,9,0,9,0,0,0,0,0,declared_checks_only,11461,4577,60.065
+terminal,1994,707,64.544,mapped,verified,True,direct_passed,12,0,12,0,0,0,0,0,declared_checks_only,16060,6771,57.839
+completion,796,419,47.362,mapped,verified,True,direct_passed,6,0,6,0,0,0,0,0,declared_checks_only,6005,3223,46.328
+testing,840,364,56.667,mapped,verified,True,direct_passed,9,2,9,0,0,2,0,0,declared_checks_only,6731,2754,59.085
+examples,1095,692,36.804,mapped,verified,True,direct_passed,2,8,2,0,0,8,0,0,declared_checks_only,6966,5822,16.423
+docs,59,42,28.814,mapped,verified,True,direct_passed,1,0,1,0,0,0,0,0,declared_checks_only,498,457,8.233
