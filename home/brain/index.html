@@ -320,7 +320,7 @@ button{font:inherit;color:inherit}
           <p class="sub">A brain matures by pruning the connections it does not use. Nanolize does that for code: it rewrites a bloated repository into a nano one that coding agents read, change and run for fewer tokens.</p>
           <p class="cta"><a class="btn go" href="#">Read the paper</a><a class="btn gh" href="#">Get the code</a></p>
         </div>
-        <div class="orb" id="orb" role="img" aria-label="Animation: neurons inside a brain seen from the side. Of the connections between them, 52.6% are cut and fade away, the share of Detectron2's 76,888 lines that the rewrite removes. The connections that stay thicken and turn green, checks run through them as pulses, and 382 of 382 pass.">
+        <div class="orb" id="orb" role="img" aria-label="Animation: neurons inside a brain seen from the side. Of the 135 connections between them, 71 are cut and fade away, 52.6%, the share of Detectron2's 76,888 lines that the rewrite removes. The 64 that stay form one tree, rooted in the brainstem, that reaches every neuron. It turns green from the root to the tips, checks run up it as pulses, and 382 of 382 pass.">
           <canvas></canvas>
           <p class="cap m"><span id="orb-phase">delivered</span><span><b class="num" id="orb-lines">36,458</b> lines of detectron2, <b class="num" id="orb-checks">382 / 382</b> checks pass</span></p>
         </div>
@@ -556,9 +556,10 @@ button{font:inherit;color:inherit}
   const scene = (el, period, fn) => { const s = { t: 0 }; seen.observe(el); loops.push(dt => { if (el._on) { s.t = (s.t + dt) % period; fn(s.t); } }); return s; };
 
   /* ---------------- hero: synaptic pruning. Neurons sit inside a brain seen from the side, and nothing moves or
-     gathers: the connections that are not needed are cut and fade, the ones that stay thicken and turn green,
-     the checks run through them as pulses, and the kept network glows once at the end. The share of connections
-     that stays is the real ratio for Detectron2, 36,458 of 76,888 lines, by count. ---------------- */
+     gathers: the connections that are not needed are cut and fade, and the ones that stay are one tree, rooted in
+     the brainstem, that reaches every neuron. It turns green from the root to the tips, the checks run up it as
+     pulses, and it glows once at the end. The tree's share of all connections is the real ratio for Detectron2,
+     36,458 of 76,888 lines, by count. ---------------- */
   (() => {
     const box = $('#orb'), cv = $('canvas', box), ctx = cv.getContext('2d');
     const KEEP = 36458 / 76888, T = 15.6, TAU = 6.2832, BW = 1000, BH = 800, SEG = 14;
@@ -599,50 +600,60 @@ button{font:inherit;color:inherit}
     const probe = Object.assign(document.createElement('canvas'), { width: 8, height: 8 }).getContext('2d');
     const inside = (x, y, pad) => [[0, 0], [pad, 0], [-pad, 0], [0, pad], [0, -pad]].every(([dx, dy]) => probe.isPointInPath(outline, x + dx, y + dy));
 
-    /* neurons: a soma with a few forked dendrites, spread evenly inside the outline (the brainstem stays empty) */
-    const NEU = [];
-    for (let i = 0; i < 12000 && NEU.length < 54; i++) {
-      const x = 70 + rng() * 880, y = 50 + rng() * 660;
-      if (y > 700 && x < 690 || !inside(x, y, 36) || NEU.some(n => (n.x - x) ** 2 + (n.y - y) ** 2 < 72 * 72)) continue;
-      const r = 7 + rng() * 3.2, twigs = [], k = 4 + Math.floor(rng() * 3), a0 = rng() * TAU;
+    /* neurons: a soma with a few forked dendrites. Three sit in the brainstem, where the trunk of the tree comes up
+       (the first is its root); the rest are spread evenly through the brain. */
+    const NODES = 65, NEU = [];
+    const neuron = (x, y) => {
+      const r = 7 + rng() * 3, twigs = [], k = 4 + Math.floor(rng() * 3), a0 = rng() * TAU;
       for (let j = 0; j < k; j++) {
-        const a = a0 + TAU * (j + (rng() - .5) * .5) / k, L = 24 + rng() * 18, bend = (rng() - .5) * 1.1;
+        const a = a0 + TAU * (j + (rng() - .5) * .5) / k, L = 22 + rng() * 16, bend = (rng() - .5) * 1.1;
         const mx = x + Math.cos(a + bend * .5) * L * .55, my = y + Math.sin(a + bend * .5) * L * .55, ex = x + Math.cos(a) * L, ey = y + Math.sin(a) * L;
         twigs.push([x + Math.cos(a) * r * .8, y + Math.sin(a) * r * .8, mx, my, ex, ey]);
-        for (const [bx, by, far] of [[mx, my, 9 + rng() * 9], [lerp(mx, ex, .6), lerp(my, ey, .6), 6 + rng() * 6]]) {   // two forks
+        for (const [bx, by, far] of [[mx, my, 9 + rng() * 8], [lerp(mx, ex, .6), lerp(my, ey, .6), 6 + rng() * 6]]) {   // two forks
           const fa = a + (rng() < .5 ? -1 : 1) * (.5 + rng() * .6); twigs.push([bx, by, bx + Math.cos(fa) * far * .5, by + Math.sin(fa) * far * .5, bx + Math.cos(fa) * far, by + Math.sin(fa) * far]); }
       }
-      NEU.push({ x, y, r, twigs, dep: 0 });
+      NEU.push({ x, y, r, twigs });
+    };
+    for (let gap = 70; NEU.length < NODES; gap -= 2) {               // tighten the spacing until all of them fit
+      NEU.length = 0; [[626, 766], [632, 704], [623, 642]].forEach(([x, y]) => neuron(x, y));
+      for (let i = 0; i < 9000 && NEU.length < NODES; i++) { const x = 70 + rng() * 880, y = 50 + rng() * 660;
+        if (!(y > 690 && x < 700) && inside(x, y, 34) && !NEU.some(q => (q.x - x) ** 2 + (q.y - y) ** 2 < gap * gap)) neuron(x, y); }
     }
-    /* connections: the shortest tree over all neurons (so the kept network reaches every one), each neuron's three
-       nearest, and long stray links across the brain */
-    const n = NEU.length, dist = (a, b) => Math.hypot(NEU[a].x - NEU[b].x, NEU[a].y - NEU[b].y), had = new Set(), E = [];
-    const link = (a, b) => { const k = a < b ? a * 1000 + b : b * 1000 + a; if (a === b || had.has(k)) return; had.add(k); E.push({ a, b, len: dist(a, b), keep: false }); };
-    { const best = NEU.map((_, i) => ({ d: dist(0, i), from: 0 })); best[0].d = -1;
-      for (let c = 1; c < n; c++) { let j = -1; for (let i = 0; i < n; i++) if (best[i].d >= 0 && (j < 0 || best[i].d < best[j].d)) j = i;
-        link(best[j].from, j); best[j].d = -1; for (let i = 0; i < n; i++) if (best[i].d >= 0) { const d = dist(j, i); if (d < best[i].d) best[i] = { d, from: j }; } } }
-    const TREE = E.length;
-    NEU.forEach((_, i) => { const by = NEU.map((_, j) => j).filter(j => j !== i).sort((p, q) => dist(i, p) - dist(i, q));
-      by.slice(0, 3).forEach(j => link(i, j)); for (let q = 0; q < 3; q++) if (rng() < .8) link(i, by[Math.min(by.length - 1, 5 + Math.floor(rng() * 14))]); });
-    /* what stays: 36,458 / 76,888 of the connections by count, the tree first and then the shortest of the rest */
-    const KEPT = Math.round(E.length * KEEP);
-    box.dataset.kept = `${KEPT} of ${E.length} connections`;
-    E.forEach((e, i) => { e.keep = i < TREE; });
-    E.slice(TREE).sort((p, q) => p.len - q.len).slice(0, Math.max(0, KEPT - TREE)).forEach(e => { e.keep = true; });
-    /* the kept network is strengthened outward from the neuron nearest the middle */
-    let root = 0; NEU.forEach((p, i) => { if (Math.hypot(p.x - 500, p.y - 400) < Math.hypot(NEU[root].x - 500, NEU[root].y - 400)) root = i; });
-    const dep = NEU.map(() => -1), queue = [root]; dep[root] = 0;
-    for (let h = 0; h < queue.length; h++) { const i = queue[h]; for (const e of E) if (e.keep && (e.a === i || e.b === i)) { const j = e.a === i ? e.b : e.a; if (dep[j] < 0) { dep[j] = dep[i] + 1; queue.push(j); } } }
-    const D = Math.max(...dep);
-    NEU.forEach((p, i) => { p.dep = dep[i]; });
-    E.forEach(e => {
-      if (e.keep && dep[e.a] > dep[e.b]) [e.a, e.b] = [e.b, e.a];
-      const A = NEU[e.a], B = NEU[e.b], bend = (rng() < .5 ? -1 : 1) * (e.keep ? .04 + rng() * .1 : .12 + rng() * .2), mx = (A.x + B.x) / 2 - (B.y - A.y) * bend, my = (A.y + B.y) / 2 + (B.x - A.x) * bend;
-      e.p = new Float32Array((SEG + 1) * 2);
-      for (let i = 0; i <= SEG; i++) { const u = i / SEG, w = 1 - u; e.p[i * 2] = w * w * A.x + 2 * w * u * mx + u * u * B.x; e.p[i * 2 + 1] = w * w * A.y + 2 * w * u * my + u * u * B.y; }
-      e.dep = dep[e.a]; e.cut = rng();
-    });
-    const SPARK = NEU.map((_, i) => i).filter(i => i !== root && i % 7 === 3).slice(0, 9);
+    const n = NEU.length, dist = (a, b) => Math.hypot(NEU[a].x - NEU[b].x, NEU[a].y - NEU[b].y);
+    const within = (a, b) => { for (let i = 1; i < 10; i++) if (!probe.isPointInPath(outline, lerp(NEU[a].x, NEU[b].x, i / 10), lerp(NEU[a].y, NEU[b].y, i / 10))) return false; return true; };
+    /* candidate connections: pairs of neighbours with no third neuron between them (so no two candidates cross),
+       and only those that stay inside the outline */
+    const CAND = [];
+    for (let a = 0; a < n; a++) for (let b = a + 1; b < n; b++) { const mx = (NEU[a].x + NEU[b].x) / 2, my = (NEU[a].y + NEU[b].y) / 2, rr = dist(a, b) ** 2 / 4;
+      if (NEU.every((q, c) => c === a || c === b || (q.x - mx) ** 2 + (q.y - my) ** 2 >= rr) && within(a, b)) CAND.push([a, b]); }
+    /* the tree: grown from the root, always taking the cheapest next neuron. A long hop costs more than several
+       short ones (length to a power above 1) and so does a sharp turn, which gives branches that flow outward
+       like veins; a neuron carries at most three branches and the brainstem carries one. */
+    const POW = 1.7, BEND = .9, par = NEU.map(() => -1), cost = NEU.map(() => 0), kids = NEU.map(() => 0), tan = NEU.map(() => [0, -1]), order = [0];
+    while (order.length < n) { let best = null;
+      for (const [a, b] of CAND) for (const [u, v] of [[a, b], [b, a]]) { if (par[u] < 0 && u || par[v] >= 0 || !v || kids[u] >= (u < 2 ? 1 : 3)) continue;
+        const dx = NEU[v].x - NEU[u].x, dy = NEU[v].y - NEU[u].y, len = Math.hypot(dx, dy), c = cost[u] + Math.pow(len, POW) * (1 + BEND * (1 - (dx * tan[u][0] + dy * tan[u][1]) / len));
+        if (!best || c < best.c) best = { u, v, c, t: [dx / len, dy / len] }; }
+      if (!best) { let v = NEU.findIndex((_, i) => i && par[i] < 0), u = order.reduce((p, q) => dist(q, v) < dist(p, v) ? q : p); best = { u, v, c: cost[u] + Math.pow(dist(u, v), POW), t: [0, -1] }; }   // never happens with this outline
+      par[best.v] = best.u; cost[best.v] = best.c; tan[best.v] = best.t; kids[best.u]++; order.push(best.v); }
+    const load = NEU.map(() => 1); for (let i = n - 1; i > 0; i--) load[par[order[i]]] += load[order[i]];      // neurons carried by each branch
+    /* connections. Kept: the tree, each branch drawn as a curve that leaves in its parent's direction, as wide as
+       the part of the tree it carries. Cut: the other candidates (shortest first) and long strays across the brain,
+       so that the tree is 36,458 / 76,888 of all connections by count. */
+    const E = [], had = new Set(), key = (a, b) => a < b ? a * 1000 + b : b * 1000 + a, along = NEU.map(() => 0);
+    const curve = (e, cx, cy) => { const A = NEU[e.a], B = NEU[e.b]; e.p = new Float32Array((SEG + 1) * 2);
+      for (let i = 0; i <= SEG; i++) { const u = i / SEG, w = 1 - u; e.p[i * 2] = w * w * A.x + 2 * w * u * cx + u * u * B.x; e.p[i * 2 + 1] = w * w * A.y + 2 * w * u * cy + u * u * B.y; } E.push(e); };
+    for (const v of order.slice(1)) { const u = par[v], A = NEU[u], B = NEU[v], len = dist(u, v), dx = (B.x - A.x) / len, dy = (B.y - A.y) / len;
+      let hx = tan[u][0] * .6 + dx * .4, hy = tan[u][1] * .6 + dy * .4; if (tan[u][0] * dx + tan[u][1] * dy < -.1) { hx = dx; hy = dy; }
+      const h = Math.hypot(hx, hy) || 1, cx = A.x + hx / h * len * .5, cy = A.y + hy / h * len * .5, tl = Math.hypot(B.x - cx, B.y - cy) || 1;
+      tan[v] = [(B.x - cx) / tl, (B.y - cy) / tl]; along[v] = along[u] + len; had.add(key(u, v));
+      curve({ a: u, b: v, keep: true, len, from: along[u], w: lerp(2.6, 18, Math.sqrt((load[v] - 1) / (n - 2))) }, cx, cy); }
+    const REACH = Math.max(...along), TOTAL = Math.round((n - 1) / KEEP);
+    const stray = (a, b) => { had.add(key(a, b)); const A = NEU[a], B = NEU[b], bend = (rng() < .5 ? -1 : 1) * (.1 + rng() * .2); curve({ a, b, keep: false, cut: rng() }, (A.x + B.x) / 2 - (B.y - A.y) * bend, (A.y + B.y) / 2 + (B.x - A.x) * bend); };
+    CAND.filter(([a, b]) => !had.has(key(a, b))).sort((p, q) => dist(...p) - dist(...q)).slice(0, 38).forEach(([a, b]) => stray(a, b));
+    for (let i = 0; i < 20000 && E.length < TOTAL; i++) { const a = Math.floor(rng() * n), b = Math.floor(rng() * n), d = dist(a, b); if (a !== b && d > 130 && d < 430 && !had.has(key(a, b)) && within(a, b)) stray(a, b); }
+    box.dataset.kept = `${n - 1} of ${E.length} connections`;
+    const TIPS = order.filter(i => !kids[i]), SPARK = TIPS.filter((_, i) => i % Math.ceil(TIPS.length / 9) === 1);
     const at = (e, u) => { const f = clamp01(u) * SEG, i = Math.min(SEG - 1, Math.floor(f)), k = f - i, p = e.p; return [lerp(p[i * 2], p[i * 2 + 2], k), lerp(p[i * 2 + 1], p[i * 2 + 3], k)]; };
     const part = (e, u0, u1) => {                                   // adds the stretch u0..u1 of a connection to the current path
       if (u1 - u0 < .002) return; const p = e.p, s = at(e, u0), q = at(e, u1); ctx.moveTo(s[0], s[1]);
@@ -656,7 +667,7 @@ button{font:inherit;color:inherit}
     const draw = t => {
       const back = seg(t, 13.4, 15.4), k = 1 - ease(back), raw = seg(t, 2.4, 7) * k, m = ease(seg(t, 2.4, 7)) * k;
       const v = back > 0 ? 0 : seg(t, 7.3, 9.9), b = back > 0 ? 0 : seg(t, 10, 11.8), sw = b > 0 && b < 1 ? Math.sin(Math.PI * Math.min(1, b * 1.4)) : 0;
-      const px = 1 / S, start = e => .06 + .64 * e.dep / (D + 1);                // px: one CSS pixel in drawing units
+      const px = 1 / S, front = REACH * 1.03 * clamp01((raw - .05) / .83);     // px: one CSS pixel in drawing units; front: how far along the tree the green has grown
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
       ctx.setTransform(dpr * S, 0, 0, dpr * S, dpr * ox, dpr * oy); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
       if (sw > 0) { ctx.save(); ctx.translate(500, 400); ctx.scale(1, .78); const g = ctx.createRadialGradient(0, 0, 0, 0, 0, 500); g.addColorStop(0, `rgba(${GREEN},${.3 * sw})`); g.addColorStop(1, `rgba(${GREEN},0)`); ctx.fillStyle = g; ctx.fillRect(-500, -500, 1000, 1000); ctx.restore(); }
@@ -677,32 +688,32 @@ button{font:inherit;color:inherit}
       for (const e of E) { if (e.keep) continue; const p = clamp01((raw - e.cut * .8) / .2); if (p <= 0 || p >= 1) continue;
         const q = ease(clamp01((p - .2) / .8)), gap = .035 + .465 * q; ctx.strokeStyle = `rgba(${INK},${.3 * (1 - q)})`; ctx.beginPath(); part(e, 0, .5 - gap); part(e, .5 + gap, 1); ctx.stroke();
         marks.push([at(e, .5), Math.sin(Math.PI * clamp01(p / .62))]); }
-      /* connections that stay: a thin line first, then the green stretch grows along it away from the middle */
+      /* connections that stay: a thin line first, then the green grows from the root up the trunk and out to the tips */
       ctx.strokeStyle = `rgba(${INK},.3)`; ctx.lineWidth = 1 * px; ctx.beginPath();
-      for (const e of E) if (e.keep) { const g = clamp01((raw - start(e)) / .22); if (g < 1) part(e, g, 1); }
+      for (const e of E) if (e.keep) { const g = clamp01((front - e.from) / e.len); if (g < 1) part(e, g, 1); }
       ctx.stroke();
-      if (raw > 0) { if (sw > 0) { ctx.shadowColor = `rgba(${GREEN},${sw})`; ctx.shadowBlur = 16 * sw * dpr; }
-        ctx.strokeStyle = `rgb(${GREEN})`; ctx.lineWidth = (2.6 + 1.8 * sw) * px; ctx.beginPath();
-        for (const e of E) if (e.keep) { const g = ease(clamp01((raw - start(e)) / .22)); if (g > 0) part(e, 0, g); }
-        ctx.stroke(); ctx.shadowBlur = 0; ctx.shadowColor = 'transparent'; }
+      if (front > 0) { if (sw > 0) { ctx.shadowColor = `rgba(${GREEN},${sw})`; ctx.shadowBlur = 16 * sw * dpr; }
+        ctx.strokeStyle = `rgb(${GREEN})`;
+        for (const e of E) if (e.keep) { const g = clamp01((front - e.from) / e.len); if (g <= 0) continue; ctx.lineWidth = Math.max(e.w, 1.5 * px) * (1 + .4 * sw) + 1.2 * sw * px; ctx.beginPath(); part(e, 0, g); ctx.stroke(); }
+        ctx.shadowBlur = 0; ctx.shadowColor = 'transparent'; }
       /* the small crosses where a connection is cut */
       ctx.lineWidth = 1.5 * px; for (const [[x, y], a] of marks) { if (a <= 0) continue; const c = 4.5 * px; ctx.strokeStyle = `rgba(${INK},${.85 * a})`; ctx.beginPath(); ctx.moveTo(x - c, y - c); ctx.lineTo(x + c, y + c); ctx.moveTo(x - c, y + c); ctx.lineTo(x + c, y - c); ctx.stroke(); }
       /* pulses: a few wander through the tangle before the rewrite; the checks run outward through what stays */
       const idle = t < 8 && back === 0 ? seg(t, .2, 1) * (1 - clamp01(raw * 5)) : 0;
       if (idle > 0) { ctx.fillStyle = `rgba(${INK},${.55 * idle})`; for (let i = 0; i < 9; i++) { const tau = t / 2.6 + i * .31, e = E[(i * 37 + Math.floor(tau) * 53) % E.length], [x, y] = at(e, tau % 1); ctx.beginPath(); ctx.arc(x, y, 2.6 * px, 0, TAU); ctx.fill(); } }
-      const waves = [];
-      if (v > 0 && v < 1) for (let w = 0; w < 3; w++) waves.push([(v * 3 - w) * (D + 2), 1]);
-      else if (t > 11.8 && back < 1) waves.push([(t * .42 % 1) * (D + 2), .7 * k]);                 // the delivered network keeps working
-      for (const [pos, al] of waves) { ctx.fillStyle = `rgba(${INK},${.92 * al})`;
-        for (const e of E) if (e.keep) { const u = pos - e.dep; if (u <= 0 || u >= 1) continue; const [x, y] = at(e, u); ctx.beginPath(); ctx.arc(x, y, 3.3 * px, 0, TAU); ctx.fill(); } }
+      const waves = [];                                               // [distance along the tree, strength]
+      if (v > 0 && v < 1) for (let w = 0; w < 5; w++) waves.push([REACH * 1.08 * (v * 2.8 - w * .45), 1]);
+      else if (t > 11.8 && back < 1) waves.push([REACH * 1.08 * (t * .3 % 1), .7 * k]);                // the delivered tree keeps working
+      for (const [pos, al] of waves) for (let j = 0; j < 3; j++) { ctx.fillStyle = `rgba(${INK},${.92 * al * (1 - j * .32)})`;     // a pulse and its short tail
+        for (const e of E) if (e.keep) { const u = (pos - j * 15 - e.from) / e.len; if (u <= 0 || u >= 1) continue; const [x, y] = at(e, u); ctx.beginPath(); ctx.arc(x, y, (3.4 - j * .7) * px, 0, TAU); ctx.fill(); } }
       ctx.restore();
       /* somas */
-      for (const p of NEU) { const lit = ease(clamp01((raw - (.04 + .64 * p.dep / (D + 1))) / .14)); let ping = 0;
-        for (const [pos, al] of waves) { const u = pos - p.dep; if (u > 0 && u < 1) ping = Math.max(ping, (1 - u) * al); }
+      NEU.forEach((p, i) => { const lit = ease(clamp01((front - along[i]) / 40 + (i ? 0 : raw * 12))); let ping = 0;
+        for (const [pos, al] of waves) { const u = (pos - along[i]) / 70; if (u > 0 && u < 1) ping = Math.max(ping, (1 - u) * al); }
         const r = p.r * (1 + .12 * lit + .25 * sw);
         if (lit > 0) { ctx.strokeStyle = `rgba(${GREEN},${lit})`; ctx.lineWidth = (2.2 + 1.2 * sw) * px; ctx.beginPath(); ctx.arc(p.x, p.y, r + 2.6 * px, 0, TAU); ctx.stroke(); }
         if (ping > 0) { ctx.strokeStyle = `rgba(${DEEP},${.8 * ping})`; ctx.lineWidth = 1.4 * px; ctx.beginPath(); ctx.arc(p.x, p.y, r + (4 + 12 * (1 - ping)) * px, 0, TAU); ctx.stroke(); }
-        ctx.fillStyle = `rgba(${INK},${lerp(.6, .94, lit)})`; ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, TAU); ctx.fill(); }
+        ctx.fillStyle = `rgba(${INK},${lerp(.6, .94, lit)})`; ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, TAU); ctx.fill(); });
       /* the finishing flash: sparkles go off one after another on the kept network */
       if (b > 0 && b < 1) SPARK.forEach((i, j) => { const q = clamp01((b - (j * .137) % .5) / .42); if (q <= 0 || q >= 1) return;
         const s = Math.sin(Math.PI * q), p = NEU[i], x = p.x + p.r * 1.6, y = p.y - p.r * 1.6, L = (5 + 15 * s) * px, d = L * .4;

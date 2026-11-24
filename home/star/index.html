@@ -295,7 +295,7 @@ button{font:inherit;color:inherit}
       <p class="sub">Nanolize rewrites a bloated repository from scratch into a nano one that coding agents read, change and run for fewer tokens.</p>
       <p class="cta"><a class="btn go" href="#">Read the paper</a><a class="btn gh" href="#">Get the code</a></p>
       </div>
-      <div class="stage" id="stage" role="img" aria-label="Animation: a slowly turning field of stars stands for the 76,888 lines of Detectron2. Nothing moves inward. The stars that stay, 36,458 lines, light up green as one tree, the rest go dark, 382 checks pass and the tree flashes.">
+      <div class="stage" id="stage" role="img" aria-label="Animation: a slowly turning field of stars stands for the 76,888 lines of Detectron2. Nothing moves inward. The stars that stay, 36,458 lines, light up green as one tree that grows from its root through trunk, limbs and branches to the leaves; the rest go dark, 382 checks pass and the tree flashes.">
         <p class="cap m"><span id="orb-phase">delivered</span><span><b class="num" id="orb-lines">36,458</b> lines of detectron2, <b class="num" id="orb-checks">382 / 382</b> checks pass</span></p>
       </div>
       </div>
@@ -530,7 +530,7 @@ button{font:inherit;color:inherit}
   const scene = (el, period, fn) => { const s = { t: 0 }; seen.observe(el); loops.push(dt => { if (el._on) { s.t = (s.t + dt) % period; fn(s.t); } }); return s; };
 
   /* ---------------- hero: a field of stars, slowly turning, seen in perspective. Nothing moves towards the centre:
-     the stars that stay light up as one tree and the rest go dark. The share that stays is the real ratio for
+     the stars that stay light up as one tree, growing from its root, and the rest go dark. The share that stays is the real ratio for
      Detectron2, 36,458 of 76,888 lines. The tree's shape is illustrative; its labels are Detectron2's public
      packages. ?t=seconds in the address freezes the scene at that moment (for screenshots). ---------------- */
   (() => {
@@ -540,7 +540,6 @@ button{font:inherit;color:inherit}
     const NAMES = ['modeling', 'data', 'engine', 'evaluation', 'structures', 'layers', 'config', 'checkpoint', 'solver', 'export', 'utils', 'model_zoo'];
     const rng = (a => () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; })(41);
     const unit = (x, y, z) => { const l = Math.hypot(x, y, z) || 1; return [x / l, y / l, z / l]; };
-    const fib = (i, n) => { const y = 1 - 2 * (i + .5) / n, r = Math.sqrt(1 - y * y), th = i * 2.399963; return [r * Math.cos(th), y, r * Math.sin(th)]; };
     /* the children of a branch fan out in a cone around its direction */
     const fan = (d, n, cone) => {
       const a = Math.abs(d[1]) < .9 ? [0, 1, 0] : [1, 0, 0], u = unit(d[1] * a[2] - d[2] * a[1], d[2] * a[0] - d[0] * a[2], d[0] * a[1] - d[1] * a[0]);
@@ -548,16 +547,22 @@ button{font:inherit;color:inherit}
       return Array.from({ length: n }, (_, j) => { const th = cone * (.7 + .6 * rng()), al = o + TAU * (j + .35 * rng()) / n, c = Math.cos(th), s = Math.sin(th), ca = Math.cos(al), sa = Math.sin(al);
         return unit(d[0] * c + (u[0] * ca + v[0] * sa) * s, d[1] * c + (u[1] * ca + v[1] * sa) * s, d[2] * c + (u[2] * ca + v[2] * sa) * s); });
     };
-    /* The tree is shaped like a dandelion head: a root, twelve stalks, three twigs on each, and a tuft of fine
-       lines on every twig. The tufts take what is left of the kept share. */
-    const RAD = [0, .46, .75, 1], CONE = [0, 0, .42, .21], LEAF = 3, S = [];
-    const add = (dir, lvl, par, len) => { const r = RAD[lvl] * len * (1 + (rng() - .5) * (lvl === LEAF ? .16 : .05)); S.push({ x: dir[0] * r, y: dir[1] * r, z: dir[2] * r, rn: r, lvl, par, dir, len, keep: true }); return S.length - 1; };
-    add([0, 1, 0], 0, -1, 1);
-    let tips = Array.from({ length: 12 }, (_, i) => add(fib(i, 12), 1, 0, .88 + rng() * .2));
-    tips = tips.flatMap(p => fan(S[p].dir, 3, CONE[2]).map(d => add(d, 2, p, S[p].len)));
-    const rest = K - S.length;
-    tips.forEach((p, i) => fan(S[p].dir, Math.floor(rest / tips.length) + (i * 7 % tips.length < rest % tips.length ? 1 : 0), CONE[3]).forEach(d => add(d, LEAF, p, S[p].len)));
-    const TUFTS = S.map((p, i) => p.lvl === LEAF ? i : -1).filter(i => i >= 0);
+    /* The tree stands upright: a root at the bottom, a trunk, six limbs (two low, three high and a leader), then
+       branches, twigs and leaves, each level finer than the last. Every node is a star that stays; the leaves
+       take what is left of the kept share. */
+    const LEAF = 4, UP = [0, -1, 0], CROWN = -.25, S = [{ x: 0, y: 1, z: 0, par: -1, lvl: 0, dir: UP, way: 0, keep: true }];
+    const add = (i, d, len, lvl) => { const p = S[i]; S.push({ x: p.x + d[0] * len, y: p.y + d[1] * len, z: p.z + d[2] * len, par: i, lvl, dir: d, way: p.way + len, keep: true }); return S.length - 1; };
+    /* a run of nodes that wanders a little and leans upward, the way a branch grows */
+    const run = (i, d, n, len, lvl, lift) => { for (let k = 0; k < n; k++) { d = unit(d[0] + (rng() - .5) * .26, d[1] - lift + (rng() - .5) * .16, d[2] + (rng() - .5) * .26); i = add(i, d, len * (.88 + rng() * .24), lvl); } return i; };
+    const top = run(0, UP, 3, .2, 0, .6), low = S[top].par, tips = [], mids = [], BRANCH = [];
+    const limb = (from, d, n) => { const l = run(from, d, n, .2, 1, .16);
+      fan(S[l].dir, 3, .56).forEach(e => { const br = run(l, e, 2, .18, 2, .14); BRANCH.push(br);
+        fan(S[br].dir, 3, .54).forEach(f => { const t = run(br, f, 2, .135, 3, .1); tips.push(t); mids.push(S[t].par); }); }); };
+    fan(UP, 2, 1.0).forEach(d => limb(low, d, 3)); fan(UP, 3, .62).forEach(d => limb(top, d, 3)); limb(top, UP, 2);
+    const hosts = [...tips, ...mids.map((_, i) => mids[i * 7 % mids.length])];          // leaves go round the twigs, tips first
+    for (let n = 0; S.length < K; n++) { const h = hosts[n % hosts.length]; add(h, fan(S[h].dir, 1, .9)[0], .08 + rng() * .06, LEAF); }
+    const TUFTS = S.map((p, i) => p.lvl === LEAF ? i : -1).filter(i => i >= 0), FAR = Math.max(...S.map(p => p.way));
+    S.forEach(p => { p.rn = Math.min(1, Math.hypot(p.x, p.y - CROWN, p.z)); });
     /* The rest of the sky: some of it inside and around the tree, most of it spread over the whole first screen. */
     while (S.length < N) {
       if (rng() < .4) { const d = unit(rng() - .5, rng() - .5, rng() - .5), r = 1.4 * Math.cbrt(rng()); S.push({ x: d[0] * r, y: d[1] * r, z: d[2] * r }); }
@@ -565,7 +570,7 @@ button{font:inherit;color:inherit}
     }
     S.forEach((p, i) => {
       p.mag = rng() < .035 ? 2.3 + rng() : .85 + rng() * .8; p.ph = rng() * TAU; p.sp = .5 + rng() * 1.3;
-      p.ord = p.keep ? Math.min(1, p.rn) * .8 + rng() * .05 : rng();                          // when it lights up, or goes dark
+      p.ord = p.keep ? p.way / FAR * .8 + rng() * .04 : rng();                    // when it lights up (root first), or goes dark
       p.chk = p.keep && p.lvl === LEAF ? (Math.atan2(p.z, p.x) / TAU + .5) : 0;      // checks sweep around the tree
       if (p.wide) { p.x = p.ux * 4.2; p.y = p.uy * 2.6; p.z = p.uz * 4.2; }       // nominal place, only for finding neighbours
     });
@@ -575,20 +580,20 @@ button{font:inherit;color:inherit}
     S.forEach((p, i) => {
       let a = -1, b = -1, da = 9, db = 9;
       S.forEach((q, j) => { if (j === i || j === p.par || q.par === i) return; const d = (p.x - q.x) ** 2 + (p.y - q.y) ** 2 + (p.z - q.z) ** 2; if (d < da) { b = a; db = da; a = j; da = d; } else if (d < db) { b = j; db = d; } });
-      if (p.keep) { if (p.lvl > 1 && da < .09 && rng() < .55) tie(i, a); }
+      if (p.keep) { if (p.lvl > 0 && da < .09 && rng() < .55) tie(i, a); }
       else { if (da < .16) tie(i, a); if (db < .16 && rng() < .45) tie(i, b); }
       if (!p.wide && rng() < .3) { const j = Math.floor(rng() * N), q = S[j]; if (!q.wide && (p.x - q.x) ** 2 + (p.y - q.y) ** 2 + (p.z - q.z) ** 2 < .5) tie(i, j); }
     });
     const SX = new Float32Array(N), SY = new Float32Array(N), SQ = new Float32Array(N), SD = new Float32Array(N), SN = new Float32Array(N), LIT = new Float32Array(N);
-    const BK = Array.from({ length: 18 }, () => []);          // tree lines, bucketed by level and depth, one stroke each
-    const SPK = TUFTS.filter((_, i) => i % 37 === 5);
+    const BK = Array.from({ length: 30 }, () => []);          // tree lines, bucketed by level and depth, one stroke each
+    const SPK = TUFTS.filter((_, i) => i % 31 === 5);
     const hud = { lines: $('#orb-lines'), checks: $('#orb-checks'), phase: $('#orb-phase') };
     const PHASE = ['the original', 'rewriting from scratch', 'running the frozen checks', 'delivered'];
     let W = 0, H = 0, dpr = 1, cx = 0, cy = 0, R = 1, RW = 1, F = 1000, shown = -1, spin = .6, yaw = 0, pitch = 0, tyaw = 0, tpitch = 0, clock = 0;
     const layout = () => {
       const r = hero.getBoundingClientRect(), s = stage.getBoundingClientRect();
       W = r.width; H = r.height; cx = s.left - r.left + s.width / 2; cy = s.top - r.top + (s.height - 44) * .5;
-      R = Math.min((s.height - 44) * .4, s.width * .4, 240); RW = Math.max(cx, W - cx) * 1.12; F = Math.max(1000, RW * 1.5);
+      R = Math.min((s.height - 44) * .46, s.width * .42, 262); RW = Math.max(cx, W - cx) * 1.12; F = Math.max(1000, RW * 1.5);
       dpr = Math.min(2, window.devicePixelRatio || 1, Math.sqrt(4.6e6 / (W * H)));
       cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
       for (const p of S) if (p.wide) { p.px = p.ux * RW; p.pz = p.uz * RW; p.py = lerp(-cy * 1.04, (H - cy) * 1.04, (p.uy + 1) / 2); } else { p.px = p.x * R; p.py = p.y * R; p.pz = p.z * R; }
@@ -597,7 +602,7 @@ button{font:inherit;color:inherit}
     const draw = t => {
       const back = seg(t, 13.4, 15.4), k = 1 - ease(back), raw = seg(t, 2.4, 7.0) * k, m = ease(seg(t, 2.4, 7.0)) * k;
       const v = back > 0 ? 0 : seg(t, 7.3, 9.9), b = back > 0 ? 0 : seg(t, 10.0, 11.9);
-      const a = spin + yaw, tilt = .3 + pitch, ca = Math.cos(a), sa = Math.sin(a), cb = Math.cos(tilt), sb = Math.sin(tilt), zoom = 1 + .08 * m;
+      const a = spin + yaw, tilt = .3 + pitch, ca = Math.cos(a), sa = Math.sin(a), cb = Math.cos(tilt), sb = Math.sin(tilt), zoom = 1 + .08 * m, gy = cy + CROWN * R * cb * zoom;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
       for (let i = 0; i < N; i++) {
         const p = S[i], X = p.px * ca + p.pz * sa, Z0 = p.pz * ca - p.px * sa, Y = p.py * cb - Z0 * sb, Z = Z0 * cb + p.py * sb, q = F / Math.max(F * .3, F + Z) * zoom;
@@ -606,7 +611,7 @@ button{font:inherit;color:inherit}
         LIT[i] = p.keep ? ease(clamp01((raw - p.ord * .8) / .2)) : clamp01((raw - p.ord * .8) / .2);   // tree: how lit; rest: how dark
       }
       const glow = m > .02 || b > 0;
-      if (glow) { const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, R * 1.9), al = .13 * m + Math.sin(Math.PI * Math.min(1, b * 1.5)) * .2; g.addColorStop(0, `rgba(${NV},${al})`); g.addColorStop(1, `rgba(${NV},0)`); ctx.fillStyle = g; ctx.fillRect(cx - R * 2, cy - R * 2, R * 4, R * 4); }
+      if (glow) { const g = ctx.createRadialGradient(cx, gy, 0, cx, gy, R * 1.9), al = .13 * m + Math.sin(Math.PI * Math.min(1, b * 1.5)) * .2; g.addColorStop(0, `rgba(${NV},${al})`); g.addColorStop(1, `rgba(${NV},0)`); ctx.fillStyle = g; ctx.fillRect(cx - R * 2, cy - R * 2, R * 4, R * 4); }
       ctx.lineCap = 'round';
       /* the faint web: whole lines in one stroke; a line that is breaking pulls back from its middle */
       ctx.strokeStyle = `rgba(${WHITE},.075)`; ctx.lineWidth = 1; ctx.beginPath();
@@ -620,9 +625,9 @@ button{font:inherit;color:inherit}
       ctx.globalCompositeOperation = 'lighter';
       for (const bk of BK) bk.length = 0;
       for (let i = 1; i < K; i++) { const L = LIT[i]; if (L <= 0) continue; const p = S[i], j = p.par, d = (SD[i] + SD[j]) / 2;
-        BK[(p.lvl - 1) * 6 + Math.min(5, Math.floor(d * 6))].push(SX[j], SY[j], SX[j] + (SX[i] - SX[j]) * L, SY[j] + (SY[i] - SY[j]) * L); }
-      BK.forEach((bk, n) => { if (!bk.length) return; const lvl = Math.floor(n / 6) + 1, d = (n % 6 + .5) / 6;
-        ctx.strokeStyle = `rgba(${NV},${(.1 + .82 * d * d) * (lvl === LEAF ? .78 : 1)})`; ctx.lineWidth = [0, 1.7, 1.25, .8][lvl] * (.7 + .6 * d); ctx.beginPath();
+        BK[p.lvl * 6 + Math.min(5, Math.floor(d * 6))].push(SX[j], SY[j], SX[j] + (SX[i] - SX[j]) * L, SY[j] + (SY[i] - SY[j]) * L); }
+      BK.forEach((bk, n) => { if (!bk.length) return; const lvl = Math.floor(n / 6), d = (n % 6 + .5) / 6;
+        ctx.strokeStyle = `rgba(${NV},${Math.max([.9, .62, .34, .12, .1][lvl], (.12 + .8 * d * d) * (lvl === LEAF ? .78 : 1))})`; ctx.lineWidth = [4.4, 2.6, 1.6, .95, .6][lvl] * (.7 + .6 * d); ctx.beginPath();
         for (let q = 0; q < bk.length; q += 4) { ctx.moveTo(bk[q], bk[q + 1]); ctx.lineTo(bk[q + 2], bk[q + 3]); } ctx.stroke(); });
       /* the stars */
       for (let i = 0; i < N; i++) {
@@ -632,22 +637,22 @@ button{font:inherit;color:inherit}
         const L = LIT[i], rn = p.rn, wave = b > 0 ? clamp01(1 - Math.abs(b * 1.7 - .2 - rn) / .34) : 0;
         const done = p.lvl === LEAF ? clamp01((v - p.chk * .93) / .07) : v > 0 ? 1 : 0, hit = done > 0 && done < 1 ? Math.sin(Math.PI * done) : 0, pop = Math.sin(Math.PI * L) * .7 + hit * 2.6 + done * .55 + wave * .9;
         if (L < 1) { ctx.fillStyle = `rgba(${WHITE},${(.4 + .5 * d) * tw * (1 - L)})`; dot(x, y, p.mag * q * .95); }
-        if (L > 0) { const size = [4.6, 2.7, 1.9, 1.25][p.lvl] * q * (1 + .45 * pop), al = L * (.3 + .7 * d);
-          if (p.lvl < LEAF) { ctx.fillStyle = `rgba(${NV},${al * .22})`; dot(x, y, size * 2.6); }
+        if (L > 0) { const size = (p.par < 0 ? 5 : [2, 1.9, 1.7, 1.45, 1.15][p.lvl]) * q * (1 + .45 * pop), al = L * (.3 + .7 * d);
+          if (p.par < 0) { ctx.fillStyle = `rgba(${NV},${al * .22})`; dot(x, y, size * 2.8); }
           ctx.fillStyle = `rgba(${NV},${al})`; dot(x, y, size);
-          const hot = Math.max(done * .8, wave, p.lvl < 2 ? .8 : 0); if (hot > 0) { ctx.fillStyle = `rgba(${LIME},${al * hot})`; dot(x, y, size * .72); }
+          const hot = Math.max(done * .8, wave, p.par < 0 ? .8 : 0); if (hot > 0) { ctx.fillStyle = `rgba(${LIME},${al * hot})`; dot(x, y, size * .72); }
           if (hit > 0) { ctx.fillStyle = `rgba(255,255,255,${hit * .9})`; dot(x, y, size * .6); } }
       }
       ctx.globalCompositeOperation = 'source-over';
-      /* labels: each stalk's name sits just outside the tree and shows while the stalk points sideways */
+      /* labels: each branch's name sits just outside the crown and shows while the branch is in front and to one side */
       const la = clamp01((m - .8) / .2);
-      if (la > 0) { ctx.font = `500 ${W < 600 ? 10 : 11.5}px "Geist Mono",ui-monospace,monospace`; ctx.textBaseline = 'middle'; const Rz = R * zoom;
-        for (let i = 1; i <= 12; i++) { const p = S[i], e = 1.14 * R * p.len, X = (p.dir[0] * ca + p.dir[2] * sa) * e, Z0 = (p.dir[2] * ca - p.dir[0] * sa) * e, Y = p.dir[1] * e * cb - Z0 * sb;
-          const side = Math.hypot(X, Y) / (1.14 * R * p.len), al = la * clamp01((side - .8) / .15);
-          if (al < .03) continue; ctx.fillStyle = `rgba(214,236,170,${al})`; ctx.textAlign = X >= 0 ? 'left' : 'right'; ctx.fillText(NAMES[i - 1], cx + X * zoom, cy + Y * zoom); } }
+      if (la > 0) { ctx.font = `500 ${W < 600 ? 10 : 11.5}px "Geist Mono",ui-monospace,monospace`; ctx.textBaseline = 'middle';
+        for (let n = 0; n < 12; n++) { const p = S[BRANCH[n]], u = unit(p.x, (p.y - CROWN) * .8, p.z), ax = u[0] * .97 * R, ay = (CROWN + u[1] * .95) * R, az = u[2] * .97 * R;
+          const X = ax * ca + az * sa, Z0 = az * ca - ax * sa, Y = ay * cb - Z0 * sb, al = la * clamp01((Math.abs(X) / R - .58) / .16) * clamp01(.6 - Z0 / (.4 * R));
+          if (al < .03) continue; ctx.fillStyle = `rgba(214,236,170,${al})`; ctx.textAlign = X >= 0 ? 'left' : 'right'; ctx.fillText(NAMES[n], cx + X * zoom, cy + Y * zoom); } }
       /* the finishing flash: one widening ring and sparkles that go off one after another on the outer stars */
       if (b > 0 && b < 1) { const Rz = R * zoom;
-        ctx.strokeStyle = `rgba(${LIME},${(1 - b) * .55})`; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(cx, cy, Rz * (.25 + b * 1.25), 0, TAU); ctx.stroke();
+        ctx.strokeStyle = `rgba(${LIME},${(1 - b) * .55})`; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(cx, gy, Rz * (.25 + b * 1.25), 0, TAU); ctx.stroke();
         SPK.forEach((p, n) => { const q = clamp01((b - (n * .137) % .56) / .38); if (q <= 0 || q >= 1) return; const s = Math.sin(Math.PI * q), x = SX[p], y = SY[p], Lg = 4 + 15 * s, D = Lg * .42;
           ctx.strokeStyle = `rgba(255,255,255,${s})`; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(x - Lg, y); ctx.lineTo(x + Lg, y); ctx.moveTo(x, y - Lg); ctx.lineTo(x, y + Lg); ctx.stroke();
           ctx.lineWidth = .8; ctx.beginPath(); ctx.moveTo(x - D, y - D); ctx.lineTo(x + D, y + D); ctx.moveTo(x - D, y + D); ctx.lineTo(x + D, y - D); ctx.stroke(); }); }
