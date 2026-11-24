@@ -258,22 +258,20 @@ button{font:inherit;color:inherit}
 }
 /* ---------- star version: the dark page; the lit green sits on NVIDIA green (#76B900) ---------- */
 :root{--g:118,185,0;--green:#76B900;--green-f:#76B900;--green-2:#B9E769}
-/* The sky fills the whole first screen behind everything. Wide screens: words on the left, the tree on the right,
-   so the whole scene is visible without scrolling. Narrow screens: words, then the tree. */
-.hero{position:relative;overflow:hidden;text-align:center;padding-block:clamp(28px,4vw,48px) clamp(48px,7vw,96px)}
+/* The sky fills the whole first screen behind everything. The words are on top, centred; the scene is below them,
+   as wide as the page. On wide screens the headline is one line so that the scene still fits the first screen. */
+.hero{position:relative;overflow:hidden;text-align:center;padding-block:clamp(28px,3.4vw,44px) clamp(48px,7vw,96px)}
 #sky{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;-webkit-mask-image:linear-gradient(180deg,#000 84%,transparent);mask-image:linear-gradient(180deg,#000 84%,transparent)}
 .hero>.wrap{position:relative;z-index:1}
+.hero .sub{max-width:38em;text-wrap:balance}
 .stage{position:relative;height:clamp(410px,108vw,500px);margin-top:14px}
 .stage .cmp{position:absolute;left:0;right:0;bottom:0}
-@media (min-width:980px){
-  .hero{text-align:left}
-  .first{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1fr);align-items:center;gap:64px}
-  .hero h1{font-size:clamp(3.1rem,5.2vw,4.65rem);margin-top:24px}
-  .hero .sub{margin-inline:0;max-width:27em;text-wrap:pretty}
-  .nums{max-width:none}
-  .nums li:first-child{padding-left:0}
-  .cta{justify-content:flex-start}
-  .stage{height:clamp(450px,calc(100svh - 215px),620px);margin-top:0}
+@media (min-width:1000px){
+  .hero h1{font-size:clamp(3rem,4.7vw,4.3rem);margin-top:18px}
+  .hero h1 span{display:inline}
+  .hero .sub{margin-top:14px}
+  .cta{margin-top:24px}
+  .stage{height:clamp(430px,calc(100svh - 400px),560px);margin-top:6px}
 }
 </style>
 </head>
@@ -293,20 +291,16 @@ button{font:inherit;color:inherit}
   <section class="hero" id="top">
     <canvas id="sky" aria-hidden="true"></canvas>
     <div class="wrap">
-      <div class="first">
-      <div>
       <span class="chip"><i></i>Technical report, 2026</span>
-      <h1 class="grad"><span>Half the tokens.</span><span>All the behavior.</span></h1>
+      <h1 class="grad"><span>Half the tokens.</span> <span>All the behavior.</span></h1>
       <p class="sub">Nanolize rewrites a bloated repository from scratch into a nano one that coding agents read, change and run for fewer tokens.</p>
       <p class="cta"><a class="btn go" href="#">Read the paper</a><a class="btn gh" href="#">Get the code</a></p>
-      </div>
-      <div class="stage" id="stage" role="img" aria-label="Animation: a wall of complicated code turns into a sky of stars joined by a tangle of lines, the same code drawn as a graph. Then the sky is simplified to a subgraph: the stars and lines that stay, standing for 36,458 of Detectron2's 76,888 lines, light up green, the rest fade, 382 checks pass and the subgraph flashes. Stars and lines near the pointer brighten.">
+      <div class="stage" id="stage" role="img" aria-label="Animation: a wall of complicated code turns into a sky of stars joined by a tangle of lines, the same code drawn as a graph. Then the sky is simplified to a subgraph: the stars and lines that stay, standing for 36,458 of Detectron2's 76,888 lines, light up green as twelve small ring systems joined by a regular frame of long links, the rest fade, 382 checks pass and the subgraph flashes. Stars and lines near the pointer brighten.">
         <div class="cmp m" id="cmp">
-          <span class="ph" id="orb-phase">before and after</span>
+          <span class="ph" id="orb-phase">delivered</span>
           <div class="row"><span class="k">original</span><span class="bar"><i></i></span><span><b class="num">76,888</b> lines</span><span class="c">382 checks frozen</span></div>
           <div class="row nano"><span class="k">nano</span><span class="bar"><i id="orb-bar"></i></span><span><b class="num" id="orb-lines">36,458</b> lines</span><span class="c"><b class="num" id="orb-checks">382 / 382</b> pass</span></div>
         </div>
-      </div>
       </div>
       <ul class="nums">
         <li><b class="num">−49.44%</b><span class="m">tokens, mean of eight libraries</span></li>
@@ -540,14 +534,15 @@ button{font:inherit;color:inherit}
 
   /* ---------------- hero. One loop tells the story: a wall of complicated code; the code turns into a sky of stars
      tied together by a tangle of lines (the same code, as a graph); then the sky is simplified to a subgraph: the
-     stars and lines that stay light up green, the rest fade to a trace. Once something is a star it does not move.
+     stars and lines that stay light up green, the rest fade to a trace. What stays is orderly: twelve small ring
+     systems on a slowly turning disc, joined by a regular frame of long links. Once something is a star it does not move.
      The share of stars that stays is the real ratio for Detectron2, 36,458 of 76,888 lines. The graph itself is
      illustrative and the code shown is a made-up example; the labels are Detectron2's public packages.
      The sky answers the pointer: stars and lines near it brighten and lean away, and what was removed shows again
      under it. ?t=seconds in the address freezes the scene at that moment (for screenshots). ---------------- */
   (() => {
     const hero = $('#top'), cv = $('#sky'), ctx = cv.getContext('2d'), stage = $('#stage');
-    const N = 1200, K = Math.round(N * 36458 / 76888), T = 21, TAU = 6.2832;
+    const N = 760, K = Math.round(N * 36458 / 76888), T = 21, TAU = 6.2832;   // 360 of 760 stars stay
     const WHITE = '202,210,228', NV = '118,185,0', LIME = '196,240,110';
     const NAMES = ['modeling', 'data', 'engine', 'evaluation', 'structures', 'layers', 'config', 'checkpoint', 'solver', 'export', 'utils', 'model_zoo'];
     const CODE = `class PipelineRunner(LegacyRunnerBase, HookMixin, ExportMixin):
@@ -633,45 +628,43 @@ def resolve_options(base, overrides=None, env=None, *, allow_new=False, freeze=T
     const inBall = (sx, sy, sz) => { for (;;) { const x = rng() * 2 - 1, y = rng() * 2 - 1, z = rng() * 2 - 1; if (x * x + y * y + z * z <= 1) return [x * sx, y * sy, z * sz]; } };
     const d2 = (p, q) => (p.x - q.x) ** 2 + (p.y - q.y) ** 2 + (p.z - q.z) ** 2;
 
-    /* The stars. First the K that stay: twelve groups (one per name), each a small cloud around its centre, the
-       centres spread through the cluster. Then the stars that go: some crowded in among the groups, the rest
-       spread over the whole first screen. */
-    const S = [], HUB = [], GROUP = [], farthest = (tries, make, others) => { let best = null, far = -1;
-      for (let c = 0; c < tries; c++) { const p = make(); let near = 99; for (const q of others) { const d = d2(p, q); if (d < near) near = d; } if (near > far) { far = near; best = p; } } return best; };
-    const centres = []; for (let g = 0; g < 12; g++) centres.push(farthest(g ? 14 : 1, () => { const [x, y, z] = g ? inBall(.98, .78, .9) : [0, 0, 0]; return { x, y, z }; }, centres));
-    const share = centres.map(() => .55 + rng()), whole = share.reduce((u, v) => u + v, 0), count = share.map(v => Math.max(12, Math.floor(v / whole * K)));
-    for (let g = 0; count.reduce((u, v) => u + v, 0) < K; g = (g + 1) % 12) count[g]++;
-    for (let g = 0; count.reduce((u, v) => u + v, 0) > K; g = (g + 1) % 12) if (count[g] > 12) count[g]--;
-    centres.forEach((c, g) => { const mine = [], spread = .2 + .08 * Math.sqrt(count[g] / 47);
-      for (let n = 0; n < count[g]; n++) { const p = n ? farthest(4, () => { const [x, y, z] = inBall(1, 1, 1), r = spread * (.85 + .4 * rng()); return { x: c.x + x * r, y: c.y + y * r, z: c.z + z * r }; }, mine) : { x: c.x, y: c.y, z: c.z };
-        p.keep = true; p.group = g; if (!n) { p.hub = g; HUB.push(S.length); } mine.push(p); S.push(p); }
-      GROUP.push([S.length - mine.length, S.length]); });
-    const CL = K + Math.round((N - K) * .46);                                   // stars below this index sit in the cluster
-    while (S.length < CL) { const [x, y, z] = inBall(1.4, 1.15, 1.3); S.push({ x, y, z }); }
+    /* The stars, in units of the disc's radius. First the K that stay: twelve ring systems, each a centre with a
+       ring of 9 and a ring of 20 (30 stars), laid out on a flat disc: one in the middle, four on an inner circle,
+       seven on an outer circle. The systems lie almost flat on the disc, each tipped a little its own way. Then the stars that go: scattered through the
+       same disc, and over the whole first screen. */
+    const S = [], HUB = [], cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+    const centres = [[0, 0, 0], ...Array.from({ length: 4 }, (_, n) => { const th = .4 + n * TAU / 4; return [.44 * Math.cos(th), n % 2 ? .06 : -.06, .44 * Math.sin(th)]; }),
+      ...Array.from({ length: 7 }, (_, n) => { const th = .2 + n * TAU / 7; return [.86 * Math.cos(th), n % 2 ? -.08 : .08, .86 * Math.sin(th)]; })];
+    centres.forEach((c, g) => { const th = .26 * rng(), ph = rng() * TAU, n = [Math.sin(th) * Math.cos(ph), Math.cos(th), Math.sin(th) * Math.sin(ph)], u = unit(...cross(n, [1, 0, 0])), v = cross(n, u), big = g ? 1 : 1.25, turn = rng() * TAU;
+      HUB.push(S.length); S.push({ x: c[0], y: c[1], z: c[2], keep: true, hub: g });
+      for (const [count, r] of [[9, .075], [20, .15]]) for (let j = 0; j < count; j++) { const al = turn + j * TAU / count, ca = Math.cos(al) * r * big, sa = Math.sin(al) * r * big;
+        S.push({ x: c[0] + u[0] * ca + v[0] * sa, y: c[1] + u[1] * ca + v[1] * sa, z: c[2] + u[2] * ca + v[2] * sa, keep: true }); } });
+    const CL = K + Math.round((N - K) * .56);                                   // stars below this index sit in the disc
+    while (S.length < CL) { const r = 1.2 * Math.sqrt(rng()), th = rng() * TAU; S.push({ x: r * Math.cos(th), y: (rng() - .5) * .62 * (1 - .35 * r), z: r * Math.sin(th) }); }
     while (S.length < N) { const r = Math.pow(rng(), .62), th = rng() * TAU; S.push({ wide: true, ux: r * Math.cos(th), uz: r * Math.sin(th), uy: rng() * 2 - 1 }); }
-    S.forEach(p => { if (p.wide) { p.x = p.ux * 4.2; p.y = p.uy * 2.6; p.z = p.uz * 4.2; } });   // nominal place, only for finding neighbours
+    S.forEach(p => { if (p.wide) { p.x = p.ux * 3.2; p.y = p.uy * 1.6; p.z = p.uz * 3.2; } });   // nominal place, only for finding neighbours
 
-    /* The lines. KEPT is the subgraph that stays: inside each group a web of short links with a few loops, and
-       between the groups a handful of long links from centre to centre. MESS is everything else: every star tied to
-       a neighbour or two, and longer ties across the cluster. The opening sky shows both, equally faint. */
+    /* The lines. KEPT is the subgraph that stays: in each system the two rings, three links from the centre to
+       the inner ring and three from the inner ring to the outer; between systems a frame of long links (the middle
+       to the inner four, the inner four in a square, the outer seven in a heptagon, each outer one to its nearest
+       inner one). It has loops everywhere; it is not a tree. MESS is everything else: every star tied to a
+       neighbour or two, and long ties across the disc. The opening sky shows both, equally faint. */
     const KEPT = [], MESS = [], tied = new Set(), deg = new Uint8Array(N), nb = Array.from({ length: K }, () => []);
     const key = (i, j) => i < j ? i * N + j : j * N + i;
-    const keep = (i, j, bridge) => { tied.add(key(i, j)); KEPT.push({ a: i, b: j, bridge }); deg[i]++; deg[j]++; nb[i].push(j); nb[j].push(i); };
-    const span = (ids, bridge) => { const n = ids.length, best = new Float32Array(n).fill(99), from = new Int32Array(n), done = new Uint8Array(n); let cur = 0; done[0] = 1;   // the shortest web that joins them all
-      for (let m = 1; m < n; m++) { let nx = -1, nd = 99;
-        for (let j = 0; j < n; j++) { if (done[j]) continue; const d = d2(S[ids[cur]], S[ids[j]]); if (d < best[j]) { best[j] = d; from[j] = cur; } if (best[j] < nd) { nd = best[j]; nx = j; } }
-        done[nx] = 1; keep(ids[from[nx]], ids[nx], bridge); cur = nx; } };
-    GROUP.forEach(([lo, hi]) => span(Array.from({ length: hi - lo }, (_, n) => lo + n), false));
-    span(HUB, true);
-    HUB.forEach((h, g) => { let j = -1, dj = 99; HUB.forEach((o, f) => { if (f !== g && !tied.has(key(h, o))) { const d = d2(S[h], S[o]); if (d < dj) { dj = d; j = o; } } }); if (j >= 0 && g % 3 === 0) keep(h, j, true); });
+    const keep = (i, j, bridge) => { if (tied.has(key(i, j))) return; tied.add(key(i, j)); KEPT.push({ a: i, b: j, bridge }); deg[i]++; deg[j]++; nb[i].push(j); nb[j].push(i); };
+    const nearest = (i, ids) => ids.reduce((best, j) => d2(S[i], S[j]) < d2(S[i], S[best]) ? j : best, ids[0]);
+    HUB.forEach(h => { const inner = Array.from({ length: 9 }, (_, j) => h + 1 + j), outer = Array.from({ length: 20 }, (_, j) => h + 10 + j);
+      inner.forEach((i, j) => keep(i, inner[(j + 1) % 9], false)); outer.forEach((i, j) => keep(i, outer[(j + 1) % 20], false));
+      for (const j of [0, 3, 6]) keep(h, inner[j], false); for (const j of [1, 4, 7]) keep(inner[j], nearest(inner[j], outer), false); });
+    for (let n = 0; n < 4; n++) { keep(HUB[0], HUB[1 + n], true); keep(HUB[1 + n], HUB[1 + (n + 1) % 4], true); }
+    for (let n = 0; n < 7; n++) { keep(HUB[5 + n], HUB[5 + (n + 1) % 7], true); keep(HUB[5 + n], nearest(HUB[5 + n], HUB.slice(1, 5)), true); }
     const near2 = S.map((p, i) => { let a = -1, b = -1, da = 99, db = 99; S.forEach((q, j) => { if (j === i) return; const d = d2(p, q); if (d < da) { b = a; db = da; a = j; da = d; } else if (d < db) { b = j; db = d; } }); return [a, da, b, db]; });
-    for (let i = 0; i < K; i++) for (const n of [0, 2]) { const j = near2[i][n]; if (j >= 0 && j < K && S[j].group === S[i].group && !tied.has(key(i, j)) && deg[i] < 4 && deg[j] < 4 && rng() < .3) keep(i, j, false); }
     const tie = (i, j) => { if (i !== j && !tied.has(key(i, j))) { tied.add(key(i, j)); MESS.push({ i, j, off: rng(), spark: rng() < .22 }); } };
     S.forEach((p, i) => { const [a, da, b, db] = near2[i];
-      if (p.keep) { if (da < .09 && rng() < .5) tie(i, a); if (db < .12 && rng() < .35) tie(i, b); }
-      else { if (da < .16) tie(i, a); if (db < .16 && rng() < .45) tie(i, b); }
-      if (!p.wide && rng() < .5) { const j = Math.floor(rng() * CL); if (d2(p, S[j]) < .7) tie(i, j); } });
-    /* The subgraph lights up outward from the middle group: along the long links first, then through each group. */
+      if (p.keep) { if (da < .012 && rng() < .45) tie(i, a); if (db < .016 && rng() < .3) tie(i, b); }
+      else { if (da < .03) tie(i, a); if (db < .03 && rng() < .5) tie(i, b); }
+      if (!p.wide && rng() < (p.keep ? .5 : .9)) { const j = Math.floor(rng() * CL); if (d2(p, S[j]) < .55) tie(i, j); } });
+    /* The subgraph lights up outward from the middle system: along the long links first, then round each ring. */
     { const hop = new Int32Array(K).fill(-1), q = [HUB[0]]; hop[HUB[0]] = 0; let far = 1;
       for (let h = 0; h < q.length; h++) for (const j of nb[q[h]]) if (hop[j] < 0) { hop[j] = hop[q[h]] + 1; far = Math.max(far, hop[j]); q.push(j); }
       for (let i = 0; i < K; i++) S[i].ord = hop[i] / far * .8 + rng() * .03;
@@ -680,12 +673,13 @@ def resolve_options(base, overrides=None, env=None, *, allow_new=False, freeze=T
       p.mag = rng() < .035 ? 2.3 + rng() : .85 + rng() * .8; p.ph = rng() * TAU; p.sp = .5 + rng() * 1.3;
       if (!p.keep) p.ord = rng();                                               // when it fades
       p.chk = Math.atan2(p.z, p.x) / TAU + .5;                                  // checks sweep round the cluster
-      p.rn = Math.min(1, Math.hypot(p.x, p.y, p.z) / 1.1); p.dly = rng() * .45; // the flash passes outward; when it leaves the code
+      p.rn = Math.min(1, Math.hypot(p.x, p.z)); p.dly = rng() * .45; // the flash passes outward; when it leaves the code
     });
-    const SPK = [...Array(K).keys()].filter(i => i % 43 === 7 && !(S[i].hub >= 0));                 // the stars that sparkle at the finish
+    const SPK = [...Array(K).keys()].filter(i => i % 29 === 7 && !(S[i].hub >= 0));                 // the stars that sparkle at the finish
     /* Every cluster star starts as one character of the code. */
-    const CELLS = []; CODE.slice(1, 28).forEach((line, r) => { for (let c = 0; c < Math.min(line.length, 62); c++) if (line[c] !== ' ') CELLS.push([r + 1, c, line[c]]); });
-    for (let i = 0; i < CL; i++) { const cell = CELLS[Math.floor(rng() * CELLS.length)]; S[i].row = cell[0]; S[i].col = cell[1]; S[i].ch = cell[2]; }
+    const SHIFT = 40, CELLS = [];                                              // the second column starts this many lines further on
+    for (const side of [0, 1]) for (let r = 1; r < 26; r++) { const text = CODE[(r + side * SHIFT) % CODE.length]; for (let c = 0; c < Math.min(text.length, 62); c++) if (text[c] !== ' ') CELLS.push([r, c, text[c], side]); }
+    for (let i = 0; i < CL; i++) { const cell = CELLS[Math.floor(rng() * CELLS.length)]; S[i].row = cell[0]; S[i].col = cell[1]; S[i].ch = cell[2]; S[i].side = cell[3]; }
 
     const SX = new Float32Array(N), SY = new Float32Array(N), SQ = new Float32Array(N), SD = new Float32Array(N), SN = new Float32Array(N), LIT = new Float32Array(N), SW = new Float32Array(N), SA = new Float32Array(N);
     const BK = Array.from({ length: 12 }, () => []);                            // lit links (short ones, then the long ones), bucketed by depth, one stroke each
@@ -698,7 +692,7 @@ def resolve_options(base, overrides=None, env=None, *, allow_new=False, freeze=T
       const r = hero.getBoundingClientRect(), s = stage.getBoundingClientRect(), tall = s.height - hud.box.offsetHeight - 14;   // the readout sits at the bottom of the stage
       W = r.width; H = r.height; cx = s.left - r.left + s.width / 2; cy = s.top - r.top + tall * .5;
       sx0 = s.left - r.left; sx1 = sx0 + s.width; sy0 = s.top - r.top; sy1 = sy0 + tall;
-      R = Math.min(tall * .44, s.width * .4, 250); RW = Math.max(cx, W - cx) * 1.12; F = Math.max(1000, RW * 1.5);
+      R = Math.min(s.width * .44, 340, (tall / 2 - 14) / .66); RW = Math.max(cx, W - cx) * 1.12; F = Math.max(1000, RW * 1.5);      // the disc's radius: it is seen from a little above, so its height is about .66 R
       dpr = Math.min(2, window.devicePixelRatio || 1, Math.sqrt(4.6e6 / (W * H)));
       cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
       fs = W < 600 ? 8.5 : 10.5; lh = fs * 1.36; ctx.font = `${fs}px "Geist Mono",ui-monospace,monospace`; cw = ctx.measureText('0000000000').width / 10;
@@ -711,14 +705,15 @@ def resolve_options(base, overrides=None, env=None, *, allow_new=False, freeze=T
          13.9 a modest flash; then the subgraph holds; 18.6 the sky comes back; 19.7 it turns into code again. */
       const k = 1 - ease(seg(t, 18.6, 19.6)), sky = seg(t, 2.4, 5.2) * (1 - seg(t, 19.7, 21)), web = ease(clamp01((sky - .6) / .4));
       const raw = seg(t, 7.0, 11.4) * k, m = ease(seg(t, 7.0, 11.4)) * k, v = k < 1 ? 0 : seg(t, 11.6, 13.8), b = k < 1 ? 0 : seg(t, 13.9, 15.7);
-      const a = spin + yaw, tilt = .3 + pitch, ca = Math.cos(a), sa = Math.sin(a), cb = Math.cos(tilt), sb = Math.sin(tilt), zoom = 1 + .06 * m;
-      const scroll = (t < 12 ? Math.min(t, 5.2) : t - T) * 6, tx0 = sx0 + 6, ty0 = sy0 + 8 - scroll, cols = Math.floor((sx1 - sx0 - 12) / cw), wake = lens * web, reach = W < 600 ? 86 : 124;
+      const a = spin + yaw, tilt = .44 + pitch, ca = Math.cos(a), sa = Math.sin(a), cb = Math.cos(tilt), sb = Math.sin(tilt), zoom = 1 + .06 * m;
+      const two = sx1 - sx0 > 900, colW = two ? (sx1 - sx0 - 36) / 2 : sx1 - sx0 - 12, cols = Math.floor(colW / cw), shift = colW + 30;      // the code: two columns when there is room
+      const scroll = (t < 12 ? Math.min(t, 5.2) : t - T) * 6, tx0 = sx0 + 6, ty0 = sy0 + 8 - scroll, wake = lens * web, reach = W < 600 ? 86 : 124;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
       /* where every star is: on its way from its character in the code to its place in the sky, then nudged by the pointer */
       for (let i = 0; i < N; i++) {
         const p = S[i], X = p.px * ca + p.pz * sa, Z0 = p.pz * ca - p.px * sa, Y = p.py * cb - Z0 * sb, Z = Z0 * cb + p.py * sb, q = F / Math.max(F * .3, F + Z) * zoom;
         let x = cx + X * q, y = cy + Y * q, go = 1;
-        if (i < CL) { go = ease(clamp01((sky - p.dly) / .55)); if (go < 1) { x = lerp(tx0 + (p.col + .5) * cw, x, go); y = lerp(ty0 + p.row * lh, y, go); } } else go = ease(clamp01((sky - .4) / .6));
+        if (i < CL) { go = ease(clamp01((sky - p.dly) / .55)); if (go < 1) { x = lerp(tx0 + (two ? p.side * shift : 0) + (p.col + .5) * cw, x, go); y = lerp(ty0 + p.row * lh, y, go); } } else go = ease(clamp01((sky - .4) / .6));
         let w = 0; if (wake > .01) { const dx = x - px, dy = y - py, d = Math.hypot(dx, dy); w = Math.exp(-(d * d) / (reach * reach)) * wake; if (d > 1) { const push = w * 9 * Math.min(1, d / 30); x += dx / d * push; y += dy / d * push; } }
         SX[i] = x; SY[i] = y; SQ[i] = q; SA[i] = go; SW[i] = w; SN[i] = clamp01(((F + Z) / F - .45) / .3);
         SD[i] = p.wide ? clamp01(.5 - Z / (2.2 * RW)) : clamp01(.5 - Z / (2.6 * R));
@@ -728,30 +723,30 @@ def resolve_options(base, overrides=None, env=None, *, allow_new=False, freeze=T
       const ta = 1 - ease(clamp01(sky / .55));
       if (ta > .01) { ctx.font = `${fs}px "Geist Mono",ui-monospace,monospace`; ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
         const first = Math.floor(scroll / lh), rows = Math.ceil((sy1 - sy0) / lh) + 1;
-        for (let n = 0; n < rows; n++) { const r = first + n, y = ty0 + r * lh, edge = clamp01((y - sy0) / 30) * clamp01((sy1 - y) / 46); if (edge <= 0) continue;
-          const text = CODE[((r % CODE.length) + CODE.length) % CODE.length], head = text.trimStart();
-          ctx.fillStyle = `rgba(${WHITE},${ta * edge * (head[0] === '#' ? .42 : /^(class|def) /.test(head) ? 1 : .74)})`; ctx.fillText(text.slice(0, cols), tx0, y); } }
+        for (let side = 0; side < (two ? 2 : 1); side++) for (let n = 0; n < rows; n++) { const r = first + n, y = ty0 + r * lh, edge = clamp01((y - sy0) / 30) * clamp01((sy1 - y) / 46); if (edge <= 0) continue;
+          const text = CODE[(((r + side * SHIFT) % CODE.length) + CODE.length) % CODE.length], head = text.trimStart();
+          ctx.fillStyle = `rgba(${WHITE},${ta * edge * (head[0] === '#' ? .42 : /^(class|def) /.test(head) ? 1 : .74)})`; ctx.fillText(text.slice(0, cols), tx0 + side * shift, y); } }
       if (m > .02 || b > 0) { const rg = R * 1.9, g = ctx.createRadialGradient(cx, cy, 0, cx, cy, rg), al = .1 * m + Math.sin(Math.PI * Math.min(1, b * 1.5)) * .18; g.addColorStop(0, `rgba(${NV},${al})`); g.addColorStop(1, `rgba(${NV},0)`); ctx.fillStyle = g; ctx.fillRect(cx - rg, cy - rg, rg * 2, rg * 2); }
       if (wake > .02) { const g = ctx.createRadialGradient(px, py, 0, px, py, reach * 1.5); g.addColorStop(0, `rgba(${WHITE},${.07 * wake})`); g.addColorStop(1, `rgba(${WHITE},0)`); ctx.fillStyle = g; ctx.fillRect(px - reach * 1.5, py - reach * 1.5, reach * 3, reach * 3); }
       ctx.lineCap = 'round'; ctx.lineWidth = 1;
       /* the tangle: untouched lines in one stroke; a line being removed pulls back from its middle; near the pointer
          lines brighten, and the ones already removed show again */
       if (web > 0) {
-        ctx.strokeStyle = `rgba(${WHITE},${.115 * web})`; ctx.beginPath(); const busy = [];
+        ctx.strokeStyle = `rgba(${WHITE},${.135 * web})`; ctx.beginPath(); const busy = [];
         for (const e of MESS) { if (SN[e.i] * SN[e.j] < .05) continue; const d = clamp01((raw - e.off * .82) / .18), w = (SW[e.i] + SW[e.j]) / 2; if (d > 0 || w > .03) { if (d < 1 || w > .03) busy.push(e, d, w); continue; } ctx.moveTo(SX[e.i], SY[e.i]); ctx.lineTo(SX[e.j], SY[e.j]); }
         for (const e of KEPT) { if (LIT[e.b] <= 0 && SW[e.a] + SW[e.b] < .06) { ctx.moveTo(SX[e.a], SY[e.a]); ctx.lineTo(SX[e.b], SY[e.b]); } }
         ctx.stroke();
         for (let n = 0; n < busy.length; n += 3) { const e = busy[n], d = busy[n + 1], w = busy[n + 2], x1 = SX[e.i], y1 = SY[e.i], x2 = SX[e.j], y2 = SY[e.j];
           if (d >= 1) { ctx.strokeStyle = `rgba(${WHITE},${.3 * w})`; line(x1, y1, x2, y2); continue; }
-          const h = .5 * (1 - d); ctx.strokeStyle = `rgba(${WHITE},${(.115 + .3 * w + (d > 0 && d < .5 ? .25 * (1 - d) : 0)) * web})`;
+          const h = .5 * (1 - d); ctx.strokeStyle = `rgba(${WHITE},${(.135 + .3 * w + (d > 0 && d < .5 ? .25 * (1 - d) : 0)) * web})`;
           if (d <= 0) line(x1, y1, x2, y2); else { ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x1 + (x2 - x1) * h, y1 + (y2 - y1) * h); ctx.moveTo(x2, y2); ctx.lineTo(x2 + (x1 - x2) * h, y2 + (y1 - y2) * h); ctx.stroke();
             if (e.spark && d < .35) { ctx.fillStyle = `rgba(255,255,255,${.9 * (1 - d / .35)})`; dot((x1 + x2) / 2, (y1 + y2) / 2, 1.3); } } }
         /* the subgraph: each kept line turns green from its earlier end */
         ctx.globalCompositeOperation = 'lighter';
         for (const bk of BK) bk.length = 0;
         for (const e of KEPT) { const g = LIT[e.b], w = (SW[e.a] + SW[e.b]) / 2, x1 = SX[e.a], y1 = SY[e.a], x2 = SX[e.b], y2 = SY[e.b], d = (SD[e.a] + SD[e.b]) / 2;
-          if (g <= 0) { if (w >= .03) { ctx.strokeStyle = `rgba(${WHITE},${(.115 + .34 * w) * web})`; line(x1, y1, x2, y2); } continue; }
-          if (g < 1) { ctx.strokeStyle = `rgba(${WHITE},${.115 * (1 - g)})`; line(x1, y1, x2, y2); ctx.strokeStyle = `rgba(${NV},${.3 + .6 * d})`; ctx.lineWidth = 1.2; line(x1, y1, x1 + (x2 - x1) * g, y1 + (y2 - y1) * g); ctx.lineWidth = 1; continue; }
+          if (g <= 0) { if (w >= .03) { ctx.strokeStyle = `rgba(${WHITE},${(.135 + .34 * w) * web})`; line(x1, y1, x2, y2); } continue; }
+          if (g < 1) { ctx.strokeStyle = `rgba(${WHITE},${.135 * (1 - g)})`; line(x1, y1, x2, y2); ctx.strokeStyle = `rgba(${NV},${.3 + .6 * d})`; ctx.lineWidth = 1.2; line(x1, y1, x1 + (x2 - x1) * g, y1 + (y2 - y1) * g); ctx.lineWidth = 1; continue; }
           BK[(e.bridge ? 6 : 0) + Math.min(5, Math.floor(d * 6))].push(x1, y1, x2, y2);
           if (w >= .03) { ctx.strokeStyle = `rgba(${LIME},${.6 * w})`; ctx.lineWidth = 1.6; line(x1, y1, x2, y2); ctx.lineWidth = 1; } }
         BK.forEach((bk, n) => { if (!bk.length) return; const d = (n % 6 + .5) / 6, long = n >= 6; ctx.strokeStyle = `rgba(${NV},${long ? .3 + .5 * d : .16 + .6 * d * d})`; ctx.lineWidth = long ? 1.1 + .6 * d : .7 + .45 * d; ctx.beginPath();
@@ -768,20 +763,21 @@ def resolve_options(base, overrides=None, env=None, *, allow_new=False, freeze=T
         const L = LIT[i], wave = b > 0 && b < 1 ? clamp01(1 - Math.abs(b * 1.7 - .2 - p.rn) / .34) : 0;
         const done = clamp01((v - p.chk * .93) / .07), hit = done > 0 && done < 1 ? Math.sin(Math.PI * done) : 0, pop = Math.sin(Math.PI * L) * .7 + hit * 2.2 + done * .3 + wave * .8 + w * 1.1;
         if (L < 1) { ctx.fillStyle = `rgba(${WHITE},${Math.min(1, (.4 + .5 * d) * tw * born * (1 - L) * (1 + w))})`; dot(x, y, size * .95 * (1 + .7 * w * (1 - L))); }
-        if (L > 0) { const sz = (p.hub >= 0 ? 3.2 : 1.05 + .2 * Math.min(4, deg[i])) * q * (1 + .45 * pop), al = L * (.34 + .66 * d);
+        if (L > 0) { const sz = (p.hub === 0 ? 4 : p.hub > 0 ? 3 : 1 + .22 * Math.min(4, deg[i])) * q * (1 + .45 * pop), al = L * (.34 + .66 * d);
           if (p.hub >= 0) { ctx.fillStyle = `rgba(${NV},${al * .2})`; dot(x, y, sz * 2.6); }
           ctx.fillStyle = `rgba(${NV},${al})`; dot(x, y, sz);
           const hot = Math.max(done * .7, wave, w, p.hub >= 0 ? .75 : 0); if (hot > 0) { ctx.fillStyle = `rgba(${LIME},${al * hot})`; dot(x, y, sz * .72); }
           if (hit > 0) { ctx.fillStyle = `rgba(255,255,255,${hit * .9})`; dot(x, y, sz * .6); } }
       }
       ctx.globalCompositeOperation = 'source-over';
-      /* names: on the well connected stars once they are lit, clearest at the sides, and wherever the pointer is */
+      /* names: under each system once it is lit, and wherever the pointer is */
       if (web > 0) { ctx.font = `500 ${W < 600 ? 10 : 11.5}px "Geist Mono",ui-monospace,monospace`; ctx.textBaseline = 'middle';
-        for (const i of HUB) { const x = SX[i], y = SY[i], dx = x - cx, dy = y - cy, l = Math.hypot(dx, dy) || 1, al = Math.max(LIT[i] * clamp01((Math.abs(dx) / R - .45) / .2) * (.35 + .65 * SD[i]), SW[i] * 1.4 * web);
-          if (al < .04) continue; ctx.fillStyle = `rgba(214,236,170,${Math.min(1, al)})`; ctx.textAlign = dx >= 0 ? 'left' : 'right'; ctx.fillText(NAMES[S[i].hub], x + dx / l * 11, y + dy / l * 5); } }
+        ctx.textAlign = 'center';
+        for (const i of HUB) { const al = Math.max(LIT[i] * (.3 + .7 * SD[i]), SW[i] * 1.4 * web); if (al < .04) continue;
+          ctx.fillStyle = `rgba(214,236,170,${Math.min(1, al)})`; ctx.fillText(NAMES[S[i].hub], SX[i], SY[i] + (.12 * R * SQ[i] + 13)); } }
       /* the finishing flash: one widening ring and a dozen sparkles */
       if (b > 0 && b < 1) { const Rz = R * zoom;
-        ctx.strokeStyle = `rgba(${LIME},${(1 - b) * .5})`; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(cx, cy, Rz * (.25 + b * 1.25), 0, TAU); ctx.stroke();
+        ctx.strokeStyle = `rgba(${LIME},${(1 - b) * .5})`; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.ellipse(cx, cy, Rz * (.2 + b * 1.3), Rz * (.2 + b * 1.3) * (Math.abs(sb) + .06), 0, 0, TAU); ctx.stroke();
         SPK.forEach((p, n) => { const q = clamp01((b - (n * .137) % .56) / .38); if (q <= 0 || q >= 1) return; const sn = Math.sin(Math.PI * q), x = SX[p], y = SY[p], Lg = 4 + 14 * sn, D = Lg * .42;
           ctx.strokeStyle = `rgba(255,255,255,${sn})`; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(x - Lg, y); ctx.lineTo(x + Lg, y); ctx.moveTo(x, y - Lg); ctx.lineTo(x, y + Lg); ctx.stroke();
           ctx.lineWidth = .8; ctx.beginPath(); ctx.moveTo(x - D, y - D); ctx.lineTo(x + D, y + D); ctx.moveTo(x - D, y + D); ctx.lineTo(x + D, y - D); ctx.stroke(); }); }
