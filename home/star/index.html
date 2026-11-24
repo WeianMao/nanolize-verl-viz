@@ -252,6 +252,12 @@ button{font:inherit;color:inherit}
 .stage .cap{position:absolute;left:0;right:0;bottom:0;display:grid;gap:2px;justify-items:center}
 .stage .cap b{font-weight:500;color:var(--ink)}
 .stage .cap #orb-phase{color:var(--green-2)}
+/* when every check has passed the caption answers: the phase word pops once and the numbers turn green */
+.stage .cap #orb-phase{display:inline-block}
+.stage .cap.done b{color:var(--green-2);transition:color .4s}
+.stage .cap.done #orb-phase{animation:won .8s cubic-bezier(.2,1.5,.4,1)}
+@media (max-width:759px){.stage .cap .long{display:none}}
+@keyframes won{0%{transform:scale(1)}35%{transform:scale(1.7)}100%{transform:scale(1)}}
 @media (min-width:980px){
   .hero{text-align:left}
   .first{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1fr);align-items:center;gap:64px}
@@ -296,7 +302,7 @@ button{font:inherit;color:inherit}
       <p class="cta"><a class="btn go" href="#">Read the paper</a><a class="btn gh" href="#">Get the code</a></p>
       </div>
       <div class="stage" id="stage" role="img" aria-label="Animation: a slowly turning field of stars stands for the 76,888 lines of Detectron2. Nothing moves inward. The stars that stay, 36,458 lines, light up green as one tree that grows from its root through trunk, limbs and branches to the leaves; the rest go dark, 382 checks pass and the tree flashes.">
-        <p class="cap m"><span id="orb-phase">delivered</span><span><b class="num" id="orb-lines">36,458</b> lines of detectron2, <b class="num" id="orb-checks">382 / 382</b> checks pass</span></p>
+        <p class="cap m"><span id="orb-phase">delivered</span><span><b class="num" id="orb-lines">36,458</b> of 76,888 lines<span class="long"> of detectron2</span>, <b class="num" id="orb-checks">382 / 382</b> checks pass</span></p>
       </div>
       </div>
       <ul class="nums">
@@ -535,7 +541,7 @@ button{font:inherit;color:inherit}
      packages. ?t=seconds in the address freezes the scene at that moment (for screenshots). ---------------- */
   (() => {
     const hero = $('#top'), cv = $('#sky'), ctx = cv.getContext('2d'), stage = $('#stage');
-    const N = 1200, K = Math.round(N * 36458 / 76888), T = 15.6, TAU = 6.2832;
+    const N = 1200, K = Math.round(N * 36458 / 76888), T = 19, TAU = 6.2832;
     const WHITE = '202,210,228', NV = '118,185,0', LIME = '196,240,110';
     const NAMES = ['modeling', 'data', 'engine', 'evaluation', 'structures', 'layers', 'config', 'checkpoint', 'solver', 'export', 'utils', 'model_zoo'];
     const rng = (a => () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; })(41);
@@ -562,7 +568,6 @@ button{font:inherit;color:inherit}
     const hosts = [...tips, ...mids.map((_, i) => mids[i * 7 % mids.length])];          // leaves go round the twigs, tips first
     for (let n = 0; S.length < K; n++) { const h = hosts[n % hosts.length]; add(h, fan(S[h].dir, 1, .9)[0], .08 + rng() * .06, LEAF); }
     const TUFTS = S.map((p, i) => p.lvl === LEAF ? i : -1).filter(i => i >= 0), FAR = Math.max(...S.map(p => p.way));
-    S.forEach(p => { p.rn = Math.min(1, Math.hypot(p.x, p.y - CROWN, p.z)); });
     /* The rest of the sky: some of it inside and around the tree, most of it spread over the whole first screen. */
     while (S.length < N) {
       if (rng() < .4) { const d = unit(rng() - .5, rng() - .5, rng() - .5), r = 1.4 * Math.cbrt(rng()); S.push({ x: d[0] * r, y: d[1] * r, z: d[2] * r }); }
@@ -586,7 +591,7 @@ button{font:inherit;color:inherit}
     });
     const SX = new Float32Array(N), SY = new Float32Array(N), SQ = new Float32Array(N), SD = new Float32Array(N), SN = new Float32Array(N), LIT = new Float32Array(N);
     const BK = Array.from({ length: 30 }, () => []);          // tree lines, bucketed by level and depth, one stroke each
-    const SPK = TUFTS.filter((_, i) => i % 31 === 5);
+    const SPK = TUFTS.filter((_, i) => i % 14 === 5), TWK = TUFTS.filter((_, i) => i % 9 === 2);   // leaves that sparkle at the finish, and after it
     const hud = { lines: $('#orb-lines'), checks: $('#orb-checks'), phase: $('#orb-phase') };
     const PHASE = ['the original', 'rewriting from scratch', 'running the frozen checks', 'delivered'];
     let W = 0, H = 0, dpr = 1, cx = 0, cy = 0, R = 1, RW = 1, F = 1000, shown = -1, spin = .6, yaw = 0, pitch = 0, tyaw = 0, tpitch = 0, clock = 0;
@@ -600,9 +605,11 @@ button{font:inherit;color:inherit}
     };
     const dot = (x, y, r) => { ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill(); };
     const draw = t => {
-      const back = seg(t, 13.4, 15.4), k = 1 - ease(back), raw = seg(t, 2.4, 7.0) * k, m = ease(seg(t, 2.4, 7.0)) * k;
-      const v = back > 0 ? 0 : seg(t, 7.3, 9.9), b = back > 0 ? 0 : seg(t, 10.0, 11.9);
-      const a = spin + yaw, tilt = .3 + pitch, ca = Math.cos(a), sa = Math.sin(a), cb = Math.cos(tilt), sb = Math.sin(tilt), zoom = 1 + .08 * m, gy = cy + CROWN * R * cb * zoom;
+      const back = seg(t, 16.8, 18.8), k = 1 - ease(back), raw = seg(t, 2.4, 7.0) * k, m = ease(seg(t, 2.4, 7.0)) * k;
+      const v = back > 0 ? 0 : seg(t, 7.3, 9.9), b = back > 0 ? 0 : seg(t, 10.0, 12.4);
+      /* the finish: a pulse runs up the tree (rise), then a burst that dies away; won is the finished state that stays */
+      const rise = clamp01(b / .14), burst = b > 0 && b < 1 ? rise * rise * Math.exp(-Math.max(0, b - .14) * 6) : 0, won = t < 10 ? 0 : back > 0 ? k : clamp01((t - 10.34) / .6), breath = .6 + .4 * Math.sin(t * 1.7);
+      const a = spin + yaw, tilt = .3 + pitch, ca = Math.cos(a), sa = Math.sin(a), cb = Math.cos(tilt), sb = Math.sin(tilt), zoom = 1 + .08 * m + .035 * burst, gy = cy + CROWN * R * cb * zoom;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
       for (let i = 0; i < N; i++) {
         const p = S[i], X = p.px * ca + p.pz * sa, Z0 = p.pz * ca - p.px * sa, Y = p.py * cb - Z0 * sb, Z = Z0 * cb + p.py * sb, q = F / Math.max(F * .3, F + Z) * zoom;
@@ -610,8 +617,8 @@ button{font:inherit;color:inherit}
         SD[i] = p.keep ? clamp01(.5 - Z / (2 * R)) : clamp01(.5 - Z / (2.2 * RW));
         LIT[i] = p.keep ? ease(clamp01((raw - p.ord * .8) / .2)) : clamp01((raw - p.ord * .8) / .2);   // tree: how lit; rest: how dark
       }
-      const glow = m > .02 || b > 0;
-      if (glow) { const g = ctx.createRadialGradient(cx, gy, 0, cx, gy, R * 1.9), al = .13 * m + Math.sin(Math.PI * Math.min(1, b * 1.5)) * .2; g.addColorStop(0, `rgba(${NV},${al})`); g.addColorStop(1, `rgba(${NV},0)`); ctx.fillStyle = g; ctx.fillRect(cx - R * 2, cy - R * 2, R * 4, R * 4); }
+      if (m > .02) { const rg = R * (1.9 + .7 * burst), g = ctx.createRadialGradient(cx, gy, 0, cx, gy, rg), al = .13 * m + .42 * burst + .17 * won * breath; g.addColorStop(0, `rgba(${NV},${al})`); g.addColorStop(1, `rgba(${NV},0)`); ctx.fillStyle = g; ctx.fillRect(cx - rg, gy - rg, rg * 2, rg * 2); }
+      if (burst > .02) { const g = ctx.createRadialGradient(cx, gy, 0, cx, gy, R * 1.3); g.addColorStop(0, `rgba(236,255,205,${.4 * burst})`); g.addColorStop(1, 'rgba(236,255,205,0)'); ctx.fillStyle = g; ctx.fillRect(cx - R * 1.3, gy - R * 1.3, R * 2.6, R * 2.6); }
       ctx.lineCap = 'round';
       /* the faint web: whole lines in one stroke; a line that is breaking pulls back from its middle */
       ctx.strokeStyle = `rgba(${WHITE},.075)`; ctx.lineWidth = 1; ctx.beginPath();
@@ -627,21 +634,24 @@ button{font:inherit;color:inherit}
       for (let i = 1; i < K; i++) { const L = LIT[i]; if (L <= 0) continue; const p = S[i], j = p.par, d = (SD[i] + SD[j]) / 2;
         BK[p.lvl * 6 + Math.min(5, Math.floor(d * 6))].push(SX[j], SY[j], SX[j] + (SX[i] - SX[j]) * L, SY[j] + (SY[i] - SY[j]) * L); }
       BK.forEach((bk, n) => { if (!bk.length) return; const lvl = Math.floor(n / 6), d = (n % 6 + .5) / 6;
-        ctx.strokeStyle = `rgba(${NV},${Math.max([.9, .62, .34, .12, .1][lvl], (.12 + .8 * d * d) * (lvl === LEAF ? .78 : 1))})`; ctx.lineWidth = [4.4, 2.6, 1.6, .95, .6][lvl] * (.7 + .6 * d); ctx.beginPath();
+        const lift = b > 0 && b < .2 ? clamp01(1 - Math.abs(rise * 1.3 - .15 - lvl / 4.5) / .3) : 0, gain = Math.max(burst, lift) + .25 * won * breath;   // the pulse reaches each level in turn
+        const base = Math.max([.9, .62, .34, .12, .1][lvl], (.12 + .8 * d * d) * (lvl === LEAF ? .78 : 1)), wide = [4.4, 2.6, 1.6, .95, .6][lvl] * (.7 + .6 * d) * (1 + .6 * Math.max(burst, lift));
+        if (gain > .05) { ctx.strokeStyle = `rgba(${LIME},${Math.min(1, gain * (.3 + .5 * d))})`; ctx.lineWidth = wide; ctx.beginPath(); for (let q = 0; q < bk.length; q += 4) { ctx.moveTo(bk[q], bk[q + 1]); ctx.lineTo(bk[q + 2], bk[q + 3]); } ctx.stroke(); }
+        ctx.strokeStyle = `rgba(${NV},${Math.min(1, base * (1 + gain))})`; ctx.lineWidth = wide; ctx.beginPath();
         for (let q = 0; q < bk.length; q += 4) { ctx.moveTo(bk[q], bk[q + 1]); ctx.lineTo(bk[q + 2], bk[q + 3]); } ctx.stroke(); });
       /* the stars */
       for (let i = 0; i < N; i++) {
         const p = S[i], near = SN[i]; if (near <= 0) continue;
         const x = SX[i], y = SY[i], q = Math.min(1.9, SQ[i]), tw = .82 + .18 * Math.sin(t * p.sp + p.ph), d = SD[i];
-        if (!p.keep) { const al = (.34 + .5 * d) * tw * near * (1 - .68 * LIT[i]); ctx.fillStyle = `rgba(${WHITE},${al})`; dot(x, y, p.mag * q * .95); continue; }
-        const L = LIT[i], rn = p.rn, wave = b > 0 ? clamp01(1 - Math.abs(b * 1.7 - .2 - rn) / .34) : 0;
-        const done = p.lvl === LEAF ? clamp01((v - p.chk * .93) / .07) : v > 0 ? 1 : 0, hit = done > 0 && done < 1 ? Math.sin(Math.PI * done) : 0, pop = Math.sin(Math.PI * L) * .7 + hit * 2.6 + done * .55 + wave * .9;
+        if (!p.keep) { const al = (.34 + .5 * d) * tw * near * (1 - (.68 + .26 * won) * LIT[i]); ctx.fillStyle = `rgba(${WHITE},${al})`; dot(x, y, p.mag * q * .95); continue; }
+        const L = LIT[i], wave = Math.max(burst, b > 0 && b < .2 ? clamp01(1 - Math.abs(rise * 1.2 - .1 - p.way / FAR) / .22) : 0);
+        const done = p.lvl === LEAF ? clamp01((v - p.chk * .93) / .07) : v > 0 ? 1 : 0, hit = done > 0 && done < 1 ? Math.sin(Math.PI * done) : 0, pop = Math.sin(Math.PI * L) * .7 + hit * 2.6 + done * .55 + wave * 1.5 + won * .3;
         if (L < 1) { ctx.fillStyle = `rgba(${WHITE},${(.4 + .5 * d) * tw * (1 - L)})`; dot(x, y, p.mag * q * .95); }
         if (L > 0) { const size = (p.par < 0 ? 5 : [2, 1.9, 1.7, 1.45, 1.15][p.lvl]) * q * (1 + .45 * pop), al = L * (.3 + .7 * d);
           if (p.par < 0) { ctx.fillStyle = `rgba(${NV},${al * .22})`; dot(x, y, size * 2.8); }
           ctx.fillStyle = `rgba(${NV},${al})`; dot(x, y, size);
-          const hot = Math.max(done * .8, wave, p.par < 0 ? .8 : 0); if (hot > 0) { ctx.fillStyle = `rgba(${LIME},${al * hot})`; dot(x, y, size * .72); }
-          if (hit > 0) { ctx.fillStyle = `rgba(255,255,255,${hit * .9})`; dot(x, y, size * .6); } }
+          const hot = Math.max(done * .8, wave, .45 * won, p.par < 0 ? .8 : 0); if (hot > 0) { ctx.fillStyle = `rgba(${LIME},${al * hot})`; dot(x, y, size * .72); }
+          const white = Math.max(hit, wave * .85); if (white > 0) { ctx.fillStyle = `rgba(255,255,255,${white * .9})`; dot(x, y, size * .6); } }
       }
       ctx.globalCompositeOperation = 'source-over';
       /* labels: each branch's name sits just outside the crown and shows while the branch is in front and to one side */
@@ -650,17 +660,19 @@ button{font:inherit;color:inherit}
         for (let n = 0; n < 12; n++) { const p = S[BRANCH[n]], u = unit(p.x, (p.y - CROWN) * .8, p.z), ax = u[0] * .97 * R, ay = (CROWN + u[1] * .95) * R, az = u[2] * .97 * R;
           const X = ax * ca + az * sa, Z0 = az * ca - ax * sa, Y = ay * cb - Z0 * sb, al = la * clamp01((Math.abs(X) / R - .58) / .16) * clamp01(.6 - Z0 / (.4 * R));
           if (al < .03) continue; ctx.fillStyle = `rgba(214,236,170,${al})`; ctx.textAlign = X >= 0 ? 'left' : 'right'; ctx.fillText(NAMES[n], cx + X * zoom, cy + Y * zoom); } }
-      /* the finishing flash: one widening ring and sparkles that go off one after another on the outer stars */
-      if (b > 0 && b < 1) { const Rz = R * zoom;
-        ctx.strokeStyle = `rgba(${LIME},${(1 - b) * .55})`; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(cx, gy, Rz * (.25 + b * 1.25), 0, TAU); ctx.stroke();
-        SPK.forEach((p, n) => { const q = clamp01((b - (n * .137) % .56) / .38); if (q <= 0 || q >= 1) return; const s = Math.sin(Math.PI * q), x = SX[p], y = SY[p], Lg = 4 + 15 * s, D = Lg * .42;
-          ctx.strokeStyle = `rgba(255,255,255,${s})`; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(x - Lg, y); ctx.lineTo(x + Lg, y); ctx.moveTo(x, y - Lg); ctx.lineTo(x, y + Lg); ctx.stroke();
-          ctx.lineWidth = .8; ctx.beginPath(); ctx.moveTo(x - D, y - D); ctx.lineTo(x + D, y + D); ctx.moveTo(x - D, y + D); ctx.lineTo(x + D, y - D); ctx.stroke(); }); }
-      const ph = back > 0 || t < 2.4 ? 0 : t < 7.0 ? 1 : t < 9.9 ? 2 : 3;
-      if (ph !== shown) { hud.phase.textContent = PHASE[ph]; shown = ph; }
+      /* the finish: two widening rings and many sparkles on the leaves; afterwards a few leaves keep twinkling */
+      const spark = (x, y, Lg, al, w) => { const D = Lg * .42; ctx.strokeStyle = `rgba(255,255,255,${al})`; ctx.lineWidth = w; ctx.beginPath(); ctx.moveTo(x - Lg, y); ctx.lineTo(x + Lg, y); ctx.moveTo(x, y - Lg); ctx.lineTo(x, y + Lg); ctx.stroke();
+        ctx.lineWidth = w * .5; ctx.beginPath(); ctx.moveTo(x - D, y - D); ctx.lineTo(x + D, y + D); ctx.moveTo(x - D, y + D); ctx.lineTo(x + D, y - D); ctx.stroke(); };
+      if (b > 0 && b < 1) { const Rz = R * zoom; ctx.globalCompositeOperation = 'lighter';
+        for (let n = 0; n < 2; n++) { const e = clamp01((b - .12 - n * .11) / .7); if (e <= 0 || e >= 1) continue; ctx.strokeStyle = `rgba(${LIME},${Math.pow(1 - e, 1.6) * .85})`; ctx.lineWidth = 1 + 3 * (1 - e); ctx.beginPath(); ctx.arc(cx, gy, Rz * (.2 + 1.9 * e), 0, TAU); ctx.stroke(); }
+        SPK.forEach((p, n) => { const q = clamp01((b - .12 - (n * .137) % .6) / .26); if (q > 0 && q < 1) { const sn = Math.sin(Math.PI * q); spark(SX[p], SY[p], 5 + 22 * sn, sn, 1.9); } });
+        ctx.globalCompositeOperation = 'source-over'; }
+      if (won > 0 && !(b > 0 && b < .5)) TWK.forEach((p, n) => { const q = (t * .42 + n * .618) % 1; if (q < .16) { const sn = Math.sin(Math.PI * q / .16); spark(SX[p], SY[p], 4 + 12 * sn, sn * won * (.4 + .6 * SD[p]), 1.5); } });
+      const ph = back > 0 || t < 2.4 ? 0 : t < 7.0 ? 1 : t < 10 ? 2 : 3;
+      if (ph !== shown) { hud.phase.textContent = PHASE[ph]; hud.phase.parentNode.classList.toggle('done', ph === 3); shown = ph; }
       hud.lines.textContent = fmt(lerp(76888, 36458, m)); hud.checks.textContent = `${Math.round(v * 382)} / 382`;
     };
-    const fix = new URLSearchParams(location.search).get('t'), still = calm || fix !== null, rest0 = fix !== null ? +fix : 12.6;
+    const fix = new URLSearchParams(location.search).get('t'), still = calm || fix !== null, rest0 = fix !== null ? +fix : 14.5;
     if (fix !== null) spin = .6 + .12 * rest0;
     layout(); seen.observe(hero);
     loops.push(dt => { if (still) return; yaw += (tyaw - yaw) * Math.min(1, dt * 2.5); pitch += (tpitch - pitch) * Math.min(1, dt * 2.5); if (!hero._on) return; clock = (clock + dt) % T; spin += dt * .12; draw(clock); });

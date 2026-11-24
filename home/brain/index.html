@@ -262,10 +262,18 @@ button{font:inherit;color:inherit}
 .cta{justify-content:flex-start}
 .orb{position:relative;min-width:0}
 .orb::before{content:"";position:absolute;inset:-4% -6% 6%;pointer-events:none;background:radial-gradient(50% 50% at 50% 48%,rgba(var(--g),.13),transparent 72%)}
-.orb canvas{position:relative;display:block;width:100%;aspect-ratio:5/4}
+/* the canvas is 24% larger than its box (negative margins give the room back), so the burst at the end can spill
+   around the brain; the script draws the brain at the size of the box */
+.orb canvas{position:relative;display:block;width:124%;max-width:none;aspect-ratio:5/4;margin:-9.6% -12%;pointer-events:none}
 .orb .cap{position:relative;display:grid;gap:2px;justify-items:center;text-align:center;margin-top:2px}
-.orb .cap b{font-weight:500;color:var(--ink)}
+.orb .cap b{font-weight:500;color:var(--ink);transition:color .35s}
 .orb .cap #orb-phase{color:var(--green)}
+/* when every check has passed: the phase word pops once and the numbers turn green */
+.orb .cap.done b{color:var(--green)}
+@media (max-width:759px){.orb .cap .long{display:none}}
+.orb .cap.done #orb-phase{font-weight:600;animation:cap-pop .7s cubic-bezier(.2,1.5,.4,1) 1}
+@keyframes cap-pop{0%{transform:scale(1)}35%{transform:scale(1.5)}100%{transform:scale(1)}}
+@media (prefers-reduced-motion: reduce){.orb .cap.done #orb-phase{animation:none}}
 .nums{max-width:none;margin-top:clamp(28px,4vw,56px)}
 @media (min-width:760px){.nums li:first-child{padding-left:0}}
 @media (max-width:899px){
@@ -322,7 +330,7 @@ button{font:inherit;color:inherit}
         </div>
         <div class="orb" id="orb" role="img" aria-label="Animation: neurons inside a brain seen from the side. Of the 135 connections between them, 71 are cut and fade away, 52.6%, the share of Detectron2's 76,888 lines that the rewrite removes. The 64 that stay form one tree, rooted in the brainstem, that reaches every neuron. It turns green from the root to the tips, checks run up it as pulses, and 382 of 382 pass.">
           <canvas></canvas>
-          <p class="cap m"><span id="orb-phase">delivered</span><span><b class="num" id="orb-lines">36,458</b> lines of detectron2, <b class="num" id="orb-checks">382 / 382</b> checks pass</span></p>
+          <p class="cap m"><span id="orb-phase">delivered</span><span><b class="num" id="orb-lines">36,458</b> of 76,888 lines<span class="long"> of detectron2</span>, <b class="num" id="orb-checks">382 / 382</b> checks pass</span></p>
         </div>
       </div>
       <ul class="nums">
@@ -557,12 +565,14 @@ button{font:inherit;color:inherit}
 
   /* ---------------- hero: synaptic pruning. Neurons sit inside a brain seen from the side, and nothing moves or
      gathers: the connections that are not needed are cut and fade, and the ones that stay are one tree, rooted in
-     the brainstem, that reaches every neuron. It turns green from the root to the tips, the checks run up it as
-     pulses, and it glows once at the end. The tree's share of all connections is the real ratio for Detectron2,
-     36,458 of 76,888 lines, by count. ---------------- */
+     the brainstem, that reaches every neuron. It turns green from the root to the tips and the checks run up it as
+     pulses. When they have all passed, a bright pulse runs up the tree and it bursts (it swells, glows, sends out
+     rings and sparkles), then stays lit, breathing, until the scene starts over. The tree's share of all
+     connections is the real ratio for Detectron2, 36,458 of 76,888 lines, by count.
+     Times in seconds: original 0, rewrite 2.4 to 7, checks 7.3 to 9.9, finish 10 to 12.4, hold to 16.8, restore to 18.8. ---------------- */
   (() => {
     const box = $('#orb'), cv = $('canvas', box), ctx = cv.getContext('2d');
-    const KEEP = 36458 / 76888, T = 15.6, TAU = 6.2832, BW = 1000, BH = 800, SEG = 14;
+    const KEEP = 36458 / 76888, T = 19, TAU = 6.2832, BW = 1000, BH = 800, SEG = 14;
     const INK = '13,20,17', GREEN = '118,185,0', DEEP = '63,106,0';
     const fix = new URLSearchParams(location.search).get('t');      // ?t=seconds freezes the scene at one moment
     const rng = (a => () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; })(19);
@@ -653,81 +663,106 @@ button{font:inherit;color:inherit}
     CAND.filter(([a, b]) => !had.has(key(a, b))).sort((p, q) => dist(...p) - dist(...q)).slice(0, 38).forEach(([a, b]) => stray(a, b));
     for (let i = 0; i < 20000 && E.length < TOTAL; i++) { const a = Math.floor(rng() * n), b = Math.floor(rng() * n), d = dist(a, b); if (a !== b && d > 130 && d < 430 && !had.has(key(a, b)) && within(a, b)) stray(a, b); }
     box.dataset.kept = `${n - 1} of ${E.length} connections`;
-    const TIPS = order.filter(i => !kids[i]), SPARK = TIPS.filter((_, i) => i % Math.ceil(TIPS.length / 9) === 1);
+    const TIPS = order.filter(i => !kids[i]);
     const at = (e, u) => { const f = clamp01(u) * SEG, i = Math.min(SEG - 1, Math.floor(f)), k = f - i, p = e.p; return [lerp(p[i * 2], p[i * 2 + 2], k), lerp(p[i * 2 + 1], p[i * 2 + 3], k)]; };
     const part = (e, u0, u1) => {                                   // adds the stretch u0..u1 of a connection to the current path
       if (u1 - u0 < .002) return; const p = e.p, s = at(e, u0), q = at(e, u1); ctx.moveTo(s[0], s[1]);
       for (let i = Math.floor(u0 * SEG) + 1; i < Math.ceil(u1 * SEG); i++) ctx.lineTo(p[i * 2], p[i * 2 + 1]); ctx.lineTo(q[0], q[1]); };
 
-    const hud = { lines: $('#orb-lines'), checks: $('#orb-checks'), phase: $('#orb-phase') };
+    const hud = { lines: $('#orb-lines'), checks: $('#orb-checks'), phase: $('#orb-phase'), cap: $('.cap', box) };
     const PHASE = ['the original', 'pruning', 'running the frozen checks', 'delivered'];
+    const ROOM = 1.24;                                              // the canvas is this much larger than its box, so the burst has room around the brain
     let W = 0, H = 0, dpr = 1, S = 1, ox = 0, oy = 0, shown = -1, clock = 0;
     const layout = () => { const r = cv.getBoundingClientRect(); W = r.width; H = r.height; dpr = Math.min(2, window.devicePixelRatio || 1); cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
-      S = Math.min(W / BW, H / BH); ox = (W - BW * S) / 2; oy = (H - BH * S) / 2; };
+      S = Math.min(W / BW, H / BH) / ROOM; ox = (W - BW * S) / 2; oy = (H - BH * S) / 2; };
+    const star = (x, y, L) => { const c = L * .2; ctx.beginPath(); ctx.moveTo(x, y - L); ctx.lineTo(x + c, y - c); ctx.lineTo(x + L, y); ctx.lineTo(x + c, y + c); ctx.lineTo(x, y + L); ctx.lineTo(x - c, y + c); ctx.lineTo(x - L, y); ctx.lineTo(x - c, y - c); ctx.closePath(); ctx.fill(); };
+    const sparkle = (i, j, s, size) => {                            // a four-pointed glint beside neuron i; s runs 0..1..0
+      if (s <= 0) return; const p = NEU[i], a = j * 2.4, d = p.r * (2.1 + j % 3 * 1.2), x = p.x + Math.cos(a) * d, y = p.y + Math.sin(a) * d, L = size * (.3 + .7 * s);
+      ctx.shadowColor = `rgba(${GREEN},${s})`; ctx.shadowBlur = 12 * dpr * s; ctx.fillStyle = `rgba(${DEEP},${Math.min(1, s * 1.5)})`; star(x, y, L);
+      ctx.shadowBlur = 0; ctx.shadowColor = 'transparent'; ctx.fillStyle = `rgba(255,255,255,${s})`; star(x, y, L * .36); };
     const draw = t => {
-      const back = seg(t, 13.4, 15.4), k = 1 - ease(back), raw = seg(t, 2.4, 7) * k, m = ease(seg(t, 2.4, 7)) * k;
-      const v = back > 0 ? 0 : seg(t, 7.3, 9.9), b = back > 0 ? 0 : seg(t, 10, 11.8), sw = b > 0 && b < 1 ? Math.sin(Math.PI * Math.min(1, b * 1.4)) : 0;
+      const back = seg(t, 16.8, 18.8), k = 1 - ease(back), raw = seg(t, 2.4, 7) * k, m = ease(seg(t, 2.4, 7)) * k;
+      const v = back > 0 ? 0 : seg(t, 7.3, 9.9), tf = back > 0 ? -1 : t - 10;                 // tf: seconds into the finish
+      const rush = tf > 0 && tf < .45 ? REACH * 1.1 * tf / .33 : -1;                           // the bright pulse that runs up the tree first
+      const B = tf < .3 ? 0 : tf < .46 ? ease((tf - .3) / .16) : Math.exp(-(tf - .46) / .62);   // the burst: up fast, down slowly
+      const fin = ease(seg(t, 10.33, 10.95)) * (1 - ease(seg(t, 16.8, 17.4)));                 // the finished state that the burst settles into
+      const breath = 1 + .07 * Math.sin(t * 1.9) * fin;
       const px = 1 / S, front = REACH * 1.03 * clamp01((raw - .05) / .83);     // px: one CSS pixel in drawing units; front: how far along the tree the green has grown
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
       ctx.setTransform(dpr * S, 0, 0, dpr * S, dpr * ox, dpr * oy); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
-      if (sw > 0) { ctx.save(); ctx.translate(500, 400); ctx.scale(1, .78); const g = ctx.createRadialGradient(0, 0, 0, 0, 0, 500); g.addColorStop(0, `rgba(${GREEN},${.3 * sw})`); g.addColorStop(1, `rgba(${GREEN},0)`); ctx.fillStyle = g; ctx.fillRect(-500, -500, 1000, 1000); ctx.restore(); }
+      /* behind the brain: the green bloom, and the rings that leave it at the burst */
+      const wash = .22 * fin + .55 * B;
+      if (wash > .004) { ctx.save(); ctx.translate(505, 395); ctx.scale(1, .8); const g = ctx.createRadialGradient(0, 0, 0, 0, 0, 610); g.addColorStop(0, `rgba(${GREEN},${wash})`); g.addColorStop(.6, `rgba(${GREEN},${wash * .42})`); g.addColorStop(1, `rgba(${GREEN},0)`); ctx.fillStyle = g; ctx.fillRect(-620, -620, 1240, 1240); ctx.restore(); }
+      for (const from of [.36, .62]) { const q = (tf - from) / .95; if (q <= 0 || q >= 1) continue; const sc = 1 + .22 * (1 - (1 - q) * (1 - q));
+        ctx.save(); ctx.translate(505, 395); ctx.scale(sc, sc); ctx.translate(-505, -395); ctx.strokeStyle = `rgba(${GREEN},${.8 * Math.pow(1 - q, 1.5)})`; ctx.lineWidth = (5.5 * (1 - q) + 1) * px / sc; ctx.stroke(outline); ctx.restore(); }
       ctx.fillStyle = 'rgba(255,255,255,.8)'; ctx.fill(outline);
+      const tint = .09 * fin + .24 * B; if (tint > .004) { ctx.fillStyle = `rgba(${GREEN},${tint})`; ctx.fill(outline); }
       ctx.strokeStyle = `rgba(${INK},.14)`; ctx.lineWidth = 1.1 * px; ctx.stroke(folds);
       ctx.strokeStyle = `rgba(${INK},.3)`; ctx.lineWidth = 1.3 * px; ctx.stroke(outline);
-      if (sw > 0) { ctx.strokeStyle = `rgba(${GREEN},${.85 * sw})`; ctx.lineWidth = 2.2 * px; ctx.stroke(outline); }
+      const rim = Math.min(1, .75 * fin + B);
+      if (rim > .004) { ctx.shadowColor = `rgba(${GREEN},${rim})`; ctx.shadowBlur = (9 * fin + 26 * B) * dpr; ctx.strokeStyle = `rgba(${GREEN},${rim})`; ctx.lineWidth = (1.4 + .9 * fin + 4 * B) * px; ctx.stroke(outline); ctx.shadowBlur = 0; ctx.shadowColor = 'transparent'; }
       ctx.save(); ctx.clip(outline);
-      /* dendrites */
-      ctx.strokeStyle = `rgba(${INK},.46)`; ctx.lineWidth = 1.15 * px; ctx.beginPath();
+      /* dendrites: they lighten once the tree is finished, so that it stands alone */
+      ctx.strokeStyle = `rgba(${INK},${lerp(.46, .15, fin)})`; ctx.lineWidth = 1.15 * px; ctx.beginPath();
       for (const p of NEU) for (const w of p.twigs) { ctx.moveTo(w[0], w[1]); ctx.quadraticCurveTo(w[2], w[3], w[4], w[5]); }
       ctx.stroke();
       /* connections that are cut: whole while untouched, then a gap opens in the middle and both halves pull back */
       const marks = [];
-      ctx.strokeStyle = `rgba(${INK},.3)`; ctx.lineWidth = 1 * px; ctx.beginPath();
+      ctx.strokeStyle = `rgba(${INK},.5)`; ctx.lineWidth = 1.3 * px; ctx.beginPath();
       for (const e of E) if (!e.keep && raw <= e.cut * .8) part(e, 0, 1);
       ctx.stroke();
       for (const e of E) { if (e.keep) continue; const p = clamp01((raw - e.cut * .8) / .2); if (p <= 0 || p >= 1) continue;
-        const q = ease(clamp01((p - .2) / .8)), gap = .035 + .465 * q; ctx.strokeStyle = `rgba(${INK},${.3 * (1 - q)})`; ctx.beginPath(); part(e, 0, .5 - gap); part(e, .5 + gap, 1); ctx.stroke();
+        const q = ease(clamp01((p - .2) / .8)), gap = .035 + .465 * q; ctx.strokeStyle = `rgba(${INK},${.5 * (1 - q)})`; ctx.beginPath(); part(e, 0, .5 - gap); part(e, .5 + gap, 1); ctx.stroke();
         marks.push([at(e, .5), Math.sin(Math.PI * clamp01(p / .62))]); }
-      /* connections that stay: a thin line first, then the green grows from the root up the trunk and out to the tips */
-      ctx.strokeStyle = `rgba(${INK},.3)`; ctx.lineWidth = 1 * px; ctx.beginPath();
+      /* connections that stay: a thin line like the rest at first, then the green grows from the root up the trunk and out to the tips */
+      ctx.strokeStyle = `rgba(${INK},.5)`; ctx.lineWidth = 1.3 * px; ctx.beginPath();
       for (const e of E) if (e.keep) { const g = clamp01((front - e.from) / e.len); if (g < 1) part(e, g, 1); }
       ctx.stroke();
-      if (front > 0) { if (sw > 0) { ctx.shadowColor = `rgba(${GREEN},${sw})`; ctx.shadowBlur = 16 * sw * dpr; }
+      const fat = (1 + .2 * fin + B) * breath;                         // the finished tree is a fifth heavier than the growing one; the burst doubles it
+      if (front > 0) { const glow = Math.min(1, .8 * fin + B);
+        if (glow > .004) { ctx.shadowColor = `rgba(${GREEN},${glow})`; ctx.shadowBlur = (11 * fin + 30 * B) * dpr; }
         ctx.strokeStyle = `rgb(${GREEN})`;
-        for (const e of E) if (e.keep) { const g = clamp01((front - e.from) / e.len); if (g <= 0) continue; ctx.lineWidth = Math.max(e.w, 1.5 * px) * (1 + .4 * sw) + 1.2 * sw * px; ctx.beginPath(); part(e, 0, g); ctx.stroke(); }
-        ctx.shadowBlur = 0; ctx.shadowColor = 'transparent'; }
-      /* the small crosses where a connection is cut */
-      ctx.lineWidth = 1.5 * px; for (const [[x, y], a] of marks) { if (a <= 0) continue; const c = 4.5 * px; ctx.strokeStyle = `rgba(${INK},${.85 * a})`; ctx.beginPath(); ctx.moveTo(x - c, y - c); ctx.lineTo(x + c, y + c); ctx.moveTo(x - c, y + c); ctx.lineTo(x + c, y - c); ctx.stroke(); }
-      /* pulses: a few wander through the tangle before the rewrite; the checks run outward through what stays */
+        for (const e of E) if (e.keep) { const g = clamp01((front - e.from) / e.len); if (g <= 0) continue; ctx.lineWidth = Math.max(e.w, 1.5 * px) * fat + 3.5 * B * px; ctx.beginPath(); part(e, 0, g); ctx.stroke(); }
+        ctx.shadowBlur = 0; ctx.shadowColor = 'transparent';
+        const core = Math.min(1, .7 * fin + B);                         // a light core down the trunk and limbs once it is finished
+        if (core > .004) { ctx.strokeStyle = `rgba(228,255,170,${.7 * core})`; for (const e of E) if (e.keep && e.w > 4.6) { ctx.lineWidth = e.w * .27 * fat; ctx.beginPath(); part(e, 0, 1); ctx.stroke(); } }
+        if (rush > 0) for (const [wide, extra, tone] of [[1.9, 5, 'rgba(186,240,36,.96)'], [.6, 1.6, 'rgba(250,255,232,.98)']]) {      // a wide lime bulge with a light core
+          ctx.shadowColor = `rgb(${GREEN})`; ctx.shadowBlur = 20 * dpr; ctx.strokeStyle = tone;
+          for (const e of E) if (e.keep) { const u1 = (rush - e.from) / e.len, u0 = (rush - 150 - e.from) / e.len; if (u1 <= 0 || u0 >= 1) continue; ctx.lineWidth = e.w * wide + extra * px; ctx.beginPath(); part(e, Math.max(0, u0), Math.min(1, u1)); ctx.stroke(); }
+          ctx.shadowBlur = 0; ctx.shadowColor = 'transparent'; } }
+      /* the crosses where a connection is cut */
+      ctx.lineWidth = 1.9 * px; for (const [[x, y], a] of marks) { if (a <= 0) continue; const c = 6.2 * px; ctx.strokeStyle = `rgba(${INK},${.9 * a})`; ctx.beginPath(); ctx.moveTo(x - c, y - c); ctx.lineTo(x + c, y + c); ctx.moveTo(x - c, y + c); ctx.lineTo(x + c, y - c); ctx.stroke(); }
+      /* pulses: a few wander through the tangle before the rewrite; the checks run from the root to the tips */
       const idle = t < 8 && back === 0 ? seg(t, .2, 1) * (1 - clamp01(raw * 5)) : 0;
-      if (idle > 0) { ctx.fillStyle = `rgba(${INK},${.55 * idle})`; for (let i = 0; i < 9; i++) { const tau = t / 2.6 + i * .31, e = E[(i * 37 + Math.floor(tau) * 53) % E.length], [x, y] = at(e, tau % 1); ctx.beginPath(); ctx.arc(x, y, 2.6 * px, 0, TAU); ctx.fill(); } }
+      if (idle > 0) { ctx.fillStyle = `rgba(${INK},${.6 * idle})`; for (let i = 0; i < 9; i++) { const tau = t / 2.6 + i * .31, e = E[(i * 37 + Math.floor(tau) * 53) % E.length], [x, y] = at(e, tau % 1); ctx.beginPath(); ctx.arc(x, y, 2.8 * px, 0, TAU); ctx.fill(); } }
       const waves = [];                                               // [distance along the tree, strength]
       if (v > 0 && v < 1) for (let w = 0; w < 5; w++) waves.push([REACH * 1.08 * (v * 2.8 - w * .45), 1]);
-      else if (t > 11.8 && back < 1) waves.push([REACH * 1.08 * (t * .3 % 1), .7 * k]);                // the delivered tree keeps working
+      else if (t > 12.4 && back < 1) waves.push([REACH * 1.08 * (t * .3 % 1), .7 * k]);                // the delivered tree keeps working
       for (const [pos, al] of waves) for (let j = 0; j < 3; j++) { ctx.fillStyle = `rgba(${INK},${.92 * al * (1 - j * .32)})`;     // a pulse and its short tail
         for (const e of E) if (e.keep) { const u = (pos - j * 15 - e.from) / e.len; if (u <= 0 || u >= 1) continue; const [x, y] = at(e, u); ctx.beginPath(); ctx.arc(x, y, (3.4 - j * .7) * px, 0, TAU); ctx.fill(); } }
       ctx.restore();
-      /* somas */
+      /* somas: a soft green halo once the tree is finished, and a pop at the burst */
+      const halo = .2 * fin + .3 * B;
+      if (halo > .004) { ctx.fillStyle = `rgba(${GREEN},${halo})`; ctx.beginPath(); for (const p of NEU) { const R = p.r * (2.2 + .9 * B); ctx.moveTo(p.x + R, p.y); ctx.arc(p.x, p.y, R, 0, TAU); } ctx.fill(); }
       NEU.forEach((p, i) => { const lit = ease(clamp01((front - along[i]) / 40 + (i ? 0 : raw * 12))); let ping = 0;
         for (const [pos, al] of waves) { const u = (pos - along[i]) / 70; if (u > 0 && u < 1) ping = Math.max(ping, (1 - u) * al); }
-        const r = p.r * (1 + .12 * lit + .25 * sw);
-        if (lit > 0) { ctx.strokeStyle = `rgba(${GREEN},${lit})`; ctx.lineWidth = (2.2 + 1.2 * sw) * px; ctx.beginPath(); ctx.arc(p.x, p.y, r + 2.6 * px, 0, TAU); ctx.stroke(); }
+        if (rush > 0) { const u = (rush - along[i]) / 160; if (u > 0 && u < 1) ping = Math.max(ping, 1 - u); }
+        const r = p.r * (1 + .12 * lit + .08 * fin + .5 * B);
+        if (lit > 0) { ctx.strokeStyle = `rgba(${GREEN},${lit})`; ctx.lineWidth = (2.2 + .8 * fin + 2.6 * B) * px; ctx.beginPath(); ctx.arc(p.x, p.y, r + 2.6 * px, 0, TAU); ctx.stroke(); }
         if (ping > 0) { ctx.strokeStyle = `rgba(${DEEP},${.8 * ping})`; ctx.lineWidth = 1.4 * px; ctx.beginPath(); ctx.arc(p.x, p.y, r + (4 + 12 * (1 - ping)) * px, 0, TAU); ctx.stroke(); }
         ctx.fillStyle = `rgba(${INK},${lerp(.6, .94, lit)})`; ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, TAU); ctx.fill(); });
-      /* the finishing flash: sparkles go off one after another on the kept network */
-      if (b > 0 && b < 1) SPARK.forEach((i, j) => { const q = clamp01((b - (j * .137) % .5) / .42); if (q <= 0 || q >= 1) return;
-        const s = Math.sin(Math.PI * q), p = NEU[i], x = p.x + p.r * 1.6, y = p.y - p.r * 1.6, L = (5 + 15 * s) * px, d = L * .4;
-        ctx.strokeStyle = `rgba(${DEEP},${s})`; ctx.lineWidth = 1.7 * px; ctx.beginPath(); ctx.moveTo(x - L, y); ctx.lineTo(x + L, y); ctx.moveTo(x, y - L); ctx.lineTo(x, y + L); ctx.stroke();
-        ctx.lineWidth = .9 * px; ctx.beginPath(); ctx.moveTo(x - d, y - d); ctx.lineTo(x + d, y + d); ctx.moveTo(x - d, y + d); ctx.lineTo(x + d, y - d); ctx.stroke(); });
+      /* sparkles: two dozen across the tips in the second and a half after the burst, then a few that keep going off */
+      if (tf > .3 && tf < 2.5) for (let j = 0; j < 26; j++) { const f = j * .618 % 1, q = (tf - .34 - f * f * 1.3) / .75; /* most of them early */ if (q > 0 && q < 1) sparkle(TIPS[(j * 5 + 2) % TIPS.length], j, Math.sin(Math.PI * q), 30 + j % 3 * 6); }
+      if (fin > 0 && t > 12.2) { const u = (t - 12.2) / .34, i = Math.floor(u); for (const j of [i, i - 1, i - 2]) { const q = (u - j) / 3; if (j >= 0 && q > 0 && q < 1) sparkle(TIPS[(j * 7 + 3) % TIPS.length], j, Math.sin(Math.PI * q) * fin, 24); } }
       const ph = back > 0 || t < 2.4 ? 0 : t < 7.15 ? 1 : t < 9.95 ? 2 : 3;
-      if (ph !== shown) { hud.phase.textContent = PHASE[ph]; shown = ph; }
+      if (ph !== shown) { hud.phase.textContent = PHASE[ph]; hud.cap.classList.toggle('done', ph === 3); shown = ph; }
       hud.lines.textContent = fmt(lerp(76888, 36458, m));
       hud.checks.textContent = `${Math.round((t >= 9.9 && back === 0 ? 1 : v) * 382)} / 382`;
     };
-    const still = fix !== null ? +fix : calm ? 12.4 : null;
+    const still = fix !== null ? +fix : calm ? 14.5 : null;
     layout(); seen.observe(box);
     if (still === null) loops.push(dt => { if (box._on) { clock = (clock + dt) % T; draw(clock); } });
-    new ResizeObserver(() => { layout(); draw(still === null ? clock : still); }).observe(cv); draw(still === null ? 12.4 : still);
+    new ResizeObserver(() => { layout(); draw(still === null ? clock : still); }).observe(cv); draw(still === null ? 14.5 : still);
   })();
 
   /* ---------------- statement: words light up as they are read; each one is a token spent ---------------- */
