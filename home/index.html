@@ -1,0 +1,770 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nanolize</title>
+<meta name="description" content="Nanolize rewrites a bloated repository into a nano one that coding agents read, change and run for fewer tokens.">
+<meta name="theme-color" content="#060912">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Crect width='22' height='22' fill='%23060912'/%3E%3Crect x='1' y='1' width='20' height='20' fill='none' stroke='%23EEF2FA' stroke-width='1.6'/%3E%3Crect x='5.5' y='6.2' width='11' height='2.4' fill='%23A8E62E'/%3E%3Crect x='5.5' y='10' width='7' height='2.4' fill='%23A8E62E'/%3E%3Crect x='5.5' y='13.8' width='9' height='2.4' fill='%23A8E62E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>:root{padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Chivo+Mono:wght@300..700&display=swap">
+<style>
+/* Layout: a dark, stage-first page. Giant condensed headlines hang from the left edge and every section is one
+   scene that moves: a live rewrite in the hero, a firewall you can test, results that shrink into place.
+   One deliberate look (dark); colours come from the paper's figures: slate original, lime nano, ember firewall. */
+:root{
+  color-scheme:dark;
+  --bg:#060912; --panel:#0A1020; --panel-2:#0F1730;
+  --line:rgba(150,172,220,.18); --line-2:rgba(150,172,220,.09);
+  --ink:#EEF2FA; --ink-2:#A9B4CC; --ink-3:#7480A0;
+  --slate:#3D4969; --ice:#CFE0FF;
+  --nano:#A8E62E; --nano-hi:#DDFF8F; --nano-lo:#3F6608; --on-nano:#0A1020;
+  --ember:#FF6A3D; --ember-hi:#FFC3AC; --ember-lo:#5E2110;
+  --face:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --mono:"Chivo Mono",ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{overflow-x:clip;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--face);font-size:1.0625rem;line-height:1.55;-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:20;background:var(--bg)}
+h1,h2,h3,p,ol,ul,figure,pre,table{margin:0}
+ol,ul{padding:0;list-style:none}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--nano);outline-offset:3px}
+.wrap{max-width:1216px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:760px){.wrap{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
+.m{font-family:var(--mono);font-size:.75rem;line-height:1.5;color:var(--ink-3)}
+.num{font-variant-numeric:tabular-nums}
+
+.atmo{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(55% 45% at 82% -5%,rgba(168,230,46,.13),transparent 70%),
+    radial-gradient(45% 40% at -5% 55%,rgba(255,106,61,.07),transparent 70%)}
+.atmo::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(150,172,220,.16) 1px,transparent 1.4px);background-size:28px 28px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 70%);mask-image:linear-gradient(180deg,#000,transparent 70%)}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:15;background:rgba(6,9,18,.72);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-2)}
+.nav .wrap{display:flex;align-items:center;gap:28px;min-height:60px}
+.mark{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.1875rem;letter-spacing:-.01em;text-decoration:none;margin-right:auto}
+.mark em{font-style:normal;font-weight:400;color:var(--ink-2)}
+.nav nav{display:flex;gap:26px}
+.nav nav a{font-size:.9375rem;color:var(--ink-2);text-decoration:none}
+.nav nav a:hover{color:var(--ink)}
+@media (max-width:759px){.nav nav{display:none}}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 24px;border:1px solid var(--line);background:rgba(10,16,32,.5);font-weight:600;text-decoration:none;cursor:pointer;transition:border-color .2s,box-shadow .2s,background .2s}
+.btn:hover{border-color:var(--ink-2)}
+.btn.go{background:var(--nano);border-color:var(--nano);color:var(--on-nano)}
+.btn.go:hover{box-shadow:0 0 0 1px var(--nano),0 0 34px rgba(168,230,46,.45)}
+.btn.sm{height:36px;padding:0 16px;font-size:.9375rem}
+
+/* ---------- hero ---------- */
+.hero{padding-block:clamp(36px,6vw,72px) clamp(48px,7vw,96px)}
+.kicker{display:flex;align-items:center;gap:10px}
+.kicker i{width:7px;height:7px;background:var(--nano);box-shadow:0 0 12px var(--nano);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+.mega{font-stretch:63%;font-weight:640;font-size:clamp(3.5rem,12.4vw,10rem);line-height:.86;letter-spacing:-.014em;margin-top:18px}
+.mega span{display:block}
+.hero-row{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px 56px;margin-top:clamp(24px,3.5vw,40px)}
+.lede{font-size:clamp(1.125rem,1.65vw,1.375rem);line-height:1.5;color:var(--ink-2);max-width:33em}
+.hero .lede{color:var(--ink)}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+
+.stage{position:relative;height:clamp(400px,38vw,480px);margin-top:clamp(32px,5vw,56px);border:1px solid var(--line);background:linear-gradient(180deg,rgba(15,23,48,.72),rgba(8,12,26,.72));overflow:hidden}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%}
+.stage .c{position:absolute;width:14px;height:14px;border:solid var(--nano);border-width:0}
+.stage .c1{left:-1px;top:-1px;border-left-width:2px;border-top-width:2px}
+.stage .c2{right:-1px;top:-1px;border-right-width:2px;border-top-width:2px}
+.stage .c3{left:-1px;bottom:-1px;border-left-width:2px;border-bottom-width:2px}
+.stage .c4{right:-1px;bottom:-1px;border-right-width:2px;border-bottom-width:2px}
+.hud{position:absolute;font-family:var(--mono);font-size:.75rem;line-height:1.5;color:var(--ink-3);white-space:nowrap}
+.hud b{font-weight:500;color:var(--ink)}
+.hud.tl{left:28px;top:16px}
+.hud.tr{left:60%;top:16px}
+.hud.tr b{color:var(--nano)}
+.hud.tr #hud-pct{color:var(--nano);margin-left:10px;transition:opacity .4s}
+.hud.cl{left:28px}
+.hud.cr{right:28px;text-align:right}
+.hud.cr b{color:var(--nano)}
+.hud.bl{left:28px;bottom:12px;color:var(--ink-2)}
+.hud.bl::after{content:"";display:inline-block;width:7px;height:12px;margin-left:6px;background:var(--nano);vertical-align:-2px;animation:pulse 1s steps(2) infinite}
+@media (max-width:759px){
+  .stage{height:420px}
+  .hud{font-size:.6875rem}
+  .hud.tl,.hud.cl,.hud.bl{left:14px} .hud.cr{right:14px}
+  .hud .long{display:none}
+}
+
+/* ---------- ticker ---------- */
+.ticker{border-block:1px solid var(--line-2);overflow:hidden;background:rgba(10,16,32,.5)}
+.ticker .run{display:flex;width:max-content;animation:slide 46s linear infinite}
+.ticker:hover .run{animation-play-state:paused}
+.ticker ul{display:flex}
+.ticker li{display:flex;align-items:baseline;gap:10px;padding:14px 28px;border-right:1px solid var(--line-2);font-family:var(--mono);font-size:.8125rem;color:var(--ink-3);white-space:nowrap}
+.ticker b{font-family:var(--face);font-weight:650;font-size:1rem;color:var(--ink)}
+.ticker em{font-style:normal;color:var(--nano)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- sections ---------- */
+.sec{padding-block:clamp(72px,11vw,150px)}
+.h2{font-stretch:63%;font-weight:630;font-size:clamp(2.75rem,8.4vw,6.75rem);line-height:.88;letter-spacing:-.012em;text-wrap:balance}
+.h2 span{display:block}
+.sec .lede{margin-top:clamp(18px,2.4vw,28px)}
+
+/* statement */
+.say{padding-block:clamp(80px,13vw,190px)}
+.say-text{font-stretch:78%;font-weight:520;font-size:clamp(1.875rem,5vw,4.25rem);line-height:1.06;letter-spacing:-.01em;max-width:19em}
+.js .say-text span{opacity:.2;transition:opacity .25s,color .25s}
+.js .say-text span.lit{opacity:1}
+.say-text span.k.lit{color:var(--nano)}
+.say-meter{margin-top:28px;display:flex;align-items:baseline;gap:10px}
+.say-meter b{font-family:var(--mono);font-weight:400;font-size:1.5rem;color:var(--nano);font-variant-numeric:tabular-nums;min-width:1.6em}
+
+/* ---------- firewall scene ---------- */
+.fw{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 44px minmax(0,1fr);margin-top:clamp(36px,5vw,64px);border:1px solid var(--line);background:rgba(10,16,32,.82)}
+.room{padding:clamp(18px,2.6vw,30px);display:grid;gap:18px;grid-template-rows:auto 1fr auto auto;min-width:0}
+.room header,.verifier .who{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px}
+.fw h3{font-stretch:70%;font-weight:650;font-size:1.75rem;line-height:1}
+.ws{position:relative;min-height:170px;border:1px solid var(--line-2);background:rgba(6,9,18,.6) radial-gradient(rgba(150,172,220,.12) 1px,transparent 1.4px) 0 0/16px 16px;padding:16px;display:grid;gap:12px;align-content:start}
+.chip{justify-self:start;font-family:var(--mono);font-size:.6875rem;line-height:1;padding:5px 8px;border:1px solid var(--line);color:var(--ink-2)}
+.chip.ice{border-color:var(--ice);color:var(--ice)}
+.code{display:grid;gap:6px}
+.code i{display:block;height:6px;width:0;background:var(--nano);box-shadow:0 0 10px rgba(168,230,46,.5);transition:width .32s cubic-bezier(.2,.7,.2,1)}
+.code i.on{width:var(--w)}
+.code i.edited{width:var(--w2);background:var(--nano-hi);box-shadow:0 0 16px var(--nano-hi)}
+.repo{display:grid;gap:9px}
+.grp{display:grid;gap:5px;transition:opacity .3s;position:relative}
+.grp i{display:block;height:6px;width:var(--w);background:var(--slate)}
+.grp.ko{opacity:.28}
+.grp::after{content:"switched off";position:absolute;right:0;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.6875rem;color:var(--ember);opacity:0;transition:opacity .2s}
+.grp.ko::after{opacity:1}
+.tray{display:flex;flex-wrap:wrap;gap:6px;align-items:center;min-height:16px}
+.tray i{width:14px;height:14px;border:1.5px solid var(--ink-3);transform:scale(0);transition:transform .28s cubic-bezier(.3,1.6,.5,1),border-color .3s,background .3s,box-shadow .3s}
+.tray i.on{transform:scale(1)}
+.tray i.new.on{border-color:var(--nano)}
+.tray i.frozen,.tray i.new.frozen{border-color:var(--ice);background:rgba(207,224,255,.14);box-shadow:0 0 8px rgba(207,224,255,.25)}
+.never{display:flex;align-items:center;gap:10px;font-weight:600}
+.never::before{content:"";flex:none;width:18px;height:9px;background:var(--ember);box-shadow:0 0 10px rgba(255,106,61,.6)}
+.pipe{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.6875rem;color:var(--ink-3);height:22px}
+.pipe::before{content:"";width:2px;height:22px;background:repeating-linear-gradient(180deg,var(--nano) 0 5px,transparent 5px 10px);background-size:2px 10px;animation:flow .5s linear infinite}
+.pipe.ice::before{background-image:repeating-linear-gradient(180deg,var(--ice) 0 5px,transparent 5px 10px)}
+.pipe .b{display:none}
+.pipe.up{color:var(--ember)}
+.pipe.up::before{background-image:repeating-linear-gradient(180deg,var(--ember) 0 5px,transparent 5px 10px);animation-direction:reverse}
+.pipe.up .a{display:none} .pipe.up .b{display:inline}
+@keyframes flow{to{background-position:0 10px}}
+.wall{position:relative;background:#190B06 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Cg fill='%23FF6A3D'%3E%3Crect x='.75' y='.75' width='20.5' height='9.5'/%3E%3Crect x='.75' y='11.75' width='9.5' height='9.5'/%3E%3Crect x='11.75' y='11.75' width='9.5' height='9.5'/%3E%3C/g%3E%3C/svg%3E") 0 0/22px 22px;box-shadow:0 0 36px rgba(255,106,61,.38),0 0 2px rgba(255,106,61,.9);animation:heat 3.2s ease-in-out infinite;transition:filter .12s}
+@keyframes heat{50%{box-shadow:0 0 54px rgba(255,106,61,.5),0 0 2px rgba(255,106,61,.9)}}
+.wall.hit{filter:brightness(1.9) saturate(1.3)}
+.wall span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);writing-mode:vertical-rl;font-family:var(--mono);font-size:.6875rem;letter-spacing:.08em;background:var(--bg);color:var(--ember-hi);padding:10px 4px;border:1px solid var(--ember)}
+.verifier{grid-column:1/-1;border-top:1px solid var(--line);padding:clamp(18px,2.6vw,30px);display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr) auto;gap:16px 32px;align-items:center}
+.verifier .who{display:grid;gap:4px}
+.vbox{display:grid;gap:10px;min-width:0}
+.vrow{display:flex;flex-wrap:wrap;gap:6px}
+.vrow i{width:16px;height:16px;border:1.5px solid var(--ice);background:rgba(207,224,255,.1);transition:background .18s,border-color .18s,box-shadow .18s,transform .25s}
+.vrow i.on{background:var(--nano);border-color:var(--nano);box-shadow:0 0 10px rgba(168,230,46,.55)}
+.vrow i.bad{background:var(--ember);border-color:var(--ember);box-shadow:0 0 12px rgba(255,106,61,.7)}
+.vrow i.sp,.vrow i.sf{transform:rotate(45deg) scale(.82);margin-inline:3px}
+.vrow i.sf.on{background:transparent;border-color:var(--ember);box-shadow:none}
+.vrow i.tamper{transform:scale(.5) rotate(18deg);border-color:var(--ember);background:transparent;box-shadow:none}
+.vrow.lock i{border-color:var(--ice);box-shadow:0 0 12px rgba(207,224,255,.7)}
+.vrow.faked i,.vrow.faked i.sf{background:var(--nano);border-color:var(--nano);box-shadow:0 0 10px rgba(168,230,46,.55)}
+.vrow.shake{animation:shake .4s}
+@keyframes shake{20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
+.badge{font-family:var(--mono);font-size:.8125rem;line-height:1;padding:10px 14px;border:1px solid var(--line);color:var(--ink-2);white-space:nowrap;transition:color .2s,border-color .2s,box-shadow .2s;min-width:11.5em;text-align:center}
+.badge.pass{color:var(--on-nano);background:var(--nano);border-color:var(--nano);box-shadow:0 0 26px rgba(168,230,46,.45)}
+.badge.fail,.badge.void,.badge.rej{color:var(--ember-hi);border-color:var(--ember);box-shadow:0 0 22px rgba(255,106,61,.35)}
+.packet{position:absolute;z-index:3;font-family:var(--mono);font-size:.6875rem;line-height:1;padding:6px 9px;background:var(--ice);color:var(--on-nano);transform:translate(-50%,-50%);pointer-events:none;box-shadow:0 0 16px rgba(207,224,255,.6)}
+.packet.hit{background:var(--ember);box-shadow:0 0 22px rgba(255,106,61,.9)}
+.cheats{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin-top:20px}
+.cheats button{height:40px;padding:0 16px;border:1px solid var(--line);background:rgba(10,16,32,.6);font-weight:600;font-size:.9375rem;cursor:pointer;transition:border-color .2s,color .2s,box-shadow .2s}
+.cheats button:hover,.cheats button.act{border-color:var(--ember);color:var(--ember-hi);box-shadow:0 0 18px rgba(255,106,61,.25)}
+.verdict{flex:1 1 100%;font-family:var(--mono);font-size:.875rem;color:var(--ink-2);min-height:1.6em}
+.verdict b{color:var(--ember);font-weight:500}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px clamp(20px,3vw,44px);margin-top:clamp(44px,6vw,80px)}
+.facts li{border-top:1px solid var(--line);padding-top:18px;color:var(--ink-2)}
+.facts b{display:block;font-stretch:72%;font-weight:650;font-size:1.5rem;line-height:1.1;color:var(--ink);margin-bottom:8px}
+@media (max-width:759px){
+  .fw{grid-template-columns:minmax(0,1fr)}
+  .wall{height:44px}
+  .wall span{writing-mode:horizontal-tb;padding:4px 10px}
+  .verifier{grid-template-columns:minmax(0,1fr)}
+  .badge{justify-self:start}
+  .facts{grid-template-columns:minmax(0,1fr)}
+}
+
+/* ---------- results ---------- */
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:clamp(36px,5vw,64px);border-block:1px solid var(--line)}
+.trio li{padding:clamp(18px,2.6vw,30px) clamp(14px,2.4vw,30px) clamp(18px,2.6vw,30px) 0;display:grid;gap:6px}
+.trio li+li{border-left:1px solid var(--line);padding-left:clamp(14px,2.4vw,30px)}
+.trio .big{font-stretch:66%;font-weight:620;font-size:clamp(2.4rem,6.4vw,5.25rem);line-height:.9;color:var(--nano);font-variant-numeric:tabular-nums;white-space:nowrap}
+.trio .lab{color:var(--ink)}
+.trio .vs{font-family:var(--mono);font-size:.8125rem;color:var(--ink-3)}
+.trio .vs b{font-weight:400;color:var(--ink-2)}
+.trio .vs b.bad{color:var(--ember)}
+@media (max-width:759px){.trio{grid-template-columns:minmax(0,1fr)}.trio li+li{border-left:0;border-top:1px solid var(--line);padding-left:0}}
+.legend{display:flex;flex-wrap:wrap;gap:6px 24px;margin-top:clamp(32px,4vw,48px);font-family:var(--mono);font-size:.75rem;color:var(--ink-3)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{width:12px;height:12px;background:var(--nano)}
+.legend .g i{background:var(--slate)}
+.legend .t i{background:none;border:1px solid var(--ink-3)}
+.scroll{overflow-x:auto;margin-top:10px}
+.libs{width:100%;min-width:700px;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.libs th,.libs td{text-align:left;padding:13px 20px 13px 0;border-top:1px solid var(--line-2);vertical-align:middle}
+.libs thead th{border-top:0;font-family:var(--mono);font-size:.75rem;font-weight:400;color:var(--ink-3);padding-bottom:8px}
+.libs tbody th{font-weight:650;width:23%;line-height:1.3}
+.libs tbody th span{display:block;font-weight:400;font-size:.875rem;color:var(--ink-3)}
+.libs .bars{width:43%}
+.pair{display:grid;gap:6px}
+.barline{display:grid;grid-template-columns:minmax(0,1fr) 4.6em;align-items:center;gap:12px}
+.track{display:block;height:8px;box-shadow:inset 0 0 0 1px var(--line)}
+.track i{display:block;height:100%;width:var(--w);background:var(--nano);box-shadow:0 0 10px rgba(168,230,46,.4);transition:width 1.5s cubic-bezier(.2,.7,.15,1)}
+.barline.g .track i{background:var(--slate);box-shadow:none;transition-delay:.12s}
+.js [data-reveal]:not(.in) .track i{width:100%}
+.barline b{font-family:var(--mono);font-weight:400;font-size:.8125rem;text-align:right;color:var(--ink-3)}
+.barline.n b{color:var(--nano)}
+.two{display:grid;gap:3px;font-family:var(--mono);font-size:.8125rem;line-height:1.35;white-space:nowrap}
+.two .g{color:var(--ink-3)}
+.two .bad{color:var(--ember)}
+.libs tfoot th,.libs tfoot td{border-top:1px solid var(--ink-2)}
+.libs tfoot th{font-weight:650}
+.after{margin-top:20px;color:var(--ink-3);font-size:.9375rem;max-width:48em}
+
+/* agents */
+.agents{border-block:1px solid var(--line-2);background:linear-gradient(180deg,rgba(15,23,48,.6),rgba(8,12,26,.3))}
+.meters{display:grid;gap:clamp(20px,3vw,34px);margin-top:clamp(36px,5vw,64px)}
+.meters li{display:grid;grid-template-columns:minmax(0,11rem) minmax(0,1fr) auto;align-items:center;gap:12px clamp(16px,3vw,40px)}
+.meters .what{font-stretch:70%;font-weight:640;font-size:clamp(1.75rem,3.6vw,2.75rem);line-height:1}
+.meters .track{height:14px;background:var(--slate);box-shadow:none;position:relative}
+.meters .track i{box-shadow:0 0 18px rgba(168,230,46,.5)}
+.meters .pct{font-stretch:66%;font-weight:620;font-size:clamp(1.75rem,3.6vw,2.75rem);line-height:1;color:var(--nano);font-variant-numeric:tabular-nums;white-space:nowrap;min-width:4.6em;text-align:right}
+.meters .pct small{font-family:var(--mono);font-size:.75rem;font-weight:400;color:var(--ink-3);margin-left:8px}
+@media (max-width:759px){.meters li{grid-template-columns:minmax(0,1fr) auto}.meters .track{grid-column:1/-1;grid-row:2}}
+
+/* use */
+.use-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);margin-top:clamp(36px,5vw,64px);align-items:start}
+.term{border:1px solid var(--line);background:rgba(6,9,18,.85);min-width:0}
+.term .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 8px 8px 16px;border-bottom:1px solid var(--line-2)}
+.term pre{padding:18px 16px 20px;overflow-x:auto;font-family:var(--mono);font-size:.875rem;line-height:1.9;color:var(--ink);min-height:9.4em}
+.term .p{color:var(--nano);user-select:none}
+.term .c{color:var(--ink-3)}
+.copy{height:30px;padding:0 12px;border:1px solid var(--line);background:none;font-family:var(--mono);font-size:.75rem;cursor:pointer;color:var(--ink-2)}
+.copy:hover{border-color:var(--ink-2);color:var(--ink)}
+.use-note{margin-top:18px;color:var(--ink-2);max-width:32em}
+.steps{counter-reset:s;display:grid}
+.steps li{counter-increment:s;display:grid;grid-template-columns:3.2rem minmax(0,1fr);align-items:baseline;border-top:1px solid var(--line);padding-block:18px;color:var(--ink-2)}
+.steps li:last-child{border-bottom:1px solid var(--line)}
+.steps li::before{content:"0" counter(s);font-family:var(--mono);font-size:.8125rem;color:var(--nano)}
+.steps b{display:block;font-stretch:72%;font-weight:650;font-size:1.5rem;line-height:1.1;color:var(--ink);margin-bottom:4px}
+@media (max-width:759px){.use-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* foot */
+.foot{border-top:1px solid var(--line-2);padding-top:clamp(48px,7vw,96px);overflow:hidden}
+.foot-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:start}
+.foot h2{font-stretch:66%;font-weight:630;font-size:clamp(2rem,4vw,3rem);line-height:1;margin-bottom:18px}
+.foot .term pre{min-height:0}
+.foot .links{display:grid;gap:10px;justify-items:start}
+.foot .links a{font-weight:600;text-underline-offset:5px;text-decoration-thickness:1px}
+.foot .links p{color:var(--ink-3);font-size:.9375rem;margin-top:10px;max-width:26em}
+.word{font-stretch:62%;font-weight:700;font-size:clamp(6rem,27.5vw,25rem);line-height:.74;letter-spacing:-.02em;margin-top:clamp(40px,6vw,80px);white-space:nowrap;color:var(--nano);margin-bottom:-.06em;user-select:none}
+.word em{font-style:normal;color:transparent;-webkit-text-stroke:1.5px #5A6890}
+@media (max-width:759px){.foot-grid{grid-template-columns:minmax(0,1fr)}}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .kicker i,.hud.bl::after,.ticker .run,.pipe::before,.wall{animation:none}
+  .ticker .run{flex-wrap:wrap;width:auto} .ticker .dup{display:none}
+  .track i,.code i,.tray i,.vrow i{transition:none}
+}
+</style>
+</head>
+<body>
+<div class="atmo" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="Nanolize">
+      <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect x="1" y="1" width="20" height="20" fill="none" stroke="#EEF2FA" stroke-width="1.6"/><rect x="5.5" y="6.2" width="11" height="2.4" fill="#A8E62E"/><rect x="5.5" y="10" width="7" height="2.4" fill="#A8E62E"/><rect x="5.5" y="13.8" width="9" height="2.4" fill="#A8E62E"/></svg>
+      <span>nano<em>lize</em></span>
+    </a>
+    <nav aria-label="Sections"><a href="#method">Method</a><a href="#results">Results</a><a href="#use">Use it</a><a href="#cite">Cite</a></nav>
+    <a class="btn go sm" href="#">Paper</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="top">
+    <div class="wrap">
+      <p class="kicker m"><i></i>Technical report, 2026</p>
+      <h1 class="mega"><span>Half the tokens.</span> <span>All the behavior.</span></h1>
+      <div class="hero-row">
+        <p class="lede">Nanolize rewrites a bloated repository from scratch into a nano one that coding agents read, change and run for fewer tokens. Checks frozen on the original decide what passes.</p>
+        <p class="cta"><a class="btn go" href="#">Read the paper</a><a class="btn" href="#">Get the code</a></p>
+      </div>
+
+      <div class="stage" id="stage" role="img" aria-label="Animation: Detectron2 is rewritten from 76,888 lines to 36,458 lines, and all 382 frozen checks pass.">
+        <canvas></canvas>
+        <i class="c c1"></i><i class="c c2"></i><i class="c c3"></i><i class="c c4"></i>
+        <p class="hud tl"><b>original</b><br>detectron2, <span class="num">76,888</span> lines</p>
+        <p class="hud tr" id="hud-nano"><b>nano</b><br><span class="num" id="hud-lines">36,458</span><span class="long"> lines</span><span class="num" id="hud-pct">−52.6%</span></p>
+        <p class="hud cl" id="hud-cl">382 checks<span class="long">, frozen on the original before any new code is tested</span></p>
+        <p class="hud cr" id="hud-cr"><b class="num" id="hud-checks">382 / 382</b> pass</p>
+        <p class="hud bl" id="hud-phase">delivered</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-label="Results on eight libraries">
+    <div class="run">
+      <ul>
+        <li><b>bidict</b><em>−58.72%</em> tokens, 58/58 checks</li>
+        <li><b>click</b><em>−42.90%</em> tokens, 136/136 checks</li>
+        <li><b>more-itertools</b><em>−62.27%</em> tokens, 10/10 checks</li>
+        <li><b>packaging</b><em>−41.00%</em> tokens, 137/137 checks</li>
+        <li><b>python-dotenv</b><em>−48.79%</em> tokens, 15/15 checks</li>
+        <li><b>requests</b><em>−50.49%</em> tokens, 91/91 checks</li>
+        <li><b>tomli</b><em>−46.55%</em> tokens, 18/18 checks</li>
+        <li><b>tqdm</b><em>−44.80%</em> tokens, 84/84 checks</li>
+      </ul>
+      <ul class="dup" aria-hidden="true">
+        <li><b>bidict</b><em>−58.72%</em> tokens, 58/58 checks</li>
+        <li><b>click</b><em>−42.90%</em> tokens, 136/136 checks</li>
+        <li><b>more-itertools</b><em>−62.27%</em> tokens, 10/10 checks</li>
+        <li><b>packaging</b><em>−41.00%</em> tokens, 137/137 checks</li>
+        <li><b>python-dotenv</b><em>−48.79%</em> tokens, 15/15 checks</li>
+        <li><b>requests</b><em>−50.49%</em> tokens, 91/91 checks</li>
+        <li><b>tomli</b><em>−46.55%</em> tokens, 18/18 checks</li>
+        <li><b>tqdm</b><em>−44.80%</em> tokens, 84/84 checks</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="say" id="why">
+    <div class="wrap">
+      <p class="say-text" id="say">Agents write more of our code every day, and codebases bloat. Bloat is cognitive load. Agents pay for it in tokens, every time they read, change or run the code. <span class="k">Nanolize rewrites the code so that every one of those tasks costs less.</span></p>
+      <p class="say-meter m" id="say-meter" hidden><b id="say-n">0</b>tokens read so far</p>
+    </div>
+  </section>
+
+  <section class="sec" id="method">
+    <div class="wrap">
+      <h2 class="h2">Writing and checking never meet.</h2>
+      <p class="lede">A capable agent can pass a weak test by fitting code to it, loosening it or copying the original. So Nanolize builds a firewall into the workflow, and a verifier that is plain code decides what passes.</p>
+
+      <div class="fw" id="fw">
+        <div class="room">
+          <header><h3>Author</h3><span class="m">writes the new code</span></header>
+          <div class="ws">
+            <span class="chip ice">contract</span>
+            <div class="code" id="fw-code">
+              <i style="--w:62%;--w2:30%"></i><i style="--w:84%;--w2:50%"></i><i style="--w:48%;--w2:70%"></i><i style="--w:71%;--w2:36%"></i><i style="--w:90%;--w2:58%"></i><i style="--w:38%;--w2:66%"></i><i style="--w:66%;--w2:40%"></i><i style="--w:54%;--w2:80%"></i><i style="--w:78%;--w2:44%"></i><i style="--w:44%;--w2:60%"></i>
+            </div>
+          </div>
+          <p class="never">never sees a test</p>
+          <p class="pipe" id="pipe-l"><span class="a">nano code, down to the verifier</span><span class="b">feedback, up to the author</span></p>
+        </div>
+        <div class="wall" id="fw-wall"><span>firewall</span></div>
+        <div class="room">
+          <header><h3>Test designer</h3><span class="m">hardens the checks</span></header>
+          <div class="ws">
+            <span class="chip">original repository</span>
+            <div class="repo" id="fw-repo">
+              <div class="grp"><i style="--w:58%"></i><i style="--w:44%"></i><i style="--w:52%"></i></div>
+              <div class="grp"><i style="--w:50%"></i><i style="--w:60%"></i><i style="--w:36%"></i></div>
+              <div class="grp"><i style="--w:56%"></i><i style="--w:40%"></i><i style="--w:48%"></i></div>
+            </div>
+            <div class="tray" id="fw-tray"><i></i><i></i><i></i><i></i><i></i><i class="new"></i><i class="new"></i><i class="new"></i></div>
+          </div>
+          <p class="never">never sees the new code</p>
+          <p class="pipe ice"><span>frozen checks, down to the verifier</span></p>
+        </div>
+        <div class="verifier">
+          <div class="who"><h3>Verifier</h3><span class="m">plain code, not a model</span></div>
+          <div class="vbox">
+            <div class="vrow" id="fw-vrow"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="sp"></i><i class="sf"></i></div>
+            <span class="m">The two diamonds are hidden sentinels: one must pass, one must fail.</span>
+          </div>
+          <span class="badge pass" id="fw-badge">all checks pass</span>
+        </div>
+      </div>
+
+      <div class="cheats">
+        <span class="m">try to cheat</span>
+        <button type="button" data-cheat="peek">Peek at the tests</button>
+        <button type="button" data-cheat="weaken">Weaken a check</button>
+        <button type="button" data-cheat="fake">Fake a pass</button>
+        <button type="button" data-cheat="ship">Ship an untested edit</button>
+        <p class="verdict" id="fw-verdict" aria-live="polite">Each of these fails. Press one.</p>
+      </div>
+
+      <ul class="facts">
+        <li><b>Rewritten from a contract</b>The author starts in an empty workspace with the behavior callers rely on: interfaces, defaults, outputs, command-line options. No tests, no history, its own file layout.</li>
+        <li><b>Hardened, then frozen</b>Each selected feature is switched off in the original. Where no test notices, the test designer writes one. The suite is frozen before any new code is tested.</li>
+        <li><b>Driven by tools</b>A controller runs five stages through thirty-nine self-checking tools. It decides what runs next and never reads the source or judges a check.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="results" data-reveal>
+    <div class="wrap">
+      <h2 class="h2"><span>Eight libraries.</span> <span>Same model. Same checks.</span></h2>
+      <p class="lede">Nanolize against the agent's native Goal mode, both on Claude Fable-5.2-high. Goal mode cuts deeper on four libraries, and fails behavior checks on each of the four.</p>
+
+      <ul class="trio">
+        <li><span class="big" data-n="49.44" data-dec="2" data-pre="−" data-suf="%">−49.44%</span><span class="lab">source and configuration tokens</span><span class="vs">Goal mode <b>−43.92%</b></span></li>
+        <li><span class="big"><span data-n="549" data-dec="0">549</span> / 549</span><span class="lab">behavior checks pass</span><span class="vs">Goal mode <b class="bad">517 / 549</b></span></li>
+        <li><span class="big">1h 11min</span><span class="lab">per rewrite, on average</span><span class="vs">Goal mode <b>3h 53min</b></span></li>
+      </ul>
+
+      <p class="legend"><span><i></i>Nanolize</span><span class="g"><i></i>Goal mode</span><span class="t"><i></i>full track = the original, bar = tokens left</span></p>
+      <div class="scroll">
+        <table class="libs">
+          <thead><tr><th scope="col">library</th><th scope="col">tokens left after the rewrite</th><th scope="col">behavior checks passed</th><th scope="col">time</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">bidict<span>bidirectional mappings</span></th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:41.28%"><i></i></span><b>−58.72%</b></div><div class="barline g"><span class="track" style="--w:71.19%"><i></i></span><b>−28.81%</b></div></div></td>
+              <td><div class="two"><span>58 / 58</span><span class="g">58 / 58</span></div></td><td><div class="two"><span>1h 9min</span><span class="g">4h</span></div></td></tr>
+            <tr><th scope="row">click<span>command-line toolkit</span></th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:57.10%"><i></i></span><b>−42.90%</b></div><div class="barline g"><span class="track" style="--w:39.09%"><i></i></span><b>−60.91%</b></div></div></td>
+              <td><div class="two"><span>136 / 136</span><span class="bad">126 / 136</span></div></td><td><div class="two"><span>1h 15min</span><span class="g">3h 8min</span></div></td></tr>
+            <tr><th scope="row">more-itertools<span>iterator utilities</span></th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:37.73%"><i></i></span><b>−62.27%</b></div><div class="barline g"><span class="track" style="--w:27.83%"><i></i></span><b>−72.17%</b></div></div></td>
+              <td><div class="two"><span>10 / 10</span><span class="bad">9 / 10</span></div></td><td><div class="two"><span>1h 17min</span><span class="g">2h 55min</span></div></td></tr>
+            <tr><th scope="row">packaging<span>versions, specifiers and tags</span></th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:59.00%"><i></i></span><b>−41.00%</b></div><div class="barline g"><span class="track" style="--w:29.07%"><i></i></span><b>−70.93%</b></div></div></td>
+              <td><div class="two"><span>137 / 137</span><span class="bad">125 / 137</span></div></td><td><div class="two"><span>1h 51min</span><span class="g">8h 21min</span></div></td></tr>
+            <tr><th scope="row">python-dotenv<span>environment configuration</span></th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:51.21%"><i></i></span><b>−48.79%</b></div><div class="barline g"><span class="track" style="--w:86.99%"><i></i></span><b>−13.01%</b></div></div></td>
+              <td><div class="two"><span>15 / 15</span><span class="g">15 / 15</span></div></td><td><div class="two"><span>21min</span><span class="g">2h 31min</span></div></td></tr>
+            <tr><th scope="row">requests<span>HTTP client</span></th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:49.51%"><i></i></span><b>−50.49%</b></div><div class="barline g"><span class="track" style="--w:85.00%"><i></i></span><b>−15.00%</b></div></div></td>
+              <td><div class="two"><span>91 / 91</span><span class="bad">90 / 91</span></div></td><td><div class="two"><span>1h 29min</span><span class="g">2h 18min</span></div></td></tr>
+            <tr><th scope="row">tomli<span>TOML parser</span></th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:53.45%"><i></i></span><b>−46.55%</b></div><div class="barline g"><span class="track" style="--w:74.80%"><i></i></span><b>−25.20%</b></div></div></td>
+              <td><div class="two"><span>18 / 18</span><span class="g">18 / 18</span></div></td><td><div class="two"><span>49min</span><span class="g">5h 40min</span></div></td></tr>
+            <tr><th scope="row">tqdm<span>progress bars and CLI</span></th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:55.20%"><i></i></span><b>−44.80%</b></div><div class="barline g"><span class="track" style="--w:34.70%"><i></i></span><b>−65.30%</b></div></div></td>
+              <td><div class="two"><span>84 / 84</span><span class="bad">76 / 84</span></div></td><td><div class="two"><span>1h 16min</span><span class="g">2h 11min</span></div></td></tr>
+          </tbody>
+          <tfoot>
+            <tr><th scope="row">Mean of eight</th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:50.56%"><i></i></span><b>−49.44%</b></div><div class="barline g"><span class="track" style="--w:56.08%"><i></i></span><b>−43.92%</b></div></div></td>
+              <td><div class="two"><span>549 / 549</span><span class="bad">517 / 549</span></div></td><td><div class="two"><span>1h 11min</span><span class="g">3h 53min</span></div></td></tr>
+          </tfoot>
+        </table>
+      </div>
+      <p class="after">Installation in a clean environment is checked too: 23 of 23 checks pass for Nanolize, 21 of 23 for Goal mode.</p>
+    </div>
+  </section>
+
+  <section class="sec agents" id="agents" data-reveal>
+    <div class="wrap">
+      <h2 class="h2">The next agent pays less.</h2>
+      <p class="lede">On Detectron2, with all 106 capabilities kept, agents working in the nano code spend fewer tokens on the same tasks.</p>
+      <ul class="meters">
+        <li><span class="what">Understand</span><span class="track" style="--w:63.5%"><i></i></span><span class="pct"><span data-n="36.5" data-dec="1" data-pre="−" data-suf="%">−36.5%</span><small>tokens</small></span></li>
+        <li><span class="what">Modify</span><span class="track" style="--w:75.8%"><i></i></span><span class="pct"><span data-n="24.2" data-dec="1" data-pre="−" data-suf="%">−24.2%</span><small>tokens</small></span></li>
+        <li><span class="what">Execute</span><span class="track" style="--w:64.9%"><i></i></span><span class="pct"><span data-n="35.1" data-dec="1" data-pre="−" data-suf="%">−35.1%</span><small>tokens</small></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="use" data-reveal>
+    <div class="wrap">
+      <h2 class="h2">Point your agent at a repository.</h2>
+      <div class="use-grid">
+        <div>
+          <div class="term">
+            <div class="bar"><span class="m">shell</span><button type="button" class="copy" data-copy="cmd">copy</button></div>
+<pre id="cmd" data-type><span class="p">$ </span>git clone &lt;repository&gt; nanolize &amp;&amp; cd nanolize
+<span class="p">$ </span>python -m pip install -e .   <span class="c"># Python 3.11 or newer</span>
+<span class="p">$ </span>nanolize serve               <span class="c"># MCP server for your agent</span></pre>
+          </div>
+          <p class="use-note">Plugin configurations for Codex and Claude Code ship with the repository. Ask the agent to nanolize a repository, and three pages keep you in charge.</p>
+        </div>
+        <ol class="steps">
+          <li><span><b>Review</b>Start from Core features or All features, switch optional features on or off on the capability graph, then submit.</span></li>
+          <li><span><b>Run</b>Follow the stages, repairs, tokens and elapsed time live.</span></li>
+          <li><span><b>Report</b>Read the outcome first, then every check, the size breakdown and the repair history.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="cite">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h2>Cite</h2>
+        <div class="term">
+          <div class="bar"><span class="m">bibtex</span><button type="button" class="copy" data-copy="bib">copy</button></div>
+<pre id="bib">@techreport{nanolize2026,
+  title  = {Nanolize Code with Agents},
+  author = {{Nanolize Contributors}},
+  year   = {2026}
+}</pre>
+        </div>
+      </div>
+      <div class="links">
+        <h2>Read on</h2>
+        <a href="#">The technical report</a>
+        <a href="#">The code</a>
+        <p>Nanolize is released under the MIT license.</p>
+      </div>
+    </div>
+    <p class="word" aria-hidden="true">nano<em>lize</em></p>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const clamp01 = x => x < 0 ? 0 : x > 1 ? 1 : x;
+  const seg = (t, a, b) => clamp01((t - a) / (b - a));
+  const ease = x => x * x * (3 - 2 * x);
+  const lerp = (a, b, k) => a + (b - a) * k;
+  const fmt = n => Math.round(n).toLocaleString('en-US');
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  document.documentElement.classList.add('js');
+
+  /* One clock for every scene; a scene only advances while it is on screen. */
+  const loops = [];
+  const seen = new IntersectionObserver(es => es.forEach(e => { e.target._on = e.isIntersecting; }), { threshold: .05 });
+  const scene = (el, period, fn) => {
+    const s = { t: 0 };
+    seen.observe(el);
+    loops.push(dt => { if (el._on) { s.t = (s.t + dt) % period; fn(s.t); } });
+    return s;
+  };
+
+  /* ---------------- hero: Detectron2 rewritten at true scale (one bar = 200 lines) ---------------- */
+  const stage = $('#stage'), cv = $('canvas', stage), ctx = cv.getContext('2d');
+  const ORIG = 384, NANO = 182, CHECKS = 382, OC = 12, NC = 6, LINES = 36458;
+  const rng = (a => () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; })(20261124);
+  const code = n => Array.from({ length: n }, () => { const x = [0, 0, .08, .08, .16, .16, .24, .32][Math.floor(rng() * 8)]; return { x, w: Math.min(1 - x, .24 + rng() * .7) }; });
+  const orig = code(ORIG), nano = code(NANO);
+  orig.forEach(b => { b.key = rng() < .12; });
+  const keys = orig.map((b, i) => b.key ? i : -1).filter(i => i >= 0);
+  const hud = { lines: $('#hud-lines'), pct: $('#hud-pct'), checks: $('#hud-checks'), phase: $('#hud-phase'), nano: $('#hud-nano'), cl: $('#hud-cl'), cr: $('#hud-cr') };
+  let W = 0, H = 0, dpr = 1, L = null, sparks = [], lastIdx = -1;
+  const rr = (x, y, w, h) => ctx.rect(x, y, w, h);
+  const layout = () => {
+    const r = stage.getBoundingClientRect();
+    W = r.width; H = r.height; dpr = Math.min(2, window.devicePixelRatio || 1);
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    const small = W < 700, padX = small ? 14 : 28, gap = small ? 26 : Math.max(84, W * .09);
+    const pitchX = (W - 2 * padX - gap) / (OC + NC), rows = Math.ceil(ORIG / OC);
+    const checkRows = small ? 4 : 2, perRow = Math.ceil(CHECKS / checkRows), cp = Math.min(6.2, (W - 2 * padX) / perRow);
+    const cy = H - 40 - checkRows * cp, top = 64, pitchY = (cy - 34 - top) / rows;
+    L = { padX, pitchX, cw: pitchX * .82, rows, pitchY, bh: Math.max(1.5, pitchY * .46), top, ox: padX, nx: padX + OC * pitchX + gap, cp, cs: cp * .64, perRow, cy };
+    hud.nano.style.left = L.nx + 'px';
+    hud.cl.style.top = hud.cr.style.top = (cy - 26) + 'px';
+  };
+  const at = (i, x0) => [x0 + Math.floor(i / L.rows) * L.pitchX, L.top + (i % L.rows) * L.pitchY];
+  const PHASE = ['the original', 'reading the contract, freezing the checks', 'rewriting from scratch', 'running the frozen checks', 'delivered'];
+  let phaseShown = -1;
+  const drawStage = t => {
+    const rd = seg(t, .8, 3.2), wr = seg(t, 3.2, 9.4), vf = seg(t, 9.8, 12.4), out = seg(t, 15.6, 16.4);
+    const { ox, nx, cw, bh, rows, pitchX, cp, cs, perRow, cy } = L;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+    const scanX = ox + rd * OC * pitchX, scanning = rd > 0 && rd < 1;
+
+    /* the original: full at first, a ghost once the rewrite is under way */
+    const oa = lerp(lerp(1, .4, ease(wr)), 1, ease(out));
+    ctx.globalAlpha = oa; ctx.fillStyle = '#3D4969'; ctx.beginPath();
+    orig.forEach((b, i) => { const [x, y] = at(i, ox); if (!(b.key && (rd >= 1 || x < scanX) && out < 1)) rr(x + b.x * cw, y, b.w * cw, bh); });
+    ctx.fill();
+    /* contract lines: what callers rely on, picked out by the scan */
+    ctx.globalAlpha = lerp(1, .0, ease(out)) * (wr > 0 ? lerp(1, .62, ease(seg(t, 9.4, 12.4))) : 1);
+    ctx.fillStyle = '#CFE0FF'; ctx.shadowColor = 'rgba(207,224,255,.7)'; ctx.shadowBlur = 8 * dpr; ctx.beginPath();
+    orig.forEach((b, i) => { const [x, y] = at(i, ox); if (b.key && (rd >= 1 || x < scanX) && rd > 0) rr(x + b.x * cw, y, b.w * cw, bh); });
+    ctx.fill(); ctx.shadowBlur = 0; ctx.globalAlpha = 1;
+    if (scanning) {
+      const g = ctx.createLinearGradient(scanX - 70, 0, scanX, 0);
+      g.addColorStop(0, 'rgba(207,224,255,0)'); g.addColorStop(1, 'rgba(207,224,255,.2)');
+      ctx.fillStyle = g; ctx.fillRect(scanX - 70, L.top - 8, 70, rows * L.pitchY + 12);
+      ctx.fillStyle = '#EEF2FA'; ctx.fillRect(scanX, L.top - 8, 1.5, rows * L.pitchY + 12);
+    }
+
+    /* the nano code, typed in line by line */
+    const n = wr * NANO, full = Math.floor(n), na = 1 - ease(out);
+    if (n > 0 && na > 0) {
+      ctx.globalAlpha = na; ctx.fillStyle = '#A8E62E'; ctx.shadowColor = 'rgba(168,230,46,.6)'; ctx.shadowBlur = (12 + 4 * Math.sin(t * 2.2)) * dpr; ctx.beginPath();
+      for (let i = 0; i < Math.min(NANO, full + 1); i++) {
+        const b = nano[i], [x, y] = at(i, nx), k = i < full ? 1 : n - full;
+        rr(x + b.x * cw, y, b.w * cw * k, bh);
+      }
+      ctx.fill(); ctx.shadowBlur = 0;
+      if (full < NANO) { const b = nano[full], [x, y] = at(full, nx); ctx.fillStyle = '#fff'; ctx.fillRect(x + b.x * cw + b.w * cw * (n - full), y - 1, 2.5, bh + 2); }
+      ctx.globalAlpha = 1;
+    }
+    /* sparks: each new line is written from the contract, never copied across */
+    if (full !== lastIdx) {
+      if (full > lastIdx && full < NANO && wr > 0) sparks.push({ s: keys[Math.floor(Math.random() * keys.length)], e: full, t0: t });
+      lastIdx = full;
+    }
+    sparks = sparks.filter(s => t - s.t0 >= 0 && t - s.t0 < .62);
+    ctx.lineWidth = 1.3; ctx.lineCap = 'round';
+    for (const s of sparks) {
+      const p = (t - s.t0) / .62, [ax, ay] = at(s.s, ox), [bx, by] = at(s.e, nx);
+      const x0 = ax + cw * .5, x1 = bx, mx = (x0 + x1) / 2, my = Math.min(ay, by) - 46;
+      const q = k => { const u = 1 - k; return [u * u * x0 + 2 * u * k * mx + k * k * x1, u * u * ay + 2 * u * k * my + k * k * by]; };
+      const [px, py] = q(Math.max(0, p - .16)), [qx, qy] = q(p);
+      ctx.strokeStyle = `rgba(221,255,143,${(1 - p) * .9})`; ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(qx, qy); ctx.stroke();
+    }
+
+    /* checks: frozen while the original is read, run once the new code exists */
+    const frozen = Math.floor(rd * CHECKS), passed = Math.floor(vf * CHECKS), ca = 1 - ease(out);
+    if (frozen > 0 && ca > 0) {
+      ctx.globalAlpha = ca * .75; ctx.strokeStyle = '#CFE0FF'; ctx.lineWidth = .8; ctx.beginPath();
+      for (let i = passed; i < frozen; i++) rr(L.padX + (i % perRow) * cp + .5, cy + Math.floor(i / perRow) * cp + .5, cs, cs);
+      ctx.stroke();
+      ctx.globalAlpha = ca; ctx.fillStyle = '#A8E62E'; ctx.shadowColor = 'rgba(168,230,46,.6)'; ctx.shadowBlur = 6 * dpr; ctx.beginPath();
+      for (let i = 0; i < passed; i++) rr(L.padX + (i % perRow) * cp, cy + Math.floor(i / perRow) * cp, cs + 1, cs + 1);
+      ctx.fill(); ctx.shadowBlur = 0; ctx.globalAlpha = 1;
+    }
+
+    const ph = out > 0 || t < .8 ? 0 : rd < 1 ? 1 : wr < 1 ? 2 : vf < 1 ? 3 : 4;
+    if (ph !== phaseShown) { hud.phase.textContent = PHASE[ph]; phaseShown = ph; }
+    hud.lines.textContent = fmt(out > 0 ? 0 : wr * LINES);
+    hud.pct.style.opacity = wr >= 1 && out === 0 ? 1 : 0;
+    hud.checks.textContent = `${out > 0 ? 0 : passed} / ${CHECKS}`;
+  };
+  layout();
+  const stageClock = scene(stage, 16.8, drawStage);
+  new ResizeObserver(() => { layout(); drawStage(calm ? 14 : stageClock.t); }).observe(stage);
+  drawStage(14);
+
+  /* ---------------- statement: words light up as they are read; each one is a token spent ---------------- */
+  const say = $('#say'), sayN = $('#say-n');
+  const wrapWords = node => [...node.childNodes].forEach(c => {
+    if (c.nodeType === 3) { const f = document.createDocumentFragment(); c.textContent.split(/(\s+)/).forEach(w => { if (/\S/.test(w)) { const s = document.createElement('span'); s.textContent = w; if (node !== say) s.className = 'k'; f.append(s); } else f.append(w); }); c.replaceWith(f); }
+    else { wrapWords(c); c.replaceWith(...c.childNodes); }
+  });
+  wrapWords(say);
+  const words = $$('span', say);
+  $('#say-meter').hidden = false;
+  let litN = -1;
+  const read = () => {
+    const r = say.getBoundingClientRect(), vh = innerHeight;
+    const k = calm ? 1 : clamp01((vh * .82 - r.top) / (r.height + vh * .3));
+    const n = Math.round(k * words.length);
+    if (n === litN) return; litN = n;
+    words.forEach((w, i) => w.classList.toggle('lit', i < n));
+    sayN.textContent = n;
+  };
+  addEventListener('scroll', read, { passive: true }); addEventListener('resize', read); read();
+
+  /* ---------------- firewall: an idle run, and four cheats that all fail ---------------- */
+  const fw = { root: $('#fw'), code: $$('#fw-code i'), grps: $$('#fw-repo .grp'), tray: $$('#fw-tray i'), row: $('#fw-vrow'), sq: $$('#fw-vrow i'), badge: $('#fw-badge'), wall: $('#fw-wall'), pipe: $('#pipe-l'), verdict: $('#fw-verdict') };
+  const NV = fw.sq.length, FAIL = 13;
+  const BADGE = { idle: 'waiting for both sides', run: 'running the checks', fail: '1 failed, sent back', pass: 'all checks pass', void: 'pass voided', rej: 'run rejected' };
+  const fwState = t => t > 13.2 ? { typed: 0, ko: -1, born: 0, frozen: false, lit: 0, fail: true, feedback: false, redo: -1, badge: 'idle' } : {
+    typed: Math.floor(clamp01((t - .3) / 4.2) * 10),
+    ko: t >= .5 && t < 1.7 ? 0 : t >= 2 && t < 3.2 ? 1 : t >= 3.5 && t < 4.7 ? 2 : -1,
+    born: (t >= 1.5) + (t >= 3) + (t >= 4.5), frozen: t >= 5.2,
+    lit: Math.floor(seg(t, 5.8, 8.2) * NV), fail: t < 9.9, feedback: t >= 8.3 && t < 9.7, redo: t >= 8.8 && t < 9.2 ? 6 : -1,
+    badge: t < 5.8 ? 'idle' : t < 8.2 ? 'run' : t < 9.9 ? 'fail' : 'pass',
+  };
+  const fwApply = s => {
+    fw.code.forEach((b, i) => b.classList.toggle('on', i < s.typed && i !== s.redo));
+    fw.grps.forEach((g, i) => g.classList.toggle('ko', i === s.ko));
+    fw.tray.forEach((c, i) => { c.classList.toggle('on', i < 5 || i - 5 < s.born); c.classList.toggle('frozen', s.frozen); });
+    fw.sq.forEach((c, i) => { const on = i < s.lit, bad = on && i === FAIL && s.fail; c.classList.toggle('on', on && !bad); c.classList.toggle('bad', bad); });
+    fw.pipe.classList.toggle('up', s.feedback);
+    if (fw.badge.dataset.k !== s.badge) { fw.badge.dataset.k = s.badge; fw.badge.className = 'badge ' + s.badge; fw.badge.textContent = BADGE[s.badge]; }
+  };
+  const HOLD = fwState(10.6);
+  let busy = false;
+  const fwClock = scene(fw.root, 14, t => { if (!busy) fwApply(fwState(t)); });
+  fwApply(HOLD); fwClock.t = 10.6;
+  const reverify = async ms => { for (let k = 0; k <= NV; k++) { fwApply({ ...HOLD, lit: k, badge: 'run' }); await wait(ms / NV); } fwApply(HOLD); };
+  const say2 = (head, rest) => { fw.verdict.innerHTML = `<b>${head}</b> ${rest}`; };
+  const CHEATS = {
+    async peek() {
+      const R = fw.root.getBoundingClientRect(), a = $('#fw-tray').getBoundingClientRect(), w = fw.wall.getBoundingClientRect();
+      const pk = Object.assign(document.createElement('span'), { className: 'packet', textContent: 'tests' });
+      const sx = a.left + 60 - R.left, sy = a.top + a.height / 2 - R.top; pk.style.left = sx + 'px'; pk.style.top = sy + 'px'; fw.root.append(pk);
+      const side = w.height > w.width, half = side ? pk.offsetWidth / 2 : pk.offsetHeight / 2;
+      const dx = side ? w.right - R.left + half + 2 - sx : 0, dy = side ? 0 : w.bottom - R.top + half + 2 - sy;
+      const mv = (x, y) => `translate(-50%,-50%) translate(${x}px,${y}px)`;
+      await pk.animate([{ transform: mv(0, 0) }, { transform: mv(dx, dy) }], { duration: 620, easing: 'cubic-bezier(.5,0,.9,.4)', fill: 'forwards' }).finished;
+      fw.wall.classList.add('hit'); pk.classList.add('hit');
+      say2('Blocked.', 'Test files never reach the author.');
+      await pk.animate([{ transform: mv(dx, dy), opacity: 1 }, { transform: mv(dx * .55, dy * .55), opacity: 0 }], { duration: 520, easing: 'cubic-bezier(.1,.7,.3,1)', fill: 'forwards' }).finished;
+      fw.wall.classList.remove('hit'); pk.remove();
+    },
+    async weaken() {
+      const c = fw.sq[8]; c.classList.add('tamper'); await wait(620);
+      fw.row.classList.add('lock'); c.classList.remove('tamper');
+      say2('Refused.', "Frozen checks stay under the verifier's control.");
+      await wait(700); fw.row.classList.remove('lock');
+    },
+    async fake() {
+      fw.row.classList.add('faked'); await wait(600);
+      fw.row.classList.add('shake'); fwApply({ ...HOLD, badge: 'rej' });
+      say2('Rejected.', 'The hidden sentinel that must fail came back green.');
+      await wait(1100); fw.row.classList.remove('faked', 'shake'); await reverify(700);
+    },
+    async ship() {
+      fw.code[3].classList.add('edited'); await wait(520);
+      fwApply({ ...HOLD, lit: 0, badge: 'void' });
+      say2('Voided.', 'A pass is bound to the file hashes, so the edit forces a full retest.');
+      await wait(1000); await reverify(800); fw.code[3].classList.remove('edited');
+    },
+  };
+  const cheat = async (kind, btn) => {
+    if (busy) return; busy = true;
+    $$('.cheats button').forEach(b => b.classList.toggle('act', b === btn));
+    fwApply(HOLD); await wait(260);
+    await CHEATS[kind]();
+    await wait(1200); btn && btn.classList.remove('act'); fwClock.t = 10.6; busy = false;
+  };
+  $('.cheats').addEventListener('click', e => { const b = e.target.closest('[data-cheat]'); if (b) cheat(b.dataset.cheat, b); });
+
+  /* ---------------- reveal once: bars shrink into place, numbers count, commands type ---------------- */
+  const count = el => {
+    const end = +el.dataset.n, dec = +el.dataset.dec || 0, pre = el.dataset.pre || '', suf = el.dataset.suf || '', t0 = performance.now();
+    const step = now => { const k = clamp01((now - t0) / 1500), v = end * (1 - Math.pow(1 - k, 3)); el.textContent = pre + v.toFixed(dec) + suf; if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  };
+  const type = pre => {
+    const html = pre.innerHTML, n = pre.textContent.length; let i = 0;
+    const cut = k => { const d = document.createElement('div'); d.innerHTML = html; let left = k; const walk = node => { for (const c of [...node.childNodes]) { if (c.nodeType === 3) { if (left <= 0) c.remove(); else if (c.length > left) { c.textContent = c.textContent.slice(0, left); left = 0; } else left -= c.length; } else { if (left <= 0) c.remove(); else walk(c); } } }; walk(d); return d.innerHTML; };
+    const tick = () => { i = Math.min(n, i + 2); pre.innerHTML = cut(i); if (i < n) setTimeout(tick, 16); else pre.innerHTML = html; };
+    tick();
+  };
+  const once = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return; once.unobserve(e.target); e.target.classList.add('in');
+    if (calm) return;
+    $$('[data-n]', e.target).forEach(count); $$('[data-type]', e.target).forEach(type);
+  }), { threshold: .18 });
+  $$('[data-reveal]').forEach(el => once.observe(el));
+  /* the first time the firewall is fully in view, show one cheat failing */
+  const probe = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { probe.disconnect(); if (!calm) setTimeout(() => cheat('peek', $('[data-cheat="peek"]')), 900); } }), { threshold: .75 });
+  probe.observe(fw.root);
+
+  /* copy buttons */
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-copy]'); if (!b) return;
+    const el = document.getElementById(b.dataset.copy), txt = el.textContent.replace(/^\$ /gm, '').replace(/\s+#.*$/gm, '');
+    const done = () => { b.textContent = 'copied'; setTimeout(() => b.textContent = 'copy', 1400); };
+    const pick = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+    navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(txt).then(done, pick) : pick();
+  });
+
+  if (!calm) {
+    let last = performance.now();
+    const frame = now => { const dt = Math.min(.05, (now - last) / 1000); last = now; loops.forEach(f => f(dt)); requestAnimationFrame(frame); };
+    requestAnimationFrame(frame);
+  }
+})();
+</script>
+</body>
+</html>
