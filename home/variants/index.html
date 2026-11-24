@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nanolize hero variants</title>
+<meta name="description" content="Nanolize rewrites a bloated repository into a nano one that coding agents read, change and run for fewer tokens.">
+<meta name="theme-color" content="#050607">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Crect width=%2722%27 height=%2722%27 fill=%27%23050607%27/%3E%3Crect x='1' y='1' width='20' height='20' rx='6' fill='none' stroke='%23EEF2FA' stroke-width='1.6'/%3E%3Crect x='5.5' y='6.2' width='11' height='2.4' fill='%23A8E62E'/%3E%3Crect x='5.5' y='10' width='7' height='2.4' fill='%23A8E62E'/%3E%3Crect x='5.5' y='13.8' width='9' height='2.4' fill='%23A8E62E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>:root{padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400..600&display=swap">
+<style>
+/* Four takes on the hero animation, all in the dark, restrained look of the chosen direction.
+   One page, one look: near-black ground, white-to-grey type, green for what is kept and what passes. */
+:root{
+  color-scheme:dark;
+  --bg:#050607; --line:rgba(255,255,255,.10); --line-2:rgba(255,255,255,.06);
+  --ink:#F2F4F7; --ink-2:#A3ABB8; --ink-3:#727A88; --green:#8BE234; --green-2:#C6F59A;
+  --sans:"Geist",system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;
+  --mono:"Geist Mono",ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{overflow-x:clip;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:1.0625rem;line-height:1.55;-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:20;background:var(--bg)}
+h1,h2,p,ul{margin:0}
+ul{padding:0;list-style:none}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1216px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:760px){.wrap{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
+.m{font-family:var(--mono);font-size:.75rem;line-height:1.5;color:var(--ink-3)}
+.num{font-variant-numeric:tabular-nums}
+
+.pick{position:sticky;top:env(safe-area-inset-top,0px);z-index:15;background:rgba(5,6,7,.78);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-bottom:1px solid var(--line-2)}
+.pick .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;padding-block:10px}
+.pick b{font-weight:500;margin-right:auto;font-size:.9375rem}
+.pick a{padding:6px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);font-size:.875rem}
+.pick a:hover{box-shadow:inset 0 0 0 1px #fff}
+
+.intro{position:relative;overflow:hidden;text-align:center;padding-block:clamp(40px,6vw,80px) clamp(20px,3vw,36px)}
+.intro::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(58% 60% at 50% 0%,rgba(140,220,60,.13),transparent 70%)}
+.intro>.wrap{position:relative}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);background:rgba(255,255,255,.04);font-size:.875rem;color:#B6BECC}
+.chip i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
+.grad{background:linear-gradient(180deg,#fff 30%,#8E97A6);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
+.intro h1{font-weight:500;font-size:clamp(2.4rem,6vw,4.75rem);line-height:1.03;letter-spacing:-.045em;margin-top:20px}
+.intro h1 span{display:block}
+.intro .sub{max-width:34em;margin:16px auto 0;color:#98A1B0}
+.intro .how{max-width:40em;margin:26px auto 0;color:var(--ink-2);font-size:.9375rem}
+
+.var{padding-block:clamp(28px,4vw,48px);scroll-margin-top:56px}
+.vh{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;max-width:1152px;margin-inline:auto}
+.vh .id{font-family:var(--mono);font-size:.8125rem;padding:5px 11px;border-radius:999px;background:var(--ink);color:var(--bg);font-weight:500}
+.vh h2{font-weight:500;font-size:clamp(1.25rem,2.2vw,1.625rem);letter-spacing:-.025em}
+.vh p{flex:1 1 22em;color:var(--ink-2);font-size:.9375rem}
+.stg{position:relative;height:clamp(380px,44vw,540px);margin-top:16px;border:1px solid var(--line-2);border-radius:24px;overflow:hidden;background:radial-gradient(60% 62% at 50% 46%,rgba(140,220,60,.06),transparent 72%),#050607}
+.stg canvas{position:absolute;inset:0;width:100%;height:100%}
+.cap{display:grid;gap:2px;justify-items:center;margin-top:12px;text-align:center}
+.cap b{font-weight:500;color:var(--ink)}
+.cap .ph{color:var(--green-2)}
+.end{padding-block:clamp(28px,4vw,56px) clamp(56px,8vw,96px);text-align:center;color:var(--ink-3);font-size:.9375rem}
+</style>
+</head>
+<body>
+<header class="pick">
+  <div class="wrap"><b>首屏动画的四个变种</b><a href="#b1">B1 粒子球</a><a href="#b2">B2 星座</a><a href="#b3">B3 放射树</a><a href="#b4">B4 分层树</a></div>
+</header>
+
+<section class="intro">
+  <div class="wrap">
+    <span class="chip"><i></i>Technical report, 2026</span>
+    <h1 class="grad"><span>Half the tokens.</span><span>All the behavior.</span></h1>
+    <p class="sub">Nanolize rewrites a bloated repository from scratch into a nano one that coding agents read, change and run for fewer tokens.</p>
+    <p class="how">主页的风格已经定了，就是上面这样。下面四个是放在这段标题下方的动画，其他部分不变。每个都循环播放，一轮大约 15 秒，结尾都会闪一下。</p>
+  </div>
+</section>
+
+<main class="wrap">
+  <section class="var" id="b1">
+    <div class="vh"><span class="id">B1</span><h2>粒子球</h2><p>松散的粒子收拢成一个整齐的小球，外圈刻度逐个点亮代表检查通过。这是现在线上的版本，结尾加了闪光。</p></div>
+    <div class="stg" id="s1"><canvas></canvas></div>
+    <p class="cap m"><span class="ph">delivered</span><span><b class="num ln">36,458</b> lines of detectron2, <b class="num ck">382 / 382</b> checks pass</span></p>
+  </section>
+
+  <section class="var" id="b2">
+    <div class="vh"><span class="id">B2</span><h2>星座</h2><p>一片星空，星星不动。留下的星星一颗接一颗连成星座，其余的暗下去。</p></div>
+    <div class="stg" id="s2"><canvas></canvas></div>
+    <p class="cap m"><span class="ph">delivered</span><span><b class="num ln">36,458</b> lines of detectron2, <b class="num ck">382 / 382</b> checks pass</span></p>
+  </section>
+
+  <section class="var" id="b3">
+    <div class="vh"><span class="id">B3</span><h2>乱图变成树，放射状</h2><p>一开始星星之间就有暗淡的乱线。过程中线断开、重连，多余的星星消失，最后收成一棵从中心向外长的整齐的树。</p></div>
+    <div class="stg" id="s3"><canvas></canvas></div>
+    <p class="cap m"><span class="ph">delivered</span><span><b class="num ln">36,458</b> lines of detectron2, <b class="num ck">382 / 382</b> checks pass</span></p>
+  </section>
+
+  <section class="var" id="b4">
+    <div class="vh"><span class="id">B4</span><h2>乱图变成树，分层</h2><p>过程同 B3，最后排成从左到右一层一层的树，和产品里的能力图是一个样子。</p></div>
+    <div class="stg" id="s4"><canvas></canvas></div>
+    <p class="cap m"><span class="ph">delivered</span><span><b class="num ln">36,458</b> lines of detectron2, <b class="num ck">382 / 382</b> checks pass</span></p>
+  </section>
+
+  <p class="end">四个里留下的点都是原来的 47.4%，对应 Detectron2 从 76,888 行到 36,458 行。</p>
+</main>
+
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const clamp01 = x => x < 0 ? 0 : x > 1 ? 1 : x;
+  const seg = (t, a, b) => clamp01((t - a) / (b - a));
+  const ease = x => x * x * (3 - 2 * x);
+  const lerp = (a, b, k) => a + (b - a) * k;
+  const fmt = n => Math.round(n).toLocaleString('en-US');
+  const mul = a => () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+  const KEEP = 36458 / 76888, TICKS = 96, T = 15.2, TAU = 6.2832;
+  const PHASE = ['the original', 'rewriting from scratch', 'running the frozen checks', 'delivered'];
+  const WHITE = '200,210,230', LIME = '205,255,160';
+
+  /* one timeline for all four: organise (m), run the checks (v), flash (b), hold, dissolve back */
+  const tl = t => { const back = seg(t, 12.8, 14.8), k = 1 - ease(back);
+    return { back, k, raw: seg(t, 2.2, 6.4) * k, m: ease(seg(t, 2.2, 6.4)) * k, v: back > 0 ? 0 : seg(t, 6.8, 9.2), b: back > 0 ? 0 : seg(t, 9.3, 11.2), ph: back > 0 || t < 2.2 ? 0 : t < 6.4 ? 1 : t < 9.2 ? 2 : 3 }; };
+
+  const loops = [];
+  const seen = new IntersectionObserver(es => es.forEach(e => { e.target._on = e.isIntersecting; }), { threshold: .05 });
+  const mount = (id, init, drawFn) => {
+    const box = $(id), cv = $('canvas', box), ctx = cv.getContext('2d'), fig = box.closest('.var');
+    const S = { ctx, W: 0, H: 0 }, hud = { phase: $('.ph', fig), lines: $('.ln', fig), checks: $('.ck', fig) };
+    let dpr = 1, shown = -1, clock = 0;
+    const layout = () => { const r = box.getBoundingClientRect(); S.W = r.width; S.H = r.height; dpr = Math.min(2, window.devicePixelRatio || 1); cv.width = Math.round(S.W * dpr); cv.height = Math.round(S.H * dpr); init(S); };
+    const draw = t => {
+      const s = tl(t); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, S.W, S.H); drawFn(S, t, s);
+      if (s.ph !== shown) { hud.phase.textContent = PHASE[s.ph]; shown = s.ph; }
+      hud.lines.textContent = fmt(lerp(76888, 36458, s.m)); hud.checks.textContent = `${Math.round(s.v * 382)} / 382`;
+    };
+    layout(); seen.observe(box);
+    loops.push(dt => { if (box._on) { clock = (clock + dt) % T; draw(clock); } });
+    new ResizeObserver(() => { layout(); draw(calm ? 11.8 : clock); }).observe(box); draw(11.8);
+  };
+  const disc = (ctx, x, y, r) => { ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill(); };
+  const ring = (ctx, cx, cy, R, v, a) => {
+    if (a <= 0) return; const lit = Math.floor(v * TICKS); ctx.lineCap = 'round';
+    for (let i = 0; i < TICKS; i++) { const th = -Math.PI / 2 + i / TICKS * TAU, c = Math.cos(th), s = Math.sin(th), on = i < lit, len = on ? 11 : 7;
+      ctx.strokeStyle = on ? `rgba(155,232,74,${a})` : `rgba(255,255,255,${.22 * a})`; ctx.lineWidth = on ? 2 : 1.2;
+      ctx.beginPath(); ctx.moveTo(cx + c * R, cy + s * R); ctx.lineTo(cx + c * (R + len), cy + s * (R + len)); ctx.stroke(); }
+  };
+  /* the finishing flash: a soft glow, one widening ring, and sparkles that go off one after another */
+  const bling = (ctx, cx, cy, R, b, pts, noRing) => {
+    if (b <= 0 || b >= 1) return;
+    const a = Math.sin(Math.PI * Math.min(1, b * 1.5)) * .34, g = ctx.createRadialGradient(cx, cy, 0, cx, cy, R * 1.7);
+    g.addColorStop(0, `rgba(220,255,180,${a})`); g.addColorStop(1, 'rgba(220,255,180,0)'); ctx.fillStyle = g; ctx.fillRect(cx - R * 1.8, cy - R * 1.8, R * 3.6, R * 3.6);
+    if (!noRing) { ctx.strokeStyle = `rgba(220,255,180,${(1 - b) * .7})`; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(cx, cy, R * (1 + b * .7), 0, TAU); ctx.stroke(); }
+    ctx.lineCap = 'round';
+    pts.forEach(([x, y], i) => { const q = clamp01((b - (i * .137) % .56) / .38); if (q <= 0 || q >= 1) return;
+      const s = Math.sin(Math.PI * q), L = 4 + 15 * s, D = L * .42;
+      ctx.strokeStyle = `rgba(255,255,255,${s})`; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(x - L, y); ctx.lineTo(x + L, y); ctx.moveTo(x, y - L); ctx.lineTo(x, y + L); ctx.stroke();
+      ctx.lineWidth = .8; ctx.beginPath(); ctx.moveTo(x - D, y - D); ctx.lineTo(x + D, y + D); ctx.moveTo(x - D, y + D); ctx.lineTo(x + D, y - D); ctx.stroke(); });
+  };
+
+  /* ---------------- B1: a loose cloud condenses into an ordered sphere ---------------- */
+  (() => {
+    const N = 1700, K = Math.round(N * KEEP), rng = mul(77);
+    const gauss = () => { let u = 0; for (let i = 0; i < 4; i++) u += rng(); return (u - 2) / .58; };
+    const P = Array.from({ length: N }, (_, i) => { const keep = i < K, y = 1 - 2 * (i + .5) / K, r = Math.sqrt(Math.max(0, 1 - y * y)), th = i * 2.399963;
+      return { keep, cx: gauss() * 1.15, cy: gauss() * .6, cz: gauss() * .9, sx: r * Math.cos(th), sy: y, sz: r * Math.sin(th), ph: rng() * TAU, sp: .4 + rng() * .8 }; });
+    const SP = Array.from({ length: 9 }, () => [rng() * TAU, .15 + rng() * .8]);
+    mount('#s1', () => {}, (S, t, s) => {
+      const { ctx, W, H } = S, m = s.m, cx = W / 2, cy = H * .5, Rc = Math.min(W * .26, 300), Rs = Math.min(H * .23, W * .2, 118), f = 900;
+      const a = t * .22 + m * t * .25, ca = Math.cos(a), sa = Math.sin(a);
+      if (m > .02) { const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, Rs * 2.4); g.addColorStop(0, `rgba(150,235,70,${.2 * m})`); g.addColorStop(1, 'rgba(150,235,70,0)'); ctx.fillStyle = g; ctx.fillRect(cx - Rs * 2.5, cy - Rs * 2.5, Rs * 5, Rs * 5); }
+      ctx.globalCompositeOperation = 'lighter';
+      for (const p of P) {
+        let x = (p.cx + Math.sin(t * p.sp + p.ph) * .06) * Rc, y = (p.cy + Math.cos(t * p.sp * .8 + p.ph) * .05) * Rc, z = p.cz * Rc, al, sz, col = WHITE;
+        if (p.keep) { x = lerp(x, p.sx * Rs, m); y = lerp(y, p.sy * Rs, m); z = lerp(z, p.sz * Rs, m); al = lerp(.7, 1, m); sz = lerp(1.5, 1.75, m); if (m > .5) col = LIME; }
+        else { const k = 1 + m * .55; x *= k; y *= k; z *= k; al = .7 * (1 - m); sz = 1.5; if (al < .01) continue; }
+        const X = x * ca + z * sa, Z = z * ca - x * sa, q = f / Math.max(300, f + Z);
+        ctx.fillStyle = `rgba(${col},${al * (.5 + .5 * clamp01(.5 - Z / (2.4 * Rs + 1)))})`; disc(ctx, cx + X * q, cy + y * q, sz * q);
+      }
+      ctx.globalCompositeOperation = 'source-over';
+      ring(ctx, cx, cy, Rs * 1.62, s.v, clamp01((m - .55) / .45));
+      bling(ctx, cx, cy, Rs, s.b, SP.map(([th, r]) => [cx + Math.cos(th) * r * Rs, cy + Math.sin(th) * r * Rs]));
+    });
+  })();
+
+  /* ---------------- B2: stars stay where they are; the kept ones are joined into a constellation ---------------- */
+  (() => {
+    const N = 190, K = Math.round(N * KEEP), rng = mul(4242);
+    const gauss = () => { let u = 0; for (let i = 0; i < 4; i++) u += rng(); return (u - 2) / .58; };
+    const U = Array.from({ length: N }, (_, i) => ({ core: i < 120, gx: gauss(), gy: gauss(), ux: rng() * 2 - 1, uy: rng() * 2 - 1, n: rng(), size: .7 + rng() * .9, ph: rng() * TAU, sp: .6 + rng() * 1.6 }));
+    mount('#s2', S => {
+      const { W, H } = S, cx = W / 2, cy = H * .5, sig = Math.min(W, H) * .2;
+      const st = U.map(u => { const x = u.core ? cx + u.gx * sig : cx + u.ux * W * .47, y = u.core ? cy + u.gy * sig * .92 : cy + u.uy * H * .44; return { ...u, x, y, d: Math.hypot(x - cx, y - cy) + u.n * sig * .25 }; });
+      const order = st.map((_, i) => i).sort((a, b) => st[a].d - st[b].d);
+      order.forEach((i, r) => { st[i].keep = r < K; });
+      const kept = order.slice(0, K), inT = new Set([kept[0]]), best = new Map(), edges = [];
+      kept.slice(1).forEach(i => best.set(i, [Math.hypot(st[i].x - st[kept[0]].x, st[i].y - st[kept[0]].y), kept[0]]));
+      while (best.size) {                                   /* minimum spanning tree, grown outward from the centre */
+        let pick = -1, bd = 1e9; best.forEach(([d], i) => { if (d < bd) { bd = d; pick = i; } });
+        edges.push([best.get(pick)[1], pick]); best.delete(pick); inT.add(pick);
+        best.forEach((v, i) => { const d = Math.hypot(st[i].x - st[pick].x, st[i].y - st[pick].y); if (d < v[0]) best.set(i, [d, pick]); });
+      }
+      S.st = st; S.edges = edges; S.cx = cx; S.cy = cy; S.R = Math.min(Math.max(...kept.map(i => Math.hypot(st[i].x - cx, st[i].y - cy))) + 20, H * .5 - 18);
+      S.sp = kept.filter((_, i) => i % 9 === 4).map(i => [st[i].x, st[i].y]);
+    }, (S, t, s) => {
+      const { ctx, st, edges, cx, cy, R } = S, m = s.m, E = edges.length;
+      ctx.lineCap = 'round'; ctx.lineWidth = 1.1;
+      edges.forEach(([a, b], k) => { const p = clamp01((s.raw * (E + 10) - k) / 10); if (p <= 0) return;
+        const A = st[a], B = st[b]; ctx.strokeStyle = `rgba(${LIME},${.5 * s.k})`; ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.lineTo(A.x + (B.x - A.x) * p, A.y + (B.y - A.y) * p); ctx.stroke(); });
+      for (const p of st) { const tw = .72 + .28 * Math.sin(t * p.sp + p.ph);
+        if (p.keep) { ctx.fillStyle = `rgba(${m > .5 ? LIME : WHITE},${lerp(.8, 1, m) * tw})`; disc(ctx, p.x, p.y, lerp(1.3, 2.1, m) * p.size); }
+        else { ctx.fillStyle = `rgba(${WHITE},${.75 * tw * (1 - .94 * m)})`; disc(ctx, p.x, p.y, 1.25 * p.size); } }
+      ring(ctx, cx, cy, R, s.v, clamp01((m - .6) / .4)); bling(ctx, cx, cy, R * .7, s.b, S.sp);
+    });
+  })();
+
+  /* ---------------- B3 and B4: a tangled graph breaks, loses its extra nodes and reconnects as a tidy tree ---------------- */
+  const tree = (id, seed, layered) => {
+    const N = 150, K = Math.round(N * KEEP), LV = [1, 6, 18, K - 25], rng = mul(seed);
+    const U = Array.from({ length: N }, () => { const a = rng() * TAU, r = Math.sqrt(rng()); return { ux: Math.cos(a) * r, uy: Math.sin(a) * r, keep: false, br: rng(), ph: rng() * TAU, sp: .5 + rng() * 1.2, far: rng() }; });
+    mount(id, S => {
+      const { W, H } = S, cx = W / 2, cy = H * (layered ? .47 : .5), R = Math.min(H * .34, W * .3);
+      const nd = U.map(u => ({ ...u, x0: cx + u.ux * W * .45, y0: cy + u.uy * H * .42, lv: -1 }));
+      /* the kept nodes: K of them, spread over the whole sky; the ones nearest the centre become the trunk */
+      const pickd = nd.map((_, i) => i).sort((a, b) => nd[a].far - nd[b].far).slice(0, K).sort((a, b) => Math.hypot(nd[a].x0 - cx, nd[a].y0 - cy) - Math.hypot(nd[b].x0 - cx, nd[b].y0 - cy));
+      const key = i => layered ? nd[i].y0 : Math.atan2(nd[i].y0 - cy, nd[i].x0 - cx);
+      const lv = []; let at = 0; LV.forEach(n => { lv.push(pickd.slice(at, at + n).sort((a, b) => key(a) - key(b))); at += n; });
+      const Wt = Math.min(W * .78, 860), x0 = cx - Wt / 2, span = [0, H * .46, H * .68, H * .8];
+      const place = (l, j, n) => layered ? [x0 + l * Wt / 3, n === 1 ? cy : cy - span[l] / 2 + j * span[l] / (n - 1)]
+        : l === 0 ? [cx, cy] : [cx + Math.cos((j + .5) / n * TAU - Math.PI) * R * [0, .25, .6, 1][l], cy + Math.sin((j + .5) / n * TAU - Math.PI) * R * [0, .25, .6, 1][l]];
+      const edges = []; let ord = 0;
+      lv.forEach((ids, l) => ids.forEach((i, j) => { const [x, y] = place(l, j, ids.length); Object.assign(nd[i], { keep: true, lv: l, x1: x, y1: y });
+        if (l) { const par = lv[l - 1][Math.min(lv[l - 1].length - 1, Math.floor(j * lv[l - 1].length / ids.length))]; edges.push({ a: par, b: i, at: (l - 1) / 3 * .62 + j / ids.length * .2 }); } }));
+      /* the tangle: every node tied to its two nearest neighbours, and some to a far one */
+      const mess = [];
+      nd.forEach((p, i) => { const near = nd.map((q, j) => [Math.hypot(q.x0 - p.x0, q.y0 - p.y0), j]).sort((a, b) => a[0] - b[0]);
+        [near[1][1], near[2][1]].forEach(j => { if (j > i || !mess.some(e => e.a === j && e.b === i)) mess.push({ a: i, b: j, at: rng() }); });
+        if (rng() < .42) mess.push({ a: i, b: near[8 + Math.floor(rng() * 40)][1], at: rng() }); });
+      Object.assign(S, { nd, edges, mess, cx, cy, R, Wt, x0, layered });
+      S.sp = lv[3].filter((_, j) => j % 6 === 2).map(i => [nd[i].x1, nd[i].y1]).concat([[nd[lv[0][0]].x1, nd[lv[0][0]].y1]]);
+    }, (S, t, s) => {
+      const { ctx, nd, edges, mess, cx, cy, R, Wt, x0 } = S, k = s.k;
+      const brk = seg(t, 2.2, 5.2) * k, mv = ease(seg(t, 3.3, 6.5)) * k, grow = seg(t, 4.3, 7.0) * k;
+      const pos = p => { const dx = Math.sin(t * p.sp + p.ph) * 3 * (1 - mv), dy = Math.cos(t * p.sp * .8 + p.ph) * 3 * (1 - mv);
+        return p.keep ? [lerp(p.x0, p.x1, mv) + dx, lerp(p.y0, p.y1, mv) + dy] : [p.x0 + (p.x0 - cx) * .12 * brk + dx, p.y0 + (p.y0 - cy) * .12 * brk + dy]; };
+      const P = nd.map(pos);
+      /* old ties: faint, and each one snaps with a brief spark */
+      ctx.lineCap = 'round';
+      for (const e of mess) { const q = seg(brk, e.at * .86, e.at * .86 + .14); if (q >= 1) continue;
+        ctx.strokeStyle = q > 0 && q < .35 ? `rgba(255,255,255,${.5 * (1 - q / .35)})` : `rgba(${WHITE},${.16 * (1 - q)})`; ctx.lineWidth = q > 0 && q < .35 ? 1.3 : .8;
+        const [ax, ay] = P[e.a], [bx, by] = P[e.b], gap = q * .5;
+        ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(lerp(ax, bx, .5 - gap), lerp(ay, by, .5 - gap)); ctx.moveTo(lerp(ax, bx, .5 + gap), lerp(ay, by, .5 + gap)); ctx.lineTo(bx, by); ctx.stroke(); }
+      /* new ties: grown from parent to child, level by level */
+      ctx.lineWidth = 1.2; ctx.strokeStyle = `rgba(${LIME},.62)`;
+      for (const e of edges) { const p = clamp01((grow - e.at) / .18); if (p <= 0) continue;
+        const [ax, ay] = P[e.a], [bx, by] = P[e.b]; ctx.beginPath(); ctx.moveTo(ax, ay);
+        if (S.layered) { const mx = (ax + bx) / 2; for (let i = 1; i <= 14; i++) { const u = i / 14 * p, w = 1 - u; ctx.lineTo(w * w * w * ax + 3 * w * w * u * mx + 3 * w * u * u * mx + u * u * u * bx, w * w * w * ay + 3 * w * w * u * ay + 3 * w * u * u * by + u * u * u * by); } }
+        else ctx.lineTo(lerp(ax, bx, p), lerp(ay, by, p));
+        ctx.stroke(); }
+      nd.forEach((p, i) => { const [x, y] = P[i], tw = .75 + .25 * Math.sin(t * p.sp + p.ph);
+        if (p.keep) { ctx.fillStyle = `rgba(${mv > .5 ? LIME : WHITE},${lerp(.8 * tw, 1, mv)})`; disc(ctx, x, y, lerp(1.7, [5, 3.6, 2.7, 2][p.lv], mv)); }
+        else { const a = .75 * tw * (1 - seg(brk, p.br * .7, p.br * .7 + .25)); if (a > .01) { ctx.fillStyle = `rgba(${WHITE},${a})`; disc(ctx, x, y, 1.7); } } });
+      const ra = clamp01((mv - .7) / .3);
+      if (S.layered) {                                       /* checks as a strip under the tree */
+        const y = cy + S.H * .455, lit = Math.floor(s.v * TICKS), w = Math.min(Wt, S.W - 60);
+        for (let i = 0; i < TICKS; i++) { const x = cx - w / 2 + i * w / (TICKS - 1), on = i < lit;
+          ctx.strokeStyle = on ? `rgba(155,232,74,${ra})` : `rgba(255,255,255,${.22 * ra})`; ctx.lineWidth = on ? 2 : 1.2; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x, y + (on ? 11 : 7)); ctx.stroke(); }
+        bling(ctx, cx, cy, Math.min(S.H * .36, Wt * .3), s.b, S.sp, true);
+      } else { ring(ctx, cx, cy, R + 20, s.v, ra); bling(ctx, cx, cy, R * .8, s.b, S.sp); }
+    });
+  };
+  tree('#s3', 9001, false);
+  tree('#s4', 9002, true);
+
+  if (!calm) { let last = performance.now(); const frame = now => { const dt = Math.min(.05, (now - last) / 1000); last = now; loops.forEach(f => f(dt)); requestAnimationFrame(frame); }; requestAnimationFrame(frame); }
+})();
+</script>
+</body>
+</html>
