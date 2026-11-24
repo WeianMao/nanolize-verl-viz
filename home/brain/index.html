@@ -65,6 +65,21 @@ button{font:inherit;color:inherit}
 .hero h1 span{display:block}
 .hero .sub{max-width:34em;margin:18px auto 0;font-size:clamp(1.0625rem,1.5vw,1.25rem);color:var(--ink-sub)}
 .cta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:30px}
+/* The before/after readout under the scene: the original and the nano code on one scale, with the same checks.
+   A version's script sets #orb-phase, #orb-lines, #orb-checks and the width of #orb-bar. */
+.cmp{display:grid;gap:8px;width:min(100%,31rem);margin-inline:auto;text-align:left}
+.cmp .ph{justify-self:center;display:inline-block;color:var(--green);margin-bottom:2px}
+.cmp .row{display:grid;grid-template-columns:4.4em minmax(0,1fr) 7.8em 9.6em;align-items:center;gap:10px;white-space:nowrap}
+.cmp .bar{display:block;height:5px;border-radius:99px}
+.cmp .bar i{display:block;height:100%;width:100%;border-radius:99px;background:var(--mute)}
+.cmp .nano .bar i{width:47.4%;background:var(--green-f)}
+.cmp b{font-weight:500;color:var(--ink);transition:color .35s}
+.cmp .nano .k{color:var(--green)}
+.cmp.done .nano b{color:var(--green)}
+.cmp.done .ph{animation:cmp-pop .8s cubic-bezier(.2,1.5,.4,1)}
+@keyframes cmp-pop{0%{transform:scale(1)}35%{transform:scale(1.6)}100%{transform:scale(1)}}
+@media (max-width:519px){.cmp .row{grid-template-columns:4.2em minmax(0,1fr) 7.8em}.cmp .c{grid-column:2/-1;margin-top:-6px}}
+@media (prefers-reduced-motion: reduce){.cmp.done .ph{animation:none}}
 .nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:980px;margin:clamp(22px,3vw,40px) auto 0;border-top:1px solid var(--line)}
 .nums li{padding:26px 12px 0}
 .nums li+li{border-left:1px solid var(--line)}
@@ -262,18 +277,12 @@ button{font:inherit;color:inherit}
 .cta{justify-content:flex-start}
 .orb{position:relative;min-width:0}
 .orb::before{content:"";position:absolute;inset:-4% -6% 6%;pointer-events:none;background:radial-gradient(50% 50% at 50% 48%,rgba(var(--g),.13),transparent 72%)}
-/* the canvas is 24% larger than its box (negative margins give the room back), so the burst at the end can spill
-   around the brain; the script draws the brain at the size of the box */
-.orb canvas{position:relative;display:block;width:124%;max-width:none;aspect-ratio:5/4;margin:-9.6% -12%;pointer-events:none}
-.orb .cap{position:relative;display:grid;gap:2px;justify-items:center;text-align:center;margin-top:2px}
-.orb .cap b{font-weight:500;color:var(--ink);transition:color .35s}
-.orb .cap #orb-phase{color:var(--green)}
-/* when every check has passed: the phase word pops once and the numbers turn green */
-.orb .cap.done b{color:var(--green)}
-@media (max-width:759px){.orb .cap .long{display:none}}
-.orb .cap.done #orb-phase{font-weight:600;animation:cap-pop .7s cubic-bezier(.2,1.5,.4,1) 1}
-@keyframes cap-pop{0%{transform:scale(1)}35%{transform:scale(1.5)}100%{transform:scale(1)}}
-@media (prefers-reduced-motion: reduce){.orb .cap.done #orb-phase{animation:none}}
+/* the scene takes the pointer (drag the divider sideways; a vertical swipe still scrolls the page). The canvas is
+   10% larger than the scene (negative margins give the room back), so the glow at the finish and the names at
+   the divider have room; the script draws the brain at the size of the scene */
+.scene{position:relative;touch-action:pan-y;cursor:ew-resize;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+.scene canvas{position:relative;display:block;width:110%;max-width:none;aspect-ratio:5/4;margin:-4% -5%;pointer-events:none}
+.orb .cmp{position:relative;margin-top:2px}
 .nums{max-width:none;margin-top:clamp(28px,4vw,56px)}
 @media (min-width:760px){.nums li:first-child{padding-left:0}}
 @media (max-width:899px){
@@ -328,9 +337,15 @@ button{font:inherit;color:inherit}
           <p class="sub">A brain matures by pruning the connections it does not use. Nanolize does that for code: it rewrites a bloated repository into a nano one that coding agents read, change and run for fewer tokens.</p>
           <p class="cta"><a class="btn go" href="#">Read the paper</a><a class="btn gh" href="#">Get the code</a></p>
         </div>
-        <div class="orb" id="orb" role="img" aria-label="Animation: neurons inside a brain seen from the side. Of the 135 connections between them, 71 are cut and fade away, 52.6%, the share of Detectron2's 76,888 lines that the rewrite removes. The 64 that stay form one tree, rooted in the brainstem, that reaches every neuron. It turns green from the root to the tips, checks run up it as pulses, and 382 of 382 pass.">
-          <canvas></canvas>
-          <p class="cap m"><span id="orb-phase">delivered</span><span><b class="num" id="orb-lines">36,458</b> of 76,888 lines<span class="long"> of detectron2</span>, <b class="num" id="orb-checks">382 / 382</b> checks pass</span></p>
+        <div class="orb" id="orb">
+          <div class="scene" id="scene" role="img" aria-label="Animation, with a divider you can drag: neurons inside a brain seen from the side. Of the 135 connections between them, 71 are cut and fade away, 52.6%, the share of Detectron2's 76,888 lines that the rewrite removes. The 64 that stay form one tree, rooted in the brainstem, that reaches every neuron; checks run up it as pulses and 382 of 382 pass. Then the two states are shown side by side: the original tangle left of the divider, the nano tree right of it.">
+            <canvas></canvas>
+          </div>
+          <div class="cmp m" id="cmp">
+            <span class="ph" id="orb-phase">before and after</span>
+            <div class="row"><span class="k">original</span><span class="bar"><i></i></span><span><b class="num">76,888</b> lines</span><span class="c">382 checks frozen</span></div>
+            <div class="row nano"><span class="k">nano</span><span class="bar"><i id="orb-bar"></i></span><span><b class="num" id="orb-lines">36,458</b> lines</span><span class="c"><b class="num" id="orb-checks">382 / 382</b> pass</span></div>
+          </div>
         </div>
       </div>
       <ul class="nums">
@@ -566,13 +581,15 @@ button{font:inherit;color:inherit}
   /* ---------------- hero: synaptic pruning. Neurons sit inside a brain seen from the side, and nothing moves or
      gathers: the connections that are not needed are cut and fade, and the ones that stay are one tree, rooted in
      the brainstem, that reaches every neuron. It turns green from the root to the tips and the checks run up it as
-     pulses. When they have all passed, a bright pulse runs up the tree and it bursts (it swells, glows, sends out
-     rings and sparkles), then stays lit, breathing, until the scene starts over. The tree's share of all
+     pulses. When they have all passed the tree swells and glows for a moment and a few sparkles go off at its tips.
+     Then the two states are put side by side: a divider crosses the brain, with the original left of it and the
+     nano tree right of it, and anyone can drag it. The page opens on that comparison. The tree's share of all
      connections is the real ratio for Detectron2, 36,458 of 76,888 lines, by count.
-     Times in seconds: original 0, rewrite 2.4 to 7, checks 7.3 to 9.9, finish 10 to 12.4, hold to 16.8, restore to 18.8. ---------------- */
+     Times in seconds: original 0, rewrite 2.4 to 7, checks 7.3 to 9.9, finish 10 to 12, the divider comes in 12.2 to
+     13.4, rests to 18.2, leaves to the right by 20, and the loop restarts at 20.4. ---------------- */
   (() => {
-    const box = $('#orb'), cv = $('canvas', box), ctx = cv.getContext('2d');
-    const KEEP = 36458 / 76888, T = 19, TAU = 6.2832, BW = 1000, BH = 800, SEG = 14;
+    const box = $('#scene'), cv = $('canvas', box), ctx = cv.getContext('2d');
+    const KEEP = 36458 / 76888, T = 20.4, TAU = 6.2832, BW = 1000, BH = 800, SEG = 14;
     const INK = '13,20,17', GREEN = '118,185,0', DEEP = '63,106,0';
     const fix = new URLSearchParams(location.search).get('t');      // ?t=seconds freezes the scene at one moment
     const rng = (a => () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; })(19);
@@ -662,107 +679,124 @@ button{font:inherit;color:inherit}
     const stray = (a, b) => { had.add(key(a, b)); const A = NEU[a], B = NEU[b], bend = (rng() < .5 ? -1 : 1) * (.1 + rng() * .2); curve({ a, b, keep: false, cut: rng() }, (A.x + B.x) / 2 - (B.y - A.y) * bend, (A.y + B.y) / 2 + (B.x - A.x) * bend); };
     CAND.filter(([a, b]) => !had.has(key(a, b))).sort((p, q) => dist(...p) - dist(...q)).slice(0, 38).forEach(([a, b]) => stray(a, b));
     for (let i = 0; i < 20000 && E.length < TOTAL; i++) { const a = Math.floor(rng() * n), b = Math.floor(rng() * n), d = dist(a, b); if (a !== b && d > 130 && d < 430 && !had.has(key(a, b)) && within(a, b)) stray(a, b); }
-    box.dataset.kept = `${n - 1} of ${E.length} connections`;
-    const TIPS = order.filter(i => !kids[i]);
+    $('#orb').dataset.kept = `${n - 1} of ${E.length} connections`;
+    const TIPS = order.filter(i => !kids[i]), SPARK = TIPS.filter((_, i) => i % Math.ceil(TIPS.length / 9) === 1);
     const at = (e, u) => { const f = clamp01(u) * SEG, i = Math.min(SEG - 1, Math.floor(f)), k = f - i, p = e.p; return [lerp(p[i * 2], p[i * 2 + 2], k), lerp(p[i * 2 + 1], p[i * 2 + 3], k)]; };
     const part = (e, u0, u1) => {                                   // adds the stretch u0..u1 of a connection to the current path
       if (u1 - u0 < .002) return; const p = e.p, s = at(e, u0), q = at(e, u1); ctx.moveTo(s[0], s[1]);
       for (let i = Math.floor(u0 * SEG) + 1; i < Math.ceil(u1 * SEG); i++) ctx.lineTo(p[i * 2], p[i * 2 + 1]); ctx.lineTo(q[0], q[1]); };
 
-    const hud = { lines: $('#orb-lines'), checks: $('#orb-checks'), phase: $('#orb-phase'), cap: $('.cap', box) };
-    const PHASE = ['the original', 'pruning', 'running the frozen checks', 'delivered'];
-    const ROOM = 1.24;                                              // the canvas is this much larger than its box, so the burst has room around the brain
-    let W = 0, H = 0, dpr = 1, S = 1, ox = 0, oy = 0, shown = -1, clock = 0;
+    const hud = { lines: $('#orb-lines'), checks: $('#orb-checks'), bar: $('#orb-bar'), phase: $('#orb-phase'), cmp: $('#cmp') };
+    const PHASE = ['the original', 'pruning', 'running the frozen checks', 'delivered', 'before and after'];
+    const ROOM = 1.1;                                               // the canvas is this much larger than the scene, so the glow and the divider's names have room
+    const LEFT = 58, REST = 480, RIGHT = 980;                        // the divider: where it comes in, where it rests (the trunk stays on the nano side), where it leaves
+    let W = 0, H = 0, dpr = 1, S = 1, ox = 0, oy = 0, shown = -1, clock = 13.4, now = 0;        // the page opens on the comparison at rest
+    let grab = null, heldUntil = -1, userX = REST, glide = null;     // the divider in the visitor's hand, and for four seconds after
     const layout = () => { const r = cv.getBoundingClientRect(); W = r.width; H = r.height; dpr = Math.min(2, window.devicePixelRatio || 1); cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
       S = Math.min(W / BW, H / BH) / ROOM; ox = (W - BW * S) / 2; oy = (H - BH * S) / 2; };
-    const star = (x, y, L) => { const c = L * .2; ctx.beginPath(); ctx.moveTo(x, y - L); ctx.lineTo(x + c, y - c); ctx.lineTo(x + L, y); ctx.lineTo(x + c, y + c); ctx.lineTo(x, y + L); ctx.lineTo(x - c, y + c); ctx.lineTo(x - L, y); ctx.lineTo(x - c, y - c); ctx.closePath(); ctx.fill(); };
-    const sparkle = (i, j, s, size) => {                            // a four-pointed glint beside neuron i; s runs 0..1..0
-      if (s <= 0) return; const p = NEU[i], a = j * 2.4, d = p.r * (2.1 + j % 3 * 1.2), x = p.x + Math.cos(a) * d, y = p.y + Math.sin(a) * d, L = size * (.3 + .7 * s);
-      ctx.shadowColor = `rgba(${GREEN},${s})`; ctx.shadowBlur = 12 * dpr * s; ctx.fillStyle = `rgba(${DEEP},${Math.min(1, s * 1.5)})`; star(x, y, L);
-      ctx.shadowBlur = 0; ctx.shadowColor = 'transparent'; ctx.fillStyle = `rgba(255,255,255,${s})`; star(x, y, L * .36); };
-    const draw = t => {
-      const back = seg(t, 16.8, 18.8), k = 1 - ease(back), raw = seg(t, 2.4, 7) * k, m = ease(seg(t, 2.4, 7)) * k;
-      const v = back > 0 ? 0 : seg(t, 7.3, 9.9), tf = back > 0 ? -1 : t - 10;                 // tf: seconds into the finish
-      const rush = tf > 0 && tf < .45 ? REACH * 1.1 * tf / .33 : -1;                           // the bright pulse that runs up the tree first
-      const B = tf < .3 ? 0 : tf < .46 ? ease((tf - .3) / .16) : Math.exp(-(tf - .46) / .62);   // the burst: up fast, down slowly
-      const fin = ease(seg(t, 10.33, 10.95)) * (1 - ease(seg(t, 16.8, 17.4)));                 // the finished state that the burst settles into
-      const breath = 1 + .07 * Math.sin(t * 1.9) * fin;
+
+    /* One state of the scene. raw: how far the rewrite has gone (0..1); v: the checks (0..1); b: the finish (0..1);
+       clean: how far the dendrites have lightened, so that the finished tree stands alone; idle: stray pulses in the
+       tangle; slim: the tree drawn a fifth lighter, for the comparison. */
+    const live = t => { const raw = seg(t, 2.4, 7); return { raw, v: seg(t, 7.3, 9.9), b: seg(t, 10, 11.8), clean: ease(seg(t, 10, 11.2)), idle: t < 8 ? 1 - clamp01(raw * 5) : 0 }; };
+    const BEFORE = { raw: 0, v: 0, b: 0, clean: 0, idle: 1 };
+    const after = t => ({ raw: 1, v: 1, b: 0, clean: 1, idle: 0, slim: ease(seg(t, 12.2, 13.2)) });
+    const paint = ({ raw, v, b, clean, idle, slim = 0 }) => {
+      const sw = b > 0 && b < 1 ? Math.sin(Math.PI * Math.min(1, b * 1.4)) : 0;                  // the finish: a brief swell and glow
       const px = 1 / S, front = REACH * 1.03 * clamp01((raw - .05) / .83);     // px: one CSS pixel in drawing units; front: how far along the tree the green has grown
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
-      ctx.setTransform(dpr * S, 0, 0, dpr * S, dpr * ox, dpr * oy); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
-      /* behind the brain: the green bloom, and the rings that leave it at the burst */
-      const wash = .22 * fin + .55 * B;
-      if (wash > .004) { ctx.save(); ctx.translate(505, 395); ctx.scale(1, .8); const g = ctx.createRadialGradient(0, 0, 0, 0, 0, 610); g.addColorStop(0, `rgba(${GREEN},${wash})`); g.addColorStop(.6, `rgba(${GREEN},${wash * .42})`); g.addColorStop(1, `rgba(${GREEN},0)`); ctx.fillStyle = g; ctx.fillRect(-620, -620, 1240, 1240); ctx.restore(); }
-      for (const from of [.36, .62]) { const q = (tf - from) / .95; if (q <= 0 || q >= 1) continue; const sc = 1 + .22 * (1 - (1 - q) * (1 - q));
-        ctx.save(); ctx.translate(505, 395); ctx.scale(sc, sc); ctx.translate(-505, -395); ctx.strokeStyle = `rgba(${GREEN},${.8 * Math.pow(1 - q, 1.5)})`; ctx.lineWidth = (5.5 * (1 - q) + 1) * px / sc; ctx.stroke(outline); ctx.restore(); }
+      ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      if (sw > 0) { ctx.save(); ctx.translate(500, 400); ctx.scale(1, .78); const g = ctx.createRadialGradient(0, 0, 0, 0, 0, 500); g.addColorStop(0, `rgba(${GREEN},${.3 * sw})`); g.addColorStop(1, `rgba(${GREEN},0)`); ctx.fillStyle = g; ctx.fillRect(-500, -500, 1000, 1000); ctx.restore(); }
       ctx.fillStyle = 'rgba(255,255,255,.8)'; ctx.fill(outline);
-      const tint = .09 * fin + .24 * B; if (tint > .004) { ctx.fillStyle = `rgba(${GREEN},${tint})`; ctx.fill(outline); }
       ctx.strokeStyle = `rgba(${INK},.14)`; ctx.lineWidth = 1.1 * px; ctx.stroke(folds);
       ctx.strokeStyle = `rgba(${INK},.3)`; ctx.lineWidth = 1.3 * px; ctx.stroke(outline);
-      const rim = Math.min(1, .75 * fin + B);
-      if (rim > .004) { ctx.shadowColor = `rgba(${GREEN},${rim})`; ctx.shadowBlur = (9 * fin + 26 * B) * dpr; ctx.strokeStyle = `rgba(${GREEN},${rim})`; ctx.lineWidth = (1.4 + .9 * fin + 4 * B) * px; ctx.stroke(outline); ctx.shadowBlur = 0; ctx.shadowColor = 'transparent'; }
+      if (sw > 0) { ctx.strokeStyle = `rgba(${GREEN},${.85 * sw})`; ctx.lineWidth = 2.2 * px; ctx.stroke(outline); }
       ctx.save(); ctx.clip(outline);
       /* dendrites: they lighten once the tree is finished, so that it stands alone */
-      ctx.strokeStyle = `rgba(${INK},${lerp(.46, .15, fin)})`; ctx.lineWidth = 1.15 * px; ctx.beginPath();
+      ctx.strokeStyle = `rgba(${INK},${lerp(.46, .17, clean)})`; ctx.lineWidth = 1.15 * px; ctx.beginPath();
       for (const p of NEU) for (const w of p.twigs) { ctx.moveTo(w[0], w[1]); ctx.quadraticCurveTo(w[2], w[3], w[4], w[5]); }
       ctx.stroke();
       /* connections that are cut: whole while untouched, then a gap opens in the middle and both halves pull back */
       const marks = [];
-      ctx.strokeStyle = `rgba(${INK},.5)`; ctx.lineWidth = 1.3 * px; ctx.beginPath();
+      ctx.strokeStyle = `rgba(${INK},.62)`; ctx.lineWidth = 1.5 * px; ctx.beginPath();
       for (const e of E) if (!e.keep && raw <= e.cut * .8) part(e, 0, 1);
       ctx.stroke();
       for (const e of E) { if (e.keep) continue; const p = clamp01((raw - e.cut * .8) / .2); if (p <= 0 || p >= 1) continue;
-        const q = ease(clamp01((p - .2) / .8)), gap = .035 + .465 * q; ctx.strokeStyle = `rgba(${INK},${.5 * (1 - q)})`; ctx.beginPath(); part(e, 0, .5 - gap); part(e, .5 + gap, 1); ctx.stroke();
+        const q = ease(clamp01((p - .2) / .8)), gap = .035 + .465 * q; ctx.strokeStyle = `rgba(${INK},${.62 * (1 - q)})`; ctx.beginPath(); part(e, 0, .5 - gap); part(e, .5 + gap, 1); ctx.stroke();
         marks.push([at(e, .5), Math.sin(Math.PI * clamp01(p / .62))]); }
       /* connections that stay: a thin line like the rest at first, then the green grows from the root up the trunk and out to the tips */
-      ctx.strokeStyle = `rgba(${INK},.5)`; ctx.lineWidth = 1.3 * px; ctx.beginPath();
+      ctx.strokeStyle = `rgba(${INK},.62)`; ctx.lineWidth = 1.5 * px; ctx.beginPath();
       for (const e of E) if (e.keep) { const g = clamp01((front - e.from) / e.len); if (g < 1) part(e, g, 1); }
       ctx.stroke();
-      const fat = (1 + .2 * fin + B) * breath;                         // the finished tree is a fifth heavier than the growing one; the burst doubles it
-      if (front > 0) { const glow = Math.min(1, .8 * fin + B);
-        if (glow > .004) { ctx.shadowColor = `rgba(${GREEN},${glow})`; ctx.shadowBlur = (11 * fin + 30 * B) * dpr; }
+      if (front > 0) { if (sw > 0) { ctx.shadowColor = `rgba(${GREEN},${sw})`; ctx.shadowBlur = 16 * sw * dpr; }
         ctx.strokeStyle = `rgb(${GREEN})`;
-        for (const e of E) if (e.keep) { const g = clamp01((front - e.from) / e.len); if (g <= 0) continue; ctx.lineWidth = Math.max(e.w, 1.5 * px) * fat + 3.5 * B * px; ctx.beginPath(); part(e, 0, g); ctx.stroke(); }
-        ctx.shadowBlur = 0; ctx.shadowColor = 'transparent';
-        const core = Math.min(1, .7 * fin + B);                         // a light core down the trunk and limbs once it is finished
-        if (core > .004) { ctx.strokeStyle = `rgba(228,255,170,${.7 * core})`; for (const e of E) if (e.keep && e.w > 4.6) { ctx.lineWidth = e.w * .27 * fat; ctx.beginPath(); part(e, 0, 1); ctx.stroke(); } }
-        if (rush > 0) for (const [wide, extra, tone] of [[1.9, 5, 'rgba(186,240,36,.96)'], [.6, 1.6, 'rgba(250,255,232,.98)']]) {      // a wide lime bulge with a light core
-          ctx.shadowColor = `rgb(${GREEN})`; ctx.shadowBlur = 20 * dpr; ctx.strokeStyle = tone;
-          for (const e of E) if (e.keep) { const u1 = (rush - e.from) / e.len, u0 = (rush - 150 - e.from) / e.len; if (u1 <= 0 || u0 >= 1) continue; ctx.lineWidth = e.w * wide + extra * px; ctx.beginPath(); part(e, Math.max(0, u0), Math.min(1, u1)); ctx.stroke(); }
-          ctx.shadowBlur = 0; ctx.shadowColor = 'transparent'; } }
+        for (const e of E) if (e.keep) { const g = clamp01((front - e.from) / e.len); if (g <= 0) continue; ctx.lineWidth = Math.max(e.w, 1.5 * px) * (1 + .4 * sw) * (1 - .2 * slim) + 1.2 * sw * px; ctx.beginPath(); part(e, 0, g); ctx.stroke(); }
+        ctx.shadowBlur = 0; ctx.shadowColor = 'transparent'; }
       /* the crosses where a connection is cut */
       ctx.lineWidth = 1.9 * px; for (const [[x, y], a] of marks) { if (a <= 0) continue; const c = 6.2 * px; ctx.strokeStyle = `rgba(${INK},${.9 * a})`; ctx.beginPath(); ctx.moveTo(x - c, y - c); ctx.lineTo(x + c, y + c); ctx.moveTo(x - c, y + c); ctx.lineTo(x + c, y - c); ctx.stroke(); }
-      /* pulses: a few wander through the tangle before the rewrite; the checks run from the root to the tips */
-      const idle = t < 8 && back === 0 ? seg(t, .2, 1) * (1 - clamp01(raw * 5)) : 0;
-      if (idle > 0) { ctx.fillStyle = `rgba(${INK},${.6 * idle})`; for (let i = 0; i < 9; i++) { const tau = t / 2.6 + i * .31, e = E[(i * 37 + Math.floor(tau) * 53) % E.length], [x, y] = at(e, tau % 1); ctx.beginPath(); ctx.arc(x, y, 2.8 * px, 0, TAU); ctx.fill(); } }
-      const waves = [];                                               // [distance along the tree, strength]
-      if (v > 0 && v < 1) for (let w = 0; w < 5; w++) waves.push([REACH * 1.08 * (v * 2.8 - w * .45), 1]);
-      else if (t > 12.4 && back < 1) waves.push([REACH * 1.08 * (t * .3 % 1), .7 * k]);                // the delivered tree keeps working
-      for (const [pos, al] of waves) for (let j = 0; j < 3; j++) { ctx.fillStyle = `rgba(${INK},${.92 * al * (1 - j * .32)})`;     // a pulse and its short tail
+      /* pulses: a few wander through the tangle; the checks run from the root to the tips */
+      if (idle > 0) { ctx.fillStyle = `rgba(${INK},${.6 * idle})`; for (let i = 0; i < 9; i++) { const tau = now / 2.6 + i * .31, e = E[(i * 37 + Math.floor(tau) * 53) % E.length], [x, y] = at(e, tau % 1); ctx.beginPath(); ctx.arc(x, y, 2.8 * px, 0, TAU); ctx.fill(); } }
+      const waves = [];                                               // distance along the tree
+      if (v > 0 && v < 1) for (let w = 0; w < 5; w++) waves.push(REACH * 1.08 * (v * 2.8 - w * .45));
+      for (const pos of waves) for (let j = 0; j < 3; j++) { ctx.fillStyle = `rgba(${INK},${.92 * (1 - j * .32)})`;     // a pulse and its short tail
         for (const e of E) if (e.keep) { const u = (pos - j * 15 - e.from) / e.len; if (u <= 0 || u >= 1) continue; const [x, y] = at(e, u); ctx.beginPath(); ctx.arc(x, y, (3.4 - j * .7) * px, 0, TAU); ctx.fill(); } }
       ctx.restore();
-      /* somas: a soft green halo once the tree is finished, and a pop at the burst */
-      const halo = .2 * fin + .3 * B;
-      if (halo > .004) { ctx.fillStyle = `rgba(${GREEN},${halo})`; ctx.beginPath(); for (const p of NEU) { const R = p.r * (2.2 + .9 * B); ctx.moveTo(p.x + R, p.y); ctx.arc(p.x, p.y, R, 0, TAU); } ctx.fill(); }
+      /* somas */
       NEU.forEach((p, i) => { const lit = ease(clamp01((front - along[i]) / 40 + (i ? 0 : raw * 12))); let ping = 0;
-        for (const [pos, al] of waves) { const u = (pos - along[i]) / 70; if (u > 0 && u < 1) ping = Math.max(ping, (1 - u) * al); }
-        if (rush > 0) { const u = (rush - along[i]) / 160; if (u > 0 && u < 1) ping = Math.max(ping, 1 - u); }
-        const r = p.r * (1 + .12 * lit + .08 * fin + .5 * B);
-        if (lit > 0) { ctx.strokeStyle = `rgba(${GREEN},${lit})`; ctx.lineWidth = (2.2 + .8 * fin + 2.6 * B) * px; ctx.beginPath(); ctx.arc(p.x, p.y, r + 2.6 * px, 0, TAU); ctx.stroke(); }
+        for (const pos of waves) { const u = (pos - along[i]) / 70; if (u > 0 && u < 1) ping = Math.max(ping, 1 - u); }
+        const r = p.r * (1 + .12 * lit + .25 * sw);
+        if (lit > 0) { ctx.strokeStyle = `rgba(${GREEN},${lit})`; ctx.lineWidth = (2.2 - .5 * slim + 1.2 * sw) * px; ctx.beginPath(); ctx.arc(p.x, p.y, r + 2.6 * px, 0, TAU); ctx.stroke(); }
         if (ping > 0) { ctx.strokeStyle = `rgba(${DEEP},${.8 * ping})`; ctx.lineWidth = 1.4 * px; ctx.beginPath(); ctx.arc(p.x, p.y, r + (4 + 12 * (1 - ping)) * px, 0, TAU); ctx.stroke(); }
         ctx.fillStyle = `rgba(${INK},${lerp(.6, .94, lit)})`; ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, TAU); ctx.fill(); });
-      /* sparkles: two dozen across the tips in the second and a half after the burst, then a few that keep going off */
-      if (tf > .3 && tf < 2.5) for (let j = 0; j < 26; j++) { const f = j * .618 % 1, q = (tf - .34 - f * f * 1.3) / .75; /* most of them early */ if (q > 0 && q < 1) sparkle(TIPS[(j * 5 + 2) % TIPS.length], j, Math.sin(Math.PI * q), 30 + j % 3 * 6); }
-      if (fin > 0 && t > 12.2) { const u = (t - 12.2) / .34, i = Math.floor(u); for (const j of [i, i - 1, i - 2]) { const q = (u - j) / 3; if (j >= 0 && q > 0 && q < 1) sparkle(TIPS[(j * 7 + 3) % TIPS.length], j, Math.sin(Math.PI * q) * fin, 24); } }
-      const ph = back > 0 || t < 2.4 ? 0 : t < 7.15 ? 1 : t < 9.95 ? 2 : 3;
-      if (ph !== shown) { hud.phase.textContent = PHASE[ph]; hud.cap.classList.toggle('done', ph === 3); shown = ph; }
-      hud.lines.textContent = fmt(lerp(76888, 36458, m));
-      hud.checks.textContent = `${Math.round((t >= 9.9 && back === 0 ? 1 : v) * 382)} / 382`;
+      /* the finish: a few sparkles go off one after another at the tips */
+      if (b > 0 && b < 1) SPARK.forEach((i, j) => { const q = clamp01((b - (j * .137) % .5) / .42); if (q <= 0 || q >= 1) return;
+        const s = Math.sin(Math.PI * q), p = NEU[i], x = p.x + p.r * 1.6, y = p.y - p.r * 1.6, L = (5 + 15 * s) * px, d = L * .4;
+        ctx.strokeStyle = `rgba(${DEEP},${s})`; ctx.lineWidth = 1.7 * px; ctx.beginPath(); ctx.moveTo(x - L, y); ctx.lineTo(x + L, y); ctx.moveTo(x, y - L); ctx.lineTo(x, y + L); ctx.stroke();
+        ctx.lineWidth = .9 * px; ctx.beginPath(); ctx.moveTo(x - d, y - d); ctx.lineTo(x + d, y + d); ctx.moveTo(x - d, y + d); ctx.lineTo(x + d, y - d); ctx.stroke(); });
     };
-    const still = fix !== null ? +fix : calm ? 14.5 : null;
+    /* the divider: a line with a round grip, and the two names at its top (a name fades out when its side runs out of room) */
+    const divider = (x, a) => { if (a <= 0) return; const px = 1 / S, gy = 400, r = 15 * px;
+      ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.strokeStyle = `rgba(${INK},${.9 * a})`; ctx.lineWidth = 1.5 * px; ctx.beginPath(); ctx.moveTo(x, 6); ctx.lineTo(x, 738); ctx.stroke();
+      ctx.shadowColor = `rgba(${INK},${.28 * a})`; ctx.shadowBlur = 10 * dpr; ctx.shadowOffsetY = 3 * dpr; ctx.fillStyle = `rgba(255,255,255,${a})`; ctx.beginPath(); ctx.arc(x, gy, r, 0, TAU); ctx.fill();
+      ctx.shadowBlur = 0; ctx.shadowOffsetY = 0; ctx.shadowColor = 'transparent'; ctx.stroke();
+      ctx.beginPath(); for (const d of [-1, 1]) { ctx.moveTo(x + d * 3.6 * px, gy - 4.6 * px); ctx.lineTo(x + d * 8.2 * px, gy); ctx.lineTo(x + d * 3.6 * px, gy + 4.6 * px); } ctx.stroke();
+      ctx.font = `500 ${12 * px}px "Geist Mono", ui-monospace, Menlo, Consolas, monospace`; ctx.textBaseline = 'middle';
+      ctx.textAlign = 'right'; ctx.fillStyle = `rgba(${INK},${.74 * a * seg(x, LEFT + 30, LEFT + 130)})`; ctx.fillText('original', x - 10 * px, 20);
+      ctx.textAlign = 'left'; ctx.fillStyle = `rgba(${DEEP},${a * (1 - seg(x, RIGHT - 110, RIGHT - 30))})`; ctx.fillText('nano', x + 10 * px, 20); };
+    const report = t => {                                             // the readout under the scene
+      const m = ease(seg(t, 2.4, 7)) * (1 - ease(seg(t, 18.2, 20))), v = t >= 18.2 ? 0 : seg(t, 7.3, 9.9);
+      const ph = t < 2.4 || t >= 18.2 ? 0 : t < 7.15 ? 1 : t < 9.95 ? 2 : t < 12.2 ? 3 : 4;
+      if (ph !== shown) { hud.phase.textContent = PHASE[ph]; shown = ph; }
+      hud.cmp.classList.toggle('done', t >= 10 && t < 18.2);
+      hud.lines.textContent = fmt(lerp(76888, 36458, m)); hud.bar.style.width = lerp(100, 47.4, m).toFixed(1) + '%'; hud.checks.textContent = `${Math.round(v * 382)} / 382`;
+    };
+    const still = fix !== null ? +fix : calm ? 16 : null;
+    const render = () => {
+      const held = grab !== null || heldUntil >= 0, t = held ? 16 : still !== null ? still : clock;
+      let x = held ? userX : t < 12.2 ? null : t < 13.4 ? lerp(LEFT, REST, ease(seg(t, 12.2, 13.4))) : t < 18.2 ? REST : lerp(REST, RIGHT, ease(seg(t, 18.2, 20)));
+      if (glide && !held && x !== null) { const g = ease(seg(now - glide.at, 0, .6)); x = lerp(glide.from, x, g); if (g >= 1) glide = null; }   // back to its place after a drag
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H); ctx.setTransform(dpr * S, 0, 0, dpr * S, dpr * ox, dpr * oy);
+      if (x === null) paint(live(t));
+      else {                                                          // the original left of the divider, the nano tree right of it
+        ctx.save(); ctx.beginPath(); ctx.rect(-400, -400, x + 400, 1700); ctx.clip(); paint(BEFORE); ctx.restore();
+        ctx.save(); ctx.beginPath(); ctx.rect(x, -400, 1900, 1700); ctx.clip(); paint(after(t)); ctx.restore();
+        divider(x, held ? 1 : seg(t, 12.2, 12.5) * (1 - seg(t, 19.6, 20)));
+      }
+      report(t);
+    };
+    /* dragging: the divider follows the pointer; after release it stays four seconds, then the loop resumes at the rest */
+    const toX = e => { const r = cv.getBoundingClientRect(); return Math.min(RIGHT, Math.max(LEFT, (e.clientX - r.left - ox) / S)); };
+    box.addEventListener('pointerdown', e => { if (e.button) return; grab = e.pointerId; heldUntil = -1; glide = null; userX = toX(e); try { box.setPointerCapture(grab); } catch (_) {} if (still !== null) render(); });
+    box.addEventListener('pointermove', e => { if (e.pointerId !== grab) return; userX = toX(e); if (still !== null) render(); });
+    const drop = e => { if (e.pointerId !== grab) return; grab = null; heldUntil = still !== null ? Infinity : now + 4; };
+    box.addEventListener('pointerup', drop); box.addEventListener('pointercancel', drop);
     layout(); seen.observe(box);
-    if (still === null) loops.push(dt => { if (box._on) { clock = (clock + dt) % T; draw(clock); } });
-    new ResizeObserver(() => { layout(); draw(still === null ? clock : still); }).observe(cv); draw(still === null ? 14.5 : still);
+    if (still === null) loops.push(dt => { if (!box._on) return; now += dt;
+      if (grab === null && heldUntil >= 0 && now >= heldUntil) { heldUntil = -1; clock = 13.4; glide = { from: userX, at: now }; }
+      if (grab === null && heldUntil < 0) clock = (clock + dt) % T;
+      render(); });
+    else now = still;
+    new ResizeObserver(() => { layout(); render(); }).observe(cv); render();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(render);      // the two names are drawn with the page's mono face
   })();
 
   /* ---------------- statement: words light up as they are read; each one is a token spent ---------------- */

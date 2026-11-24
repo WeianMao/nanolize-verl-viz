@@ -65,6 +65,21 @@ button{font:inherit;color:inherit}
 .hero h1 span{display:block}
 .hero .sub{max-width:34em;margin:18px auto 0;font-size:clamp(1.0625rem,1.5vw,1.25rem);color:var(--ink-sub)}
 .cta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:30px}
+/* The before/after readout under the scene: the original and the nano code on one scale, with the same checks.
+   A version's script sets #orb-phase, #orb-lines, #orb-checks and the width of #orb-bar. */
+.cmp{display:grid;gap:8px;width:min(100%,31rem);margin-inline:auto;text-align:left}
+.cmp .ph{justify-self:center;display:inline-block;color:var(--green);margin-bottom:2px}
+.cmp .row{display:grid;grid-template-columns:4.4em minmax(0,1fr) 7.8em 9.6em;align-items:center;gap:10px;white-space:nowrap}
+.cmp .bar{display:block;height:5px;border-radius:99px}
+.cmp .bar i{display:block;height:100%;width:100%;border-radius:99px;background:var(--mute)}
+.cmp .nano .bar i{width:47.4%;background:var(--green-f)}
+.cmp b{font-weight:500;color:var(--ink);transition:color .35s}
+.cmp .nano .k{color:var(--green)}
+.cmp.done .nano b{color:var(--green)}
+.cmp.done .ph{animation:cmp-pop .8s cubic-bezier(.2,1.5,.4,1)}
+@keyframes cmp-pop{0%{transform:scale(1)}35%{transform:scale(1.6)}100%{transform:scale(1)}}
+@media (max-width:519px){.cmp .row{grid-template-columns:4.2em minmax(0,1fr) 7.8em}.cmp .c{grid-column:2/-1;margin-top:-6px}}
+@media (prefers-reduced-motion: reduce){.cmp.done .ph{animation:none}}
 .nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:980px;margin:clamp(22px,3vw,40px) auto 0;border-top:1px solid var(--line)}
 .nums li{padding:26px 12px 0}
 .nums li+li{border-left:1px solid var(--line)}
@@ -248,16 +263,9 @@ button{font:inherit;color:inherit}
 .hero{position:relative;overflow:hidden;text-align:center;padding-block:clamp(28px,4vw,48px) clamp(48px,7vw,96px)}
 #sky{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;-webkit-mask-image:linear-gradient(180deg,#000 84%,transparent);mask-image:linear-gradient(180deg,#000 84%,transparent)}
 .hero>.wrap{position:relative;z-index:1}
-.stage{position:relative;height:clamp(350px,96vw,470px);margin-top:14px}
-.stage .cap{position:absolute;left:0;right:0;bottom:0;display:grid;gap:2px;justify-items:center}
-.stage .cap b{font-weight:500;color:var(--ink)}
-.stage .cap #orb-phase{color:var(--green-2)}
-/* when every check has passed the caption answers: the phase word pops once and the numbers turn green */
-.stage .cap #orb-phase{display:inline-block}
-.stage .cap.done b{color:var(--green-2);transition:color .4s}
-.stage .cap.done #orb-phase{animation:won .8s cubic-bezier(.2,1.5,.4,1)}
-@media (max-width:759px){.stage .cap .long{display:none}}
-@keyframes won{0%{transform:scale(1)}35%{transform:scale(1.7)}100%{transform:scale(1)}}
+.stage{position:relative;height:clamp(410px,108vw,500px);margin-top:14px}
+.stage{cursor:ew-resize;touch-action:pan-y;-webkit-user-select:none;user-select:none}      /* drag to move the divider */
+.stage .cmp{position:absolute;left:0;right:0;bottom:0}
 @media (min-width:980px){
   .hero{text-align:left}
   .first{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1fr);align-items:center;gap:64px}
@@ -301,8 +309,12 @@ button{font:inherit;color:inherit}
       <p class="sub">Nanolize rewrites a bloated repository from scratch into a nano one that coding agents read, change and run for fewer tokens.</p>
       <p class="cta"><a class="btn go" href="#">Read the paper</a><a class="btn gh" href="#">Get the code</a></p>
       </div>
-      <div class="stage" id="stage" role="img" aria-label="Animation: a slowly turning field of stars stands for the 76,888 lines of Detectron2. Nothing moves inward. The stars that stay, 36,458 lines, light up green as one tree that grows from its root through trunk, limbs and branches to the leaves; the rest go dark, 382 checks pass and the tree flashes.">
-        <p class="cap m"><span id="orb-phase">delivered</span><span><b class="num" id="orb-lines">36,458</b> of 76,888 lines<span class="long"> of detectron2</span>, <b class="num" id="orb-checks">382 / 382</b> checks pass</span></p>
+      <div class="stage" id="stage" role="img" aria-label="Animation: a slowly turning field of stars stands for the 76,888 lines of Detectron2. Nothing moves inward. The stars that stay, 36,458 lines, light up green as one tree that grows from its root through trunk, limbs and branches to the leaves; the rest go dark, 382 checks pass and the tree flashes. Then a divider shows the two side by side: the original sky on the left, the nano tree on the right. Drag it to compare.">
+        <div class="cmp m" id="cmp">
+          <span class="ph" id="orb-phase">before and after</span>
+          <div class="row"><span class="k">original</span><span class="bar"><i></i></span><span><b class="num">76,888</b> lines</span><span class="c">382 checks frozen</span></div>
+          <div class="row nano"><span class="k">nano</span><span class="bar"><i id="orb-bar"></i></span><span><b class="num" id="orb-lines">36,458</b> lines</span><span class="c"><b class="num" id="orb-checks">382 / 382</b> pass</span></div>
+        </div>
       </div>
       </div>
       <ul class="nums">
@@ -538,10 +550,11 @@ button{font:inherit;color:inherit}
   /* ---------------- hero: a field of stars, slowly turning, seen in perspective. Nothing moves towards the centre:
      the stars that stay light up as one tree, growing from its root, and the rest go dark. The share that stays is the real ratio for
      Detectron2, 36,458 of 76,888 lines. The tree's shape is illustrative; its labels are Detectron2's public
-     packages. ?t=seconds in the address freezes the scene at that moment (for screenshots). ---------------- */
+     packages. After the finish a divider comes in: the original on its left, the nano code on its right, and it can
+     be dragged. ?t=seconds in the address freezes the scene at that moment (for screenshots). ---------------- */
   (() => {
     const hero = $('#top'), cv = $('#sky'), ctx = cv.getContext('2d'), stage = $('#stage');
-    const N = 1200, K = Math.round(N * 36458 / 76888), T = 19, TAU = 6.2832;
+    const N = 1200, K = Math.round(N * 36458 / 76888), T = 20.4, TAU = 6.2832;
     const WHITE = '202,210,228', NV = '118,185,0', LIME = '196,240,110';
     const NAMES = ['modeling', 'data', 'engine', 'evaluation', 'structures', 'layers', 'config', 'checkpoint', 'solver', 'export', 'utils', 'model_zoo'];
     const rng = (a => () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; })(41);
@@ -591,25 +604,33 @@ button{font:inherit;color:inherit}
     });
     const SX = new Float32Array(N), SY = new Float32Array(N), SQ = new Float32Array(N), SD = new Float32Array(N), SN = new Float32Array(N), LIT = new Float32Array(N);
     const BK = Array.from({ length: 30 }, () => []);          // tree lines, bucketed by level and depth, one stroke each
-    const SPK = TUFTS.filter((_, i) => i % 14 === 5), TWK = TUFTS.filter((_, i) => i % 9 === 2);   // leaves that sparkle at the finish, and after it
-    const hud = { lines: $('#orb-lines'), checks: $('#orb-checks'), phase: $('#orb-phase') };
-    const PHASE = ['the original', 'rewriting from scratch', 'running the frozen checks', 'delivered'];
-    let W = 0, H = 0, dpr = 1, cx = 0, cy = 0, R = 1, RW = 1, F = 1000, shown = -1, spin = .6, yaw = 0, pitch = 0, tyaw = 0, tpitch = 0, clock = 0;
+    const SPK = TUFTS.filter((_, i) => i % 31 === 5);                         // the leaves that sparkle at the finish
+    S.forEach(p => { if (p.keep) p.rn = Math.min(1, Math.hypot(p.x, p.y - CROWN, p.z)); });   // distance from the middle of the crown
+    const hud = { lines: $('#orb-lines'), checks: $('#orb-checks'), phase: $('#orb-phase'), bar: $('#orb-bar'), box: $('#cmp') };
+    const PHASE = ['the original', 'rewriting from scratch', 'running the frozen checks', 'delivered', 'before and after'];
+    let W = 0, H = 0, dpr = 1, cx = 0, cy = 0, R = 1, RW = 1, F = 1000, shown = -1, spin = .6, yaw = 0, pitch = 0, tyaw = 0, tpitch = 0, clock = 13.4;      // start on the comparison at rest
+    let sx0 = 0, sx1 = 0, sy0 = 0, sy1 = 0, hx = -20, manual = false, held = false, mx = 0, until = 0;   // the stage box, and the divider
     const layout = () => {
       const r = hero.getBoundingClientRect(), s = stage.getBoundingClientRect();
-      W = r.width; H = r.height; cx = s.left - r.left + s.width / 2; cy = s.top - r.top + (s.height - 44) * .5;
-      R = Math.min((s.height - 44) * .46, s.width * .42, 262); RW = Math.max(cx, W - cx) * 1.12; F = Math.max(1000, RW * 1.5);
+      const tall = s.height - hud.box.offsetHeight - 14;                      // the readout sits at the bottom of the stage
+      W = r.width; H = r.height; cx = s.left - r.left + s.width / 2; cy = s.top - r.top + tall * .5;
+      sx0 = s.left - r.left; sx1 = sx0 + s.width; sy0 = s.top - r.top; sy1 = sy0 + tall;
+      R = Math.min(tall * .46, s.width * .42, 262); RW = Math.max(cx, W - cx) * 1.12; F = Math.max(1000, RW * 1.5);
       dpr = Math.min(2, window.devicePixelRatio || 1, Math.sqrt(4.6e6 / (W * H)));
       cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
       for (const p of S) if (p.wide) { p.px = p.ux * RW; p.pz = p.uz * RW; p.py = lerp(-cy * 1.04, (H - cy) * 1.04, (p.uy + 1) / 2); } else { p.px = p.x * R; p.py = p.y * R; p.pz = p.z * R; }
     };
     const dot = (x, y, r) => { ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill(); };
-    const draw = t => {
-      const back = seg(t, 16.8, 18.8), k = 1 - ease(back), raw = seg(t, 2.4, 7.0) * k, m = ease(seg(t, 2.4, 7.0)) * k;
-      const v = back > 0 ? 0 : seg(t, 7.3, 9.9), b = back > 0 ? 0 : seg(t, 10.0, 12.4);
-      /* the finish: a pulse runs up the tree (rise), then a burst that dies away; won is the finished state that stays */
-      const rise = clamp01(b / .14), burst = b > 0 && b < 1 ? rise * rise * Math.exp(-Math.max(0, b - .14) * 6) : 0, won = t < 10 ? 0 : back > 0 ? k : clamp01((t - 10.34) / .6), breath = .6 + .4 * Math.sin(t * 1.7);
-      const a = spin + yaw, tilt = .3 + pitch, ca = Math.cos(a), sa = Math.sin(a), cb = Math.cos(tilt), sb = Math.sin(tilt), zoom = 1 + .08 * m + .035 * burst, gy = cy + CROWN * R * cb * zoom;
+    const draw = (t, glide) => {
+      /* Timeline: 0 the original, 2.4 rewrite, 7.3 checks, 10 finish, 12.2 the comparison comes in (a divider with the
+         original on its left and the nano code on its right), 13.4 it rests, 18.2 it leaves to the right and the
+         whole sky is the original again. While someone drags the divider the scene is the finished one. */
+      const ts = manual ? 16 : t, live = ts < 20, raw = live ? seg(ts, 2.4, 7.0) : 0, m = live ? ease(seg(ts, 2.4, 7.0)) : 0;
+      const v = live ? seg(ts, 7.3, 9.9) : 0, b = live ? seg(ts, 10.0, 12.0) : 0;
+            const comparing = manual || (t >= 12.2 && t < 20), xr = lerp(sx0, sx1, .4);
+      const aim = manual ? mx : t < 13.4 ? lerp(-20, xr, ease(seg(t, 12.2, 13.4))) : t < 18.2 ? xr + Math.sin(t * 1.3) * 5 : lerp(xr, W + 20, ease(seg(t, 18.2, 20)));
+      hx = !comparing ? -20 : glide ? hx + (aim - hx) * glide : aim;
+      const a = spin + yaw, tilt = .3 + pitch, ca = Math.cos(a), sa = Math.sin(a), cb = Math.cos(tilt), sb = Math.sin(tilt), zoom = 1 + .08 * m, gy = cy + CROWN * R * cb * zoom;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
       for (let i = 0; i < N; i++) {
         const p = S[i], X = p.px * ca + p.pz * sa, Z0 = p.pz * ca - p.px * sa, Y = p.py * cb - Z0 * sb, Z = Z0 * cb + p.py * sb, q = F / Math.max(F * .3, F + Z) * zoom;
@@ -617,8 +638,17 @@ button{font:inherit;color:inherit}
         SD[i] = p.keep ? clamp01(.5 - Z / (2 * R)) : clamp01(.5 - Z / (2.2 * RW));
         LIT[i] = p.keep ? ease(clamp01((raw - p.ord * .8) / .2)) : clamp01((raw - p.ord * .8) / .2);   // tree: how lit; rest: how dark
       }
-      if (m > .02) { const rg = R * (1.9 + .7 * burst), g = ctx.createRadialGradient(cx, gy, 0, cx, gy, rg), al = .13 * m + .42 * burst + .17 * won * breath; g.addColorStop(0, `rgba(${NV},${al})`); g.addColorStop(1, `rgba(${NV},0)`); ctx.fillStyle = g; ctx.fillRect(cx - rg, gy - rg, rg * 2, rg * 2); }
-      if (burst > .02) { const g = ctx.createRadialGradient(cx, gy, 0, cx, gy, R * 1.3); g.addColorStop(0, `rgba(236,255,205,${.4 * burst})`); g.addColorStop(1, 'rgba(236,255,205,0)'); ctx.fillStyle = g; ctx.fillRect(cx - R * 1.3, gy - R * 1.3, R * 2.6, R * 2.6); }
+      /* the original: every star, and the whole faint web, a little heavier than in the opening so the two sides differ */
+      const paintOriginal = () => {
+        ctx.lineCap = 'round'; ctx.strokeStyle = `rgba(${WHITE},.13)`; ctx.lineWidth = 1; ctx.beginPath();
+        for (const e of MESS) { if (SN[e.i] * SN[e.j] < .05) continue; ctx.moveTo(SX[e.i], SY[e.i]); ctx.lineTo(SX[e.j], SY[e.j]); } ctx.stroke();
+        ctx.globalCompositeOperation = 'lighter';
+        for (let i = 0; i < N; i++) { const p = S[i], near = SN[i]; if (near <= 0) continue;
+          ctx.fillStyle = `rgba(${WHITE},${(.44 + .5 * SD[i]) * (.82 + .18 * Math.sin(t * p.sp + p.ph)) * near})`; dot(SX[i], SY[i], p.mag * Math.min(1.9, SQ[i])); }
+        ctx.globalCompositeOperation = 'source-over';
+      };
+      const paintNow = () => {                                     // (hardly any glow while comparing: it would be cut at the divider)
+      if (m > .02) { const rg = R * 1.9, g = ctx.createRadialGradient(cx, gy, 0, cx, gy, rg), al = comparing ? .05 : .13 * m + Math.sin(Math.PI * Math.min(1, b * 1.5)) * .2; g.addColorStop(0, `rgba(${NV},${al})`); g.addColorStop(1, `rgba(${NV},0)`); ctx.fillStyle = g; ctx.fillRect(cx - rg, gy - rg, rg * 2, rg * 2); }
       ctx.lineCap = 'round';
       /* the faint web: whole lines in one stroke; a line that is breaking pulls back from its middle */
       ctx.strokeStyle = `rgba(${WHITE},.075)`; ctx.lineWidth = 1; ctx.beginPath();
@@ -634,24 +664,21 @@ button{font:inherit;color:inherit}
       for (let i = 1; i < K; i++) { const L = LIT[i]; if (L <= 0) continue; const p = S[i], j = p.par, d = (SD[i] + SD[j]) / 2;
         BK[p.lvl * 6 + Math.min(5, Math.floor(d * 6))].push(SX[j], SY[j], SX[j] + (SX[i] - SX[j]) * L, SY[j] + (SY[i] - SY[j]) * L); }
       BK.forEach((bk, n) => { if (!bk.length) return; const lvl = Math.floor(n / 6), d = (n % 6 + .5) / 6;
-        const lift = b > 0 && b < .2 ? clamp01(1 - Math.abs(rise * 1.3 - .15 - lvl / 4.5) / .3) : 0, gain = Math.max(burst, lift) + .25 * won * breath;   // the pulse reaches each level in turn
-        const base = Math.max([.9, .62, .34, .12, .1][lvl], (.12 + .8 * d * d) * (lvl === LEAF ? .78 : 1)), wide = [4.4, 2.6, 1.6, .95, .6][lvl] * (.7 + .6 * d) * (1 + .6 * Math.max(burst, lift));
-        if (gain > .05) { ctx.strokeStyle = `rgba(${LIME},${Math.min(1, gain * (.3 + .5 * d))})`; ctx.lineWidth = wide; ctx.beginPath(); for (let q = 0; q < bk.length; q += 4) { ctx.moveTo(bk[q], bk[q + 1]); ctx.lineTo(bk[q + 2], bk[q + 3]); } ctx.stroke(); }
-        ctx.strokeStyle = `rgba(${NV},${Math.min(1, base * (1 + gain))})`; ctx.lineWidth = wide; ctx.beginPath();
+        ctx.strokeStyle = `rgba(${NV},${Math.max([.9, .62, .34, .12, .1][lvl], (.12 + .8 * d * d) * (lvl === LEAF ? .78 : 1))})`; ctx.lineWidth = [4.4, 2.6, 1.6, .95, .6][lvl] * (.7 + .6 * d); ctx.beginPath();
         for (let q = 0; q < bk.length; q += 4) { ctx.moveTo(bk[q], bk[q + 1]); ctx.lineTo(bk[q + 2], bk[q + 3]); } ctx.stroke(); });
       /* the stars */
       for (let i = 0; i < N; i++) {
         const p = S[i], near = SN[i]; if (near <= 0) continue;
         const x = SX[i], y = SY[i], q = Math.min(1.9, SQ[i]), tw = .82 + .18 * Math.sin(t * p.sp + p.ph), d = SD[i];
-        if (!p.keep) { const al = (.34 + .5 * d) * tw * near * (1 - (.68 + .26 * won) * LIT[i]); ctx.fillStyle = `rgba(${WHITE},${al})`; dot(x, y, p.mag * q * .95); continue; }
-        const L = LIT[i], wave = Math.max(burst, b > 0 && b < .2 ? clamp01(1 - Math.abs(rise * 1.2 - .1 - p.way / FAR) / .22) : 0);
-        const done = p.lvl === LEAF ? clamp01((v - p.chk * .93) / .07) : v > 0 ? 1 : 0, hit = done > 0 && done < 1 ? Math.sin(Math.PI * done) : 0, pop = Math.sin(Math.PI * L) * .7 + hit * 2.6 + done * .55 + wave * 1.5 + won * .3;
+        if (!p.keep) { const al = (.34 + .5 * d) * tw * near * (1 - .9 * LIT[i]); ctx.fillStyle = `rgba(${WHITE},${al})`; dot(x, y, p.mag * q * .95); continue; }
+        const L = LIT[i], wave = b > 0 && b < 1 ? clamp01(1 - Math.abs(b * 1.7 - .2 - p.rn) / .34) : 0;      // the flash passes outward through the crown
+        const done = p.lvl === LEAF ? clamp01((v - p.chk * .93) / .07) : v > 0 ? 1 : 0, hit = done > 0 && done < 1 ? Math.sin(Math.PI * done) : 0, pop = Math.sin(Math.PI * L) * .7 + hit * 2.6 + done * .55 + wave * .9;
         if (L < 1) { ctx.fillStyle = `rgba(${WHITE},${(.4 + .5 * d) * tw * (1 - L)})`; dot(x, y, p.mag * q * .95); }
         if (L > 0) { const size = (p.par < 0 ? 5 : [2, 1.9, 1.7, 1.45, 1.15][p.lvl]) * q * (1 + .45 * pop), al = L * (.3 + .7 * d);
           if (p.par < 0) { ctx.fillStyle = `rgba(${NV},${al * .22})`; dot(x, y, size * 2.8); }
           ctx.fillStyle = `rgba(${NV},${al})`; dot(x, y, size);
-          const hot = Math.max(done * .8, wave, .45 * won, p.par < 0 ? .8 : 0); if (hot > 0) { ctx.fillStyle = `rgba(${LIME},${al * hot})`; dot(x, y, size * .72); }
-          const white = Math.max(hit, wave * .85); if (white > 0) { ctx.fillStyle = `rgba(255,255,255,${white * .9})`; dot(x, y, size * .6); } }
+          const hot = Math.max(done * .8, wave, p.par < 0 ? .8 : 0); if (hot > 0) { ctx.fillStyle = `rgba(${LIME},${al * hot})`; dot(x, y, size * .72); }
+          const white = hit; if (white > 0) { ctx.fillStyle = `rgba(255,255,255,${white * .9})`; dot(x, y, size * .6); } }
       }
       ctx.globalCompositeOperation = 'source-over';
       /* labels: each branch's name sits just outside the crown and shows while the branch is in front and to one side */
@@ -660,23 +687,42 @@ button{font:inherit;color:inherit}
         for (let n = 0; n < 12; n++) { const p = S[BRANCH[n]], u = unit(p.x, (p.y - CROWN) * .8, p.z), ax = u[0] * .97 * R, ay = (CROWN + u[1] * .95) * R, az = u[2] * .97 * R;
           const X = ax * ca + az * sa, Z0 = az * ca - ax * sa, Y = ay * cb - Z0 * sb, al = la * clamp01((Math.abs(X) / R - .58) / .16) * clamp01(.6 - Z0 / (.4 * R));
           if (al < .03) continue; ctx.fillStyle = `rgba(214,236,170,${al})`; ctx.textAlign = X >= 0 ? 'left' : 'right'; ctx.fillText(NAMES[n], cx + X * zoom, cy + Y * zoom); } }
-      /* the finish: two widening rings and many sparkles on the leaves; afterwards a few leaves keep twinkling */
-      const spark = (x, y, Lg, al, w) => { const D = Lg * .42; ctx.strokeStyle = `rgba(255,255,255,${al})`; ctx.lineWidth = w; ctx.beginPath(); ctx.moveTo(x - Lg, y); ctx.lineTo(x + Lg, y); ctx.moveTo(x, y - Lg); ctx.lineTo(x, y + Lg); ctx.stroke();
-        ctx.lineWidth = w * .5; ctx.beginPath(); ctx.moveTo(x - D, y - D); ctx.lineTo(x + D, y + D); ctx.moveTo(x - D, y + D); ctx.lineTo(x + D, y - D); ctx.stroke(); };
-      if (b > 0 && b < 1) { const Rz = R * zoom; ctx.globalCompositeOperation = 'lighter';
-        for (let n = 0; n < 2; n++) { const e = clamp01((b - .12 - n * .11) / .7); if (e <= 0 || e >= 1) continue; ctx.strokeStyle = `rgba(${LIME},${Math.pow(1 - e, 1.6) * .85})`; ctx.lineWidth = 1 + 3 * (1 - e); ctx.beginPath(); ctx.arc(cx, gy, Rz * (.2 + 1.9 * e), 0, TAU); ctx.stroke(); }
-        SPK.forEach((p, n) => { const q = clamp01((b - .12 - (n * .137) % .6) / .26); if (q > 0 && q < 1) { const sn = Math.sin(Math.PI * q); spark(SX[p], SY[p], 5 + 22 * sn, sn, 1.9); } });
-        ctx.globalCompositeOperation = 'source-over'; }
-      if (won > 0 && !(b > 0 && b < .5)) TWK.forEach((p, n) => { const q = (t * .42 + n * .618) % 1; if (q < .16) { const sn = Math.sin(Math.PI * q / .16); spark(SX[p], SY[p], 4 + 12 * sn, sn * won * (.4 + .6 * SD[p]), 1.5); } });
-      const ph = back > 0 || t < 2.4 ? 0 : t < 7.0 ? 1 : t < 10 ? 2 : 3;
-      if (ph !== shown) { hud.phase.textContent = PHASE[ph]; hud.phase.parentNode.classList.toggle('done', ph === 3); shown = ph; }
-      hud.lines.textContent = fmt(lerp(76888, 36458, m)); hud.checks.textContent = `${Math.round(v * 382)} / 382`;
+      /* the finishing flash: one widening ring and a dozen sparkles that go off one after another on the leaves */
+      if (b > 0 && b < 1) { const Rz = R * zoom;
+        ctx.strokeStyle = `rgba(${LIME},${(1 - b) * .55})`; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(cx, gy, Rz * (.25 + b * 1.25), 0, TAU); ctx.stroke();
+        SPK.forEach((p, n) => { const q = clamp01((b - (n * .137) % .56) / .38); if (q <= 0 || q >= 1) return; const sn = Math.sin(Math.PI * q), x = SX[p], y = SY[p], Lg = 4 + 15 * sn, D = Lg * .42;
+          ctx.strokeStyle = `rgba(255,255,255,${sn})`; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(x - Lg, y); ctx.lineTo(x + Lg, y); ctx.moveTo(x, y - Lg); ctx.lineTo(x, y + Lg); ctx.stroke();
+          ctx.lineWidth = .8; ctx.beginPath(); ctx.moveTo(x - D, y - D); ctx.lineTo(x + D, y + D); ctx.moveTo(x - D, y + D); ctx.lineTo(x + D, y - D); ctx.stroke(); }); }
+      };
+      const divider = () => { const al = clamp01((hx - sx0 + 70) / 60) * clamp01((W + 10 - hx) / 40), y0 = sy0 + 4, y1 = sy1, ym = (y0 + y1) / 2; if (al <= 0) return;
+        ctx.strokeStyle = `rgba(255,255,255,${.75 * al})`; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(hx, y0 + 18); ctx.lineTo(hx, ym - 15); ctx.moveTo(hx, ym + 15); ctx.lineTo(hx, y1); ctx.stroke();
+        ctx.fillStyle = `rgba(5,6,7,${.9 * al})`; dot(hx, ym, 14); ctx.strokeStyle = `rgba(255,255,255,${.9 * al})`; ctx.beginPath(); ctx.arc(hx, ym, 14, 0, TAU); ctx.stroke();
+        ctx.lineWidth = 1.6; ctx.lineJoin = 'round'; ctx.beginPath(); ctx.moveTo(hx - 3.5, ym - 4.5); ctx.lineTo(hx - 8, ym); ctx.lineTo(hx - 3.5, ym + 4.5); ctx.moveTo(hx + 3.5, ym - 4.5); ctx.lineTo(hx + 8, ym); ctx.lineTo(hx + 3.5, ym + 4.5); ctx.stroke();
+        ctx.font = `500 ${W < 600 ? 11.5 : 13}px "Geist Mono",ui-monospace,monospace`; ctx.textBaseline = 'middle';
+        ctx.textAlign = 'right'; ctx.fillStyle = `rgba(226,231,242,${al})`; ctx.fillText('original', hx - 10, y0 + 8);
+        ctx.textAlign = 'left'; ctx.fillStyle = `rgba(185,231,105,${al})`; ctx.fillText('nano', hx + 10, y0 + 8); };
+      if (comparing && hx > 0) {
+        ctx.save(); ctx.beginPath(); ctx.rect(0, 0, hx, H); ctx.clip(); paintOriginal(); ctx.restore();
+        if (hx < W) { ctx.save(); ctx.beginPath(); ctx.rect(hx, 0, W - hx, H); ctx.clip(); paintNow(); ctx.restore(); }
+        divider();
+      } else paintNow();
+      const ph = manual || (t >= 12.2 && t < 18.2) ? 4 : !live || ts < 2.4 || t >= 18.2 ? 0 : ts < 7.0 ? 1 : ts < 10 ? 2 : 3, mh = manual ? 1 : m * (1 - ease(seg(t, 18.2, 20)));
+      if (ph !== shown) { hud.phase.textContent = PHASE[ph]; hud.box.classList.toggle('done', ph >= 3); shown = ph; }
+      hud.lines.textContent = fmt(lerp(76888, 36458, mh)); hud.bar.style.width = lerp(100, 47.4, mh).toFixed(1) + '%'; hud.checks.textContent = `${manual || t < 18.2 ? Math.round(v * 382) : 0} / 382`;
     };
-    const fix = new URLSearchParams(location.search).get('t'), still = calm || fix !== null, rest0 = fix !== null ? +fix : 14.5;
+    const fix = new URLSearchParams(location.search).get('t'), still = calm || fix !== null, rest0 = fix !== null ? +fix : 16;
     if (fix !== null) spin = .6 + .12 * rest0;
     layout(); seen.observe(hero);
-    loops.push(dt => { if (still) return; yaw += (tyaw - yaw) * Math.min(1, dt * 2.5); pitch += (tpitch - pitch) * Math.min(1, dt * 2.5); if (!hero._on) return; clock = (clock + dt) % T; spin += dt * .12; draw(clock); });
+    loops.push(dt => { if (still) return; yaw += (tyaw - yaw) * Math.min(1, dt * 2.5); pitch += (tpitch - pitch) * Math.min(1, dt * 2.5); if (!hero._on) return;
+      if (manual && !held && performance.now() > until) { manual = false; clock = 13.4; }      // let go: return to the resting comparison
+      if (!manual) clock = (clock + dt) % T; spin += dt * .12; draw(clock, Math.min(1, dt * 12)); });
     addEventListener('pointermove', e => { if (e.pointerType === 'touch') return; tyaw = (e.clientX / innerWidth - .5) * .5; tpitch = (e.clientY / innerHeight - .5) * .16; }, { passive: true });
+    /* the divider can be dragged, also when motion is reduced */
+    const grab = e => { mx = Math.max(sx0 - 10, Math.min(sx1 + 10, e.clientX - hero.getBoundingClientRect().left)); if (still) draw(rest0); };
+    const drop = () => { if (held) { held = false; until = performance.now() + 4000; } };
+    stage.addEventListener('pointerdown', e => { if (e.button) return; manual = held = true; try { stage.setPointerCapture(e.pointerId); } catch (_) {} grab(e); });
+    stage.addEventListener('pointermove', e => { if (held) grab(e); });
+    stage.addEventListener('pointerup', drop); stage.addEventListener('pointercancel', drop);
     const redraw = () => { layout(); draw(still ? rest0 : clock); };
     new ResizeObserver(redraw).observe(hero); redraw();
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(redraw);   // the labels need the page's mono face
