@@ -275,14 +275,14 @@ button{font:inherit;color:inherit}
 #sky{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;-webkit-mask-image:linear-gradient(180deg,#000 84%,transparent);mask-image:linear-gradient(180deg,#000 84%,transparent)}
 .hero>.wrap{position:relative;z-index:1}
 .hero .sub{max-width:38em;text-wrap:balance}
-.stage{position:relative;height:clamp(410px,108vw,500px);margin-top:14px}
+.stage{position:relative;height:clamp(396px,104vw,490px);margin-top:14px}
 .stage .cmp{position:absolute;left:0;right:0;bottom:0}
 @media (min-width:1000px){
   .hero h1{font-size:clamp(3rem,4.7vw,4.3rem);margin-top:18px}
   .hero h1 span{display:inline}
   .hero .sub{margin-top:14px}
   .cta{margin-top:24px}
-  .stage{height:clamp(350px,calc(100svh - 400px),560px);margin-top:6px}
+  .stage{height:clamp(336px,calc(100svh - 400px),580px);margin-top:6px}
 }
 </style>
 </head>
@@ -306,7 +306,7 @@ button{font:inherit;color:inherit}
       <h1 class="grad"><span>Half the tokens.</span> <span>All the behavior.</span></h1>
       <p class="sub">Nanolize rewrites a bloated repository from scratch into a nano one that coding agents read, change and run for fewer tokens.</p>
       <p class="cta"><a class="btn go" href="#">Read the paper</a><a class="btn gh" href="#">Get the code</a></p>
-      <div class="stage" id="stage" role="img" aria-label="Animation: a wall of complicated code turns into a sky of stars joined by a tangle of lines, the same code drawn as a graph. Then the sky is simplified to a subgraph: the stars and lines that stay, standing for 36,458 of Detectron2's 76,888 lines, light up green as twelve small ring systems joined by a regular frame of long links, the rest fade, 382 checks pass and the subgraph flashes. Stars and lines near the pointer brighten.">
+      <div class="stage" id="stage" role="img" aria-label="Animation: a wall of complicated code turns into a sky of stars joined by a tangle of lines, the same code drawn as a graph. Then the sky is simplified to a subgraph: the stars and lines that stay, standing for 36,458 of Detectron2's 76,888 lines, light up green as a spiral galaxy, a small core and two arms winding out of it with a knot of stars at every package, the rest fade, 382 checks run out along the arms and the subgraph flashes. Stars and lines near the pointer brighten.">
         <div class="cmp m" id="cmp">
           <span class="ph" id="orb-phase">delivered</span>
           <div class="row"><span class="k">original</span><span class="bar"><i></i></span><span><b class="num">76,888</b> lines</span><span class="c">382 checks frozen</span></div>
@@ -545,17 +545,19 @@ button{font:inherit;color:inherit}
 
   /* ---------------- hero. One loop tells the story: a wall of complicated code; the code turns into a sky of stars
      tied together by a tangle of lines (the same code, as a graph); then the sky is simplified to a subgraph: the
-     stars and lines that stay light up green, the rest fade to a trace. What stays is orderly: twelve small ring
-     systems on a slowly turning disc, joined by a regular frame of long links. Once something is a star it does not move.
+     stars and lines that stay light up green, the rest are blown away to a trace. What stays is a spiral galaxy:
+     a small core and two arms winding out of it, each arm a bright spine with a fine mesh on either side. It was
+     in the sky all along, hidden in the tangle. Once something is a star of the subgraph it does not move.
      The share of stars that stays is the real ratio for Detectron2, 36,458 of 76,888 lines. The graph itself is
      illustrative and the code shown is a made-up example; the labels are Detectron2's public packages.
-     The sky answers the pointer: stars and lines near it brighten and lean away, and what was removed shows again
-     under it. ?t=seconds in the address freezes the scene at that moment (for screenshots). ---------------- */
+     The sky answers the pointer: stars and lines near it brighten and lean away, what was removed shows again
+     under it, and a click sends a ripple through the sky.
+     ?t=seconds in the address freezes the scene at that moment (for screenshots). ---------------- */
   (() => {
     const hero = $('#top'), cv = $('#sky'), ctx = cv.getContext('2d'), stage = $('#stage');
-    const N = 760, K = Math.round(N * 36458 / 76888), T = 21, TAU = 6.2832;   // 360 of 760 stars stay
-    const WHITE = '202,210,228', NV = '118,185,0', LIME = '196,240,110';
-    const NAMES = ['modeling', 'data', 'engine', 'evaluation', 'structures', 'layers', 'config', 'checkpoint', 'solver', 'export', 'utils', 'model_zoo'];
+    const N = 760, K = Math.round(N * 36458 / 76888), T = 24, TAU = Math.PI * 2;   // 360 of 760 stars stay
+    const WHITE = '206,214,232', NV = '118,185,0', LIME = '196,240,110', TINT = [WHITE, WHITE, WHITE, '176,200,255', '255,226,196'];
+    const NAMES = ['detectron2', 'modeling', 'data', 'engine', 'evaluation', 'structures', 'layers', 'config', 'checkpoint', 'solver', 'export', 'utils', 'model_zoo'];
     const CODE = `class PipelineRunner(LegacyRunnerBase, HookMixin, ExportMixin):
     def __init__(self, cfg, stages=None, registry=None, strict=None, **legacy_kwargs):
         super().__init__(cfg, **legacy_kwargs)
@@ -635,75 +637,101 @@ def resolve_options(base, overrides=None, env=None, *, allow_new=False, freeze=T
             target[dotted.rsplit(".", 1)[-1]] = _coerce(value, target.get(path[-1] if path else node))
     return merged.freeze() if freeze and hasattr(merged, "freeze") else merged`.split('\n');
     const rng = (a => () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; })(41);
-    const unit = (x, y, z) => { const l = Math.hypot(x, y, z) || 1; return [x / l, y / l, z / l]; };
-    const inBall = (sx, sy, sz) => { for (;;) { const x = rng() * 2 - 1, y = rng() * 2 - 1, z = rng() * 2 - 1; if (x * x + y * y + z * z <= 1) return [x * sx, y * sy, z * sz]; } };
     const d2 = (p, q) => (p.x - q.x) ** 2 + (p.y - q.y) ** 2 + (p.z - q.z) ** 2;
 
-    /* The stars, in units of the disc's radius. First the K that stay: twelve ring systems, each a centre with a
-       ring of 9 and a ring of 20 (30 stars), laid out on a flat disc: one in the middle, four on an inner circle,
-       seven on an outer circle. The systems lie almost flat on the disc, each tipped a little its own way. Then the stars that go: scattered through the
-       same disc, and over the whole first screen. */
-    const S = [], HUB = [], cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
-    const centres = [[0, 0, 0], ...Array.from({ length: 4 }, (_, n) => { const th = .4 + n * TAU / 4; return [.44 * Math.cos(th), n % 2 ? .06 : -.06, .44 * Math.sin(th)]; }),
-      ...Array.from({ length: 7 }, (_, n) => { const th = .2 + n * TAU / 7; return [.86 * Math.cos(th), n % 2 ? -.08 : .08, .86 * Math.sin(th)]; })];
-    centres.forEach((c, g) => { const th = .26 * rng(), ph = rng() * TAU, n = [Math.sin(th) * Math.cos(ph), Math.cos(th), Math.sin(th) * Math.sin(ph)], u = unit(...cross(n, [1, 0, 0])), v = cross(n, u), big = g ? 1 : 1.25, turn = rng() * TAU;
-      HUB.push(S.length); S.push({ x: c[0], y: c[1], z: c[2], keep: true, hub: g });
-      for (const [count, r] of [[9, .075], [20, .15]]) for (let j = 0; j < count; j++) { const al = turn + j * TAU / count, ca = Math.cos(al) * r * big, sa = Math.sin(al) * r * big;
-        S.push({ x: c[0] + u[0] * ca + v[0] * sa, y: c[1] + u[1] * ca + v[1] * sa, z: c[2] + u[2] * ca + v[2] * sa, keep: true }); } });
-    const CL = K + Math.round((N - K) * .56);                                   // stars below this index sit in the disc
-    while (S.length < CL) { const r = 1.2 * Math.sqrt(rng()), th = rng() * TAU; S.push({ x: r * Math.cos(th), y: (rng() - .5) * .62 * (1 - .35 * r), z: r * Math.sin(th) }); }
+    /* The stars, in units of the disc's radius; the disc lies in the x-z plane. First the K that stay: a spiral
+       galaxy, orderly in the large and loose in the small.
+       The core: one star in the middle and 44 spread over a small flattened ball round it.
+       The two arms: logarithmic spirals out of the core, one a full turn, the other shorter, neither quite true:
+       each spine wavers. Six stars on each spine are the packages, and each package has its own knot of stars,
+       some rich, some thin. A feather or two peels off each arm, and the remaining stars are strewn along the
+       arms, close to the spine more often than far from it.
+       Then the stars that go: scattered through the same disc, thicker than it, and over the whole first screen. */
+    const S = [], HUB = [], SPINE = [[], []], ARM = [[], []], PRE = [], NC = 44, R0 = .27, TURN = [1.03, .84], END = [1, .93], HW = .2;
+    const bell = () => (rng() + rng() + rng()) / 1.5 - 1;                        // -1..1, mostly near 0
+    const add = o => { S.push(o); return S.length - 1; };
+    const clear = (x, y, z, ids, gap) => ids.every(j => (S[j].x - x) ** 2 + (S[j].y - y) ** 2 + (S[j].z - z) ** 2 > gap * gap);
+    add({ x: 0, y: 0, z: 0, keep: true, hub: 0, ord: 0, chk: 0 }); HUB.push(0);
+    for (let i = 0; i < NC; i++) { const yy = 1 - 2 * (i + .5) / NC, rr = Math.sqrt(1 - yy * yy), th = i * 2.39996, far = .13 + .06 * rng();
+      add({ x: far * rr * Math.cos(th), y: far * .52 * yy, z: far * rr * Math.sin(th), keep: true, core: true, ord: .03 + .04 * rng(), chk: .04 * rng() }); }
+    const WAVE = [0, 1].map(() => [rng() * TAU, rng() * TAU]);
+    const at = (a, u, v, y) => { const th = .5 + a * 3.4 + TURN[a] * TAU * u, r = R0 * Math.pow(END[a] / R0, u) * (1 + .055 * Math.sin(3.1 * th + WAVE[a][0]) + .024 * Math.sin(7.7 * th + WAVE[a][1])) * (1 + v);
+      return { x: r * Math.cos(th), y: .04 * r * Math.sin(th + 1) + y, z: r * Math.sin(th) }; };
+    const even = (a, f) => Math.log(1 + f * (END[a] / R0 - 1)) / Math.log(END[a] / R0);             // equal steps along the arm, not equal angles
+    for (let a = 0; a < 2; a++) { const sp = SPINE[a], ids = ARM[a], n = a ? 42 : 50, pace = a ? .82 : 1;
+      for (let j = 0; j < n; j++) { const u = even(a, (j + .5) / n), i = add({ ...at(a, u, (rng() - .5) * .014, (rng() - .5) * .012), keep: true, arm: a, u, spine: true, ord: .1 + .86 * u * pace, chk: .05 + .95 * u * pace });
+        if (j) PRE.push([sp[j - 1], i, 1]); sp.push(i); ids.push(i); }
+      [.1, .27, .44, .61, .78, .95].forEach(f => { const h = sp[Math.round(clamp01(f + (rng() - .5) * .06) * (n - 1))], c = S[h], rad = (.05 + .055 * Math.hypot(c.x, c.z)) * (.75 + .6 * rng()), want = 5 + Math.floor(rng() * 9), mine = [];
+        c.hub = HUB.length; c.rad = rad; HUB.push(h);
+        for (let tries = 0; mine.length < want && tries < 300; tries++) { const x = c.x + bell() * rad * 1.5, y = c.y + bell() * rad * .6, z = c.z + bell() * rad * 1.5; if (!clear(x, y, z, ids, .026 + .012 * Math.hypot(x, z))) continue;
+          const far = Math.hypot(x - c.x, y - c.y, z - c.z), i = add({ x, y, z, keep: true, arm: a, u: c.u, knot: true, far, ord: c.ord + .012 + .05 * far / (rad * 1.5), chk: c.chk + .012 }); mine.push(i); ids.push(i); }
+        mine.sort((p, q) => S[p].far - S[q].far).forEach((i, n) => { const inner = mine.slice(0, n), to = n < 4 || rng() < .25 ? h : inner.reduce((best, j) => d2(S[i], S[j]) < d2(S[i], S[best]) ? j : best, inner[0]);
+          PRE.push([to, i, 0]); if (n > 1 && rng() < .45) PRE.push([inner[Math.floor(rng() * n)], i, 0]); }); });
+      [1, -1].forEach((dir, n) => { const j0 = Math.round((.3 + .34 * n + .12 * rng()) * (n ? n : 1) * (sp.length - 1) / (n ? n : 1)), c = S[sp[j0]], len = dir > 0 ? 5 + Math.floor(rng() * 3) : 3 + Math.floor(rng() * 2); let prev = sp[j0];   // feathers: one peels outward, a shorter one inward
+        for (let q = 1; q <= len; q++) { const u = Math.min(1.04, c.u + q * .03), i = add({ ...at(a, u, dir * q * (.036 + .01 * rng()), bell() * .012), keep: true, arm: a, u, ord: c.ord + q * .02, chk: c.chk + q * .012 }); PRE.push([prev, i, 0]); prev = i; ids.push(i); } }); }
+    for (let a = 0, tries = 0; S.length < K && tries < 20000; a = 1 - a, tries++) { const u = even(a, rng()), wide = HW * (.45 + .75 * Math.sin(Math.PI * Math.pow(u, .8))), o = at(a, u, bell() * wide * 1.5, bell() * .04 * (1 - .4 * u));
+      if (!clear(o.x, o.y, o.z, ARM[a], .03 + .016 * Math.hypot(o.x, o.z))) continue; const pace = a ? .82 : 1; ARM[a].push(add({ ...o, keep: true, arm: a, u, loose: true, ord: .12 + .86 * u * pace, chk: .06 + .94 * u * pace })); }
+    const CL = K + Math.round((N - K) * .58);                                   // stars below this index sit in the disc
+    while (S.length < CL) { const ball = rng() < .16, r = ball ? .36 * Math.pow(rng(), .7) : 1.2 * Math.sqrt(rng()), th = rng() * TAU;
+      S.push({ x: r * Math.cos(th), y: bell() * (ball ? .2 : .25 * (1 - .45 * Math.min(1, r))), z: r * Math.sin(th) }); }
     while (S.length < N) { const r = Math.pow(rng(), .62), th = rng() * TAU; S.push({ wide: true, ux: r * Math.cos(th), uz: r * Math.sin(th), uy: rng() * 2 - 1 }); }
     S.forEach(p => { if (p.wide) { p.x = p.ux * 3.2; p.y = p.uy * 1.6; p.z = p.uz * 3.2; } });   // nominal place, only for finding neighbours
 
-    /* The lines. KEPT is the subgraph that stays: in each system the two rings, three links from the centre to
-       the inner ring and three from the inner ring to the outer; between systems a frame of long links (the middle
-       to the inner four, the inner four in a square, the outer seven in a heptagon, each outer one to its nearest
-       inner one). It has loops everywhere; it is not a tree. MESS is everything else: every star tied to a
+    /* The lines. KEPT is the subgraph that stays (kind 1: the spines and their link to the core; kind 2: the core;
+       kind 0: everything else: the knots round the packages, the feathers, every loose star tied to its nearest
+       one or two, and a few long ties from one arm across to the other). Each kept line runs from its earlier end
+       to its later one, so the arms can be drawn outward. MESS is everything that goes: every star tied to a
        neighbour or two, and long ties across the disc. The opening sky shows both, equally faint. */
-    const KEPT = [], MESS = [], tied = new Set(), deg = new Uint8Array(N), nb = Array.from({ length: K }, () => []);
+    const KEPT = [], MESS = [], tied = new Set(), deg = new Uint8Array(N);
     const key = (i, j) => i < j ? i * N + j : j * N + i;
-    const keep = (i, j, bridge) => { if (tied.has(key(i, j))) return; tied.add(key(i, j)); KEPT.push({ a: i, b: j, bridge }); deg[i]++; deg[j]++; nb[i].push(j); nb[j].push(i); };
-    const nearest = (i, ids) => ids.reduce((best, j) => d2(S[i], S[j]) < d2(S[i], S[best]) ? j : best, ids[0]);
-    HUB.forEach(h => { const inner = Array.from({ length: 9 }, (_, j) => h + 1 + j), outer = Array.from({ length: 20 }, (_, j) => h + 10 + j);
-      inner.forEach((i, j) => keep(i, inner[(j + 1) % 9], false)); outer.forEach((i, j) => keep(i, outer[(j + 1) % 20], false));
-      for (const j of [0, 3, 6]) keep(h, inner[j], false); for (const j of [1, 4, 7]) keep(inner[j], nearest(inner[j], outer), false); });
-    for (let n = 0; n < 4; n++) { keep(HUB[0], HUB[1 + n], true); keep(HUB[1 + n], HUB[1 + (n + 1) % 4], true); }
-    for (let n = 0; n < 7; n++) { keep(HUB[5 + n], HUB[5 + (n + 1) % 7], true); keep(HUB[5 + n], nearest(HUB[5 + n], HUB.slice(1, 5)), true); }
+    const keep = (i, j, kind) => { if (i === j || tied.has(key(i, j))) return; tied.add(key(i, j)); if (S[i].ord > S[j].ord) { const t = i; i = j; j = t; } KEPT.push({ a: i, b: j, kind }); deg[i]++; deg[j]++; };
+    const nearest = (i, ids, n) => ids.filter(j => j !== i).sort((p, q) => d2(S[i], S[p]) - d2(S[i], S[q])).slice(0, n);
+    const shell = Array.from({ length: NC }, (_, j) => 1 + j);
+    shell.forEach(i => nearest(i, shell, 3).forEach((j, n) => { if (n < 2 || rng() < .5) keep(i, j, 2); }));
+    for (let j = 2; j < NC; j += 7) keep(0, shell[j], 2);
+    PRE.forEach(e => keep(e[0], e[1], e[2]));
+    for (let a = 0; a < 2; a++) { keep(nearest(SPINE[a][0], shell, 1)[0], SPINE[a][0], 1);
+      ARM[a].forEach(i => { if (!S[i].loose) return; const near = nearest(i, ARM[a], 2); keep(i, near[0], 0); if (rng() < .6 && d2(S[i], S[near[1]]) < 3.2 * d2(S[i], S[near[0]])) keep(i, near[1], 0); }); }
+    [2, 4, 5].forEach(n => { const h = HUB[n], other = nearest(h, HUB.slice(7), 1)[0]; if (d2(S[h], S[other]) < .17) keep(h, other, 0); });       // a few ties from arm to arm
     const near2 = S.map((p, i) => { let a = -1, b = -1, da = 99, db = 99; S.forEach((q, j) => { if (j === i) return; const d = d2(p, q); if (d < da) { b = a; db = da; a = j; da = d; } else if (d < db) { b = j; db = d; } }); return [a, da, b, db]; });
-    const tie = (i, j) => { if (i !== j && !tied.has(key(i, j))) { tied.add(key(i, j)); MESS.push({ i, j, off: rng(), spark: rng() < .22 }); } };
-    S.forEach((p, i) => { const [a, da, b, db] = near2[i];
-      if (p.keep) { if (da < .012 && rng() < .45) tie(i, a); if (db < .016 && rng() < .3) tie(i, b); }
-      else { if (da < .03) tie(i, a); if (db < .03 && rng() < .5) tie(i, b); }
-      if (!p.wide && rng() < (p.keep ? .5 : .9)) { const j = Math.floor(rng() * CL); if (d2(p, S[j]) < .55) tie(i, j); } });
-    /* The subgraph lights up outward from the middle system: along the long links first, then round each ring. */
-    { const hop = new Int32Array(K).fill(-1), q = [HUB[0]]; hop[HUB[0]] = 0; let far = 1;
-      for (let h = 0; h < q.length; h++) for (const j of nb[q[h]]) if (hop[j] < 0) { hop[j] = hop[q[h]] + 1; far = Math.max(far, hop[j]); q.push(j); }
-      for (let i = 0; i < K; i++) S[i].ord = hop[i] / far * .8 + rng() * .03;
-      for (const e of KEPT) if (S[e.a].ord > S[e.b].ord) { const t = e.a; e.a = e.b; e.b = t; } }
+    const tie = (i, j) => { if (i !== j && !tied.has(key(i, j))) { tied.add(key(i, j)); MESS.push({ i, j, off: Math.min(1, Math.max(S[i].ord, S[j].ord) * .8 + rng() * .2), spark: rng() < .22 }); } };
     S.forEach((p, i) => {
-      p.mag = rng() < .035 ? 2.3 + rng() : .85 + rng() * .8; p.ph = rng() * TAU; p.sp = .5 + rng() * 1.3;
-      if (!p.keep) p.ord = rng();                                               // when it fades
-      p.chk = Math.atan2(p.z, p.x) / TAU + .5;                                  // checks sweep round the cluster
-      p.rn = Math.min(1, Math.hypot(p.x, p.z)); p.dly = rng() * .45; // the flash passes outward; when it leaves the code
+      p.mag = rng() < .04 ? 2.3 + rng() : .85 + rng() * .8; p.ph = rng() * TAU; p.sp = .5 + rng() * 1.3; p.tint = TINT[Math.floor(rng() * TINT.length)]; p.sw = (.5 + rng() * .8) * (rng() < .5 ? 1 : -.6);
+      p.rn = Math.min(1, Math.hypot(p.x, p.z));                                   // the flash passes outward
+      if (!p.keep) p.ord = p.wide ? .5 + .5 * rng() : clamp01(Math.log(Math.max(p.rn, R0) / R0) / Math.log(1 / R0) * .8 + rng() * .2);   // the sky clears outward, as the arms grow
     });
+    S.forEach((p, i) => { const [a, da, b, db] = near2[i];
+      if (p.keep) { if (rng() < .5) tie(i, a); if (db < .02 && rng() < .3) tie(i, b); }
+      else { if (da < .03) tie(i, a); if (db < .03 && rng() < .5) tie(i, b); }
+      if (!p.wide && rng() < (p.keep ? .55 : .9)) { const j = Math.floor(rng() * CL); if (d2(p, S[j]) < .5) tie(i, j); } });
     const SPK = [...Array(K).keys()].filter(i => i % 29 === 7 && !(S[i].hub >= 0));                 // the stars that sparkle at the finish
-    /* Every cluster star starts as one character of the code. */
+    /* Every disc star starts as one character of the code; the code lets go of them from its middle outward. */
     const SHIFT = 40, CELLS = [];                                              // the second column starts this many lines further on
     for (const side of [0, 1]) for (let r = 1; r < 26; r++) { const text = CODE[(r + side * SHIFT) % CODE.length]; for (let c = 0; c < Math.min(text.length, 62); c++) if (text[c] !== ' ') CELLS.push([r, c, text[c], side]); }
-    for (let i = 0; i < CL; i++) { const cell = CELLS[Math.floor(rng() * CELLS.length)]; S[i].row = cell[0]; S[i].col = cell[1]; S[i].ch = cell[2]; S[i].side = cell[3]; }
+    for (let i = 0; i < CL; i++) { const cell = CELLS[Math.floor(rng() * CELLS.length)], p = S[i]; p.row = cell[0]; p.col = cell[1]; p.ch = cell[2]; p.side = cell[3];
+      p.dly = .3 * Math.min(1, Math.hypot((p.side + p.col / 62) - 1, (p.row / 26 - .5) * 1.1)) + .14 * rng(); }
+    /* light, drawn once: a soft round glow in each colour */
+    const sprite = rgb => { const c = document.createElement('canvas'); c.width = c.height = 64; const g = c.getContext('2d'), gr = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+      [[0, 1], [.1, .6], [.28, .2], [.55, .05], [1, 0]].forEach(([o, al]) => gr.addColorStop(o, `rgba(${rgb},${al})`)); g.fillStyle = gr; g.fillRect(0, 0, 64, 64); return c; };
+    const GW = sprite('230,236,255'), GG = sprite(NV), GL = sprite('226,255,170');
 
-    const SX = new Float32Array(N), SY = new Float32Array(N), SQ = new Float32Array(N), SD = new Float32Array(N), SN = new Float32Array(N), LIT = new Float32Array(N), SW = new Float32Array(N), SA = new Float32Array(N);
-    const BK = Array.from({ length: 12 }, () => []);                            // lit links (short ones, then the long ones), bucketed by depth, one stroke each
+    const SX = new Float32Array(N), SY = new Float32Array(N), SQ = new Float32Array(N), SD = new Float32Array(N), SN = new Float32Array(N), LIT = new Float32Array(N), SW = new Float32Array(N), SA = new Float32Array(N), TX = new Float32Array(N), TY = new Float32Array(N), LA = new Float32Array(HUB.length);
+    const BK = Array.from({ length: 18 }, () => []);                            // lit links by kind and depth, one stroke each
     const hud = { lines: $('#orb-lines'), checks: $('#orb-checks'), phase: $('#orb-phase'), bar: $('#orb-bar'), box: $('#cmp') };
     const PHASE = ['the original code', 'the same code, as a graph', 'rewriting from scratch', 'running the frozen checks', 'delivered'];
-    let W = 0, H = 0, dpr = 1, cx = 0, cy = 0, R = 1, RW = 1, F = 1000, shown = -1, spin = .6, yaw = 0, pitch = 0, tyaw = 0, tpitch = 0, clock = 0;
+    let W = 0, H = 0, dpr = 1, cx = 0, cy = 0, R = 1, UN = 1, RW = 1, F = 1000, tilt0 = .46, shown = -1, spin = .6, yaw = 0, pitch = 0, tyaw = 0, tpitch = 0, clock = 0;
     let sx0 = 0, sx1 = 0, sy0 = 0, sy1 = 0, fs = 9.5, lh = 12.7, cw = 5.7;       // the stage box, and the code's type
-    let px = -999, py = -999, seenAt = -1e9, lens = 0;                          // the pointer, and how awake the sky is to it
+    let px = -999, py = -999, seenAt = -1e9, lens = 0, rx = 0, ry = 0, rt = -1e9, FX = 0, FY = 0;   // the pointer, how awake the sky is to it, and the last click
     const layout = () => {
-      const r = hero.getBoundingClientRect(), s = stage.getBoundingClientRect(), tall = s.height - hud.box.offsetHeight - 14;   // the readout sits at the bottom of the stage
-      W = r.width; H = r.height; cx = s.left - r.left + s.width / 2; cy = s.top - r.top + tall * .5;
+      const r = hero.getBoundingClientRect(), s = stage.getBoundingClientRect(), tall = s.height - hud.box.offsetHeight - 12;   // the readout sits at the bottom of the stage
+      W = r.width; H = r.height; cx = s.left - r.left + s.width / 2;
       sx0 = s.left - r.left; sx1 = sx0 + s.width; sy0 = s.top - r.top; sy1 = sy0 + tall;
-      R = Math.min(s.width * .44, 340, (tall / 2 - 14) / .66); RW = Math.max(cx, W - cx) * 1.12; F = Math.max(1000, RW * 1.5);      // the disc's radius: it is seen from a little above, so its height is about .66 R
+      /* The disc is as wide as the stage allows and tipped just enough to fill its height: nearly edge-on on a
+         wide screen, seen from well above on a phone. Its far rim sits at the top of the stage, its near rim at the bottom. */
+      RW = Math.max(cx, W - cx) * 1.12; R = Math.min(s.width * .5, 480); tilt0 = Math.min(1, Math.max(.46, Math.asin(Math.min(.84, tall * .5 / (R * 1.06)))));
+      const room = tall + (W < 600 ? 0 : 30); let up = 0, dn = 0;                    // on a wide screen the far rim may rise a little behind the buttons
+      for (let n = 0; n < 6; n++) { F = Math.max(1000, RW * 1.5, R * 3.2); const sb = Math.sin(tilt0), cb = Math.cos(tilt0); up = R * 1.08 * sb * F / (F + R * cb); dn = R * 1.2 * sb * F / (F - R * cb) + 16; if (up + dn > room - 12) R *= (room - 12) / (up + dn); else break; }
+      cy = sy1 - 6 - dn - (room - 12 - up - dn) / 2; UN = Math.min(1.1, Math.max(.5, R / 440));
       dpr = Math.min(2, window.devicePixelRatio || 1, Math.sqrt(4.6e6 / (W * H)));
       cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
       fs = W < 600 ? 8.5 : 10.5; lh = fs * 1.36; ctx.font = `${fs}px "Geist Mono",ui-monospace,monospace`; cw = ctx.measureText('0000000000').width / 10;
@@ -711,101 +739,144 @@ def resolve_options(base, overrides=None, env=None, *, allow_new=False, freeze=T
     };
     const dot = (x, y, r) => { ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill(); };
     const line = (x1, y1, x2, y2) => { ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke(); };
+    const glow = (spr, x, y, r, al) => { if (al < .006 || r < .3) return; ctx.globalAlpha = al > 1 ? 1 : al; ctx.drawImage(spr, x - r, y - r, r * 2, r * 2); ctx.globalAlpha = 1; };
+    /* a soft light lying on the disc */
+    const haze = (rgb, al, rad, flat) => { if (al < .004) return; ctx.save(); ctx.translate(cx, cy); ctx.scale(1, flat); const g = ctx.createRadialGradient(0, 0, 0, 0, 0, rad);
+      g.addColorStop(0, `rgba(${rgb},${al})`); g.addColorStop(.4, `rgba(${rgb},${al * .32})`); g.addColorStop(1, `rgba(${rgb},0)`); ctx.fillStyle = g; ctx.fillRect(-rad, -rad, rad * 2, rad * 2); ctx.restore(); };
+    /* where a star is on its way out of the code: from its character towards its place, swept round the middle as it goes */
+    const fly = (p, go, x, y, x0, y0) => { const mx = lerp(x0, x, go) - cx, my = lerp(y0, y, go) - cy, an = 5 * go * (1 - go) * (1 - go) * p.sw, c = Math.cos(an), s = Math.sin(an); FX = cx + mx * c - my * s; FY = cy + mx * s + my * c; };
+    /* a bead of light somewhere along a spine (pos 0..1), with a short tail behind it */
+    const bead = (ids, pos, size, al, spr) => { for (let n = 0; n < 6; n++) { const f = clamp01(pos - n * .0045) * (ids.length - 1), a = Math.min(ids.length - 2, Math.floor(f)), fr = f - a, i = ids[a], j = ids[a + 1], d = lerp(SD[i], SD[j], fr), fade = 1 - n / 6;
+      glow(spr, lerp(SX[i], SX[j], fr), lerp(SY[i], SY[j], fr), size * (.55 + .9 * d) * (.5 + .5 * fade), al * fade * fade * (.3 + .7 * d) * Math.min(LIT[i], LIT[j])); } };
     const draw = t => {
-      /* Timeline: 0 the code; 2.4 it turns into the sky; 5.2 the tangled sky; 7.0 it is simplified; 11.6 the checks;
-         13.9 a modest flash; then the subgraph holds; 18.6 the sky comes back; 19.7 it turns into code again. */
-      const k = 1 - ease(seg(t, 18.6, 19.6)), sky = seg(t, 2.4, 5.2) * (1 - seg(t, 19.7, 21)), web = ease(clamp01((sky - .6) / .4));
-      const raw = seg(t, 7.0, 11.4) * k, m = ease(seg(t, 7.0, 11.4)) * k, v = k < 1 ? 0 : seg(t, 11.6, 13.8), b = k < 1 ? 0 : seg(t, 13.9, 15.7);
-      const a = spin + yaw, tilt = .44 + pitch, ca = Math.cos(a), sa = Math.sin(a), cb = Math.cos(tilt), sb = Math.sin(tilt), zoom = 1 + .06 * m;
+      /* Timeline: 0 the code; 2.2 it turns into the sky; 5.0 the tangled sky; 7.2 it is simplified; 11.8 the checks;
+         14.1 a modest flash; then the subgraph holds; 21.4 the sky comes back; 22.5 it turns into code again. */
+      const k = 1 - ease(seg(t, 21.4, 22.4)), sky = seg(t, 2.2, 5.0) * (1 - seg(t, 22.5, 24)), web = ease(clamp01((sky - .6) / .4));
+      const raw = seg(t, 7.2, 11.6) * k, m = ease(seg(t, 7.2, 11.6)) * k, v = k < 1 ? 0 : seg(t, 11.8, 14.0), b = k < 1 ? 0 : seg(t, 14.1, 15.9), live = k < 1 ? 0 : seg(t, 14.2, 15.4);
+      const a = spin + yaw, tilt = tilt0 + pitch, ca = Math.cos(a), sa = Math.sin(a), cb = Math.cos(tilt), sb = Math.sin(tilt), zoom = .95 + .05 * m;
       const two = sx1 - sx0 > 900, colW = two ? (sx1 - sx0 - 36) / 2 : sx1 - sx0 - 12, cols = Math.floor(colW / cw), shift = colW + 30;      // the code: two columns when there is room
-      const scroll = (t < 12 ? Math.min(t, 5.2) : t - T) * 6, tx0 = sx0 + 6, ty0 = sy0 + 8 - scroll, wake = lens * web, reach = W < 600 ? 86 : 124;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
-      /* where every star is: on its way from its character in the code to its place in the sky, then nudged by the pointer */
+      const scroll = (t < 12 ? Math.min(t, 5) : t - T) * 6, tx0 = sx0 + 6, ty0 = sy0 + 8 - scroll, wake = lens * web, reach = W < 600 ? 86 : 124;
+      const age = still ? 9 : (performance.now() - rt) / 1000, ring = age < 1.5 ? age * 560 : -1;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H); ctx.globalAlpha = 1;
+      /* where every star is: on its way from its character in the code to its place in the sky, drifting off if it
+         is being removed, then nudged by the pointer */
       for (let i = 0; i < N; i++) {
         const p = S[i], X = p.px * ca + p.pz * sa, Z0 = p.pz * ca - p.px * sa, Y = p.py * cb - Z0 * sb, Z = Z0 * cb + p.py * sb, q = F / Math.max(F * .3, F + Z) * zoom;
         let x = cx + X * q, y = cy + Y * q, go = 1;
-        if (i < CL) { go = ease(clamp01((sky - p.dly) / .55)); if (go < 1) { x = lerp(tx0 + (two ? p.side * shift : 0) + (p.col + .5) * cw, x, go); y = lerp(ty0 + p.row * lh, y, go); } } else go = ease(clamp01((sky - .4) / .6));
+        const L = LIT[i] = p.keep ? ease(clamp01((raw - p.ord * .8) / .2)) : clamp01((raw - p.ord * .8) / .2);   // kept: how lit; the rest: how far gone
+        if (!p.keep && L > 0) { const dx = x - cx, dy = y - cy, d = Math.hypot(dx, dy) || 1, f = L * L * 18; x += dx / d * f; y += dy / d * f * .6 + L * L * 5; }
+        if (i < CL) { go = ease(clamp01((sky - p.dly) / .55)); if (go < 1) { const x0 = tx0 + (two ? p.side * shift : 0) + (p.col + .5) * cw, y0 = ty0 + p.row * lh;
+          fly(p, Math.max(0, go - .1), x, y, x0, y0); TX[i] = FX; TY[i] = FY; fly(p, go, x, y, x0, y0); x = FX; y = FY; } } else go = ease(clamp01((sky - .4) / .6));
         let w = 0; if (wake > .01) { const dx = x - px, dy = y - py, d = Math.hypot(dx, dy); w = Math.exp(-(d * d) / (reach * reach)) * wake; if (d > 1) { const push = w * 9 * Math.min(1, d / 30); x += dx / d * push; y += dy / d * push; } }
+        if (ring >= 0 && web > 0) { const dx = x - rx, dy = y - ry, d = Math.hypot(dx, dy), e = (d - ring) / 44, hit = Math.exp(-e * e) * (1 - age / 1.5) * web; if (hit > .02) { w = Math.max(w, hit); if (d > 1) { x += dx / d * hit * 7; y += dy / d * hit * 7; } } }
         SX[i] = x; SY[i] = y; SQ[i] = q; SA[i] = go; SW[i] = w; SN[i] = clamp01(((F + Z) / F - .45) / .3);
-        SD[i] = p.wide ? clamp01(.5 - Z / (2.2 * RW)) : clamp01(.5 - Z / (2.6 * R));
-        LIT[i] = p.keep ? ease(clamp01((raw - p.ord * .8) / .2)) : clamp01((raw - p.ord * .8) / .2);   // kept: how lit; the rest: how faded
+        SD[i] = p.wide ? clamp01(.5 - Z / (2.2 * RW)) : clamp01(.5 - Z / (2.4 * R));
       }
       /* the code: a long file drifting up, fading as its characters leave */
-      const ta = 1 - ease(clamp01(sky / .55));
+      const ta = 1 - ease(clamp01(sky / .5));
       if (ta > .01) { ctx.font = `${fs}px "Geist Mono",ui-monospace,monospace`; ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
         const first = Math.floor(scroll / lh), rows = Math.ceil((sy1 - sy0) / lh) + 1;
         for (let side = 0; side < (two ? 2 : 1); side++) for (let n = 0; n < rows; n++) { const r = first + n, y = ty0 + r * lh, edge = clamp01((y - sy0) / 30) * clamp01((sy1 - y) / 46); if (edge <= 0) continue;
           const text = CODE[(((r + side * SHIFT) % CODE.length) + CODE.length) % CODE.length], head = text.trimStart();
           ctx.fillStyle = `rgba(${WHITE},${ta * edge * (head[0] === '#' ? .42 : /^(class|def) /.test(head) ? 1 : .74)})`; ctx.fillText(text.slice(0, cols), tx0 + side * shift, y); } }
-      if (m > .02 || b > 0) { const rg = R * 1.9, g = ctx.createRadialGradient(cx, cy, 0, cx, cy, rg), al = .1 * m + Math.sin(Math.PI * Math.min(1, b * 1.5)) * .18; g.addColorStop(0, `rgba(${NV},${al})`); g.addColorStop(1, `rgba(${NV},0)`); ctx.fillStyle = g; ctx.fillRect(cx - rg, cy - rg, rg * 2, rg * 2); }
+      /* the sky's own light: pale while it is a tangle, green once it is simplified, brightest at the core */
+      const flat = Math.max(.34, Math.abs(sb) * 1.15), pulse = b > 0 && b < 1 ? Math.sin(Math.PI * Math.min(1, b * 1.5)) : 0;
+      ctx.globalCompositeOperation = 'lighter';
+      haze('120,140,190', .075 * web * (1 - m), R * 1.7, flat); haze(NV, .12 * m + .14 * pulse, R * 1.75, flat); haze('170,230,90', (.2 + .1 * pulse) * m, R * .42, Math.max(.5, flat));
+      ctx.globalCompositeOperation = 'source-over';
       if (wake > .02) { const g = ctx.createRadialGradient(px, py, 0, px, py, reach * 1.5); g.addColorStop(0, `rgba(${WHITE},${.07 * wake})`); g.addColorStop(1, `rgba(${WHITE},0)`); ctx.fillStyle = g; ctx.fillRect(px - reach * 1.5, py - reach * 1.5, reach * 3, reach * 3); }
       ctx.lineCap = 'round'; ctx.lineWidth = 1;
       /* the tangle: untouched lines in one stroke; a line being removed pulls back from its middle; near the pointer
          lines brighten, and the ones already removed show again */
       if (web > 0) {
-        ctx.strokeStyle = `rgba(${WHITE},${.135 * web})`; ctx.beginPath(); const busy = [];
+        ctx.strokeStyle = `rgba(${WHITE},${.17 * web})`; ctx.beginPath(); const busy = [];
         for (const e of MESS) { if (SN[e.i] * SN[e.j] < .05) continue; const d = clamp01((raw - e.off * .82) / .18), w = (SW[e.i] + SW[e.j]) / 2; if (d > 0 || w > .03) { if (d < 1 || w > .03) busy.push(e, d, w); continue; } ctx.moveTo(SX[e.i], SY[e.i]); ctx.lineTo(SX[e.j], SY[e.j]); }
         for (const e of KEPT) { if (LIT[e.b] <= 0 && SW[e.a] + SW[e.b] < .06) { ctx.moveTo(SX[e.a], SY[e.a]); ctx.lineTo(SX[e.b], SY[e.b]); } }
         ctx.stroke();
         for (let n = 0; n < busy.length; n += 3) { const e = busy[n], d = busy[n + 1], w = busy[n + 2], x1 = SX[e.i], y1 = SY[e.i], x2 = SX[e.j], y2 = SY[e.j];
           if (d >= 1) { ctx.strokeStyle = `rgba(${WHITE},${.3 * w})`; line(x1, y1, x2, y2); continue; }
-          const h = .5 * (1 - d); ctx.strokeStyle = `rgba(${WHITE},${(.135 + .3 * w + (d > 0 && d < .5 ? .25 * (1 - d) : 0)) * web})`;
+          const h = .5 * (1 - d); ctx.strokeStyle = `rgba(${WHITE},${(.15 + .3 * w + (d > 0 && d < .5 ? .3 * (1 - d) : 0)) * web})`;
           if (d <= 0) line(x1, y1, x2, y2); else { ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x1 + (x2 - x1) * h, y1 + (y2 - y1) * h); ctx.moveTo(x2, y2); ctx.lineTo(x2 + (x1 - x2) * h, y2 + (y1 - y2) * h); ctx.stroke();
             if (e.spark && d < .35) { ctx.fillStyle = `rgba(255,255,255,${.9 * (1 - d / .35)})`; dot((x1 + x2) / 2, (y1 + y2) / 2, 1.3); } } }
-        /* the subgraph: each kept line turns green from its earlier end */
+        /* the subgraph: each kept line turns green from its earlier end, a bright point at the growing tip */
         ctx.globalCompositeOperation = 'lighter';
         for (const bk of BK) bk.length = 0;
         for (const e of KEPT) { const g = LIT[e.b], w = (SW[e.a] + SW[e.b]) / 2, x1 = SX[e.a], y1 = SY[e.a], x2 = SX[e.b], y2 = SY[e.b], d = (SD[e.a] + SD[e.b]) / 2;
-          if (g <= 0) { if (w >= .03) { ctx.strokeStyle = `rgba(${WHITE},${(.135 + .34 * w) * web})`; line(x1, y1, x2, y2); } continue; }
-          if (g < 1) { ctx.strokeStyle = `rgba(${WHITE},${.135 * (1 - g)})`; line(x1, y1, x2, y2); ctx.strokeStyle = `rgba(${NV},${.3 + .6 * d})`; ctx.lineWidth = 1.2; line(x1, y1, x1 + (x2 - x1) * g, y1 + (y2 - y1) * g); ctx.lineWidth = 1; continue; }
-          BK[(e.bridge ? 6 : 0) + Math.min(5, Math.floor(d * 6))].push(x1, y1, x2, y2);
+          if (g <= 0) { if (w >= .03) { ctx.strokeStyle = `rgba(${WHITE},${(.15 + .34 * w) * web})`; line(x1, y1, x2, y2); } continue; }
+          if (g < 1) { const hx = x1 + (x2 - x1) * g, hy = y1 + (y2 - y1) * g; ctx.strokeStyle = `rgba(${WHITE},${.15 * (1 - g)})`; line(x1, y1, x2, y2); ctx.strokeStyle = `rgba(${NV},${.35 + .6 * d})`; ctx.lineWidth = e.kind === 1 ? 1.8 : 1.1; line(x1, y1, hx, hy); ctx.lineWidth = 1;
+            glow(GL, hx, hy, (e.kind === 1 ? 13 : 6) * (.6 + .8 * d), (e.kind === 1 ? .95 : .5) * Math.sin(Math.PI * g)); continue; }
+          if (e.kind !== 1) BK[e.kind * 6 + Math.min(5, Math.floor(d * 6))].push(x1, y1, x2, y2);
           if (w >= .03) { ctx.strokeStyle = `rgba(${LIME},${.6 * w})`; ctx.lineWidth = 1.6; line(x1, y1, x2, y2); ctx.lineWidth = 1; } }
-        BK.forEach((bk, n) => { if (!bk.length) return; const d = (n % 6 + .5) / 6, long = n >= 6; ctx.strokeStyle = `rgba(${NV},${long ? .3 + .5 * d : .16 + .6 * d * d})`; ctx.lineWidth = long ? 1.1 + .6 * d : .7 + .45 * d; ctx.beginPath();
-          for (let q = 0; q < bk.length; q += 4) { ctx.moveTo(bk[q], bk[q + 1]); ctx.lineTo(bk[q + 2], bk[q + 3]); } ctx.stroke(); });
+        const path = bk => { ctx.beginPath(); for (let q = 0; q < bk.length; q += 4) { ctx.moveTo(bk[q], bk[q + 1]); ctx.lineTo(bk[q + 2], bk[q + 3]); } ctx.stroke(); };
+        BK.forEach((bk, n) => { if (!bk.length) return; const d = (n % 6 + .5) / 6, kind = Math.floor(n / 6); ctx.strokeStyle = `rgba(${NV},${kind ? .2 + .5 * d : .18 + .62 * d * d})`; ctx.lineWidth = .7 + .5 * d; path(bk); });
+        for (const sp of SPINE) { let lit = 0; while (lit < sp.length && LIT[sp[lit]] >= 1) lit++; if (lit < 2) continue;
+          const mx = j => (SX[sp[j]] + SX[sp[j + 1]]) / 2, my = j => (SY[sp[j]] + SY[sp[j + 1]]) / 2;
+          for (let j0 = 0; j0 < lit - 1; j0 += 3) { const j1 = Math.min(lit - 1, j0 + 3), d = SD[sp[Math.min(lit - 1, j0 + 1)]];                    // a few stars at a time, so the far side can be fainter
+            ctx.beginPath(); if (j0) ctx.moveTo(mx(j0 - 1), my(j0 - 1)); else ctx.moveTo(SX[sp[0]], SY[sp[0]]);
+            for (let j = Math.max(1, j0); j < j1; j++) ctx.quadraticCurveTo(SX[sp[j]], SY[sp[j]], mx(j), my(j));
+            if (j1 === lit - 1) ctx.lineTo(SX[sp[j1]], SY[sp[j1]]); else ctx.quadraticCurveTo(SX[sp[j1]], SY[sp[j1]], mx(j1), my(j1));
+            ctx.lineCap = 'butt'; ctx.strokeStyle = `rgba(${NV},${.07 + .1 * d})`; ctx.lineWidth = (4 + 5 * d) * UN; ctx.stroke();
+            ctx.strokeStyle = `rgba(${LIME},${.3 + .62 * d})`; ctx.lineWidth = (1 + 1.1 * d) * Math.max(.8, UN); ctx.stroke(); ctx.lineCap = 'round'; } }
         ctx.lineWidth = 1;
       }
       /* the stars */
-      ctx.globalCompositeOperation = 'lighter'; ctx.textAlign = 'center';
+      ctx.globalCompositeOperation = 'lighter'; ctx.textAlign = 'center'; ctx.font = `${fs}px "Geist Mono",ui-monospace,monospace`; ctx.textBaseline = 'middle';
       for (let i = 0; i < N; i++) {
         const p = S[i], near = SN[i], go = SA[i]; if (near <= 0 || go <= 0) continue;
-        const x = SX[i], y = SY[i], q = Math.min(1.9, SQ[i]), tw = .82 + .18 * Math.sin(t * p.sp + p.ph), d = SD[i], w = SW[i], born = clamp01(go / .3), size = lerp(.7, p.mag, born) * lerp(1, q, go);
-        if (born < 1 && i < CL) { ctx.fillStyle = `rgba(${WHITE},${(1 - born) * .85})`; ctx.fillText(p.ch, x, y); }       // still a character
-        if (!p.keep) { const al = (.34 + .5 * d) * tw * near * born * lerp(1 - .9 * LIT[i], 1.2, w); ctx.fillStyle = `rgba(${WHITE},${Math.min(1, al)})`; dot(x, y, size * .95 * (1 + .7 * w)); continue; }
-        const L = LIT[i], wave = b > 0 && b < 1 ? clamp01(1 - Math.abs(b * 1.7 - .2 - p.rn) / .34) : 0;
-        const done = clamp01((v - p.chk * .93) / .07), hit = done > 0 && done < 1 ? Math.sin(Math.PI * done) : 0, pop = Math.sin(Math.PI * L) * .7 + hit * 2.2 + done * .3 + wave * .8 + w * 1.1;
-        if (L < 1) { ctx.fillStyle = `rgba(${WHITE},${Math.min(1, (.4 + .5 * d) * tw * born * (1 - L) * (1 + w))})`; dot(x, y, size * .95 * (1 + .7 * w * (1 - L))); }
-        if (L > 0) { const sz = (p.hub === 0 ? 4 : p.hub > 0 ? 3 : 1 + .22 * Math.min(4, deg[i])) * q * (1 + .45 * pop), al = L * (.34 + .66 * d);
-          if (p.hub >= 0) { ctx.fillStyle = `rgba(${NV},${al * .2})`; dot(x, y, sz * 2.6); }
-          ctx.fillStyle = `rgba(${NV},${al})`; dot(x, y, sz);
-          const hot = Math.max(done * .7, wave, w, p.hub >= 0 ? .75 : 0); if (hot > 0) { ctx.fillStyle = `rgba(${LIME},${al * hot})`; dot(x, y, sz * .72); }
-          if (hit > 0) { ctx.fillStyle = `rgba(255,255,255,${hit * .9})`; dot(x, y, sz * .6); } }
+        const x = SX[i], y = SY[i], q = Math.min(1.9, SQ[i]), tw = .8 + .2 * Math.sin(t * p.sp + p.ph), d = SD[i], w = SW[i], born = clamp01(go / .3), size = lerp(.7, p.mag, born) * lerp(1, q, go), L = LIT[i];
+        if (go < 1 && i < CL) { const hot = Math.sin(Math.PI * go); ctx.strokeStyle = `rgba(${WHITE},${.4 * hot})`; ctx.lineWidth = 1; line(TX[i], TY[i], x, y);                 // in flight: a streak behind it
+          if (born < 1) { ctx.fillStyle = `rgba(${WHITE},${(1 - born) * .9})`; ctx.fillText(p.ch, x, y); } }                                                                        // still a character
+        if (!p.keep) { const flick = L > 0 && L < .3 ? Math.sin(Math.PI * L / .3) * .6 : 0, al = Math.min(1, ((.36 + .62 * d) * tw * lerp(1 - .93 * L, 1.25, w) + flick) * near * born);
+          ctx.fillStyle = `rgba(${p.tint},${al})`; dot(x, y, size * (.95 + .7 * w) * (1 - .3 * L));
+          if (p.mag > 1.45 || w > .3) glow(GW, x, y, size * (4.5 + 3 * w), al * (p.mag > 2 ? .42 : p.mag > 1.45 ? .22 : .3 * w)); continue; }
+        const wave = b > 0 && b < 1 ? clamp01(1 - Math.abs(b * 1.7 - .2 - p.rn) / .34) : 0;
+        const done = clamp01((v - p.chk * .93) / .07), hit = done > 0 && done < 1 ? Math.sin(Math.PI * done) : 0, pop = Math.sin(Math.PI * L) * .8 + hit * 1.6 + wave * .7 + w * 1.1;
+        if (L < 1) { const al = Math.min(1, (.34 + .6 * d) * tw * born * (1 - L) * (1 + w)); ctx.fillStyle = `rgba(${p.tint},${al})`; dot(x, y, size * (.95 + .7 * w * (1 - L))); if (p.mag > 2) glow(GW, x, y, size * 4.5, al * .4); }
+        if (L > 0) { const hub = p.hub >= 0, sz = (p.hub === 0 ? 3.4 : hub ? 2.5 : (p.spine ? 1.4 : 1.15) * (.72 + .32 * Math.min(2.6, p.mag))) * q * Math.max(.78, UN) * (1 + .4 * pop), al = L * (.3 + .7 * d) * (.86 + .14 * tw);
+          if (p.hub > 0) glow(GG, x, y, p.rad * R * q * 2.6, al * .2); else if (p.spine) glow(GG, x, y, 30 * UN * q, al * .2);       // the arm's own haze
+          glow(GG, x, y, sz * (hub ? 9 : 5.2), al * (hub ? .95 : .6));
+          ctx.fillStyle = `rgba(${LIME},${al})`; dot(x, y, sz);
+          const hot = Math.max(done * .5, wave, w, hit, hub ? .8 : p.spine ? .35 : 0); if (hot > 0) { ctx.fillStyle = `rgba(255,255,255,${al * hot * .85})`; dot(x, y, sz * .58); }
+          if (hub) { const fl = sz * (5.5 + 1.5 * tw) * (1 + .5 * pop); ctx.strokeStyle = `rgba(${LIME},${al * .38})`; ctx.lineWidth = .9; ctx.beginPath(); ctx.moveTo(x - fl, y); ctx.lineTo(x + fl, y); ctx.moveTo(x, y - fl * .7); ctx.lineTo(x, y + fl * .7); ctx.stroke();
+            ctx.strokeStyle = `rgba(255,255,255,${al * .5})`; ctx.beginPath(); ctx.moveTo(x - fl * .4, y); ctx.lineTo(x + fl * .4, y); ctx.moveTo(x, y - fl * .28); ctx.lineTo(x, y + fl * .28); ctx.stroke(); }
+          if (hit > 0) glow(GL, x, y, sz * 6, hit * .8); }
       }
+      /* light running along the spines: the checks race out from the core; afterwards a few beads keep travelling */
+      for (let a2 = 0; a2 < 2; a2++) { const sp = SPINE[a2], pace = a2 ? .82 : 1;
+        if (v > 0 && v < pace) { bead(sp, v / pace, 26, 1, GL); bead(sp, v / pace, 11, 1, GW); }
+        if (live > 0) for (let n = 0; n < 3; n++) { const pos = (t * (.066 + .013 * n) + n * .37 + a2 * .19) % 1; bead(sp, pos, 15, live * .85 * Math.pow(Math.sin(Math.PI * pos), .5), GL); } }
       ctx.globalCompositeOperation = 'source-over';
-      /* names: under each system once it is lit, and wherever the pointer is */
-      if (web > 0) { ctx.font = `500 ${W < 600 ? 10 : 11.5}px "Geist Mono",ui-monospace,monospace`; ctx.textBaseline = 'middle';
-        ctx.textAlign = 'center';
-        for (const i of HUB) { const al = Math.max(LIT[i] * (.3 + .7 * SD[i]), SW[i] * 1.4 * web); if (al < .04) continue;
-          ctx.fillStyle = `rgba(214,236,170,${Math.min(1, al)})`; ctx.fillText(NAMES[S[i].hub], SX[i], SY[i] + (.12 * R * SQ[i] + 13)); } }
-      /* the finishing flash: one widening ring and a dozen sparkles */
+      /* names: under each package once it is lit, nearest first, never one over another; and wherever the pointer is */
+      if (web > 0) { ctx.font = `500 ${W < 600 ? 10 : 11.5}px "Geist Mono",ui-monospace,monospace`; ctx.textBaseline = 'middle'; ctx.textAlign = 'center';
+        const boxes = [], order = HUB.map((_, n) => n).sort((p, q) => SD[HUB[q]] - SD[HUB[p]]);
+        for (const n of order) { const i = HUB[n], want = Math.max(LIT[i] * clamp01((SD[i] - .36) / .2), SW[i] * 1.4 * web), half = NAMES[n].length * 3.6 + 8, f2 = Math.abs(sb);
+          const dx = SX[i] - cx, dy = (SY[i] - cy) / f2, dd = Math.hypot(dx, dy) || 1, nx = n ? dx / dd : 0, ny = n ? dy / dd : 1, od = (n ? S[i].rad * 1.25 : .19) * R * SQ[i];       // outside the ribbon, away from the core
+          const lx = Math.min(W - half - 2, Math.max(half + 2, SX[i] + nx * (od + 10 + half * Math.abs(nx)))), ly = SY[i] + ny * (od * f2 + 15);
+          let ok = want > .04; if (ok) for (const h of HUB) if (h !== i && LIT[h] > .5 && Math.abs(SX[h] - lx) < half && Math.abs(SY[h] - ly) < 10) { ok = false; break; }      // not on top of another package
+          if (ok) for (const bx of boxes) if (Math.abs(bx[0] - lx) < bx[2] + half && Math.abs(bx[1] - ly) < 15) { ok = false; break; }
+          if (ok) boxes.push([lx, ly, half]);
+          LA[n] = still ? (ok ? want : 0) : LA[n] + ((ok ? want : 0) - LA[n]) * .14;
+          if (LA[n] > .03) { ctx.fillStyle = `rgba(222,240,186,${Math.min(1, LA[n]) * (n ? .82 : 1)})`; ctx.fillText(NAMES[n], lx, ly); } } }
+      /* the finishing flash: one widening ring on the disc and a dozen sparkles */
       if (b > 0 && b < 1) { const Rz = R * zoom;
-        ctx.strokeStyle = `rgba(${LIME},${(1 - b) * .5})`; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.ellipse(cx, cy, Rz * (.2 + b * 1.3), Rz * (.2 + b * 1.3) * (Math.abs(sb) + .06), 0, 0, TAU); ctx.stroke();
+        ctx.strokeStyle = `rgba(${LIME},${(1 - b) * .5})`; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.ellipse(cx, cy, Rz * (.2 + b * 1.3), Rz * (.2 + b * 1.3) * Math.abs(sb), 0, 0, TAU); ctx.stroke();
         SPK.forEach((p, n) => { const q = clamp01((b - (n * .137) % .56) / .38); if (q <= 0 || q >= 1) return; const sn = Math.sin(Math.PI * q), x = SX[p], y = SY[p], Lg = 4 + 14 * sn, D = Lg * .42;
           ctx.strokeStyle = `rgba(255,255,255,${sn})`; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(x - Lg, y); ctx.lineTo(x + Lg, y); ctx.moveTo(x, y - Lg); ctx.lineTo(x, y + Lg); ctx.stroke();
           ctx.lineWidth = .8; ctx.beginPath(); ctx.moveTo(x - D, y - D); ctx.lineTo(x + D, y + D); ctx.moveTo(x - D, y + D); ctx.lineTo(x + D, y - D); ctx.stroke(); }); }
-      const ph = t < 2.4 || t >= 19.7 ? 0 : t < 7.0 || t >= 18.6 ? 1 : t < 11.6 ? 2 : t < 13.9 ? 3 : 4;
+      const ph = t < 2.2 || t >= 22.5 ? 0 : t < 7.2 || t >= 21.4 ? 1 : t < 11.8 ? 2 : t < 14.1 ? 3 : 4;
       if (ph !== shown) { hud.phase.textContent = PHASE[ph]; hud.box.classList.toggle('done', ph === 4); shown = ph; }
       hud.lines.textContent = fmt(lerp(76888, 36458, m)); hud.bar.style.width = lerp(100, 47.4, m).toFixed(1) + '%'; hud.checks.textContent = `${Math.round(v * 382)} / 382`;
     };
-    const fix = new URLSearchParams(location.search).get('t'), still = calm || fix !== null, rest0 = fix !== null ? +fix : 17;
-    if (fix !== null) spin = .6 + .12 * rest0;
+    const fix = new URLSearchParams(location.search).get('t'), still = calm || fix !== null, rest0 = fix !== null ? +fix : 18;
+    if (fix !== null) spin = .6 + .1 * rest0;
     layout(); seen.observe(hero);
     loops.push(dt => { if (still) return; yaw += (tyaw - yaw) * Math.min(1, dt * 2.5); pitch += (tpitch - pitch) * Math.min(1, dt * 2.5);
       lens += ((performance.now() - seenAt < 2600 ? 1 : 0) - lens) * Math.min(1, dt * 5);               // the sky wakes to the pointer and settles after it rests
-      if (!hero._on) return; clock = (clock + dt) % T; spin += dt * .12; draw(clock); });
-    /* the pointer: the whole sky leans a little towards it, and the stars near it answer */
+      if (!hero._on) return; clock = (clock + dt) % T; spin += dt * .1; draw(clock); });
+    /* the pointer: the whole sky leans a little towards it, the stars near it answer, and a click sends a ripple out */
     const point = e => { const r = hero.getBoundingClientRect(); px = e.clientX - r.left; py = e.clientY - r.top;
-      if (py >= 0 && py <= r.height) seenAt = performance.now();
-      if (e.pointerType !== 'touch') { tyaw = (e.clientX / innerWidth - .5) * .5; tpitch = (e.clientY / innerHeight - .5) * .16; }
+      if (py >= 0 && py <= r.height) { seenAt = performance.now(); if (e.type === 'pointerdown') { rx = px; ry = py; rt = seenAt; } }
+      if (e.pointerType !== 'touch') { tyaw = (e.clientX / innerWidth - .5) * .5; tpitch = (e.clientY / innerHeight - .5) * .14; }
       if (still) { lens = py >= 0 && py <= r.height ? 1 : 0; draw(rest0); } };
     addEventListener('pointermove', point, { passive: true }); addEventListener('pointerdown', point, { passive: true });
     const redraw = () => { layout(); draw(still ? rest0 : clock); };
