@@ -6,11 +6,11 @@
 <title>Nanolize</title>
 <meta name="description" content="Nanolize rewrites a bloated repository into a nano one that coding agents read, change and run for fewer tokens.">
 <meta name="theme-color" content="#060912">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Crect width='22' height='22' fill='%23060912'/%3E%3Crect x='1' y='1' width='20' height='20' fill='none' stroke='%23EEF2FA' stroke-width='1.6'/%3E%3Crect x='5.5' y='6.2' width='11' height='2.4' fill='%23A8E62E'/%3E%3Crect x='5.5' y='10' width='7' height='2.4' fill='%23A8E62E'/%3E%3Crect x='5.5' y='13.8' width='9' height='2.4' fill='%23A8E62E'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Crect width='22' height='22' fill='%23060912'/%3E%3Crect x='1' y='1' width='20' height='20' rx='6' fill='none' stroke='%23EEF2FA' stroke-width='1.6'/%3E%3Crect x='5.5' y='6.2' width='11' height='2.4' fill='%23A8E62E'/%3E%3Crect x='5.5' y='10' width='7' height='2.4' fill='%23A8E62E'/%3E%3Crect x='5.5' y='13.8' width='9' height='2.4' fill='%23A8E62E'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>:root{padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Chivo+Mono:wght@300..700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Geist+Mono:wght@300..700&display=swap">
 <style>
 /* Layout: a dark, stage-first page. Giant condensed headlines hang from the left edge and every section is one
    scene that moves: a live rewrite in the hero, a firewall you can test, results that shrink into place.
@@ -24,7 +24,7 @@
   --nano:#A8E62E; --nano-hi:#DDFF8F; --nano-lo:#3F6608; --on-nano:#0A1020;
   --ember:#FF6A3D; --ember-hi:#FFC3AC; --ember-lo:#5E2110;
   --face:"Archivo","Helvetica Neue",Arial,sans-serif;
-  --mono:"Chivo Mono",ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  --mono:"Geist Mono",ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{overflow-x:clip;scroll-behavior:smooth}
@@ -273,26 +273,80 @@ button{font:inherit;color:inherit}
 .word em{font-style:normal;color:transparent;-webkit-text-stroke:1.5px #5A6890}
 @media (max-width:759px){.foot-grid{grid-template-columns:minmax(0,1fr)}}
 
+
+/* ---------- softer geometry: round, layered surfaces instead of ruled boxes ---------- */
+:root{--r1:28px;--r2:20px;--r3:14px;--glass:linear-gradient(180deg,rgba(22,32,66,.62),rgba(10,16,32,.42))}
+.atmo{background:none;overflow:hidden}
+.atmo i{position:absolute;width:72vmax;height:72vmax;border-radius:50%;will-change:transform;animation:drift 28s ease-in-out infinite alternate}
+.atmo i:nth-child(1){right:-24vmax;top:-36vmax;background:radial-gradient(closest-side,rgba(168,230,46,.18),transparent)}
+.atmo i:nth-child(2){left:-36vmax;top:14vh;background:radial-gradient(closest-side,rgba(255,106,61,.11),transparent);animation-duration:36s;animation-delay:-9s}
+.atmo i:nth-child(3){right:-30vmax;bottom:-40vmax;background:radial-gradient(closest-side,rgba(72,112,255,.17),transparent);animation-duration:42s;animation-delay:-17s}
+@keyframes drift{to{transform:translate3d(-7vmax,6vmax,0) scale(1.14)}}
+.atmo::after{opacity:.55}
+
+.nav{top:calc(env(safe-area-inset-top,0px) + 10px);margin-top:10px;background:none;-webkit-backdrop-filter:none;backdrop-filter:none;border-bottom:0}
+.nav .wrap{display:block;min-height:0}
+.nav .in{display:flex;align-items:center;gap:28px;min-height:54px;padding:7px 7px 7px 20px;border-radius:999px;background:rgba(13,20,42,.6);-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);border:1px solid var(--line);box-shadow:0 14px 44px -20px rgba(0,0,0,.85)}
+.btn{border-radius:999px}
+.btn.sm{height:40px;padding:0 20px}
+.kicker i{border-radius:50%}
+.mega{background:linear-gradient(180deg,#fff 38%,#B4C2E4);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.07em}
+
+.stage{border-radius:var(--r1);border:1px solid transparent;background:linear-gradient(180deg,#0F1730,#080C1A) padding-box,linear-gradient(140deg,rgba(168,230,46,.6),rgba(150,172,220,.16) 36%,rgba(150,172,220,.1) 64%,rgba(255,106,61,.5)) border-box;box-shadow:0 60px 130px -70px rgba(168,230,46,.4),0 30px 80px -40px rgba(0,0,0,.9)}
+
+.ticker{border-block:0;background:none;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.ticker li{border-right:0;padding-inline:22px 0}
+.ticker li::after{content:"";align-self:center;width:5px;height:5px;border-radius:50%;background:var(--nano);opacity:.55;margin-left:22px}
+
+.fw{border-radius:var(--r1);overflow:hidden;border:1px solid transparent;background:linear-gradient(180deg,#0D1429,#090E1D) padding-box,linear-gradient(160deg,rgba(150,172,220,.32),rgba(150,172,220,.08) 45%,rgba(255,106,61,.34)) border-box}
+.ws{border-radius:var(--r3)}
+.chip{border-radius:999px;padding:6px 11px}
+.code i,.grp i{border-radius:99px}
+.tray i,.vrow i{border-radius:50%}
+.vrow i.sp,.vrow i.sf{border-radius:4px}
+.never::before{width:20px;height:8px;border-radius:99px}
+.wall{margin-block:22px;border-radius:14px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Cg fill='%23FF6A3D'%3E%3Crect x='1' y='1' width='20' height='9' rx='2.5'/%3E%3Crect x='1' y='12' width='9' height='9' rx='2.5'/%3E%3Crect x='12' y='12' width='9' height='9' rx='2.5'/%3E%3C/g%3E%3C/svg%3E")}
+.wall span{border-radius:999px;padding:12px 5px}
+.badge,.packet,.cheats button,.copy{border-radius:999px}
+.cheats button{padding:0 18px}
+.facts li{border:1px solid var(--line-2);border-radius:var(--r2);padding:24px;background:var(--glass)}
+.trio{gap:16px;border-block:0}
+.trio li,.trio li+li{border:1px solid var(--line-2);border-radius:var(--r1);padding:clamp(20px,2.8vw,32px);background:var(--glass)}
+.legend i{border-radius:50%}
+.scroll{border:1px solid var(--line-2);border-radius:var(--r1);background:rgba(10,16,32,.45);padding:10px clamp(14px,2.4vw,28px) 14px}
+.track,.track i{border-radius:99px}
+.libs tfoot th,.libs tfoot td{border-top-color:var(--line)}
+.agents{border-block:0;background:none;padding-block:0}
+.agents .card{border-radius:36px;padding:clamp(28px,6vw,84px) clamp(20px,5vw,72px);background:linear-gradient(150deg,rgba(26,40,82,.72),rgba(10,16,32,.5) 60%);border:1px solid var(--line-2)}
+.term{border-radius:var(--r2);overflow:hidden}
+.steps{gap:12px}
+.steps li,.steps li:last-child{border:1px solid var(--line-2);border-radius:var(--r2);padding:18px 20px;background:var(--glass);align-items:start}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:rgba(168,230,46,.14);color:var(--nano);font-size:.875rem}
+@media (max-width:759px){
+  .wall{margin:0 18px}
+  .nav .in{padding-left:16px}
+}
+
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
-  .kicker i,.hud.bl::after,.ticker .run,.pipe::before,.wall{animation:none}
+  .atmo i,.kicker i,.hud.bl::after,.ticker .run,.pipe::before,.wall{animation:none}
   .ticker .run{flex-wrap:wrap;width:auto} .ticker .dup{display:none}
   .track i,.code i,.tray i,.vrow i{transition:none}
 }
 </style>
 </head>
 <body>
-<div class="atmo" aria-hidden="true"></div>
+<div class="atmo" aria-hidden="true"><i></i><i></i><i></i></div>
 
 <header class="nav">
-  <div class="wrap">
+  <div class="wrap"><div class="in">
     <a class="mark" href="#top" aria-label="Nanolize">
-      <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect x="1" y="1" width="20" height="20" fill="none" stroke="#EEF2FA" stroke-width="1.6"/><rect x="5.5" y="6.2" width="11" height="2.4" fill="#A8E62E"/><rect x="5.5" y="10" width="7" height="2.4" fill="#A8E62E"/><rect x="5.5" y="13.8" width="9" height="2.4" fill="#A8E62E"/></svg>
+      <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect x="1" y="1" width="20" height="20" rx="6" fill="none" stroke="#EEF2FA" stroke-width="1.6"/><rect x="5.5" y="6.2" width="11" height="2.4" rx="1.2" fill="#A8E62E"/><rect x="5.5" y="10" width="7" height="2.4" rx="1.2" fill="#A8E62E"/><rect x="5.5" y="13.8" width="9" height="2.4" rx="1.2" fill="#A8E62E"/></svg>
       <span>nano<em>lize</em></span>
     </a>
     <nav aria-label="Sections"><a href="#method">Method</a><a href="#results">Results</a><a href="#use">Use it</a><a href="#cite">Cite</a></nav>
     <a class="btn go sm" href="#">Paper</a>
-  </div>
+  </div></div>
 </header>
 
 <main>
@@ -307,7 +361,6 @@ button{font:inherit;color:inherit}
 
       <div class="stage" id="stage" role="img" aria-label="Animation: Detectron2 is rewritten from 76,888 lines to 36,458 lines, and all 382 frozen checks pass.">
         <canvas></canvas>
-        <i class="c c1"></i><i class="c c2"></i><i class="c c3"></i><i class="c c4"></i>
         <p class="hud tl"><b>original</b><br>detectron2, <span class="num">76,888</span> lines</p>
         <p class="hud tr" id="hud-nano"><b>nano</b><br><span class="num" id="hud-lines">36,458</span><span class="long"> lines</span><span class="num" id="hud-pct">−52.6%</span></p>
         <p class="hud cl" id="hud-cl">382 checks<span class="long">, frozen on the original before any new code is tested</span></p>
@@ -461,7 +514,7 @@ button{font:inherit;color:inherit}
   </section>
 
   <section class="sec agents" id="agents" data-reveal>
-    <div class="wrap">
+    <div class="wrap"><div class="card">
       <h2 class="h2">The next agent pays less.</h2>
       <p class="lede">On Detectron2, with all 106 capabilities kept, agents working in the nano code spend fewer tokens on the same tasks.</p>
       <ul class="meters">
@@ -469,7 +522,7 @@ button{font:inherit;color:inherit}
         <li><span class="what">Modify</span><span class="track" style="--w:75.8%"><i></i></span><span class="pct"><span data-n="24.2" data-dec="1" data-pre="−" data-suf="%">−24.2%</span><small>tokens</small></span></li>
         <li><span class="what">Execute</span><span class="track" style="--w:64.9%"><i></i></span><span class="pct"><span data-n="35.1" data-dec="1" data-pre="−" data-suf="%">−35.1%</span><small>tokens</small></span></li>
       </ul>
-    </div>
+    </div></div>
   </section>
 
   <section class="sec" id="use" data-reveal>
@@ -553,7 +606,8 @@ button{font:inherit;color:inherit}
   const keys = orig.map((b, i) => b.key ? i : -1).filter(i => i >= 0);
   const hud = { lines: $('#hud-lines'), pct: $('#hud-pct'), checks: $('#hud-checks'), phase: $('#hud-phase'), nano: $('#hud-nano'), cl: $('#hud-cl'), cr: $('#hud-cr') };
   let W = 0, H = 0, dpr = 1, L = null, sparks = [], lastIdx = -1;
-  const rr = (x, y, w, h) => ctx.rect(x, y, w, h);
+  const rr = (x, y, w, h) => ctx.roundRect ? ctx.roundRect(x, y, w, h, h / 2) : ctx.rect(x, y, w, h);
+  const dot = (x, y, r) => { ctx.moveTo(x + r, y); ctx.arc(x, y, r, 0, 6.2832); };
   const layout = () => {
     const r = stage.getBoundingClientRect();
     W = r.width; H = r.height; dpr = Math.min(2, window.devicePixelRatio || 1);
@@ -623,10 +677,10 @@ button{font:inherit;color:inherit}
     const frozen = Math.floor(rd * CHECKS), passed = Math.floor(vf * CHECKS), ca = 1 - ease(out);
     if (frozen > 0 && ca > 0) {
       ctx.globalAlpha = ca * .75; ctx.strokeStyle = '#CFE0FF'; ctx.lineWidth = .8; ctx.beginPath();
-      for (let i = passed; i < frozen; i++) rr(L.padX + (i % perRow) * cp + .5, cy + Math.floor(i / perRow) * cp + .5, cs, cs);
+      for (let i = passed; i < frozen; i++) dot(L.padX + (i % perRow) * cp + cs / 2, cy + Math.floor(i / perRow) * cp + cs / 2, cs / 2);
       ctx.stroke();
       ctx.globalAlpha = ca; ctx.fillStyle = '#A8E62E'; ctx.shadowColor = 'rgba(168,230,46,.6)'; ctx.shadowBlur = 6 * dpr; ctx.beginPath();
-      for (let i = 0; i < passed; i++) rr(L.padX + (i % perRow) * cp, cy + Math.floor(i / perRow) * cp, cs + 1, cs + 1);
+      for (let i = 0; i < passed; i++) dot(L.padX + (i % perRow) * cp + cs / 2, cy + Math.floor(i / perRow) * cp + cs / 2, cs / 2 + .5);
       ctx.fill(); ctx.shadowBlur = 0; ctx.globalAlpha = 1;
     }
 
