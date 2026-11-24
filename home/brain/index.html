@@ -1,0 +1,839 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nanolize</title>
+<meta name="description" content="Nanolize rewrites a bloated repository into a nano one that coding agents read, change and run for fewer tokens.">
+<meta name="theme-color" content="#F6F8F4">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Crect width=%2722%27 height=%2722%27 fill=%27%23050607%27/%3E%3Crect x='1' y='1' width='20' height='20' rx='6' fill='none' stroke='%23EEF2FA' stroke-width='1.6'/%3E%3Crect x='5.5' y='6.2' width='11' height='2.4' fill='%23A8E62E'/%3E%3Crect x='5.5' y='10' width='7' height='2.4' fill='%23A8E62E'/%3E%3Crect x='5.5' y='13.8' width='9' height='2.4' fill='%23A8E62E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>:root{padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400..600&display=swap">
+<style>
+/* Shared page for every version. Centred section heads over one scene each; hairlines instead of boxes. Green is
+   the only accent (nano code, passing checks); red appears only when something is blocked or fails.
+   Colours are tokens so that a version can restyle the whole page: --hi is the high-contrast colour as an rgb
+   triple (white on a dark ground, near-black on a light one), --g and --r are the green and red triples for
+   fills and glows, --green is the green that is safe for text, --green-f the green for fills. */
+:root{
+  color-scheme:dark;
+  --hi:255,255,255; --g:139,226,52; --r:255,107,87;
+  --bg:#050607; --card:linear-gradient(180deg,#0C0E12,#07080A); --nav-bg:rgba(5,6,7,.7);
+  --line:rgba(var(--hi),.10); --line-2:rgba(var(--hi),.06);
+  --ink:#F2F4F7; --ink-2:#A3ABB8; --ink-3:#727A88; --ink-sub:#98A1B0; --mute:#4A5160;
+  --grad-a:#fff; --grad-b:#8E97A6;
+  --green:#8BE234; --green-f:#8BE234; --green-2:#C6F59A; --red:#FF6B57; --red-ink:#FFB4A9;
+  --sans:"Geist",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"Geist Mono",ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{overflow-x:clip;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:1.0625rem;line-height:1.55;-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:20;background:var(--bg)}
+h1,h2,h3,p,ol,ul,pre,table{margin:0}
+ol,ul{padding:0;list-style:none}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1216px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:760px){.wrap{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
+.m{font-family:var(--mono);font-size:.75rem;line-height:1.5;color:var(--ink-3)}
+.num{font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:50px;padding:0 26px;border-radius:999px;font-weight:600;white-space:nowrap;cursor:pointer;transition:background .2s,box-shadow .2s}
+.btn.go{background:var(--ink);color:var(--bg)}
+.btn.go:hover{background:rgb(var(--hi));box-shadow:0 0 0 4px rgba(var(--hi),.12)}
+.btn.gh{box-shadow:inset 0 0 0 1px rgba(var(--hi),.18)}
+.btn.gh:hover{box-shadow:inset 0 0 0 1px rgba(var(--hi),.5)}
+.btn.sm{height:38px;padding:0 18px;font-size:.9375rem}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:15;background:var(--nav-bg);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-bottom:1px solid var(--line-2)}
+.nav .wrap{display:flex;align-items:center;gap:28px;min-height:60px}
+.mark .lg{fill:var(--green-f)}
+.mark{display:flex;align-items:center;gap:10px;font-weight:650;font-size:1.125rem;letter-spacing:-.02em;margin-right:auto}
+.nav nav{display:flex;gap:28px;font-size:.9375rem;color:var(--ink-2)}
+.nav nav a:hover{color:var(--ink)}
+@media (max-width:759px){.nav nav{display:none}}
+
+/* ---------- hero: shared type; the container and the scene come from the version ---------- */
+.chip{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(var(--hi),.14);background:rgba(var(--hi),.04);font-size:.875rem;color:var(--ink-2)}
+.chip i{width:7px;height:7px;border-radius:50%;background:var(--green-f);box-shadow:0 0 10px rgba(var(--g),.9)}
+.grad{background:linear-gradient(180deg,var(--grad-a) 30%,var(--grad-b));-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
+.hero h1{font-weight:500;font-size:clamp(2.75rem,7.2vw,5.9rem);line-height:1.03;letter-spacing:-.045em;margin-top:22px}
+.hero h1 span{display:block}
+.hero .sub{max-width:34em;margin:18px auto 0;font-size:clamp(1.0625rem,1.5vw,1.25rem);color:var(--ink-sub)}
+.cta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:30px}
+.nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:980px;margin:clamp(22px,3vw,40px) auto 0;border-top:1px solid var(--line)}
+.nums li{padding:26px 12px 0}
+.nums li+li{border-left:1px solid var(--line)}
+.nums b{display:block;font-weight:500;font-size:clamp(1.9rem,4.2vw,3.25rem);line-height:1;letter-spacing:-.04em}
+.nums li:first-child b{color:var(--green)}
+.nums span{display:block;margin-top:10px}
+@media (max-width:759px){.nums{grid-template-columns:minmax(0,1fr);border-top:0}.nums li{border-top:1px solid var(--line);padding:22px 0}.nums li+li{border-left:0}}
+
+/* ---------- ticker ---------- */
+.ticker{overflow:hidden;border-block:1px solid var(--line-2);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.ticker .run{display:flex;width:max-content;animation:slide 52s linear infinite}
+.ticker:hover .run{animation-play-state:paused}
+.ticker ul{display:flex}
+.ticker li{display:flex;align-items:baseline;gap:10px;padding:16px 30px;font-family:var(--mono);font-size:.8125rem;color:var(--ink-3);white-space:nowrap}
+.ticker b{font-family:var(--sans);font-weight:500;font-size:1rem;color:var(--ink)}
+.ticker em{font-style:normal;color:var(--green)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- sections ---------- */
+.sec{padding-block:clamp(80px,12vw,168px)}
+.head{text-align:center;max-width:50rem;margin-inline:auto}
+.h2{font-weight:500;font-size:clamp(2.1rem,5.2vw,4rem);line-height:1.05;letter-spacing:-.042em;text-wrap:balance}
+.lede{margin:20px auto 0;max-width:36em;font-size:clamp(1.0625rem,1.5vw,1.25rem);color:var(--ink-sub)}
+
+/* statement */
+.say{padding-block:clamp(88px,13vw,190px)}
+.say-text{font-weight:500;font-size:clamp(1.75rem,4.3vw,3.6rem);line-height:1.13;letter-spacing:-.038em;max-width:21em;margin-inline:auto}
+.js .say-text span{color:rgba(var(--hi),.17);transition:color .3s}
+.js .say-text span.lit{color:var(--ink)}
+.say-meter{max-width:calc(21 * clamp(1.75rem,4.3vw,3.6rem));margin:30px auto 0;display:flex;align-items:baseline;gap:10px}
+.say-meter b{font-weight:500;font-size:1.25rem;color:var(--green);font-variant-numeric:tabular-nums}
+
+/* ---------- firewall scene ---------- */
+.fw{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 1px minmax(0,1fr);max-width:1080px;margin:clamp(40px,6vw,72px) auto 0;border:1px solid var(--line);border-radius:24px;background:var(--card)}
+.room{padding:clamp(18px,2.6vw,30px);display:grid;gap:18px;grid-template-rows:auto 1fr auto auto;min-width:0}
+.room header,.verifier .who{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px}
+.fw h3{font-weight:500;font-size:1.3125rem;line-height:1.1;letter-spacing:-.02em}
+.ws{min-height:168px;border:1px solid var(--line-2);border-radius:14px;background:rgba(var(--hi),.02) radial-gradient(rgba(var(--hi),.07) 1px,transparent 1.3px) 0 0/18px 18px;padding:16px;display:grid;gap:13px;align-content:start}
+.tagc{justify-self:start;font-family:var(--mono);font-size:.6875rem;line-height:1;padding:6px 10px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);color:var(--ink-2)}
+.code{display:grid;gap:7px}
+.code i{display:block;height:4px;width:0;border-radius:99px;background:var(--green-f);transition:width .32s cubic-bezier(.2,.7,.2,1),background .2s}
+.code i.on{width:var(--w)}
+.code i.edited{width:var(--w2);background:rgb(var(--hi))}
+.repo{display:grid;gap:10px}
+.grp{display:grid;gap:6px;position:relative;transition:opacity .3s}
+.grp i{display:block;height:4px;width:var(--w);border-radius:99px;background:var(--mute)}
+.grp.ko{opacity:.25}
+.grp::after{content:"switched off";position:absolute;right:0;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.6875rem;color:var(--red);opacity:0;transition:opacity .2s}
+.grp.ko::after{opacity:1}
+.tray{display:flex;flex-wrap:wrap;gap:7px;align-items:center;min-height:14px}
+.tray i{width:12px;height:12px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--ink-3);transform:scale(0);transition:transform .28s cubic-bezier(.3,1.6,.5,1),box-shadow .3s,background .3s}
+.tray i.on{transform:scale(1)}
+.tray i.new.on{box-shadow:inset 0 0 0 1.5px var(--green-f)}
+.tray i.frozen,.tray i.new.frozen{box-shadow:inset 0 0 0 1.5px rgb(var(--hi));background:rgba(var(--hi),.14)}
+.never{display:flex;align-items:center;gap:10px;font-weight:500}
+.never::before{content:"";flex:none;width:16px;height:2px;border-radius:2px;background:var(--red);box-shadow:0 0 8px rgba(var(--r),.8)}
+.pipe{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.6875rem;color:var(--ink-3);height:20px}
+.pipe::before{content:"";width:1px;height:20px;background-image:repeating-linear-gradient(180deg,var(--green-f) 0 4px,transparent 4px 8px);background-size:1px 8px;animation:flow .5s linear infinite}
+.pipe.w::before{background-image:repeating-linear-gradient(180deg,rgb(var(--hi)) 0 4px,transparent 4px 8px)}
+.pipe .b{display:none}
+.pipe.up{color:var(--red)}
+.pipe.up::before{background-image:repeating-linear-gradient(180deg,var(--red) 0 4px,transparent 4px 8px);animation-direction:reverse}
+.pipe.up .a{display:none} .pipe.up .b{display:inline}
+@keyframes flow{to{background-position:0 8px}}
+.wall{position:relative;background:linear-gradient(180deg,transparent,var(--red) 14%,var(--red) 86%,transparent);box-shadow:0 0 22px 1px rgba(var(--r),.45);transition:box-shadow .15s}
+.wall.hit{box-shadow:0 0 46px 7px rgba(var(--r),.95)}
+.wall span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);writing-mode:vertical-rl;font-family:var(--mono);font-size:.6875rem;letter-spacing:.06em;background:var(--bg);color:var(--red);padding:12px 5px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(var(--r),.6)}
+.verifier{grid-column:1/-1;border-top:1px solid var(--line);padding:clamp(18px,2.6vw,30px);display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr) auto;gap:16px 32px;align-items:center}
+.verifier .who{display:grid;gap:4px}
+.vbox{display:grid;gap:10px;min-width:0}
+.vrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.vrow i{width:12px;height:12px;border-radius:50%;box-shadow:inset 0 0 0 1.5px rgba(var(--hi),.55);transition:background .18s,box-shadow .18s,transform .25s}
+.vrow i.on{background:var(--green-f);box-shadow:0 0 10px rgba(var(--g),.5)}
+.vrow i.bad{background:var(--red);box-shadow:0 0 12px rgba(var(--r),.7)}
+.vrow i.sp,.vrow i.sf{border-radius:3px;transform:rotate(45deg) scale(.86);margin-inline:3px}
+.vrow i.sf.on{background:transparent;box-shadow:inset 0 0 0 1.5px var(--red)}
+.vrow i.tamper{transform:scale(.45);background:transparent;box-shadow:inset 0 0 0 1.5px var(--red)}
+.vrow.lock i{box-shadow:inset 0 0 0 1.5px rgb(var(--hi)),0 0 10px rgba(var(--hi),.6)}
+.vrow.faked i,.vrow.faked i.sf{background:var(--green-f);box-shadow:0 0 10px rgba(var(--g),.5)}
+.vrow.shake{animation:shake .4s}
+@keyframes shake{20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
+.badge{font-family:var(--mono);font-size:.8125rem;line-height:1;padding:10px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);color:var(--ink-2);white-space:nowrap;min-width:12em;text-align:center;transition:color .2s,box-shadow .2s,background .2s}
+.badge.pass{color:var(--green);background:rgba(var(--g),.08);box-shadow:inset 0 0 0 1px rgba(var(--g),.5)}
+.badge.fail,.badge.void,.badge.rej{color:var(--red);background:rgba(var(--r),.08);box-shadow:inset 0 0 0 1px rgba(var(--r),.55)}
+.packet{position:absolute;z-index:3;font-family:var(--mono);font-size:.6875rem;line-height:1;padding:6px 10px;border-radius:999px;background:rgb(var(--hi));color:var(--bg);transform:translate(-50%,-50%);pointer-events:none;box-shadow:0 0 16px rgba(var(--hi),.5)}
+.packet.hit{background:var(--red);color:#fff;box-shadow:0 0 22px rgba(var(--r),.9)}
+.cheats{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 10px;max-width:1080px;margin:22px auto 0}
+.cheats button{height:40px;padding:0 18px;border:0;border-radius:999px;background:none;box-shadow:inset 0 0 0 1px rgba(var(--hi),.16);font-weight:500;font-size:.9375rem;cursor:pointer;transition:box-shadow .2s,color .2s}
+.cheats button:hover,.cheats button.act{box-shadow:inset 0 0 0 1px var(--red);color:var(--red-ink)}
+.verdict{flex:1 1 100%;text-align:center;font-family:var(--mono);font-size:.875rem;color:var(--ink-2);min-height:1.6em}
+.verdict b{color:var(--red);font-weight:500}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:1080px;margin:clamp(48px,7vw,88px) auto 0;border-top:1px solid var(--line)}
+.facts li{padding:26px clamp(16px,2.4vw,30px) 0;color:var(--ink-2)}
+.facts li:first-child{padding-left:0} .facts li:last-child{padding-right:0}
+.facts li+li{border-left:1px solid var(--line)}
+.facts b{display:block;font-weight:500;font-size:1.1875rem;letter-spacing:-.015em;color:var(--ink);margin-bottom:8px}
+@media (max-width:759px){
+  .fw{grid-template-columns:minmax(0,1fr)}
+  .wall{height:1px;background:linear-gradient(90deg,transparent,var(--red) 14%,var(--red) 86%,transparent)}
+  .wall span{writing-mode:horizontal-tb;padding:5px 12px}
+  .verifier{grid-template-columns:minmax(0,1fr)} .badge{justify-self:start}
+  .facts{grid-template-columns:minmax(0,1fr);border-top:0}
+  .facts li,.facts li:first-child,.facts li:last-child{padding:22px 0;border-top:1px solid var(--line)} .facts li+li{border-left:0}
+}
+
+/* ---------- results ---------- */
+.legend{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 24px;margin-top:clamp(36px,5vw,60px)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{width:10px;height:10px;border-radius:50%;background:var(--green-f)}
+.legend .g i{background:var(--mute)}
+.legend .t i{background:none;box-shadow:inset 0 0 0 1px var(--ink-3)}
+.scroll{overflow-x:auto;max-width:1080px;margin:14px auto 0;border:1px solid var(--line);border-radius:24px;background:var(--card);padding:8px clamp(14px,2.4vw,30px) 12px}
+.libs{width:100%;min-width:700px;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.libs th,.libs td{text-align:left;padding:14px 20px 14px 0;border-top:1px solid var(--line-2);vertical-align:middle}
+.libs thead th{border-top:0;font-family:var(--mono);font-size:.75rem;font-weight:400;color:var(--ink-3);padding-bottom:8px}
+.libs tbody th{font-weight:500;width:24%;line-height:1.3}
+.libs tbody th span{display:block;font-weight:400;font-size:.875rem;color:var(--ink-3)}
+.libs .bars{width:42%}
+.pair{display:grid;gap:7px}
+.barline{display:grid;grid-template-columns:minmax(0,1fr) 4.6em;align-items:center;gap:12px}
+.track{display:block;height:5px;border-radius:99px;background:rgba(var(--hi),.07)}
+.track i{display:block;height:100%;width:var(--w);border-radius:99px;background:var(--green-f);transition:width 1.5s cubic-bezier(.2,.7,.15,1)}
+.barline.g .track i{background:var(--mute);transition-delay:.12s}
+.js [data-reveal]:not(.in) .track i{width:100%}
+.barline b{font-family:var(--mono);font-weight:400;font-size:.8125rem;text-align:right;color:var(--ink-3)}
+.barline.n b{color:var(--green)}
+.two{display:grid;gap:3px;font-family:var(--mono);font-size:.8125rem;line-height:1.35;white-space:nowrap}
+.two .g{color:var(--ink-3)}
+.two .bad{color:var(--red)}
+.libs tfoot th,.libs tfoot td{border-top:1px solid rgba(var(--hi),.22)}
+.libs tfoot th{font-weight:600}
+.after{margin:20px auto 0;max-width:1080px;text-align:center;color:var(--ink-3);font-size:.9375rem}
+
+/* agents */
+.meters{display:grid;max-width:1080px;margin:clamp(40px,6vw,72px) auto 0;border-top:1px solid var(--line)}
+.meters li{display:grid;grid-template-columns:minmax(0,11rem) minmax(0,1fr) auto;align-items:center;gap:12px clamp(16px,3vw,44px);padding-block:clamp(20px,2.8vw,30px);border-bottom:1px solid var(--line)}
+.meters .what{font-weight:500;font-size:clamp(1.25rem,2.4vw,1.75rem);letter-spacing:-.025em}
+.meters .track{height:6px}
+.meters .pct{font-weight:500;font-size:clamp(1.75rem,3.6vw,2.75rem);line-height:1;letter-spacing:-.04em;color:var(--green);font-variant-numeric:tabular-nums;white-space:nowrap;min-width:4.4em;text-align:right}
+.meters .pct small{font-family:var(--mono);font-size:.75rem;font-weight:400;letter-spacing:0;color:var(--ink-3);margin-left:8px}
+@media (max-width:759px){.meters li{grid-template-columns:minmax(0,1fr) auto}.meters .track{grid-column:1/-1;grid-row:2}}
+
+/* use */
+.use-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);max-width:1080px;margin:clamp(40px,6vw,72px) auto 0;align-items:start}
+.term{border:1px solid var(--line);border-radius:18px;background:var(--card);min-width:0;overflow:hidden}
+.term .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 8px 8px 18px;border-bottom:1px solid var(--line-2)}
+.term pre{padding:18px 18px 20px;overflow-x:auto;font-family:var(--mono);font-size:.875rem;line-height:1.9;color:var(--ink);min-height:9.4em}
+.term .p{color:var(--green);user-select:none}
+.term .c{color:var(--ink-3)}
+.copy{height:30px;padding:0 13px;border:0;border-radius:999px;background:none;box-shadow:inset 0 0 0 1px var(--line);font-family:var(--mono);font-size:.75rem;cursor:pointer;color:var(--ink-2)}
+.copy:hover{box-shadow:inset 0 0 0 1px rgba(var(--hi),.4);color:var(--ink)}
+.use-note{margin-top:18px;color:var(--ink-2);max-width:32em}
+.steps{counter-reset:s;display:grid;border-top:1px solid var(--line)}
+.steps li{counter-increment:s;display:grid;grid-template-columns:3rem minmax(0,1fr);align-items:baseline;border-bottom:1px solid var(--line);padding-block:20px;color:var(--ink-2)}
+.steps li::before{content:"0" counter(s);font-family:var(--mono);font-size:.8125rem;color:var(--green)}
+.steps b{display:block;font-weight:500;font-size:1.1875rem;letter-spacing:-.015em;color:var(--ink);margin-bottom:4px}
+@media (max-width:759px){.use-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* foot */
+.foot{border-top:1px solid var(--line-2);padding-top:clamp(56px,8vw,104px);overflow:hidden}
+.foot-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);max-width:1080px;margin-inline:auto;align-items:start}
+.foot h2{font-weight:500;font-size:1.5rem;letter-spacing:-.025em;margin-bottom:16px}
+.foot .term pre{min-height:0}
+.foot .links{display:grid;gap:12px;justify-items:start}
+.foot .links a{text-decoration:underline;text-decoration-color:rgba(var(--hi),.3);text-underline-offset:5px}
+.foot .links a:hover{text-decoration-color:rgb(var(--hi))}
+.foot .links p{color:var(--ink-3);font-size:.9375rem;margin-top:8px;max-width:26em}
+.word{font-weight:600;font-size:clamp(5rem,23.5vw,21rem);line-height:.8;letter-spacing:-.065em;text-align:center;white-space:nowrap;margin-top:clamp(40px,6vw,80px);margin-bottom:-.09em;background:linear-gradient(180deg,rgba(var(--hi),.2),rgba(var(--hi),0) 82%);-webkit-background-clip:text;background-clip:text;color:transparent;user-select:none}
+@media (max-width:759px){.foot-grid{grid-template-columns:minmax(0,1fr)}}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .ticker .run,.pipe::before{animation:none}
+  .ticker .run{flex-wrap:wrap;width:auto} .ticker .dup{display:none}
+  .track i,.code i,.tray i,.vrow i{transition:none}
+}
+/* ---------- brain version: the light page ----------
+   Cool off-white ground, near-black green ink; --hi is the ink triple, so every hairline flips by itself.
+   Fills are NVIDIA green (#76B900); green and red that carry text are darker so they stay readable on white. */
+:root{
+  color-scheme:light;
+  --hi:13,20,17; --g:118,185,0; --r:217,72,47;
+  --bg:#F6F8F4; --card:#FFFFFF; --nav-bg:rgba(246,248,244,.8);
+  --line:rgba(var(--hi),.13); --line-2:rgba(var(--hi),.08);
+  --ink:#0D1411; --ink-2:#47524C; --ink-3:#626D66; --ink-sub:#55605A; --mute:#A3ADA6;
+  --grad-a:#0D1411; --grad-b:#4F5F56;
+  --green:#487600; --green-f:#76B900; --green-2:#3F6A00; --red:#C2371F; --red-ink:#9E2A16;
+}
+
+/* hero: text on the left, the brain on the right; stacked on narrow screens */
+.hero{position:relative;overflow:hidden;padding-block:clamp(28px,4.4vw,64px) clamp(48px,7vw,96px)}
+.split{display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1fr);align-items:center;gap:clamp(20px,3vw,44px)}
+.hero h1{font-size:clamp(2.75rem,4.9vw,4.4rem);margin-top:22px}
+.hero .sub{margin-inline:0;max-width:30em}
+.cta{justify-content:flex-start}
+.orb{position:relative;min-width:0}
+.orb::before{content:"";position:absolute;inset:-4% -6% 6%;pointer-events:none;background:radial-gradient(50% 50% at 50% 48%,rgba(var(--g),.13),transparent 72%)}
+.orb canvas{position:relative;display:block;width:100%;aspect-ratio:5/4}
+.orb .cap{position:relative;display:grid;gap:2px;justify-items:center;text-align:center;margin-top:2px}
+.orb .cap b{font-weight:500;color:var(--ink)}
+.orb .cap #orb-phase{color:var(--green)}
+.nums{max-width:none;margin-top:clamp(28px,4vw,56px)}
+@media (min-width:760px){.nums li:first-child{padding-left:0}}
+@media (max-width:899px){
+  .split{grid-template-columns:minmax(0,1fr);gap:8px}
+  .orb{margin-inline:auto;width:100%;max-width:560px}
+}
+
+/* the rest of the page on a light ground: panels are white with a faint lift, and the glows that suited black
+   become quiet rings and soft shadows */
+.btn.go:hover{background:#26322C}
+.chip i{box-shadow:0 0 0 3px rgba(var(--g),.2)}
+.fw,.scroll,.term{box-shadow:0 18px 44px -30px rgba(var(--hi),.28)}
+.never::before{box-shadow:none}
+.wall{box-shadow:0 0 16px 1px rgba(var(--r),.3)}
+.wall.hit{box-shadow:0 0 34px 6px rgba(var(--r),.62)}
+.wall span{background:#fff}
+.vrow i.on,.vrow.faked i,.vrow.faked i.sf{box-shadow:none}
+.vrow i.bad{box-shadow:0 0 0 3px rgba(var(--r),.2)}
+.vrow.lock i{box-shadow:inset 0 0 0 1.5px rgb(var(--hi)),0 0 0 3px rgba(var(--hi),.14)}
+.packet{box-shadow:0 6px 16px rgba(var(--hi),.24)}
+.packet.hit{box-shadow:0 0 18px rgba(var(--r),.55)}
+.word{background-image:linear-gradient(180deg,rgba(var(--hi),.13),rgba(var(--hi),0) 82%)}
+/* ---------- version switch (review aid, not part of the final page) ---------- */
+.vs{display:flex;align-items:center;gap:2px;padding:3px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(var(--hi),.16);font-size:.8125rem;line-height:1;color:var(--ink-2);white-space:nowrap}
+.vs span{padding:0 6px 0 11px;color:var(--ink-3)}
+.vs a{padding:8px 13px;border-radius:999px}
+.vs a:hover{color:var(--ink)}
+.vs a[aria-current]{background:rgba(var(--hi),.15);color:var(--ink)}
+@media (max-width:759px){.vs span{display:none}.nav .wrap{gap:12px}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="Nanolize">
+      <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect x="1" y="1" width="20" height="20" rx="6" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="5.5" y="6.2" width="11" height="2.4" rx="1.2" class="lg"/><rect x="5.5" y="10" width="7" height="2.4" rx="1.2" class="lg"/><rect x="5.5" y="13.8" width="9" height="2.4" rx="1.2" class="lg"/></svg>
+      nanolize
+    </a>
+    <nav aria-label="Sections"><a href="#method">Method</a><a href="#results">Results</a><a href="#use">Use it</a><a href="#cite">Cite</a></nav>
+    <div class="vs" role="navigation" aria-label="预览版本"><span>预览版本</span><a href="../star/">星空</a><a href="../brain/" aria-current="page">大脑</a></div>
+    <a class="btn go sm" href="#">Paper</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="top">
+    <div class="wrap">
+      <div class="split">
+        <div class="pitch">
+          <span class="chip"><i></i>Technical report, 2026</span>
+          <h1 class="grad"><span>Half the tokens.</span><span>All the behavior.</span></h1>
+          <p class="sub">A brain matures by pruning the connections it does not use. Nanolize does that for code: it rewrites a bloated repository into a nano one that coding agents read, change and run for fewer tokens.</p>
+          <p class="cta"><a class="btn go" href="#">Read the paper</a><a class="btn gh" href="#">Get the code</a></p>
+        </div>
+        <div class="orb" id="orb" role="img" aria-label="Animation: neurons inside a brain seen from the side. Of the connections between them, 52.6% are cut and fade away, the share of Detectron2's 76,888 lines that the rewrite removes. The connections that stay thicken and turn green, checks run through them as pulses, and 382 of 382 pass.">
+          <canvas></canvas>
+          <p class="cap m"><span id="orb-phase">delivered</span><span><b class="num" id="orb-lines">36,458</b> lines of detectron2, <b class="num" id="orb-checks">382 / 382</b> checks pass</span></p>
+        </div>
+      </div>
+      <ul class="nums">
+        <li><b class="num">−49.44%</b><span class="m">tokens, mean of eight libraries</span></li>
+        <li><b class="num">549 / 549</b><span class="m">behavior checks pass</span></li>
+        <li><b class="num">1h 11min</b><span class="m">per rewrite, on average</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="ticker" aria-label="Results on eight libraries">
+    <div class="run">
+      <ul>
+        <li><b>bidict</b><em>−58.72%</em> tokens, 58/58 checks</li>
+        <li><b>click</b><em>−42.90%</em> tokens, 136/136 checks</li>
+        <li><b>more-itertools</b><em>−62.27%</em> tokens, 10/10 checks</li>
+        <li><b>packaging</b><em>−41.00%</em> tokens, 137/137 checks</li>
+        <li><b>python-dotenv</b><em>−48.79%</em> tokens, 15/15 checks</li>
+        <li><b>requests</b><em>−50.49%</em> tokens, 91/91 checks</li>
+        <li><b>tomli</b><em>−46.55%</em> tokens, 18/18 checks</li>
+        <li><b>tqdm</b><em>−44.80%</em> tokens, 84/84 checks</li>
+      </ul>
+      <ul class="dup" aria-hidden="true">
+        <li><b>bidict</b><em>−58.72%</em> tokens, 58/58 checks</li>
+        <li><b>click</b><em>−42.90%</em> tokens, 136/136 checks</li>
+        <li><b>more-itertools</b><em>−62.27%</em> tokens, 10/10 checks</li>
+        <li><b>packaging</b><em>−41.00%</em> tokens, 137/137 checks</li>
+        <li><b>python-dotenv</b><em>−48.79%</em> tokens, 15/15 checks</li>
+        <li><b>requests</b><em>−50.49%</em> tokens, 91/91 checks</li>
+        <li><b>tomli</b><em>−46.55%</em> tokens, 18/18 checks</li>
+        <li><b>tqdm</b><em>−44.80%</em> tokens, 84/84 checks</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="say" id="why">
+    <div class="wrap">
+      <p class="say-text" id="say">GitHub is society's brain, and agents now write more of it every day. A brain does not mature by adding connections alone. It prunes the ones it does not use, and what remains works faster. Nanolize does that for code, so every agent that reads, changes or runs it spends fewer tokens.</p>
+      <p class="say-meter m" id="say-meter" hidden><b id="say-n">0</b>tokens read so far</p>
+    </div>
+  </section>
+
+  <section class="sec" id="method">
+    <div class="wrap">
+      <div class="head">
+        <h2 class="h2 grad">Writing and checking never meet.</h2>
+        <p class="lede">A capable agent can pass a weak test by fitting code to it, loosening it or copying the original. So Nanolize builds a firewall into the workflow, and a verifier that is plain code decides what passes.</p>
+      </div>
+
+      <div class="fw" id="fw">
+        <div class="room">
+          <header><h3>Author</h3><span class="m">writes the new code</span></header>
+          <div class="ws">
+            <span class="tagc">contract</span>
+            <div class="code" id="fw-code">
+              <i style="--w:62%;--w2:30%"></i><i style="--w:84%;--w2:50%"></i><i style="--w:48%;--w2:70%"></i><i style="--w:71%;--w2:36%"></i><i style="--w:90%;--w2:58%"></i><i style="--w:38%;--w2:66%"></i><i style="--w:66%;--w2:40%"></i><i style="--w:54%;--w2:80%"></i><i style="--w:78%;--w2:44%"></i><i style="--w:44%;--w2:60%"></i>
+            </div>
+          </div>
+          <p class="never">never sees a test</p>
+          <p class="pipe" id="pipe-l"><span class="a">nano code, down to the verifier</span><span class="b">feedback, up to the author</span></p>
+        </div>
+        <div class="wall" id="fw-wall"><span>firewall</span></div>
+        <div class="room">
+          <header><h3>Test designer</h3><span class="m">hardens the checks</span></header>
+          <div class="ws">
+            <span class="tagc">original repository</span>
+            <div class="repo" id="fw-repo">
+              <div class="grp"><i style="--w:58%"></i><i style="--w:44%"></i><i style="--w:52%"></i></div>
+              <div class="grp"><i style="--w:50%"></i><i style="--w:60%"></i><i style="--w:36%"></i></div>
+              <div class="grp"><i style="--w:56%"></i><i style="--w:40%"></i><i style="--w:48%"></i></div>
+            </div>
+            <div class="tray" id="fw-tray"><i></i><i></i><i></i><i></i><i></i><i class="new"></i><i class="new"></i><i class="new"></i></div>
+          </div>
+          <p class="never">never sees the new code</p>
+          <p class="pipe w"><span>frozen checks, down to the verifier</span></p>
+        </div>
+        <div class="verifier">
+          <div class="who"><h3>Verifier</h3><span class="m">plain code, not a model</span></div>
+          <div class="vbox">
+            <div class="vrow" id="fw-vrow"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="sp"></i><i class="sf"></i></div>
+            <span class="m">The two diamonds are hidden sentinels: one must pass, one must fail.</span>
+          </div>
+          <span class="badge pass" id="fw-badge">all checks pass</span>
+        </div>
+      </div>
+
+      <div class="cheats">
+        <span class="m">try to cheat</span>
+        <button type="button" data-cheat="peek">Peek at the tests</button>
+        <button type="button" data-cheat="weaken">Weaken a check</button>
+        <button type="button" data-cheat="fake">Fake a pass</button>
+        <button type="button" data-cheat="ship">Ship an untested edit</button>
+        <p class="verdict" id="fw-verdict" aria-live="polite">Each of these fails. Press one.</p>
+      </div>
+
+      <ul class="facts">
+        <li><b>Rewritten from a contract</b>The author starts in an empty workspace with the behavior callers rely on: interfaces, defaults, outputs, command-line options. No tests, no history, its own file layout.</li>
+        <li><b>Hardened, then frozen</b>Each selected feature is switched off in the original. Where no test notices, the test designer writes one. The suite is frozen before any new code is tested.</li>
+        <li><b>Driven by tools</b>A controller runs five stages through thirty-nine self-checking tools. It decides what runs next and never reads the source or judges a check.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="results" data-reveal>
+    <div class="wrap">
+      <div class="head">
+        <h2 class="h2 grad">Eight libraries. Same model. Same checks.</h2>
+        <p class="lede">Nanolize against the agent's native Goal mode, both on Claude Fable-5.2-high. Goal mode cuts deeper on four libraries, and fails behavior checks on each of the four.</p>
+      </div>
+      <p class="legend m"><span><i></i>Nanolize</span><span class="g"><i></i>Goal mode</span><span class="t"><i></i>full track = the original, bar = tokens left</span></p>
+      <div class="scroll">
+        <table class="libs">
+          <thead><tr><th scope="col">library</th><th scope="col">tokens left after the rewrite</th><th scope="col">behavior checks passed</th><th scope="col">time</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">bidict<span>bidirectional mappings</span></th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:41.28%"><i></i></span><b>−58.72%</b></div><div class="barline g"><span class="track" style="--w:71.19%"><i></i></span><b>−28.81%</b></div></div></td>
+              <td><div class="two"><span>58 / 58</span><span class="g">58 / 58</span></div></td><td><div class="two"><span>1h 9min</span><span class="g">4h</span></div></td></tr>
+            <tr><th scope="row">click<span>command-line toolkit</span></th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:57.10%"><i></i></span><b>−42.90%</b></div><div class="barline g"><span class="track" style="--w:39.09%"><i></i></span><b>−60.91%</b></div></div></td>
+              <td><div class="two"><span>136 / 136</span><span class="bad">126 / 136</span></div></td><td><div class="two"><span>1h 15min</span><span class="g">3h 8min</span></div></td></tr>
+            <tr><th scope="row">more-itertools<span>iterator utilities</span></th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:37.73%"><i></i></span><b>−62.27%</b></div><div class="barline g"><span class="track" style="--w:27.83%"><i></i></span><b>−72.17%</b></div></div></td>
+              <td><div class="two"><span>10 / 10</span><span class="bad">9 / 10</span></div></td><td><div class="two"><span>1h 17min</span><span class="g">2h 55min</span></div></td></tr>
+            <tr><th scope="row">packaging<span>versions, specifiers and tags</span></th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:59.00%"><i></i></span><b>−41.00%</b></div><div class="barline g"><span class="track" style="--w:29.07%"><i></i></span><b>−70.93%</b></div></div></td>
+              <td><div class="two"><span>137 / 137</span><span class="bad">125 / 137</span></div></td><td><div class="two"><span>1h 51min</span><span class="g">8h 21min</span></div></td></tr>
+            <tr><th scope="row">python-dotenv<span>environment configuration</span></th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:51.21%"><i></i></span><b>−48.79%</b></div><div class="barline g"><span class="track" style="--w:86.99%"><i></i></span><b>−13.01%</b></div></div></td>
+              <td><div class="two"><span>15 / 15</span><span class="g">15 / 15</span></div></td><td><div class="two"><span>21min</span><span class="g">2h 31min</span></div></td></tr>
+            <tr><th scope="row">requests<span>HTTP client</span></th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:49.51%"><i></i></span><b>−50.49%</b></div><div class="barline g"><span class="track" style="--w:85.00%"><i></i></span><b>−15.00%</b></div></div></td>
+              <td><div class="two"><span>91 / 91</span><span class="bad">90 / 91</span></div></td><td><div class="two"><span>1h 29min</span><span class="g">2h 18min</span></div></td></tr>
+            <tr><th scope="row">tomli<span>TOML parser</span></th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:53.45%"><i></i></span><b>−46.55%</b></div><div class="barline g"><span class="track" style="--w:74.80%"><i></i></span><b>−25.20%</b></div></div></td>
+              <td><div class="two"><span>18 / 18</span><span class="g">18 / 18</span></div></td><td><div class="two"><span>49min</span><span class="g">5h 40min</span></div></td></tr>
+            <tr><th scope="row">tqdm<span>progress bars and CLI</span></th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:55.20%"><i></i></span><b>−44.80%</b></div><div class="barline g"><span class="track" style="--w:34.70%"><i></i></span><b>−65.30%</b></div></div></td>
+              <td><div class="two"><span>84 / 84</span><span class="bad">76 / 84</span></div></td><td><div class="two"><span>1h 16min</span><span class="g">2h 11min</span></div></td></tr>
+          </tbody>
+          <tfoot>
+            <tr><th scope="row">Mean of eight</th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:50.56%"><i></i></span><b>−49.44%</b></div><div class="barline g"><span class="track" style="--w:56.08%"><i></i></span><b>−43.92%</b></div></div></td>
+              <td><div class="two"><span>549 / 549</span><span class="bad">517 / 549</span></div></td><td><div class="two"><span>1h 11min</span><span class="g">3h 53min</span></div></td></tr>
+          </tfoot>
+        </table>
+      </div>
+      <p class="after">Installation in a clean environment is checked too: 23 of 23 checks pass for Nanolize, 21 of 23 for Goal mode.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="agents" data-reveal style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <h2 class="h2 grad">The next agent pays less.</h2>
+        <p class="lede">On Detectron2, with all 106 capabilities kept, agents working in the nano code spend fewer tokens on the same tasks.</p>
+      </div>
+      <ul class="meters">
+        <li><span class="what">Understand</span><span class="track" style="--w:63.5%"><i></i></span><span class="pct"><span data-n="36.5" data-dec="1" data-pre="−" data-suf="%">−36.5%</span><small>tokens</small></span></li>
+        <li><span class="what">Modify</span><span class="track" style="--w:75.8%"><i></i></span><span class="pct"><span data-n="24.2" data-dec="1" data-pre="−" data-suf="%">−24.2%</span><small>tokens</small></span></li>
+        <li><span class="what">Execute</span><span class="track" style="--w:64.9%"><i></i></span><span class="pct"><span data-n="35.1" data-dec="1" data-pre="−" data-suf="%">−35.1%</span><small>tokens</small></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="use" data-reveal style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <h2 class="h2 grad">Point your agent at a repository.</h2>
+      </div>
+      <div class="use-grid">
+        <div>
+          <div class="term">
+            <div class="bar"><span class="m">shell</span><button type="button" class="copy" data-copy="cmd">copy</button></div>
+<pre id="cmd" data-type><span class="p">$ </span>git clone &lt;repository&gt; nanolize &amp;&amp; cd nanolize
+<span class="p">$ </span>python -m pip install -e .   <span class="c"># Python 3.11 or newer</span>
+<span class="p">$ </span>nanolize serve               <span class="c"># MCP server for your agent</span></pre>
+          </div>
+          <p class="use-note">Plugin configurations for Codex and Claude Code ship with the repository. Ask the agent to nanolize a repository, and three pages keep you in charge.</p>
+        </div>
+        <ol class="steps">
+          <li><span><b>Review</b>Start from Core features or All features, switch optional features on or off on the capability graph, then submit.</span></li>
+          <li><span><b>Run</b>Follow the stages, repairs, tokens and elapsed time live.</span></li>
+          <li><span><b>Report</b>Read the outcome first, then every check, the size breakdown and the repair history.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="cite">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h2>Cite</h2>
+        <div class="term">
+          <div class="bar"><span class="m">bibtex</span><button type="button" class="copy" data-copy="bib">copy</button></div>
+<pre id="bib">@techreport{nanolize2026,
+  title  = {Nanolize Code with Agents},
+  author = {{Nanolize Contributors}},
+  year   = {2026}
+}</pre>
+        </div>
+      </div>
+      <div class="links">
+        <h2>Read on</h2>
+        <a href="#">The technical report</a>
+        <a href="#">The code</a>
+        <p>Nanolize is released under the MIT license.</p>
+      </div>
+    </div>
+    <p class="word" aria-hidden="true">nanolize</p>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const clamp01 = x => x < 0 ? 0 : x > 1 ? 1 : x;
+  const seg = (t, a, b) => clamp01((t - a) / (b - a));
+  const ease = x => x * x * (3 - 2 * x);
+  const lerp = (a, b, k) => a + (b - a) * k;
+  const fmt = n => Math.round(n).toLocaleString('en-US');
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  document.documentElement.classList.add('js');
+
+  /* One clock for every scene; a scene only advances while it is on screen. */
+  const loops = [];
+  const seen = new IntersectionObserver(es => es.forEach(e => { e.target._on = e.isIntersecting; }), { threshold: .05 });
+  const scene = (el, period, fn) => { const s = { t: 0 }; seen.observe(el); loops.push(dt => { if (el._on) { s.t = (s.t + dt) % period; fn(s.t); } }); return s; };
+
+  /* ---------------- hero: synaptic pruning. Neurons sit inside a brain seen from the side, and nothing moves or
+     gathers: the connections that are not needed are cut and fade, the ones that stay thicken and turn green,
+     the checks run through them as pulses, and the kept network glows once at the end. The share of connections
+     that stays is the real ratio for Detectron2, 36,458 of 76,888 lines, by count. ---------------- */
+  (() => {
+    const box = $('#orb'), cv = $('canvas', box), ctx = cv.getContext('2d');
+    const KEEP = 36458 / 76888, T = 15.6, TAU = 6.2832, BW = 1000, BH = 800, SEG = 14;
+    const INK = '13,20,17', GREEN = '118,185,0', DEEP = '63,106,0';
+    const fix = new URLSearchParams(location.search).get('t');      // ?t=seconds freezes the scene at one moment
+    const rng = (a => () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; })(19);
+    /* The brain from the side, facing left, in a 1000 x 800 box. The outline is five stretches, each a chain of cubic
+       curves: the top of the cerebrum, the cerebellum, the brainstem, the underside of the temporal lobe and the
+       underside of the frontal lobe. A stretch is scalloped (bump length, bump height) to suggest the folds, and a
+       short furrow runs inward from each dip. */
+    const RIM = [
+      [[80, 395], [[70, 250, 190, 110, 400, 80], [560, 55, 760, 80, 860, 190], [940, 275, 960, 390, 915, 470], [900, 500, 880, 515, 860, 525]], 82, 9, 1],
+      [[860, 525], [[920, 560, 915, 660, 830, 695], [770, 720, 705, 705, 680, 660]], 38, 5, 0],
+      [[680, 660], [[678, 700, 672, 745, 660, 785], [637, 785, 613, 785, 590, 785], [600, 730, 600, 680, 585, 630]], 0, 0, 0],
+      [[585, 630], [[520, 665, 400, 670, 320, 630], [265, 600, 250, 545, 285, 510]], 86, 6, .5],
+      [[285, 510], [[220, 520, 110, 490, 80, 395]], 88, 5, .5],
+    ];
+    const rim = [], furrows = [[285, 510, 470, 480, 668, 420], [548, 64, 545, 210, 470, 335], [860, 525, 770, 555, 680, 660]];
+    RIM.forEach(([p0, curves, wave, amp, cut], ri) => {
+      const pts = [p0.slice()]; let [x0, y0] = p0;
+      for (const [ax, ay, bx, by, x1, y1] of curves) { for (let i = 1; i <= 40; i++) { const u = i / 40, w = 1 - u; pts.push([w * w * w * x0 + 3 * w * w * u * ax + 3 * w * u * u * bx + u * u * u * x1, w * w * w * y0 + 3 * w * w * u * ay + 3 * w * u * u * by + u * u * u * y1]); } x0 = x1; y0 = y1; }
+      const len = [0]; for (let i = 1; i < pts.length; i++) len.push(len[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]));
+      const L = len[len.length - 1], bumps = wave ? Math.max(1, Math.round(L / wave)) : 0;
+      const normal = i => { const a = pts[Math.max(0, i - 1)], b = pts[Math.min(pts.length - 1, i + 1)], h = Math.hypot(b[0] - a[0], b[1] - a[1]) || 1; return [(b[1] - a[1]) / h, -(b[0] - a[0]) / h]; };
+      pts.forEach((q, i) => { const [nx, ny] = normal(i), d = amp * Math.abs(Math.sin(Math.PI * bumps * len[i] / L)); rim.push([q[0] + nx * d, q[1] + ny * d]); });
+      for (let j = 1; j < bumps && cut; j++) {                      // a furrow from each dip
+        let i = 0; while (len[i] < L * j / bumps) i++;
+        const [nx, ny] = normal(i), turn = (rng() - .5) * 1.1, c = Math.cos(turn), s = Math.sin(turn), dx = -(nx * c - ny * s), dy = -(nx * s + ny * c), far = (46 + rng() * 74) * cut, k = (rng() - .5) * .6;
+        furrows.push([pts[i][0], pts[i][1], pts[i][0] + dx * far * .5 - dy * far * k, pts[i][1] + dy * far * .5 + dx * far * k, pts[i][0] + dx * far, pts[i][1] + dy * far]);
+      }
+      if (ri === 1) for (const inset of [26, 52]) {                 // the stripes of the cerebellum
+        const a = Math.round(pts.length * .16), b = Math.round(pts.length * .86), q = i => { const [nx, ny] = normal(i); return [pts[i][0] - nx * inset, pts[i][1] - ny * inset]; }, m = Math.round((a + b) / 2);
+        furrows.push([...q(a), 2 * q(m)[0] - (q(a)[0] + q(b)[0]) / 2, 2 * q(m)[1] - (q(a)[1] + q(b)[1]) / 2, ...q(b)]);
+      }
+    });
+    const outline = new Path2D(); rim.forEach(([x, y], i) => i ? outline.lineTo(x, y) : outline.moveTo(x, y)); outline.closePath();
+    const folds = new Path2D(); furrows.forEach(f => { folds.moveTo(f[0], f[1]); folds.quadraticCurveTo(f[2], f[3], f[4], f[5]); });
+    const probe = Object.assign(document.createElement('canvas'), { width: 8, height: 8 }).getContext('2d');
+    const inside = (x, y, pad) => [[0, 0], [pad, 0], [-pad, 0], [0, pad], [0, -pad]].every(([dx, dy]) => probe.isPointInPath(outline, x + dx, y + dy));
+
+    /* neurons: a soma with a few forked dendrites, spread evenly inside the outline (the brainstem stays empty) */
+    const NEU = [];
+    for (let i = 0; i < 12000 && NEU.length < 54; i++) {
+      const x = 70 + rng() * 880, y = 50 + rng() * 660;
+      if (y > 700 && x < 690 || !inside(x, y, 36) || NEU.some(n => (n.x - x) ** 2 + (n.y - y) ** 2 < 72 * 72)) continue;
+      const r = 7 + rng() * 3.2, twigs = [], k = 4 + Math.floor(rng() * 3), a0 = rng() * TAU;
+      for (let j = 0; j < k; j++) {
+        const a = a0 + TAU * (j + (rng() - .5) * .5) / k, L = 24 + rng() * 18, bend = (rng() - .5) * 1.1;
+        const mx = x + Math.cos(a + bend * .5) * L * .55, my = y + Math.sin(a + bend * .5) * L * .55, ex = x + Math.cos(a) * L, ey = y + Math.sin(a) * L;
+        twigs.push([x + Math.cos(a) * r * .8, y + Math.sin(a) * r * .8, mx, my, ex, ey]);
+        for (const [bx, by, far] of [[mx, my, 9 + rng() * 9], [lerp(mx, ex, .6), lerp(my, ey, .6), 6 + rng() * 6]]) {   // two forks
+          const fa = a + (rng() < .5 ? -1 : 1) * (.5 + rng() * .6); twigs.push([bx, by, bx + Math.cos(fa) * far * .5, by + Math.sin(fa) * far * .5, bx + Math.cos(fa) * far, by + Math.sin(fa) * far]); }
+      }
+      NEU.push({ x, y, r, twigs, dep: 0 });
+    }
+    /* connections: the shortest tree over all neurons (so the kept network reaches every one), each neuron's three
+       nearest, and long stray links across the brain */
+    const n = NEU.length, dist = (a, b) => Math.hypot(NEU[a].x - NEU[b].x, NEU[a].y - NEU[b].y), had = new Set(), E = [];
+    const link = (a, b) => { const k = a < b ? a * 1000 + b : b * 1000 + a; if (a === b || had.has(k)) return; had.add(k); E.push({ a, b, len: dist(a, b), keep: false }); };
+    { const best = NEU.map((_, i) => ({ d: dist(0, i), from: 0 })); best[0].d = -1;
+      for (let c = 1; c < n; c++) { let j = -1; for (let i = 0; i < n; i++) if (best[i].d >= 0 && (j < 0 || best[i].d < best[j].d)) j = i;
+        link(best[j].from, j); best[j].d = -1; for (let i = 0; i < n; i++) if (best[i].d >= 0) { const d = dist(j, i); if (d < best[i].d) best[i] = { d, from: j }; } } }
+    const TREE = E.length;
+    NEU.forEach((_, i) => { const by = NEU.map((_, j) => j).filter(j => j !== i).sort((p, q) => dist(i, p) - dist(i, q));
+      by.slice(0, 3).forEach(j => link(i, j)); for (let q = 0; q < 3; q++) if (rng() < .8) link(i, by[Math.min(by.length - 1, 5 + Math.floor(rng() * 14))]); });
+    /* what stays: 36,458 / 76,888 of the connections by count, the tree first and then the shortest of the rest */
+    const KEPT = Math.round(E.length * KEEP);
+    box.dataset.kept = `${KEPT} of ${E.length} connections`;
+    E.forEach((e, i) => { e.keep = i < TREE; });
+    E.slice(TREE).sort((p, q) => p.len - q.len).slice(0, Math.max(0, KEPT - TREE)).forEach(e => { e.keep = true; });
+    /* the kept network is strengthened outward from the neuron nearest the middle */
+    let root = 0; NEU.forEach((p, i) => { if (Math.hypot(p.x - 500, p.y - 400) < Math.hypot(NEU[root].x - 500, NEU[root].y - 400)) root = i; });
+    const dep = NEU.map(() => -1), queue = [root]; dep[root] = 0;
+    for (let h = 0; h < queue.length; h++) { const i = queue[h]; for (const e of E) if (e.keep && (e.a === i || e.b === i)) { const j = e.a === i ? e.b : e.a; if (dep[j] < 0) { dep[j] = dep[i] + 1; queue.push(j); } } }
+    const D = Math.max(...dep);
+    NEU.forEach((p, i) => { p.dep = dep[i]; });
+    E.forEach(e => {
+      if (e.keep && dep[e.a] > dep[e.b]) [e.a, e.b] = [e.b, e.a];
+      const A = NEU[e.a], B = NEU[e.b], bend = (rng() < .5 ? -1 : 1) * (e.keep ? .04 + rng() * .1 : .12 + rng() * .2), mx = (A.x + B.x) / 2 - (B.y - A.y) * bend, my = (A.y + B.y) / 2 + (B.x - A.x) * bend;
+      e.p = new Float32Array((SEG + 1) * 2);
+      for (let i = 0; i <= SEG; i++) { const u = i / SEG, w = 1 - u; e.p[i * 2] = w * w * A.x + 2 * w * u * mx + u * u * B.x; e.p[i * 2 + 1] = w * w * A.y + 2 * w * u * my + u * u * B.y; }
+      e.dep = dep[e.a]; e.cut = rng();
+    });
+    const SPARK = NEU.map((_, i) => i).filter(i => i !== root && i % 7 === 3).slice(0, 9);
+    const at = (e, u) => { const f = clamp01(u) * SEG, i = Math.min(SEG - 1, Math.floor(f)), k = f - i, p = e.p; return [lerp(p[i * 2], p[i * 2 + 2], k), lerp(p[i * 2 + 1], p[i * 2 + 3], k)]; };
+    const part = (e, u0, u1) => {                                   // adds the stretch u0..u1 of a connection to the current path
+      if (u1 - u0 < .002) return; const p = e.p, s = at(e, u0), q = at(e, u1); ctx.moveTo(s[0], s[1]);
+      for (let i = Math.floor(u0 * SEG) + 1; i < Math.ceil(u1 * SEG); i++) ctx.lineTo(p[i * 2], p[i * 2 + 1]); ctx.lineTo(q[0], q[1]); };
+
+    const hud = { lines: $('#orb-lines'), checks: $('#orb-checks'), phase: $('#orb-phase') };
+    const PHASE = ['the original', 'pruning', 'running the frozen checks', 'delivered'];
+    let W = 0, H = 0, dpr = 1, S = 1, ox = 0, oy = 0, shown = -1, clock = 0;
+    const layout = () => { const r = cv.getBoundingClientRect(); W = r.width; H = r.height; dpr = Math.min(2, window.devicePixelRatio || 1); cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+      S = Math.min(W / BW, H / BH); ox = (W - BW * S) / 2; oy = (H - BH * S) / 2; };
+    const draw = t => {
+      const back = seg(t, 13.4, 15.4), k = 1 - ease(back), raw = seg(t, 2.4, 7) * k, m = ease(seg(t, 2.4, 7)) * k;
+      const v = back > 0 ? 0 : seg(t, 7.3, 9.9), b = back > 0 ? 0 : seg(t, 10, 11.8), sw = b > 0 && b < 1 ? Math.sin(Math.PI * Math.min(1, b * 1.4)) : 0;
+      const px = 1 / S, start = e => .06 + .64 * e.dep / (D + 1);                // px: one CSS pixel in drawing units
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+      ctx.setTransform(dpr * S, 0, 0, dpr * S, dpr * ox, dpr * oy); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      if (sw > 0) { ctx.save(); ctx.translate(500, 400); ctx.scale(1, .78); const g = ctx.createRadialGradient(0, 0, 0, 0, 0, 500); g.addColorStop(0, `rgba(${GREEN},${.3 * sw})`); g.addColorStop(1, `rgba(${GREEN},0)`); ctx.fillStyle = g; ctx.fillRect(-500, -500, 1000, 1000); ctx.restore(); }
+      ctx.fillStyle = 'rgba(255,255,255,.8)'; ctx.fill(outline);
+      ctx.strokeStyle = `rgba(${INK},.14)`; ctx.lineWidth = 1.1 * px; ctx.stroke(folds);
+      ctx.strokeStyle = `rgba(${INK},.3)`; ctx.lineWidth = 1.3 * px; ctx.stroke(outline);
+      if (sw > 0) { ctx.strokeStyle = `rgba(${GREEN},${.85 * sw})`; ctx.lineWidth = 2.2 * px; ctx.stroke(outline); }
+      ctx.save(); ctx.clip(outline);
+      /* dendrites */
+      ctx.strokeStyle = `rgba(${INK},.46)`; ctx.lineWidth = 1.15 * px; ctx.beginPath();
+      for (const p of NEU) for (const w of p.twigs) { ctx.moveTo(w[0], w[1]); ctx.quadraticCurveTo(w[2], w[3], w[4], w[5]); }
+      ctx.stroke();
+      /* connections that are cut: whole while untouched, then a gap opens in the middle and both halves pull back */
+      const marks = [];
+      ctx.strokeStyle = `rgba(${INK},.3)`; ctx.lineWidth = 1 * px; ctx.beginPath();
+      for (const e of E) if (!e.keep && raw <= e.cut * .8) part(e, 0, 1);
+      ctx.stroke();
+      for (const e of E) { if (e.keep) continue; const p = clamp01((raw - e.cut * .8) / .2); if (p <= 0 || p >= 1) continue;
+        const q = ease(clamp01((p - .2) / .8)), gap = .035 + .465 * q; ctx.strokeStyle = `rgba(${INK},${.3 * (1 - q)})`; ctx.beginPath(); part(e, 0, .5 - gap); part(e, .5 + gap, 1); ctx.stroke();
+        marks.push([at(e, .5), Math.sin(Math.PI * clamp01(p / .62))]); }
+      /* connections that stay: a thin line first, then the green stretch grows along it away from the middle */
+      ctx.strokeStyle = `rgba(${INK},.3)`; ctx.lineWidth = 1 * px; ctx.beginPath();
+      for (const e of E) if (e.keep) { const g = clamp01((raw - start(e)) / .22); if (g < 1) part(e, g, 1); }
+      ctx.stroke();
+      if (raw > 0) { if (sw > 0) { ctx.shadowColor = `rgba(${GREEN},${sw})`; ctx.shadowBlur = 16 * sw * dpr; }
+        ctx.strokeStyle = `rgb(${GREEN})`; ctx.lineWidth = (2.6 + 1.8 * sw) * px; ctx.beginPath();
+        for (const e of E) if (e.keep) { const g = ease(clamp01((raw - start(e)) / .22)); if (g > 0) part(e, 0, g); }
+        ctx.stroke(); ctx.shadowBlur = 0; ctx.shadowColor = 'transparent'; }
+      /* the small crosses where a connection is cut */
+      ctx.lineWidth = 1.5 * px; for (const [[x, y], a] of marks) { if (a <= 0) continue; const c = 4.5 * px; ctx.strokeStyle = `rgba(${INK},${.85 * a})`; ctx.beginPath(); ctx.moveTo(x - c, y - c); ctx.lineTo(x + c, y + c); ctx.moveTo(x - c, y + c); ctx.lineTo(x + c, y - c); ctx.stroke(); }
+      /* pulses: a few wander through the tangle before the rewrite; the checks run outward through what stays */
+      const idle = t < 8 && back === 0 ? seg(t, .2, 1) * (1 - clamp01(raw * 5)) : 0;
+      if (idle > 0) { ctx.fillStyle = `rgba(${INK},${.55 * idle})`; for (let i = 0; i < 9; i++) { const tau = t / 2.6 + i * .31, e = E[(i * 37 + Math.floor(tau) * 53) % E.length], [x, y] = at(e, tau % 1); ctx.beginPath(); ctx.arc(x, y, 2.6 * px, 0, TAU); ctx.fill(); } }
+      const waves = [];
+      if (v > 0 && v < 1) for (let w = 0; w < 3; w++) waves.push([(v * 3 - w) * (D + 2), 1]);
+      else if (t > 11.8 && back < 1) waves.push([(t * .42 % 1) * (D + 2), .7 * k]);                 // the delivered network keeps working
+      for (const [pos, al] of waves) { ctx.fillStyle = `rgba(${INK},${.92 * al})`;
+        for (const e of E) if (e.keep) { const u = pos - e.dep; if (u <= 0 || u >= 1) continue; const [x, y] = at(e, u); ctx.beginPath(); ctx.arc(x, y, 3.3 * px, 0, TAU); ctx.fill(); } }
+      ctx.restore();
+      /* somas */
+      for (const p of NEU) { const lit = ease(clamp01((raw - (.04 + .64 * p.dep / (D + 1))) / .14)); let ping = 0;
+        for (const [pos, al] of waves) { const u = pos - p.dep; if (u > 0 && u < 1) ping = Math.max(ping, (1 - u) * al); }
+        const r = p.r * (1 + .12 * lit + .25 * sw);
+        if (lit > 0) { ctx.strokeStyle = `rgba(${GREEN},${lit})`; ctx.lineWidth = (2.2 + 1.2 * sw) * px; ctx.beginPath(); ctx.arc(p.x, p.y, r + 2.6 * px, 0, TAU); ctx.stroke(); }
+        if (ping > 0) { ctx.strokeStyle = `rgba(${DEEP},${.8 * ping})`; ctx.lineWidth = 1.4 * px; ctx.beginPath(); ctx.arc(p.x, p.y, r + (4 + 12 * (1 - ping)) * px, 0, TAU); ctx.stroke(); }
+        ctx.fillStyle = `rgba(${INK},${lerp(.6, .94, lit)})`; ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, TAU); ctx.fill(); }
+      /* the finishing flash: sparkles go off one after another on the kept network */
+      if (b > 0 && b < 1) SPARK.forEach((i, j) => { const q = clamp01((b - (j * .137) % .5) / .42); if (q <= 0 || q >= 1) return;
+        const s = Math.sin(Math.PI * q), p = NEU[i], x = p.x + p.r * 1.6, y = p.y - p.r * 1.6, L = (5 + 15 * s) * px, d = L * .4;
+        ctx.strokeStyle = `rgba(${DEEP},${s})`; ctx.lineWidth = 1.7 * px; ctx.beginPath(); ctx.moveTo(x - L, y); ctx.lineTo(x + L, y); ctx.moveTo(x, y - L); ctx.lineTo(x, y + L); ctx.stroke();
+        ctx.lineWidth = .9 * px; ctx.beginPath(); ctx.moveTo(x - d, y - d); ctx.lineTo(x + d, y + d); ctx.moveTo(x - d, y + d); ctx.lineTo(x + d, y - d); ctx.stroke(); });
+      const ph = back > 0 || t < 2.4 ? 0 : t < 7.15 ? 1 : t < 9.95 ? 2 : 3;
+      if (ph !== shown) { hud.phase.textContent = PHASE[ph]; shown = ph; }
+      hud.lines.textContent = fmt(lerp(76888, 36458, m));
+      hud.checks.textContent = `${Math.round((t >= 9.9 && back === 0 ? 1 : v) * 382)} / 382`;
+    };
+    const still = fix !== null ? +fix : calm ? 12.4 : null;
+    layout(); seen.observe(box);
+    if (still === null) loops.push(dt => { if (box._on) { clock = (clock + dt) % T; draw(clock); } });
+    new ResizeObserver(() => { layout(); draw(still === null ? clock : still); }).observe(cv); draw(still === null ? 12.4 : still);
+  })();
+
+  /* ---------------- statement: words light up as they are read; each one is a token spent ---------------- */
+  const say = $('#say'), sayN = $('#say-n');
+  say.innerHTML = say.textContent.split(/(\s+)/).map(w => /\S/.test(w) ? `<span>${w}</span>` : w).join('');
+  const words = $$('span', say);
+  $('#say-meter').hidden = false;
+  let litN = -1;
+  const read = () => {
+    const r = say.getBoundingClientRect(), vh = innerHeight;
+    const n = Math.round((calm ? 1 : clamp01((vh * .82 - r.top) / (r.height + vh * .3))) * words.length);
+    if (n === litN) return; litN = n;
+    words.forEach((w, i) => w.classList.toggle('lit', i < n));
+    sayN.textContent = n;
+  };
+  addEventListener('scroll', read, { passive: true }); addEventListener('resize', read); read();
+
+  /* ---------------- firewall: an idle run, and four cheats that all fail ---------------- */
+  const fw = { root: $('#fw'), code: $$('#fw-code i'), grps: $$('#fw-repo .grp'), tray: $$('#fw-tray i'), row: $('#fw-vrow'), sq: $$('#fw-vrow i'), badge: $('#fw-badge'), wall: $('#fw-wall'), pipe: $('#pipe-l'), verdict: $('#fw-verdict') };
+  const NV = fw.sq.length, FAIL = 13;
+  const BADGE = { idle: 'waiting for both sides', run: 'running the checks', fail: '1 failed, sent back', pass: 'all checks pass', void: 'pass voided', rej: 'run rejected' };
+  const fwState = t => t > 13.2 ? { typed: 0, ko: -1, born: 0, frozen: false, lit: 0, fail: true, feedback: false, redo: -1, badge: 'idle' } : {
+    typed: Math.floor(clamp01((t - .3) / 4.2) * 10),
+    ko: t >= .5 && t < 1.7 ? 0 : t >= 2 && t < 3.2 ? 1 : t >= 3.5 && t < 4.7 ? 2 : -1,
+    born: (t >= 1.5) + (t >= 3) + (t >= 4.5), frozen: t >= 5.2,
+    lit: Math.floor(seg(t, 5.8, 8.2) * NV), fail: t < 9.9, feedback: t >= 8.3 && t < 9.7, redo: t >= 8.8 && t < 9.2 ? 6 : -1,
+    badge: t < 5.8 ? 'idle' : t < 8.2 ? 'run' : t < 9.9 ? 'fail' : 'pass',
+  };
+  const fwApply = s => {
+    fw.code.forEach((b, i) => b.classList.toggle('on', i < s.typed && i !== s.redo));
+    fw.grps.forEach((g, i) => g.classList.toggle('ko', i === s.ko));
+    fw.tray.forEach((c, i) => { c.classList.toggle('on', i < 5 || i - 5 < s.born); c.classList.toggle('frozen', s.frozen); });
+    fw.sq.forEach((c, i) => { const on = i < s.lit, bad = on && i === FAIL && s.fail; c.classList.toggle('on', on && !bad); c.classList.toggle('bad', bad); });
+    fw.pipe.classList.toggle('up', s.feedback);
+    if (fw.badge.dataset.k !== s.badge) { fw.badge.dataset.k = s.badge; fw.badge.className = 'badge ' + s.badge; fw.badge.textContent = BADGE[s.badge]; }
+  };
+  const HOLD = fwState(10.6);
+  let busy = false;
+  const fwClock = scene(fw.root, 14, t => { if (!busy) fwApply(fwState(t)); });
+  fwApply(HOLD); fwClock.t = 10.6;
+  const reverify = async ms => { for (let k = 0; k <= NV; k++) { fwApply({ ...HOLD, lit: k, badge: 'run' }); await wait(ms / NV); } fwApply(HOLD); };
+  const tell = (head, rest) => { fw.verdict.innerHTML = `<b>${head}</b> ${rest}`; };
+  const CHEATS = {
+    async peek() {
+      const R = fw.root.getBoundingClientRect(), a = $('#fw-tray').getBoundingClientRect(), w = fw.wall.getBoundingClientRect();
+      const pk = Object.assign(document.createElement('span'), { className: 'packet', textContent: 'tests' });
+      const sx = a.left + 60 - R.left, sy = a.top + a.height / 2 - R.top; pk.style.left = sx + 'px'; pk.style.top = sy + 'px'; fw.root.append(pk);
+      const side = w.height > w.width, half = side ? pk.offsetWidth / 2 : pk.offsetHeight / 2;
+      const dx = side ? w.right - R.left + half + 4 - sx : 0, dy = side ? 0 : w.bottom - R.top + half + 4 - sy;
+      const mv = (x, y) => `translate(-50%,-50%) translate(${x}px,${y}px)`;
+      await pk.animate([{ transform: mv(0, 0) }, { transform: mv(dx, dy) }], { duration: 620, easing: 'cubic-bezier(.5,0,.9,.4)', fill: 'forwards' }).finished;
+      fw.wall.classList.add('hit'); pk.classList.add('hit');
+      tell('Blocked.', 'Test files never reach the author.');
+      await pk.animate([{ transform: mv(dx, dy), opacity: 1 }, { transform: mv(dx * .55, dy * .55), opacity: 0 }], { duration: 520, easing: 'cubic-bezier(.1,.7,.3,1)', fill: 'forwards' }).finished;
+      fw.wall.classList.remove('hit'); pk.remove();
+    },
+    async weaken() {
+      const c = fw.sq[8]; c.classList.add('tamper'); await wait(620);
+      fw.row.classList.add('lock'); c.classList.remove('tamper');
+      tell('Refused.', "Frozen checks stay under the verifier's control.");
+      await wait(700); fw.row.classList.remove('lock');
+    },
+    async fake() {
+      fw.row.classList.add('faked'); await wait(600);
+      fw.row.classList.add('shake'); fwApply({ ...HOLD, badge: 'rej' });
+      tell('Rejected.', 'The hidden sentinel that must fail came back green.');
+      await wait(1100); fw.row.classList.remove('faked', 'shake'); await reverify(700);
+    },
+    async ship() {
+      fw.code[3].classList.add('edited'); await wait(520);
+      fwApply({ ...HOLD, lit: 0, badge: 'void' });
+      tell('Voided.', 'A pass is bound to the file hashes, so the edit forces a full retest.');
+      await wait(1000); await reverify(800); fw.code[3].classList.remove('edited');
+    },
+  };
+  const cheat = async (kind, btn) => {
+    if (busy) return; busy = true;
+    $$('.cheats button').forEach(b => b.classList.toggle('act', b === btn));
+    fwApply(HOLD); await wait(260);
+    await CHEATS[kind]();
+    await wait(1200); btn && btn.classList.remove('act'); fwClock.t = 10.6; busy = false;
+  };
+  $('.cheats').addEventListener('click', e => { const b = e.target.closest('[data-cheat]'); if (b) cheat(b.dataset.cheat, b); });
+  /* the first time the firewall is fully in view, show one cheat failing */
+  const probe = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { probe.disconnect(); if (!calm) setTimeout(() => cheat('peek', $('[data-cheat="peek"]')), 900); } }), { threshold: .75 });
+  probe.observe(fw.root);
+
+  /* ---------------- reveal once: bars shrink into place, numbers count, commands type ---------------- */
+  const count = el => {
+    const end = +el.dataset.n, dec = +el.dataset.dec || 0, pre = el.dataset.pre || '', suf = el.dataset.suf || '', t0 = performance.now();
+    const step = now => { const k = clamp01((now - t0) / 1500), v = end * (1 - Math.pow(1 - k, 3)); el.textContent = pre + v.toFixed(dec) + suf; if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  };
+  const type = pre => {
+    const html = pre.innerHTML, n = pre.textContent.length; let i = 0;
+    const cut = k => { const d = document.createElement('div'); d.innerHTML = html; let left = k; const walk = node => { for (const c of [...node.childNodes]) { if (c.nodeType === 3) { if (left <= 0) c.remove(); else if (c.length > left) { c.textContent = c.textContent.slice(0, left); left = 0; } else left -= c.length; } else { if (left <= 0) c.remove(); else walk(c); } } }; walk(d); return d.innerHTML; };
+    const tick = () => { i = Math.min(n, i + 2); pre.innerHTML = cut(i); if (i < n) setTimeout(tick, 16); else pre.innerHTML = html; };
+    tick();
+  };
+  const once = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return; once.unobserve(e.target); e.target.classList.add('in');
+    if (calm) return;
+    $$('[data-n]', e.target).forEach(count); $$('[data-type]', e.target).forEach(type);
+  }), { threshold: .18 });
+  $$('[data-reveal]').forEach(el => once.observe(el));
+
+  /* copy buttons */
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-copy]'); if (!b) return;
+    const el = document.getElementById(b.dataset.copy), txt = el.textContent.replace(/^\$ /gm, '').replace(/\s+#.*$/gm, '');
+    const done = () => { b.textContent = 'copied'; setTimeout(() => b.textContent = 'copy', 1400); };
+    const pick = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+    navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(txt).then(done, pick) : pick();
+  });
+
+  if (!calm) { let last = performance.now(); const frame = now => { const dt = Math.min(.05, (now - last) / 1000); last = now; loops.forEach(f => f(dt)); requestAnimationFrame(frame); }; requestAnimationFrame(frame); }
+})();
+</script>
+</body>
+</html>

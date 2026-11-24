@@ -1,0 +1,785 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nanolize</title>
+<meta name="description" content="Nanolize rewrites a bloated repository into a nano one that coding agents read, change and run for fewer tokens.">
+<meta name="theme-color" content="#050607">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Crect width=%2722%27 height=%2722%27 fill=%27%23050607%27/%3E%3Crect x='1' y='1' width='20' height='20' rx='6' fill='none' stroke='%23EEF2FA' stroke-width='1.6'/%3E%3Crect x='5.5' y='6.2' width='11' height='2.4' fill='%23A8E62E'/%3E%3Crect x='5.5' y='10' width='7' height='2.4' fill='%23A8E62E'/%3E%3Crect x='5.5' y='13.8' width='9' height='2.4' fill='%23A8E62E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>:root{padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400..600&display=swap">
+<style>
+/* Shared page for every version. Centred section heads over one scene each; hairlines instead of boxes. Green is
+   the only accent (nano code, passing checks); red appears only when something is blocked or fails.
+   Colours are tokens so that a version can restyle the whole page: --hi is the high-contrast colour as an rgb
+   triple (white on a dark ground, near-black on a light one), --g and --r are the green and red triples for
+   fills and glows, --green is the green that is safe for text, --green-f the green for fills. */
+:root{
+  color-scheme:dark;
+  --hi:255,255,255; --g:139,226,52; --r:255,107,87;
+  --bg:#050607; --card:linear-gradient(180deg,#0C0E12,#07080A); --nav-bg:rgba(5,6,7,.7);
+  --line:rgba(var(--hi),.10); --line-2:rgba(var(--hi),.06);
+  --ink:#F2F4F7; --ink-2:#A3ABB8; --ink-3:#727A88; --ink-sub:#98A1B0; --mute:#4A5160;
+  --grad-a:#fff; --grad-b:#8E97A6;
+  --green:#8BE234; --green-f:#8BE234; --green-2:#C6F59A; --red:#FF6B57; --red-ink:#FFB4A9;
+  --sans:"Geist",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"Geist Mono",ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{overflow-x:clip;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:1.0625rem;line-height:1.55;-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:20;background:var(--bg)}
+h1,h2,h3,p,ol,ul,pre,table{margin:0}
+ol,ul{padding:0;list-style:none}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1216px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:760px){.wrap{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
+.m{font-family:var(--mono);font-size:.75rem;line-height:1.5;color:var(--ink-3)}
+.num{font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:50px;padding:0 26px;border-radius:999px;font-weight:600;white-space:nowrap;cursor:pointer;transition:background .2s,box-shadow .2s}
+.btn.go{background:var(--ink);color:var(--bg)}
+.btn.go:hover{background:rgb(var(--hi));box-shadow:0 0 0 4px rgba(var(--hi),.12)}
+.btn.gh{box-shadow:inset 0 0 0 1px rgba(var(--hi),.18)}
+.btn.gh:hover{box-shadow:inset 0 0 0 1px rgba(var(--hi),.5)}
+.btn.sm{height:38px;padding:0 18px;font-size:.9375rem}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:15;background:var(--nav-bg);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-bottom:1px solid var(--line-2)}
+.nav .wrap{display:flex;align-items:center;gap:28px;min-height:60px}
+.mark .lg{fill:var(--green-f)}
+.mark{display:flex;align-items:center;gap:10px;font-weight:650;font-size:1.125rem;letter-spacing:-.02em;margin-right:auto}
+.nav nav{display:flex;gap:28px;font-size:.9375rem;color:var(--ink-2)}
+.nav nav a:hover{color:var(--ink)}
+@media (max-width:759px){.nav nav{display:none}}
+
+/* ---------- hero: shared type; the container and the scene come from the version ---------- */
+.chip{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(var(--hi),.14);background:rgba(var(--hi),.04);font-size:.875rem;color:var(--ink-2)}
+.chip i{width:7px;height:7px;border-radius:50%;background:var(--green-f);box-shadow:0 0 10px rgba(var(--g),.9)}
+.grad{background:linear-gradient(180deg,var(--grad-a) 30%,var(--grad-b));-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
+.hero h1{font-weight:500;font-size:clamp(2.75rem,7.2vw,5.9rem);line-height:1.03;letter-spacing:-.045em;margin-top:22px}
+.hero h1 span{display:block}
+.hero .sub{max-width:34em;margin:18px auto 0;font-size:clamp(1.0625rem,1.5vw,1.25rem);color:var(--ink-sub)}
+.cta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:30px}
+.nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:980px;margin:clamp(22px,3vw,40px) auto 0;border-top:1px solid var(--line)}
+.nums li{padding:26px 12px 0}
+.nums li+li{border-left:1px solid var(--line)}
+.nums b{display:block;font-weight:500;font-size:clamp(1.9rem,4.2vw,3.25rem);line-height:1;letter-spacing:-.04em}
+.nums li:first-child b{color:var(--green)}
+.nums span{display:block;margin-top:10px}
+@media (max-width:759px){.nums{grid-template-columns:minmax(0,1fr);border-top:0}.nums li{border-top:1px solid var(--line);padding:22px 0}.nums li+li{border-left:0}}
+
+/* ---------- ticker ---------- */
+.ticker{overflow:hidden;border-block:1px solid var(--line-2);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.ticker .run{display:flex;width:max-content;animation:slide 52s linear infinite}
+.ticker:hover .run{animation-play-state:paused}
+.ticker ul{display:flex}
+.ticker li{display:flex;align-items:baseline;gap:10px;padding:16px 30px;font-family:var(--mono);font-size:.8125rem;color:var(--ink-3);white-space:nowrap}
+.ticker b{font-family:var(--sans);font-weight:500;font-size:1rem;color:var(--ink)}
+.ticker em{font-style:normal;color:var(--green)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- sections ---------- */
+.sec{padding-block:clamp(80px,12vw,168px)}
+.head{text-align:center;max-width:50rem;margin-inline:auto}
+.h2{font-weight:500;font-size:clamp(2.1rem,5.2vw,4rem);line-height:1.05;letter-spacing:-.042em;text-wrap:balance}
+.lede{margin:20px auto 0;max-width:36em;font-size:clamp(1.0625rem,1.5vw,1.25rem);color:var(--ink-sub)}
+
+/* statement */
+.say{padding-block:clamp(88px,13vw,190px)}
+.say-text{font-weight:500;font-size:clamp(1.75rem,4.3vw,3.6rem);line-height:1.13;letter-spacing:-.038em;max-width:21em;margin-inline:auto}
+.js .say-text span{color:rgba(var(--hi),.17);transition:color .3s}
+.js .say-text span.lit{color:var(--ink)}
+.say-meter{max-width:calc(21 * clamp(1.75rem,4.3vw,3.6rem));margin:30px auto 0;display:flex;align-items:baseline;gap:10px}
+.say-meter b{font-weight:500;font-size:1.25rem;color:var(--green);font-variant-numeric:tabular-nums}
+
+/* ---------- firewall scene ---------- */
+.fw{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 1px minmax(0,1fr);max-width:1080px;margin:clamp(40px,6vw,72px) auto 0;border:1px solid var(--line);border-radius:24px;background:var(--card)}
+.room{padding:clamp(18px,2.6vw,30px);display:grid;gap:18px;grid-template-rows:auto 1fr auto auto;min-width:0}
+.room header,.verifier .who{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px}
+.fw h3{font-weight:500;font-size:1.3125rem;line-height:1.1;letter-spacing:-.02em}
+.ws{min-height:168px;border:1px solid var(--line-2);border-radius:14px;background:rgba(var(--hi),.02) radial-gradient(rgba(var(--hi),.07) 1px,transparent 1.3px) 0 0/18px 18px;padding:16px;display:grid;gap:13px;align-content:start}
+.tagc{justify-self:start;font-family:var(--mono);font-size:.6875rem;line-height:1;padding:6px 10px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);color:var(--ink-2)}
+.code{display:grid;gap:7px}
+.code i{display:block;height:4px;width:0;border-radius:99px;background:var(--green-f);transition:width .32s cubic-bezier(.2,.7,.2,1),background .2s}
+.code i.on{width:var(--w)}
+.code i.edited{width:var(--w2);background:rgb(var(--hi))}
+.repo{display:grid;gap:10px}
+.grp{display:grid;gap:6px;position:relative;transition:opacity .3s}
+.grp i{display:block;height:4px;width:var(--w);border-radius:99px;background:var(--mute)}
+.grp.ko{opacity:.25}
+.grp::after{content:"switched off";position:absolute;right:0;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.6875rem;color:var(--red);opacity:0;transition:opacity .2s}
+.grp.ko::after{opacity:1}
+.tray{display:flex;flex-wrap:wrap;gap:7px;align-items:center;min-height:14px}
+.tray i{width:12px;height:12px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--ink-3);transform:scale(0);transition:transform .28s cubic-bezier(.3,1.6,.5,1),box-shadow .3s,background .3s}
+.tray i.on{transform:scale(1)}
+.tray i.new.on{box-shadow:inset 0 0 0 1.5px var(--green-f)}
+.tray i.frozen,.tray i.new.frozen{box-shadow:inset 0 0 0 1.5px rgb(var(--hi));background:rgba(var(--hi),.14)}
+.never{display:flex;align-items:center;gap:10px;font-weight:500}
+.never::before{content:"";flex:none;width:16px;height:2px;border-radius:2px;background:var(--red);box-shadow:0 0 8px rgba(var(--r),.8)}
+.pipe{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.6875rem;color:var(--ink-3);height:20px}
+.pipe::before{content:"";width:1px;height:20px;background-image:repeating-linear-gradient(180deg,var(--green-f) 0 4px,transparent 4px 8px);background-size:1px 8px;animation:flow .5s linear infinite}
+.pipe.w::before{background-image:repeating-linear-gradient(180deg,rgb(var(--hi)) 0 4px,transparent 4px 8px)}
+.pipe .b{display:none}
+.pipe.up{color:var(--red)}
+.pipe.up::before{background-image:repeating-linear-gradient(180deg,var(--red) 0 4px,transparent 4px 8px);animation-direction:reverse}
+.pipe.up .a{display:none} .pipe.up .b{display:inline}
+@keyframes flow{to{background-position:0 8px}}
+.wall{position:relative;background:linear-gradient(180deg,transparent,var(--red) 14%,var(--red) 86%,transparent);box-shadow:0 0 22px 1px rgba(var(--r),.45);transition:box-shadow .15s}
+.wall.hit{box-shadow:0 0 46px 7px rgba(var(--r),.95)}
+.wall span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);writing-mode:vertical-rl;font-family:var(--mono);font-size:.6875rem;letter-spacing:.06em;background:var(--bg);color:var(--red);padding:12px 5px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(var(--r),.6)}
+.verifier{grid-column:1/-1;border-top:1px solid var(--line);padding:clamp(18px,2.6vw,30px);display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr) auto;gap:16px 32px;align-items:center}
+.verifier .who{display:grid;gap:4px}
+.vbox{display:grid;gap:10px;min-width:0}
+.vrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.vrow i{width:12px;height:12px;border-radius:50%;box-shadow:inset 0 0 0 1.5px rgba(var(--hi),.55);transition:background .18s,box-shadow .18s,transform .25s}
+.vrow i.on{background:var(--green-f);box-shadow:0 0 10px rgba(var(--g),.5)}
+.vrow i.bad{background:var(--red);box-shadow:0 0 12px rgba(var(--r),.7)}
+.vrow i.sp,.vrow i.sf{border-radius:3px;transform:rotate(45deg) scale(.86);margin-inline:3px}
+.vrow i.sf.on{background:transparent;box-shadow:inset 0 0 0 1.5px var(--red)}
+.vrow i.tamper{transform:scale(.45);background:transparent;box-shadow:inset 0 0 0 1.5px var(--red)}
+.vrow.lock i{box-shadow:inset 0 0 0 1.5px rgb(var(--hi)),0 0 10px rgba(var(--hi),.6)}
+.vrow.faked i,.vrow.faked i.sf{background:var(--green-f);box-shadow:0 0 10px rgba(var(--g),.5)}
+.vrow.shake{animation:shake .4s}
+@keyframes shake{20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
+.badge{font-family:var(--mono);font-size:.8125rem;line-height:1;padding:10px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);color:var(--ink-2);white-space:nowrap;min-width:12em;text-align:center;transition:color .2s,box-shadow .2s,background .2s}
+.badge.pass{color:var(--green);background:rgba(var(--g),.08);box-shadow:inset 0 0 0 1px rgba(var(--g),.5)}
+.badge.fail,.badge.void,.badge.rej{color:var(--red);background:rgba(var(--r),.08);box-shadow:inset 0 0 0 1px rgba(var(--r),.55)}
+.packet{position:absolute;z-index:3;font-family:var(--mono);font-size:.6875rem;line-height:1;padding:6px 10px;border-radius:999px;background:rgb(var(--hi));color:var(--bg);transform:translate(-50%,-50%);pointer-events:none;box-shadow:0 0 16px rgba(var(--hi),.5)}
+.packet.hit{background:var(--red);color:#fff;box-shadow:0 0 22px rgba(var(--r),.9)}
+.cheats{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 10px;max-width:1080px;margin:22px auto 0}
+.cheats button{height:40px;padding:0 18px;border:0;border-radius:999px;background:none;box-shadow:inset 0 0 0 1px rgba(var(--hi),.16);font-weight:500;font-size:.9375rem;cursor:pointer;transition:box-shadow .2s,color .2s}
+.cheats button:hover,.cheats button.act{box-shadow:inset 0 0 0 1px var(--red);color:var(--red-ink)}
+.verdict{flex:1 1 100%;text-align:center;font-family:var(--mono);font-size:.875rem;color:var(--ink-2);min-height:1.6em}
+.verdict b{color:var(--red);font-weight:500}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:1080px;margin:clamp(48px,7vw,88px) auto 0;border-top:1px solid var(--line)}
+.facts li{padding:26px clamp(16px,2.4vw,30px) 0;color:var(--ink-2)}
+.facts li:first-child{padding-left:0} .facts li:last-child{padding-right:0}
+.facts li+li{border-left:1px solid var(--line)}
+.facts b{display:block;font-weight:500;font-size:1.1875rem;letter-spacing:-.015em;color:var(--ink);margin-bottom:8px}
+@media (max-width:759px){
+  .fw{grid-template-columns:minmax(0,1fr)}
+  .wall{height:1px;background:linear-gradient(90deg,transparent,var(--red) 14%,var(--red) 86%,transparent)}
+  .wall span{writing-mode:horizontal-tb;padding:5px 12px}
+  .verifier{grid-template-columns:minmax(0,1fr)} .badge{justify-self:start}
+  .facts{grid-template-columns:minmax(0,1fr);border-top:0}
+  .facts li,.facts li:first-child,.facts li:last-child{padding:22px 0;border-top:1px solid var(--line)} .facts li+li{border-left:0}
+}
+
+/* ---------- results ---------- */
+.legend{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 24px;margin-top:clamp(36px,5vw,60px)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{width:10px;height:10px;border-radius:50%;background:var(--green-f)}
+.legend .g i{background:var(--mute)}
+.legend .t i{background:none;box-shadow:inset 0 0 0 1px var(--ink-3)}
+.scroll{overflow-x:auto;max-width:1080px;margin:14px auto 0;border:1px solid var(--line);border-radius:24px;background:var(--card);padding:8px clamp(14px,2.4vw,30px) 12px}
+.libs{width:100%;min-width:700px;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.libs th,.libs td{text-align:left;padding:14px 20px 14px 0;border-top:1px solid var(--line-2);vertical-align:middle}
+.libs thead th{border-top:0;font-family:var(--mono);font-size:.75rem;font-weight:400;color:var(--ink-3);padding-bottom:8px}
+.libs tbody th{font-weight:500;width:24%;line-height:1.3}
+.libs tbody th span{display:block;font-weight:400;font-size:.875rem;color:var(--ink-3)}
+.libs .bars{width:42%}
+.pair{display:grid;gap:7px}
+.barline{display:grid;grid-template-columns:minmax(0,1fr) 4.6em;align-items:center;gap:12px}
+.track{display:block;height:5px;border-radius:99px;background:rgba(var(--hi),.07)}
+.track i{display:block;height:100%;width:var(--w);border-radius:99px;background:var(--green-f);transition:width 1.5s cubic-bezier(.2,.7,.15,1)}
+.barline.g .track i{background:var(--mute);transition-delay:.12s}
+.js [data-reveal]:not(.in) .track i{width:100%}
+.barline b{font-family:var(--mono);font-weight:400;font-size:.8125rem;text-align:right;color:var(--ink-3)}
+.barline.n b{color:var(--green)}
+.two{display:grid;gap:3px;font-family:var(--mono);font-size:.8125rem;line-height:1.35;white-space:nowrap}
+.two .g{color:var(--ink-3)}
+.two .bad{color:var(--red)}
+.libs tfoot th,.libs tfoot td{border-top:1px solid rgba(var(--hi),.22)}
+.libs tfoot th{font-weight:600}
+.after{margin:20px auto 0;max-width:1080px;text-align:center;color:var(--ink-3);font-size:.9375rem}
+
+/* agents */
+.meters{display:grid;max-width:1080px;margin:clamp(40px,6vw,72px) auto 0;border-top:1px solid var(--line)}
+.meters li{display:grid;grid-template-columns:minmax(0,11rem) minmax(0,1fr) auto;align-items:center;gap:12px clamp(16px,3vw,44px);padding-block:clamp(20px,2.8vw,30px);border-bottom:1px solid var(--line)}
+.meters .what{font-weight:500;font-size:clamp(1.25rem,2.4vw,1.75rem);letter-spacing:-.025em}
+.meters .track{height:6px}
+.meters .pct{font-weight:500;font-size:clamp(1.75rem,3.6vw,2.75rem);line-height:1;letter-spacing:-.04em;color:var(--green);font-variant-numeric:tabular-nums;white-space:nowrap;min-width:4.4em;text-align:right}
+.meters .pct small{font-family:var(--mono);font-size:.75rem;font-weight:400;letter-spacing:0;color:var(--ink-3);margin-left:8px}
+@media (max-width:759px){.meters li{grid-template-columns:minmax(0,1fr) auto}.meters .track{grid-column:1/-1;grid-row:2}}
+
+/* use */
+.use-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);max-width:1080px;margin:clamp(40px,6vw,72px) auto 0;align-items:start}
+.term{border:1px solid var(--line);border-radius:18px;background:var(--card);min-width:0;overflow:hidden}
+.term .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 8px 8px 18px;border-bottom:1px solid var(--line-2)}
+.term pre{padding:18px 18px 20px;overflow-x:auto;font-family:var(--mono);font-size:.875rem;line-height:1.9;color:var(--ink);min-height:9.4em}
+.term .p{color:var(--green);user-select:none}
+.term .c{color:var(--ink-3)}
+.copy{height:30px;padding:0 13px;border:0;border-radius:999px;background:none;box-shadow:inset 0 0 0 1px var(--line);font-family:var(--mono);font-size:.75rem;cursor:pointer;color:var(--ink-2)}
+.copy:hover{box-shadow:inset 0 0 0 1px rgba(var(--hi),.4);color:var(--ink)}
+.use-note{margin-top:18px;color:var(--ink-2);max-width:32em}
+.steps{counter-reset:s;display:grid;border-top:1px solid var(--line)}
+.steps li{counter-increment:s;display:grid;grid-template-columns:3rem minmax(0,1fr);align-items:baseline;border-bottom:1px solid var(--line);padding-block:20px;color:var(--ink-2)}
+.steps li::before{content:"0" counter(s);font-family:var(--mono);font-size:.8125rem;color:var(--green)}
+.steps b{display:block;font-weight:500;font-size:1.1875rem;letter-spacing:-.015em;color:var(--ink);margin-bottom:4px}
+@media (max-width:759px){.use-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* foot */
+.foot{border-top:1px solid var(--line-2);padding-top:clamp(56px,8vw,104px);overflow:hidden}
+.foot-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);max-width:1080px;margin-inline:auto;align-items:start}
+.foot h2{font-weight:500;font-size:1.5rem;letter-spacing:-.025em;margin-bottom:16px}
+.foot .term pre{min-height:0}
+.foot .links{display:grid;gap:12px;justify-items:start}
+.foot .links a{text-decoration:underline;text-decoration-color:rgba(var(--hi),.3);text-underline-offset:5px}
+.foot .links a:hover{text-decoration-color:rgb(var(--hi))}
+.foot .links p{color:var(--ink-3);font-size:.9375rem;margin-top:8px;max-width:26em}
+.word{font-weight:600;font-size:clamp(5rem,23.5vw,21rem);line-height:.8;letter-spacing:-.065em;text-align:center;white-space:nowrap;margin-top:clamp(40px,6vw,80px);margin-bottom:-.09em;background:linear-gradient(180deg,rgba(var(--hi),.2),rgba(var(--hi),0) 82%);-webkit-background-clip:text;background-clip:text;color:transparent;user-select:none}
+@media (max-width:759px){.foot-grid{grid-template-columns:minmax(0,1fr)}}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .ticker .run,.pipe::before{animation:none}
+  .ticker .run{flex-wrap:wrap;width:auto} .ticker .dup{display:none}
+  .track i,.code i,.tray i,.vrow i{transition:none}
+}
+/* ---------- star version: the dark page; the lit green sits on NVIDIA green (#76B900) ---------- */
+:root{--g:118,185,0;--green:#76B900;--green-f:#76B900;--green-2:#B9E769}
+/* The sky fills the whole first screen behind everything. Wide screens: words on the left, the tree on the right,
+   so the whole scene is visible without scrolling. Narrow screens: words, then the tree. */
+.hero{position:relative;overflow:hidden;text-align:center;padding-block:clamp(28px,4vw,48px) clamp(48px,7vw,96px)}
+#sky{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;-webkit-mask-image:linear-gradient(180deg,#000 84%,transparent);mask-image:linear-gradient(180deg,#000 84%,transparent)}
+.hero>.wrap{position:relative;z-index:1}
+.stage{position:relative;height:clamp(350px,96vw,470px);margin-top:14px}
+.stage .cap{position:absolute;left:0;right:0;bottom:0;display:grid;gap:2px;justify-items:center}
+.stage .cap b{font-weight:500;color:var(--ink)}
+.stage .cap #orb-phase{color:var(--green-2)}
+@media (min-width:980px){
+  .hero{text-align:left}
+  .first{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1fr);align-items:center;gap:64px}
+  .hero h1{font-size:clamp(3.1rem,5.2vw,4.65rem);margin-top:24px}
+  .hero .sub{margin-inline:0;max-width:27em;text-wrap:pretty}
+  .nums{max-width:none}
+  .nums li:first-child{padding-left:0}
+  .cta{justify-content:flex-start}
+  .stage{height:clamp(450px,calc(100svh - 215px),620px);margin-top:0}
+}
+/* ---------- version switch (review aid, not part of the final page) ---------- */
+.vs{display:flex;align-items:center;gap:2px;padding:3px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(var(--hi),.16);font-size:.8125rem;line-height:1;color:var(--ink-2);white-space:nowrap}
+.vs span{padding:0 6px 0 11px;color:var(--ink-3)}
+.vs a{padding:8px 13px;border-radius:999px}
+.vs a:hover{color:var(--ink)}
+.vs a[aria-current]{background:rgba(var(--hi),.15);color:var(--ink)}
+@media (max-width:759px){.vs span{display:none}.nav .wrap{gap:12px}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="Nanolize">
+      <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect x="1" y="1" width="20" height="20" rx="6" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="5.5" y="6.2" width="11" height="2.4" rx="1.2" class="lg"/><rect x="5.5" y="10" width="7" height="2.4" rx="1.2" class="lg"/><rect x="5.5" y="13.8" width="9" height="2.4" rx="1.2" class="lg"/></svg>
+      nanolize
+    </a>
+    <nav aria-label="Sections"><a href="#method">Method</a><a href="#results">Results</a><a href="#use">Use it</a><a href="#cite">Cite</a></nav>
+    <div class="vs" role="navigation" aria-label="预览版本"><span>预览版本</span><a href="../star/" aria-current="page">星空</a><a href="../brain/">大脑</a></div>
+    <a class="btn go sm" href="#">Paper</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="top">
+    <canvas id="sky" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div class="first">
+      <div>
+      <span class="chip"><i></i>Technical report, 2026</span>
+      <h1 class="grad"><span>Half the tokens.</span><span>All the behavior.</span></h1>
+      <p class="sub">Nanolize rewrites a bloated repository from scratch into a nano one that coding agents read, change and run for fewer tokens.</p>
+      <p class="cta"><a class="btn go" href="#">Read the paper</a><a class="btn gh" href="#">Get the code</a></p>
+      </div>
+      <div class="stage" id="stage" role="img" aria-label="Animation: a slowly turning field of stars stands for the 76,888 lines of Detectron2. Nothing moves inward. The stars that stay, 36,458 lines, light up green as one tree, the rest go dark, 382 checks pass and the tree flashes.">
+        <p class="cap m"><span id="orb-phase">delivered</span><span><b class="num" id="orb-lines">36,458</b> lines of detectron2, <b class="num" id="orb-checks">382 / 382</b> checks pass</span></p>
+      </div>
+      </div>
+      <ul class="nums">
+        <li><b class="num">−49.44%</b><span class="m">tokens, mean of eight libraries</span></li>
+        <li><b class="num">549 / 549</b><span class="m">behavior checks pass</span></li>
+        <li><b class="num">1h 11min</b><span class="m">per rewrite, on average</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="ticker" aria-label="Results on eight libraries">
+    <div class="run">
+      <ul>
+        <li><b>bidict</b><em>−58.72%</em> tokens, 58/58 checks</li>
+        <li><b>click</b><em>−42.90%</em> tokens, 136/136 checks</li>
+        <li><b>more-itertools</b><em>−62.27%</em> tokens, 10/10 checks</li>
+        <li><b>packaging</b><em>−41.00%</em> tokens, 137/137 checks</li>
+        <li><b>python-dotenv</b><em>−48.79%</em> tokens, 15/15 checks</li>
+        <li><b>requests</b><em>−50.49%</em> tokens, 91/91 checks</li>
+        <li><b>tomli</b><em>−46.55%</em> tokens, 18/18 checks</li>
+        <li><b>tqdm</b><em>−44.80%</em> tokens, 84/84 checks</li>
+      </ul>
+      <ul class="dup" aria-hidden="true">
+        <li><b>bidict</b><em>−58.72%</em> tokens, 58/58 checks</li>
+        <li><b>click</b><em>−42.90%</em> tokens, 136/136 checks</li>
+        <li><b>more-itertools</b><em>−62.27%</em> tokens, 10/10 checks</li>
+        <li><b>packaging</b><em>−41.00%</em> tokens, 137/137 checks</li>
+        <li><b>python-dotenv</b><em>−48.79%</em> tokens, 15/15 checks</li>
+        <li><b>requests</b><em>−50.49%</em> tokens, 91/91 checks</li>
+        <li><b>tomli</b><em>−46.55%</em> tokens, 18/18 checks</li>
+        <li><b>tqdm</b><em>−44.80%</em> tokens, 84/84 checks</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="say" id="why">
+    <div class="wrap">
+      <p class="say-text" id="say">Agents write more of our code every day, and codebases bloat. Bloat is cognitive load. Agents pay for it in tokens, every time they read, change or run the code. Nanolize rewrites the code so that every one of those tasks costs less.</p>
+      <p class="say-meter m" id="say-meter" hidden><b id="say-n">0</b>tokens read so far</p>
+    </div>
+  </section>
+
+  <section class="sec" id="method">
+    <div class="wrap">
+      <div class="head">
+        <h2 class="h2 grad">Writing and checking never meet.</h2>
+        <p class="lede">A capable agent can pass a weak test by fitting code to it, loosening it or copying the original. So Nanolize builds a firewall into the workflow, and a verifier that is plain code decides what passes.</p>
+      </div>
+
+      <div class="fw" id="fw">
+        <div class="room">
+          <header><h3>Author</h3><span class="m">writes the new code</span></header>
+          <div class="ws">
+            <span class="tagc">contract</span>
+            <div class="code" id="fw-code">
+              <i style="--w:62%;--w2:30%"></i><i style="--w:84%;--w2:50%"></i><i style="--w:48%;--w2:70%"></i><i style="--w:71%;--w2:36%"></i><i style="--w:90%;--w2:58%"></i><i style="--w:38%;--w2:66%"></i><i style="--w:66%;--w2:40%"></i><i style="--w:54%;--w2:80%"></i><i style="--w:78%;--w2:44%"></i><i style="--w:44%;--w2:60%"></i>
+            </div>
+          </div>
+          <p class="never">never sees a test</p>
+          <p class="pipe" id="pipe-l"><span class="a">nano code, down to the verifier</span><span class="b">feedback, up to the author</span></p>
+        </div>
+        <div class="wall" id="fw-wall"><span>firewall</span></div>
+        <div class="room">
+          <header><h3>Test designer</h3><span class="m">hardens the checks</span></header>
+          <div class="ws">
+            <span class="tagc">original repository</span>
+            <div class="repo" id="fw-repo">
+              <div class="grp"><i style="--w:58%"></i><i style="--w:44%"></i><i style="--w:52%"></i></div>
+              <div class="grp"><i style="--w:50%"></i><i style="--w:60%"></i><i style="--w:36%"></i></div>
+              <div class="grp"><i style="--w:56%"></i><i style="--w:40%"></i><i style="--w:48%"></i></div>
+            </div>
+            <div class="tray" id="fw-tray"><i></i><i></i><i></i><i></i><i></i><i class="new"></i><i class="new"></i><i class="new"></i></div>
+          </div>
+          <p class="never">never sees the new code</p>
+          <p class="pipe w"><span>frozen checks, down to the verifier</span></p>
+        </div>
+        <div class="verifier">
+          <div class="who"><h3>Verifier</h3><span class="m">plain code, not a model</span></div>
+          <div class="vbox">
+            <div class="vrow" id="fw-vrow"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="sp"></i><i class="sf"></i></div>
+            <span class="m">The two diamonds are hidden sentinels: one must pass, one must fail.</span>
+          </div>
+          <span class="badge pass" id="fw-badge">all checks pass</span>
+        </div>
+      </div>
+
+      <div class="cheats">
+        <span class="m">try to cheat</span>
+        <button type="button" data-cheat="peek">Peek at the tests</button>
+        <button type="button" data-cheat="weaken">Weaken a check</button>
+        <button type="button" data-cheat="fake">Fake a pass</button>
+        <button type="button" data-cheat="ship">Ship an untested edit</button>
+        <p class="verdict" id="fw-verdict" aria-live="polite">Each of these fails. Press one.</p>
+      </div>
+
+      <ul class="facts">
+        <li><b>Rewritten from a contract</b>The author starts in an empty workspace with the behavior callers rely on: interfaces, defaults, outputs, command-line options. No tests, no history, its own file layout.</li>
+        <li><b>Hardened, then frozen</b>Each selected feature is switched off in the original. Where no test notices, the test designer writes one. The suite is frozen before any new code is tested.</li>
+        <li><b>Driven by tools</b>A controller runs five stages through thirty-nine self-checking tools. It decides what runs next and never reads the source or judges a check.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="results" data-reveal>
+    <div class="wrap">
+      <div class="head">
+        <h2 class="h2 grad">Eight libraries. Same model. Same checks.</h2>
+        <p class="lede">Nanolize against the agent's native Goal mode, both on Claude Fable-5.2-high. Goal mode cuts deeper on four libraries, and fails behavior checks on each of the four.</p>
+      </div>
+      <p class="legend m"><span><i></i>Nanolize</span><span class="g"><i></i>Goal mode</span><span class="t"><i></i>full track = the original, bar = tokens left</span></p>
+      <div class="scroll">
+        <table class="libs">
+          <thead><tr><th scope="col">library</th><th scope="col">tokens left after the rewrite</th><th scope="col">behavior checks passed</th><th scope="col">time</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">bidict<span>bidirectional mappings</span></th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:41.28%"><i></i></span><b>−58.72%</b></div><div class="barline g"><span class="track" style="--w:71.19%"><i></i></span><b>−28.81%</b></div></div></td>
+              <td><div class="two"><span>58 / 58</span><span class="g">58 / 58</span></div></td><td><div class="two"><span>1h 9min</span><span class="g">4h</span></div></td></tr>
+            <tr><th scope="row">click<span>command-line toolkit</span></th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:57.10%"><i></i></span><b>−42.90%</b></div><div class="barline g"><span class="track" style="--w:39.09%"><i></i></span><b>−60.91%</b></div></div></td>
+              <td><div class="two"><span>136 / 136</span><span class="bad">126 / 136</span></div></td><td><div class="two"><span>1h 15min</span><span class="g">3h 8min</span></div></td></tr>
+            <tr><th scope="row">more-itertools<span>iterator utilities</span></th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:37.73%"><i></i></span><b>−62.27%</b></div><div class="barline g"><span class="track" style="--w:27.83%"><i></i></span><b>−72.17%</b></div></div></td>
+              <td><div class="two"><span>10 / 10</span><span class="bad">9 / 10</span></div></td><td><div class="two"><span>1h 17min</span><span class="g">2h 55min</span></div></td></tr>
+            <tr><th scope="row">packaging<span>versions, specifiers and tags</span></th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:59.00%"><i></i></span><b>−41.00%</b></div><div class="barline g"><span class="track" style="--w:29.07%"><i></i></span><b>−70.93%</b></div></div></td>
+              <td><div class="two"><span>137 / 137</span><span class="bad">125 / 137</span></div></td><td><div class="two"><span>1h 51min</span><span class="g">8h 21min</span></div></td></tr>
+            <tr><th scope="row">python-dotenv<span>environment configuration</span></th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:51.21%"><i></i></span><b>−48.79%</b></div><div class="barline g"><span class="track" style="--w:86.99%"><i></i></span><b>−13.01%</b></div></div></td>
+              <td><div class="two"><span>15 / 15</span><span class="g">15 / 15</span></div></td><td><div class="two"><span>21min</span><span class="g">2h 31min</span></div></td></tr>
+            <tr><th scope="row">requests<span>HTTP client</span></th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:49.51%"><i></i></span><b>−50.49%</b></div><div class="barline g"><span class="track" style="--w:85.00%"><i></i></span><b>−15.00%</b></div></div></td>
+              <td><div class="two"><span>91 / 91</span><span class="bad">90 / 91</span></div></td><td><div class="two"><span>1h 29min</span><span class="g">2h 18min</span></div></td></tr>
+            <tr><th scope="row">tomli<span>TOML parser</span></th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:53.45%"><i></i></span><b>−46.55%</b></div><div class="barline g"><span class="track" style="--w:74.80%"><i></i></span><b>−25.20%</b></div></div></td>
+              <td><div class="two"><span>18 / 18</span><span class="g">18 / 18</span></div></td><td><div class="two"><span>49min</span><span class="g">5h 40min</span></div></td></tr>
+            <tr><th scope="row">tqdm<span>progress bars and CLI</span></th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:55.20%"><i></i></span><b>−44.80%</b></div><div class="barline g"><span class="track" style="--w:34.70%"><i></i></span><b>−65.30%</b></div></div></td>
+              <td><div class="two"><span>84 / 84</span><span class="bad">76 / 84</span></div></td><td><div class="two"><span>1h 16min</span><span class="g">2h 11min</span></div></td></tr>
+          </tbody>
+          <tfoot>
+            <tr><th scope="row">Mean of eight</th>
+              <td class="bars"><div class="pair"><div class="barline n"><span class="track" style="--w:50.56%"><i></i></span><b>−49.44%</b></div><div class="barline g"><span class="track" style="--w:56.08%"><i></i></span><b>−43.92%</b></div></div></td>
+              <td><div class="two"><span>549 / 549</span><span class="bad">517 / 549</span></div></td><td><div class="two"><span>1h 11min</span><span class="g">3h 53min</span></div></td></tr>
+          </tfoot>
+        </table>
+      </div>
+      <p class="after">Installation in a clean environment is checked too: 23 of 23 checks pass for Nanolize, 21 of 23 for Goal mode.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="agents" data-reveal style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <h2 class="h2 grad">The next agent pays less.</h2>
+        <p class="lede">On Detectron2, with all 106 capabilities kept, agents working in the nano code spend fewer tokens on the same tasks.</p>
+      </div>
+      <ul class="meters">
+        <li><span class="what">Understand</span><span class="track" style="--w:63.5%"><i></i></span><span class="pct"><span data-n="36.5" data-dec="1" data-pre="−" data-suf="%">−36.5%</span><small>tokens</small></span></li>
+        <li><span class="what">Modify</span><span class="track" style="--w:75.8%"><i></i></span><span class="pct"><span data-n="24.2" data-dec="1" data-pre="−" data-suf="%">−24.2%</span><small>tokens</small></span></li>
+        <li><span class="what">Execute</span><span class="track" style="--w:64.9%"><i></i></span><span class="pct"><span data-n="35.1" data-dec="1" data-pre="−" data-suf="%">−35.1%</span><small>tokens</small></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="use" data-reveal style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <h2 class="h2 grad">Point your agent at a repository.</h2>
+      </div>
+      <div class="use-grid">
+        <div>
+          <div class="term">
+            <div class="bar"><span class="m">shell</span><button type="button" class="copy" data-copy="cmd">copy</button></div>
+<pre id="cmd" data-type><span class="p">$ </span>git clone &lt;repository&gt; nanolize &amp;&amp; cd nanolize
+<span class="p">$ </span>python -m pip install -e .   <span class="c"># Python 3.11 or newer</span>
+<span class="p">$ </span>nanolize serve               <span class="c"># MCP server for your agent</span></pre>
+          </div>
+          <p class="use-note">Plugin configurations for Codex and Claude Code ship with the repository. Ask the agent to nanolize a repository, and three pages keep you in charge.</p>
+        </div>
+        <ol class="steps">
+          <li><span><b>Review</b>Start from Core features or All features, switch optional features on or off on the capability graph, then submit.</span></li>
+          <li><span><b>Run</b>Follow the stages, repairs, tokens and elapsed time live.</span></li>
+          <li><span><b>Report</b>Read the outcome first, then every check, the size breakdown and the repair history.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="cite">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h2>Cite</h2>
+        <div class="term">
+          <div class="bar"><span class="m">bibtex</span><button type="button" class="copy" data-copy="bib">copy</button></div>
+<pre id="bib">@techreport{nanolize2026,
+  title  = {Nanolize Code with Agents},
+  author = {{Nanolize Contributors}},
+  year   = {2026}
+}</pre>
+        </div>
+      </div>
+      <div class="links">
+        <h2>Read on</h2>
+        <a href="#">The technical report</a>
+        <a href="#">The code</a>
+        <p>Nanolize is released under the MIT license.</p>
+      </div>
+    </div>
+    <p class="word" aria-hidden="true">nanolize</p>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const clamp01 = x => x < 0 ? 0 : x > 1 ? 1 : x;
+  const seg = (t, a, b) => clamp01((t - a) / (b - a));
+  const ease = x => x * x * (3 - 2 * x);
+  const lerp = (a, b, k) => a + (b - a) * k;
+  const fmt = n => Math.round(n).toLocaleString('en-US');
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  document.documentElement.classList.add('js');
+
+  /* One clock for every scene; a scene only advances while it is on screen. */
+  const loops = [];
+  const seen = new IntersectionObserver(es => es.forEach(e => { e.target._on = e.isIntersecting; }), { threshold: .05 });
+  const scene = (el, period, fn) => { const s = { t: 0 }; seen.observe(el); loops.push(dt => { if (el._on) { s.t = (s.t + dt) % period; fn(s.t); } }); return s; };
+
+  /* ---------------- hero: a field of stars, slowly turning, seen in perspective. Nothing moves towards the centre:
+     the stars that stay light up as one tree and the rest go dark. The share that stays is the real ratio for
+     Detectron2, 36,458 of 76,888 lines. The tree's shape is illustrative; its labels are Detectron2's public
+     packages. ?t=seconds in the address freezes the scene at that moment (for screenshots). ---------------- */
+  (() => {
+    const hero = $('#top'), cv = $('#sky'), ctx = cv.getContext('2d'), stage = $('#stage');
+    const N = 1200, K = Math.round(N * 36458 / 76888), T = 15.6, TAU = 6.2832;
+    const WHITE = '202,210,228', NV = '118,185,0', LIME = '196,240,110';
+    const NAMES = ['modeling', 'data', 'engine', 'evaluation', 'structures', 'layers', 'config', 'checkpoint', 'solver', 'export', 'utils', 'model_zoo'];
+    const rng = (a => () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; })(41);
+    const unit = (x, y, z) => { const l = Math.hypot(x, y, z) || 1; return [x / l, y / l, z / l]; };
+    const fib = (i, n) => { const y = 1 - 2 * (i + .5) / n, r = Math.sqrt(1 - y * y), th = i * 2.399963; return [r * Math.cos(th), y, r * Math.sin(th)]; };
+    /* the children of a branch fan out in a cone around its direction */
+    const fan = (d, n, cone) => {
+      const a = Math.abs(d[1]) < .9 ? [0, 1, 0] : [1, 0, 0], u = unit(d[1] * a[2] - d[2] * a[1], d[2] * a[0] - d[0] * a[2], d[0] * a[1] - d[1] * a[0]);
+      const v = [d[1] * u[2] - d[2] * u[1], d[2] * u[0] - d[0] * u[2], d[0] * u[1] - d[1] * u[0]], o = rng() * TAU;
+      return Array.from({ length: n }, (_, j) => { const th = cone * (.7 + .6 * rng()), al = o + TAU * (j + .35 * rng()) / n, c = Math.cos(th), s = Math.sin(th), ca = Math.cos(al), sa = Math.sin(al);
+        return unit(d[0] * c + (u[0] * ca + v[0] * sa) * s, d[1] * c + (u[1] * ca + v[1] * sa) * s, d[2] * c + (u[2] * ca + v[2] * sa) * s); });
+    };
+    /* The tree is shaped like a dandelion head: a root, twelve stalks, three twigs on each, and a tuft of fine
+       lines on every twig. The tufts take what is left of the kept share. */
+    const RAD = [0, .46, .75, 1], CONE = [0, 0, .42, .21], LEAF = 3, S = [];
+    const add = (dir, lvl, par, len) => { const r = RAD[lvl] * len * (1 + (rng() - .5) * (lvl === LEAF ? .16 : .05)); S.push({ x: dir[0] * r, y: dir[1] * r, z: dir[2] * r, rn: r, lvl, par, dir, len, keep: true }); return S.length - 1; };
+    add([0, 1, 0], 0, -1, 1);
+    let tips = Array.from({ length: 12 }, (_, i) => add(fib(i, 12), 1, 0, .88 + rng() * .2));
+    tips = tips.flatMap(p => fan(S[p].dir, 3, CONE[2]).map(d => add(d, 2, p, S[p].len)));
+    const rest = K - S.length;
+    tips.forEach((p, i) => fan(S[p].dir, Math.floor(rest / tips.length) + (i * 7 % tips.length < rest % tips.length ? 1 : 0), CONE[3]).forEach(d => add(d, LEAF, p, S[p].len)));
+    const TUFTS = S.map((p, i) => p.lvl === LEAF ? i : -1).filter(i => i >= 0);
+    /* The rest of the sky: some of it inside and around the tree, most of it spread over the whole first screen. */
+    while (S.length < N) {
+      if (rng() < .4) { const d = unit(rng() - .5, rng() - .5, rng() - .5), r = 1.4 * Math.cbrt(rng()); S.push({ x: d[0] * r, y: d[1] * r, z: d[2] * r }); }
+      else { const r = Math.pow(rng(), .62), th = rng() * TAU; S.push({ wide: true, ux: r * Math.cos(th), uz: r * Math.sin(th), uy: rng() * 2 - 1 }); }
+    }
+    S.forEach((p, i) => {
+      p.mag = rng() < .035 ? 2.3 + rng() : .85 + rng() * .8; p.ph = rng() * TAU; p.sp = .5 + rng() * 1.3;
+      p.ord = p.keep ? Math.min(1, p.rn) * .8 + rng() * .05 : rng();                          // when it lights up, or goes dark
+      p.chk = p.keep && p.lvl === LEAF ? (Math.atan2(p.z, p.x) / TAU + .5) : 0;      // checks sweep around the tree
+      if (p.wide) { p.x = p.ux * 4.2; p.y = p.uy * 2.6; p.z = p.uz * 4.2; }       // nominal place, only for finding neighbours
+    });
+    /* The faint web the sky starts with: every star is tied to a neighbour or two. These are the lines that break. */
+    const MESS = [], tied = new Set();
+    const tie = (i, j) => { const key = i < j ? i * N + j : j * N + i; if (i !== j && !tied.has(key)) { tied.add(key); MESS.push({ i, j, off: rng(), spark: rng() < .22 }); } };
+    S.forEach((p, i) => {
+      let a = -1, b = -1, da = 9, db = 9;
+      S.forEach((q, j) => { if (j === i || j === p.par || q.par === i) return; const d = (p.x - q.x) ** 2 + (p.y - q.y) ** 2 + (p.z - q.z) ** 2; if (d < da) { b = a; db = da; a = j; da = d; } else if (d < db) { b = j; db = d; } });
+      if (p.keep) { if (p.lvl > 1 && da < .09 && rng() < .55) tie(i, a); }
+      else { if (da < .16) tie(i, a); if (db < .16 && rng() < .45) tie(i, b); }
+      if (!p.wide && rng() < .3) { const j = Math.floor(rng() * N), q = S[j]; if (!q.wide && (p.x - q.x) ** 2 + (p.y - q.y) ** 2 + (p.z - q.z) ** 2 < .5) tie(i, j); }
+    });
+    const SX = new Float32Array(N), SY = new Float32Array(N), SQ = new Float32Array(N), SD = new Float32Array(N), SN = new Float32Array(N), LIT = new Float32Array(N);
+    const BK = Array.from({ length: 18 }, () => []);          // tree lines, bucketed by level and depth, one stroke each
+    const SPK = TUFTS.filter((_, i) => i % 37 === 5);
+    const hud = { lines: $('#orb-lines'), checks: $('#orb-checks'), phase: $('#orb-phase') };
+    const PHASE = ['the original', 'rewriting from scratch', 'running the frozen checks', 'delivered'];
+    let W = 0, H = 0, dpr = 1, cx = 0, cy = 0, R = 1, RW = 1, F = 1000, shown = -1, spin = .6, yaw = 0, pitch = 0, tyaw = 0, tpitch = 0, clock = 0;
+    const layout = () => {
+      const r = hero.getBoundingClientRect(), s = stage.getBoundingClientRect();
+      W = r.width; H = r.height; cx = s.left - r.left + s.width / 2; cy = s.top - r.top + (s.height - 44) * .5;
+      R = Math.min((s.height - 44) * .4, s.width * .4, 240); RW = Math.max(cx, W - cx) * 1.12; F = Math.max(1000, RW * 1.5);
+      dpr = Math.min(2, window.devicePixelRatio || 1, Math.sqrt(4.6e6 / (W * H)));
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+      for (const p of S) if (p.wide) { p.px = p.ux * RW; p.pz = p.uz * RW; p.py = lerp(-cy * 1.04, (H - cy) * 1.04, (p.uy + 1) / 2); } else { p.px = p.x * R; p.py = p.y * R; p.pz = p.z * R; }
+    };
+    const dot = (x, y, r) => { ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill(); };
+    const draw = t => {
+      const back = seg(t, 13.4, 15.4), k = 1 - ease(back), raw = seg(t, 2.4, 7.0) * k, m = ease(seg(t, 2.4, 7.0)) * k;
+      const v = back > 0 ? 0 : seg(t, 7.3, 9.9), b = back > 0 ? 0 : seg(t, 10.0, 11.9);
+      const a = spin + yaw, tilt = .3 + pitch, ca = Math.cos(a), sa = Math.sin(a), cb = Math.cos(tilt), sb = Math.sin(tilt), zoom = 1 + .08 * m;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+      for (let i = 0; i < N; i++) {
+        const p = S[i], X = p.px * ca + p.pz * sa, Z0 = p.pz * ca - p.px * sa, Y = p.py * cb - Z0 * sb, Z = Z0 * cb + p.py * sb, q = F / Math.max(F * .3, F + Z) * zoom;
+        SX[i] = cx + X * q; SY[i] = cy + Y * q; SQ[i] = q; SN[i] = clamp01(((F + Z) / F - .45) / .3);
+        SD[i] = p.keep ? clamp01(.5 - Z / (2 * R)) : clamp01(.5 - Z / (2.2 * RW));
+        LIT[i] = p.keep ? ease(clamp01((raw - p.ord * .8) / .2)) : clamp01((raw - p.ord * .8) / .2);   // tree: how lit; rest: how dark
+      }
+      const glow = m > .02 || b > 0;
+      if (glow) { const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, R * 1.9), al = .13 * m + Math.sin(Math.PI * Math.min(1, b * 1.5)) * .2; g.addColorStop(0, `rgba(${NV},${al})`); g.addColorStop(1, `rgba(${NV},0)`); ctx.fillStyle = g; ctx.fillRect(cx - R * 2, cy - R * 2, R * 4, R * 4); }
+      ctx.lineCap = 'round';
+      /* the faint web: whole lines in one stroke; a line that is breaking pulls back from its middle */
+      ctx.strokeStyle = `rgba(${WHITE},.075)`; ctx.lineWidth = 1; ctx.beginPath();
+      const breaking = [];
+      for (const e of MESS) { const d = clamp01((raw - e.off * .82) / .18); if (d >= 1 || SN[e.i] * SN[e.j] < .05) continue; if (d > 0) { breaking.push(e, d); continue; } ctx.moveTo(SX[e.i], SY[e.i]); ctx.lineTo(SX[e.j], SY[e.j]); }
+      ctx.stroke();
+      for (let n = 0; n < breaking.length; n += 2) { const e = breaking[n], d = breaking[n + 1], x1 = SX[e.i], y1 = SY[e.i], x2 = SX[e.j], y2 = SY[e.j], h = .5 * (1 - d);
+        ctx.strokeStyle = `rgba(${WHITE},${.075 + .25 * (1 - d) * (d < .5 ? 1 : 0)})`; ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x1 + (x2 - x1) * h, y1 + (y2 - y1) * h); ctx.moveTo(x2, y2); ctx.lineTo(x2 + (x1 - x2) * h, y2 + (y1 - y2) * h); ctx.stroke();
+        if (e.spark && d < .35) { ctx.fillStyle = `rgba(255,255,255,${.9 * (1 - d / .35)})`; dot((x1 + x2) / 2, (y1 + y2) / 2, 1.3); } }
+      /* the tree: each line grows from its parent as the child lights up */
+      ctx.globalCompositeOperation = 'lighter';
+      for (const bk of BK) bk.length = 0;
+      for (let i = 1; i < K; i++) { const L = LIT[i]; if (L <= 0) continue; const p = S[i], j = p.par, d = (SD[i] + SD[j]) / 2;
+        BK[(p.lvl - 1) * 6 + Math.min(5, Math.floor(d * 6))].push(SX[j], SY[j], SX[j] + (SX[i] - SX[j]) * L, SY[j] + (SY[i] - SY[j]) * L); }
+      BK.forEach((bk, n) => { if (!bk.length) return; const lvl = Math.floor(n / 6) + 1, d = (n % 6 + .5) / 6;
+        ctx.strokeStyle = `rgba(${NV},${(.1 + .82 * d * d) * (lvl === LEAF ? .78 : 1)})`; ctx.lineWidth = [0, 1.7, 1.25, .8][lvl] * (.7 + .6 * d); ctx.beginPath();
+        for (let q = 0; q < bk.length; q += 4) { ctx.moveTo(bk[q], bk[q + 1]); ctx.lineTo(bk[q + 2], bk[q + 3]); } ctx.stroke(); });
+      /* the stars */
+      for (let i = 0; i < N; i++) {
+        const p = S[i], near = SN[i]; if (near <= 0) continue;
+        const x = SX[i], y = SY[i], q = Math.min(1.9, SQ[i]), tw = .82 + .18 * Math.sin(t * p.sp + p.ph), d = SD[i];
+        if (!p.keep) { const al = (.34 + .5 * d) * tw * near * (1 - .68 * LIT[i]); ctx.fillStyle = `rgba(${WHITE},${al})`; dot(x, y, p.mag * q * .95); continue; }
+        const L = LIT[i], rn = p.rn, wave = b > 0 ? clamp01(1 - Math.abs(b * 1.7 - .2 - rn) / .34) : 0;
+        const done = p.lvl === LEAF ? clamp01((v - p.chk * .93) / .07) : v > 0 ? 1 : 0, hit = done > 0 && done < 1 ? Math.sin(Math.PI * done) : 0, pop = Math.sin(Math.PI * L) * .7 + hit * 2.6 + done * .55 + wave * .9;
+        if (L < 1) { ctx.fillStyle = `rgba(${WHITE},${(.4 + .5 * d) * tw * (1 - L)})`; dot(x, y, p.mag * q * .95); }
+        if (L > 0) { const size = [4.6, 2.7, 1.9, 1.25][p.lvl] * q * (1 + .45 * pop), al = L * (.3 + .7 * d);
+          if (p.lvl < LEAF) { ctx.fillStyle = `rgba(${NV},${al * .22})`; dot(x, y, size * 2.6); }
+          ctx.fillStyle = `rgba(${NV},${al})`; dot(x, y, size);
+          const hot = Math.max(done * .8, wave, p.lvl < 2 ? .8 : 0); if (hot > 0) { ctx.fillStyle = `rgba(${LIME},${al * hot})`; dot(x, y, size * .72); }
+          if (hit > 0) { ctx.fillStyle = `rgba(255,255,255,${hit * .9})`; dot(x, y, size * .6); } }
+      }
+      ctx.globalCompositeOperation = 'source-over';
+      /* labels: each stalk's name sits just outside the tree and shows while the stalk points sideways */
+      const la = clamp01((m - .8) / .2);
+      if (la > 0) { ctx.font = `500 ${W < 600 ? 10 : 11.5}px "Geist Mono",ui-monospace,monospace`; ctx.textBaseline = 'middle'; const Rz = R * zoom;
+        for (let i = 1; i <= 12; i++) { const p = S[i], e = 1.14 * R * p.len, X = (p.dir[0] * ca + p.dir[2] * sa) * e, Z0 = (p.dir[2] * ca - p.dir[0] * sa) * e, Y = p.dir[1] * e * cb - Z0 * sb;
+          const side = Math.hypot(X, Y) / (1.14 * R * p.len), al = la * clamp01((side - .8) / .15);
+          if (al < .03) continue; ctx.fillStyle = `rgba(214,236,170,${al})`; ctx.textAlign = X >= 0 ? 'left' : 'right'; ctx.fillText(NAMES[i - 1], cx + X * zoom, cy + Y * zoom); } }
+      /* the finishing flash: one widening ring and sparkles that go off one after another on the outer stars */
+      if (b > 0 && b < 1) { const Rz = R * zoom;
+        ctx.strokeStyle = `rgba(${LIME},${(1 - b) * .55})`; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(cx, cy, Rz * (.25 + b * 1.25), 0, TAU); ctx.stroke();
+        SPK.forEach((p, n) => { const q = clamp01((b - (n * .137) % .56) / .38); if (q <= 0 || q >= 1) return; const s = Math.sin(Math.PI * q), x = SX[p], y = SY[p], Lg = 4 + 15 * s, D = Lg * .42;
+          ctx.strokeStyle = `rgba(255,255,255,${s})`; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(x - Lg, y); ctx.lineTo(x + Lg, y); ctx.moveTo(x, y - Lg); ctx.lineTo(x, y + Lg); ctx.stroke();
+          ctx.lineWidth = .8; ctx.beginPath(); ctx.moveTo(x - D, y - D); ctx.lineTo(x + D, y + D); ctx.moveTo(x - D, y + D); ctx.lineTo(x + D, y - D); ctx.stroke(); }); }
+      const ph = back > 0 || t < 2.4 ? 0 : t < 7.0 ? 1 : t < 9.9 ? 2 : 3;
+      if (ph !== shown) { hud.phase.textContent = PHASE[ph]; shown = ph; }
+      hud.lines.textContent = fmt(lerp(76888, 36458, m)); hud.checks.textContent = `${Math.round(v * 382)} / 382`;
+    };
+    const fix = new URLSearchParams(location.search).get('t'), still = calm || fix !== null, rest0 = fix !== null ? +fix : 12.6;
+    if (fix !== null) spin = .6 + .12 * rest0;
+    layout(); seen.observe(hero);
+    loops.push(dt => { if (still) return; yaw += (tyaw - yaw) * Math.min(1, dt * 2.5); pitch += (tpitch - pitch) * Math.min(1, dt * 2.5); if (!hero._on) return; clock = (clock + dt) % T; spin += dt * .12; draw(clock); });
+    addEventListener('pointermove', e => { if (e.pointerType === 'touch') return; tyaw = (e.clientX / innerWidth - .5) * .5; tpitch = (e.clientY / innerHeight - .5) * .16; }, { passive: true });
+    const redraw = () => { layout(); draw(still ? rest0 : clock); };
+    new ResizeObserver(redraw).observe(hero); redraw();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(redraw);   // the labels need the page's mono face
+  })();
+
+  /* ---------------- statement: words light up as they are read; each one is a token spent ---------------- */
+  const say = $('#say'), sayN = $('#say-n');
+  say.innerHTML = say.textContent.split(/(\s+)/).map(w => /\S/.test(w) ? `<span>${w}</span>` : w).join('');
+  const words = $$('span', say);
+  $('#say-meter').hidden = false;
+  let litN = -1;
+  const read = () => {
+    const r = say.getBoundingClientRect(), vh = innerHeight;
+    const n = Math.round((calm ? 1 : clamp01((vh * .82 - r.top) / (r.height + vh * .3))) * words.length);
+    if (n === litN) return; litN = n;
+    words.forEach((w, i) => w.classList.toggle('lit', i < n));
+    sayN.textContent = n;
+  };
+  addEventListener('scroll', read, { passive: true }); addEventListener('resize', read); read();
+
+  /* ---------------- firewall: an idle run, and four cheats that all fail ---------------- */
+  const fw = { root: $('#fw'), code: $$('#fw-code i'), grps: $$('#fw-repo .grp'), tray: $$('#fw-tray i'), row: $('#fw-vrow'), sq: $$('#fw-vrow i'), badge: $('#fw-badge'), wall: $('#fw-wall'), pipe: $('#pipe-l'), verdict: $('#fw-verdict') };
+  const NV = fw.sq.length, FAIL = 13;
+  const BADGE = { idle: 'waiting for both sides', run: 'running the checks', fail: '1 failed, sent back', pass: 'all checks pass', void: 'pass voided', rej: 'run rejected' };
+  const fwState = t => t > 13.2 ? { typed: 0, ko: -1, born: 0, frozen: false, lit: 0, fail: true, feedback: false, redo: -1, badge: 'idle' } : {
+    typed: Math.floor(clamp01((t - .3) / 4.2) * 10),
+    ko: t >= .5 && t < 1.7 ? 0 : t >= 2 && t < 3.2 ? 1 : t >= 3.5 && t < 4.7 ? 2 : -1,
+    born: (t >= 1.5) + (t >= 3) + (t >= 4.5), frozen: t >= 5.2,
+    lit: Math.floor(seg(t, 5.8, 8.2) * NV), fail: t < 9.9, feedback: t >= 8.3 && t < 9.7, redo: t >= 8.8 && t < 9.2 ? 6 : -1,
+    badge: t < 5.8 ? 'idle' : t < 8.2 ? 'run' : t < 9.9 ? 'fail' : 'pass',
+  };
+  const fwApply = s => {
+    fw.code.forEach((b, i) => b.classList.toggle('on', i < s.typed && i !== s.redo));
+    fw.grps.forEach((g, i) => g.classList.toggle('ko', i === s.ko));
+    fw.tray.forEach((c, i) => { c.classList.toggle('on', i < 5 || i - 5 < s.born); c.classList.toggle('frozen', s.frozen); });
+    fw.sq.forEach((c, i) => { const on = i < s.lit, bad = on && i === FAIL && s.fail; c.classList.toggle('on', on && !bad); c.classList.toggle('bad', bad); });
+    fw.pipe.classList.toggle('up', s.feedback);
+    if (fw.badge.dataset.k !== s.badge) { fw.badge.dataset.k = s.badge; fw.badge.className = 'badge ' + s.badge; fw.badge.textContent = BADGE[s.badge]; }
+  };
+  const HOLD = fwState(10.6);
+  let busy = false;
+  const fwClock = scene(fw.root, 14, t => { if (!busy) fwApply(fwState(t)); });
+  fwApply(HOLD); fwClock.t = 10.6;
+  const reverify = async ms => { for (let k = 0; k <= NV; k++) { fwApply({ ...HOLD, lit: k, badge: 'run' }); await wait(ms / NV); } fwApply(HOLD); };
+  const tell = (head, rest) => { fw.verdict.innerHTML = `<b>${head}</b> ${rest}`; };
+  const CHEATS = {
+    async peek() {
+      const R = fw.root.getBoundingClientRect(), a = $('#fw-tray').getBoundingClientRect(), w = fw.wall.getBoundingClientRect();
+      const pk = Object.assign(document.createElement('span'), { className: 'packet', textContent: 'tests' });
+      const sx = a.left + 60 - R.left, sy = a.top + a.height / 2 - R.top; pk.style.left = sx + 'px'; pk.style.top = sy + 'px'; fw.root.append(pk);
+      const side = w.height > w.width, half = side ? pk.offsetWidth / 2 : pk.offsetHeight / 2;
+      const dx = side ? w.right - R.left + half + 4 - sx : 0, dy = side ? 0 : w.bottom - R.top + half + 4 - sy;
+      const mv = (x, y) => `translate(-50%,-50%) translate(${x}px,${y}px)`;
+      await pk.animate([{ transform: mv(0, 0) }, { transform: mv(dx, dy) }], { duration: 620, easing: 'cubic-bezier(.5,0,.9,.4)', fill: 'forwards' }).finished;
+      fw.wall.classList.add('hit'); pk.classList.add('hit');
+      tell('Blocked.', 'Test files never reach the author.');
+      await pk.animate([{ transform: mv(dx, dy), opacity: 1 }, { transform: mv(dx * .55, dy * .55), opacity: 0 }], { duration: 520, easing: 'cubic-bezier(.1,.7,.3,1)', fill: 'forwards' }).finished;
+      fw.wall.classList.remove('hit'); pk.remove();
+    },
+    async weaken() {
+      const c = fw.sq[8]; c.classList.add('tamper'); await wait(620);
+      fw.row.classList.add('lock'); c.classList.remove('tamper');
+      tell('Refused.', "Frozen checks stay under the verifier's control.");
+      await wait(700); fw.row.classList.remove('lock');
+    },
+    async fake() {
+      fw.row.classList.add('faked'); await wait(600);
+      fw.row.classList.add('shake'); fwApply({ ...HOLD, badge: 'rej' });
+      tell('Rejected.', 'The hidden sentinel that must fail came back green.');
+      await wait(1100); fw.row.classList.remove('faked', 'shake'); await reverify(700);
+    },
+    async ship() {
+      fw.code[3].classList.add('edited'); await wait(520);
+      fwApply({ ...HOLD, lit: 0, badge: 'void' });
+      tell('Voided.', 'A pass is bound to the file hashes, so the edit forces a full retest.');
+      await wait(1000); await reverify(800); fw.code[3].classList.remove('edited');
+    },
+  };
+  const cheat = async (kind, btn) => {
+    if (busy) return; busy = true;
+    $$('.cheats button').forEach(b => b.classList.toggle('act', b === btn));
+    fwApply(HOLD); await wait(260);
+    await CHEATS[kind]();
+    await wait(1200); btn && btn.classList.remove('act'); fwClock.t = 10.6; busy = false;
+  };
+  $('.cheats').addEventListener('click', e => { const b = e.target.closest('[data-cheat]'); if (b) cheat(b.dataset.cheat, b); });
+  /* the first time the firewall is fully in view, show one cheat failing */
+  const probe = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { probe.disconnect(); if (!calm) setTimeout(() => cheat('peek', $('[data-cheat="peek"]')), 900); } }), { threshold: .75 });
+  probe.observe(fw.root);
+
+  /* ---------------- reveal once: bars shrink into place, numbers count, commands type ---------------- */
+  const count = el => {
+    const end = +el.dataset.n, dec = +el.dataset.dec || 0, pre = el.dataset.pre || '', suf = el.dataset.suf || '', t0 = performance.now();
+    const step = now => { const k = clamp01((now - t0) / 1500), v = end * (1 - Math.pow(1 - k, 3)); el.textContent = pre + v.toFixed(dec) + suf; if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  };
+  const type = pre => {
+    const html = pre.innerHTML, n = pre.textContent.length; let i = 0;
+    const cut = k => { const d = document.createElement('div'); d.innerHTML = html; let left = k; const walk = node => { for (const c of [...node.childNodes]) { if (c.nodeType === 3) { if (left <= 0) c.remove(); else if (c.length > left) { c.textContent = c.textContent.slice(0, left); left = 0; } else left -= c.length; } else { if (left <= 0) c.remove(); else walk(c); } } }; walk(d); return d.innerHTML; };
+    const tick = () => { i = Math.min(n, i + 2); pre.innerHTML = cut(i); if (i < n) setTimeout(tick, 16); else pre.innerHTML = html; };
+    tick();
+  };
+  const once = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return; once.unobserve(e.target); e.target.classList.add('in');
+    if (calm) return;
+    $$('[data-n]', e.target).forEach(count); $$('[data-type]', e.target).forEach(type);
+  }), { threshold: .18 });
+  $$('[data-reveal]').forEach(el => once.observe(el));
+
+  /* copy buttons */
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-copy]'); if (!b) return;
+    const el = document.getElementById(b.dataset.copy), txt = el.textContent.replace(/^\$ /gm, '').replace(/\s+#.*$/gm, '');
+    const done = () => { b.textContent = 'copied'; setTimeout(() => b.textContent = 'copy', 1400); };
+    const pick = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+    navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(txt).then(done, pick) : pick();
+  });
+
+  if (!calm) { let last = performance.now(); const frame = now => { const dt = Math.min(.05, (now - last) / 1000); last = now; loops.forEach(f => f(dt)); requestAnimationFrame(frame); }; requestAnimationFrame(frame); }
+})();
+</script>
+</body>
+</html>
