@@ -7,11 +7,11 @@
 <meta name="description" content="Nanolize rewrites a bloated repository into a nano one that coding agents read, change and run for fewer tokens.">
 <meta name="theme-color" content="#050607">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Crect width=%2722%27 height=%2722%27 fill=%27%23050607%27/%3E%3Crect x='1' y='1' width='20' height='20' rx='6' fill='none' stroke='%23EEF2FA' stroke-width='1.6'/%3E%3Crect x='5.5' y='6.2' width='11' height='2.4' fill='%23A8E62E'/%3E%3Crect x='5.5' y='10' width='7' height='2.4' fill='%23A8E62E'/%3E%3Crect x='5.5' y='13.8' width='9' height='2.4' fill='%23A8E62E'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>:root{padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400..600&display=swap">
 <style>
+/* The two typefaces are served from the site itself (src/fonts), so the page does not wait on another host. */
+@font-face{font-family:"Geist";font-style:normal;font-weight:300 800;font-display:swap;src:url(../fonts/geist-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Geist Mono";font-style:normal;font-weight:400 600;font-display:swap;src:url(../fonts/geist-mono-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 /* Shared page for every version. Centred section heads over one scene each; hairlines instead of boxes. Green is
    the only accent (nano code, passing checks); red appears only when something is blocked or fails.
    Colours are tokens so that a version can restyle the whole page: --hi is the high-contrast colour as an rgb
